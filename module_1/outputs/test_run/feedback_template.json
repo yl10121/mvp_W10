@@ -1,0 +1,23 @@
+[
+  {
+    "reviewer": "Classmate A",
+    "run_id": "run_0001",
+    "correctness_quality": 4,
+    "missing_info": "yes - consider adding per-trend date span",
+    "duplicates_noise": "no"
+  },
+  {
+    "reviewer": "Classmate B",
+    "run_id": "run_0001",
+    "correctness_quality": 4,
+    "missing_info": "no",
+    "duplicates_noise": "yes - one trend may overlap with another"
+  },
+  {
+    "reviewer": "Classmate C",
+    "run_id": "run_0001",
+    "correctness_quality": 5,
+    "missing_info": "no",
+    "duplicates_noise": "no"
+  }
+]

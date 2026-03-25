@@ -1,0 +1,14 @@
+{"timestamp_utc": "2026-03-25T07:50:27.713181+00:00", "level": "stage", "step": "Prompt", "message": "Loading prompt + config + retrieval sources", "meta": {}}
+{"timestamp_utc": "2026-03-25T07:50:27.713920+00:00", "level": "ok", "step": "Prompt", "message": "Completed in 0.00s", "meta": {}}
+{"timestamp_utc": "2026-03-25T07:50:27.714115+00:00", "level": "stage", "step": "Retrieve", "message": "Normalizing and filtering XHS posts", "meta": {}}
+{"timestamp_utc": "2026-03-25T07:50:27.717545+00:00", "level": "ok", "step": "Retrieve", "message": "Completed in 0.00s", "meta": {}}
+{"timestamp_utc": "2026-03-25T07:50:27.717552+00:00", "level": "ok", "step": "Retrieve", "message": "Retrieved 50 posts from 50 loaded records", "meta": {"max_posts": 50, "posts_path": "data/xhs_posts_test.json"}}
+{"timestamp_utc": "2026-03-25T07:50:27.717555+00:00", "level": "stage", "step": "Decide", "message": "Clustering semantically similar posts into trend candidates", "meta": {}}
+{"timestamp_utc": "2026-03-25T07:50:27.720280+00:00", "level": "ok", "step": "Decide", "message": "Completed in 0.00s", "meta": {}}
+{"timestamp_utc": "2026-03-25T07:50:27.720297+00:00", "level": "ok", "step": "Decide", "message": "Selected 5 trend clusters", "meta": {}}
+{"timestamp_utc": "2026-03-25T07:50:27.720511+00:00", "level": "ok", "step": "Prompt", "message": "Assignment prompt found and will be used in decision flow", "meta": {}}
+{"timestamp_utc": "2026-03-25T07:50:27.720520+00:00", "level": "info", "step": "Decide", "message": "LLM labeling disabled, using heuristic labels", "meta": {}}
+{"timestamp_utc": "2026-03-25T07:50:27.721853+00:00", "level": "ok", "step": "Decide", "message": "Trend objects built (5 total, 0 LLM-labeled)", "meta": {}}
+{"timestamp_utc": "2026-03-25T07:50:27.721856+00:00", "level": "stage", "step": "Output", "message": "Building structured Type-B trend object JSON", "meta": {}}
+{"timestamp_utc": "2026-03-25T07:50:27.724197+00:00", "level": "ok", "step": "Trace/Log", "message": "Saved run log to outputs/test_run/runs/run_0001_run_log.json", "meta": {}}
+{"timestamp_utc": "2026-03-25T07:50:27.724355+00:00", "level": "ok", "step": "Feedback", "message": "Saved reviewer feedback template to outputs/test_run/runs/run_0001_feedback.json", "meta": {}}
