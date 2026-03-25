@@ -175,10 +175,33 @@ class Post:
     comments: int
     saves: int
     creator: str
+    # enriched fields from live scraper
+    post_link: str = ""
+    cover_url: str = ""
+    all_image_urls: List[str] = None        # type: ignore[assignment]
+    is_video: bool = False
+    video_url: str = ""
+    image_caption: str = ""                 # AI-generated image description
+    keyword: str = ""
+    comments_scraped: List[Dict[str, Any]] = None   # type: ignore[assignment]
+    comments_count_scraped: int = 0
+
+    def __post_init__(self):
+        if self.all_image_urls is None:
+            self.all_image_urls = []
+        if self.comments_scraped is None:
+            self.comments_scraped = []
 
     @property
     def engagement(self) -> int:
         return self.likes + self.comments + self.saves
+
+    @property
+    def first_image_url(self) -> str:
+        """Return the best available image URL for this post."""
+        if self.all_image_urls:
+            return self.all_image_urls[0]
+        return self.cover_url or ""
 
 
 def load_dotenv_file(dotenv_path: Path) -> None:
@@ -212,10 +235,11 @@ def normalize_posts(raw_posts: List[Dict[str, Any]]) -> List[Post]:
     posts: List[Post] = []
     for i, item in enumerate(raw_posts, start=1):
         post_id = str(item.get("post_id") or f"p{i:03d}")
+        all_imgs = list(item.get("all_image_urls", []) or [])
         posts.append(
             Post(
                 post_id=post_id,
-                brand=str(item.get("brand", "")).strip(),
+                brand=str(item.get("brand", item.get("keyword", ""))).strip(),
                 category=str(item.get("category", "")).strip(),
                 date=str(item.get("date", "")).strip(),
                 title=str(item.get("title", "")).strip(),
@@ -225,6 +249,16 @@ def normalize_posts(raw_posts: List[Dict[str, Any]]) -> List[Post]:
                 comments=safe_int(item.get("comments")),
                 saves=safe_int(item.get("saves")),
                 creator=str(item.get("creator", "")).strip(),
+                # enriched fields
+                post_link=str(item.get("post_link", "")).strip(),
+                cover_url=str(item.get("cover_url", "")).strip(),
+                all_image_urls=all_imgs,
+                is_video=bool(item.get("is_video", False)),
+                video_url=str(item.get("video_url", "")).strip(),
+                image_caption=str(item.get("image_caption", "")).strip(),
+                keyword=str(item.get("keyword", "")).strip(),
+                comments_scraped=list(item.get("comments_scraped", []) or []),
+                comments_count_scraped=safe_int(item.get("comments_count_scraped", 0)),
             )
         )
     return [p for p in posts if p.title]
@@ -393,9 +427,17 @@ def trend_output_schema() -> Dict[str, Any]:
             "labeling_source",
             "evidence",
             "metrics",
+            "visual_assets",
             "timestamp",
         ],
-        "evidence_fields": ["post_ids", "snippets", "posts"],
+        "evidence_fields": [
+            "post_ids", "snippets", "posts",
+        ],
+        "evidence_post_fields": [
+            "post_id", "title", "date", "brand", "likes", "comments", "saves",
+            "creator", "post_link", "cover_url", "all_image_urls",
+            "is_video", "video_url", "image_caption",
+        ],
         "metrics_fields": [
             "post_count",
             "total_engagement",
@@ -404,7 +446,24 @@ def trend_output_schema() -> Dict[str, Any]:
             "total_comments",
             "total_saves",
             "top_keywords",
+            "video_post_count",
+            "image_count",
         ],
+        "visual_assets_fields": [
+            "all_image_urls",     # all image URLs across every post in the trend
+            "image_captions",     # list of {post_id, caption} AI descriptions
+            "video_post_count",   # how many posts in trend are videos
+        ],
+        "comment_signals_fields": [
+            "total_comments_scraped",   # count of top-level comments collected
+            "total_replies_scraped",    # count of replies collected
+            "all_comments",             # list of {post_id, commenter_id, text, likes, replies:[{commenter_id, text, likes}]}
+        ],
+        "privacy_note": (
+            "Commenter real usernames are NEVER stored. "
+            "Each commenter_id is a one-way SHA-256 hash so the same user "
+            "maps to the same ID without being reversible."
+        ),
     }
 
 
@@ -537,40 +596,91 @@ def to_trend_object(
         "snippets": [p.title for p in evidence_posts],
         "posts": [
             {
-                "post_id": p.post_id,
-                "title": p.title,
-                "date": p.date,
-                "brand": p.brand,
-                "likes": p.likes,
-                "comments": p.comments,
-                "saves": p.saves,
-                "creator": p.creator,
+                "post_id":               p.post_id,
+                "title":                 p.title,
+                "date":                  p.date,
+                "brand":                 p.brand,
+                "likes":                 p.likes,
+                "comments":              p.comments,
+                "saves":                 p.saves,
+                "creator":               p.creator,
+                "post_link":             p.post_link,
+                "cover_url":             p.cover_url,
+                "all_image_urls":        p.all_image_urls,
+                "is_video":              p.is_video,
+                "video_url":             p.video_url,
+                "image_caption":         p.image_caption,
+                "comments_scraped":      p.comments_scraped,        # full comment list
+                "comments_count_scraped": p.comments_count_scraped,
             }
             for p in evidence_posts
         ],
     }
 
+    # Collect all image URLs + comments across the whole cluster
+    all_cluster_images = []
+    all_cluster_image_captions = []
+    video_count = 0
+    all_cluster_comments: list[dict] = []   # flat list of every comment+replies in cluster
+
+    for p in posts:
+        all_cluster_images.extend(p.all_image_urls or ([p.cover_url] if p.cover_url else []))
+        if p.image_caption:
+            all_cluster_image_captions.append({"post_id": p.post_id, "caption": p.image_caption})
+        if p.is_video:
+            video_count += 1
+        # Attach post_id so we know which post each comment belongs to
+        for c in (p.comments_scraped or []):
+            all_cluster_comments.append({**c, "post_id": p.post_id})
+
+    # Build comment_signals: top-level view of comment text across the cluster
+    flat_comment_texts = [c["text"] for c in all_cluster_comments if c.get("text")]
+    flat_reply_texts   = [
+        r["text"]
+        for c in all_cluster_comments
+        for r in c.get("replies", [])
+        if r.get("text")
+    ]
+    total_comments_scraped = len(flat_comment_texts)
+    total_replies_scraped  = len(flat_reply_texts)
+
     metrics = {
-        "post_count": post_count,
+        "post_count":       post_count,
         "total_engagement": total_engagement,
-        "avg_engagement": round(total_engagement / post_count, 2) if post_count else 0,
-        "total_likes": total_likes,
-        "total_comments": total_comments,
-        "total_saves": total_saves,
-        "top_keywords": top_tokens[:5],
+        "avg_engagement":   round(total_engagement / post_count, 2) if post_count else 0,
+        "total_likes":      total_likes,
+        "total_comments":   total_comments,
+        "total_saves":      total_saves,
+        "top_keywords":     top_tokens[:5],
+        "video_post_count": video_count,
+        "image_count":      len(all_cluster_images),
     }
 
     return {
-        "trend_id": f"t{trend_idx:02d}",
-        "label": label,
-        "category": category,
-        "summary": summary,
-        "ai_reasoning": ai_reasoning,
-        "confidence": confidence,
+        "trend_id":        f"t{trend_idx:02d}",
+        "label":           label,
+        "category":        category,
+        "summary":         summary,
+        "ai_reasoning":    ai_reasoning,
+        "confidence":      confidence,
         "labeling_source": labeling_source,
-        "evidence": evidence,
-        "metrics": metrics,
-        "timestamp": datetime.now(UTC).isoformat(),
+        "evidence":        evidence,
+        "metrics":         metrics,
+        "timestamp":       datetime.now(UTC).isoformat(),
+        # ── visual assets ──────────────────────────────────────────
+        "visual_assets": {
+            "all_image_urls":   all_cluster_images[:20],
+            "image_captions":   all_cluster_image_captions,
+            "video_post_count": video_count,
+        },
+        # ── comment signals ────────────────────────────────────────
+        # All comment text is raw/unchanged. Commenter names are NEVER stored
+        # — only anonymized SHA-256 IDs. Replies are nested under each comment.
+        "comment_signals": {
+            "total_comments_scraped": total_comments_scraped,
+            "total_replies_scraped":  total_replies_scraped,
+            "all_comments": all_cluster_comments,   # [{post_id, commenter_id, text, likes, replies:[...]}, ...]
+        },
     }
 
 

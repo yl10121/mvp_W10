@@ -179,6 +179,7 @@ def _fill_defaults(post: dict) -> dict:
                     [post["cover_url"]] if post.get("cover_url") else [])
     post.setdefault("is_video", False)
     post.setdefault("video_url", "")
+    post.setdefault("raw_comments", [])   # comment scraping result
     return post
 
 
@@ -401,6 +402,9 @@ class XHSLiveScraper:
             else:
                 post["video_url"] = ""
 
+            # ── comments + replies ──
+            post["raw_comments"] = self._scrape_comments(detail_tab)
+
         except Exception as e:
             print(f"    [WARN] Detail fetch failed for {link}: {e.__class__.__name__}")
             post = _fill_defaults(post)
@@ -412,6 +416,134 @@ class XHSLiveScraper:
                     pass
 
         return post
+
+    # ── Comment scraping ───────────────────────────────────────────
+    def _scrape_comments(self, tab, max_scrolls: int = 3) -> list[dict]:
+        """
+        Scrape all visible comments (and their replies) from the current
+        post detail tab.
+
+        Returns a list of comment dicts:
+          {
+            "commenter_id": "user_<hash>",   ← anonymized, never the real name
+            "text": "raw comment text",       ← unchanged
+            "likes": 12,
+            "replies": [
+              {"commenter_id": "user_<hash>", "text": "raw reply text", "likes": 0},
+              ...
+            ]
+          }
+
+        Commenter names are NEVER stored anywhere — only the hash is kept.
+        """
+        comments: list[dict] = []
+
+        # Scroll the comment section a few times to load more comments
+        try:
+            comment_section = (
+                tab.ele(".comments-container",  timeout=3)
+                or tab.ele(".comment-list",      timeout=2)
+                or tab.ele(".note-comment",      timeout=2)
+            )
+            if comment_section:
+                for _ in range(max_scrolls):
+                    tab.scroll.to_bottom()
+                    time.sleep(1.2)
+        except Exception:
+            pass
+
+        # ── try multiple CSS selector patterns (XHS changes these) ──
+        # Pattern 1: comment-item inside comments-container
+        # Pattern 2: .list-container > div items
+        comment_items = (
+            tab.eles(".comment-item")
+            or tab.eles(".commentItem")
+            or tab.eles(".note-comment .list-container .item")
+            or []
+        )
+
+        for item in comment_items:
+            try:
+                # Comment text — XHS uses several class names
+                text_el = (
+                    item.ele(".note-text",        timeout=1)
+                    or item.ele(".content",        timeout=1)
+                    or item.ele(".comment-content",timeout=1)
+                    or item.ele("tag:span",        timeout=1)
+                )
+                raw_text = text_el.text.strip() if text_el else ""
+                if not raw_text:
+                    continue
+
+                # Commenter name — extract only to hash it, never store plain
+                name_el = (
+                    item.ele(".user-info .name",  timeout=1)
+                    or item.ele(".author",         timeout=1)
+                    or item.ele(".user-nick",      timeout=1)
+                    or item.ele(".nickname",       timeout=1)
+                )
+                raw_name = name_el.text.strip() if name_el else f"anon_{id(item)}"
+                commenter_id = anonymize_creator(raw_name)
+
+                # Comment likes
+                like_el = (
+                    item.ele(".like-wrapper .count", timeout=1)
+                    or item.ele(".like-count",        timeout=1)
+                    or item.ele(".count",             timeout=1)
+                )
+                comment_likes = _parse_count(like_el.text if like_el else "0")
+
+                # ── replies ──
+                replies: list[dict] = []
+                reply_items = (
+                    item.eles(".reply-item")
+                    or item.eles(".replyItem")
+                    or item.eles(".sub-comment-item")
+                    or []
+                )
+                for reply in reply_items:
+                    try:
+                        r_text_el = (
+                            reply.ele(".note-text",         timeout=1)
+                            or reply.ele(".content",         timeout=1)
+                            or reply.ele(".comment-content", timeout=1)
+                            or reply.ele("tag:span",         timeout=1)
+                        )
+                        r_text = r_text_el.text.strip() if r_text_el else ""
+                        if not r_text:
+                            continue
+
+                        r_name_el = (
+                            reply.ele(".user-info .name", timeout=1)
+                            or reply.ele(".author",        timeout=1)
+                            or reply.ele(".user-nick",     timeout=1)
+                        )
+                        r_raw_name = r_name_el.text.strip() if r_name_el else f"anon_{id(reply)}"
+                        r_commenter_id = anonymize_creator(r_raw_name)
+
+                        r_like_el = reply.ele(".like-wrapper .count", timeout=1) \
+                                    or reply.ele(".count", timeout=1)
+                        r_likes = _parse_count(r_like_el.text if r_like_el else "0")
+
+                        replies.append({
+                            "commenter_id": r_commenter_id,
+                            "text":         r_text,   # raw, unchanged
+                            "likes":        r_likes,
+                        })
+                    except Exception:
+                        continue
+
+                comments.append({
+                    "commenter_id": commenter_id,
+                    "text":         raw_text,   # raw, unchanged
+                    "likes":        comment_likes,
+                    "replies":      replies,
+                })
+
+            except Exception:
+                continue
+
+        return comments
 
     def close(self):
         try:
@@ -456,24 +588,31 @@ def build_records(
             ai_caption = caption_image(first_img, post.get("title", ""))
             time.sleep(0.4)
 
+        # Comments: text + replies are raw/unchanged; commenter names already hashed
+        # raw_comments contains {"commenter_id", "text", "likes", "replies":[...]}
+        comments_data = post.get("raw_comments", [])
+
         processed.append({
-            "post_id":       pid,
-            "keyword":       post.get("keyword", ""),
-            "category":      category,
-            "date":          post.get("date", ""),
-            "title":         post.get("title", ""),        # raw — UNCHANGED
-            "caption":       post.get("caption", ""),      # raw — UNCHANGED
-            "hashtags":      post.get("hashtags", []),     # raw — UNCHANGED
-            "likes":         post.get("likes", 0),
-            "comments":      post.get("comments", 0),
-            "saves":         post.get("saves", 0),
-            "creator":       creator_anon,                 # anonymized
-            "post_link":     post.get("post_link", ""),
-            "all_image_urls": all_imgs,                    # all raw image URLs
-            "cover_url":     post.get("cover_url", ""),
-            "is_video":      post.get("is_video", False),
-            "video_url":     post.get("video_url", ""),
-            "image_caption": ai_caption,                   # AI description
+            "post_id":        pid,
+            "keyword":        post.get("keyword", ""),
+            "category":       category,
+            "date":           post.get("date", ""),
+            "title":          post.get("title", ""),        # raw — UNCHANGED
+            "caption":        post.get("caption", ""),      # raw — UNCHANGED
+            "hashtags":       post.get("hashtags", []),     # raw — UNCHANGED
+            "likes":          post.get("likes", 0),
+            "comment_count":  post.get("comments", 0),     # total count shown on post
+            "saves":          post.get("saves", 0),
+            "creator":        creator_anon,                 # anonymized
+            "post_link":      post.get("post_link", ""),
+            "all_image_urls": all_imgs,
+            "cover_url":      post.get("cover_url", ""),
+            "is_video":       post.get("is_video", False),
+            "video_url":      post.get("video_url", ""),
+            "image_caption":  ai_caption,
+            # ── comments (text raw, commenter IDs anonymized) ──
+            "comments_scraped": comments_data,              # full list with replies
+            "comments_count_scraped": len(comments_data),  # how many we actually got
         })
 
     return raw_records, processed
