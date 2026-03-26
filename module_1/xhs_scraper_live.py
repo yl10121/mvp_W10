@@ -694,7 +694,22 @@ def main():
     with open(PROCESSED_OUTPUT_PATH, "w", encoding="utf-8") as f:
         json.dump(processed_records, f, ensure_ascii=False, indent=2)
     print(f"[SAVED] Trend input   → {PROCESSED_OUTPUT_PATH}")
-    print("\n[NEXT] Run:  python3 xhs_trend_builder.py")
+
+    # ── Supabase sync ──────────────────────────────────────────────
+    run_id = datetime.utcnow().strftime("scrape_%Y%m%d_%H%M%S")
+    try:
+        sys.path.insert(0, str(Path(__file__).parent.parent))
+        from supabase_writer import write_posts
+        from supabase_client import is_configured
+        if is_configured():
+            print(f"\n[DB] Syncing {len(processed_records)} posts to Supabase…")
+            write_posts(run_id, processed_records)
+        else:
+            print("[DB] Supabase skipped (SUPABASE_PASSWORD not set in .env)")
+    except Exception as e:
+        print(f"[DB WARN] Supabase sync skipped: {e}")
+
+    print("\n[NEXT] Run:  .venv/bin/python3 xhs_trend_builder.py")
 
 
 if __name__ == "__main__":

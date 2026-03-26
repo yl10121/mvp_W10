@@ -184,6 +184,35 @@ def main():
         json.dump(run_logs, f, ensure_ascii=False, indent=2)
     print(f"\n✅ 全部完成。{len(run_logs)} 条 run log 已保存: {RUN_LOG_PATH}")
 
+    # ── Supabase sync ──────────────────────────────────────────────
+    try:
+        import sys as _sys
+        from pathlib import Path as _Path
+        _sys.path.insert(0, str(_Path(__file__).parent.parent))
+        from supabase_writer import write_outreach_suggestion, write_run_log
+        from supabase_client import is_configured
+        if is_configured():
+            from datetime import datetime as _dt
+            run_id = _dt.utcnow().strftime("m5_%Y%m%d_%H%M%S")
+            for log in run_logs:
+                write_outreach_suggestion(run_id, {
+                    "client_id":          log.get("client_id", ""),
+                    "outreach_angle":     log.get("output", {}).get("outreach_angle", ""),
+                    "wechat_draft":       log.get("output", {}).get("wechat_draft", ""),
+                    "reasoning":          log.get("output", {}).get("reasoning", ""),
+                    "trend_signals_used": log.get("trend_signals_used", []),
+                    "client_memory_ref":  log.get("client_memory_summary", {}),
+                    "confidence":         log.get("output", {}).get("confidence", ""),
+                    "model_used":         MODEL,
+                })
+            write_run_log(run_id, "", MODEL, "v2", len(run_logs),
+                          {"run_logs": run_logs})
+            print(f"  [DB] Supabase sync complete ({len(run_logs)} suggestions)")
+        else:
+            print("  [DB] Supabase skipped (SUPABASE_PASSWORD not set)")
+    except Exception as _e:
+        print(f"  [DB WARN] Supabase sync skipped: {_e}")
+
 
 if __name__ == "__main__":
     main()

@@ -939,6 +939,23 @@ def run(
         cli.stage("Terminal Output", "Printing full trend_objects.json payload")
         print(json.dumps(result, ensure_ascii=False, indent=2))
 
+    # ── Supabase sync (only runs if SUPABASE_PASSWORD is set in .env) ──
+    try:
+        from supabase_writer import write_trend_objects, write_run_log
+        from supabase_client import is_configured
+        if is_configured():
+            cli.stage("Supabase", "Syncing run log + trend objects to Supabase")
+            write_run_log({**result, "brand": config.get("brand", "ALL"),
+                           "category": config.get("category", ""),
+                           "time_window": config.get("time_window", {}),
+                           "keywords_scraped": []})
+            write_trend_objects(run_id, trend_objects)
+            cli.ok("Supabase", "Sync complete")
+        else:
+            cli.info("Supabase", "Skipped (SUPABASE_PASSWORD not set)")
+    except Exception as _db_err:
+        cli.warn("Supabase", f"Sync skipped: {_db_err}")
+
     return trend_output_path, run_log_path, feedback_path, trace_path
 
 

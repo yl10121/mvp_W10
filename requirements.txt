@@ -1,4 +1,4 @@
 anthropic
-anthropic>=0.30.0
 openai
 python-dotenv
+psycopg2-binary
