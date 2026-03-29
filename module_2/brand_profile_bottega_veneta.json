@@ -1,0 +1,14 @@
+{
+  "brand_name": "Bottega Veneta",
+  "aesthetic": "Radical quiet luxury, intrecciato craft mastery, logoless confidence, tactile material excellence",
+  "clientele": "affluent adults 30-55 who have outgrown visible logos, values craft and material intelligence over brand signaling",
+  "preferred_sources": ["quiet luxury KOL", "interior design and architecture creators", "craft and material-focused editorial", "Bottega brand accounts", "understated fashion photographers"],
+  "avoided_sources": ["streetwear influencers", "logomania accounts", "hypebeast culture", "fast fashion", "mass-market lifestyle"],
+  "active_categories": ["ready-to-wear", "leather goods"],
+  "category_cadence": {
+    "ready-to-wear": "medium",
+    "leather goods": "fast"
+  },
+  "brand_taboos": ["logos", "streetwear", "hypebeast", "fast fashion", "overt branding", "logomania", "trend-chasing without craft substance"],
+  "clienteling_tone": "understated, material-focused, confident and unhurried, never name-drops the brand unnecessarily"
+}

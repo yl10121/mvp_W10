@@ -1,0 +1,55 @@
+{
+  "brand": "Christian Dior",
+  "personas": [
+    {
+      "id": "p01",
+      "name": "The Heritage Loyalist",
+      "age_range": "40-55",
+      "summary": "Affluent woman with deep brand affinity who values craftsmanship and Dior's couture legacy. Shops seasonally, responds to archive and reissue narratives.",
+      "values": ["craftsmanship", "heritage", "exclusivity", "timelessness"],
+      "shopping_behavior": "Plans purchases well in advance, often repurchases iconic silhouettes in new colorways. Strongly prefers in-store consultation over online browsing.",
+      "trend_receptivity": "Archive revivals, couture references, heritage campaigns, artisanal details, founding-era references",
+      "avoid": "Overly streetwear-influenced styles, logo-heavy casual, fast-trend references"
+    },
+    {
+      "id": "p02",
+      "name": "The New Luxury Millennial",
+      "age_range": "28-38",
+      "summary": "High-earning urban professional who entered luxury in her late 20s. Balances investment dressing with on-trend pieces. Heavily influenced by XHS and peer circles.",
+      "values": ["self-expression", "cultural relevance", "quality investment", "social proof"],
+      "shopping_behavior": "Researches extensively on XHS before visiting the store. Mixes Dior with contemporary brands and is responsive to KOL-endorsed styling.",
+      "trend_receptivity": "Contemporary silhouettes, cross-category collaborations, seasonal it-pieces, celebrity-endorsed looks, styling versatility",
+      "avoid": "Overly classic or conservative reads, anything that feels stiff or disconnected from current cultural conversation"
+    },
+    {
+      "id": "p03",
+      "name": "The Status Ascender",
+      "age_range": "25-35",
+      "summary": "Ambitious professional using luxury as a visible marker of achievement. Brand recognizability and social currency matter as much as quality.",
+      "values": ["status signaling", "recognizability", "achievement", "aspirational lifestyle"],
+      "shopping_behavior": "Gravitates toward iconic and widely recognized silhouettes. Responsive to gifting narratives and occasion-based framing. Sensitive to social proof.",
+      "trend_receptivity": "Iconic logo pieces, widely recognized styles, celebrity-worn items, pieces with strong social media visibility",
+      "avoid": "Niche or understated styles without instant recognizability, quiet luxury aesthetics that lack visible brand signaling"
+    },
+    {
+      "id": "p04",
+      "name": "The Cultural Connoisseur",
+      "age_range": "30-45",
+      "summary": "Highly educated creative or executive who treats fashion as cultural expression. Values narrative and craft over status signaling.",
+      "values": ["artistry", "narrative", "cultural intelligence", "understated sophistication"],
+      "shopping_behavior": "Drawn to limited editions, artist collaborations, and pieces with a compelling backstory. Engages deeply with brand heritage and archival content.",
+      "trend_receptivity": "Art collaborations, cultural references, conceptual design, craft-focused storytelling, runway narratives",
+      "avoid": "Overtly commercial or logo-heavy, trend-chasing without conceptual substance"
+    },
+    {
+      "id": "p05",
+      "name": "The Gifting Partner",
+      "age_range": "45-65",
+      "summary": "High-net-worth individual — often male — purchasing for a partner, daughter, or business associate. Decision-making is guided by perceived prestige and CA recommendations.",
+      "values": ["trustworthiness", "prestige", "recipient delight", "ease of purchase"],
+      "shopping_behavior": "Relies heavily on CA expertise. Prefers curated, limited options presented with clear rationale. Responds well to occasion-based framing.",
+      "trend_receptivity": "Gift-appropriate items with clear prestige signals, occasion-driven narratives, classic investment pieces",
+      "avoid": "Overly niche or avant-garde, anything requiring deep fashion knowledge to appreciate"
+    }
+  ]
+}

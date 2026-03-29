@@ -1,0 +1,14 @@
+{
+  "brand_name": "Louis Vuitton",
+  "aesthetic": "modern luxury, artful heritage, global cultural relevance, iconic monogram reimagined for each generation",
+  "clientele": "aspirational to ultra-affluent clients 25-55, brand-aware, values both prestige and cultural currency",
+  "preferred_sources": ["luxury lifestyle KOL", "fashion editorial", "LV brand accounts", "art and culture content creators", "celebrity stylists"],
+  "avoided_sources": ["mass-market fashion bloggers", "fast fashion accounts", "dupe or knockoff accounts", "streetwear dupes culture"],
+  "active_categories": ["ready-to-wear", "leather goods"],
+  "category_cadence": {
+    "ready-to-wear": "fast",
+    "leather goods": "fast"
+  },
+  "brand_taboos": ["dupes", "knockoffs", "fast fashion comparisons", "logo mockery", "anti-luxury messaging", "counterfeit references"],
+  "clienteling_tone": "aspirational, culturally connected, warm and inclusive yet prestigious, story-driven"
+}

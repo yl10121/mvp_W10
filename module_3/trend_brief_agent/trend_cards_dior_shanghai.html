@@ -1,78 +1,223 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-<meta charset="utf-8">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>CA Trend Brief — Dior Shanghai</title>
 <style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
   body {
-    font-family: 'Georgia', serif;
-    max-width: 820px;
-    margin: 60px auto;
-    padding: 0 40px 60px;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif;
+    background: #f0ede8;
+    color: #111111;
+    font-size: 15px;
+    line-height: 1.65;
+  }
+  .page { max-width: 840px; margin: 0 auto; padding: 40px 24px 80px; }
+
+  /* Header */
+  .brief-header {
+    background: #111827;
+    color: #fff;
+    border-radius: 12px;
+    padding: 32px 36px 28px;
+    margin-bottom: 32px;
+  }
+  .brief-header h1 {
+    font-size: 28px;
+    font-weight: 700;
+    letter-spacing: -0.5px;
+    margin-bottom: 12px;
+  }
+  .brief-meta {
+    display: flex;
+    gap: 24px;
+    font-size: 13px;
+    color: #9ca3af;
+    flex-wrap: wrap;
+  }
+  .brief-meta span { display: flex; align-items: center; gap: 6px; }
+
+  /* Banner */
+  .banner {
+    background: #fef3c7;
+    border: 1px solid #fcd34d;
+    border-radius: 8px;
+    padding: 10px 16px;
+    font-size: 14px;
+    color: #92400e;
+    margin-bottom: 24px;
+  }
+
+  /* Card */
+  .card {
     background: #fff;
-    color: #1a1a1a;
-    line-height: 1.7;
+    border-radius: 12px;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.07), 0 4px 12px rgba(0,0,0,0.04);
+    margin-bottom: 28px;
+    overflow: hidden;
   }
-  h1 { font-size: 1.6em; border-bottom: 2px solid #1a1a1a; padding-bottom: 10px; }
-  h2 { font-size: 1.2em; margin-top: 40px; color: #111; }
-  h3 { font-size: 1em; color: #333; }
-  code {
-    background: #f0f0f0;
-    padding: 2px 7px;
-    border-radius: 3px;
-    font-size: 0.85em;
-    font-family: monospace;
+
+  /* Card header */
+  .card-header {
+    background: #1c1c2e;
+    color: #fff;
+    padding: 24px 30px 20px;
   }
-  hr { border: none; border-top: 1px solid #ddd; margin: 30px 0; }
-  strong { color: #000; }
-  p { margin: 8px 0; }
-  blockquote {
-    border-left: 3px solid #ccc;
-    margin: 10px 0;
-    padding-left: 16px;
-    color: #555;
+  .card-title {
+    font-size: 20px;
+    font-weight: 700;
+    letter-spacing: -0.3px;
+    margin-bottom: 7px;
+  }
+  .card-meta {
+    font-size: 13px;
+    color: #94a3b8;
+  }
+  .card-meta strong { color: #e2e8f0; font-weight: 600; }
+
+  /* Sections */
+  .section {
+    padding: 22px 30px;
+    border-bottom: 1px solid #eeecec;
+  }
+  .section:last-child { border-bottom: none; }
+  .section-label {
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 1.4px;
+    text-transform: uppercase;
+    color: #6b7280;
+    margin-bottom: 12px;
+  }
+  .section p { margin-bottom: 10px; color: #111111; font-size: 15px; line-height: 1.65; }
+  .section p:last-child { margin-bottom: 0; }
+  .section strong { color: #000; font-weight: 700; }
+
+  /* Trend overview — largest, most prominent */
+  .section-overview { background: #fff; border-left: 4px solid #1c1c2e; }
+  .section-overview .section-label { color: #1c1c2e; font-size: 12px; }
+  .section-overview p { font-size: 16px; color: #0f0f0f; line-height: 1.7; font-weight: 400; }
+
+  /* Data signal */
+  .section-data { background: #f7f6f4; }
+  .section-data .section-label { color: #374151; }
+  .section-data ul { list-style: none; padding: 0; }
+  .section-data li {
+    padding: 8px 0;
+    border-bottom: 1px solid #e8e6e2;
+    font-size: 14px;
+    color: #111111;
+    font-weight: 500;
+  }
+  .section-data li:last-child { border-bottom: none; }
+  .section-data code {
+    background: #e8e6e2;
+    padding: 2px 6px;
+    border-radius: 4px;
+    font-size: 13px;
+    font-family: "SF Mono", "Fira Code", monospace;
+    color: #111111;
+  }
+
+  /* Brand relevance pill inside data section */
+  .section-data li strong {
+    color: #000;
+    font-weight: 700;
+  }
+
+  /* Client match */
+  .section-client { border-left: 4px solid #6366f1; }
+  .section-client .section-label { color: #4f46e5; }
+  .section-client p { font-size: 14px; color: #111111; }
+
+  /* Conversation starter */
+  .section-starter { background: #f8f7f4; }
+  .starter-label {
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    color: #6b7280;
+    margin: 14px 0 7px;
+  }
+  .starter-label:first-child { margin-top: 0; }
+  .starter-chinese {
+    background: #fff;
+    border: 1px solid #d6d3ce;
+    border-radius: 8px;
+    padding: 14px 18px;
+    font-size: 16px;
+    line-height: 1.75;
+    color: #0f0f0f;
+    margin-bottom: 6px;
+    font-weight: 400;
+  }
+  .starter-english {
+    background: #fff;
+    border: 1px solid #d6d3ce;
+    border-radius: 8px;
+    padding: 14px 18px;
+    font-size: 14px;
+    color: #1f2937;
+    font-style: italic;
+    line-height: 1.65;
+  }
+
+  /* Print */
+  @media print {
+    body { background: #fff; }
+    .page { padding: 0; max-width: 100%; }
+    .card { box-shadow: none; border: 1px solid #e5e7eb; break-inside: avoid; }
+    .brief-header { border-radius: 0; }
   }
 </style>
 </head>
 <body>
-<h1>CA Trend Brief — Dior Shanghai</h1>
-<p><strong>Week:</strong> 2026-W12<br />
-<strong>Source:</strong> Xiaohongshu<br />
-<strong>Store:</strong> Dior, Shanghai<br />
-<strong>Generated:</strong> 2026-03-22 15:00<br />
-<strong>Model:</strong> claude-haiku-4-5-20251001  </p>
-<hr />
-<h2>T009: Investment Dressing Mindset</h2>
-<p><strong>Category:</strong> ready-to-wear | <strong>Posts:</strong> 8,900 | <strong>Engagement:</strong> 10.9% | <strong>Growth:</strong> +44% | <strong>Confidence:</strong> HIGH</p>
-<hr />
-<h2>Investment Dressing Mindset · Shanghai · ready-to-wear</h2>
-<p><strong>What it is:</strong> Shanghai clients are moving away from buying lots of pieces and toward owning fewer, really considered items they calculate the value of over time. They're thinking like investors about their wardrobe — cost per wear, longevity, resale potential — not just how something looks today.</p>
-<p><strong>Who to bring it up with:</strong> Women aged 28–45 in Shanghai with stable incomes and a measured approach to luxury — they read personal finance content, they think carefully before buying, and they see fashion as part of a bigger financial picture. You'll recognize them by questions like "Will I actually wear this in two years?" or when they mention other luxury pieces they own that have held their value.</p>
-<p><strong>Why it's moving:</strong> Nearly 1 in 10 people who see this content are saving and sharing it, which means clients are actively researching and planning before they spend — this isn't impulse anymore. Dior's heritage pieces, particularly in leather goods and tailoring, sit perfectly in this conversation because they genuinely do hold value and wear beautifully over years.</p>
-<p><strong>Open with:</strong> "I've noticed a lot of our clients in Shanghai are thinking differently about what they invest in — they're calculating cost per wear, almost like it's a financial decision. It actually makes sense: a Dior piece that works for five years is smarter math than buying five cheaper things that don't last, 是吧？"</p>
-<p><code>Confidence: HIGH</code></p>
-<hr />
-<hr />
-<h2>T002: Oversized Leather Tote Revival</h2>
-<p><strong>Category:</strong> bags | <strong>Posts:</strong> 4,800 | <strong>Engagement:</strong> 10.1% | <strong>Growth:</strong> +24% | <strong>Confidence:</strong> HIGH</p>
-<hr />
-<h2>Oversized Leather Tote Revival · Shanghai · bags</h2>
-<p><strong>What it is:</strong> Shanghai clients are moving away from structured handbags toward soft, oversized leather totes that work from the office to weekend — think unstructured silhouettes in cognac, chocolate, and black that actually fit a laptop and still look polished. It's the opposite of the rigid, architectural bags from seasons past; these are tactile, lived-in, and built for real life.</p>
-<p><strong>Who to bring it up with:</strong> Professionals aged 28–42 in Shanghai — they're balancing demanding work weeks with a desire to feel less "corporate" in how they dress, and they're actively researching which luxury houses do this best before they commit. You'll recognize them when they mention needing a bag that works for both client meetings and weekend dinners, or when they ask about leather quality and how a bag will age.</p>
-<p><strong>Why it's moving:</strong> Nearly 1 in 10 people who engaged with these posts saved them, which means clients are seriously vetting options and comparing houses before they shop — this isn't casual scrolling. Dior's craftsmanship in soft leather and our design language around ease-meets-elegance position us perfectly to own this shift away from the stiff, logo-forward bags clients are tired of.</p>
-<p><strong>Open with:</strong> "I've noticed so many of our clients are moving toward bigger, softer totes right now — bags that actually fit their life but don't feel casual, 你懂吗？ We have some beautiful oversized leather pieces that nail that balance, and the leather is built to get better with time rather than look worn out."</p>
-<p><code>Confidence: HIGH</code></p>
-<hr />
-<hr />
-<h2>T001: Quiet Luxury Suiting</h2>
-<p><strong>Category:</strong> ready-to-wear | <strong>Posts:</strong> 5,200 | <strong>Engagement:</strong> 9.4% | <strong>Growth:</strong> +18% | <strong>Confidence:</strong> MEDIUM</p>
-<hr />
-<h2>Quiet Luxury Suiting · Shanghai · ready-to-wear</h2>
-<p><strong>What it is:</strong> Shanghai professionals are moving away from logo-heavy pieces toward suits in soft neutrals — oatmeal, ivory, camel — where the fabric and cut do all the talking. It's about looking expensive without announcing it, which feels completely natural for how successful people actually dress here.</p>
-<p><strong>Who to bring it up with:</strong> Clients aged 28–45 in Shanghai — they're established enough to know that real luxury whispers, and they dress for themselves, not for Instagram validation. Look for clients who ask about fabric weight, lining details, or how a jacket will wear over time; that's your signal they're ready for this conversation.</p>
-<p><strong>Why it's moving:</strong> Nearly 1 in 10 people who saw these posts saved them, meaning clients are actively researching and planning these purchases instead of impulse-buying. Dior's heritage in tailoring and our mastery of neutral palettes puts us directly in this conversation — this is where clients go when they want quiet confidence.</p>
-<p><strong>Open with:</strong> "我注意到你很在意面料的质感——现在很多人都在重新发现真正的奢华其实是低调的。" Dior的西装讲究的就是这个：剪裁精准，面料讲究，穿出去没人需要知道品牌，但你自己能感受到每一个细节。"</p>
-<p><code>Confidence: MEDIUM</code></p>
-<hr />
-<hr />
+<div class="page">
+  <div class="brief-header">
+    <h1>Client Advisor Trend Brief</h1>
+    <div class="brief-meta">
+      <span>Dior · Shanghai</span>
+      <span>Week of 2026-03-25</span>
+      <span>Source: module_2/output_shortlist.json</span>
+      <span>Generated 26 Mar 2026, 15:39</span>
+    </div>
+  </div>
+  
+  <div class="card" id="t18"><div class="card-header"><div class="card-title">Top Handle Bag Elegance</div><div class="card-meta"><strong>Category:</strong> leather goods | <strong>Relevance:</strong> Dior · January 2025</div></div><div class="section section-overview"><div class="section-label">TREND OVERVIEW</div><p>Shanghai luxury conversations are centering on the Lady Dior top handle bag as the definitive choice for formal occasions—cultural events, galas, exhibition openings. The positioning moves beyond aesthetics into occasion appropriateness and heritage authority. Creators are framing the bag as a marker of discernment for women who understand when craft matters most.</p></div><div class="section section-data"><div class="section-label">DATA SIGNAL</div><ul>
+<li>Engagement rate: 12.9% (vs. XHS fashion category avg ~4.5% · 11 posts · January 2025)</li>
+<li>Post growth: +20% (week-on-week)</li>
+<li>Brand relevance: high</li>
+</ul>
+<p><strong>CONFIDENCE NOTE</strong></p>
+<p>LOW — Post count (11) falls below analytical threshold (requires ≥3,000 posts for robust trend validation). Source: live XHS data scraped via DrissionPage.</p></div><div class="section section-client"><div class="section-label">CLIENT MATCH</div><p><strong>Best-fit persona:</strong> The Heritage Loyalist</p>
+<p><strong>Who they are:</strong> Affluent woman with deep brand affinity who values craftsmanship and Dior&#x27;s couture legacy. Shops seasonally, responds to archive and reissue narratives.</p>
+<p><strong>Why this trend fits:</strong> The trend&#x27;s explicit positioning around Lady Dior as an iconic heritage piece and emphasis on formal occasion appropriateness directly aligns with The Heritage Loyalist&#x27;s reverence for Dior&#x27;s couture legacy and craftsmanship. The cultural engagement and &#x27;most suitable partner for formal occasions&#x27; framing resonates with her seasonal, occasion-driven shopping pattern and deep brand loyalty rather than trend-chasing.</p>
+<p><strong>Match score:</strong> 9/10</p>
+<p><strong>This trend is NOT for:</strong> Clients drawn to streetwear-influenced aesthetics or logo-forward casual pieces.</p></div><div class="section section-starter"><div class="section-label">CONVERSATION STARTER</div><div class="starter-label">Chinese</div><div class="starter-chinese">「最近在小红书上，很多品味女性在讨论Lady Dior手提包时，用的词都是&#x27;正式场合的最佳拍档&#x27;——不是流行，而是恰当。从文化活动到晚宴，她们把它当作一种有分寸的选择。我在想，这是不是正好呼应了您对Dior工艺和传承的看法？」</div><div class="starter-label">English</div><div class="starter-english">"I&#x27;ve been following a conversation among Shanghai collectors about when the Lady Dior top handle feels most essential—and it&#x27;s always tied to occasion, not trend. Cultural galas, formal dinners, gallery openings. The language is &#x27;the right choice for the right moment,&#x27; which feels very much aligned with how you think about heritage pieces. Are you thinking about your own top handle for the season ahead?"</div></div></div>
+<div class="card" id="t20"><div class="card-header"><div class="card-title">Lady Dior Styling and Heritage</div><div class="card-meta"><strong>Category:</strong> leather goods | <strong>Relevance:</strong> Dior · March 2025</div></div><div class="section section-overview"><div class="section-label">TREND OVERVIEW</div><p>Creators across XHS are telling the 30-year story of the Lady Dior bag through the lens of female power—tracing its evolution from Princess Diana to today. Posts frame the bag not as a seasonal accessory, but as a historical artifact tied to Dior&#x27;s couture legacy and women&#x27;s cultural narratives. The conversation is editorial and introspective, centering craftsmanship and provenance over social visibility.</p></div><div class="section section-data"><div class="section-label">DATA SIGNAL</div><ul>
+<li>Engagement rate: 12.2% (vs. XHS fashion category avg ~4.5% · 13 posts · March 10–23, 2025)</li>
+<li>Post growth: +20% (week-on-week)</li>
+<li>Brand relevance: high</li>
+</ul>
+<p><strong>CONFIDENCE NOTE</strong></p>
+<p>LOW — Post count (13) and sample size fall below statistical threshold (requires ≥3,000 posts for robust modeling). Source: live XHS data scraped via DrissionPage.</p></div><div class="section section-client"><div class="section-label">CLIENT MATCH</div><p><strong>Best-fit persona:</strong> The Heritage Loyalist</p>
+<p><strong>Who they are:</strong> Affluent woman with deep brand affinity who values craftsmanship and Dior&#x27;s couture legacy. Shops seasonally, responds to archive and reissue narratives.</p>
+<p><strong>Why this trend fits:</strong> This trend directly centers Dior&#x27;s 30-year heritage narrative and the iconic Lady Dior&#x27;s connection to Princess Diana, perfectly aligning with The Heritage Loyalist&#x27;s core receptivity to archive revivals and founding-era references. The emphasis on the bag&#x27;s historical trajectory as a &#x27;female power narrative&#x27; resonates with someone who views luxury purchases as investments in cultural legacy rather than fleeting trends. The high-quality editorial sourcing and focus on craftsmanship—not social currency—mirrors this persona&#x27;s values around artisanal authenticity and couture positioning.</p>
+<p><strong>Match score:</strong> 9/10</p>
+<p><strong>This trend is NOT for:</strong> Clients drawn to streetwear-influenced styling or logo-forward casual wear.</p></div><div class="section section-starter"><div class="section-label">CONVERSATION STARTER</div><div class="starter-label">Chinese</div><div class="starter-chinese">「我最近看到有人在讲Lady Dior这只包的三十年故事——从戴安娜王妃开始，一直到现在。不只是在说它有多美，而是在说这只包背后代表的女性力量。我想起你一直在收集那些有历史故事的东西，这个似乎很符合你的品味。你对这个角度怎么看?」</div><div class="starter-label">English</div><div class="starter-english">"I came across something interesting—creators are telling the Lady Dior&#x27;s 30-year story through Princess Diana onwards, but framing it as a narrative about female power, not just beauty. It reminded me of how you collect pieces with real historical weight. I thought you might connect with that angle."</div></div></div>
+<div class="card" id="t19"><div class="card-header"><div class="card-title">Cannage Quilting Detail Focus</div><div class="card-meta"><strong>Category:</strong> Leather Goods | <strong>Relevance:</strong> Dior · March 2026</div></div><div class="section section-overview"><div class="section-label">TREND OVERVIEW</div><p>Posts across XHS from mid-to-late March are centering on the Cannage quilting pattern—specifically its origin story in Monsieur Dior&#x27;s own caned chair design. The narrative isn&#x27;t about owning the bag; it&#x27;s about understanding the heritage code embedded in the stitch. Creators like couture_observer_cn and cultural_luxe_bj are framing the pattern as cultural artifact, not trend.</p></div><div class="section section-data"><div class="section-label">DATA SIGNAL</div><ul>
+<li>Engagement rate: 11.8% (vs. XHS fashion category avg ~4.5% · 10 posts · March 12–23, 2026)</li>
+<li>Post growth: +20% (week-on-week)</li>
+<li>Brand relevance: high</li>
+</ul>
+<p><strong>CONFIDENCE NOTE</strong></p>
+<p>LOW — Post sample size (10 posts) falls below threshold for robust trend validation (requires ≥3,000 posts); engagement methodology sourced from live XHS data scraped via DrissionPage.</p></div><div class="section section-client"><div class="section-label">CLIENT MATCH</div><p><strong>Best-fit persona:</strong> The Cultural Connoisseur</p>
+<p><strong>Who they are:</strong> Highly educated creative or executive who treats fashion as cultural expression. Values narrative and craft over status signaling.</p>
+<p><strong>Why this trend fits:</strong> This trend is built entirely on cultural narrative and heritage craftsmanship—the Cannage quilting traces directly to Monsieur Dior&#x27;s chair design, offering the conceptual depth and design storytelling that resonates with this persona. The engagement comes from curators like couture_observer_cn and cultural_luxe_bj, indicating an audience that values understanding the craft and cultural codes embedded in the piece rather than surface-level status signaling. The high save rate reflects sustained appreciation for design substance rather than trend-chasing.</p>
+<p><strong>Match score:</strong> 9/10</p>
+<p><strong>This trend is NOT for:</strong> Clients drawn primarily to visible logos or trend cycles without deeper conceptual engagement.</p></div><div class="section section-starter"><div class="section-label">CONVERSATION STARTER</div><div class="starter-label">Chinese</div><div class="starter-chinese">「最近在小红书上看到一个很有意思的讨论——关于Dior的Cannage纹理。有个博主写了Dior先生椅子上的藤编怎么演变成了包包上的图案，感觉就像是在讲一个设计的故事，而不只是一个图案。你有没有注意到这个细节?」</div><div class="starter-label">English</div><div class="starter-english">"I came across something on XHS that felt worth sharing with you—people are talking about the Cannage quilting not as a pattern, but as a conversation about Monsieur Dior&#x27;s chair and how that design choice became a code. The posts aren&#x27;t about having the bag; they&#x27;re about understanding why it matters. Does that kind of design lineage resonate with how you think about pieces?"</div></div></div>
+</div>
 </body>
 </html>

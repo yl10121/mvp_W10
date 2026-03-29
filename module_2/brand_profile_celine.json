@@ -1,0 +1,14 @@
+{
+  "brand_name": "Celine",
+  "aesthetic": "Parisian intellectual minimalism, clean structure, rigorous simplicity, confident restraint",
+  "clientele": "design-literate women 28-52, values precise tailoring and understated authority, drawn to minimalist power dressing over ornamentation",
+  "preferred_sources": ["minimalist fashion KOL", "Parisian lifestyle editorial", "Celine brand accounts", "architecture and art creators", "intellectual fashion writers"],
+  "avoided_sources": ["streetwear influencers", "maximalist fashion bloggers", "hypebeast culture", "fast fashion accounts", "logomania content"],
+  "active_categories": ["ready-to-wear", "leather goods"],
+  "category_cadence": {
+    "ready-to-wear": "fast",
+    "leather goods": "medium"
+  },
+  "brand_taboos": ["maximalism", "logomania", "streetwear", "athleisure", "fast fashion", "overt branding", "hypebeast", "overly ornate styling"],
+  "clienteling_tone": "precise, intellectually confident, unhurried, references architecture and art naturally"
+}

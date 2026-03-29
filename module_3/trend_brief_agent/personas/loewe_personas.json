@@ -1,0 +1,45 @@
+{
+  "brand": "Loewe",
+  "personas": [
+    {
+      "id": "p01",
+      "name": "The Craft Connoisseur",
+      "age_range": "32-48",
+      "summary": "Design-literate professional who entered luxury through architecture, ceramics, or art. Chooses Loewe specifically for its craft narrative and artisanal leather work — the intrecciato and puzzle construction are the point, not a bonus.",
+      "values": ["artisanal mastery", "material intelligence", "conceptual depth", "narrative authenticity"],
+      "shopping_behavior": "Researches the making process before buying. Asks about leather origin, construction, and craftspeople. Prefers pieces with a story they can retell. Buys slowly but loyally.",
+      "trend_receptivity": "Craft-focused storytelling, artisan collaborations, material innovation, archive references, Jonathan Anderson-era conceptual design",
+      "avoid": "Logo-heavy or status-signaling pieces, anything trend-forward without craft substance, fast seasonal novelties"
+    },
+    {
+      "id": "p02",
+      "name": "The Quiet Aesthete",
+      "age_range": "28-42",
+      "summary": "Creative director, curator, or cultural professional who wears Loewe as an extension of their visual identity. Logoless luxury is a deliberate statement about taste — they want to be recognised by those who know.",
+      "values": ["visual intelligence", "understated sophistication", "cultural credibility", "anti-logomania"],
+      "shopping_behavior": "Drawn to silhouette and texture over branding. Mixes Loewe with vintage and independent designers. Responsive to campaign imagery and editorial context. Dislikes obvious upselling.",
+      "trend_receptivity": "Sculptural silhouettes, unexpected material combinations, wearable-art pieces, culturally referenced collections",
+      "avoid": "Anything with visible logos or overt branding, overly commercial or widely recognisable pieces, trend-chasing"
+    },
+    {
+      "id": "p03",
+      "name": "The Considered Upgrader",
+      "age_range": "30-45",
+      "summary": "Client who has moved on from logo-driven luxury and is actively seeking brands that reflect a more evolved taste. Loewe is aspirational to them — they're building their first Loewe wardrobe deliberately.",
+      "values": ["taste evolution", "quality investment", "brand discovery", "understated prestige"],
+      "shopping_behavior": "Researches extensively before first purchase. Often starts with leather goods before moving to ready-to-wear. Responds well to educational conversations about craft and heritage.",
+      "trend_receptivity": "Entry-point leather goods with strong craft narrative, versatile pieces that anchor a wardrobe, heritage and provenance stories",
+      "avoid": "Pieces that require deep brand knowledge to appreciate without guidance, niche limited editions before trust is established"
+    },
+    {
+      "id": "p04",
+      "name": "The Cultural Nomad",
+      "age_range": "25-38",
+      "summary": "Internationally mobile creative — often in film, music, or tech — who uses Loewe for its cross-cultural credibility. Travels frequently and values pieces that read as sophisticated globally, not just locally.",
+      "values": ["global cultural fluency", "travel versatility", "creative community belonging", "material quality"],
+      "shopping_behavior": "Shops across cities. Follows Jonathan Anderson's creative output closely. Responsive to campaign collaborations with artists or cultural figures. Buys when inspired, not seasonally.",
+      "trend_receptivity": "Artist collaborations, culturally cross-referencing collections, travel-appropriate pieces, limited editions with cultural resonance",
+      "avoid": "Overly China-market-specific styling, anything that feels domestically focused without global appeal"
+    }
+  ]
+}

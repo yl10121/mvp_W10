@@ -1,0 +1,14 @@
+{
+  "brand_name": "Chanel",
+  "aesthetic": "Parisian modernity, timeless elegance, feminine power, understated logoless sophistication",
+  "clientele": "affluent women 30-55, values heritage and modern relevance, prefers understated luxury over overt status signaling",
+  "preferred_sources": ["French fashion KOL", "luxury lifestyle editorial", "Chanel brand accounts", "high-fashion photographers", "art and culture creators"],
+  "avoided_sources": ["streetwear influencers", "mass-market fashion bloggers", "fast fashion accounts", "hypebeast culture"],
+  "active_categories": ["ready-to-wear", "leather goods"],
+  "category_cadence": {
+    "ready-to-wear": "fast",
+    "leather goods": "medium"
+  },
+  "brand_taboos": ["streetwear", "athleisure", "fast fashion", "dupes", "knockoffs", "logomania", "hypebeast", "gender-neutral mass market"],
+  "clienteling_tone": "refined, culturally intelligent, confident but never pushy, story-driven"
+}

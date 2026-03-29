@@ -1,0 +1,45 @@
+{
+  "brand": "Louis Vuitton",
+  "personas": [
+    {
+      "id": "p01",
+      "name": "The Global Nomad",
+      "age_range": "30-45",
+      "summary": "Internationally mobile professional who views LV through its travel heritage. Sees the brand as a statement of worldliness and sophistication, not just status.",
+      "values": ["global citizenship", "travel heritage", "cultural fluency", "quality that travels well"],
+      "shopping_behavior": "Often purchases while traveling or in flagship stores. Drawn to travel-related categories and limited editions tied to specific cities or experiences.",
+      "trend_receptivity": "Travel-coded pieces, heritage monogram reinterpretations, city-specific editions, artisanal craft narratives",
+      "avoid": "Overly logo-heavy streetwear crossovers, anything that reads as purely status-driven without narrative depth"
+    },
+    {
+      "id": "p02",
+      "name": "The Cultural Prestige Seeker",
+      "age_range": "25-38",
+      "summary": "Younger affluent consumer who values LV for its art collaborations and cultural relevance as much as its prestige. Follows the brand's creative direction closely.",
+      "values": ["cultural currency", "artistic credibility", "prestige", "being first"],
+      "shopping_behavior": "Tracks LV collaborations and drops. Buys early in the season. Heavy XHS and social media user who influences peers.",
+      "trend_receptivity": "Artist collaborations, conceptual campaigns, culturally coded pieces, seasonal creative direction, fashion-forward silhouettes",
+      "avoid": "Conventional or predictable pieces without a cultural angle, anything that feels behind the brand's creative direction"
+    },
+    {
+      "id": "p03",
+      "name": "The Established Achiever",
+      "age_range": "40-58",
+      "summary": "Senior executive or business owner for whom LV is a trusted luxury default. Values the brand's consistency and recognizability across global contexts.",
+      "values": ["recognizability", "trustworthiness", "global prestige", "consistency"],
+      "shopping_behavior": "Buys seasonally in-store, often repurchases successful styles. Trusts SA recommendations. Responsive to quality and heritage narratives.",
+      "trend_receptivity": "Iconic monogram pieces, classic silhouettes with seasonal updates, durable leather goods with heritage appeal",
+      "avoid": "Highly experimental or fashion-forward pieces that feel risky, anything that requires deep fashion knowledge to appreciate"
+    },
+    {
+      "id": "p04",
+      "name": "The Aspirational Entrant",
+      "age_range": "22-32",
+      "summary": "High-earning young professional making their first major LV purchase, or early in a growing relationship with the brand. The purchase is a milestone marker.",
+      "values": ["achievement", "recognition", "social proof", "milestone celebration"],
+      "shopping_behavior": "Researches extensively online before buying. Entry-level price points, but open to aspiring toward higher-tier pieces. Highly influenced by peer ownership and KOLs.",
+      "trend_receptivity": "Widely recognized monogram pieces, entry-level leather goods with strong brand signaling, pieces with high peer visibility",
+      "avoid": "Niche or understated pieces without recognizable brand codes, anything that requires prior LV knowledge to appreciate"
+    }
+  ]
+}

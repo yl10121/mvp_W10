@@ -28,7 +28,17 @@ BASE_DIR = Path(__file__).parent
 ROOT_DIR = BASE_DIR.parent
 MODULE1_OUTPUTS = ROOT_DIR / "module_1" / "outputs"
 MODULE3_SHORTLIST = ROOT_DIR / "module_3" / "trend_brief_agent" / "trend_shortlist.json"
-BRAND_PROFILE_FILE = BASE_DIR / "brand_profile.json"
+BRAND_PROFILE_FILE = BASE_DIR / "brand_profile.json"  # default fallback
+
+
+def resolve_brand_profile(slug: str) -> Path:
+    """Return brand-specific profile if it exists, else fall back to brand_profile.json."""
+    specific = BASE_DIR / f"brand_profile_{slug}.json"
+    if specific.exists():
+        return specific
+    return BRAND_PROFILE_FILE
+
+
 OUTPUT_SHORTLIST_FILE = BASE_DIR / "outputs" / "output_shortlist.json"
 RUN_LOG_FILE = BASE_DIR / "outputs" / "run_log.json"
 
@@ -258,7 +268,8 @@ def main():
     print(f"Loaded {total_input} trend objects (source run: {module1_run_id})")
 
     print(f"Loading brand profile...")
-    brand_profile = load_json(BRAND_PROFILE_FILE)
+    slug = BRAND.lower().strip().replace(" ", "_").replace("-", "_")
+    brand_profile = load_json(resolve_brand_profile(slug))
     print(f"Brand profile: {brand_profile['brand_name']}")
 
     # ── Step 1: Deterministic pre-filter ──────────────────────────────────────

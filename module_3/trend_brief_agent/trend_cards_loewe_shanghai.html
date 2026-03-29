@@ -1,0 +1,240 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>CA Trend Brief — Loewe Shanghai</title>
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif;
+    background: #f0ede8;
+    color: #111111;
+    font-size: 15px;
+    line-height: 1.65;
+  }
+  .page { max-width: 840px; margin: 0 auto; padding: 40px 24px 80px; }
+
+  /* Header */
+  .brief-header {
+    background: #111827;
+    color: #fff;
+    border-radius: 12px;
+    padding: 32px 36px 28px;
+    margin-bottom: 32px;
+  }
+  .brief-header h1 {
+    font-size: 28px;
+    font-weight: 700;
+    letter-spacing: -0.5px;
+    margin-bottom: 12px;
+  }
+  .brief-meta {
+    display: flex;
+    gap: 24px;
+    font-size: 13px;
+    color: #9ca3af;
+    flex-wrap: wrap;
+  }
+  .brief-meta span { display: flex; align-items: center; gap: 6px; }
+
+  /* Banner */
+  .banner {
+    background: #fef3c7;
+    border: 1px solid #fcd34d;
+    border-radius: 8px;
+    padding: 10px 16px;
+    font-size: 14px;
+    color: #92400e;
+    margin-bottom: 24px;
+  }
+
+  /* Card */
+  .card {
+    background: #fff;
+    border-radius: 12px;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.07), 0 4px 12px rgba(0,0,0,0.04);
+    margin-bottom: 28px;
+    overflow: hidden;
+  }
+
+  /* Card header */
+  .card-header {
+    background: #1c1c2e;
+    color: #fff;
+    padding: 24px 30px 20px;
+  }
+  .card-title {
+    font-size: 20px;
+    font-weight: 700;
+    letter-spacing: -0.3px;
+    margin-bottom: 7px;
+  }
+  .card-meta {
+    font-size: 13px;
+    color: #94a3b8;
+  }
+  .card-meta strong { color: #e2e8f0; font-weight: 600; }
+
+  /* Sections */
+  .section {
+    padding: 22px 30px;
+    border-bottom: 1px solid #eeecec;
+  }
+  .section:last-child { border-bottom: none; }
+  .section-label {
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 1.4px;
+    text-transform: uppercase;
+    color: #6b7280;
+    margin-bottom: 12px;
+  }
+  .section p { margin-bottom: 10px; color: #111111; font-size: 15px; line-height: 1.65; }
+  .section p:last-child { margin-bottom: 0; }
+  .section strong { color: #000; font-weight: 700; }
+
+  /* Trend overview — largest, most prominent */
+  .section-overview { background: #fff; border-left: 4px solid #1c1c2e; }
+  .section-overview .section-label { color: #1c1c2e; font-size: 12px; }
+  .section-overview p { font-size: 16px; color: #0f0f0f; line-height: 1.7; font-weight: 400; }
+
+  /* Data signal */
+  .section-data { background: #f7f6f4; }
+  .section-data .section-label { color: #374151; }
+  .section-data ul { list-style: none; padding: 0; }
+  .section-data li {
+    padding: 8px 0;
+    border-bottom: 1px solid #e8e6e2;
+    font-size: 14px;
+    color: #111111;
+    font-weight: 500;
+  }
+  .section-data li:last-child { border-bottom: none; }
+  .section-data code {
+    background: #e8e6e2;
+    padding: 2px 6px;
+    border-radius: 4px;
+    font-size: 13px;
+    font-family: "SF Mono", "Fira Code", monospace;
+    color: #111111;
+  }
+
+  /* Brand relevance pill inside data section */
+  .section-data li strong {
+    color: #000;
+    font-weight: 700;
+  }
+
+  /* Client match */
+  .section-client { border-left: 4px solid #6366f1; }
+  .section-client .section-label { color: #4f46e5; }
+  .section-client p { font-size: 14px; color: #111111; }
+
+  /* Conversation starter */
+  .section-starter { background: #f8f7f4; }
+  .starter-label {
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    color: #6b7280;
+    margin: 14px 0 7px;
+  }
+  .starter-label:first-child { margin-top: 0; }
+  .starter-chinese {
+    background: #fff;
+    border: 1px solid #d6d3ce;
+    border-radius: 8px;
+    padding: 14px 18px;
+    font-size: 16px;
+    line-height: 1.75;
+    color: #0f0f0f;
+    margin-bottom: 6px;
+    font-weight: 400;
+  }
+  .starter-english {
+    background: #fff;
+    border: 1px solid #d6d3ce;
+    border-radius: 8px;
+    padding: 14px 18px;
+    font-size: 14px;
+    color: #1f2937;
+    font-style: italic;
+    line-height: 1.65;
+  }
+
+  /* Mobile */
+  @media (max-width: 640px) {
+    .page { padding: 16px 12px 60px; }
+    .brief-header { padding: 22px 20px 18px; border-radius: 10px; }
+    .brief-header h1 { font-size: 22px; }
+    .brief-meta { font-size: 12px; gap: 12px; }
+    .card { border-radius: 10px; margin-bottom: 20px; }
+    .card-header { padding: 18px 20px 14px; }
+    .card-title { font-size: 17px; }
+    .section { padding: 16px 20px; }
+    .section p { font-size: 14px; }
+    .section-overview p { font-size: 15px; }
+    .section-data li { font-size: 13px; }
+    .starter-chinese { font-size: 15px; padding: 12px 14px; }
+    .starter-english { font-size: 13px; padding: 12px 14px; }
+  }
+
+  /* Print */
+  @media print {
+    body { background: #fff; }
+    .page { padding: 0; max-width: 100%; }
+    .card { box-shadow: none; border: 1px solid #e5e7eb; break-inside: avoid; }
+    .brief-header { border-radius: 0; }
+  }
+</style>
+</head>
+<body>
+<div class="page">
+  <div class="brief-header">
+    <h1>Client Advisor Trend Brief</h1>
+    <div class="brief-meta">
+      <span>Loewe · Shanghai</span>
+      <span>Week of 2026-03-25</span>
+      <span>Source: module_2/output_shortlist.json</span>
+      <span>Generated 26 Mar 2026, 16:28</span>
+    </div>
+  </div>
+  
+  <div class="card" id="t18"><div class="card-header"><div class="card-title">Top Handle Bag Elegance</div><div class="card-meta"><strong>Category:</strong> leather goods | <strong>Relevance:</strong> Loewe · January 2025</div></div><div class="section section-overview"><div class="section-label">TREND OVERVIEW</div><p>Top handle bags are dominating XHS conversations around formal occasions—cultural events, galas, gallery openings. The aesthetic is deliberate and restrained: heritage craftsmanship, logoless silhouettes, and the quiet confidence of knowing your piece will be recognised by those who understand. Posts position the top handle as the only appropriate choice for occasions that matter.</p></div><div class="section section-data"><div class="section-label">DATA SIGNAL</div><ul>
+<li>Engagement rate: 12.9% (vs. XHS fashion category avg ~4.5% · 11 posts · January 2025)</li>
+<li>Post growth: +20% (week-on-week)</li>
+<li>Brand relevance: high</li>
+</ul>
+<p><strong>CONFIDENCE NOTE</strong></p>
+<p>LOW — Post count (11) falls below reliable threshold (requires ≥3,000 posts for statistical confidence). Source: live XHS data scraped via DrissionPage.</p></div><div class="section section-client"><div class="section-label">CLIENT MATCH</div><p><strong>Best-fit persona:</strong> The Quiet Aesthete</p>
+<p><strong>Who they are:</strong> Creative director, curator, or cultural professional who wears Loewe as an extension of their visual identity. Logoless luxury is a deliberate statement about taste — they want to be recognised by those who know.</p>
+<p><strong>Why this trend fits:</strong> The trend demonstrates exceptional cultural engagement through creators attending formal cultural events and galas, perfectly aligning with the Quiet Aesthete&#x27;s identity as a cultural professional who uses luxury as a statement of refined taste. The emphasis on &#x27;heritage and appropriateness&#x27; in formal occasions, combined with high-intent engagement (23,000 saves), reflects someone who selects pieces as deliberate extensions of their visual identity rather than status symbols. The positioning as the sophisticated choice for cultural events resonates with someone who values pieces that are recognized by those with cultivated taste.</p>
+<p><strong>Match score:</strong> 9/10</p>
+<p><strong>This trend is NOT for:</strong> Anyone drawn to visible branding or pieces defined by logo recognition.</p></div><div class="section section-starter"><div class="section-label">CONVERSATION STARTER</div><div class="starter-label">Chinese</div><div class="starter-chinese">「我最近看到一个特别有意思的现象——上海的策展人、美术馆的朋友们在选择手提包时，几乎都偏向那种没有标志、但工艺非常讲究的款式，尤其是参加文化活动和开幕式的时候。我觉得这种选择本身就在说&#x27;我懂什么是真正重要的&#x27;。你最近有什么场合吗？」</div><div class="starter-label">English</div><div class="starter-english">"I&#x27;ve been noticing something on WeChat Moments — everyone from galleries and cultural institutions here is gravitating toward top handles that have no visible branding but impeccable craft. It&#x27;s become the unspoken uniform for the occasions that actually matter. The restraint feels intentional. Do you find yourself drawn to that kind of piece?"</div></div></div>
+<div class="card" id="t20"><div class="card-header"><div class="card-title">Lady Dior Styling and Heritage</div><div class="card-meta"><strong>Category:</strong> leather goods | <strong>Relevance:</strong> Loewe · March 2024</div></div><div class="section section-overview"><div class="section-label">TREND OVERVIEW</div><p>A sustained conversation on XHS is unfolding around Lady Dior&#x27;s 30-year lineage—from Princess Diana through today—framed explicitly as a &quot;history of female power.&quot; High-quality editorial voices are anchoring this narrative with heritage storytelling that connects iconic ownership to contemporary feminine identity. This is less about the bag as object and more about what owning it signals about a woman&#x27;s taste evolution.</p></div><div class="section section-data"><div class="section-label">DATA SIGNAL</div><ul>
+<li>Engagement rate: 12.2% (vs. XHS fashion category avg ~4.5% · 13 posts · March 10–23, 2024)</li>
+<li>Post growth: +20% (week-on-week)</li>
+<li>Brand relevance: high</li>
+</ul>
+<p><strong>CONFIDENCE NOTE</strong></p>
+<p>LOW — Post count (13) falls below statistical threshold for reliable trend validation (requires ≥3,000 posts for robust signal). Source: live XHS data scraped via DrissionPage.</p></div><div class="section section-client"><div class="section-label">CLIENT MATCH</div><p><strong>Best-fit persona:</strong> The Considered Upgrader</p>
+<p><strong>Who they are:</strong> Client who has moved on from logo-driven luxury and is actively seeking brands that reflect a more evolved taste. Loewe is aspirational to them — they&#x27;re building their first Loewe wardrobe deliberately.</p>
+<p><strong>Why this trend fits:</strong> The Lady Dior heritage narrative—spanning 30 years from Princess Diana to present and framed as &#x27;a history of female power&#x27;—provides exactly the kind of provenance storytelling that guides a Considered Upgrader&#x27;s investment decisions. This trend offers accessible entry into a storied leather goods category with clear historical legitimacy and cultural resonance, eliminating the gatekeeping risk of niche knowledge while validating an aspirational purchase.</p>
+<p><strong>Match score:</strong> 8/10</p>
+<p><strong>This trend is NOT for:</strong> Clients who prefer to discover and curate niche pieces independently without brand heritage context.</p></div><div class="section section-starter"><div class="section-label">CONVERSATION STARTER</div><div class="starter-label">Chinese</div><div class="starter-chinese">「最近在小红书看到一个有意思的讨论——关于Dior手袋三十年的演变，从戴妃那个时代一直到现在。有个编辑总结得特别好，说这其实是讲女性力量的故事。你是不是也在想，一个包的选择，其实也在讲你自己品味的变化？」</div><div class="starter-label">English</div><div class="starter-english">"There&#x27;s a quieter conversation happening right now on XHS about what Lady Dior has meant across three decades—the way ownership has shifted from one kind of woman to another. I thought of you because it&#x27;s the kind of provenance story that actually matters when you&#x27;re being intentional about what you carry."</div></div></div>
+<div class="card" id="t19"><div class="card-header"><div class="card-title">Cannage Quilting Detail Focus</div><div class="card-meta"><strong>Category:</strong> leather goods | <strong>Relevance:</strong> Loewe · March 2026</div></div><div class="section section-overview"><div class="section-label">TREND OVERVIEW</div><p>A focused cluster of posts is examining the heritage craft behind Cannage quilting—tracing the pattern directly back to Monsieur Dior&#x27;s original chair inspiration and its rattan weaving roots. The conversation centers on the documented cultural and material lineage of the technique, not the pattern itself as a surface detail. Posts from design-focused creators like cultural_luxe_bj are attracting a design-literate audience interested in the substantive story of construction and craft provenance.</p></div><div class="section section-data"><div class="section-label">DATA SIGNAL</div><ul>
+<li>Engagement rate: 11.8% (vs. XHS fashion category avg ~4.5% · 10 posts · March 12–23, 2026)</li>
+<li>Post growth: +20% (week-on-week)</li>
+<li>Brand relevance: high</li>
+</ul>
+<p><strong>CONFIDENCE NOTE</strong></p>
+<p>LOW — Sample size of 10 posts falls below statistical threshold (requires ≥3,000 posts for robust trend validation). Source: live XHS data scraped via DrissionPage.</p></div><div class="section section-client"><div class="section-label">CLIENT MATCH</div><p><strong>Best-fit persona:</strong> The Craft Connoisseur</p>
+<p><strong>Who they are:</strong> Design-literate professional who entered luxury through architecture, ceramics, or art. Chooses Loewe specifically for its craft narrative and artisanal leather work — the intrecciato and puzzle construction are the point, not a bonus.</p>
+<p><strong>Why this trend fits:</strong> This trend&#x27;s core appeal is the artisanal heritage behind Cannage quilting—directly tracing the pattern to Monsieur Dior&#x27;s original chair inspiration and cultural provenance. The Craft Connoisseur is precisely the audience who resonates with this layered narrative of material craftsmanship and design lineage, valuing the documented story of construction over logo visibility. The engagement from editorial sources focused on &#x27;cultural depth&#x27; (cultural_luxe_bj) confirms this attracts design-literate professionals who prize substantive craft narratives.</p>
+<p><strong>Match score:</strong> 9/10</p>
+<p><strong>This trend is NOT for:</strong> Clients drawn to seasonal novelties or pieces where craft narrative is secondary to trend momentum or visible branding.</p></div><div class="section section-starter"><div class="section-label">CONVERSATION STARTER</div><div class="starter-label">Chinese</div><div class="starter-chinese">「最近有个很有意思的讨论在小红书上——关于Cannage纹样的设计灵感，直接溯源到迪奥先生椅子上的藤编。这种把工艺的文化根源讲清楚的方式，感觉特别符合你对手工细节和设计逻辑的理解。你对这种有明确出处的构造方法感不感兴趣?」</div><div class="starter-label">English</div><div class="starter-english">"There&#x27;s a thoughtful conversation building around the heritage behind Cannage quilting—the pattern&#x27;s direct connection to Monsieur Dior&#x27;s rattan chair and the cultural lineage of the weaving technique. It seems like the kind of documented craft story that would appeal to how you think about design. Does that narrative of material origins resonate with you?"</div></div></div>
+</div>
+</body>
+</html>

@@ -1,0 +1,14 @@
+{
+  "brand_name": "Amiri",
+  "aesthetic": "Rock-and-roll luxury, California edge with couture construction, distressed craftsmanship, music and art-world cool",
+  "clientele": "high-net-worth creatives and tastemakers 25-45, values individuality and subcultural credibility alongside luxury quality",
+  "preferred_sources": ["music industry KOL", "streetwear-adjacent luxury creators", "celebrity stylists", "art-world influencers", "high-fashion photographers"],
+  "avoided_sources": ["conservative luxury bloggers", "traditional fashion editorial", "mass-market fashion", "corporate lifestyle accounts"],
+  "active_categories": ["ready-to-wear", "leather goods"],
+  "category_cadence": {
+    "ready-to-wear": "fast",
+    "leather goods": "medium"
+  },
+  "brand_taboos": ["corporate aesthetic", "conservative dressing", "overly polished styling", "traditional luxury codes without edge", "fast fashion references"],
+  "clienteling_tone": "direct, culturally fluent, peer-to-peer rather than SA-to-client, music and art references welcome"
+}

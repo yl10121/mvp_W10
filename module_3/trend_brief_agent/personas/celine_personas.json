@@ -1,0 +1,45 @@
+{
+  "brand": "Celine",
+  "personas": [
+    {
+      "id": "p01",
+      "name": "The Parisian Minimalist",
+      "age_range": "32-50",
+      "summary": "Architect, editor, or senior creative who treats Celine as her professional uniform. The brand's rigorous simplicity mirrors her own aesthetic sensibility — she buys Celine because nothing else is edited enough.",
+      "values": ["restraint", "structural precision", "intellectual elegance", "anti-ornamentation"],
+      "shopping_behavior": "Deliberate and unhurried. Buys fewer pieces but wears them constantly. Drawn to silhouette and proportion over surface detail. Asks about fabric weight and drape. Dislikes being sold to.",
+      "trend_receptivity": "Structural silhouette updates, precise tailoring narratives, material quality stories, clean seasonal colour shifts",
+      "avoid": "Anything with embellishment, print-heavy pieces, overtly trend-forward styling, decorative hardware"
+    },
+    {
+      "id": "p02",
+      "name": "The Power Dresser",
+      "age_range": "30-48",
+      "summary": "Senior executive or founder who uses Celine to dress with authority without effort. The brand lets her look considered and serious without thinking too hard about fashion — it does the work for her.",
+      "values": ["professional authority", "effortless credibility", "wardrobe efficiency", "understated confidence"],
+      "shopping_behavior": "Efficiency-driven buyer who values a CA who understands her life. Builds a working wardrobe, not a fashion collection. Responds to occasion-based framing and outfit-building conversations.",
+      "trend_receptivity": "Versatile investment pieces, workwear-appropriate silhouettes, wardrobe-anchoring items, quality and longevity narratives",
+      "avoid": "Overly fashion-forward pieces, anything requiring significant styling effort, seasonal novelties that won't carry over"
+    },
+    {
+      "id": "p03",
+      "name": "The Intellectual Newcomer",
+      "age_range": "25-38",
+      "summary": "Fashion-literate younger client discovering Celine as the grown-up evolution of her taste. She's read about Phoebe Philo and follows Hedi Slimane's creative output — she has strong opinions and wants a peer-level conversation.",
+      "values": ["creative direction awareness", "taste evolution", "brand narrative", "considered entry"],
+      "shopping_behavior": "Highly researched before arriving. Knows the archive and current collection. Often starts with leather goods. Wants the CA to engage with her knowledge, not explain basics.",
+      "trend_receptivity": "Creative direction references, runway-to-retail pieces, bags with strong design history, pieces with editorial context",
+      "avoid": "Generic luxury framing, talking down to her knowledge level, pushing obvious or entry-level pieces"
+    },
+    {
+      "id": "p04",
+      "name": "The Quiet Achiever",
+      "age_range": "35-55",
+      "summary": "High-net-worth client who has consciously moved away from visible status symbols. Celine's logoless authority is the point — she wants to be recognised as someone with taste, not someone with a logo.",
+      "values": ["understated prestige", "taste over status", "material quality", "discreet luxury"],
+      "shopping_behavior": "Long consideration cycle before purchasing. Values in-store consultation and a trusted SA relationship. Asks about craftsmanship and care. Rarely influenced by social media.",
+      "trend_receptivity": "Material and craft narratives, logoless statement pieces, subtle seasonal updates to core silhouettes, investment framing",
+      "avoid": "Any overt branding or logo moments, trend-driven pieces, anything that signals effort over ease"
+    }
+  ]
+}

@@ -1,0 +1,241 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>CA Trend Brief — Bottega Veneta Shanghai</title>
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif;
+    background: #f0ede8;
+    color: #111111;
+    font-size: 15px;
+    line-height: 1.65;
+  }
+  .page { max-width: 840px; margin: 0 auto; padding: 40px 24px 80px; }
+
+  /* Header */
+  .brief-header {
+    background: #111827;
+    color: #fff;
+    border-radius: 12px;
+    padding: 32px 36px 28px;
+    margin-bottom: 32px;
+  }
+  .brief-header h1 {
+    font-size: 28px;
+    font-weight: 700;
+    letter-spacing: -0.5px;
+    margin-bottom: 12px;
+  }
+  .brief-meta {
+    display: flex;
+    gap: 24px;
+    font-size: 13px;
+    color: #9ca3af;
+    flex-wrap: wrap;
+  }
+  .brief-meta span { display: flex; align-items: center; gap: 6px; }
+
+  /* Banner */
+  .banner {
+    background: #fef3c7;
+    border: 1px solid #fcd34d;
+    border-radius: 8px;
+    padding: 10px 16px;
+    font-size: 14px;
+    color: #92400e;
+    margin-bottom: 24px;
+  }
+
+  /* Card */
+  .card {
+    background: #fff;
+    border-radius: 12px;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.07), 0 4px 12px rgba(0,0,0,0.04);
+    margin-bottom: 28px;
+    overflow: hidden;
+  }
+
+  /* Card header */
+  .card-header {
+    background: #1c1c2e;
+    color: #fff;
+    padding: 24px 30px 20px;
+  }
+  .card-title {
+    font-size: 20px;
+    font-weight: 700;
+    letter-spacing: -0.3px;
+    margin-bottom: 7px;
+  }
+  .card-meta {
+    font-size: 13px;
+    color: #94a3b8;
+  }
+  .card-meta strong { color: #e2e8f0; font-weight: 600; }
+
+  /* Sections */
+  .section {
+    padding: 22px 30px;
+    border-bottom: 1px solid #eeecec;
+  }
+  .section:last-child { border-bottom: none; }
+  .section-label {
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 1.4px;
+    text-transform: uppercase;
+    color: #6b7280;
+    margin-bottom: 12px;
+  }
+  .section p { margin-bottom: 10px; color: #111111; font-size: 15px; line-height: 1.65; }
+  .section p:last-child { margin-bottom: 0; }
+  .section strong { color: #000; font-weight: 700; }
+
+  /* Trend overview — largest, most prominent */
+  .section-overview { background: #fff; border-left: 4px solid #1c1c2e; }
+  .section-overview .section-label { color: #1c1c2e; font-size: 12px; }
+  .section-overview p { font-size: 16px; color: #0f0f0f; line-height: 1.7; font-weight: 400; }
+
+  /* Data signal */
+  .section-data { background: #f7f6f4; }
+  .section-data .section-label { color: #374151; }
+  .section-data ul { list-style: none; padding: 0; }
+  .section-data li {
+    padding: 8px 0;
+    border-bottom: 1px solid #e8e6e2;
+    font-size: 14px;
+    color: #111111;
+    font-weight: 500;
+  }
+  .section-data li:last-child { border-bottom: none; }
+  .section-data code {
+    background: #e8e6e2;
+    padding: 2px 6px;
+    border-radius: 4px;
+    font-size: 13px;
+    font-family: "SF Mono", "Fira Code", monospace;
+    color: #111111;
+  }
+
+  /* Brand relevance pill inside data section */
+  .section-data li strong {
+    color: #000;
+    font-weight: 700;
+  }
+
+  /* Client match */
+  .section-client { border-left: 4px solid #6366f1; }
+  .section-client .section-label { color: #4f46e5; }
+  .section-client p { font-size: 14px; color: #111111; }
+
+  /* Conversation starter */
+  .section-starter { background: #f8f7f4; }
+  .starter-label {
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    color: #6b7280;
+    margin: 14px 0 7px;
+  }
+  .starter-label:first-child { margin-top: 0; }
+  .starter-chinese {
+    background: #fff;
+    border: 1px solid #d6d3ce;
+    border-radius: 8px;
+    padding: 14px 18px;
+    font-size: 16px;
+    line-height: 1.75;
+    color: #0f0f0f;
+    margin-bottom: 6px;
+    font-weight: 400;
+  }
+  .starter-english {
+    background: #fff;
+    border: 1px solid #d6d3ce;
+    border-radius: 8px;
+    padding: 14px 18px;
+    font-size: 14px;
+    color: #1f2937;
+    font-style: italic;
+    line-height: 1.65;
+  }
+
+  /* Mobile */
+  @media (max-width: 640px) {
+    .page { padding: 16px 12px 60px; }
+    .brief-header { padding: 22px 20px 18px; border-radius: 10px; }
+    .brief-header h1 { font-size: 22px; }
+    .brief-meta { font-size: 12px; gap: 12px; }
+    .card { border-radius: 10px; margin-bottom: 20px; }
+    .card-header { padding: 18px 20px 14px; }
+    .card-title { font-size: 17px; }
+    .section { padding: 16px 20px; }
+    .section p { font-size: 14px; }
+    .section-overview p { font-size: 15px; }
+    .section-data li { font-size: 13px; }
+    .starter-chinese { font-size: 15px; padding: 12px 14px; }
+    .starter-english { font-size: 13px; padding: 12px 14px; }
+  }
+
+  /* Print */
+  @media print {
+    body { background: #fff; }
+    .page { padding: 0; max-width: 100%; }
+    .card { box-shadow: none; border: 1px solid #e5e7eb; break-inside: avoid; }
+    .brief-header { border-radius: 0; }
+  }
+</style>
+</head>
+<body>
+<div class="page">
+  <div class="brief-header">
+    <h1>Client Advisor Trend Brief</h1>
+    <div class="brief-meta">
+      <span>Bottega Veneta · Shanghai</span>
+      <span>Week of 2026-03-25</span>
+      <span>Source: module_2/output_shortlist.json</span>
+      <span>Generated 26 Mar 2026, 19:39</span>
+    </div>
+  </div>
+  
+  <div class="card" id="t18"><div class="card-header"><div class="card-title">Top Handle Bag Elegance</div><div class="card-meta"><strong>Category:</strong> leather goods | <strong>Relevance:</strong> Bottega Veneta · January 2025</div></div><div class="section section-overview"><div class="section-label">TREND OVERVIEW</div><p>On XHS, top handle bags—particularly structured leather pieces—are resurfacing as the definitive accessory for formal occasions and cultural events. The conversation centers on heritage, appropriateness, and quiet confidence rather than trend novelty. Posts emphasize how this silhouette anchors a considered wardrobe across galas, openings, and professional settings.</p></div><div class="section section-data"><div class="section-label">DATA SIGNAL</div><ul>
+<li>Engagement rate: 12.9% (vs. XHS fashion category avg ~4.5% · 11 posts · January 2025)</li>
+<li>Post growth: +20% (week-on-week)</li>
+<li>Brand relevance: high</li>
+</ul>
+<p><strong>CONFIDENCE NOTE</strong></p>
+<p>LOW — Post count (11) falls below analytical threshold (requires ≥3,000 posts for pattern stability). Source: live XHS data scraped via DrissionPage.</p></div><div class="section section-client"><div class="section-label">CLIENT MATCH</div><p><strong>Best-fit persona:</strong> The Confident Minimalist</p>
+<p><strong>Who they are:</strong> High-earning professional who dresses to be taken seriously without dressing to be noticed. Bottega&#x27;s logoless luxury gives them the confidence of a considered wardrobe without the performance of visible status.</p>
+<p><strong>Why this trend fits:</strong> The Top Handle Bag Elegance trend positions this piece as a wardrobe-anchoring investment for formal occasions—precisely the type of versatile, serious-minded essential that the Confident Minimalist seeks. The emphasis on heritage, appropriateness, and cultural sophistication (rather than trend-forward visibility) aligns perfectly with a professional who uses design choices to convey considered taste rather than status-seeking. This is an investment piece that delivers quiet confidence across multiple contexts, not a statement item demanding attention.</p>
+<p><strong>Match score:</strong> 9/10</p>
+<p><strong>This trend is NOT for:</strong> Clients drawn to highly visible logos, seasonal trend cycles, or pieces designed to signal status overtly.</p></div><div class="section section-starter"><div class="section-label">CONVERSATION STARTER</div><div class="starter-label">Chinese</div><div class="starter-chinese">「我最近在小红书看到一个很有意思的现象——很多专业人士在讨论手提包其实是正式场合里最聪明的选择。不是因为它有多闪亮,而是因为它传达了你对自己品味的理解。我想到你,因为这种想法和你的风格完全一致。你最近在考虑为重要场合添置什么吗?」</div><div class="starter-label">English</div><div class="starter-english">"I came across something on XHS that made me think of you immediately—professionals are quietly repositioning the structured top handle bag as the ultimate investment piece for formal occasions. Not because it&#x27;s loud or visible, but because it signals clarity of taste. Given how you approach your wardrobe, I thought this conversation would resonate. Are you thinking about anchoring your formal rotation with something new this season?"</div></div></div>
+<div class="card" id="t20"><div class="card-header"><div class="card-title">Lady Dior Styling and Heritage</div><div class="card-meta"><strong>Category:</strong> leather goods | <strong>Relevance:</strong> Bottega Veneta · March 2025</div></div><div class="section section-overview"><div class="section-label">TREND OVERVIEW</div><p>A sustained conversation around Lady Dior&#x27;s 30-year legacy is circulating on XHS, anchored in heritage storytelling that connects the bag&#x27;s royal provenance to contemporary ideas of feminine power. Posts from editorial-caliber creators like fashion_editor_paris are framing the piece not as a status symbol but as a documented cultural artifact—a narrative that appeals to clients researching investment pieces with intellectual depth. The trend peaked March 10–23, with particular momentum around posts tracing the bag&#x27;s evolution from Diana to now.</p></div><div class="section section-data"><div class="section-label">DATA SIGNAL</div><ul>
+<li>Engagement rate: 12.2% (vs. XHS fashion category avg ~4.5% · 13 posts · March 10–23, 2025)</li>
+<li>Post growth: +20% (week-on-week)</li>
+<li>Total saves: 26,200 across cluster</li>
+<li>Brand relevance: high</li>
+</ul>
+<p><strong>CONFIDENCE NOTE</strong></p>
+<p>LOW — Post count (13) falls below statistical threshold for trend validation (requires ≥3,000 posts for robust measurement). Source: live XHS data scraped via DrissionPage.</p></div><div class="section section-client"><div class="section-label">CLIENT MATCH</div><p><strong>Best-fit persona:</strong> The Knowledgeable Newcomer</p>
+<p><strong>Who they are:</strong> Fashion-fluent younger client who has discovered Bottega through the Matthieu Blazy era and sees it as the most intellectually credible luxury brand right now. They&#x27;ve done their research and want the CA to match their knowledge level.</p>
+<p><strong>Why this trend fits:</strong> This trend&#x27;s emphasis on heritage narrative and editorial-caliber content from sources like fashion_editor_paris speaks directly to a client who appreciates craft-forward storytelling and the intellectual credibility of brand history. The sustained engagement (158k across curated posts) and 26.2k saves indicate an audience researching and investing in pieces with documented cultural significance, exactly matching this persona&#x27;s desire for runway-to-retail pieces with editorial provenance.</p>
+<p><strong>Match score:</strong> 8/10</p>
+<p><strong>This trend is NOT for:</strong> Clients seeking obvious status pieces or those who prefer brand prestige framed as luxury shorthand rather than historical narrative.</p></div><div class="section section-starter"><div class="section-label">CONVERSATION STARTER</div><div class="starter-label">Chinese</div><div class="starter-chinese">「最近看到一些很有意思的内容，讲Lady Dior三十年的故事——从戴安娜王妃到现在，有编辑在用&#x27;女性力量史&#x27;这样的角度来讲这只包。你有关注过这个品牌的历史脉络吗?感觉这种叙事方式和你对品牌的理解很搭。」</div><div class="starter-label">English</div><div class="starter-english">"I came across some really thoughtful editorial pieces about Lady Dior&#x27;s three-decade arc—tracing it from Diana through to now. The framing around female agency and cultural weight rather than just heritage felt different. Have you encountered that narrative, or is that something that would actually shift how you think about the bag?"</div></div></div>
+<div class="card" id="t19"><div class="card-header"><div class="card-title">Cannage Quilting Detail Focus</div><div class="card-meta"><strong>Category:</strong> leather goods | <strong>Relevance:</strong> Bottega Veneta · March 2026</div></div><div class="section section-overview"><div class="section-label">TREND OVERVIEW</div><p>Shanghai collectors are diving into the design lineage behind cannage quilting—specifically tracing it back to Monsieur Dior&#x27;s original rattan chair and the craft codes embedded in the pattern. Posts from the past two weeks show sustained, high-engagement discussion from cultural commentators and design observers who treat this detail as a window into heritage and material intelligence, not just surface aesthetics.</p></div><div class="section section-data"><div class="section-label">DATA SIGNAL</div><ul>
+<li>Engagement rate: 11.8% (vs. XHS fashion category avg ~4.5% · 10 posts · March 12–23, 2026)</li>
+<li>Week-on-week growth: +20%</li>
+<li>Brand relevance: high</li>
+</ul>
+<p><strong>CONFIDENCE NOTE</strong></p>
+<p>LOW — Post sample (10 posts) and engagement threshold below statistical sufficiency (requires ≥3,000 posts, ≥8% engagement minimum). Source: live XHS data scraped via DrissionPage.</p></div><div class="section section-client"><div class="section-label">CLIENT MATCH</div><p><strong>Best-fit persona:</strong> The Knowledgeable Newcomer</p>
+<p><strong>Who they are:</strong> Fashion-fluent younger client who has discovered Bottega through the Matthieu Blazy era and sees it as the most intellectually credible luxury brand right now. They&#x27;ve done their research and want the CA to match their knowledge level.</p>
+<p><strong>Why this trend fits:</strong> This trend perfectly mirrors your appetite for intellectually grounded design narratives—the Cannage quilting&#x27;s direct lineage to Monsieur Dior&#x27;s chair demonstrates the exact kind of heritage-craft storytelling that signals credibility and research-backed design decisions. The engagement sources (couture_observer_cn, cultural_luxe_bj) and sustained editorial momentum rather than viral hype align with how you discover and validate luxury through knowledgeable cultural commentators, not trend cycles.</p>
+<p><strong>Match score:</strong> 9/10</p>
+<p><strong>This trend is NOT for:</strong> Clients who prefer brand status over design provenance or those who view quilting as a decorative feature rather than a reference point in design history.</p></div><div class="section section-starter"><div class="section-label">CONVERSATION STARTER</div><div class="starter-label">Chinese</div><div class="starter-chinese">「最近看到有人在梳理藤编纹理的来源——追溯到Dior先生那把椅子，才明白Cannage图案背后的文化脉络。这种细节考证的讨论在小红书上热度很高。你对这种设计溯源感兴趣吗？」</div><div class="starter-label">English</div><div class="starter-english">"I&#x27;ve been seeing collectors trace the cannage pattern back to its source—Dior&#x27;s original rattan chair—and it completely reframes how you look at the quilting. There&#x27;s real momentum behind this kind of design genealogy right now, and it feels like exactly the kind of layered thinking you bring to how you choose pieces."</div></div></div>
+</div>
+</body>
+</html>

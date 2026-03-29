@@ -1,0 +1,45 @@
+{
+  "brand": "Chanel",
+  "personas": [
+    {
+      "id": "p01",
+      "name": "The Quiet Loyalist",
+      "age_range": "42-58",
+      "summary": "Long-tenured Chanel client who considers the brand her default uniform. Buys seasonally without needing persuasion — she's looking for something to confirm her existing taste, not discover something new.",
+      "values": ["timelessness", "understated quality", "brand loyalty", "anti-trend"],
+      "shopping_behavior": "Repurchases classic silhouettes in new seasonal colors. Has a preferred SA and prefers in-store. Rarely influenced by social media.",
+      "trend_receptivity": "Classic tweed reinterpretations, subtle seasonal updates to core silhouettes, heritage references, quality-focused narratives",
+      "avoid": "Anything too trend-forward, collaborations that feel off-brand, streetwear crossovers, bold logo moments"
+    },
+    {
+      "id": "p02",
+      "name": "The Modern Parisienne",
+      "age_range": "30-42",
+      "summary": "High-earning creative professional who treats Chanel as her power dressing choice. Values the brand's cultural cachet as much as its craft. Follows fashion with genuine knowledge.",
+      "values": ["cultural intelligence", "effortless elegance", "self-expression", "narrative depth"],
+      "shopping_behavior": "Selectively buys statement pieces that mix with her wardrobe. Researches online but prefers in-store experience. Responsive to runway references and KOL styling.",
+      "trend_receptivity": "Contemporary silhouettes with Chanel codes, styling versatility, cultural references, seasonal it-pieces",
+      "avoid": "Overly conservative or matronly styling, anything that reads as predictable or expected"
+    },
+    {
+      "id": "p03",
+      "name": "The Investment Dresser",
+      "age_range": "28-38",
+      "summary": "Financially savvy professional who views Chanel as investment dressing. Researches resale value and long-term wearability alongside aesthetic appeal.",
+      "values": ["value retention", "versatility", "quality investment", "considered consumption"],
+      "shopping_behavior": "Deliberate buyer who takes time before committing. Asks about craftsmanship and care. Highly researched — knows current and historic pricing.",
+      "trend_receptivity": "Classic pieces with strong resale value, versatile staples, craft and quality narratives, pieces with seasonal relevance that won't date",
+      "avoid": "Highly trend-specific pieces, seasonal novelties, anything with poor resale track record"
+    },
+    {
+      "id": "p04",
+      "name": "The Social Curator",
+      "age_range": "25-35",
+      "summary": "XHS-native luxury consumer who enters Chanel for its cultural and social currency. Brand image and content-worthiness matter as much as the product itself.",
+      "values": ["social proof", "content aesthetic", "peer validation", "brand prestige"],
+      "shopping_behavior": "Heavily influenced by XHS and WeChat moments. Often researches specific pieces seen on KOLs. Responsive to campaign imagery and brand storytelling.",
+      "trend_receptivity": "Highly visual, content-friendly pieces, campaign-featured styles, KOL-worn items, seasonal drops with social buzz",
+      "avoid": "Understated pieces with no immediate social signaling, niche or archive references without cultural traction"
+    }
+  ]
+}

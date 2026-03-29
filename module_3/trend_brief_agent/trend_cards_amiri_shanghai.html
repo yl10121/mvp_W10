@@ -1,0 +1,241 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>CA Trend Brief — Amiri Shanghai</title>
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif;
+    background: #f0ede8;
+    color: #111111;
+    font-size: 15px;
+    line-height: 1.65;
+  }
+  .page { max-width: 840px; margin: 0 auto; padding: 40px 24px 80px; }
+
+  /* Header */
+  .brief-header {
+    background: #111827;
+    color: #fff;
+    border-radius: 12px;
+    padding: 32px 36px 28px;
+    margin-bottom: 32px;
+  }
+  .brief-header h1 {
+    font-size: 28px;
+    font-weight: 700;
+    letter-spacing: -0.5px;
+    margin-bottom: 12px;
+  }
+  .brief-meta {
+    display: flex;
+    gap: 24px;
+    font-size: 13px;
+    color: #9ca3af;
+    flex-wrap: wrap;
+  }
+  .brief-meta span { display: flex; align-items: center; gap: 6px; }
+
+  /* Banner */
+  .banner {
+    background: #fef3c7;
+    border: 1px solid #fcd34d;
+    border-radius: 8px;
+    padding: 10px 16px;
+    font-size: 14px;
+    color: #92400e;
+    margin-bottom: 24px;
+  }
+
+  /* Card */
+  .card {
+    background: #fff;
+    border-radius: 12px;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.07), 0 4px 12px rgba(0,0,0,0.04);
+    margin-bottom: 28px;
+    overflow: hidden;
+  }
+
+  /* Card header */
+  .card-header {
+    background: #1c1c2e;
+    color: #fff;
+    padding: 24px 30px 20px;
+  }
+  .card-title {
+    font-size: 20px;
+    font-weight: 700;
+    letter-spacing: -0.3px;
+    margin-bottom: 7px;
+  }
+  .card-meta {
+    font-size: 13px;
+    color: #94a3b8;
+  }
+  .card-meta strong { color: #e2e8f0; font-weight: 600; }
+
+  /* Sections */
+  .section {
+    padding: 22px 30px;
+    border-bottom: 1px solid #eeecec;
+  }
+  .section:last-child { border-bottom: none; }
+  .section-label {
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 1.4px;
+    text-transform: uppercase;
+    color: #6b7280;
+    margin-bottom: 12px;
+  }
+  .section p { margin-bottom: 10px; color: #111111; font-size: 15px; line-height: 1.65; }
+  .section p:last-child { margin-bottom: 0; }
+  .section strong { color: #000; font-weight: 700; }
+
+  /* Trend overview — largest, most prominent */
+  .section-overview { background: #fff; border-left: 4px solid #1c1c2e; }
+  .section-overview .section-label { color: #1c1c2e; font-size: 12px; }
+  .section-overview p { font-size: 16px; color: #0f0f0f; line-height: 1.7; font-weight: 400; }
+
+  /* Data signal */
+  .section-data { background: #f7f6f4; }
+  .section-data .section-label { color: #374151; }
+  .section-data ul { list-style: none; padding: 0; }
+  .section-data li {
+    padding: 8px 0;
+    border-bottom: 1px solid #e8e6e2;
+    font-size: 14px;
+    color: #111111;
+    font-weight: 500;
+  }
+  .section-data li:last-child { border-bottom: none; }
+  .section-data code {
+    background: #e8e6e2;
+    padding: 2px 6px;
+    border-radius: 4px;
+    font-size: 13px;
+    font-family: "SF Mono", "Fira Code", monospace;
+    color: #111111;
+  }
+
+  /* Brand relevance pill inside data section */
+  .section-data li strong {
+    color: #000;
+    font-weight: 700;
+  }
+
+  /* Client match */
+  .section-client { border-left: 4px solid #6366f1; }
+  .section-client .section-label { color: #4f46e5; }
+  .section-client p { font-size: 14px; color: #111111; }
+
+  /* Conversation starter */
+  .section-starter { background: #f8f7f4; }
+  .starter-label {
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    color: #6b7280;
+    margin: 14px 0 7px;
+  }
+  .starter-label:first-child { margin-top: 0; }
+  .starter-chinese {
+    background: #fff;
+    border: 1px solid #d6d3ce;
+    border-radius: 8px;
+    padding: 14px 18px;
+    font-size: 16px;
+    line-height: 1.75;
+    color: #0f0f0f;
+    margin-bottom: 6px;
+    font-weight: 400;
+  }
+  .starter-english {
+    background: #fff;
+    border: 1px solid #d6d3ce;
+    border-radius: 8px;
+    padding: 14px 18px;
+    font-size: 14px;
+    color: #1f2937;
+    font-style: italic;
+    line-height: 1.65;
+  }
+
+  /* Mobile */
+  @media (max-width: 640px) {
+    .page { padding: 16px 12px 60px; }
+    .brief-header { padding: 22px 20px 18px; border-radius: 10px; }
+    .brief-header h1 { font-size: 22px; }
+    .brief-meta { font-size: 12px; gap: 12px; }
+    .card { border-radius: 10px; margin-bottom: 20px; }
+    .card-header { padding: 18px 20px 14px; }
+    .card-title { font-size: 17px; }
+    .section { padding: 16px 20px; }
+    .section p { font-size: 14px; }
+    .section-overview p { font-size: 15px; }
+    .section-data li { font-size: 13px; }
+    .starter-chinese { font-size: 15px; padding: 12px 14px; }
+    .starter-english { font-size: 13px; padding: 12px 14px; }
+  }
+
+  /* Print */
+  @media print {
+    body { background: #fff; }
+    .page { padding: 0; max-width: 100%; }
+    .card { box-shadow: none; border: 1px solid #e5e7eb; break-inside: avoid; }
+    .brief-header { border-radius: 0; }
+  }
+</style>
+</head>
+<body>
+<div class="page">
+  <div class="brief-header">
+    <h1>Client Advisor Trend Brief</h1>
+    <div class="brief-meta">
+      <span>Amiri · Shanghai</span>
+      <span>Week of 2026-03-25</span>
+      <span>Source: module_2/output_shortlist.json</span>
+      <span>Generated 26 Mar 2026, 16:59</span>
+    </div>
+  </div>
+  
+  <div class="card" id="t18"><div class="card-header"><div class="card-title">Top Handle Bag Elegance</div><div class="card-meta"><strong>Category:</strong> leather goods | <strong>Relevance:</strong> Amiri · January 2025</div></div><div class="section section-overview"><div class="section-label">TREND OVERVIEW</div><p>Shanghai collectors are gravitating toward structured top handle bags positioned as essentials for formal occasions—cultural events, galas, openings. The positioning frames these pieces not as trend-driven accessories but as heritage markers of refined taste. Posts emphasize the bag&#x27;s role in signaling cultural engagement and social presence at high-stakes moments.</p></div><div class="section section-data"><div class="section-label">DATA SIGNAL</div><ul>
+<li>Engagement rate: 12.9% (vs. XHS fashion category avg ~4.5% · 11 posts · January 2025)</li>
+<li>Post growth: +20% (week-on-week)</li>
+<li>Brand relevance: high</li>
+</ul>
+<p><strong>CONFIDENCE NOTE</strong></p>
+<p>LOW — Post count (11) falls below threshold for robust trend validation (requires ≥3,000 posts for statistical confidence). Source: live XHS data scraped via DrissionPage.</p></div><div class="section section-client"><div class="section-label">CLIENT MATCH</div><p><strong>Best-fit persona:</strong> The Status Collector</p>
+<p><strong>Who they are:</strong> High-earning professional who collects Amiri for its growing cultural status and celebrity association. The brand&#x27;s rise is part of the appeal — they want to be early to a brand that is becoming canonical.</p>
+<p><strong>Why this trend fits:</strong> The Top Handle Bag Elegance trend demonstrates exceptional cultural status markers (142,000 engagement, 23,000 saves indicating strong purchase intent) and heritage positioning that directly appeals to collectors seeking canonical luxury pieces. The formal occasion framing and affluent, culturally-engaged creator alignment perfectly match the Status Collector&#x27;s desire to acquire pieces with clear social visibility and established brand prestige. This is exactly the type of highly recognizable, culturally-validated piece that signals both taste and early adoption of enduring luxury.</p>
+<p><strong>Match score:</strong> 9/10</p>
+<p><strong>This trend is NOT for:</strong> Clients seeking understated or logoless pieces without clear cultural or social traction.</p></div><div class="section section-starter"><div class="section-label">CONVERSATION STARTER</div><div class="starter-label">Chinese</div><div class="starter-chinese">「最近在小红书上看到一个现象，很多上海的收藏家都在讨论手提包在正式场合的地位——文化活动、晚宴、美术馆开幕。不是为了跟风，而是把它看成品味的标志。你怎么看？这类包是不是应该成为你衣橱里的必备件？」</div><div class="starter-label">English</div><div class="starter-english">"I&#x27;ve been struck by how Shanghai collectors are talking about top handle bags differently lately — not as seasonal pieces, but as signals of cultural engagement. The ones getting real traction are positioned for galas, museum openings, formal events. It feels like there&#x27;s a shift toward seeing the right bag as essential rather than optional. Does that resonate with how you think about building your collection?"</div></div></div>
+<div class="card" id="t20"><div class="card-header"><div class="card-title">Lady Dior Heritage and Contemporary Styling</div><div class="card-meta"><strong>Category:</strong> leather goods | <strong>Relevance:</strong> Amiri · March 2025</div></div><div class="section section-overview"><div class="section-label">TREND OVERVIEW</div><p>A 30-year heritage narrative around Lady Dior is gaining significant traction on XHS, anchored by the Princess Diana connection and framed as a chronicle of feminine power across three decades. Posts blend archival imagery with contemporary styling, emphasizing the bag&#x27;s documented cultural lineage and status as a canonical luxury object. The conversation centers on provenance and prestige rather than aesthetic novelty.</p></div><div class="section section-data"><div class="section-label">DATA SIGNAL</div><ul>
+<li>Engagement rate: 12.2% (vs. XHS fashion category avg ~4.5% · 13 posts · March 10–23, 2025)</li>
+<li>Week-on-week growth: +20%</li>
+<li>Total engagement: 158,000 · Total saves: 26,200</li>
+<li>Brand relevance: high</li>
+</ul>
+<p><strong>CONFIDENCE NOTE</strong></p>
+<p>LOW — Sample size (13 posts) and absolute engagement volume fall below statistical thresholds for sustained trend validation. Source: live XHS data scraped via DrissionPage.</p></div><div class="section section-client"><div class="section-label">CLIENT MATCH</div><p><strong>Best-fit persona:</strong> The Status Collector</p>
+<p><strong>Who they are:</strong> High-earning professional who collects Amiri for its growing cultural status and celebrity association. The brand&#x27;s rise is part of the appeal — they want to be early to a brand that is becoming canonical.</p>
+<p><strong>Why this trend fits:</strong> The Lady Dior heritage narrative and royal provenance represent exactly the kind of culturally significant, status-laden piece that appeals to collectors seeking canonical luxury items with documented prestige. The 158,000 engagement and 26,200 saves signal strong social visibility—metrics that matter to those building culturally legible collections. The 30-year heritage story creates the kind of documented cultural traction and brand gravity that Status Collectors use to validate acquisition decisions.</p>
+<p><strong>Match score:</strong> 8/10</p>
+<p><strong>This trend is NOT for:</strong> Clients who prioritize understated or logoless design and view overt cultural signaling as aesthetically redundant.</p></div><div class="section section-starter"><div class="section-label">CONVERSATION STARTER</div><div class="starter-label">Chinese</div><div class="starter-chinese">「我最近在小红书上看到一个挺有趣的现象，关于Lady Dior包的讨论都在说它的历史——从戴妃到现在，整个包的故事就像一部女性力量的编年史。我在想，这种有明确历史脉络、能讲清楚文化意义的包，对你来说是不是特别有吸引力？」</div><div class="starter-label">English</div><div class="starter-english">"I&#x27;ve been struck by how the Lady Dior conversation on XHS right now isn&#x27;t really about the design—it&#x27;s all about the 30-year story. The Princess Diana thread, the documented cultural weight. I got the sense that pieces with that kind of traceable prestige and clear cultural narrative are exactly what builds a serious collection. Does that resonate with how you think about acquisition?"</div></div></div>
+<div class="card" id="t19"><div class="card-header"><div class="card-title">Cannage Quilting Detail Focus</div><div class="card-meta"><strong>Category:</strong> leather goods | <strong>Relevance:</strong> Amiri · March 2026</div></div><div class="section section-overview"><div class="section-label">TREND OVERVIEW</div><p>Cannage quilting—the woven diamond pattern originating from Monsieur Dior&#x27;s iconic chair—is resurfacing across luxury leather goods on XHS with renewed focus on heritage storytelling. Posts are connecting the visual detail directly to its design origin, positioning it as a mark of cultural depth rather than surface decoration. The momentum is recent and concentrated, with editorial voices and collectors driving the conversation around pieces that carry this coded detail.</p></div><div class="section section-data"><div class="section-label">DATA SIGNAL</div><ul>
+<li>Engagement rate: 11.8% (vs. XHS fashion category avg ~4.5% · 10 posts · March 12–23, 2026)</li>
+<li>Post growth: +20% (week-on-week)</li>
+<li>Brand relevance: high</li>
+</ul>
+<p><strong>CONFIDENCE NOTE</strong></p>
+<p>LOW — Post count (10) and engagement rate fall below statistical threshold for trend stability (requires ≥3,000 posts, ≥8% engagement minimum). Source: live XHS data scraped via DrissionPage.</p></div><div class="section section-client"><div class="section-label">CLIENT MATCH</div><p><strong>Best-fit persona:</strong> The Creative Entrepreneur</p>
+<p><strong>Who they are:</strong> Founder or creative director who dresses for meetings, events, and social media simultaneously. Amiri gives them boardroom-adjacent credibility with enough edge to signal they didn&#x27;t come from traditional finance.</p>
+<p><strong>Why this trend fits:</strong> The Cannage quilting trend&#x27;s deep cultural heritage narrative—rooted in Monsieur Dior&#x27;s design philosophy and woven chair inspiration—appeals to creative entrepreneurs who use fashion to signal refined taste and intellectual depth. This persona values pieces with storytelling and wardrobe-building potential that work across professional and social contexts, and the Cannage detail delivers both heritage credibility and versatile sophistication. The engagement from cultural luxury editorial sources aligns with how this persona curates their personal brand through culturally-informed, occasion-appropriate luxury.</p>
+<p><strong>Match score:</strong> 8/10</p>
+<p><strong>This trend is NOT for:</strong> Clients seeking purely casual or streetwear-adjacent pieces without clear occasion versatility or those avoiding niche references that require contextual explanation.</p></div><div class="section section-starter"><div class="section-label">CONVERSATION STARTER</div><div class="starter-label">Chinese</div><div class="starter-chinese">「你最近有注意到那种藤编纹理的包包吗？其实源头是Dior先生最爱的椅子——整个设计逻辑都在那个细节里。这类包包在上海的讨论声音很高，尤其是在那些懂得讲故事的创意圈子里。你的包包里有这样&#x27;有文化底蕴&#x27;的细节吗?」</div><div class="starter-label">English</div><div class="starter-english">"Have you seen those woven quilting details on bags lately? It&#x27;s actually drawn from Monsieur Dior&#x27;s personal chair—the whole design philosophy sits in that one detail. I&#x27;ve noticed it being discussed quite intentionally by creative directors and founders here in Shanghai. It seems to appeal to people who want their pieces to carry real narrative, not just surface. Does that resonate with how you think about what you carry?"</div></div></div>
+</div>
+</body>
+</html>

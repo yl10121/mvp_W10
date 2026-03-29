@@ -1,0 +1,14 @@
+{
+  "brand_name": "Loewe",
+  "aesthetic": "Craft-led modernity, artisanal leather mastery, conceptual design with wearable warmth, quiet intellectual luxury",
+  "clientele": "design-literate adults 28-50, values craft over status, drawn to conceptual narrative and artisanal detail over logo visibility",
+  "preferred_sources": ["art and design KOL", "luxury craft editorial", "Loewe brand accounts", "architecture and ceramics creators", "contemporary art communities"],
+  "avoided_sources": ["streetwear influencers", "logomania accounts", "mass-market fashion bloggers", "hypebeast culture", "fast fashion"],
+  "active_categories": ["ready-to-wear", "leather goods"],
+  "category_cadence": {
+    "ready-to-wear": "medium",
+    "leather goods": "fast"
+  },
+  "brand_taboos": ["logomania", "streetwear", "athleisure", "fast fashion", "overt status signaling", "hypebeast culture", "mass-market collaborations"],
+  "clienteling_tone": "intellectually curious, craft-focused, warm and knowledgeable, never transactional"
+}

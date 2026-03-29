@@ -1,0 +1,45 @@
+{
+  "brand": "Bottega Veneta",
+  "personas": [
+    {
+      "id": "p01",
+      "name": "The Post-Logo Convert",
+      "age_range": "35-52",
+      "summary": "Former logo-luxury client who has deliberately moved away from visible branding. Bottega is their declaration of a more evolved taste — the absence of a logo is the whole point, and they want that understood.",
+      "values": ["taste evolution", "quiet confidence", "material intelligence", "anti-logomania"],
+      "shopping_behavior": "Deliberate and unhurried buyer. Appreciates detailed conversation about leather and construction. Often has a Chanel or LV background and is consciously moving on. Dislikes obvious selling.",
+      "trend_receptivity": "Intrecciato craft narratives, material and colour stories, understated seasonal updates, pieces that reward close inspection",
+      "avoid": "Any overt branding or logo moments, trend-forward pieces without craft grounding, high-visibility items"
+    },
+    {
+      "id": "p02",
+      "name": "The Interior World Client",
+      "age_range": "32-50",
+      "summary": "Architect, interior designer, or product designer who relates to Bottega through its material and spatial intelligence. Treats fashion as an extension of their design sensibility — texture, proportion, and construction are the language.",
+      "values": ["material excellence", "spatial and tactile intelligence", "proportional design", "craft discipline"],
+      "shopping_behavior": "Drawn to woven textures, unusual leathers, and precise construction. Often picks up pieces and examines the inside. Responds to conversation about making processes and material sourcing.",
+      "trend_receptivity": "Material innovation, new weave interpretations, architectural silhouettes, limited-edition leather treatments",
+      "avoid": "Trend-led pieces without material story, anything that feels decorative rather than considered, obvious seasonal novelties"
+    },
+    {
+      "id": "p03",
+      "name": "The Confident Minimalist",
+      "age_range": "28-45",
+      "summary": "High-earning professional who dresses to be taken seriously without dressing to be noticed. Bottega's logoless luxury gives them the confidence of a considered wardrobe without the performance of visible status.",
+      "values": ["professional authority", "restraint", "quality over quantity", "understated confidence"],
+      "shopping_behavior": "Builds a small, deliberate wardrobe. Buys versatile pieces that work across contexts. Asks about longevity and care. Not driven by trends — driven by whether a piece earns its place.",
+      "trend_receptivity": "Versatile investment pieces, classic BV shapes in seasonal colours, quality and longevity narratives, wardrobe-anchoring items",
+      "avoid": "Statement pieces that demand attention, highly seasonal items, anything that dates quickly or reads as trend-specific"
+    },
+    {
+      "id": "p04",
+      "name": "The Knowledgeable Newcomer",
+      "age_range": "26-38",
+      "summary": "Fashion-fluent younger client who has discovered Bottega through the Matthieu Blazy era and sees it as the most intellectually credible luxury brand right now. They've done their research and want the CA to match their knowledge level.",
+      "values": ["brand intelligence", "creative direction awareness", "craft education", "considered luxury entry"],
+      "shopping_behavior": "Arrives with specific pieces in mind. Follows runway and campaign releases closely. Wants a conversation not a pitch. Often starts with leather goods before building into ready-to-wear.",
+      "trend_receptivity": "Runway-to-retail pieces, Matthieu Blazy-era design references, craft-forward storytelling, pieces with editorial history",
+      "avoid": "Generic luxury framing, talking down to their knowledge level, pushing entry-level or obvious pieces when they clearly know the brand"
+    }
+  ]
+}

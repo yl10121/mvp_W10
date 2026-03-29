@@ -1,0 +1,45 @@
+{
+  "brand": "Amiri",
+  "personas": [
+    {
+      "id": "p01",
+      "name": "The Music Industry Insider",
+      "age_range": "25-40",
+      "summary": "Artist, producer, or music industry professional who wears Amiri as part of their professional identity. The brand's rock-and-roll construction and celebrity DNA are directly relevant to their world.",
+      "values": ["subcultural authenticity", "creative credibility", "crafted edge", "music community belonging"],
+      "shopping_behavior": "Buys decisively when something fits their visual identity. Follows drops and new arrivals closely. Often references specific artists or performances when discussing pieces. Expects the CA to know the cultural context.",
+      "trend_receptivity": "Artist-worn pieces, distressed denim and leather, graphic-heavy ready-to-wear, pieces with music world provenance",
+      "avoid": "Overly polished or corporate-looking styling, anything that reads as conventional luxury without edge"
+    },
+    {
+      "id": "p02",
+      "name": "The Luxury Streetwear Graduate",
+      "age_range": "22-35",
+      "summary": "Sneaker-and-streetwear native who has graduated into luxury and chose Amiri as the bridge — it has the cultural codes they grew up with, built with couture-level construction. Amiri is their proof that luxury can be relevant.",
+      "values": ["cultural relevance", "construction quality", "subcultural credibility", "aspirational cool"],
+      "shopping_behavior": "Highly informed about drops and product details. Shops across resale and retail. Responsive to KOL endorsement and celebrity styling. Values exclusivity but also cultural traction.",
+      "trend_receptivity": "Drop-model pieces, heavily featured celebrity items, graphic-forward ready-to-wear, limited editions",
+      "avoid": "Traditional luxury framing, anything that feels disconnected from streetwear or music culture roots"
+    },
+    {
+      "id": "p03",
+      "name": "The Creative Entrepreneur",
+      "age_range": "30-48",
+      "summary": "Founder or creative director who dresses for meetings, events, and social media simultaneously. Amiri gives them boardroom-adjacent credibility with enough edge to signal they didn't come from traditional finance.",
+      "values": ["creative authority", "effortless dressing", "peer recognition", "brand story alignment"],
+      "shopping_behavior": "Buys complete looks rather than individual pieces. Values CA who can build an outfit. Responsive to styling suggestions and occasion-based framing. Often buying for specific events.",
+      "trend_receptivity": "Head-to-toe looks, occasion-appropriate styling with edge, versatile statement pieces, wardrobe-building narratives",
+      "avoid": "Overly casual or purely streetwear references without occasion versatility, anything too niche or difficult to style"
+    },
+    {
+      "id": "p04",
+      "name": "The Status Collector",
+      "age_range": "25-40",
+      "summary": "High-earning professional who collects Amiri for its growing cultural status and celebrity association. The brand's rise is part of the appeal — they want to be early to a brand that is becoming canonical.",
+      "values": ["cultural timing", "status signaling within creative circles", "brand trajectory awareness", "investment pieces"],
+      "shopping_behavior": "Motivated by what celebrities and tastemakers are wearing. Responsive to editorial coverage and drops. Buys recognisable pieces with strong visual identity. Resale awareness is high.",
+      "trend_receptivity": "Celebrity-endorsed pieces, highly recognisable silhouettes, pieces with strong social media visibility, brand signature items",
+      "avoid": "Understated or logoless pieces, niche items without cultural traction, anything that doesn't communicate the brand clearly"
+    }
+  ]
+}

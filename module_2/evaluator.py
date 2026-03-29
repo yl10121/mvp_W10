@@ -11,7 +11,7 @@ import sys
 import time
 from typing import Optional
 
-from prompts import SYSTEM_PROMPT, build_batch_evaluation_prompt
+from prompts import build_system_prompt, build_batch_evaluation_prompt
 
 BATCH_SIZE = 5
 TODAY = "2026-03-25"
@@ -38,14 +38,14 @@ def _get_model() -> str:
     return os.environ.get("DEFAULT_MODEL", "anthropic/claude-3-5-sonnet")
 
 
-def _call_llm(client, model: str, prompt: str, attempt: int = 1) -> Optional[str]:
+def _call_llm(client, model: str, prompt: str, system_prompt: str = "", attempt: int = 1) -> Optional[str]:
     """Call OpenRouter and return raw text. Retries once on failure."""
     try:
         response = client.chat.completions.create(
             model=model,
             max_tokens=4096,
             messages=[
-                {"role": "system", "content": SYSTEM_PROMPT},
+                {"role": "system", "content": system_prompt},
                 {"role": "user", "content": prompt},
             ],
         )
@@ -54,7 +54,7 @@ def _call_llm(client, model: str, prompt: str, attempt: int = 1) -> Optional[str
         if attempt == 1:
             print(f"  [API error] {e} — retrying in 3s...")
             time.sleep(3)
-            return _call_llm(client, model, prompt, attempt=2)
+            return _call_llm(client, model, prompt, system_prompt, attempt=2)
         print(f"  [ERROR] API error on retry: {e}")
         return None
 
@@ -119,6 +119,7 @@ def evaluate_batch(
     if client is None:
         client = _get_client()
     model = _get_model()
+    system_prompt = build_system_prompt(brand_profile)
 
     all_evaluations = []
     total = len(trends)
@@ -134,7 +135,7 @@ def evaluate_batch(
         )
 
         prompt = build_batch_evaluation_prompt(brand_profile, batch, today=TODAY)
-        raw_response = _call_llm(client, model, prompt)
+        raw_response = _call_llm(client, model, prompt, system_prompt)
 
         if raw_response is None:
             print(
