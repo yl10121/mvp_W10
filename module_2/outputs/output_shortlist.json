@@ -1,146 +1,37 @@
 {
-  "run_id": "run_0001_m2",
-  "generated_at": "2026-03-25T12:11:47.749096+00:00",
-  "brand": "Christian Dior",
-  "module1_run_id": "run_0001",
-  "total_evaluated": 30,
-  "total_prefilter_rejected": 15,
-  "total_shortlisted": 5,
+  "run_id": "m2_20260329_112543",
+  "generated_at": "2026-03-29T11:25:43.167984+00:00",
+  "brand": "Celine",
+  "module1_run_id": "run_latest",
+  "total_evaluated": 3,
+  "total_prefilter_rejected": 2,
+  "total_shortlisted": 1,
   "shortlist": [
     {
       "rank": 1,
-      "trend_id": "t20",
-      "label": "Lady Dior Styling and Heritage",
-      "category": "leather goods",
-      "composite_score": 9.0,
-      "scores": {
-        "freshness": 8,
-        "brand_fit": 10,
-        "category_fit": 9,
-        "materiality": 9,
-        "actionability": 9
-      },
-      "confidence": "high",
-      "why_selected": "Strong freshness with posts spanning March 10-23, including March 23 being very recent. The heritage narrative perfectly fits Dior's brand positioning, with snippets like 'Lady Dior三十年——从戴安娜王妃到现在，这只包的历史就是一部女性力量史' connecting to Dior's royal heritage and feminine empowerment codes. High-quality creators like 'fashion_editor_paris' align with preferred luxury editorial sources. Exceptional materiality with 158,000 total engagement across 13 posts and 26,200 saves demonstrates sustained client interest.",
-      "evidence_references": [
-        "Lady Dior三十年——从戴安娜王妃到现在，这只包的历史就是一部女性力量史",
-        "total_engagement: 158000",
-        "total_saves: 26200"
-      ],
-      "metric_signal": {
-        "total_engagement": 158000,
-        "post_count": 13,
-        "avg_engagement": 12154
-      },
-      "disqualifying_reason": null
-    },
-    {
-      "rank": 2,
-      "trend_id": "t04",
-      "label": "New Bar Jacket Reinterpretation",
-      "category": "ready-to-wear",
-      "composite_score": 8.8,
-      "scores": {
-        "freshness": 7,
-        "brand_fit": 10,
-        "category_fit": 8,
-        "materiality": 9,
-        "actionability": 10
-      },
-      "confidence": "high",
-      "why_selected": "Exceptional brand fit celebrating Dior's most iconic silhouette with 'Bar夹克是Dior最经典的轮廓' and references to 'Dior经典'. Highest total engagement (138000) and saves (23200) demonstrate strong brand equity reinforcement. The creator 'fashion_editor_paris' adds editorial credibility. Perfect actionability as CAs can reference the specific Bar jacket heritage story, Christian Dior's New Look, and connect to current interpretations. This is quintessentially Dior storytelling.",
-      "evidence_references": [
-        "Bar夹克是Dior最经典的轮廓",
-        "total_engagement: 138000",
-        "total_saves: 23200",
-        "fashion_editor_paris"
-      ],
-      "metric_signal": {
-        "total_engagement": 138000,
-        "post_count": 12,
-        "avg_engagement": 11500
-      },
-      "disqualifying_reason": null
-    },
-    {
-      "rank": 3,
-      "trend_id": "t18",
-      "label": "Top Handle Bag Elegance",
-      "category": "leather goods",
-      "composite_score": 8.8,
-      "scores": {
-        "freshness": 7,
-        "brand_fit": 10,
-        "category_fit": 9,
-        "materiality": 9,
-        "actionability": 9
-      },
-      "confidence": "high",
-      "why_selected": "Outstanding brand alignment with 'Lady Dior永远是第一选择' and cultural context references. Highest engagement at 142000 with 23000 saves showing exceptional purchase intent. Creators like 'cultural_luxe_bj' attending '文化活动、晚宴、开幕式' perfectly match Dior's affluent, culturally-engaged clientele. The formal occasion positioning in '正式场合的最佳拍档' enables sophisticated client conversations about heritage and appropriateness.",
-      "evidence_references": [
-        "total_engagement: 142000",
-        "total_saves: 23000",
-        "Lady Dior永远是第一选择",
-        "文化活动、晚宴、开幕式——手提包才是真正的场合之选"
-      ],
-      "metric_signal": {
-        "total_engagement": 142000,
-        "post_count": 11,
-        "avg_engagement": 12909
-      },
-      "disqualifying_reason": null
-    },
-    {
-      "rank": 4,
-      "trend_id": "t19",
-      "label": "Cannage Quilting Detail Focus",
-      "category": "leather goods",
-      "composite_score": 8.8,
-      "scores": {
-        "freshness": 8,
-        "brand_fit": 10,
-        "category_fit": 9,
-        "materiality": 8,
-        "actionability": 9
-      },
-      "confidence": "high",
-      "why_selected": "This trend shows strong recent momentum with posts from March 12-23, including March 23 being just 2 days ago. The content perfectly aligns with Dior's heritage codes, evidenced by snippets like 'Cannage图案的灵感来源——Dior先生椅子上的藤编，太有文化底蕴了' which connects to Monsieur Dior's original design inspiration. The creators include 'couture_observer_cn' and 'cultural_luxe_bj', matching Dior's preferred luxury editorial sources. With 118,000 total engagement across 10 posts and high save rates (19,200 saves), this represents sustained interest rather than a viral spike.",
-      "evidence_references": [
-        "Cannage图案的灵感来源——Dior先生椅子上的藤编，太有文化底蕴了",
-        "total_engagement: 118000",
-        "post date: 2026-03-23"
-      ],
-      "metric_signal": {
-        "total_engagement": 118000,
-        "post_count": 10,
-        "avg_engagement": 11800
-      },
-      "disqualifying_reason": null
-    },
-    {
-      "rank": 5,
       "trend_id": "t01",
-      "label": "Soft Tailoring Revival",
-      "category": "ready-to-wear",
-      "composite_score": 8.6,
+      "label": "Celine's Quiet Luxury Trend",
+      "category": "luxury_fashion",
+      "composite_score": 7.95,
       "scores": {
-        "freshness": 9,
+        "freshness": 8,
         "brand_fit": 9,
-        "category_fit": 8,
+        "category_fit": 7,
         "materiality": 8,
-        "actionability": 9
+        "actionability": 8
       },
       "confidence": "high",
-      "why_selected": "Strong freshness with posts from March 18-24, including one from yesterday. The snippet '软裁剪西装让整体造型更显高级感，Dior这季做得最好' directly positions Dior as the leader in soft tailoring. Creators like 'fashion_kol_beijing' and 'dior_enthusiast_cn' align perfectly with Dior's preferred sources. The trend emphasizes quality fabric drape and refined construction, core to Dior's couture heritage. A CA can easily reference specific soft tailored blazers and explain the construction story.",
+      "why_selected": "This trend is highly relevant to Celine, particularly due to its association with quiet luxury, as seen in posts like '静奢风才是真正的有钱人穿搭｜Celine教科书'. The recent spikes in engagement, with total likes reaching 301,171 and an average engagement of 16,491, indicate strong momentum. Additionally, the discussion of '质感>数量' directly resonates with Celine’s clientele who seek quality over quantity. The trend aligns well with the brand's aesthetic and offers actionable insights for client conversations, where CAs can refer to specific products that reflect this quiet luxury ethos.",
       "evidence_references": [
-        "软裁剪西装让整体造型更显高级感，Dior这季做得最好",
-        "total_engagement: 87500",
-        "posts from 2026-03-18 to 2026-03-24"
+        "静奢风才是真正的有钱人穿搭｜Celine教科书",
+        "total_engagement: 412277",
+        "avg_engagement: 16491.08",
+        "likes: 301171"
       ],
       "metric_signal": {
-        "total_engagement": 87500,
-        "post_count": 9,
-        "avg_engagement": 9722
+        "total_engagement": 412277,
+        "post_count": 25,
+        "avg_engagement": 16491.08
       },
       "disqualifying_reason": null
     }

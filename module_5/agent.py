@@ -9,7 +9,7 @@ import os
 import sys
 from datetime import datetime
 from pathlib import Path
-import anthropic
+from openai import OpenAI
 
 # 自动加载 .env 文件
 _env_path = Path(__file__).parent / ".env"
@@ -22,10 +22,10 @@ if _env_path.exists():
 # ============================================================
 # 配置区
 # ============================================================
-API_KEY = os.environ.get("ANTHROPIC_API_KEY")
+API_KEY = os.environ.get("OPENROUTER_API_KEY") or os.environ.get("ANTHROPIC_API_KEY")
 if not API_KEY:
-    raise ValueError("ANTHROPIC_API_KEY not set. Please add it to your .env file or environment.")
-MODEL = os.environ.get("DEFAULT_MODEL", "claude-sonnet-4-20250514")
+    raise ValueError("OPENROUTER_API_KEY not set. Please add it to your .env file or environment.")
+MODEL = os.environ.get("DEFAULT_MODEL", "openai/gpt-4o-mini")
 
 # ============================================================
 # 文件路径
@@ -48,21 +48,23 @@ def load_text(path):
 
 
 def call_llm(system_prompt, user_prompt):
-    client = anthropic.Anthropic(api_key=API_KEY, base_url="https://openrouter.ai/api/v1")
-    response = client.messages.create(
+    client = OpenAI(api_key=API_KEY, base_url="https://openrouter.ai/api/v1")
+    response = client.chat.completions.create(
         model=MODEL,
         max_tokens=4096,
-        system=system_prompt,
-        messages=[{"role": "user", "content": user_prompt}],
+        messages=[
+            {"role": "system", "content": system_prompt},
+            {"role": "user", "content": user_prompt},
+        ],
         temperature=0.7,
     )
-    content = response.content[0].text
+    content = response.choices[0].message.content
     usage = response.usage
     return content, {
         "model": MODEL,
-        "input_tokens": usage.input_tokens,
-        "output_tokens": usage.output_tokens,
-        "total_tokens": usage.input_tokens + usage.output_tokens,
+        "input_tokens": getattr(usage, "prompt_tokens", 0) or 0,
+        "output_tokens": getattr(usage, "completion_tokens", 0) or 0,
+        "total_tokens": getattr(usage, "total_tokens", 0) or 0,
     }
 
 
@@ -165,7 +167,7 @@ def main():
         if sys.stdin.isatty():
             choice = input("\n请输入: ").strip()
         else:
-            choice = "1"
+            choice = "all"
         if choice.lower() == "all":
             clients_to_run = all_clients
         else:

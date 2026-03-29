@@ -22,7 +22,7 @@ def run_module(module_dir, script_name, *args):
 
     try:
         result = subprocess.run(
-            [sys.executable, script_path, *args],
+            [sys.executable, script_name, *args],
             cwd=module_dir,
             env=env,
             check=True
@@ -47,7 +47,7 @@ def main():
     run_module("module_2", "agent.py")
 
     # Module 3 — CA trend brief generator
-    run_module("module_3/trend_brief_agent", "agent.py")
+    run_module("module_3/trend_brief_agent", "agent.py", "--brand", BRAND, "--city", "Shanghai")
 
     # Module 4 — Client memory structurer
     run_module("module_4", "First_Run.py")

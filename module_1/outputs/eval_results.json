@@ -1,0 +1,125 @@
+{
+  "run_id": "run_0013",
+  "eval_timestamp_utc": "2026-03-29T12:12:40.455889+00:00",
+  "source_file": "run_0013_trend_objects.json",
+  "trend_count": 3,
+  "all_passed": false,
+  "checks": [
+    {
+      "check": "duplication_rate",
+      "passed": true,
+      "pass_rate": "3/3",
+      "similar_label_pairs": [],
+      "shared_post_ids": [],
+      "per_trend": [
+        {
+          "trend_id": "t01",
+          "label": "Celine's Quiet Luxury Trend",
+          "passed": true,
+          "issues": []
+        },
+        {
+          "trend_id": "t02",
+          "label": "Celine Workwear Aesthetic",
+          "passed": true,
+          "issues": []
+        },
+        {
+          "trend_id": "t03",
+          "label": "Celine Tailoring Insights",
+          "passed": true,
+          "issues": []
+        }
+      ],
+      "failures": []
+    },
+    {
+      "check": "evidence_sufficiency",
+      "passed": false,
+      "pass_rate": "2/3",
+      "per_trend": [
+        {
+          "trend_id": "t01",
+          "label": "Celine's Quiet Luxury Trend",
+          "passed": true,
+          "snippet_count": 5,
+          "evidence_post_count": 5,
+          "post_count": 25,
+          "issues": []
+        },
+        {
+          "trend_id": "t02",
+          "label": "Celine Workwear Aesthetic",
+          "passed": true,
+          "snippet_count": 3,
+          "evidence_post_count": 3,
+          "post_count": 3,
+          "issues": []
+        },
+        {
+          "trend_id": "t03",
+          "label": "Celine Tailoring Insights",
+          "passed": false,
+          "snippet_count": 2,
+          "evidence_post_count": 2,
+          "post_count": 2,
+          "issues": [
+            "post_count=2, need >=3"
+          ]
+        }
+      ],
+      "failures": [
+        {
+          "trend_id": "t03",
+          "label": "Celine Tailoring Insights",
+          "passed": false,
+          "snippet_count": 2,
+          "evidence_post_count": 2,
+          "post_count": 2,
+          "issues": [
+            "post_count=2, need >=3"
+          ]
+        }
+      ]
+    },
+    {
+      "check": "label_clarity",
+      "passed": true,
+      "pass_rate": "3/3",
+      "per_trend": [
+        {
+          "trend_id": "t01",
+          "label": "Celine's Quiet Luxury Trend",
+          "word_count": 5,
+          "passed": true,
+          "issues": []
+        },
+        {
+          "trend_id": "t02",
+          "label": "Celine Workwear Aesthetic",
+          "word_count": 3,
+          "passed": true,
+          "issues": []
+        },
+        {
+          "trend_id": "t03",
+          "label": "Celine Tailoring Insights",
+          "word_count": 3,
+          "passed": true,
+          "issues": []
+        }
+      ],
+      "failures": []
+    }
+  ],
+  "top_failures": [
+    {
+      "check": "evidence_sufficiency",
+      "trend_id": "t03",
+      "label": "Celine Tailoring Insights",
+      "issues": [
+        "post_count=2, need >=3"
+      ]
+    }
+  ]
+}

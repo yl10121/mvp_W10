@@ -1,85 +1,20 @@
 {
-  "run_id": "run_0001_m2",
+  "run_id": "m2_20260329_112543",
   "agent_name": "Trend Relevance & Materiality Filter",
-  "module1_run_id": "run_0001",
-  "brand": "Christian Dior",
-  "generated_at": "2026-03-25T12:11:47.749096+00:00",
-  "total_input": 30,
+  "brand": "Celine",
+  "module1_run_id": "run_latest",
+  "generated_at": "2026-03-29T11:25:43.167984+00:00",
+  "total_input": 3,
   "prefilter_rejections": [
     {
-      "trend_id": "t06",
-      "label": "Streetwear Luxury Mashup",
-      "reason": "Brand taboo keyword 'streetwear' detected in label/summary"
-    },
-    {
-      "trend_id": "t07",
-      "label": "Logomania Maximalism",
-      "reason": "Brand taboo keyword 'logomania' detected in label/summary"
-    },
-    {
-      "trend_id": "t08",
-      "label": "Luxury Athleisure Crossover",
-      "reason": "Brand taboo keyword 'athleisure' detected in label/summary"
-    },
-    {
-      "trend_id": "t09",
-      "label": "Vintage Denim Revival",
-      "reason": "Last post date 2026-02-28 is before staleness cutoff 2026-03-04 (>21 days before 2026-03-25)"
-    },
-    {
-      "trend_id": "t10",
-      "label": "Maximalist Color Blocking",
-      "reason": "Last post date 2026-02-18 is before staleness cutoff 2026-03-04 (>21 days before 2026-03-25)"
-    },
-    {
-      "trend_id": "t11",
-      "label": "Quiet Minimalist Dressing",
-      "reason": "Last post date 2026-02-22 is before staleness cutoff 2026-03-04 (>21 days before 2026-03-25)"
-    },
-    {
-      "trend_id": "t12",
-      "label": "Sheer Micro Dress Styling",
-      "reason": "post_count=4 is below minimum threshold of 5"
-    },
-    {
-      "trend_id": "t14",
-      "label": "Romantic Puff Sleeve Blouses",
+      "trend_id": "t02",
+      "label": "Celine Workwear Aesthetic",
       "reason": "post_count=3 is below minimum threshold of 5"
     },
     {
-      "trend_id": "t21",
-      "label": "Mass Market Bag Dupes Culture",
-      "reason": "Brand taboo keyword 'dupes' detected in label/summary"
-    },
-    {
-      "trend_id": "t22",
-      "label": "Streetwear Crossbody Sling",
-      "reason": "Brand taboo keyword 'streetwear' detected in label/summary"
-    },
-    {
-      "trend_id": "t23",
-      "label": "Loud Logomania Bags",
-      "reason": "Brand taboo keyword 'logomania' detected in label/summary"
-    },
-    {
-      "trend_id": "t24",
-      "label": "Vintage Archive Bag Hunting",
-      "reason": "Last post date 2026-02-26 is before staleness cutoff 2026-03-04 (>21 days before 2026-03-25)"
-    },
-    {
-      "trend_id": "t25",
-      "label": "Investment Bag Discourse",
-      "reason": "Last post date 2026-02-15 is before staleness cutoff 2026-03-04 (>21 days before 2026-03-25)"
-    },
-    {
-      "trend_id": "t26",
-      "label": "Micro Bag Novelty Trend",
-      "reason": "post_count=3 is below minimum threshold of 5"
-    },
-    {
-      "trend_id": "t29",
-      "label": "Straw and Raffia Summer Bags",
-      "reason": "post_count=4 is below minimum threshold of 5"
+      "trend_id": "t03",
+      "label": "Celine Tailoring Insights",
+      "reason": "post_count=2 is below minimum threshold of 5"
     }
   ],
   "llm_evaluations": [
@@ -87,421 +22,33 @@
       "trend_id": "t01",
       "shortlist": true,
       "scores": {
-        "freshness": 9,
-        "brand_fit": 9,
-        "category_fit": 8,
-        "materiality": 8,
-        "actionability": 9
-      },
-      "composite_score": 8.6,
-      "reasoning": "Strong freshness with posts from March 18-24, including one from yesterday. The snippet '软裁剪西装让整体造型更显高级感，Dior这季做得最好' directly positions Dior as the leader in soft tailoring. Creators like 'fashion_kol_beijing' and 'dior_enthusiast_cn' align perfectly with Dior's preferred sources. The trend emphasizes quality fabric drape and refined construction, core to Dior's couture heritage. A CA can easily reference specific soft tailored blazers and explain the construction story.",
-      "confidence": "high",
-      "evidence_references": [
-        "软裁剪西装让整体造型更显高级感，Dior这季做得最好",
-        "total_engagement: 87500",
-        "posts from 2026-03-18 to 2026-03-24"
-      ],
-      "disqualifying_reason": null,
-      "label": "Soft Tailoring Revival",
-      "category": "ready-to-wear",
-      "metric_signal": {
-        "total_engagement": 87500,
-        "post_count": 9,
-        "avg_engagement": 9722
-      }
-    },
-    {
-      "trend_id": "t02",
-      "shortlist": true,
-      "scores": {
-        "freshness": 8,
-        "brand_fit": 10,
-        "category_fit": 8,
-        "materiality": 8,
-        "actionability": 9
-      },
-      "composite_score": 8.6,
-      "reasoning": "Excellent brand fit with snippets referencing 'Dior的花园美学完美诠释' and 'Miss Dior同款', directly connecting to Dior's Granville garden heritage and Miss Dior aesthetic. Recent posts through March 23rd show sustained momentum. The high save rates (total_saves: 14800) indicate strong purchase intent among the target demographic. Creators like 'belle_mode_shanghai' match Dior's preferred luxury KOL profile. CAs can easily connect this to Miss Dior fragrance narrative and specific floral print pieces.",
-      "confidence": "high",
-      "evidence_references": [
-        "Dior的花园美学完美诠释",
-        "Miss Dior同款",
-        "total_saves: 14800",
-        "posts through 2026-03-23"
-      ],
-      "disqualifying_reason": null,
-      "label": "Feminine Floral Print Dressing",
-      "category": "ready-to-wear",
-      "metric_signal": {
-        "total_engagement": 98500,
-        "post_count": 11,
-        "avg_engagement": 8955
-      }
-    },
-    {
-      "trend_id": "t03",
-      "shortlist": true,
-      "scores": {
-        "freshness": 8,
-        "brand_fit": 10,
-        "category_fit": 8,
-        "materiality": 9,
-        "actionability": 8
-      },
-      "composite_score": 8.6,
-      "reasoning": "Perfect brand alignment with snippets like 'Dior高定细节融入成衣，手工刺绣领口太精致了，这才是真正的工艺品' and 'Dior成衣的高定基因' which directly celebrate Dior's couture heritage in RTW. The highest average engagement (11200) and total saves (18600) indicate strong resonance with heritage-conscious clients. Creator 'couture_observer_cn' represents exactly the sophisticated audience Dior targets. CAs can discuss specific construction details and atelier craftsmanship stories.",
-      "confidence": "high",
-      "evidence_references": [
-        "这才是真正的工艺品",
-        "avg_engagement: 11200",
-        "total_saves: 18600",
-        "couture_observer_cn"
-      ],
-      "disqualifying_reason": null,
-      "label": "Couture Detail Incorporation",
-      "category": "ready-to-wear",
-      "metric_signal": {
-        "total_engagement": 112000,
-        "post_count": 10,
-        "avg_engagement": 11200
-      }
-    },
-    {
-      "trend_id": "t04",
-      "shortlist": true,
-      "scores": {
-        "freshness": 7,
-        "brand_fit": 10,
-        "category_fit": 8,
-        "materiality": 9,
-        "actionability": 10
-      },
-      "composite_score": 8.8,
-      "reasoning": "Exceptional brand fit celebrating Dior's most iconic silhouette with 'Bar夹克是Dior最经典的轮廓' and references to 'Dior经典'. Highest total engagement (138000) and saves (23200) demonstrate strong brand equity reinforcement. The creator 'fashion_editor_paris' adds editorial credibility. Perfect actionability as CAs can reference the specific Bar jacket heritage story, Christian Dior's New Look, and connect to current interpretations. This is quintessentially Dior storytelling.",
-      "confidence": "high",
-      "evidence_references": [
-        "Bar夹克是Dior最经典的轮廓",
-        "total_engagement: 138000",
-        "total_saves: 23200",
-        "fashion_editor_paris"
-      ],
-      "disqualifying_reason": null,
-      "label": "New Bar Jacket Reinterpretation",
-      "category": "ready-to-wear",
-      "metric_signal": {
-        "total_engagement": 138000,
-        "post_count": 12,
-        "avg_engagement": 11500
-      }
-    },
-    {
-      "trend_id": "t05",
-      "shortlist": true,
-      "scores": {
-        "freshness": 8,
-        "brand_fit": 8,
-        "category_fit": 7,
-        "materiality": 7,
-        "actionability": 7
-      },
-      "composite_score": 7.4,
-      "reasoning": "Good freshness with posts through March 23rd. Strong brand alignment with 'Dior这种朦胧美太迷人了' and 'Dior的面料最适合', emphasizing Dior's fabric heritage and feminine codes. The focus on silk and transparency aligns with Dior's luxury fabric story. However, slightly lower materiality (total_engagement: 82000) compared to other trends. CAs can discuss Dior's silk expertise and specific layering techniques with current collections.",
-      "confidence": "high",
-      "evidence_references": [
-        "Dior这种朦胧美太迷人了",
-        "Dior的面料最适合",
-        "total_engagement: 82000",
-        "posts through 2026-03-23"
-      ],
-      "disqualifying_reason": null,
-      "label": "Silk Layering and Transparency",
-      "category": "ready-to-wear",
-      "metric_signal": {
-        "total_engagement": 82000,
-        "post_count": 9,
-        "avg_engagement": 9111
-      }
-    },
-    {
-      "trend_id": "t13",
-      "shortlist": false,
-      "scores": {
-        "freshness": 6,
-        "brand_fit": 3,
-        "category_fit": 7,
-        "materiality": 5,
-        "actionability": 2
-      },
-      "composite_score": 4.5,
-      "reasoning": "While posts span March 16-23 showing freshness, the AI reasoning states 'This trend cluster largely overlaps with t01 Soft Tailoring Revival' indicating redundancy. The term '随性' (casual/lazy) in multiple snippets like '解构西装随性穿法' contradicts Dior's structured elegance codes. A Dior CA cannot effectively differentiate this from existing soft tailoring trends already in market, making it actionably weak.",
-      "confidence": "medium",
-      "evidence_references": [
-        "This trend cluster largely overlaps with t01 Soft Tailoring Revival",
-        "解构西装随性穿法",
-        "慵懒高级感"
-      ],
-      "disqualifying_reason": "brand_fit below 4 - casual/lazy aesthetic conflicts with Dior's structured elegance",
-      "label": "Relaxed Blazer Styling",
-      "category": "ready-to-wear",
-      "metric_signal": {
-        "total_engagement": 43000,
-        "post_count": 7,
-        "avg_engagement": 6143
-      }
-    },
-    {
-      "trend_id": "t15",
-      "shortlist": false,
-      "scores": {
-        "freshness": 7,
-        "brand_fit": 6,
-        "category_fit": 8,
-        "materiality": 7,
-        "actionability": 3
-      },
-      "composite_score": 6.2,
-      "reasoning": "Strong metrics with 61000 total engagement and Dior-aligned creators like 'parisian_chic_beijing' support brand fit. However, AI reasoning notes 'overlaps substantially with t05 Silk Layering' and 'Several posts appear in both cluster extractions,' making this redundant content. The distinction being 'primarily fiber (knit vs silk)' is too granular for meaningful client conversations, limiting actionability for Dior CAs.",
-      "confidence": "medium",
-      "evidence_references": [
-        "overlaps substantially with t05 Silk Layering",
-        "Several posts appear in both cluster extractions",
-        "total_engagement: 61000"
-      ],
-      "disqualifying_reason": "actionability below 4 - too similar to existing trends for distinct client conversations",
-      "label": "Feminine Layered Knitwear",
-      "category": "ready-to-wear",
-      "metric_signal": {
-        "total_engagement": 61000,
-        "post_count": 8,
-        "avg_engagement": 7625
-      }
-    },
-    {
-      "trend_id": "t16",
-      "shortlist": true,
-      "scores": {
         "freshness": 8,
         "brand_fit": 9,
-        "category_fit": 8,
-        "materiality": 9,
-        "actionability": 9
-      },
-      "composite_score": 8.6,
-      "reasoning": "Exceptional metrics with 128000 total engagement and 20600 saves indicate strong purchase intent. Posts from March 14-24 show sustained momentum. Snippets like 'Dior的基因与当下审美完美契合' and 'Cannage压花版太美了' directly reference Dior heritage codes. High-quality creators like 'dior_bag_collector' align with target clientele. CAs can specifically reference Cannage embossed versions and heritage storytelling.",
-      "confidence": "high",
-      "evidence_references": [
-        "total_engagement: 128000",
-        "total_saves: 20600",
-        "Dior的基因与当下审美完美契合",
-        "新季马鞍包Cannage压花版太美了"
-      ],
-      "disqualifying_reason": null,
-      "label": "Saddle Bag Styling Revival",
-      "category": "leather goods",
-      "metric_signal": {
-        "total_engagement": 128000,
-        "post_count": 11,
-        "avg_engagement": 11636
-      }
-    },
-    {
-      "trend_id": "t17",
-      "shortlist": true,
-      "scores": {
-        "freshness": 7,
-        "brand_fit": 8,
-        "category_fit": 8,
+        "category_fit": 7,
         "materiality": 8,
         "actionability": 8
       },
-      "composite_score": 7.8,
-      "reasoning": "Strong 107000 total engagement across 10 posts from March 11-23 shows sustained interest. Creator 'professional_luxe_sh' and keywords like '职场女性必备' align with Dior's professional clientele aged 28-55. High save rates (17800) indicate purchase consideration. CAs can leverage specific Book Tote references in '有型的托特包才是职场女性的最佳伴侣，Dior Book Tote无可替代' for targeted conversations about professional elegance.",
+      "composite_score": 7.95,
+      "reasoning": "This trend is highly relevant to Celine, particularly due to its association with quiet luxury, as seen in posts like '静奢风才是真正的有钱人穿搭｜Celine教科书'. The recent spikes in engagement, with total likes reaching 301,171 and an average engagement of 16,491, indicate strong momentum. Additionally, the discussion of '质感>数量' directly resonates with Celine’s clientele who seek quality over quantity. The trend aligns well with the brand's aesthetic and offers actionable insights for client conversations, where CAs can refer to specific products that reflect this quiet luxury ethos.",
       "confidence": "high",
       "evidence_references": [
-        "total_engagement: 107000",
-        "total_saves: 17800",
-        "有型的托特包才是职场女性的最佳伴侣，Dior Book Tote无可替代",
-        "职场女性必备"
+        "静奢风才是真正的有钱人穿搭｜Celine教科书",
+        "total_engagement: 412277",
+        "avg_engagement: 16491.08",
+        "likes: 301171"
       ],
       "disqualifying_reason": null,
-      "label": "Structured Tote Resurgence",
-      "category": "leather goods",
+      "label": "Celine's Quiet Luxury Trend",
+      "category": "luxury_fashion",
       "metric_signal": {
-        "total_engagement": 107000,
-        "post_count": 10,
-        "avg_engagement": 10700
-      }
-    },
-    {
-      "trend_id": "t18",
-      "shortlist": true,
-      "scores": {
-        "freshness": 7,
-        "brand_fit": 10,
-        "category_fit": 9,
-        "materiality": 9,
-        "actionability": 9
-      },
-      "composite_score": 8.8,
-      "reasoning": "Outstanding brand alignment with 'Lady Dior永远是第一选择' and cultural context references. Highest engagement at 142000 with 23000 saves showing exceptional purchase intent. Creators like 'cultural_luxe_bj' attending '文化活动、晚宴、开幕式' perfectly match Dior's affluent, culturally-engaged clientele. The formal occasion positioning in '正式场合的最佳拍档' enables sophisticated client conversations about heritage and appropriateness.",
-      "confidence": "high",
-      "evidence_references": [
-        "total_engagement: 142000",
-        "total_saves: 23000",
-        "Lady Dior永远是第一选择",
-        "文化活动、晚宴、开幕式——手提包才是真正的场合之选"
-      ],
-      "disqualifying_reason": null,
-      "label": "Top Handle Bag Elegance",
-      "category": "leather goods",
-      "metric_signal": {
-        "total_engagement": 142000,
-        "post_count": 11,
-        "avg_engagement": 12909
-      }
-    },
-    {
-      "trend_id": "t19",
-      "shortlist": true,
-      "scores": {
-        "freshness": 8,
-        "brand_fit": 10,
-        "category_fit": 9,
-        "materiality": 8,
-        "actionability": 9
-      },
-      "composite_score": 8.8,
-      "reasoning": "This trend shows strong recent momentum with posts from March 12-23, including March 23 being just 2 days ago. The content perfectly aligns with Dior's heritage codes, evidenced by snippets like 'Cannage图案的灵感来源——Dior先生椅子上的藤编，太有文化底蕴了' which connects to Monsieur Dior's original design inspiration. The creators include 'couture_observer_cn' and 'cultural_luxe_bj', matching Dior's preferred luxury editorial sources. With 118,000 total engagement across 10 posts and high save rates (19,200 saves), this represents sustained interest rather than a viral spike.",
-      "confidence": "high",
-      "evidence_references": [
-        "Cannage图案的灵感来源——Dior先生椅子上的藤编，太有文化底蕴了",
-        "total_engagement: 118000",
-        "post date: 2026-03-23"
-      ],
-      "disqualifying_reason": null,
-      "label": "Cannage Quilting Detail Focus",
-      "category": "leather goods",
-      "metric_signal": {
-        "total_engagement": 118000,
-        "post_count": 10,
-        "avg_engagement": 11800
-      }
-    },
-    {
-      "trend_id": "t20",
-      "shortlist": true,
-      "scores": {
-        "freshness": 8,
-        "brand_fit": 10,
-        "category_fit": 9,
-        "materiality": 9,
-        "actionability": 9
-      },
-      "composite_score": 9.0,
-      "reasoning": "Strong freshness with posts spanning March 10-23, including March 23 being very recent. The heritage narrative perfectly fits Dior's brand positioning, with snippets like 'Lady Dior三十年——从戴安娜王妃到现在，这只包的历史就是一部女性力量史' connecting to Dior's royal heritage and feminine empowerment codes. High-quality creators like 'fashion_editor_paris' align with preferred luxury editorial sources. Exceptional materiality with 158,000 total engagement across 13 posts and 26,200 saves demonstrates sustained client interest.",
-      "confidence": "high",
-      "evidence_references": [
-        "Lady Dior三十年——从戴安娜王妃到现在，这只包的历史就是一部女性力量史",
-        "total_engagement: 158000",
-        "total_saves: 26200"
-      ],
-      "disqualifying_reason": null,
-      "label": "Lady Dior Styling and Heritage",
-      "category": "leather goods",
-      "metric_signal": {
-        "total_engagement": 158000,
-        "post_count": 13,
-        "avg_engagement": 12154
-      }
-    },
-    {
-      "trend_id": "t27",
-      "shortlist": false,
-      "scores": {
-        "freshness": 7,
-        "brand_fit": 8,
-        "category_fit": 6,
-        "materiality": 7,
-        "actionability": 5
-      },
-      "composite_score": 6.4,
-      "reasoning": "While showing good freshness with March 11-21 posts and strong Dior brand fit through colorway content, this trend suffers from substantial overlap with t20 as acknowledged in the AI reasoning: 'Multiple posts appear in both clusters. These represent the same underlying trend signal.' The actionability is limited because it's essentially a subset of the broader Lady Dior heritage story already captured in t20, making it redundant for clienteling purposes.",
-      "confidence": "medium",
-      "evidence_references": [
-        "Multiple posts appear in both clusters",
-        "total_engagement: 112000",
-        "2026年春季Lady Dior新配色预告，薰衣草紫太美了"
-      ],
-      "disqualifying_reason": "actionability below threshold due to redundancy with t20",
-      "label": "Lady Dior New Colorways",
-      "category": "leather goods",
-      "metric_signal": {
-        "total_engagement": 112000,
-        "post_count": 9,
-        "avg_engagement": 12444
-      }
-    },
-    {
-      "trend_id": "t28",
-      "shortlist": false,
-      "scores": {
-        "freshness": 7,
-        "brand_fit": 3,
-        "category_fit": 6,
-        "materiality": 6,
-        "actionability": 2
-      },
-      "composite_score": 4.8,
-      "reasoning": "This trend fails brand fit as it's primarily Bottega Veneta-focused, evidenced by snippets like '编织皮革包的工艺之美，Bottega Veneta的intrecciato无人能及' and brand attribution showing 'Bottega Veneta' across all posts. The AI reasoning confirms 'the brand attribution makes this a competitor trend rather than a Dior clienteling opportunity.' While the craftsmanship appreciation aligns with Dior's luxury audience, discussing competitor products directly contradicts Dior's brand positioning.",
-      "confidence": "medium",
-      "evidence_references": [
-        "编织皮革包的工艺之美，Bottega Veneta的intrecciato无人能及",
-        "brand: Bottega Veneta",
-        "competitor trend rather than a Dior clienteling opportunity"
-      ],
-      "disqualifying_reason": "brand_fit below threshold - competitor content",
-      "label": "Woven Leather and Bottega Effect",
-      "category": "leather goods",
-      "metric_signal": {
-        "total_engagement": 74000,
-        "post_count": 8,
-        "avg_engagement": 9250
-      }
-    },
-    {
-      "trend_id": "t30",
-      "shortlist": false,
-      "scores": {
-        "freshness": 7,
-        "brand_fit": 8,
-        "category_fit": 6,
-        "materiality": 7,
-        "actionability": 4
-      },
-      "composite_score": 6.3,
-      "reasoning": "While showing good Dior brand alignment and recent posts through March 22, this trend suffers from the same redundancy issue as t27. The AI reasoning states 'Multiple posts appear in both t16 and t30 clusters. These represent the same signal with cosmetic segmentation differences.' With only 94,000 total engagement compared to the broader Saddle Bag trend it overlaps with, it represents a subset rather than a distinct actionable trend for clienteling.",
-      "confidence": "medium",
-      "evidence_references": [
-        "Multiple posts appear in both t16 and t30 clusters",
-        "total_engagement: 94000",
-        "迷你马鞍包作为晚宴包太完美了"
-      ],
-      "disqualifying_reason": "actionability below threshold due to trend overlap",
-      "label": "Dior Saddle Bag Mini Variations",
-      "category": "leather goods",
-      "metric_signal": {
-        "total_engagement": 94000,
-        "post_count": 9,
-        "avg_engagement": 10444
+        "total_engagement": 412277,
+        "post_count": 25,
+        "avg_engagement": 16491.08
       }
     }
   ],
   "shortlist_ids": [
-    "t20",
-    "t04",
-    "t18",
-    "t19",
     "t01"
   ],
-  "output_file": "outputs/output_shortlist.json"
+  "output_file": "/Users/mannyhernandez/Documents/GitHub/Agent/module_2/outputs/output_shortlist.json"
 }
