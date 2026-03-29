@@ -1,8 +1,8 @@
 {
-  "brand": "ALL",
-  "category": "beauty",
+  "brand": "Celine",
+  "category": "luxury_fashion",
   "time_window": {
-    "start_date": "2026-01-01",
+    "start_date": "2026-03-01",
     "end_date": "2026-03-31"
   },
   "max_posts": 50,

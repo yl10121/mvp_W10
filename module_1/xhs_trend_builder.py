@@ -347,17 +347,33 @@ def build_clusters(posts: List[Post], token_map: Dict[str, List[str]]) -> List[L
 
 def label_from_tokens(tokens: List[str]) -> str:
     joined = " ".join(tokens)
+    # ── Luxury fashion / leather goods labels ──────────────────────────
+    if any(k in joined for k in ["静奢", "quiet luxury", "old money", "老钱", "低调奢华"]):
+        return "Quiet Luxury / Old Money Aesthetic"
+    if any(k in joined for k in ["极简", "minimalis", "less is more", "剪裁", "版型"]):
+        return "Minimalist Tailoring & Structure"
+    if any(k in joined for k in ["包包", "手袋", "box", "triomphe", "cabas", "皮具"]):
+        return "Luxury Handbag & Leather Goods"
+    if any(k in joined for k in ["通勤", "职场", "power dress", "西装", "办公"]):
+        return "Power Dressing & Workwear"
+    if any(k in joined for k in ["穿搭", "搭配", "look", "春夏", "春装", "衣橱"]):
+        return "Seasonal Styling & Capsule Wardrobe"
+    if any(k in joined for k in ["面料", "开司米", "cashmere", "亚麻", "工艺", "纺织"]):
+        return "Fabric Craft & Material Appreciation"
+    if any(k in joined for k in ["街拍", "安福路", "上海", "恒隆", "旗舰"]):
+        return "Shanghai Luxury Street Style"
+    # ── Beauty labels ──────────────────────────────────────────────────
     if any(k in joined for k in ["y3k", "液态金属", "全息", "chrome", "偏光"]):
         return "Y3K Futuristic Makeup Aesthetic"
     if any(k in joined for k in ["情绪护肤", "神经美容", "香氛", "疗愈", "安定感"]):
         return "Emotional Wellness Skincare"
-    if any(k in joined for k in ["场景护肤", "通勤", "机舱", "办公室", "急救"]):
+    if any(k in joined for k in ["场景护肤", "机舱", "急救"]):
         return "Scenario-Based Skincare Routines"
-    if any(k in joined for k in ["微瑕", "活人感", "真实", "柔焦", "原生感"]):
+    if any(k in joined for k in ["微瑕", "活人感", "柔焦", "原生感"]):
         return "Real-Skin Imperfection Makeup"
     if any(k in joined for k in ["pdrn", "外泌体", "再生医学", "胶原", "干细胞"]):
         return "Regenerative Biotech Skincare"
-    return "Mixed Beauty Trend Signals"
+    return "Mixed Trend Signals"
 
 
 def summarize_cluster(label: str, posts: List[Post]) -> str:
@@ -481,10 +497,11 @@ def maybe_label_with_llm(
     if not llm_enabled:
         return fallback_label, fallback_summary, fallback_confidence, "heuristic", fallback_reasoning
 
-    api_key = os.getenv("OPENAI_API_KEY", "").strip()
+    api_key = os.getenv("OPENROUTER_API_KEY", "") or os.getenv("OPENAI_API_KEY", "")
+    api_key = api_key.strip()
     if not api_key:
         if llm_errors is not None:
-            llm_errors.append("OPENAI_API_KEY missing")
+            llm_errors.append("OPENROUTER_API_KEY missing")
         return fallback_label, fallback_summary, fallback_confidence, "heuristic", fallback_reasoning
 
     try:
@@ -790,10 +807,10 @@ def run(
         try:
             from openai import OpenAI
 
-            api_key = os.getenv("OPENAI_API_KEY", "").strip()
+            api_key = (os.getenv("OPENROUTER_API_KEY", "") or os.getenv("OPENAI_API_KEY", "")).strip()
             if not api_key:
-                llm_errors.append("LLM test failed: OPENAI_API_KEY missing")
-                cli.warn("Decide", "LLM test skipped: OPENAI_API_KEY missing")
+                llm_errors.append("LLM test failed: OPENROUTER_API_KEY missing")
+                cli.warn("Decide", "LLM test skipped: OPENROUTER_API_KEY missing")
             else:
                 def _llm_ping() -> None:
                     client = OpenAI(api_key=api_key, base_url="https://openrouter.ai/api/v1")

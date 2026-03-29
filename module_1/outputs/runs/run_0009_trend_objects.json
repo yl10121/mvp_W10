@@ -1,5 +1,5 @@
 {
-  "run_id": "run_0010",
+  "run_id": "run_0009",
   "agent": {
     "name": "XHS Trend Object Builder",
     "module": "Module 1 - Trend Object Builder",
@@ -24,7 +24,7 @@
   },
   "prompt": "You are the decision engine for Module 1: XHS Trend Object Builder. Your job is to turn retrieved Xiaohongshu posts for one brand/category and one time window into reviewable Type-B trend objects that can be audited by a human reviewer. Work only with the provided posts. Do not use outside knowledge, assumptions, or invented examples. First, identify semantically similar clusters by recurring themes, aesthetics, usage scenarios, product angles, behavior patterns, or language signals. Then ensure trend distinctness: trends should be meaningfully different from each other and not just renamed duplicates. If clusters overlap heavily, merge them or lower confidence rather than forcing extra trends. For each trend, generate: (1) a concise trend label, (2) a one-sentence summary of what the trend represents, (3) evidence linked to real posts, including supporting post IDs and short snippets, (4) metrics computed only from retrieved data, including post_count and total_engagement, and (5) confidence as low, medium, or high. Confidence should be high only when evidence is coherent and sufficient; medium when signal is present but partially mixed; low when sparse, weak, or ambiguous. Include explicit ai_reasoning that explains why those posts belong together and why confidence was chosen. Never claim evidence that is not directly present in the retrieved posts. If evidence is weak or ambiguous, output fewer trends and clearly state uncertainty.",
   "prompt_in_use_for_decision": true,
-  "generated_at_utc": "2026-03-29T09:42:28.504035+00:00",
+  "generated_at_utc": "2026-03-29T09:40:46.969435+00:00",
   "decision_logic": {
     "mode": "rules-first with optional LLM label/summary",
     "llm_enabled": true,
@@ -32,17 +32,17 @@
     "llm_label_calls_succeeded": 0,
     "llm_label_calls_total": 3,
     "llm_errors": [
-      "OPENROUTER_API_KEY missing",
-      "OPENROUTER_API_KEY missing",
-      "OPENROUTER_API_KEY missing"
+      "OPENAI_API_KEY missing",
+      "OPENAI_API_KEY missing",
+      "OPENAI_API_KEY missing"
     ]
   },
   "trend_objects": [
     {
       "trend_id": "t01",
-      "label": "Minimalist Tailoring & Structure",
+      "label": "Mixed Beauty Trend Signals",
       "category": "luxury_fashion",
-      "summary": "Posts cluster around minimalist tailoring & structure with recurring evidence such as: 极简主义的反面教材｜为什么你穿极简不好看；Celine Triomphe链条包开箱｜极简主义的终极答案.",
+      "summary": "Posts cluster around mixed beauty trend signals with recurring evidence such as: 极简主义的反面教材｜为什么你穿极简不好看；Celine Triomphe链条包开箱｜极简主义的终极答案.",
       "ai_reasoning": "Grouped because posts share recurring keywords/themes ['celine', 'triomphe', 'box', '胶囊衣橱', 'lv'] and show consistent engagement patterns in the same category.",
       "confidence": "high",
       "labeling_source": "heuristic",
@@ -171,7 +171,7 @@
         "video_post_count": 0,
         "image_count": 0
       },
-      "timestamp": "2026-03-29T09:42:28.503917+00:00",
+      "timestamp": "2026-03-29T09:40:46.969331+00:00",
       "visual_assets": {
         "all_image_urls": [],
         "image_captions": [],
@@ -185,9 +185,9 @@
     },
     {
       "trend_id": "t02",
-      "label": "Luxury Handbag & Leather Goods",
+      "label": "Scenario-Based Skincare Routines",
       "category": "luxury_fashion",
-      "summary": "Posts cluster around luxury handbag & leather goods with recurring evidence such as: Power dressing 2026｜Celine让职场穿搭不再无聊；Celine Cabas横款托特｜打工人的通勤神器.",
+      "summary": "Posts cluster around scenario-based skincare routines with recurring evidence such as: Power dressing 2026｜Celine让职场穿搭不再无聊；Celine Cabas横款托特｜打工人的通勤神器.",
       "ai_reasoning": "Grouped because posts share recurring keywords/themes ['celine', '职场穿搭', 'power', 'dressing', '横款托特'] and show consistent engagement patterns in the same category.",
       "confidence": "medium",
       "labeling_source": "heuristic",
@@ -276,7 +276,7 @@
         "video_post_count": 0,
         "image_count": 0
       },
-      "timestamp": "2026-03-29T09:42:28.503983+00:00",
+      "timestamp": "2026-03-29T09:40:46.969387+00:00",
       "visual_assets": {
         "all_image_urls": [],
         "image_captions": [],
@@ -290,9 +290,9 @@
     },
     {
       "trend_id": "t03",
-      "label": "Minimalist Tailoring & Structure",
+      "label": "Mixed Beauty Trend Signals",
       "category": "luxury_fashion",
-      "summary": "Posts cluster around minimalist tailoring & structure with recurring evidence such as: Celine西装外套的版型为什么封神？裁缝视角解析；Celine的面料为什么摸起来不一样？面料科普.",
+      "summary": "Posts cluster around mixed beauty trend signals with recurring evidence such as: Celine西装外套的版型为什么封神？裁缝视角解析；Celine的面料为什么摸起来不一样？面料科普.",
       "ai_reasoning": "Grouped because posts share recurring keywords/themes ['celine', '高奢工艺', '面料科普', '西装外套的版型为', '什么封神'] and show consistent engagement patterns in the same category.",
       "confidence": "medium",
       "labeling_source": "heuristic",
@@ -361,7 +361,7 @@
         "video_post_count": 0,
         "image_count": 0
       },
-      "timestamp": "2026-03-29T09:42:28.504018+00:00",
+      "timestamp": "2026-03-29T09:40:46.969416+00:00",
       "visual_assets": {
         "all_image_urls": [],
         "image_captions": [],
