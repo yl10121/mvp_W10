@@ -74,9 +74,18 @@ def pre_filter(trend: dict, brand_profile: dict) -> "tuple[bool, Optional[str]]"
         return False, f"Category '{category}' not in brand active_categories {active_categories}"
 
     # Rule 2: Minimum post count
+    # luxury_fashion with 2–4 posts: pass with low_signal_warning (niche signals still valuable)
+    # All other categories: hard reject below MIN_POST_COUNT
     post_count = metrics.get("post_count", 0)
     if post_count < MIN_POST_COUNT:
-        return False, f"post_count={post_count} is below minimum threshold of {MIN_POST_COUNT}"
+        if category == "luxury_fashion" and post_count >= 2:
+            trend["low_signal_warning"] = (
+                f"post_count={post_count} is below {MIN_POST_COUNT} — "
+                "passed to LLM with low_signal warning"
+            )
+            # Do not return False — let it through to LLM evaluation
+        else:
+            return False, f"post_count={post_count} is below minimum threshold of {MIN_POST_COUNT}"
 
     # Rule 3: Minimum total engagement
     total_engagement = metrics.get("total_engagement", 0)
@@ -122,11 +131,14 @@ def run_prefilter_batch(trends: list, brand_profile: dict) -> "tuple[list, list]
         ok, reason = pre_filter(trend, brand_profile)
         if ok:
             passed.append(trend)
+            warning = trend.get("low_signal_warning")
+            if warning:
+                print(f"  ⚠ [{trend.get('trend_id', 'unknown')}] {trend.get('label', '')} — {warning}")
         else:
             rejected.append({
                 "trend_id": trend.get("trend_id", "unknown"),
                 "label": trend.get("label", ""),
-                "reason": reason
+                "reason": reason,
             })
 
     return passed, rejected

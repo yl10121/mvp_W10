@@ -2,10 +2,13 @@
 agent.py — Module 2: Trend Relevance & Materiality Filter Agent
 
 Data flow:
-  IN  → module_1/outputs/<latest_run>/runs/run_XXXX_trend_objects.json
-  OUT → module_2/outputs/output_shortlist.json
+  IN  → module_1/outputs/runs/run_*_trend_objects.json  (luxury_fashion only; beauty skipped)
+      → module_2/data/synthetic_trends.json              (25 synthetic Celine trends)
+  OUT → module_2/outputs/output_shortlist.json          (local backup)
       → module_2/outputs/run_log.json
       → module_3/trend_brief_agent/trend_shortlist.json  (Module 3 compatible)
+      → Supabase table module2_trend_shortlist            (if connected)
+      → module_2/EVAL_REPORT.md                          (auto-generated)
 """
 
 import json
@@ -18,7 +21,12 @@ from typing import Optional, Union
 
 from dotenv import load_dotenv
 
-load_dotenv()
+_ENV_PATH = Path(__file__).parent.parent / ".env"
+load_dotenv(dotenv_path=_ENV_PATH)
+
+# Confirm API key loaded
+_key_preview = os.environ.get("OPENROUTER_API_KEY", "")[:8] or "(not set)"
+print(f"[ENV] OPENROUTER_API_KEY loaded: {_key_preview}...")
 
 from scorer import run_prefilter_batch
 from evaluator import evaluate_batch, select_shortlist
@@ -26,27 +34,19 @@ from evaluator import evaluate_batch, select_shortlist
 # ── Paths ──────────────────────────────────────────────────────────────────────
 BASE_DIR = Path(__file__).parent
 ROOT_DIR = BASE_DIR.parent
-MODULE1_OUTPUTS = ROOT_DIR / "module_1" / "outputs"
+MODULE1_RUNS_DIR = ROOT_DIR / "module_1" / "outputs" / "runs"
 MODULE3_SHORTLIST = ROOT_DIR / "module_3" / "trend_brief_agent" / "trend_shortlist.json"
-BRAND_PROFILE_FILE = BASE_DIR / "brand_profile.json"  # default fallback
-
-
-def resolve_brand_profile(slug: str) -> Path:
-    """Return brand-specific profile if it exists, else fall back to brand_profile.json."""
-    specific = BASE_DIR / f"brand_profile_{slug}.json"
-    if specific.exists():
-        return specific
-    return BRAND_PROFILE_FILE
-
-
+SYNTHETIC_TRENDS_FILE = BASE_DIR / "data" / "synthetic_trends.json"
 OUTPUT_SHORTLIST_FILE = BASE_DIR / "outputs" / "output_shortlist.json"
 RUN_LOG_FILE = BASE_DIR / "outputs" / "run_log.json"
+EVAL_REPORT_FILE = BASE_DIR / "EVAL_REPORT.md"
 
 # ── Config ─────────────────────────────────────────────────────────────────────
 AGENT_NAME = "Trend Relevance & Materiality Filter"
 BRAND = os.environ.get("BRAND", "Celine")
 DEFAULT_CITY = os.environ.get("DEFAULT_CITY", "Shanghai")
-MAX_SHORTLIST = 5
+MAX_SHORTLIST = 15
+SKIP_CATEGORIES = {"beauty"}  # excluded from real runs; not relevant for Celine
 
 
 def load_json(path: Path) -> dict:
@@ -61,79 +61,128 @@ def save_json(path: Path, data: Union[dict, list]) -> None:
     print(f"Saved: {path}")
 
 
-def find_latest_module1_output() -> Optional[Path]:
-    """Find the most recent run_XXXX_trend_objects.json in Module 1's outputs."""
-    if not MODULE1_OUTPUTS.exists():
-        return None
-
-    # Search for trend_objects JSON files recursively
-    candidates = sorted(
-        MODULE1_OUTPUTS.rglob("*trend_objects.json"),
-        key=lambda p: p.stat().st_mtime,
-        reverse=True,
-    )
-    if candidates:
-        return candidates[0]
-
-    # Fallback: check legacy location
-    legacy = MODULE1_OUTPUTS / "trend_objects.json"
-    if legacy.exists():
-        return legacy
-
-    return None
+def resolve_brand_profile(slug: str) -> Path:
+    specific = BASE_DIR / f"brand_profile_{slug}.json"
+    if specific.exists():
+        return specific
+    return BASE_DIR / "brand_profile.json"
 
 
 def infer_run_id_from_path(path: Path) -> str:
-    """Extract run ID from filename like run_0001_trend_objects.json."""
     m = re.search(r"(run_\d+)", path.name)
-    return m.group(1) if m else "run_latest"
+    return m.group(1) if m else "run_unknown"
 
 
-def load_module1_trends() -> tuple[list, str]:
-    """Load trend objects from Module 1's latest output. Returns (trends, run_id)."""
-    trend_file = find_latest_module1_output()
-    if trend_file is None:
-        # Fall back to bundled sample data for standalone development
+def load_all_real_trends() -> "tuple[list, list, str]":
+    """
+    Load ALL run_*_trend_objects.json from module_1/outputs/runs/.
+    Skips any trend where category is in SKIP_CATEGORIES (e.g. beauty).
+    Namespaces IDs as run_XXXX_tYY. Tags data_type='real'.
+
+    Returns (real_trends, beauty_skipped_log, combined_run_id)
+    """
+    run_files = sorted(MODULE1_RUNS_DIR.glob("run_*_trend_objects.json"))
+    if not run_files:
         fallback = BASE_DIR / "data" / "trend_objects.json"
         if fallback.exists():
-            print(f"[INFO] No Module 1 output found. Using bundled sample data: {fallback}")
+            print(f"[INFO] No Module 1 run files found. Using bundled sample: {fallback}")
             data = load_json(fallback)
-            return data.get("trend_objects", []), data.get("run_id", "sample_data")
+            trends = data.get("trend_objects", [])
+            for t in trends:
+                t.setdefault("data_type", "real")
+            return trends, [], "sample_data"
         raise FileNotFoundError(
-            "No Module 1 trend_objects.json found.\n"
-            "Run module_1/xhs_trend_builder.py first, or place trend_objects.json in module_2/data/"
+            f"No run_*_trend_objects.json found in {MODULE1_RUNS_DIR}\n"
+            "Run module_1/xhs_trend_builder.py first."
         )
 
-    print(f"[M1→M2] Loading trend objects from: {trend_file}")
-    data = load_json(trend_file)
-    run_id = infer_run_id_from_path(trend_file)
-    trends = data.get("trend_objects", [])
-    if not trends:
-        # Some M1 runs store at root level
-        if isinstance(data, list):
-            trends = data
-        else:
-            trends = [data]
-    return trends, run_id
+    all_real = []
+    skipped_log = []
+    run_ids = []
+
+    for run_file in run_files:
+        run_id = infer_run_id_from_path(run_file)
+        run_ids.append(run_id)
+        data = load_json(run_file)
+        raw_trends = data.get("trend_objects", [])
+        if not raw_trends and isinstance(data, list):
+            raw_trends = data
+
+        for i, trend in enumerate(raw_trends):
+            category = trend.get("category", "")
+            orig_id = trend.get("trend_id", f"t{i+1:02d}")
+            namespaced_id = f"{run_id}_{orig_id}"
+
+            if category in SKIP_CATEGORIES:
+                skipped_log.append({
+                    "trend_id": namespaced_id,
+                    "label": trend.get("label", ""),
+                    "category": category,
+                    "reason": f"Category '{category}' excluded — beauty runs not relevant for Celine",
+                })
+                continue
+
+            trend = dict(trend)
+            trend["trend_id"] = namespaced_id
+            trend["data_type"] = "real"
+            trend.setdefault("location", "China")
+            all_real.append(trend)
+
+    combined = (
+        f"{run_ids[0]}_to_{run_ids[-1]}" if len(run_ids) > 1
+        else (run_ids[0] if run_ids else "unknown")
+    )
+    return all_real, skipped_log, combined
+
+
+def load_synthetic_trends() -> list:
+    """
+    Load module_2/data/synthetic_trends.json.
+    Namespaces IDs as synthetic_tYY. Tags data_type='synthetic'.
+    """
+    if not SYNTHETIC_TRENDS_FILE.exists():
+        print(f"[INFO] No synthetic trends file found at {SYNTHETIC_TRENDS_FILE} — skipping.")
+        return []
+
+    data = load_json(SYNTHETIC_TRENDS_FILE)
+    raw = data if isinstance(data, list) else data.get("trend_objects", [])
+
+    synthetic = []
+    for i, trend in enumerate(raw):
+        trend = dict(trend)
+        orig_id = trend.get("trend_id", f"t{i+1:02d}")
+        if not str(orig_id).startswith("synthetic_"):
+            trend["trend_id"] = f"synthetic_{orig_id}"
+        trend["data_type"] = "synthetic"
+        trend.setdefault("location", "China")
+        synthetic.append(trend)
+
+    return synthetic
 
 
 def build_shortlist_output(
     shortlisted: list,
     all_evaluations: list,
     prefilter_rejected: list,
+    beauty_skipped: list,
     total_input: int,
     module1_run_id: str,
     generated_at: str,
     run_id: str,
+    all_trends_lookup: dict,
 ) -> dict:
     shortlist_items = []
     for rank, ev in enumerate(shortlisted, start=1):
+        tid = ev.get("trend_id")
+        original = all_trends_lookup.get(tid, {})
         scores = ev.get("scores", {})
         item = {
             "rank": rank,
-            "trend_id": ev.get("trend_id"),
+            "trend_id": tid,
             "label": ev.get("label", ""),
             "category": ev.get("category", ""),
+            "location": original.get("location", "China"),
+            "data_type": original.get("data_type", "unknown"),
             "composite_score": ev.get("composite_score"),
             "scores": {
                 "freshness": scores.get("freshness"),
@@ -143,14 +192,13 @@ def build_shortlist_output(
                 "actionability": scores.get("actionability"),
             },
             "confidence": ev.get("confidence"),
-            "why_selected": ev.get("reasoning", ""),
+            "why_selected": ev.get("reasoning", ev.get("why_selected", "")),
             "evidence_references": ev.get("evidence_references", []),
             "metric_signal": {
                 "total_engagement": ev.get("metric_signal", {}).get("total_engagement"),
                 "post_count": ev.get("metric_signal", {}).get("post_count"),
                 "avg_engagement": ev.get("metric_signal", {}).get("avg_engagement"),
             },
-            "disqualifying_reason": None,
         }
         shortlist_items.append(item)
 
@@ -160,10 +208,177 @@ def build_shortlist_output(
         "brand": BRAND,
         "module1_run_id": module1_run_id,
         "total_evaluated": total_input,
+        "total_beauty_skipped": len(beauty_skipped),
         "total_prefilter_rejected": len(prefilter_rejected),
         "total_shortlisted": len(shortlisted),
         "shortlist": shortlist_items,
     }
+
+
+def calculate_quality_metrics(
+    shortlisted: list,
+    all_evaluations: list,
+    prefilter_rejected: list,
+    beauty_skipped: list,
+    total_input: int,
+    all_trends_lookup: dict,
+) -> dict:
+    brand_taboo_rejections = sum(
+        1 for r in prefilter_rejected if "taboo" in r.get("reason", "").lower()
+    )
+    llm_low_brand_fit = sum(
+        1 for ev in all_evaluations
+        if (ev.get("scores") or {}).get("brand_fit", 10) < 5
+    )
+    off_brand_count = brand_taboo_rejections + llm_low_brand_fit
+    off_brand_rate = round(off_brand_count / max(total_input, 1) * 100, 1)
+
+    high_conf = sum(1 for ev in all_evaluations if ev.get("confidence") == "high")
+    med_conf = sum(1 for ev in all_evaluations if ev.get("confidence") == "medium")
+    low_conf = sum(1 for ev in all_evaluations if ev.get("confidence") == "low")
+    spec_total = max(len(all_evaluations), 1)
+
+    noise_reduction = round((total_input - len(shortlisted)) / max(total_input, 1) * 100, 1)
+
+    real_shortlisted = sum(
+        1 for ev in shortlisted
+        if all_trends_lookup.get(ev.get("trend_id"), {}).get("data_type") == "real"
+    )
+    synthetic_shortlisted = len(shortlisted) - real_shortlisted
+
+    return {
+        "off_brand_rate": off_brand_rate,
+        "off_brand_count": off_brand_count,
+        "brand_taboo_rejections": brand_taboo_rejections,
+        "llm_low_brand_fit": llm_low_brand_fit,
+        "explanation_specificity": {
+            "high": high_conf,
+            "medium": med_conf,
+            "low": low_conf,
+            "high_pct": round(high_conf / spec_total * 100, 1),
+            "med_pct": round(med_conf / spec_total * 100, 1),
+            "low_pct": round(low_conf / spec_total * 100, 1),
+        },
+        "noise_reduction_rate": noise_reduction,
+        "real_shortlisted": real_shortlisted,
+        "synthetic_shortlisted": synthetic_shortlisted,
+        "beauty_skipped": len(beauty_skipped),
+    }
+
+
+def find_failure_cases(all_evaluations: list, shortlisted_ids: set) -> list:
+    """Return 5 lowest-scoring non-shortlisted evaluated trends."""
+    non_shortlisted = [ev for ev in all_evaluations if ev.get("trend_id") not in shortlisted_ids]
+    non_shortlisted.sort(key=lambda x: x.get("composite_score", 0))
+    return non_shortlisted[:5]
+
+
+def write_eval_report(
+    run_id: str,
+    generated_at: str,
+    total_input: int,
+    real_count: int,
+    synthetic_count: int,
+    beauty_skipped_count: int,
+    prefilter_rejected: list,
+    all_evaluations: list,
+    shortlisted: list,
+    quality: dict,
+    failure_cases: list,
+) -> None:
+    """Auto-generate EVAL_REPORT.md at module_2/ with real run data. No placeholders."""
+    spec = quality["explanation_specificity"]
+    lines = [
+        "# Module 2 — Evaluation Report",
+        "",
+        f"**Run ID:** {run_id}  ",
+        f"**Generated at:** {generated_at}  ",
+        f"**Brand:** {BRAND}",
+        "",
+        "---",
+        "",
+        "## Batch Composition",
+        "",
+        "| Source | Count |",
+        "|--------|-------|",
+        f"| Real XHS (luxury_fashion) | {real_count} |",
+        f"| Synthetic (luxury_fashion) | {synthetic_count} |",
+        f"| Beauty runs skipped | {beauty_skipped_count} |",
+        f"| **Total input to filter** | **{total_input}** |",
+        "",
+        "---",
+        "",
+        "## Filter Results",
+        "",
+        f"- Pre-filter rejected: **{len(prefilter_rejected)}**",
+        f"- Passed to LLM: **{len(all_evaluations)}**",
+        f"- Shortlisted: **{len(shortlisted)}**",
+        f"- Noise reduction rate: **{quality['noise_reduction_rate']}%**",
+        "",
+        "---",
+        "",
+        "## Quality Checks",
+        "",
+        "### 1. Off-Brand Rate",
+        f"- Off-brand count: {quality['off_brand_count']} ({quality['off_brand_rate']}% of input)",
+        f"  - Taboo keyword rejections: {quality['brand_taboo_rejections']}",
+        f"  - LLM brand_fit < 5: {quality['llm_low_brand_fit']}",
+        "",
+        "### 2. Explanation Specificity (LLM confidence breakdown)",
+        f"- High: {spec['high']} ({spec['high_pct']}%)",
+        f"- Medium: {spec['medium']} ({spec['med_pct']}%)",
+        f"- Low: {spec['low']} ({spec['low_pct']}%)",
+        "",
+        "### 3. Noise Reduction",
+        f"- {quality['noise_reduction_rate']}% of input trends were filtered before reaching the shortlist.",
+        "",
+        "---",
+        "",
+        "## Shortlist Summary",
+        "",
+        f"Shortlisted **{len(shortlisted)}** trends "
+        f"(real: {quality['real_shortlisted']}, synthetic: {quality['synthetic_shortlisted']}):",
+        "",
+    ]
+    for ev in shortlisted:
+        lines.append(
+            f"- **[{ev.get('trend_id')}]** {ev.get('label', '')} "
+            f"— score: {ev.get('composite_score', 0):.2f}"
+        )
+
+    lines += [
+        "",
+        "---",
+        "",
+        "## Failure Cases (5 Lowest Scoring)",
+        "",
+    ]
+    if failure_cases:
+        for ev in failure_cases:
+            reason = ev.get("disqualifying_reason") or "Below threshold or LLM rejected"
+            lines.append(
+                f"- **[{ev.get('trend_id')}]** {ev.get('label', '')} "
+                f"— score: {ev.get('composite_score', 0):.2f}"
+            )
+            lines.append(f"  - Reason: {reason}")
+    else:
+        lines.append("- No failure cases (all evaluated trends were shortlisted).")
+
+    lines += [
+        "",
+        "---",
+        "",
+        "## Known Limitations",
+        "",
+        "1. Runs 0001–0008 are beauty category and excluded — not relevant for Celine.",
+        "2. Runs 0009–0013 contain identical underlying XHS data (same 3 posts scraped across 5 runs).",
+        "3. Synthetic trends are clearly marked `data_type: synthetic` and should not be presented as real XHS signal.",
+        "4. No image URLs captured — scraping ran with `--no-detail` flag.",
+        "",
+    ]
+
+    EVAL_REPORT_FILE.write_text("\n".join(lines), encoding="utf-8")
+    print(f"Saved: {EVAL_REPORT_FILE}")
 
 
 def convert_to_module3_format(
@@ -172,10 +387,6 @@ def convert_to_module3_format(
     generated_at: str,
     module1_run_id: str,
 ) -> dict:
-    """
-    Convert Module 2 shortlist into the schema Module 3 expects in trend_shortlist.json.
-    Maps M1 trend object fields → M3 trend card fields.
-    """
     trends_m3 = []
     for ev in shortlisted:
         tid = ev.get("trend_id", "")
@@ -185,42 +396,32 @@ def convert_to_module3_format(
         snippets = evidence.get("snippets", [])
         posts = evidence.get("posts", [])
 
-        # Derive engagement_rate: avg_likes / avg_saves as a proxy
         total_eng = metrics.get("total_engagement", 0)
         post_count = metrics.get("post_count", 1) or 1
         avg_eng = total_eng / post_count
-        # Normalise to a 0–1 engagement rate: 10k avg engagement ≈ 1.0
         engagement_rate = round(min(avg_eng / 10000, 1.0), 4)
 
-        # Week-on-week growth — use momentum_signal if present, otherwise compute from post dates
         wow_growth = original.get("momentum_signal", "+0%")
         if not wow_growth or wow_growth == "+0%":
-            wow_growth = "+15%"  # default for shortlisted trends (they passed pre-filter)
+            wow_growth = "+15%"
 
-        # Top post example from snippets or first post title
-        top_post_example = snippets[0] if snippets else (posts[0].get("title", "") if posts else "")
-
-        # Hashtags from evidence
-        hashtags = original.get("evidence", {}).get("top_hashtags", [])
+        top_post_example = (
+            snippets[0] if snippets else (posts[0].get("title", "") if posts else "")
+        )
+        hashtags = evidence.get("top_hashtags", [])
         if not hashtags:
-            # Derive from keywords
             kw = original.get("keyword", original.get("label", ""))
             hashtags = [f"#{kw}"] if kw else []
 
-        # Brand relevance based on composite score
         composite = ev.get("composite_score", 0)
-        if composite >= 7.5:
-            brand_relevance = "high"
-        elif composite >= 6.5:
-            brand_relevance = "medium"
-        else:
-            brand_relevance = "low"
+        brand_relevance = "high" if composite >= 7.5 else ("medium" if composite >= 6.5 else "low")
 
         trends_m3.append({
             "trend_id": tid,
             "trend_label": ev.get("label", original.get("label", "")),
-            "city": original.get("city", DEFAULT_CITY),
-            "category": ev.get("category", original.get("category", "ready-to-wear")),
+            "city": original.get("location", DEFAULT_CITY),
+            "category": ev.get("category", original.get("category", "luxury_fashion")),
+            "data_type": original.get("data_type", "unknown"),
             "target_age_range": original.get("target_age_range", "28–45"),
             "cluster_summary": original.get("summary", ev.get("why_selected", "")),
             "post_count": metrics.get("post_count", post_count),
@@ -229,7 +430,6 @@ def convert_to_module3_format(
             "trending_hashtags": hashtags[:5],
             "brand_relevance": brand_relevance,
             "week_on_week_growth": wow_growth,
-            # Extra M2 fields for downstream enrichment
             "m2_composite_score": composite,
             "m2_confidence": ev.get("confidence", "medium"),
             "m2_why_selected": ev.get("why_selected", ev.get("reasoning", "")),
@@ -240,7 +440,7 @@ def convert_to_module3_format(
         "query_context": {
             "brand": BRAND,
             "market": "China luxury fashion",
-            "categories": ["ready-to-wear", "leather goods"],
+            "categories": ["luxury_fashion", "ready-to-wear", "leather goods"],
             "source": "Xiaohongshu",
             "cities": [DEFAULT_CITY, "Beijing"],
             "week": week,
@@ -262,15 +462,25 @@ def main():
     print("=" * 60)
 
     # ── Load inputs ────────────────────────────────────────────────────────────
-    print(f"\nLoading trend objects from Module 1 output...")
-    all_trends, module1_run_id = load_module1_trends()
-    total_input = len(all_trends)
-    print(f"Loaded {total_input} trend objects (source run: {module1_run_id})")
+    print("\nLoading real trend objects from Module 1 runs (beauty category skipped)...")
+    real_trends, beauty_skipped, module1_run_id = load_all_real_trends()
+    print(f"  Beauty skipped: {len(beauty_skipped)} objects")
+    print(f"  Real luxury_fashion loaded: {len(real_trends)}")
 
-    print(f"Loading brand profile...")
+    print("\nLoading synthetic trend objects...")
+    synthetic_trends = load_synthetic_trends()
+    print(f"  Synthetic loaded: {len(synthetic_trends)}")
+
+    all_trends = real_trends + synthetic_trends
+    total_input = len(all_trends)
+    print(f"\nReal (XHS): {len(real_trends)} / Synthetic: {len(synthetic_trends)} / Total: {total_input}")
+
+    print(f"\nLoading brand profile...")
     slug = BRAND.lower().strip().replace(" ", "_").replace("-", "_")
     brand_profile = load_json(resolve_brand_profile(slug))
     print(f"Brand profile: {brand_profile['brand_name']}")
+
+    all_trends_lookup = {t["trend_id"]: t for t in all_trends}
 
     # ── Step 1: Deterministic pre-filter ──────────────────────────────────────
     print(f"\n{'─'*60}")
@@ -287,7 +497,6 @@ def main():
 
     if not passed_trends:
         print("\n[WARNING] No trends passed pre-filter. Nothing to evaluate.")
-        print("[TIP] Check that Module 1 ran within the last 21 days and produced enough engagement.")
         sys.exit(0)
 
     # ── Step 2: LLM Evaluation ─────────────────────────────────────────────────
@@ -297,11 +506,10 @@ def main():
 
     all_evaluations = evaluate_batch(passed_trends, brand_profile)
 
-    trend_lookup = {t["trend_id"]: t for t in all_trends}
     for ev in all_evaluations:
         tid = ev.get("trend_id")
-        if tid and tid in trend_lookup:
-            original = trend_lookup[tid]
+        if tid and tid in all_trends_lookup:
+            original = all_trends_lookup[tid]
             ev["label"] = original.get("label", "")
             ev["category"] = original.get("category", "")
             metrics = original.get("metrics", {})
@@ -319,18 +527,40 @@ def main():
     print(f"{'─'*60}")
 
     shortlisted = select_shortlist(all_evaluations, max_shortlist=MAX_SHORTLIST)
+    shortlisted_ids = {ev.get("trend_id") for ev in shortlisted}
 
     print(f"\nShortlist ({len(shortlisted)} trends):")
     for i, ev in enumerate(shortlisted, start=1):
-        print(f"  #{i} [{ev.get('trend_id')}] {ev.get('label', '')} — {ev.get('composite_score', 0):.2f}")
+        tid = ev.get("trend_id")
+        dtype = all_trends_lookup.get(tid, {}).get("data_type", "?")
+        print(
+            f"  #{i} [{tid}] {ev.get('label', '')} "
+            f"— {ev.get('composite_score', 0):.2f} [{dtype}]"
+        )
 
-    shortlist_ids = {ev.get("trend_id") for ev in shortlisted}
-    llm_rejected = [ev for ev in all_evaluations if ev.get("trend_id") not in shortlist_ids]
+    llm_rejected = [ev for ev in all_evaluations if ev.get("trend_id") not in shortlisted_ids]
     if llm_rejected:
         print(f"\nLLM-rejected ({len(llm_rejected)}):")
         for ev in llm_rejected:
             reason = ev.get("disqualifying_reason") or "Below threshold"
             print(f"  ✗ [{ev.get('trend_id')}] {ev.get('label', '')} — {reason}")
+
+    # ── Quality metrics ────────────────────────────────────────────────────────
+    quality = calculate_quality_metrics(
+        shortlisted, all_evaluations, prefilter_rejected, beauty_skipped,
+        total_input, all_trends_lookup,
+    )
+    failure_cases = find_failure_cases(all_evaluations, shortlisted_ids)
+
+    spec = quality["explanation_specificity"]
+    print(f"\nQuality Metrics:")
+    print(f"  Off-brand rate:   {quality['off_brand_rate']}%")
+    print(
+        f"  Explanation spec: high={spec['high']} ({spec['high_pct']}%), "
+        f"med={spec['medium']} ({spec['med_pct']}%), "
+        f"low={spec['low']} ({spec['low_pct']}%)"
+    )
+    print(f"  Noise reduction:  {quality['noise_reduction_rate']}%")
 
     # ── Step 4: Write Outputs ──────────────────────────────────────────────────
     print(f"\n{'─'*60}")
@@ -343,10 +573,12 @@ def main():
         shortlisted=shortlisted,
         all_evaluations=all_evaluations,
         prefilter_rejected=prefilter_rejected,
+        beauty_skipped=beauty_skipped,
         total_input=total_input,
         module1_run_id=module1_run_id,
         generated_at=generated_at,
         run_id=run_id,
+        all_trends_lookup=all_trends_lookup,
     )
     save_json(OUTPUT_SHORTLIST_FILE, shortlist_output)
 
@@ -357,55 +589,73 @@ def main():
         "module1_run_id": module1_run_id,
         "generated_at": generated_at,
         "total_input": total_input,
+        "real_count": len(real_trends),
+        "synthetic_count": len(synthetic_trends),
+        "beauty_skipped_count": len(beauty_skipped),
         "prefilter_rejections": prefilter_rejected,
         "llm_evaluations": all_evaluations,
-        "shortlist_ids": list(shortlist_ids),
+        "shortlist_ids": list(shortlisted_ids),
+        "quality_metrics": quality,
         "output_file": str(OUTPUT_SHORTLIST_FILE),
     }
     save_json(RUN_LOG_FILE, run_log)
 
-    # ── Step 5: Write Module 3 compatible shortlist ────────────────────────────
-    print(f"\n{'─'*60}")
-    print("STEP 5 — Writing Module 3 shortlist")
-    print(f"{'─'*60}")
-
     m3_data = convert_to_module3_format(
         shortlisted=shortlisted,
-        all_trends_lookup=trend_lookup,
+        all_trends_lookup=all_trends_lookup,
         generated_at=generated_at,
         module1_run_id=module1_run_id,
     )
     save_json(MODULE3_SHORTLIST, m3_data)
     print(f"[M2→M3] Module 3 shortlist written: {MODULE3_SHORTLIST}")
 
-    # ── Supabase ───────────────────────────────────────────────────────────────
+    write_eval_report(
+        run_id=run_id,
+        generated_at=generated_at,
+        total_input=total_input,
+        real_count=len(real_trends),
+        synthetic_count=len(synthetic_trends),
+        beauty_skipped_count=len(beauty_skipped),
+        prefilter_rejected=prefilter_rejected,
+        all_evaluations=all_evaluations,
+        shortlisted=shortlisted,
+        quality=quality,
+        failure_cases=failure_cases,
+    )
+
+    # ── Supabase (graceful fallback) ───────────────────────────────────────────
     try:
         sys.path.insert(0, str(ROOT_DIR))
         from supabase_client import is_configured
         if is_configured():
             from supabase_writer import write_shortlist, write_run_log
             write_shortlist(run_id, shortlist_output)
-            write_run_log(run_id, module1_run_id, total_input, len(prefilter_rejected),
-                          len(passed_trends), len(shortlisted), generated_at)
+            write_run_log(
+                run_id, module1_run_id, total_input,
+                len(prefilter_rejected), len(passed_trends), len(shortlisted), generated_at,
+            )
             print("[Supabase] Module 2 data synced.")
         else:
-            print("[Supabase] Skipped — SUPABASE_PASSWORD not set.")
+            print("Supabase not connected — skipping DB write. Results saved locally.")
     except Exception as e:
-        print(f"[Supabase] Warning: {e}")
+        print(f"Supabase not connected — skipping DB write. Results saved locally. ({e})")
 
     # ── Summary ────────────────────────────────────────────────────────────────
-    noise = (total_input - len(shortlisted)) / total_input * 100 if total_input > 0 else 0
     print(f"\n{'='*60}")
     print("RUN SUMMARY")
     print(f"{'='*60}")
-    print(f"  Input trends:        {total_input}")
-    print(f"  Pre-filter rejected: {len(prefilter_rejected)}")
-    print(f"  LLM evaluated:       {len(all_evaluations)}")
-    print(f"  Shortlisted:         {len(shortlisted)}")
-    print(f"  Noise reduction:     {noise:.1f}%")
+    print(f"  Real luxury_fashion:   {len(real_trends)}")
+    print(f"  Synthetic:             {len(synthetic_trends)}")
+    print(f"  Beauty skipped:        {len(beauty_skipped)}")
+    print(f"  Total input:           {total_input}")
+    print(f"  Pre-filter rejected:   {len(prefilter_rejected)}")
+    print(f"  LLM evaluated:         {len(all_evaluations)}")
+    print(f"  Shortlisted:           {len(shortlisted)}")
+    print(f"  Noise reduction:       {quality['noise_reduction_rate']:.1f}%")
     print(f"\n  → {OUTPUT_SHORTLIST_FILE.name}")
     print(f"  → {RUN_LOG_FILE.name}")
     print(f"  → module_3/trend_brief_agent/trend_shortlist.json")
+    print(f"  → EVAL_REPORT.md")
     print("=" * 60)
 
 
