@@ -1,0 +1,65 @@
+[
+  {
+    "input": "Client preparing for wedding, likes white, needs soon",
+    "output": {
+      "life_event": "Wedding",
+      "aesthetic_preference": "White tones",
+      "timeline": "Soon",
+      "mood": "Excited"
+    }
+  },
+  {
+    "input": "Looking for gift for husband, minimalist style, no gold",
+    "output": {
+      "life_event": "Gift for husband",
+      "aesthetic_preference": "Minimalist, no gold",
+      "mood": "Thoughtful"
+    }
+  },
+  {
+    "input": "王先生今天来店里，说下周结婚纪念日，想要低调一点的首饰，预算两万左右，看起来挺高兴",
+    "output": {
+      "summary": "王先生为结婚纪念日寻找低调首饰，预算两万，心情愉悦。",
+      "life_event": {
+        "value": "结婚纪念日",
+        "confidence": "High",
+        "evidence": "下周结婚纪念日"
+      },
+      "timeline": {
+        "value": "下周",
+        "confidence": "High",
+        "evidence": "下周"
+      },
+      "aesthetic_preference": {
+        "value": "低调",
+        "confidence": "High",
+        "evidence": "想要低调一点"
+      },
+      "size_height": {
+        "value": "N/A",
+        "confidence": "Low",
+        "evidence": "未提及"
+      },
+      "budget": {
+        "value": "两万左右",
+        "confidence": "High",
+        "evidence": "预算两万左右"
+      },
+      "mood": {
+        "value": "愉悦",
+        "confidence": "Medium",
+        "evidence": "看起来挺高兴"
+      },
+      "trend_signals": {
+        "value": "N/A",
+        "confidence": "Low",
+        "evidence": "未提及"
+      },
+      "next_step_intent": {
+        "value": "推荐低调简约款首饰",
+        "confidence": "High",
+        "evidence": "偏好+事件+预算"
+      }
+    }
+  }
+]

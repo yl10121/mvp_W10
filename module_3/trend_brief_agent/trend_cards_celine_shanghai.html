@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>CA Trend Brief — Celine Shanghai</title>
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif;
+    background: #f0ede8;
+    color: #111111;
+    font-size: 15px;
+    line-height: 1.65;
+  }
+  .page { max-width: 840px; margin: 0 auto; padding: 40px 24px 80px; }
+
+  /* Header */
+  .brief-header {
+    background: #111827;
+    color: #fff;
+    border-radius: 12px;
+    padding: 32px 36px 28px;
+    margin-bottom: 32px;
+  }
+  .brief-header h1 {
+    font-size: 28px;
+    font-weight: 700;
+    letter-spacing: -0.5px;
+    margin-bottom: 12px;
+  }
+  .brief-meta {
+    display: flex;
+    gap: 24px;
+    font-size: 13px;
+    color: #9ca3af;
+    flex-wrap: wrap;
+  }
+  .brief-meta span { display: flex; align-items: center; gap: 6px; }
+
+  /* Banner */
+  .banner {
+    background: #fef3c7;
+    border: 1px solid #fcd34d;
+    border-radius: 8px;
+    padding: 10px 16px;
+    font-size: 14px;
+    color: #92400e;
+    margin-bottom: 24px;
+  }
+
+  /* Card */
+  .card {
+    background: #fff;
+    border-radius: 12px;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.07), 0 4px 12px rgba(0,0,0,0.04);
+    margin-bottom: 28px;
+    overflow: hidden;
+  }
+
+  /* Card header */
+  .card-header {
+    background: #1c1c2e;
+    color: #fff;
+    padding: 24px 30px 20px;
+  }
+  .card-title {
+    font-size: 20px;
+    font-weight: 700;
+    letter-spacing: -0.3px;
+    margin-bottom: 7px;
+  }
+  .card-meta {
+    font-size: 13px;
+    color: #94a3b8;
+  }
+  .card-meta strong { color: #e2e8f0; font-weight: 600; }
+
+  /* Sections */
+  .section {
+    padding: 22px 30px;
+    border-bottom: 1px solid #eeecec;
+  }
+  .section:last-child { border-bottom: none; }
+  .section-label {
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 1.4px;
+    text-transform: uppercase;
+    color: #6b7280;
+    margin-bottom: 12px;
+  }
+  .section p { margin-bottom: 10px; color: #111111; font-size: 15px; line-height: 1.65; }
+  .section p:last-child { margin-bottom: 0; }
+  .section strong { color: #000; font-weight: 700; }
+
+  /* Trend overview — largest, most prominent */
+  .section-overview { background: #fff; border-left: 4px solid #1c1c2e; }
+  .section-overview .section-label { color: #1c1c2e; font-size: 12px; }
+  .section-overview p { font-size: 16px; color: #0f0f0f; line-height: 1.7; font-weight: 400; }
+
+  /* Data signal */
+  .section-data { background: #f7f6f4; }
+  .section-data .section-label { color: #374151; }
+  .section-data ul { list-style: none; padding: 0; }
+  .section-data li {
+    padding: 8px 0;
+    border-bottom: 1px solid #e8e6e2;
+    font-size: 14px;
+    color: #111111;
+    font-weight: 500;
+  }
+  .section-data li:last-child { border-bottom: none; }
+  .section-data code {
+    background: #e8e6e2;
+    padding: 2px 6px;
+    border-radius: 4px;
+    font-size: 13px;
+    font-family: "SF Mono", "Fira Code", monospace;
+    color: #111111;
+  }
+
+  /* Brand relevance pill inside data section */
+  .section-data li strong {
+    color: #000;
+    font-weight: 700;
+  }
+
+  /* Client match */
+  .section-client { border-left: 4px solid #6366f1; }
+  .section-client .section-label { color: #4f46e5; }
+  .section-client p { font-size: 14px; color: #111111; }
+
+  /* Conversation starter */
+  .section-starter { background: #f8f7f4; }
+  .starter-label {
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    color: #6b7280;
+    margin: 14px 0 7px;
+  }
+  .starter-label:first-child { margin-top: 0; }
+  .starter-chinese {
+    background: #fff;
+    border: 1px solid #d6d3ce;
+    border-radius: 8px;
+    padding: 14px 18px;
+    font-size: 16px;
+    line-height: 1.75;
+    color: #0f0f0f;
+    margin-bottom: 6px;
+    font-weight: 400;
+  }
+  .starter-english {
+    background: #fff;
+    border: 1px solid #d6d3ce;
+    border-radius: 8px;
+    padding: 14px 18px;
+    font-size: 14px;
+    color: #1f2937;
+    font-style: italic;
+    line-height: 1.65;
+  }
+
+  /* Mobile */
+  @media (max-width: 640px) {
+    .page { padding: 16px 12px 60px; }
+    .brief-header { padding: 22px 20px 18px; border-radius: 10px; }
+    .brief-header h1 { font-size: 22px; }
+    .brief-meta { font-size: 12px; gap: 12px; }
+    .card { border-radius: 10px; margin-bottom: 20px; }
+    .card-header { padding: 18px 20px 14px; }
+    .card-title { font-size: 17px; }
+    .section { padding: 16px 20px; }
+    .section p { font-size: 14px; }
+    .section-overview p { font-size: 15px; }
+    .section-data li { font-size: 13px; }
+    .starter-chinese { font-size: 15px; padding: 12px 14px; }
+    .starter-english { font-size: 13px; padding: 12px 14px; }
+  }
+
+  /* Print */
+  @media print {
+    body { background: #fff; }
+    .page { padding: 0; max-width: 100%; }
+    .card { box-shadow: none; border: 1px solid #e5e7eb; break-inside: avoid; }
+    .brief-header { border-radius: 0; }
+  }
+</style>
+</head>
+<body>
+<div class="page">
+  <div class="brief-header">
+    <h1>Client Advisor Trend Brief</h1>
+    <div class="brief-meta">
+      <span>Celine · Shanghai</span>
+      <span>Week of 2026-03-29</span>
+      <span>Source: module_2/output_shortlist.json</span>
+      <span>Generated 30 Mar 2026, 01:07</span>
+    </div>
+  </div>
+  <div class="banner">⚠ Fewer than 3 high-relevance trends found — medium-relevance trends included.</div>
+  <div class="card" id="t01"><div class="card-header"><div class="card-title">Celine&#x27;s Quiet Luxury Trend</div><div class="card-meta"><strong>Category:</strong> luxury_fashion | <strong>Relevance:</strong> Celine · October 2023</div></div><div class="section section-overview"><div class="section-label">TREND OVERVIEW</div><p>Celine&#x27;s Quiet Luxury Trend is gaining traction among fashion influencers on XHS, focusing on understated elegance as seen in posts like &#x27;静奢风才是真正的有钱人穿搭｜Celine教科书&#x27;. With discussions emphasizing &quot;quality over quantity,&quot; this trend resonates with Celine&#x27;s core clientele who appreciate sophistication without overt branding.</p></div><div class="section section-data"><div class="section-label">DATA SIGNAL</div><ul>
+<li>Engagement rate: 16.5% (vs. XHS fashion category avg ~4.5% · 25 posts · October 2023)</li>
+<li>Post growth: +20% (week-on-week)</li>
+<li>Brand relevance: high</li>
+</ul>
+<p><strong>CONFIDENCE NOTE</strong></p>
+<p>LOW — This data reflects a post count (25) or engagement rate (16.5%) below thresholds (requires ≥3,000 posts, ≥8% engagement). Source: live XHS data scraped via DrissionPage.</p></div><div class="section section-client"><div class="section-label">CLIENT MATCH</div><p><strong>Best-fit persona:</strong> The Quiet Achiever</p>
+<p><strong>Who they are:</strong> High-net-worth client who has consciously moved away from visible status symbols. Celine&#x27;s logoless authority is the point — she wants to be recognized as someone with taste, not someone with a logo.</p>
+<p><strong>Why this trend fits:</strong> The Quiet Luxury Trend perfectly aligns with the values of The Quiet Achiever, who favors understated elegance and has a preference for quality over quantity. The emphasis on subtlety and superior craftsmanship resonates deeply with her desire for logoless authority and sophistication, making Celine&#x27;s offerings highly appealing to her aesthetic sensibilities.</p>
+<p><strong>Match score:</strong> 9/10</p>
+<p><strong>This trend is NOT for:</strong> Clients who prefer overt branding or logo moments, trend-driven pieces, or anything that signals effort over ease.</p></div><div class="section section-starter"><div class="section-label">CONVERSATION STARTER</div><div class="starter-label">Chinese</div><div class="starter-chinese">「最近在看一些静奢风的搭配，感觉Celine的设计在优雅中透露着低调的奢华，特别适合我们这样的追求品位的人。你觉得这样的风格会让你更有吸引力吗？」</div><div class="starter-label">English</div><div class="starter-english">"I’ve been admiring how beautifully Celine embodies quiet luxury lately. Their pieces really showcase a sense of taste without the loud branding. Does this understated elegance resonate with your personal style?"</div></div></div>
+</div>
+</body>
+</html>

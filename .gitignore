@@ -1,0 +1,19 @@
+.env
+.env.local
+__pycache__/
+*.pyc
+.venv/
+node_modules/
+.DS_Store
+
+# Playwright browser profile (login cookies — large)
+module_1/.pw_profile/
+
+# XHSScraper submodule (DrissionPage, no longer used)
+module_1/XHSScraper/
+
+# Large scraped data (tracked via Supabase instead)
+module_1/data/xhs_raw_posts.json
+
+# Playwright browsers cache
+**/playwright/.cache/

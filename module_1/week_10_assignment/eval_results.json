@@ -1,0 +1,367 @@
+{
+  "run_id": "run_0022",
+  "eval_timestamp_utc": "2026-03-29T16:57:26.052381+00:00",
+  "source_file": "run_0022_trend_objects.json",
+  "trend_count": 8,
+  "all_passed": false,
+  "checks": [
+    {
+      "check": "duplication_rate",
+      "passed": false,
+      "pass_rate": "3/8",
+      "similar_label_pairs": [],
+      "shared_post_ids": [
+        {
+          "post_id": "live_0159",
+          "in_trends": [
+            "t01",
+            "t03"
+          ]
+        },
+        {
+          "post_id": "live_0090",
+          "in_trends": [
+            "t01",
+            "t02"
+          ]
+        },
+        {
+          "post_id": "live_0039",
+          "in_trends": [
+            "t02",
+            "t08"
+          ]
+        },
+        {
+          "post_id": "live_0111",
+          "in_trends": [
+            "t03",
+            "t05"
+          ]
+        },
+        {
+          "post_id": "live_0078",
+          "in_trends": [
+            "t05",
+            "t08"
+          ]
+        }
+      ],
+      "per_trend": [
+        {
+          "trend_id": "t01",
+          "label": "Old Celine vs New Celine Nostalgia Debate",
+          "passed": false,
+          "issues": [
+            "post_id live_0159 shared with ['t03']",
+            "post_id live_0090 shared with ['t02']"
+          ]
+        },
+        {
+          "trend_id": "t02",
+          "label": "Celine Box Bag Relevance and Popularity Debate",
+          "passed": false,
+          "issues": [
+            "post_id live_0090 shared with ['t01']",
+            "post_id live_0039 shared with ['t08']"
+          ]
+        },
+        {
+          "trend_id": "t03",
+          "label": "Soft 16 Bag Functional Reviews and Styling",
+          "passed": false,
+          "issues": [
+            "post_id live_0159 shared with ['t01']",
+            "post_id live_0111 shared with ['t05']"
+          ]
+        },
+        {
+          "trend_id": "t04",
+          "label": "Celine 26 Spring/Summer and 2026 Fashion Show Content",
+          "passed": true,
+          "issues": []
+        },
+        {
+          "trend_id": "t05",
+          "label": "Celebrity Outfit Decoding and Influence on Celine Styling",
+          "passed": false,
+          "issues": [
+            "post_id live_0111 shared with ['t03']",
+            "post_id live_0078 shared with ['t08']"
+          ]
+        },
+        {
+          "trend_id": "t06",
+          "label": "Celine Bag Unboxing and Purchase Experience Sharing",
+          "passed": true,
+          "issues": []
+        },
+        {
+          "trend_id": "t07",
+          "label": "Celine Men’s Fashion and Male Accessory Focus",
+          "passed": true,
+          "issues": []
+        },
+        {
+          "trend_id": "t08",
+          "label": "Celine Bag Styling with French Old Money and Elegant Aesthetic",
+          "passed": false,
+          "issues": [
+            "post_id live_0039 shared with ['t02']",
+            "post_id live_0078 shared with ['t05']"
+          ]
+        }
+      ],
+      "failures": [
+        {
+          "trend_id": "t01",
+          "label": "Old Celine vs New Celine Nostalgia Debate",
+          "passed": false,
+          "issues": [
+            "post_id live_0159 shared with ['t03']",
+            "post_id live_0090 shared with ['t02']"
+          ]
+        },
+        {
+          "trend_id": "t02",
+          "label": "Celine Box Bag Relevance and Popularity Debate",
+          "passed": false,
+          "issues": [
+            "post_id live_0090 shared with ['t01']",
+            "post_id live_0039 shared with ['t08']"
+          ]
+        },
+        {
+          "trend_id": "t03",
+          "label": "Soft 16 Bag Functional Reviews and Styling",
+          "passed": false,
+          "issues": [
+            "post_id live_0159 shared with ['t01']",
+            "post_id live_0111 shared with ['t05']"
+          ]
+        },
+        {
+          "trend_id": "t05",
+          "label": "Celebrity Outfit Decoding and Influence on Celine Styling",
+          "passed": false,
+          "issues": [
+            "post_id live_0111 shared with ['t03']",
+            "post_id live_0078 shared with ['t08']"
+          ]
+        },
+        {
+          "trend_id": "t08",
+          "label": "Celine Bag Styling with French Old Money and Elegant Aesthetic",
+          "passed": false,
+          "issues": [
+            "post_id live_0039 shared with ['t02']",
+            "post_id live_0078 shared with ['t05']"
+          ]
+        }
+      ]
+    },
+    {
+      "check": "evidence_sufficiency",
+      "passed": true,
+      "pass_rate": "8/8",
+      "per_trend": [
+        {
+          "trend_id": "t01",
+          "label": "Old Celine vs New Celine Nostalgia Debate",
+          "passed": true,
+          "snippet_count": 5,
+          "evidence_post_count": 5,
+          "post_count": 12,
+          "issues": []
+        },
+        {
+          "trend_id": "t02",
+          "label": "Celine Box Bag Relevance and Popularity Debate",
+          "passed": true,
+          "snippet_count": 5,
+          "evidence_post_count": 5,
+          "post_count": 10,
+          "issues": []
+        },
+        {
+          "trend_id": "t03",
+          "label": "Soft 16 Bag Functional Reviews and Styling",
+          "passed": true,
+          "snippet_count": 5,
+          "evidence_post_count": 5,
+          "post_count": 8,
+          "issues": []
+        },
+        {
+          "trend_id": "t04",
+          "label": "Celine 26 Spring/Summer and 2026 Fashion Show Content",
+          "passed": true,
+          "snippet_count": 5,
+          "evidence_post_count": 5,
+          "post_count": 14,
+          "issues": []
+        },
+        {
+          "trend_id": "t05",
+          "label": "Celebrity Outfit Decoding and Influence on Celine Styling",
+          "passed": true,
+          "snippet_count": 5,
+          "evidence_post_count": 5,
+          "post_count": 10,
+          "issues": []
+        },
+        {
+          "trend_id": "t06",
+          "label": "Celine Bag Unboxing and Purchase Experience Sharing",
+          "passed": true,
+          "snippet_count": 5,
+          "evidence_post_count": 5,
+          "post_count": 10,
+          "issues": []
+        },
+        {
+          "trend_id": "t07",
+          "label": "Celine Men’s Fashion and Male Accessory Focus",
+          "passed": true,
+          "snippet_count": 5,
+          "evidence_post_count": 5,
+          "post_count": 12,
+          "issues": []
+        },
+        {
+          "trend_id": "t08",
+          "label": "Celine Bag Styling with French Old Money and Elegant Aesthetic",
+          "passed": true,
+          "snippet_count": 5,
+          "evidence_post_count": 5,
+          "post_count": 7,
+          "issues": []
+        }
+      ],
+      "failures": []
+    },
+    {
+      "check": "label_clarity",
+      "passed": false,
+      "pass_rate": "7/8",
+      "per_trend": [
+        {
+          "trend_id": "t01",
+          "label": "Old Celine vs New Celine Nostalgia Debate",
+          "word_count": 7,
+          "passed": true,
+          "issues": []
+        },
+        {
+          "trend_id": "t02",
+          "label": "Celine Box Bag Relevance and Popularity Debate",
+          "word_count": 7,
+          "passed": true,
+          "issues": []
+        },
+        {
+          "trend_id": "t03",
+          "label": "Soft 16 Bag Functional Reviews and Styling",
+          "word_count": 6,
+          "passed": true,
+          "issues": []
+        },
+        {
+          "trend_id": "t04",
+          "label": "Celine 26 Spring/Summer and 2026 Fashion Show Content",
+          "word_count": 7,
+          "passed": true,
+          "issues": []
+        },
+        {
+          "trend_id": "t05",
+          "label": "Celebrity Outfit Decoding and Influence on Celine Styling",
+          "word_count": 8,
+          "passed": true,
+          "issues": []
+        },
+        {
+          "trend_id": "t06",
+          "label": "Celine Bag Unboxing and Purchase Experience Sharing",
+          "word_count": 7,
+          "passed": true,
+          "issues": []
+        },
+        {
+          "trend_id": "t07",
+          "label": "Celine Men’s Fashion and Male Accessory Focus",
+          "word_count": 8,
+          "passed": true,
+          "issues": []
+        },
+        {
+          "trend_id": "t08",
+          "label": "Celine Bag Styling with French Old Money and Elegant Aesthetic",
+          "word_count": 10,
+          "passed": false,
+          "issues": [
+            "Label has 10 words, max is 8"
+          ]
+        }
+      ],
+      "failures": [
+        {
+          "trend_id": "t08",
+          "label": "Celine Bag Styling with French Old Money and Elegant Aesthetic",
+          "word_count": 10,
+          "passed": false,
+          "issues": [
+            "Label has 10 words, max is 8"
+          ]
+        }
+      ]
+    }
+  ],
+  "top_failures": [
+    {
+      "check": "duplication_rate",
+      "trend_id": "t01",
+      "label": "Old Celine vs New Celine Nostalgia Debate",
+      "issues": [
+        "post_id live_0159 shared with ['t03']",
+        "post_id live_0090 shared with ['t02']"
+      ]
+    },
+    {
+      "check": "duplication_rate",
+      "trend_id": "t02",
+      "label": "Celine Box Bag Relevance and Popularity Debate",
+      "issues": [
+        "post_id live_0090 shared with ['t01']",
+        "post_id live_0039 shared with ['t08']"
+      ]
+    },
+    {
+      "check": "duplication_rate",
+      "trend_id": "t03",
+      "label": "Soft 16 Bag Functional Reviews and Styling",
+      "issues": [
+        "post_id live_0159 shared with ['t01']",
+        "post_id live_0111 shared with ['t05']"
+      ]
+    },
+    {
+      "check": "duplication_rate",
+      "trend_id": "t05",
+      "label": "Celebrity Outfit Decoding and Influence on Celine Styling",
+      "issues": [
+        "post_id live_0111 shared with ['t03']",
+        "post_id live_0078 shared with ['t08']"
+      ]
+    },
+    {
+      "check": "duplication_rate",
+      "trend_id": "t08",
+      "label": "Celine Bag Styling with French Old Money and Elegant Aesthetic",
+      "issues": [
+        "post_id live_0039 shared with ['t02']",
+        "post_id live_0078 shared with ['t05']"
+      ]
+    }
+  ]
+}

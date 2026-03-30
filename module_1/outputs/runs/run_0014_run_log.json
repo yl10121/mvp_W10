@@ -1,0 +1,63 @@
+{
+  "run_id": "run_0014",
+  "retrieved_sources": [
+    "data/xhs_posts.json",
+    "data/run_config.json"
+  ],
+  "retrieved_post_ids": [
+    "live_0010",
+    "live_0001",
+    "live_0002",
+    "live_0008",
+    "live_0011",
+    "live_0021",
+    "live_0003",
+    "live_0007",
+    "live_0009",
+    "live_0015",
+    "live_0006",
+    "live_0016",
+    "live_0018",
+    "live_0004",
+    "live_0005",
+    "live_0022",
+    "live_0014"
+  ],
+  "decision_output_file": "outputs/runs/run_0014_trend_objects.json",
+  "decision_mode": "rules-first with optional LLM",
+  "prompt_in_use_for_decision": true,
+  "llm_enabled": true,
+  "llm_model": "gpt-4.1-mini",
+  "llm_label_calls_succeeded": 0,
+  "llm_label_calls_total": 2,
+  "llm_errors": [
+    "OPENROUTER_API_KEY missing",
+    "OPENROUTER_API_KEY missing"
+  ],
+  "evidence_used": {
+    "t01": [
+      "live_0010",
+      "live_0002",
+      "live_0011",
+      "live_0003",
+      "live_0007"
+    ],
+    "t02": [
+      "live_0021",
+      "live_0015",
+      "live_0016",
+      "live_0018",
+      "live_0004"
+    ]
+  },
+  "labeling_sources": {
+    "t01": "heuristic",
+    "t02": "heuristic"
+  },
+  "confidence": {
+    "t01": "high",
+    "t02": "high"
+  },
+  "next_step_suggestion": "Send approved trend objects into Module 2 for materiality ranking.",
+  "timestamp_utc": "2026-03-29T16:29:56.478889+00:00"
+}

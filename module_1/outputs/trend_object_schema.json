@@ -22,12 +22,29 @@
     "labeling_source",
     "evidence",
     "metrics",
+    "visual_assets",
     "timestamp"
   ],
   "evidence_fields": [
     "post_ids",
     "snippets",
     "posts"
+  ],
+  "evidence_post_fields": [
+    "post_id",
+    "title",
+    "date",
+    "brand",
+    "likes",
+    "comments",
+    "saves",
+    "creator",
+    "post_link",
+    "cover_url",
+    "all_image_urls",
+    "is_video",
+    "video_url",
+    "image_caption"
   ],
   "metrics_fields": [
     "post_count",
@@ -36,6 +53,19 @@
     "total_likes",
     "total_comments",
     "total_saves",
-    "top_keywords"
-  ]
+    "top_keywords",
+    "video_post_count",
+    "image_count"
+  ],
+  "visual_assets_fields": [
+    "all_image_urls",
+    "image_captions",
+    "video_post_count"
+  ],
+  "comment_signals_fields": [
+    "total_comments_scraped",
+    "total_replies_scraped",
+    "all_comments"
+  ],
+  "privacy_note": "Commenter real usernames are NEVER stored. Each commenter_id is a one-way SHA-256 hash so the same user maps to the same ID without being reversible."
 }

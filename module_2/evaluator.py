@@ -9,7 +9,12 @@ import json
 import os
 import sys
 import time
+from pathlib import Path
 from typing import Optional
+
+from dotenv import load_dotenv
+
+load_dotenv(dotenv_path=Path(__file__).parent.parent / ".env")
 
 from prompts import build_system_prompt, build_batch_evaluation_prompt
 
@@ -31,6 +36,8 @@ def _get_client():
             "OPENROUTER_API_KEY environment variable is not set. "
             "Please add it to your .env file."
         )
+    key_preview = api_key[:8]
+    print(f"[evaluator] OPENROUTER_API_KEY: {key_preview}... → OpenRouter client initialized")
     return OpenAI(api_key=api_key, base_url="https://openrouter.ai/api/v1")
 
 

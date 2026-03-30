@@ -1,0 +1,2345 @@
+{
+  "run_id": "run_0014",
+  "agent": {
+    "name": "XHS Trend Object Builder",
+    "module": "Module 1 - Trend Object Builder",
+    "owner": "Manny"
+  },
+  "decision": "From XHS posts in a brand/category/time window, produce distinct trend objects with evidence and metrics.",
+  "output_type": "Type B - Reviewable output",
+  "mvp_outcome_statement": "If our MVP works, trend signals from Xiaohongshu become faster to validate and easier for downstream teams to reuse, because the system converts raw API/XHS inputs into strict, evidence-backed Trend Objects.",
+  "brand": "Celine",
+  "category": "luxury_fashion",
+  "time_window": {
+    "start_date": "2026-03-01",
+    "end_date": "2026-03-31"
+  },
+  "retrieval": {
+    "sources": [
+      "data/xhs_posts.json",
+      "data/run_config.json"
+    ],
+    "records_loaded": 197,
+    "records_retrieved": 17
+  },
+  "prompt": "You are the decision engine for Module 1: XHS Trend Object Builder. Your job is to turn retrieved Xiaohongshu posts for one brand/category and one time window into reviewable Type-B trend objects that can be audited by a human reviewer. Work only with the provided posts. Do not use outside knowledge, assumptions, or invented examples. First, identify semantically similar clusters by recurring themes, aesthetics, usage scenarios, product angles, behavior patterns, or language signals. Then ensure trend distinctness: trends should be meaningfully different from each other and not just renamed duplicates. If clusters overlap heavily, merge them or lower confidence rather than forcing extra trends. For each trend, generate: (1) a concise trend label, (2) a one-sentence summary of what the trend represents, (3) evidence linked to real posts, including supporting post IDs and short snippets, (4) metrics computed only from retrieved data, including post_count and total_engagement, and (5) confidence as low, medium, or high. Confidence should be high only when evidence is coherent and sufficient; medium when signal is present but partially mixed; low when sparse, weak, or ambiguous. Include explicit ai_reasoning that explains why those posts belong together and why confidence was chosen. Never claim evidence that is not directly present in the retrieved posts. If evidence is weak or ambiguous, output fewer trends and clearly state uncertainty.",
+  "prompt_in_use_for_decision": true,
+  "generated_at_utc": "2026-03-29T16:29:56.473788+00:00",
+  "decision_logic": {
+    "mode": "rules-first with optional LLM label/summary",
+    "llm_enabled": true,
+    "llm_model": "gpt-4.1-mini",
+    "llm_label_calls_succeeded": 0,
+    "llm_label_calls_total": 2,
+    "llm_errors": [
+      "OPENROUTER_API_KEY missing",
+      "OPENROUTER_API_KEY missing"
+    ]
+  },
+  "trend_objects": [
+    {
+      "trend_id": "t01",
+      "label": "Mixed Trend Signals",
+      "category": "luxury_fashion",
+      "summary": "Posts cluster around mixed trend signals with recurring evidence such as: WANG ANYU AT CELINE PFW26；王安宇出发Celine秀场 太帅了.",
+      "ai_reasoning": "Grouped because posts share recurring keywords/themes ['celine', '王安宇', '巴黎时装周', '小红书时装周群聊', '秀场'] and show consistent engagement patterns in the same category.",
+      "confidence": "high",
+      "labeling_source": "heuristic",
+      "evidence": {
+        "post_ids": [
+          "live_0010",
+          "live_0002",
+          "live_0011",
+          "live_0003",
+          "live_0007"
+        ],
+        "snippets": [
+          "WANG ANYU AT CELINE PFW26",
+          "Celine封神细节｜这蓝标的含金量！留白美学",
+          "王安宇出发Celine秀场 太帅了",
+          "CELINE不需要过度解释",
+          "Celine巴黎晚宴"
+        ],
+        "posts": [
+          {
+            "post_id": "live_0010",
+            "title": "WANG ANYU AT CELINE PFW26",
+            "date": "03-08 泰国",
+            "brand": "Celine",
+            "likes": 5053,
+            "comments": 0,
+            "saves": 402,
+            "creator": "user_9f712abb",
+            "post_link": "https://www.xiaohongshu.com/explore/69ad7e3a000000002603cf53",
+            "cover_url": "https://sns-webpic-qc.xhscdn.com/202603292320/d3dd070bfbecc8dd7a323160ba38cc1e/1040g2sg31tf3s4cbl6705p7ltuq18465dqomcj8!nc_n_webp_mw_1",
+            "all_image_urls": [
+              "https://sns-webpic-qc.xhscdn.com/202603292323/361ef8e68ac349d5066fb942d720f195/1040g2sg31tf3s4cbl6b05p7ltuq18465i7b8lb0!nd_dft_wlteh_webp_3",
+              "https://sns-webpic-qc.xhscdn.com/202603292323/fc8028df5f865ab943ca5cf6ff21f6e9/1040g2sg31tf3s4cbl6705p7ltuq18465dqomcj8!nd_dft_wlteh_webp_3",
+              "https://sns-webpic-qc.xhscdn.com/202603292323/9f2677dc2891af4cd435a8e9ab82bf0d/1040g2sg31tf3s4cbl67g5p7ltuq184652ig9h4o!nd_dft_wlteh_webp_3",
+              "https://sns-webpic-qc.xhscdn.com/202603292323/53c7b859c3576c0da38fd9239f218350/1040g2sg31tf3s4cbl6805p7ltuq184651qr93u8!nd_dft_wlteh_webp_3",
+              "https://sns-webpic-qc.xhscdn.com/202603292323/86c120c88c05fd858b23c979f8f821b3/1040g2sg31tf3s4cbl68g5p7ltuq18465o2neoqo!nd_dft_wlteh_webp_3",
+              "https://sns-webpic-qc.xhscdn.com/202603292323/364a9958260fa34e9094fd752289f165/1040g2sg31tf3s4cbl69g5p7ltuq184650q2eido!nd_dft_wlteh_webp_3",
+              "https://sns-webpic-qc.xhscdn.com/202603292323/6198856ac31cfebca8ae9217c9459cf1/1040g2sg31tf3s4cbl6905p7ltuq184655hf9c48!nd_dft_wlteh_webp_3",
+              "https://sns-webpic-qc.xhscdn.com/202603292323/b8c56eebc13d7d1a728a5eb0ca70d3da/1040g2sg31tf3s4cbl6a05p7ltuq18465tgbe0co!nd_dft_wlteh_webp_3",
+              "https://sns-webpic-qc.xhscdn.com/202603292323/3b386cfd744c71c93edff56eb593f361/1040g2sg31tf3s4cbl6bg5p7ltuq184659vhepq0!nd_dft_wlteh_webp_3",
+              "https://sns-webpic-qc.xhscdn.com/202603292323/dca15574f4469bf9f5fe03dc3b3187a9/1040g2sg31tf3s4cbl6ag5p7ltuq18465ho2gl80!nd_dft_wlteh_webp_3"
+            ],
+            "is_video": false,
+            "video_url": "",
+            "image_caption": "The image features a young man styled in a black denim jacket over a white shirt, embodying a modern, urban aesthetic. The monochrome color palette emphasizes contrast, with shadows highlighting facial features and details in the clothing. The setting includes wicker chairs, adding to a casual yet stylish atmosphere, while no visible text or overt branding is present to distract from the focus on fashion.",
+            "comments_scraped": [
+              {
+                "commenter_id": "user_cc92fede",
+                "text": "帅夯了",
+                "likes": 2,
+                "replies": []
+              },
+              {
+                "commenter_id": "user_cc92fede",
+                "text": "帅夯了",
+                "likes": 2,
+                "replies": []
+              },
+              {
+                "commenter_id": "user_019746b2",
+                "text": "老王哥好像瘦了",
+                "likes": 3,
+                "replies": []
+              },
+              {
+                "commenter_id": "user_019746b2",
+                "text": "老王哥好像瘦了",
+                "likes": 3,
+                "replies": []
+              },
+              {
+                "commenter_id": "user_888da5db",
+                "text": "在拍偶像剧中。。。瘦很多哦",
+                "likes": 15,
+                "replies": []
+              },
+              {
+                "commenter_id": "user_0cbdd7c4",
+                "text": "极致反差",
+                "likes": 48,
+                "replies": []
+              },
+              {
+                "commenter_id": "user_0cbdd7c4",
+                "text": "极致反差",
+                "likes": 48,
+                "replies": []
+              },
+              {
+                "commenter_id": "user_64852722",
+                "text": "和这张反差更大",
+                "likes": 47,
+                "replies": []
+              },
+              {
+                "commenter_id": "user_9fb35b6c",
+                "text": "好喜欢第一张",
+                "likes": 1,
+                "replies": []
+              },
+              {
+                "commenter_id": "user_9fb35b6c",
+                "text": "好喜欢第一张",
+                "likes": 1,
+                "replies": []
+              },
+              {
+                "commenter_id": "user_fb22f10a",
+                "text": "老王哥帅就不必多说了，怎么还这么可爱呀🥹",
+                "likes": 39,
+                "replies": []
+              },
+              {
+                "commenter_id": "user_fb22f10a",
+                "text": "老王哥帅就不必多说了，怎么还这么可爱呀🥹",
+                "likes": 39,
+                "replies": []
+              },
+              {
+                "commenter_id": "user_b719a1b5",
+                "text": "第一张能不能求个图呀！",
+                "likes": 1,
+                "replies": []
+              },
+              {
+                "commenter_id": "user_8ce16545",
+                "text": "哇这是哪里的图",
+                "likes": 5,
+                "replies": []
+              },
+              {
+                "commenter_id": "user_8ce16545",
+                "text": "哇这是哪里的图",
+                "likes": 5,
+                "replies": []
+              },
+              {
+                "commenter_id": "user_a3b4c74d",
+                "text": "作者",
+                "likes": 1,
+                "replies": []
+              },
+              {
+                "commenter_id": "user_e5310904",
+                "text": "他真张张神图",
+                "likes": 2,
+                "replies": []
+              },
+              {
+                "commenter_id": "user_e5310904",
+                "text": "他真张张神图",
+                "likes": 2,
+                "replies": []
+              },
+              {
+                "commenter_id": "user_cc7ae189",
+                "text": "真的没法形容了，真的好帅，而且是独一份的气质和味道！！！！！",
+                "likes": 10,
+                "replies": []
+              },
+              {
+                "commenter_id": "user_cc7ae189",
+                "text": "真的没法形容了，真的好帅，而且是独一份的气质和味道！！！！！",
+                "likes": 10,
+                "replies": []
+              },
+              {
+                "commenter_id": "user_26c63853",
+                "text": "小丸的审美真的好",
+                "likes": 4,
+                "replies": []
+              },
+              {
+                "commenter_id": "user_26c63853",
+                "text": "小丸的审美真的好",
+                "likes": 4,
+                "replies": []
+              },
+              {
+                "commenter_id": "user_14cfd9db",
+                "text": "安宇做任何大表情都很生动很 好灵啊",
+                "likes": 16,
+                "replies": []
+              },
+              {
+                "commenter_id": "user_14cfd9db",
+                "text": "安宇做任何大表情都很生动很 好灵啊",
+                "likes": 16,
+                "replies": []
+              }
+            ],
+            "comments_count_scraped": 24
+          },
+          {
+            "post_id": "live_0002",
+            "title": "Celine封神细节｜这蓝标的含金量！留白美学",
+            "date": "编辑于 03-11 上海",
+            "brand": "Celine",
+            "likes": 3323,
+            "comments": 0,
+            "saves": 600,
+            "creator": "user_168bb5b3",
+            "post_link": "https://www.xiaohongshu.com/explore/69b0c208000000000c017ffc",
+            "cover_url": "https://sns-webpic-qc.xhscdn.com/202603292320/45dfff620bf941028f63d1855aee11fd/1040g00831ti9slbd5m5g43ch6gjqrp0do6rch2g!nc_n_webp_mw_1",
+            "all_image_urls": [
+              "https://sns-webpic-qc.xhscdn.com/202603292321/f9d6d0000e188cb6659d193ee1fa356e/1040g00831ti9slbd5m4g43ch6gjqrp0dhjjt8j8!nd_dft_wlteh_webp_3",
+              "https://sns-webpic-qc.xhscdn.com/202603292321/461acdf834919e52af14d94d310bbc77/1040g00831ti9slbd5m5g43ch6gjqrp0do6rch2g!nd_dft_wlteh_webp_3",
+              "https://sns-webpic-qc.xhscdn.com/202603292321/d2936b2b9210b882f9b53aef827094d6/1040g2sg31tib5tpalsh043ch6gjqrp0dhr3pppg!nd_dft_wlteh_webp_3",
+              "https://sns-webpic-qc.xhscdn.com/202603292321/9e9e7c5ec155969abce65f492bbcbb77/1040g2sg31tib5tpalsig43ch6gjqrp0d1hqjar0!nd_dft_wlteh_webp_3",
+              "https://sns-webpic-qc.xhscdn.com/202603292321/1005d2d28814a25b65c145dd976b25b5/1040g2sg31tib5tpalshg43ch6gjqrp0dero1u3g!nd_dft_wlteh_webp_3",
+              "https://sns-webpic-qc.xhscdn.com/202603292321/1fd798eaf2b98840973eda7b87861f5a/1040g2sg31tib5tpalsi043ch6gjqrp0dv204n70!nd_dft_wlteh_webp_3",
+              "https://sns-webpic-qc.xhscdn.com/202603292321/435f8ac5be7a2a896296196b6e90865a/1040g2sg31tib5tpalsjg43ch6gjqrp0ddi6idc0!nd_dft_wlteh_webp_3",
+              "https://sns-webpic-qc.xhscdn.com/202603292321/49d62ee687e454b26178fdcbca7c3cf0/1040g2sg31tib5tpalskg43ch6gjqrp0d335jsk0!nd_dft_wlteh_webp_3",
+              "https://sns-webpic-qc.xhscdn.com/202603292321/b36f4d30873d23e22e9651051ecf2ca2/1040g00831ti9slbd5m0g43ch6gjqrp0d591iek0!nd_dft_wlteh_webp_3",
+              "https://sns-webpic-qc.xhscdn.com/202603292321/1f8edb9bea9badce8e5f30a7573de66b/1040g00831ti9slbd5m0043ch6gjqrp0dq6vameg!nd_dft_wlteh_webp_3",
+              "https://sns-webpic-qc.xhscdn.com/202603292321/3587e145ca5854d321a37d36848556d0/1040g00831ti9slbd5m1043ch6gjqrp0dqh30jn8!nd_dft_wlteh_webp_3",
+              "https://sns-webpic-qc.xhscdn.com/202603292321/b400ce6791b2c0bdb9c2e3540d84b108/1040g00831ti9slbd5m1g43ch6gjqrp0dncuj9m0!nd_dft_wlteh_webp_3",
+              "https://sns-webpic-qc.xhscdn.com/202603292321/28825f784a7bbfb692184e4999297eec/1040g00831ti9slbd5m3043ch6gjqrp0d3u9otog!nd_dft_wlteh_webp_3",
+              "https://sns-webpic-qc.xhscdn.com/202603292321/0e0afd17cef937946238e1eb325985c9/1040g00831ti9slbd5m2043ch6gjqrp0do8rt8kg!nd_dft_wlteh_webp_3",
+              "https://sns-webpic-qc.xhscdn.com/202603292321/5dbd04c022935cb01f0687e9f41a781b/1040g00831ti9slbd5m2g43ch6gjqrp0db8ath30!nd_dft_wlteh_webp_3",
+              "https://sns-webpic-qc.xhscdn.com/202603292321/4767d1c74411174dfc9edb2b2e8cadd4/1040g00831ti9slbd5m4043ch6gjqrp0drg9oe28!nd_dft_wlteh_webp_3",
+              "https://sns-webpic-qc.xhscdn.com/202603292321/c229444885e65982ca2efba053278b77/1040g00831ti9slbd5m5043ch6gjqrp0dg7dsj9o!nd_dft_wlteh_webp_3",
+              "https://sns-webpic-qc.xhscdn.com/202603292321/f47c30a073a2967ba1e27fb92e950258/1040g00831ti9slbd5m3g43ch6gjqrp0dccrerj0!nd_dft_wlteh_webp_3"
+            ],
+            "is_video": false,
+            "video_url": "",
+            "image_caption": "The image features a model wearing wide-leg navy trousers with a contrasting vertical stripe and pointed-toe black ankle boots. A brown leather clutch with subtle branding details and a minimalist design complements the outfit. The overall aesthetic leans toward a refined, modern elegance, highlighted by a neutral color palette with earth tones and classic navy.",
+            "comments_scraped": [
+              {
+                "commenter_id": "user_c8af4b7e",
+                "text": "图一这个裤子谁家有啊",
+                "likes": 0,
+                "replies": []
+              },
+              {
+                "commenter_id": "user_c8af4b7e",
+                "text": "图一这个裤子谁家有啊",
+                "likes": 0,
+                "replies": []
+              },
+              {
+                "commenter_id": "user_c8af4b7e",
+                "text": "回复 CELINE-北京Skp-Seven : 啥💰",
+                "likes": 0,
+                "replies": []
+              },
+              {
+                "commenter_id": "user_5d4deaa7",
+                "text": "我之前就很看好它 结果今年老王哥还当上了大使 更加印证了它之后会更厉害",
+                "likes": 67,
+                "replies": []
+              },
+              {
+                "commenter_id": "user_5d4deaa7",
+                "text": "我之前就很看好它 结果今年老王哥还当上了大使 更加印证了它之后会更厉害",
+                "likes": 67,
+                "replies": []
+              },
+              {
+                "commenter_id": "user_34c03fbb",
+                "text": "对的 太对了！",
+                "likes": 3,
+                "replies": []
+              },
+              {
+                "commenter_id": "user_b1b12231",
+                "text": "这裤子好看啊，多钱",
+                "likes": 0,
+                "replies": []
+              },
+              {
+                "commenter_id": "user_b1b12231",
+                "text": "这裤子好看啊，多钱",
+                "likes": 0,
+                "replies": []
+              },
+              {
+                "commenter_id": "user_34c03fbb",
+                "text": "celine今年真的会赢",
+                "likes": 34,
+                "replies": []
+              },
+              {
+                "commenter_id": "user_34c03fbb",
+                "text": "celine今年真的会赢",
+                "likes": 34,
+                "replies": []
+              },
+              {
+                "commenter_id": "user_4138a77a",
+                "text": "Celine要起飞啦",
+                "likes": 6,
+                "replies": []
+              },
+              {
+                "commenter_id": "user_bb997969",
+                "text": "第一条好看哎",
+                "likes": 0,
+                "replies": []
+              },
+              {
+                "commenter_id": "user_bb997969",
+                "text": "第一条好看哎",
+                "likes": 0,
+                "replies": []
+              },
+              {
+                "commenter_id": "user_e91666c7",
+                "text": "封面幻视跆拳道🥋",
+                "likes": 0,
+                "replies": []
+              },
+              {
+                "commenter_id": "user_e91666c7",
+                "text": "封面幻视跆拳道🥋",
+                "likes": 0,
+                "replies": []
+              },
+              {
+                "commenter_id": "user_ef4c823c",
+                "text": "➕1",
+                "likes": 0,
+                "replies": []
+              },
+              {
+                "commenter_id": "user_bf3cb6d5",
+                "text": "图一好看！",
+                "likes": 0,
+                "replies": []
+              },
+              {
+                "commenter_id": "user_bf3cb6d5",
+                "text": "图一好看！",
+                "likes": 0,
+                "replies": []
+              },
+              {
+                "commenter_id": "user_7e94049a",
+                "text": "这裤子有平替吗",
+                "likes": 2,
+                "replies": []
+              },
+              {
+                "commenter_id": "user_7e94049a",
+                "text": "这裤子有平替吗",
+                "likes": 2,
+                "replies": []
+              },
+              {
+                "commenter_id": "user_ec6ce467",
+                "text": "我也想知道",
+                "likes": 1,
+                "replies": []
+              },
+              {
+                "commenter_id": "user_3c205ca1",
+                "text": "包包的C logo很coach",
+                "likes": 4,
+                "replies": []
+              },
+              {
+                "commenter_id": "user_3c205ca1",
+                "text": "包包的C logo很coach",
+                "likes": 4,
+                "replies": []
+              },
+              {
+                "commenter_id": "user_34c03fbb",
+                "text": "再看看",
+                "likes": 2,
+                "replies": []
+              },
+              {
+                "commenter_id": "user_b529307d",
+                "text": "celine一直很好看",
+                "likes": 0,
+                "replies": []
+              },
+              {
+                "commenter_id": "user_b529307d",
+                "text": "celine一直很好看",
+                "likes": 0,
+                "replies": []
+              }
+            ],
+            "comments_count_scraped": 26
+          },
+          {
+            "post_id": "live_0011",
+            "title": "王安宇出发Celine秀场 太帅了",
+            "date": "03-07 法国",
+            "brand": "Celine",
+            "likes": 772,
+            "comments": 0,
+            "saves": 74,
+            "creator": "user_be2ba9d7",
+            "post_link": "https://www.xiaohongshu.com/explore/69abffef000000001d011210",
+            "cover_url": "https://sns-webpic-qc.xhscdn.com/202603292320/dcbc24c6aed75c297d3017b88d480899/1040g2sg31tdl4ead5k7049b9knihjoo9a9vcdn0!nc_n_webp_mw_1",
+            "all_image_urls": [
+              "https://sns-webpic-qc.xhscdn.com/202603292320/dcbc24c6aed75c297d3017b88d480899/1040g2sg31tdl4ead5k7049b9knihjoo9a9vcdn0!nc_n_webp_mw_1"
+            ],
+            "is_video": true,
+            "video_url": "blob:https://www.xiaohongshu.com/88340de4-f0bf-42bf-b74f-23a0f422dd3d",
+            "image_caption": "The post features an individual showcasing a stylish outfit, which includes a tailored black suit with a contrasting striped shirt that has orange, white, and navy blue hues. The visual aesthetic is sophisticated and modern, emphasizing a chic urban vibe. Accessories include sleek sunglasses, contributing to a polished look, while the background hints at a fashionable venue, likely related to a Celine event. Visible text includes the account handle \"@PingPing在巴璃\" and a note indicating the source as \"From 小红书.\"",
+            "comments_scraped": [
+              {
+                "commenter_id": "user_8fcbde7d",
+                "text": "好帅",
+                "likes": 9,
+                "replies": []
+              },
+              {
+                "commenter_id": "user_8fcbde7d",
+                "text": "好帅",
+                "likes": 9,
+                "replies": []
+              },
+              {
+                "commenter_id": "user_58c4506c",
+                "text": "确实",
+                "likes": 0,
+                "replies": []
+              },
+              {
+                "commenter_id": "user_34e525d0",
+                "text": "这是酒店？我看孙千也是从这个门出来的",
+                "likes": 0,
+                "replies": []
+              },
+              {
+                "commenter_id": "user_34e525d0",
+                "text": "这是酒店？我看孙千也是从这个门出来的",
+                "likes": 0,
+                "replies": []
+              },
+              {
+                "commenter_id": "user_83acb79b",
+                "text": "作者",
+                "likes": 0,
+                "replies": []
+              },
+              {
+                "commenter_id": "user_561bf15c",
+                "text": "你选了一张这一段路中他的走姿最不协调的截图做封面",
+                "likes": 0,
+                "replies": []
+              },
+              {
+                "commenter_id": "user_561bf15c",
+                "text": "你选了一张这一段路中他的走姿最不协调的截图做封面",
+                "likes": 0,
+                "replies": []
+              },
+              {
+                "commenter_id": "user_739a929f",
+                "text": "哪个酒店啊",
+                "likes": 0,
+                "replies": []
+              },
+              {
+                "commenter_id": "user_739a929f",
+                "text": "哪个酒店啊",
+                "likes": 0,
+                "replies": []
+              },
+              {
+                "commenter_id": "user_35b45a5e",
+                "text": "帅",
+                "likes": 1,
+                "replies": []
+              },
+              {
+                "commenter_id": "user_35b45a5e",
+                "text": "帅",
+                "likes": 1,
+                "replies": []
+              },
+              {
+                "commenter_id": "user_58e7ceee",
+                "text": "太帅了",
+                "likes": 0,
+                "replies": []
+              },
+              {
+                "commenter_id": "user_58e7ceee",
+                "text": "太帅了",
+                "likes": 0,
+                "replies": []
+              },
+              {
+                "commenter_id": "user_34936515",
+                "text": "里面那件有点像中国老头衫",
+                "likes": 0,
+                "replies": []
+              },
+              {
+                "commenter_id": "user_34936515",
+                "text": "里面那件有点像中国老头衫",
+                "likes": 0,
+                "replies": []
+              },
+              {
+                "commenter_id": "user_db518485",
+                "text": "哇塞🤩",
+                "likes": 0,
+                "replies": []
+              },
+              {
+                "commenter_id": "user_db518485",
+                "text": "哇塞🤩",
+                "likes": 0,
+                "replies": []
+              },
+              {
+                "commenter_id": "user_2d9bd6aa",
+                "text": "感觉行走动作略差一些些",
+                "likes": 0,
+                "replies": []
+              },
+              {
+                "commenter_id": "user_2d9bd6aa",
+                "text": "感觉行走动作略差一些些",
+                "likes": 0,
+                "replies": []
+              },
+              {
+                "commenter_id": "user_31004864",
+                "text": "小皮鞋太尖了",
+                "likes": 0,
+                "replies": []
+              },
+              {
+                "commenter_id": "user_31004864",
+                "text": "小皮鞋太尖了",
+                "likes": 0,
+                "replies": []
+              }
+            ],
+            "comments_count_scraped": 22
+          },
+          {
+            "post_id": "live_0003",
+            "title": "CELINE不需要过度解释",
+            "date": "03-08 中国香港",
+            "brand": "Celine",
+            "likes": 199,
+            "comments": 0,
+            "saves": 78,
+            "creator": "user_8767fae7",
+            "post_link": "https://www.xiaohongshu.com/explore/69ad6b06000000001a0316c8",
+            "cover_url": "https://sns-webpic-qc.xhscdn.com/202603292320/48a9f6c88f96c7b799ffd713c5cf6dc2/notes_pre_post/1040g3k831tf1bjgo68c05nj3eqng817k8ju7r1o!nc_n_webp_mw_1",
+            "all_image_urls": [
+              "https://sns-webpic-qc.xhscdn.com/202603292322/d93e717a0630e573a1355918c2a96af9/notes_pre_post/1040g3k031tf1h6oblm6g5nj3eqng817k2oc1jko!nd_dft_wlteh_webp_3",
+              "https://sns-webpic-qc.xhscdn.com/202603292322/9d7907baee1b3f44ecfa12bf4ab79f9c/notes_pre_post/1040g3k831tf1bjgo68c05nj3eqng817k8ju7r1o!nd_dft_wlteh_webp_3",
+              "https://sns-webpic-qc.xhscdn.com/202603292322/5bb95e94ee7321db25508415c75debe6/notes_pre_post/1040g3k831tf1bjgo68cg5nj3eqng817kc20afg0!nd_dft_wlteh_webp_3",
+              "https://sns-webpic-qc.xhscdn.com/202603292322/3209439036445af0dedab546a1256d80/notes_pre_post/1040g3k831tf1bjgo68d05nj3eqng817k3je4s70!nd_dft_wlteh_webp_3",
+              "https://sns-webpic-qc.xhscdn.com/202603292322/160e3c67911db44ac551d9f4136b927c/notes_pre_post/1040g3k831tf1bjgo68dg5nj3eqng817kk0h18t0!nd_dft_wlteh_webp_3",
+              "https://sns-webpic-qc.xhscdn.com/202603292322/51ed3b215e193efd55744d9c27f392cc/notes_pre_post/1040g3k031tf1h6oblm005nj3eqng817k4295al8!nd_dft_wlteh_webp_3",
+              "https://sns-webpic-qc.xhscdn.com/202603292322/5e6f059ab86e32630853714e81365280/notes_pre_post/1040g3k031tf1h6oblm0g5nj3eqng817kn3tcs98!nd_dft_wlteh_webp_3",
+              "https://sns-webpic-qc.xhscdn.com/202603292322/f5c88950f3a06b9e58fc51b7f070c426/notes_pre_post/1040g3k031tf1h6oblm105nj3eqng817k7daujso!nd_dft_wlteh_webp_3",
+              "https://sns-webpic-qc.xhscdn.com/202603292322/f06791dfe447eaeafdcfd0e9d46db554/notes_pre_post/1040g3k031tf1h6oblm1g5nj3eqng817kkmg6ph0!nd_dft_wlteh_webp_3",
+              "https://sns-webpic-qc.xhscdn.com/202603292322/f1e9a1fdfc4304ddec199e458b9c3c86/notes_pre_post/1040g3k031tf1h6oblm205nj3eqng817ko11q49o!nd_dft_wlteh_webp_3",
+              "https://sns-webpic-qc.xhscdn.com/202603292322/789e56c043ae29738e35a3be05742a99/notes_pre_post/1040g3k031tf1h6oblm2g5nj3eqng817khtvd0rg!nd_dft_wlteh_webp_3",
+              "https://sns-webpic-qc.xhscdn.com/202603292322/bb5dcca92656b8ee34e1ed2ff0bbfb4d/notes_pre_post/1040g3k031tf1h6oblm305nj3eqng817ktm3n4sg!nd_dft_wlteh_webp_3",
+              "https://sns-webpic-qc.xhscdn.com/202603292322/684719638f5ce3d79dc95fb39e42adcf/notes_pre_post/1040g3k031tf1h6oblm3g5nj3eqng817kpgtimto!nd_dft_wlteh_webp_3",
+              "https://sns-webpic-qc.xhscdn.com/202603292322/18041103eef17b2e9a6e511523073da9/notes_pre_post/1040g3k031tf1h6oblm405nj3eqng817kian101g!nd_dft_wlteh_webp_3",
+              "https://sns-webpic-qc.xhscdn.com/202603292322/17924a094d9a6bb34c975cd1f58aab51/notes_pre_post/1040g3k031tf1h6oblm4g5nj3eqng817kbvb7jl0!nd_dft_wlteh_webp_3",
+              "https://sns-webpic-qc.xhscdn.com/202603292322/c6ea4c00736a4337c522a1e3c996bc14/notes_pre_post/1040g3k031tf1h6oblm505nj3eqng817kmvvtrq0!nd_dft_wlteh_webp_3",
+              "https://sns-webpic-qc.xhscdn.com/202603292322/5c690e751d1adc86843ff7fd25dba84a/notes_pre_post/1040g3k031tf1h6oblm5g5nj3eqng817ke77o93o!nd_dft_wlteh_webp_3",
+              "https://sns-webpic-qc.xhscdn.com/202603292322/732ce8e506f29d3ec1df47e98c811033/notes_pre_post/1040g3k031tf1h6oblm605nj3eqng817krogj128!nd_dft_wlteh_webp_3"
+            ],
+            "is_video": false,
+            "video_url": "",
+            "image_caption": "The image features a fashion runway scene with models showcasing high-fashion outfits, specifically a textured, light-colored ensemble on one model with distinctive shades and a small handbag, and a dark-toned outfit on another model. The visual aesthetic is minimalist with a modern vibe, highlighted by neutral colors dominating the space, such as beige and black, against a muted background. The styling emphasizes elegance and sophistication, aligning with CELINE's brand identity.",
+            "comments_scraped": [
+              {
+                "commenter_id": "user_bfa98de7",
+                "text": "真实又好看又实用",
+                "likes": 1,
+                "replies": []
+              },
+              {
+                "commenter_id": "user_bfa98de7",
+                "text": "真实又好看又实用",
+                "likes": 1,
+                "replies": []
+              },
+              {
+                "commenter_id": "user_878ceed0",
+                "text": "你",
+                "likes": 13,
+                "replies": []
+              },
+              {
+                "commenter_id": "user_31004864",
+                "text": "真的好好看",
+                "likes": 4,
+                "replies": []
+              },
+              {
+                "commenter_id": "user_31004864",
+                "text": "真的好好看",
+                "likes": 4,
+                "replies": []
+              },
+              {
+                "commenter_id": "user_202b4d65",
+                "text": "作者",
+                "likes": 0,
+                "replies": []
+              },
+              {
+                "commenter_id": "user_58ffca83",
+                "text": "越来越知性美了 élégance à la française",
+                "likes": 2,
+                "replies": []
+              },
+              {
+                "commenter_id": "user_58ffca83",
+                "text": "越来越知性美了 élégance à la française",
+                "likes": 2,
+                "replies": []
+              },
+              {
+                "commenter_id": "user_202b4d65",
+                "text": "作者",
+                "likes": 0,
+                "replies": []
+              },
+              {
+                "commenter_id": "user_7279c250",
+                "text": "我对celine的印象就是王菲，对fendi的印象就是曲筱绡。",
+                "likes": 1,
+                "replies": []
+              },
+              {
+                "commenter_id": "user_7279c250",
+                "text": "我对celine的印象就是王菲，对fendi的印象就是曲筱绡。",
+                "likes": 1,
+                "replies": []
+              },
+              {
+                "commenter_id": "user_6405fa7b",
+                "text": "回归了品牌的调性",
+                "likes": 2,
+                "replies": []
+              },
+              {
+                "commenter_id": "user_6405fa7b",
+                "text": "回归了品牌的调性",
+                "likes": 2,
+                "replies": []
+              }
+            ],
+            "comments_count_scraped": 13
+          },
+          {
+            "post_id": "live_0007",
+            "title": "Celine巴黎晚宴",
+            "date": "03-09 法国",
+            "brand": "Celine",
+            "likes": 175,
+            "comments": 0,
+            "saves": 18,
+            "creator": "user_2e5d5443",
+            "post_link": "https://www.xiaohongshu.com/explore/69aece320000000016008d70",
+            "cover_url": "https://sns-webpic-qc.xhscdn.com/202603292320/63eb469995fbcb9fe05513847346771f/notes_pre_post/1040g3k031tgcqs31ls0045j7o4nl0ipotctihsg!nc_n_webp_mw_1",
+            "all_image_urls": [
+              "https://sns-webpic-qc.xhscdn.com/202603292323/eec92d4a0f85090ec393bc39f654e1aa/note_pre_post_uhdr/1040g3r031tgcrkfj681g45j7o4nl0ipol4is2eo!nd_dft_wlteh_webp_3",
+              "https://sns-webpic-qc.xhscdn.com/202603292323/efce65f6a44033aaf801475b360c94f9/notes_pre_post/1040g3k031tgcqs31ls0045j7o4nl0ipotctihsg!nd_dft_wlteh_webp_3",
+              "https://sns-webpic-qc.xhscdn.com/202603292323/dbf72c20375df98987e138e6c878d056/note_pre_post_uhdr/1040g3r031tgcrkfj680045j7o4nl0ipoip0fgqg!nd_dft_wlteh_webp_3",
+              "https://sns-webpic-qc.xhscdn.com/202603292323/5e3ef8d827b5c78a3eb560646d61f27d/notes_pre_post/1040g3k031tgcqs31ls0g45j7o4nl0ipopl9ovg0!nd_dft_wlteh_webp_3",
+              "https://sns-webpic-qc.xhscdn.com/202603292323/ea21b011578ffb790dd7cfdd2f50e221/note_pre_post_uhdr/1040g3r031tgcrkfj681045j7o4nl0ipo98kic28!nd_dft_wgth_webp_3",
+              "https://sns-webpic-qc.xhscdn.com/202603292323/c8e558482c4f9ef0f0df27a26cff81bf/notes_pre_post/1040g3k031tgcqs31ls1045j7o4nl0iporhahck0!nd_dft_wlteh_webp_3",
+              "https://sns-webpic-qc.xhscdn.com/202603292323/a06b67f3449c2de70ffddce99ca37407/note_pre_post_uhdr/1040g3r031tgcrkfj680g45j7o4nl0iposnkelgo!nd_dft_wlteh_webp_3"
+            ],
+            "is_video": false,
+            "video_url": "",
+            "image_caption": "The image showcases a person wearing a stylish black jacket with gold accents, paired with a flowing black skirt, creating a chic evening look. The visual aesthetic is elegant and sophisticated, highlighted by the luxury setting with a grand staircase and warm tones in the interior decor. The prominent branding of Celine is implied through the context of the title, and the overall color palette features deep blacks and gold, contributing to a refined atmosphere.",
+            "comments_scraped": [
+              {
+                "commenter_id": "user_d1075af9",
+                "text": "有看到安宇吗",
+                "likes": 2,
+                "replies": []
+              },
+              {
+                "commenter_id": "user_d1075af9",
+                "text": "有看到安宇吗",
+                "likes": 2,
+                "replies": []
+              },
+              {
+                "commenter_id": "user_5d9c590e",
+                "text": "作者",
+                "likes": 0,
+                "replies": []
+              },
+              {
+                "commenter_id": "user_ab98d697",
+                "text": "你俩美的，太开心了",
+                "likes": 0,
+                "replies": []
+              },
+              {
+                "commenter_id": "user_ab98d697",
+                "text": "你俩美的，太开心了",
+                "likes": 0,
+                "replies": []
+              },
+              {
+                "commenter_id": "user_5d9c590e",
+                "text": "作者",
+                "likes": 1,
+                "replies": []
+              },
+              {
+                "commenter_id": "user_0b293b9c",
+                "text": "celine好适合你～",
+                "likes": 0,
+                "replies": []
+              },
+              {
+                "commenter_id": "user_0b293b9c",
+                "text": "celine好适合你～",
+                "likes": 0,
+                "replies": []
+              },
+              {
+                "commenter_id": "user_f007443b",
+                "text": "好好看呐！！",
+                "likes": 0,
+                "replies": []
+              },
+              {
+                "commenter_id": "user_f007443b",
+                "text": "好好看呐！！",
+                "likes": 0,
+                "replies": []
+              },
+              {
+                "commenter_id": "user_961108e1",
+                "text": "4月上海有晚宴",
+                "likes": 0,
+                "replies": []
+              },
+              {
+                "commenter_id": "user_961108e1",
+                "text": "4月上海有晚宴",
+                "likes": 0,
+                "replies": []
+              }
+            ],
+            "comments_count_scraped": 12
+          }
+        ]
+      },
+      "metrics": {
+        "post_count": 8,
+        "total_engagement": 10772,
+        "avg_engagement": 1346.5,
+        "total_likes": 9586,
+        "total_comments": 0,
+        "total_saves": 1186,
+        "top_keywords": [
+          "celine",
+          "王安宇",
+          "巴黎时装周",
+          "小红书时装周群聊",
+          "秀场"
+        ],
+        "video_post_count": 2,
+        "image_count": 82
+      },
+      "timestamp": "2026-03-29T16:29:56.473682+00:00",
+      "visual_assets": {
+        "all_image_urls": [
+          "https://sns-webpic-qc.xhscdn.com/202603292323/361ef8e68ac349d5066fb942d720f195/1040g2sg31tf3s4cbl6b05p7ltuq18465i7b8lb0!nd_dft_wlteh_webp_3",
+          "https://sns-webpic-qc.xhscdn.com/202603292323/fc8028df5f865ab943ca5cf6ff21f6e9/1040g2sg31tf3s4cbl6705p7ltuq18465dqomcj8!nd_dft_wlteh_webp_3",
+          "https://sns-webpic-qc.xhscdn.com/202603292323/9f2677dc2891af4cd435a8e9ab82bf0d/1040g2sg31tf3s4cbl67g5p7ltuq184652ig9h4o!nd_dft_wlteh_webp_3",
+          "https://sns-webpic-qc.xhscdn.com/202603292323/53c7b859c3576c0da38fd9239f218350/1040g2sg31tf3s4cbl6805p7ltuq184651qr93u8!nd_dft_wlteh_webp_3",
+          "https://sns-webpic-qc.xhscdn.com/202603292323/86c120c88c05fd858b23c979f8f821b3/1040g2sg31tf3s4cbl68g5p7ltuq18465o2neoqo!nd_dft_wlteh_webp_3",
+          "https://sns-webpic-qc.xhscdn.com/202603292323/364a9958260fa34e9094fd752289f165/1040g2sg31tf3s4cbl69g5p7ltuq184650q2eido!nd_dft_wlteh_webp_3",
+          "https://sns-webpic-qc.xhscdn.com/202603292323/6198856ac31cfebca8ae9217c9459cf1/1040g2sg31tf3s4cbl6905p7ltuq184655hf9c48!nd_dft_wlteh_webp_3",
+          "https://sns-webpic-qc.xhscdn.com/202603292323/b8c56eebc13d7d1a728a5eb0ca70d3da/1040g2sg31tf3s4cbl6a05p7ltuq18465tgbe0co!nd_dft_wlteh_webp_3",
+          "https://sns-webpic-qc.xhscdn.com/202603292323/3b386cfd744c71c93edff56eb593f361/1040g2sg31tf3s4cbl6bg5p7ltuq184659vhepq0!nd_dft_wlteh_webp_3",
+          "https://sns-webpic-qc.xhscdn.com/202603292323/dca15574f4469bf9f5fe03dc3b3187a9/1040g2sg31tf3s4cbl6ag5p7ltuq18465ho2gl80!nd_dft_wlteh_webp_3",
+          "https://sns-webpic-qc.xhscdn.com/202603292320/dcbc24c6aed75c297d3017b88d480899/1040g2sg31tdl4ead5k7049b9knihjoo9a9vcdn0!nc_n_webp_mw_1",
+          "https://sns-webpic-qc.xhscdn.com/202603292324/282054a91106c99d0c43b6c58b5b26ed/notes_pre_post/1040g3k031u8hbab72o105qadajm0pqh91kv8eq0!nd_dft_wlteh_webp_3",
+          "https://sns-webpic-qc.xhscdn.com/202603292322/d93e717a0630e573a1355918c2a96af9/notes_pre_post/1040g3k031tf1h6oblm6g5nj3eqng817k2oc1jko!nd_dft_wlteh_webp_3",
+          "https://sns-webpic-qc.xhscdn.com/202603292322/9d7907baee1b3f44ecfa12bf4ab79f9c/notes_pre_post/1040g3k831tf1bjgo68c05nj3eqng817k8ju7r1o!nd_dft_wlteh_webp_3",
+          "https://sns-webpic-qc.xhscdn.com/202603292322/5bb95e94ee7321db25508415c75debe6/notes_pre_post/1040g3k831tf1bjgo68cg5nj3eqng817kc20afg0!nd_dft_wlteh_webp_3",
+          "https://sns-webpic-qc.xhscdn.com/202603292322/3209439036445af0dedab546a1256d80/notes_pre_post/1040g3k831tf1bjgo68d05nj3eqng817k3je4s70!nd_dft_wlteh_webp_3",
+          "https://sns-webpic-qc.xhscdn.com/202603292322/160e3c67911db44ac551d9f4136b927c/notes_pre_post/1040g3k831tf1bjgo68dg5nj3eqng817kk0h18t0!nd_dft_wlteh_webp_3",
+          "https://sns-webpic-qc.xhscdn.com/202603292322/51ed3b215e193efd55744d9c27f392cc/notes_pre_post/1040g3k031tf1h6oblm005nj3eqng817k4295al8!nd_dft_wlteh_webp_3",
+          "https://sns-webpic-qc.xhscdn.com/202603292322/5e6f059ab86e32630853714e81365280/notes_pre_post/1040g3k031tf1h6oblm0g5nj3eqng817kn3tcs98!nd_dft_wlteh_webp_3",
+          "https://sns-webpic-qc.xhscdn.com/202603292322/f5c88950f3a06b9e58fc51b7f070c426/notes_pre_post/1040g3k031tf1h6oblm105nj3eqng817k7daujso!nd_dft_wlteh_webp_3"
+        ],
+        "image_captions": [
+          {
+            "post_id": "live_0010",
+            "caption": "The image features a young man styled in a black denim jacket over a white shirt, embodying a modern, urban aesthetic. The monochrome color palette emphasizes contrast, with shadows highlighting facial features and details in the clothing. The setting includes wicker chairs, adding to a casual yet stylish atmosphere, while no visible text or overt branding is present to distract from the focus on fashion."
+          },
+          {
+            "post_id": "live_0011",
+            "caption": "The post features an individual showcasing a stylish outfit, which includes a tailored black suit with a contrasting striped shirt that has orange, white, and navy blue hues. The visual aesthetic is sophisticated and modern, emphasizing a chic urban vibe. Accessories include sleek sunglasses, contributing to a polished look, while the background hints at a fashionable venue, likely related to a Celine event. Visible text includes the account handle \"@PingPing在巴璃\" and a note indicating the source as \"From 小红书.\""
+          },
+          {
+            "post_id": "live_0014",
+            "caption": "The image features a model showcasing a black jacket with gold buttons, styled with a high-neck sweater underneath. The visual aesthetic combines a sleek, modern design with a bold color scheme, predominantly black with a striking red background that emphasizes a high-fashion feel. Branding for Celine is prominently displayed at the top, alongside event details like the date and location in a clean, contemporary font."
+          },
+          {
+            "post_id": "live_0003",
+            "caption": "The image features a fashion runway scene with models showcasing high-fashion outfits, specifically a textured, light-colored ensemble on one model with distinctive shades and a small handbag, and a dark-toned outfit on another model. The visual aesthetic is minimalist with a modern vibe, highlighted by neutral colors dominating the space, such as beige and black, against a muted background. The styling emphasizes elegance and sophistication, aligning with CELINE's brand identity."
+          },
+          {
+            "post_id": "live_0007",
+            "caption": "The image showcases a person wearing a stylish black jacket with gold accents, paired with a flowing black skirt, creating a chic evening look. The visual aesthetic is elegant and sophisticated, highlighted by the luxury setting with a grand staircase and warm tones in the interior decor. The prominent branding of Celine is implied through the context of the title, and the overall color palette features deep blacks and gold, contributing to a refined atmosphere."
+          },
+          {
+            "post_id": "live_0006",
+            "caption": "The image features two stylish bicycles: one in white and the other in black, both equipped with woven straw baskets and brown leather seats. The visual aesthetic is minimalist and elegant, set against a backdrop of neutral-colored columns and greenery, creating a serene atmosphere. Branding is subtly visible on the bicycles, likely indicating they are from a fashion-forward brand, enhancing the overall chic vibe of the post."
+          },
+          {
+            "post_id": "live_0022",
+            "caption": "The image showcases a series of Celine Spring 2026 fashion looks, predominantly featuring a monochromatic color palette of black, white, and soft brown tones. The styling includes tailored suits, oversized silhouettes, and elegant dresses, with distinct elements such as structured shoulders and layered garments, enhancing sophistication. The models accessorize with oversized sunglasses and minimalistic handbags, while the presence of the Celine logo subtly reinforces the brand identity."
+          },
+          {
+            "post_id": "live_0002",
+            "caption": "The image features a model wearing wide-leg navy trousers with a contrasting vertical stripe and pointed-toe black ankle boots. A brown leather clutch with subtle branding details and a minimalist design complements the outfit. The overall aesthetic leans toward a refined, modern elegance, highlighted by a neutral color palette with earth tones and classic navy."
+          }
+        ],
+        "video_post_count": 2
+      },
+      "comment_signals": {
+        "total_comments_scraped": 108,
+        "total_replies_scraped": 0,
+        "all_comments": [
+          {
+            "commenter_id": "user_cc92fede",
+            "text": "帅夯了",
+            "likes": 2,
+            "replies": [],
+            "post_id": "live_0010"
+          },
+          {
+            "commenter_id": "user_cc92fede",
+            "text": "帅夯了",
+            "likes": 2,
+            "replies": [],
+            "post_id": "live_0010"
+          },
+          {
+            "commenter_id": "user_019746b2",
+            "text": "老王哥好像瘦了",
+            "likes": 3,
+            "replies": [],
+            "post_id": "live_0010"
+          },
+          {
+            "commenter_id": "user_019746b2",
+            "text": "老王哥好像瘦了",
+            "likes": 3,
+            "replies": [],
+            "post_id": "live_0010"
+          },
+          {
+            "commenter_id": "user_888da5db",
+            "text": "在拍偶像剧中。。。瘦很多哦",
+            "likes": 15,
+            "replies": [],
+            "post_id": "live_0010"
+          },
+          {
+            "commenter_id": "user_0cbdd7c4",
+            "text": "极致反差",
+            "likes": 48,
+            "replies": [],
+            "post_id": "live_0010"
+          },
+          {
+            "commenter_id": "user_0cbdd7c4",
+            "text": "极致反差",
+            "likes": 48,
+            "replies": [],
+            "post_id": "live_0010"
+          },
+          {
+            "commenter_id": "user_64852722",
+            "text": "和这张反差更大",
+            "likes": 47,
+            "replies": [],
+            "post_id": "live_0010"
+          },
+          {
+            "commenter_id": "user_9fb35b6c",
+            "text": "好喜欢第一张",
+            "likes": 1,
+            "replies": [],
+            "post_id": "live_0010"
+          },
+          {
+            "commenter_id": "user_9fb35b6c",
+            "text": "好喜欢第一张",
+            "likes": 1,
+            "replies": [],
+            "post_id": "live_0010"
+          },
+          {
+            "commenter_id": "user_fb22f10a",
+            "text": "老王哥帅就不必多说了，怎么还这么可爱呀🥹",
+            "likes": 39,
+            "replies": [],
+            "post_id": "live_0010"
+          },
+          {
+            "commenter_id": "user_fb22f10a",
+            "text": "老王哥帅就不必多说了，怎么还这么可爱呀🥹",
+            "likes": 39,
+            "replies": [],
+            "post_id": "live_0010"
+          },
+          {
+            "commenter_id": "user_b719a1b5",
+            "text": "第一张能不能求个图呀！",
+            "likes": 1,
+            "replies": [],
+            "post_id": "live_0010"
+          },
+          {
+            "commenter_id": "user_8ce16545",
+            "text": "哇这是哪里的图",
+            "likes": 5,
+            "replies": [],
+            "post_id": "live_0010"
+          },
+          {
+            "commenter_id": "user_8ce16545",
+            "text": "哇这是哪里的图",
+            "likes": 5,
+            "replies": [],
+            "post_id": "live_0010"
+          },
+          {
+            "commenter_id": "user_a3b4c74d",
+            "text": "作者",
+            "likes": 1,
+            "replies": [],
+            "post_id": "live_0010"
+          },
+          {
+            "commenter_id": "user_e5310904",
+            "text": "他真张张神图",
+            "likes": 2,
+            "replies": [],
+            "post_id": "live_0010"
+          },
+          {
+            "commenter_id": "user_e5310904",
+            "text": "他真张张神图",
+            "likes": 2,
+            "replies": [],
+            "post_id": "live_0010"
+          },
+          {
+            "commenter_id": "user_cc7ae189",
+            "text": "真的没法形容了，真的好帅，而且是独一份的气质和味道！！！！！",
+            "likes": 10,
+            "replies": [],
+            "post_id": "live_0010"
+          },
+          {
+            "commenter_id": "user_cc7ae189",
+            "text": "真的没法形容了，真的好帅，而且是独一份的气质和味道！！！！！",
+            "likes": 10,
+            "replies": [],
+            "post_id": "live_0010"
+          },
+          {
+            "commenter_id": "user_26c63853",
+            "text": "小丸的审美真的好",
+            "likes": 4,
+            "replies": [],
+            "post_id": "live_0010"
+          },
+          {
+            "commenter_id": "user_26c63853",
+            "text": "小丸的审美真的好",
+            "likes": 4,
+            "replies": [],
+            "post_id": "live_0010"
+          },
+          {
+            "commenter_id": "user_14cfd9db",
+            "text": "安宇做任何大表情都很生动很 好灵啊",
+            "likes": 16,
+            "replies": [],
+            "post_id": "live_0010"
+          },
+          {
+            "commenter_id": "user_14cfd9db",
+            "text": "安宇做任何大表情都很生动很 好灵啊",
+            "likes": 16,
+            "replies": [],
+            "post_id": "live_0010"
+          },
+          {
+            "commenter_id": "user_8fcbde7d",
+            "text": "好帅",
+            "likes": 9,
+            "replies": [],
+            "post_id": "live_0011"
+          },
+          {
+            "commenter_id": "user_8fcbde7d",
+            "text": "好帅",
+            "likes": 9,
+            "replies": [],
+            "post_id": "live_0011"
+          },
+          {
+            "commenter_id": "user_58c4506c",
+            "text": "确实",
+            "likes": 0,
+            "replies": [],
+            "post_id": "live_0011"
+          },
+          {
+            "commenter_id": "user_34e525d0",
+            "text": "这是酒店？我看孙千也是从这个门出来的",
+            "likes": 0,
+            "replies": [],
+            "post_id": "live_0011"
+          },
+          {
+            "commenter_id": "user_34e525d0",
+            "text": "这是酒店？我看孙千也是从这个门出来的",
+            "likes": 0,
+            "replies": [],
+            "post_id": "live_0011"
+          },
+          {
+            "commenter_id": "user_83acb79b",
+            "text": "作者",
+            "likes": 0,
+            "replies": [],
+            "post_id": "live_0011"
+          },
+          {
+            "commenter_id": "user_561bf15c",
+            "text": "你选了一张这一段路中他的走姿最不协调的截图做封面",
+            "likes": 0,
+            "replies": [],
+            "post_id": "live_0011"
+          },
+          {
+            "commenter_id": "user_561bf15c",
+            "text": "你选了一张这一段路中他的走姿最不协调的截图做封面",
+            "likes": 0,
+            "replies": [],
+            "post_id": "live_0011"
+          },
+          {
+            "commenter_id": "user_739a929f",
+            "text": "哪个酒店啊",
+            "likes": 0,
+            "replies": [],
+            "post_id": "live_0011"
+          },
+          {
+            "commenter_id": "user_739a929f",
+            "text": "哪个酒店啊",
+            "likes": 0,
+            "replies": [],
+            "post_id": "live_0011"
+          },
+          {
+            "commenter_id": "user_35b45a5e",
+            "text": "帅",
+            "likes": 1,
+            "replies": [],
+            "post_id": "live_0011"
+          },
+          {
+            "commenter_id": "user_35b45a5e",
+            "text": "帅",
+            "likes": 1,
+            "replies": [],
+            "post_id": "live_0011"
+          },
+          {
+            "commenter_id": "user_58e7ceee",
+            "text": "太帅了",
+            "likes": 0,
+            "replies": [],
+            "post_id": "live_0011"
+          },
+          {
+            "commenter_id": "user_58e7ceee",
+            "text": "太帅了",
+            "likes": 0,
+            "replies": [],
+            "post_id": "live_0011"
+          },
+          {
+            "commenter_id": "user_34936515",
+            "text": "里面那件有点像中国老头衫",
+            "likes": 0,
+            "replies": [],
+            "post_id": "live_0011"
+          },
+          {
+            "commenter_id": "user_34936515",
+            "text": "里面那件有点像中国老头衫",
+            "likes": 0,
+            "replies": [],
+            "post_id": "live_0011"
+          },
+          {
+            "commenter_id": "user_db518485",
+            "text": "哇塞🤩",
+            "likes": 0,
+            "replies": [],
+            "post_id": "live_0011"
+          },
+          {
+            "commenter_id": "user_db518485",
+            "text": "哇塞🤩",
+            "likes": 0,
+            "replies": [],
+            "post_id": "live_0011"
+          },
+          {
+            "commenter_id": "user_2d9bd6aa",
+            "text": "感觉行走动作略差一些些",
+            "likes": 0,
+            "replies": [],
+            "post_id": "live_0011"
+          },
+          {
+            "commenter_id": "user_2d9bd6aa",
+            "text": "感觉行走动作略差一些些",
+            "likes": 0,
+            "replies": [],
+            "post_id": "live_0011"
+          },
+          {
+            "commenter_id": "user_31004864",
+            "text": "小皮鞋太尖了",
+            "likes": 0,
+            "replies": [],
+            "post_id": "live_0011"
+          },
+          {
+            "commenter_id": "user_31004864",
+            "text": "小皮鞋太尖了",
+            "likes": 0,
+            "replies": [],
+            "post_id": "live_0011"
+          },
+          {
+            "commenter_id": "user_0d24929c",
+            "text": "作者",
+            "likes": 0,
+            "replies": [],
+            "post_id": "live_0014"
+          },
+          {
+            "commenter_id": "user_0d24929c",
+            "text": "作者",
+            "likes": 0,
+            "replies": [],
+            "post_id": "live_0014"
+          },
+          {
+            "commenter_id": "user_12f5ea75",
+            "text": "777",
+            "likes": 0,
+            "replies": [],
+            "post_id": "live_0014"
+          },
+          {
+            "commenter_id": "user_12f5ea75",
+            "text": "1",
+            "likes": 0,
+            "replies": [],
+            "post_id": "live_0014"
+          },
+          {
+            "commenter_id": "user_12f5ea75",
+            "text": "1",
+            "likes": 0,
+            "replies": [],
+            "post_id": "live_0014"
+          },
+          {
+            "commenter_id": "user_bfa98de7",
+            "text": "真实又好看又实用",
+            "likes": 1,
+            "replies": [],
+            "post_id": "live_0003"
+          },
+          {
+            "commenter_id": "user_bfa98de7",
+            "text": "真实又好看又实用",
+            "likes": 1,
+            "replies": [],
+            "post_id": "live_0003"
+          },
+          {
+            "commenter_id": "user_878ceed0",
+            "text": "你",
+            "likes": 13,
+            "replies": [],
+            "post_id": "live_0003"
+          },
+          {
+            "commenter_id": "user_31004864",
+            "text": "真的好好看",
+            "likes": 4,
+            "replies": [],
+            "post_id": "live_0003"
+          },
+          {
+            "commenter_id": "user_31004864",
+            "text": "真的好好看",
+            "likes": 4,
+            "replies": [],
+            "post_id": "live_0003"
+          },
+          {
+            "commenter_id": "user_202b4d65",
+            "text": "作者",
+            "likes": 0,
+            "replies": [],
+            "post_id": "live_0003"
+          },
+          {
+            "commenter_id": "user_58ffca83",
+            "text": "越来越知性美了 élégance à la française",
+            "likes": 2,
+            "replies": [],
+            "post_id": "live_0003"
+          },
+          {
+            "commenter_id": "user_58ffca83",
+            "text": "越来越知性美了 élégance à la française",
+            "likes": 2,
+            "replies": [],
+            "post_id": "live_0003"
+          },
+          {
+            "commenter_id": "user_202b4d65",
+            "text": "作者",
+            "likes": 0,
+            "replies": [],
+            "post_id": "live_0003"
+          },
+          {
+            "commenter_id": "user_7279c250",
+            "text": "我对celine的印象就是王菲，对fendi的印象就是曲筱绡。",
+            "likes": 1,
+            "replies": [],
+            "post_id": "live_0003"
+          },
+          {
+            "commenter_id": "user_7279c250",
+            "text": "我对celine的印象就是王菲，对fendi的印象就是曲筱绡。",
+            "likes": 1,
+            "replies": [],
+            "post_id": "live_0003"
+          },
+          {
+            "commenter_id": "user_6405fa7b",
+            "text": "回归了品牌的调性",
+            "likes": 2,
+            "replies": [],
+            "post_id": "live_0003"
+          },
+          {
+            "commenter_id": "user_6405fa7b",
+            "text": "回归了品牌的调性",
+            "likes": 2,
+            "replies": [],
+            "post_id": "live_0003"
+          },
+          {
+            "commenter_id": "user_d1075af9",
+            "text": "有看到安宇吗",
+            "likes": 2,
+            "replies": [],
+            "post_id": "live_0007"
+          },
+          {
+            "commenter_id": "user_d1075af9",
+            "text": "有看到安宇吗",
+            "likes": 2,
+            "replies": [],
+            "post_id": "live_0007"
+          },
+          {
+            "commenter_id": "user_5d9c590e",
+            "text": "作者",
+            "likes": 0,
+            "replies": [],
+            "post_id": "live_0007"
+          },
+          {
+            "commenter_id": "user_ab98d697",
+            "text": "你俩美的，太开心了",
+            "likes": 0,
+            "replies": [],
+            "post_id": "live_0007"
+          },
+          {
+            "commenter_id": "user_ab98d697",
+            "text": "你俩美的，太开心了",
+            "likes": 0,
+            "replies": [],
+            "post_id": "live_0007"
+          },
+          {
+            "commenter_id": "user_5d9c590e",
+            "text": "作者",
+            "likes": 1,
+            "replies": [],
+            "post_id": "live_0007"
+          },
+          {
+            "commenter_id": "user_0b293b9c",
+            "text": "celine好适合你～",
+            "likes": 0,
+            "replies": [],
+            "post_id": "live_0007"
+          },
+          {
+            "commenter_id": "user_0b293b9c",
+            "text": "celine好适合你～",
+            "likes": 0,
+            "replies": [],
+            "post_id": "live_0007"
+          },
+          {
+            "commenter_id": "user_f007443b",
+            "text": "好好看呐！！",
+            "likes": 0,
+            "replies": [],
+            "post_id": "live_0007"
+          },
+          {
+            "commenter_id": "user_f007443b",
+            "text": "好好看呐！！",
+            "likes": 0,
+            "replies": [],
+            "post_id": "live_0007"
+          },
+          {
+            "commenter_id": "user_961108e1",
+            "text": "4月上海有晚宴",
+            "likes": 0,
+            "replies": [],
+            "post_id": "live_0007"
+          },
+          {
+            "commenter_id": "user_961108e1",
+            "text": "4月上海有晚宴",
+            "likes": 0,
+            "replies": [],
+            "post_id": "live_0007"
+          },
+          {
+            "commenter_id": "user_f5eb7b40",
+            "text": "好看",
+            "likes": 1,
+            "replies": [],
+            "post_id": "live_0006"
+          },
+          {
+            "commenter_id": "user_f5eb7b40",
+            "text": "好看",
+            "likes": 1,
+            "replies": [],
+            "post_id": "live_0006"
+          },
+          {
+            "commenter_id": "user_7306ac68",
+            "text": "作者",
+            "likes": 1,
+            "replies": [],
+            "post_id": "live_0006"
+          },
+          {
+            "commenter_id": "user_3ff841d3",
+            "text": "最初刷到博主就是穿old celine的街拍照",
+            "likes": 1,
+            "replies": [],
+            "post_id": "live_0006"
+          },
+          {
+            "commenter_id": "user_3ff841d3",
+            "text": "最初刷到博主就是穿old celine的街拍照",
+            "likes": 1,
+            "replies": [],
+            "post_id": "live_0006"
+          },
+          {
+            "commenter_id": "user_7306ac68",
+            "text": "作者",
+            "likes": 1,
+            "replies": [],
+            "post_id": "live_0006"
+          },
+          {
+            "commenter_id": "user_c8af4b7e",
+            "text": "图一这个裤子谁家有啊",
+            "likes": 0,
+            "replies": [],
+            "post_id": "live_0002"
+          },
+          {
+            "commenter_id": "user_c8af4b7e",
+            "text": "图一这个裤子谁家有啊",
+            "likes": 0,
+            "replies": [],
+            "post_id": "live_0002"
+          },
+          {
+            "commenter_id": "user_c8af4b7e",
+            "text": "回复 CELINE-北京Skp-Seven : 啥💰",
+            "likes": 0,
+            "replies": [],
+            "post_id": "live_0002"
+          },
+          {
+            "commenter_id": "user_5d4deaa7",
+            "text": "我之前就很看好它 结果今年老王哥还当上了大使 更加印证了它之后会更厉害",
+            "likes": 67,
+            "replies": [],
+            "post_id": "live_0002"
+          },
+          {
+            "commenter_id": "user_5d4deaa7",
+            "text": "我之前就很看好它 结果今年老王哥还当上了大使 更加印证了它之后会更厉害",
+            "likes": 67,
+            "replies": [],
+            "post_id": "live_0002"
+          },
+          {
+            "commenter_id": "user_34c03fbb",
+            "text": "对的 太对了！",
+            "likes": 3,
+            "replies": [],
+            "post_id": "live_0002"
+          },
+          {
+            "commenter_id": "user_b1b12231",
+            "text": "这裤子好看啊，多钱",
+            "likes": 0,
+            "replies": [],
+            "post_id": "live_0002"
+          },
+          {
+            "commenter_id": "user_b1b12231",
+            "text": "这裤子好看啊，多钱",
+            "likes": 0,
+            "replies": [],
+            "post_id": "live_0002"
+          },
+          {
+            "commenter_id": "user_34c03fbb",
+            "text": "celine今年真的会赢",
+            "likes": 34,
+            "replies": [],
+            "post_id": "live_0002"
+          },
+          {
+            "commenter_id": "user_34c03fbb",
+            "text": "celine今年真的会赢",
+            "likes": 34,
+            "replies": [],
+            "post_id": "live_0002"
+          },
+          {
+            "commenter_id": "user_4138a77a",
+            "text": "Celine要起飞啦",
+            "likes": 6,
+            "replies": [],
+            "post_id": "live_0002"
+          },
+          {
+            "commenter_id": "user_bb997969",
+            "text": "第一条好看哎",
+            "likes": 0,
+            "replies": [],
+            "post_id": "live_0002"
+          },
+          {
+            "commenter_id": "user_bb997969",
+            "text": "第一条好看哎",
+            "likes": 0,
+            "replies": [],
+            "post_id": "live_0002"
+          },
+          {
+            "commenter_id": "user_e91666c7",
+            "text": "封面幻视跆拳道🥋",
+            "likes": 0,
+            "replies": [],
+            "post_id": "live_0002"
+          },
+          {
+            "commenter_id": "user_e91666c7",
+            "text": "封面幻视跆拳道🥋",
+            "likes": 0,
+            "replies": [],
+            "post_id": "live_0002"
+          },
+          {
+            "commenter_id": "user_ef4c823c",
+            "text": "➕1",
+            "likes": 0,
+            "replies": [],
+            "post_id": "live_0002"
+          },
+          {
+            "commenter_id": "user_bf3cb6d5",
+            "text": "图一好看！",
+            "likes": 0,
+            "replies": [],
+            "post_id": "live_0002"
+          },
+          {
+            "commenter_id": "user_bf3cb6d5",
+            "text": "图一好看！",
+            "likes": 0,
+            "replies": [],
+            "post_id": "live_0002"
+          },
+          {
+            "commenter_id": "user_7e94049a",
+            "text": "这裤子有平替吗",
+            "likes": 2,
+            "replies": [],
+            "post_id": "live_0002"
+          },
+          {
+            "commenter_id": "user_7e94049a",
+            "text": "这裤子有平替吗",
+            "likes": 2,
+            "replies": [],
+            "post_id": "live_0002"
+          },
+          {
+            "commenter_id": "user_ec6ce467",
+            "text": "我也想知道",
+            "likes": 1,
+            "replies": [],
+            "post_id": "live_0002"
+          },
+          {
+            "commenter_id": "user_3c205ca1",
+            "text": "包包的C logo很coach",
+            "likes": 4,
+            "replies": [],
+            "post_id": "live_0002"
+          },
+          {
+            "commenter_id": "user_3c205ca1",
+            "text": "包包的C logo很coach",
+            "likes": 4,
+            "replies": [],
+            "post_id": "live_0002"
+          },
+          {
+            "commenter_id": "user_34c03fbb",
+            "text": "再看看",
+            "likes": 2,
+            "replies": [],
+            "post_id": "live_0002"
+          },
+          {
+            "commenter_id": "user_b529307d",
+            "text": "celine一直很好看",
+            "likes": 0,
+            "replies": [],
+            "post_id": "live_0002"
+          },
+          {
+            "commenter_id": "user_b529307d",
+            "text": "celine一直很好看",
+            "likes": 0,
+            "replies": [],
+            "post_id": "live_0002"
+          }
+        ]
+      }
+    },
+    {
+      "trend_id": "t02",
+      "label": "Luxury Handbag & Leather Goods",
+      "category": "luxury_fashion",
+      "summary": "Posts cluster around luxury handbag & leather goods with recurring evidence such as: CELINE新款活动 SMALL HOBO｜法式松弛感；Unboxing CELINE Ava包包 🤍🤎 沉浸式07.",
+      "ai_reasoning": "Grouped because posts share recurring keywords/themes ['celine', '男装', '北京', '新款', 'skp'] and show consistent engagement patterns in the same category.",
+      "confidence": "high",
+      "labeling_source": "heuristic",
+      "evidence": {
+        "post_ids": [
+          "live_0021",
+          "live_0015",
+          "live_0016",
+          "live_0018",
+          "live_0004"
+        ],
+        "snippets": [
+          "CELINE新款活动 SMALL HOBO｜法式松弛感",
+          "最实穿的Celine牛！The Rej宽松黑牛测评！",
+          "Unboxing CELINE Ava包包 🤍🤎 沉浸式07",
+          "CELINE 26夏季新款 松弛洋气的男装夹克",
+          "CELINE｜男装上新啦🖖🏻"
+        ],
+        "posts": [
+          {
+            "post_id": "live_0021",
+            "title": "CELINE新款活动 SMALL HOBO｜法式松弛感",
+            "date": "昨天 14:55 北京",
+            "brand": "Celine",
+            "likes": 195,
+            "comments": 0,
+            "saves": 94,
+            "creator": "user_1e30e8ae",
+            "post_link": "https://www.xiaohongshu.com/explore/69c77b7c0000000023004c6d",
+            "cover_url": "https://sns-webpic-qc.xhscdn.com/202603292320/9248c2aedc2953d5e1040105d100c2cb/note_pre_post_uhdr/1040g3r031u8fvg0miq005p3j4unqmscq0s2v9n0!nc_n_webp_mw_1",
+            "all_image_urls": [
+              "https://sns-webpic-qc.xhscdn.com/202603292325/cc0f0939ff74062ed10fc3a6863d3561/note_pre_post_uhdr/1040g3r031u8fvg0miq2g5p3j4unqmscqtnftr80!nd_dft_wlteh_webp_3",
+              "https://sns-webpic-qc.xhscdn.com/202603292325/b4f41994b2ae76b1f863e533653701f2/note_pre_post_uhdr/1040g3r031u8fvg0miq005p3j4unqmscq0s2v9n0!nd_dft_wlteh_webp_3",
+              "http://sns-webpic-qc.xhscdn.com/202603292325/b4f41994b2ae76b1f863e533653701f2/note_pre_post_uhdr/1040g3r031u8fvg0miq005p3j4unqmscq0s2v9n0!nd_dft_wlteh_webp_3",
+              "https://sns-webpic-qc.xhscdn.com/202603292325/54f7d990a816c4bdb91a9e203abb4e21/note_pre_post_uhdr/1040g3r031u8fvg0miq0g5p3j4unqmscqvbal7l0!nd_dft_wlteh_webp_3",
+              "https://sns-webpic-qc.xhscdn.com/202603292325/f9e3b927ad08f94f062672beb0a6323c/note_pre_post_uhdr/1040g3r031u8fvg0miq105p3j4unqmscq1lrlk80!nd_dft_wlteh_webp_3",
+              "https://sns-webpic-qc.xhscdn.com/202603292325/5e7706557e06936812b411ea636f9f38/note_pre_post_uhdr/1040g3r031u8fvg0miq1g5p3j4unqmscqmkj2fo0!nd_dft_wlteh_webp_3",
+              "https://sns-webpic-qc.xhscdn.com/202603292325/9aa4f9cfceffe51294287ed5e1377514/note_pre_post_uhdr/1040g3r031u8fvg0miq205p3j4unqmscqpuphueg!nd_dft_wlteh_webp_3"
+            ],
+            "is_video": true,
+            "video_url": "blob:https://www.xiaohongshu.com/e756e9b8-2c7b-4a8e-9b2d-43558da2d7b5",
+            "image_caption": "The image features a CELINE Small Hobo bag in a warm brown leather, styled with a pink silk scarf tied to the handle, showcasing a playful print that complements the bag's classic aesthetic. The visual aesthetic is modern and chic, with an emphasis on a relaxed, French-inspired vibe. The colors are primarily earthy tones, with the bag's brown contrasted by the vibrant pink of the scarf, while the setting includes minimalist furniture that enhances the overall sophistication.",
+            "comments_scraped": [
+              {
+                "commenter_id": "user_f49ff738",
+                "text": "作者",
+                "likes": 0,
+                "replies": []
+              },
+              {
+                "commenter_id": "user_f49ff738",
+                "text": "作者",
+                "likes": 0,
+                "replies": []
+              },
+              {
+                "commenter_id": "user_a8a87a05",
+                "text": "多少钱",
+                "likes": 2,
+                "replies": []
+              },
+              {
+                "commenter_id": "user_a8a87a05",
+                "text": "多少钱",
+                "likes": 2,
+                "replies": []
+              },
+              {
+                "commenter_id": "user_f49ff738",
+                "text": "作者",
+                "likes": 0,
+                "replies": []
+              },
+              {
+                "commenter_id": "user_e3d8cd00",
+                "text": "多少钱",
+                "likes": 0,
+                "replies": []
+              },
+              {
+                "commenter_id": "user_e3d8cd00",
+                "text": "多少钱",
+                "likes": 0,
+                "replies": []
+              },
+              {
+                "commenter_id": "user_f49ff738",
+                "text": "作者",
+                "likes": 0,
+                "replies": []
+              }
+            ],
+            "comments_count_scraped": 8
+          },
+          {
+            "post_id": "live_0015",
+            "title": "最实穿的Celine牛！The Rej宽松黑牛测评！",
+            "date": "编辑于 2025-05-26",
+            "brand": "Celine",
+            "likes": 60,
+            "comments": 0,
+            "saves": 21,
+            "creator": "user_59bec827",
+            "post_link": "https://www.xiaohongshu.com/explore/68347d9700000000230001e3",
+            "cover_url": "https://sns-webpic-qc.xhscdn.com/202603292320/0d1393f9bf0a49cf46e9b1a5218b743a/notes_pre_post/1040g3k831huue2nn5qkg5ocab3d41oeo0nde8gg!nc_n_webp_mw_1",
+            "all_image_urls": [
+              "https://sns-webpic-qc.xhscdn.com/202603292324/f709c8de609c20572ca415ce3512deb6/notes_pre_post/1040g3k031huuh9a25i5g5ocab3d41oeo3ohnggo!nd_dft_wlteh_webp_3",
+              "https://sns-webpic-qc.xhscdn.com/202603292324/d6b407d1c85bcd9995f8724f7a04298c/notes_pre_post/1040g3k831huue2nn5qkg5ocab3d41oeo0nde8gg!nd_dft_wlteh_webp_3",
+              "https://sns-webpic-qc.xhscdn.com/202603292324/c3c79330ef5253cfa314196eef9d9132/notes_pre_post/1040g3k031huuh9a25i005ocab3d41oeotpoef9o!nd_dft_wlteh_webp_3",
+              "https://sns-webpic-qc.xhscdn.com/202603292324/bd2d20857eac2875a8d54367fa6e5a61/notes_pre_post/1040g3k031huuh9a25i0g5ocab3d41oeou6a2460!nd_dft_wlteh_webp_3",
+              "https://sns-webpic-qc.xhscdn.com/202603292324/106286133b3aa4ac32c66c1c19296797/notes_pre_post/1040g3k031huuh9a25i105ocab3d41oeoveia8ho!nd_dft_wlteh_webp_3",
+              "https://sns-webpic-qc.xhscdn.com/202603292324/63b651dce342348ca9f350174d18c264/notes_pre_post/1040g3k031huuh9a25i1g5ocab3d41oeo7m7bq20!nd_dft_wlteh_webp_3",
+              "https://sns-webpic-qc.xhscdn.com/202603292324/74e2fe512c1cc00c777e58ece6913f32/notes_pre_post/1040g3k031huuh9a25i205ocab3d41oeoabnporo!nd_dft_wlteh_webp_3",
+              "https://sns-webpic-qc.xhscdn.com/202603292324/9ad56c1c2b6648e1f7ea8ec15a831df0/notes_pre_post/1040g3k031huuh9a25i2g5ocab3d41oeoj52qqrg!nd_dft_wlteh_webp_3",
+              "https://sns-webpic-qc.xhscdn.com/202603292324/746e6da81bff8ed02ce9a268ed841b5b/notes_pre_post/1040g3k031huuh9a25i305ocab3d41oeov2upib8!nd_dft_wlteh_webp_3",
+              "https://sns-webpic-qc.xhscdn.com/202603292324/d7d38cda541ea09ea29f9114e1d391b4/notes_pre_post/1040g3k031huuh9a25i3g5ocab3d41oeoobq566g!nd_dft_wlteh_webp_3",
+              "https://sns-webpic-qc.xhscdn.com/202603292324/2d229c733c76084d4da86ca0bc2bd69a/notes_pre_post/1040g3k031huuh9a25i405ocab3d41oeosdbnrm8!nd_dft_wlteh_webp_3",
+              "https://sns-webpic-qc.xhscdn.com/202603292324/44a2f51503c6e85c945f68067296b500/notes_pre_post/1040g3k031huuh9a25i4g5ocab3d41oeom6c3eq0!nd_dft_wlteh_webp_3",
+              "https://sns-webpic-qc.xhscdn.com/202603292324/d30b74c070b2a1b4e73113ec11a7ae46/notes_pre_post/1040g3k031huuh9a25i505ocab3d41oeojbh43m0!nd_dft_wlteh_webp_3"
+            ],
+            "is_video": false,
+            "video_url": "",
+            "image_caption": "The image features a pair of Celine Rej loose-fit black jeans, displayed from the back with a visible brown leather belt. The jeans have a distressed finish, particularly at the hem, which exhibits a frayed style. The aesthetic is minimalistic and modern, utilizing a monochromatic color palette of black and gray, complemented by the sleek backdrop of soft gray fabric, reinforcing a contemporary fashion vibe.",
+            "comments_scraped": [
+              {
+                "commenter_id": "user_ebccc48c",
+                "text": "衬衫是什么呀",
+                "likes": 0,
+                "replies": []
+              },
+              {
+                "commenter_id": "user_ebccc48c",
+                "text": "衬衫是什么呀",
+                "likes": 0,
+                "replies": []
+              },
+              {
+                "commenter_id": "user_fb51357e",
+                "text": "作者",
+                "likes": 1,
+                "replies": []
+              },
+              {
+                "commenter_id": "user_2144cb98",
+                "text": "大卫哥是不是改了腰围呀",
+                "likes": 0,
+                "replies": []
+              },
+              {
+                "commenter_id": "user_2144cb98",
+                "text": "大卫哥是不是改了腰围呀",
+                "likes": 0,
+                "replies": []
+              },
+              {
+                "commenter_id": "user_19f83989",
+                "text": "大卫哥上身超帅啊",
+                "likes": 0,
+                "replies": []
+              },
+              {
+                "commenter_id": "user_19f83989",
+                "text": "大卫哥上身超帅啊",
+                "likes": 0,
+                "replies": []
+              }
+            ],
+            "comments_count_scraped": 7
+          },
+          {
+            "post_id": "live_0016",
+            "title": "Unboxing CELINE Ava包包 🤍🤎 沉浸式07",
+            "date": "编辑于 01-08",
+            "brand": "Celine",
+            "likes": 37,
+            "comments": 0,
+            "saves": 13,
+            "creator": "user_8dff8cce",
+            "post_link": "https://www.xiaohongshu.com/explore/695f65c4000000000903afcc",
+            "cover_url": "https://sns-webpic-qc.xhscdn.com/202603292320/f865bbc2543653aa741d2b897cb4605a/1040g2sg31r2q0uv5n2705olf1pkmt8a5f9q1img!nc_n_webp_mw_1",
+            "all_image_urls": [
+              "https://sns-webpic-qc.xhscdn.com/202603292320/f865bbc2543653aa741d2b897cb4605a/1040g2sg31r2q0uv5n2705olf1pkmt8a5f9q1img!nc_n_webp_mw_1"
+            ],
+            "is_video": true,
+            "video_url": "blob:https://www.xiaohongshu.com/4c0dffdc-d289-4c77-91ab-bc6c6d05a407",
+            "image_caption": "The image features a CELINE Ava bag in a light beige color adorned with the brand's signature print, accompanied by a dark drawstring dust bag that has the CELINE Paris branding. The aesthetic is minimalist and luxurious, highlighted by warm, neutral tones of white, beige, and black. Visibly, there's text in Chinese that celebrates personal achievement, alongside branding details for the bag.",
+            "comments_scraped": [
+              {
+                "commenter_id": "user_e2c18e53",
+                "text": "这个多少入",
+                "likes": 0,
+                "replies": []
+              },
+              {
+                "commenter_id": "user_e2c18e53",
+                "text": "这个多少入",
+                "likes": 0,
+                "replies": []
+              },
+              {
+                "commenter_id": "user_3e4bf7e7",
+                "text": "作者",
+                "likes": 0,
+                "replies": []
+              },
+              {
+                "commenter_id": "user_aa4a270b",
+                "text": "你这个size看起来刚刚好 这款有分大小size的嘛",
+                "likes": 1,
+                "replies": []
+              },
+              {
+                "commenter_id": "user_aa4a270b",
+                "text": "你这个size看起来刚刚好 这款有分大小size的嘛",
+                "likes": 1,
+                "replies": []
+              },
+              {
+                "commenter_id": "user_3e4bf7e7",
+                "text": "作者",
+                "likes": 1,
+                "replies": []
+              },
+              {
+                "commenter_id": "user_31004864",
+                "text": "好看好看，我也想入这款，就是穿羽绒服背腋下包是不是有点紧",
+                "likes": 0,
+                "replies": []
+              },
+              {
+                "commenter_id": "user_31004864",
+                "text": "好看好看，我也想入这款，就是穿羽绒服背腋下包是不是有点紧",
+                "likes": 0,
+                "replies": []
+              },
+              {
+                "commenter_id": "user_3e4bf7e7",
+                "text": "作者",
+                "likes": 1,
+                "replies": []
+              },
+              {
+                "commenter_id": "user_9e0ca2fb",
+                "text": "姐妹这是什么色",
+                "likes": 0,
+                "replies": []
+              },
+              {
+                "commenter_id": "user_9e0ca2fb",
+                "text": "姐妹这是什么色",
+                "likes": 0,
+                "replies": []
+              },
+              {
+                "commenter_id": "user_8262e924",
+                "text": "哇 好好看 多少啊",
+                "likes": 0,
+                "replies": []
+              },
+              {
+                "commenter_id": "user_8262e924",
+                "text": "哇 好好看 多少啊",
+                "likes": 0,
+                "replies": []
+              }
+            ],
+            "comments_count_scraped": 13
+          },
+          {
+            "post_id": "live_0018",
+            "title": "CELINE 26夏季新款 松弛洋气的男装夹克",
+            "date": "编辑于 3天前 上海",
+            "brand": "Celine",
+            "likes": 30,
+            "comments": 0,
+            "saves": 10,
+            "creator": "user_f55a698e",
+            "post_link": "https://www.xiaohongshu.com/explore/69c4dd13000000001a0245ff",
+            "cover_url": "https://sns-webpic-qc.xhscdn.com/202603292320/0d46a3dfb73fe739227781a9a5649b91/notes_pre_post/1040g3k831u5th1542o005q755r0ttu8ekj80gno!nc_n_webp_mw_1",
+            "all_image_urls": [
+              "https://sns-webpic-qc.xhscdn.com/202603292324/9daec372d30e437cbd5bc975f994765f/notes_pre_post/1040g3k831u5th1542o2g5q755r0ttu8evm7qhl0!nd_dft_wlteh_webp_3",
+              "https://sns-webpic-qc.xhscdn.com/202603292324/1b787e2b74c0251f43b8f69b22ace3b2/notes_pre_post/1040g3k831u5th1542o005q755r0ttu8ekj80gno!nd_dft_wlteh_webp_3",
+              "https://sns-webpic-qc.xhscdn.com/202603292324/54dd33765b08625b154f45408bd34605/notes_pre_post/1040g3k831u5th1542o0g5q755r0ttu8erifmkl8!nd_dft_wlteh_webp_3",
+              "https://sns-webpic-qc.xhscdn.com/202603292324/4b3d882323d9f794440f2d2bd6680592/notes_pre_post/1040g3k831u5th1542o105q755r0ttu8e3ps6e40!nd_dft_wlteh_webp_3",
+              "https://sns-webpic-qc.xhscdn.com/202603292324/fdc93cdd7293a1f198b41e9287721326/notes_pre_post/1040g3k831u5th1542o1g5q755r0ttu8eojl6rbo!nd_dft_wlteh_webp_3",
+              "https://sns-webpic-qc.xhscdn.com/202603292324/ed39c39d275a229211ba9730f05f9681/notes_pre_post/1040g3k831u5th1542o205q755r0ttu8egljecrg!nd_dft_wlteh_webp_3"
+            ],
+            "is_video": false,
+            "video_url": "",
+            "image_caption": "The post showcases a relaxed, stylish men's jacket from CELINE's summer collection, paired with high-waisted black denim jeans. The visual aesthetic is modern and sleek, featuring a stark contrast between the dark marble background and the outfit's neutral tones, primarily grey and black, complemented by a white top. The model carries a beige tote bag, with visible branding on it, and the overall look is completed with pointed black shoes, emphasizing a fashionable yet casual vibe.",
+            "comments_scraped": [
+              {
+                "commenter_id": "user_6400c453",
+                "text": "这个真的帅",
+                "likes": 0,
+                "replies": []
+              },
+              {
+                "commenter_id": "user_6400c453",
+                "text": "这个真的帅",
+                "likes": 0,
+                "replies": []
+              },
+              {
+                "commenter_id": "user_e8b6db41",
+                "text": "作者",
+                "likes": 0,
+                "replies": []
+              }
+            ],
+            "comments_count_scraped": 3
+          },
+          {
+            "post_id": "live_0004",
+            "title": "CELINE｜男装上新啦🖖🏻",
+            "date": "编辑于 2025-11-09",
+            "brand": "Celine",
+            "likes": 30,
+            "comments": 0,
+            "saves": 8,
+            "creator": "user_4d601218",
+            "post_link": "https://www.xiaohongshu.com/explore/690ffd280000000007008d7d",
+            "cover_url": "https://sns-webpic-qc.xhscdn.com/202603292320/9373350bb008b8067d38c2fa97b23d62/notes_uhdr/1040g3qo31ol9skng4sa05p0g79gqh1b0pknl3io!nc_n_webp_mw_1",
+            "all_image_urls": [
+              "https://sns-webpic-qc.xhscdn.com/202603292322/9b6c5279939c7bb5704bbf025346cc74/notes_uhdr/1040g3qo31ol9skng4s905p0g79gqh1b0lscn3q0!nd_dft_wlteh_webp_3",
+              "https://sns-webpic-qc.xhscdn.com/202603292322/784be0650bea4decc55e3a97bb1ced60/notes_uhdr/1040g3qo31ol9skng4sa05p0g79gqh1b0pknl3io!nd_dft_wlteh_webp_3",
+              "http://sns-webpic-qc.xhscdn.com/202603292322/784be0650bea4decc55e3a97bb1ced60/notes_uhdr/1040g3qo31ol9skng4sa05p0g79gqh1b0pknl3io!nd_dft_wlteh_webp_3",
+              "https://sns-webpic-qc.xhscdn.com/202603292322/682583da2ad5ba5df1edb17ba84f2b38/notes_uhdr/1040g3qo31ol9skng4s8g5p0g79gqh1b0ouarji8!nd_dft_wlteh_webp_3",
+              "https://sns-webpic-qc.xhscdn.com/202603292322/d1693cd033717719292abe4d02c2fa9d/notes_uhdr/1040g3qo31ol9skng4s705p0g79gqh1b0jdsebbg!nd_dft_wlteh_webp_3",
+              "https://sns-webpic-qc.xhscdn.com/202603292322/cea23f76b1d3b25931e90ea0135e443c/notes_uhdr/1040g3qo31ol9skng4s805p0g79gqh1b0d478sg0!nd_dft_wlteh_webp_3",
+              "https://sns-webpic-qc.xhscdn.com/202603292322/4170e6caef56333ab501a1112378ec4d/notes_uhdr/1040g3qo31ol9skng4s7g5p0g79gqh1b0r5hggl0!nd_dft_wlteh_webp_3",
+              "https://sns-webpic-qc.xhscdn.com/202603292322/785776d8b57d388977c9038fceea44af/notes_uhdr/1040g3qo31ol9skng4s9g5p0g79gqh1b0f7a8l08!nd_dft_wlteh_webp_3"
+            ],
+            "is_video": true,
+            "video_url": "blob:https://www.xiaohongshu.com/8e2a8ee3-1dee-4660-8e32-93048a9a43c0",
+            "image_caption": "The image presents a vibrant blue hoodie from CELINE, featuring a prominently displayed logo with the brand name \"CELINE\" in white and \"PARIS\" in smaller text underneath. The hoodie is styled with a relaxed fit and a simple design, showcasing a front pocket and adjustable drawstrings. The overall aesthetic is modern and casual, emphasizing bold colors and clean lines, which aligns with current streetwear trends.",
+            "comments_scraped": [
+              {
+                "commenter_id": "user_99d139c0",
+                "text": "短袖多少这个老板",
+                "likes": 0,
+                "replies": []
+              },
+              {
+                "commenter_id": "user_99d139c0",
+                "text": "短袖多少这个老板",
+                "likes": 0,
+                "replies": []
+              },
+              {
+                "commenter_id": "user_b5cd8f66",
+                "text": "作者",
+                "likes": 0,
+                "replies": []
+              },
+              {
+                "commenter_id": "user_1014c702",
+                "text": "礼貌询价",
+                "likes": 0,
+                "replies": []
+              },
+              {
+                "commenter_id": "user_1014c702",
+                "text": "礼貌询价",
+                "likes": 0,
+                "replies": []
+              }
+            ],
+            "comments_count_scraped": 5
+          }
+        ]
+      },
+      "metrics": {
+        "post_count": 5,
+        "total_engagement": 498,
+        "avg_engagement": 99.6,
+        "total_likes": 352,
+        "total_comments": 0,
+        "total_saves": 146,
+        "top_keywords": [
+          "celine",
+          "男装",
+          "北京",
+          "新款",
+          "skp"
+        ],
+        "video_post_count": 3,
+        "image_count": 35
+      },
+      "timestamp": "2026-03-29T16:29:56.473775+00:00",
+      "visual_assets": {
+        "all_image_urls": [
+          "https://sns-webpic-qc.xhscdn.com/202603292325/cc0f0939ff74062ed10fc3a6863d3561/note_pre_post_uhdr/1040g3r031u8fvg0miq2g5p3j4unqmscqtnftr80!nd_dft_wlteh_webp_3",
+          "https://sns-webpic-qc.xhscdn.com/202603292325/b4f41994b2ae76b1f863e533653701f2/note_pre_post_uhdr/1040g3r031u8fvg0miq005p3j4unqmscq0s2v9n0!nd_dft_wlteh_webp_3",
+          "http://sns-webpic-qc.xhscdn.com/202603292325/b4f41994b2ae76b1f863e533653701f2/note_pre_post_uhdr/1040g3r031u8fvg0miq005p3j4unqmscq0s2v9n0!nd_dft_wlteh_webp_3",
+          "https://sns-webpic-qc.xhscdn.com/202603292325/54f7d990a816c4bdb91a9e203abb4e21/note_pre_post_uhdr/1040g3r031u8fvg0miq0g5p3j4unqmscqvbal7l0!nd_dft_wlteh_webp_3",
+          "https://sns-webpic-qc.xhscdn.com/202603292325/f9e3b927ad08f94f062672beb0a6323c/note_pre_post_uhdr/1040g3r031u8fvg0miq105p3j4unqmscq1lrlk80!nd_dft_wlteh_webp_3",
+          "https://sns-webpic-qc.xhscdn.com/202603292325/5e7706557e06936812b411ea636f9f38/note_pre_post_uhdr/1040g3r031u8fvg0miq1g5p3j4unqmscqmkj2fo0!nd_dft_wlteh_webp_3",
+          "https://sns-webpic-qc.xhscdn.com/202603292325/9aa4f9cfceffe51294287ed5e1377514/note_pre_post_uhdr/1040g3r031u8fvg0miq205p3j4unqmscqpuphueg!nd_dft_wlteh_webp_3",
+          "https://sns-webpic-qc.xhscdn.com/202603292320/f865bbc2543653aa741d2b897cb4605a/1040g2sg31r2q0uv5n2705olf1pkmt8a5f9q1img!nc_n_webp_mw_1",
+          "https://sns-webpic-qc.xhscdn.com/202603292324/9daec372d30e437cbd5bc975f994765f/notes_pre_post/1040g3k831u5th1542o2g5q755r0ttu8evm7qhl0!nd_dft_wlteh_webp_3",
+          "https://sns-webpic-qc.xhscdn.com/202603292324/1b787e2b74c0251f43b8f69b22ace3b2/notes_pre_post/1040g3k831u5th1542o005q755r0ttu8ekj80gno!nd_dft_wlteh_webp_3",
+          "https://sns-webpic-qc.xhscdn.com/202603292324/54dd33765b08625b154f45408bd34605/notes_pre_post/1040g3k831u5th1542o0g5q755r0ttu8erifmkl8!nd_dft_wlteh_webp_3",
+          "https://sns-webpic-qc.xhscdn.com/202603292324/4b3d882323d9f794440f2d2bd6680592/notes_pre_post/1040g3k831u5th1542o105q755r0ttu8e3ps6e40!nd_dft_wlteh_webp_3",
+          "https://sns-webpic-qc.xhscdn.com/202603292324/fdc93cdd7293a1f198b41e9287721326/notes_pre_post/1040g3k831u5th1542o1g5q755r0ttu8eojl6rbo!nd_dft_wlteh_webp_3",
+          "https://sns-webpic-qc.xhscdn.com/202603292324/ed39c39d275a229211ba9730f05f9681/notes_pre_post/1040g3k831u5th1542o205q755r0ttu8egljecrg!nd_dft_wlteh_webp_3",
+          "https://sns-webpic-qc.xhscdn.com/202603292324/f709c8de609c20572ca415ce3512deb6/notes_pre_post/1040g3k031huuh9a25i5g5ocab3d41oeo3ohnggo!nd_dft_wlteh_webp_3",
+          "https://sns-webpic-qc.xhscdn.com/202603292324/d6b407d1c85bcd9995f8724f7a04298c/notes_pre_post/1040g3k831huue2nn5qkg5ocab3d41oeo0nde8gg!nd_dft_wlteh_webp_3",
+          "https://sns-webpic-qc.xhscdn.com/202603292324/c3c79330ef5253cfa314196eef9d9132/notes_pre_post/1040g3k031huuh9a25i005ocab3d41oeotpoef9o!nd_dft_wlteh_webp_3",
+          "https://sns-webpic-qc.xhscdn.com/202603292324/bd2d20857eac2875a8d54367fa6e5a61/notes_pre_post/1040g3k031huuh9a25i0g5ocab3d41oeou6a2460!nd_dft_wlteh_webp_3",
+          "https://sns-webpic-qc.xhscdn.com/202603292324/106286133b3aa4ac32c66c1c19296797/notes_pre_post/1040g3k031huuh9a25i105ocab3d41oeoveia8ho!nd_dft_wlteh_webp_3",
+          "https://sns-webpic-qc.xhscdn.com/202603292324/63b651dce342348ca9f350174d18c264/notes_pre_post/1040g3k031huuh9a25i1g5ocab3d41oeo7m7bq20!nd_dft_wlteh_webp_3"
+        ],
+        "image_captions": [
+          {
+            "post_id": "live_0021",
+            "caption": "The image features a CELINE Small Hobo bag in a warm brown leather, styled with a pink silk scarf tied to the handle, showcasing a playful print that complements the bag's classic aesthetic. The visual aesthetic is modern and chic, with an emphasis on a relaxed, French-inspired vibe. The colors are primarily earthy tones, with the bag's brown contrasted by the vibrant pink of the scarf, while the setting includes minimalist furniture that enhances the overall sophistication."
+          },
+          {
+            "post_id": "live_0016",
+            "caption": "The image features a CELINE Ava bag in a light beige color adorned with the brand's signature print, accompanied by a dark drawstring dust bag that has the CELINE Paris branding. The aesthetic is minimalist and luxurious, highlighted by warm, neutral tones of white, beige, and black. Visibly, there's text in Chinese that celebrates personal achievement, alongside branding details for the bag."
+          },
+          {
+            "post_id": "live_0018",
+            "caption": "The post showcases a relaxed, stylish men's jacket from CELINE's summer collection, paired with high-waisted black denim jeans. The visual aesthetic is modern and sleek, featuring a stark contrast between the dark marble background and the outfit's neutral tones, primarily grey and black, complemented by a white top. The model carries a beige tote bag, with visible branding on it, and the overall look is completed with pointed black shoes, emphasizing a fashionable yet casual vibe."
+          },
+          {
+            "post_id": "live_0015",
+            "caption": "The image features a pair of Celine Rej loose-fit black jeans, displayed from the back with a visible brown leather belt. The jeans have a distressed finish, particularly at the hem, which exhibits a frayed style. The aesthetic is minimalistic and modern, utilizing a monochromatic color palette of black and gray, complemented by the sleek backdrop of soft gray fabric, reinforcing a contemporary fashion vibe."
+          },
+          {
+            "post_id": "live_0004",
+            "caption": "The image presents a vibrant blue hoodie from CELINE, featuring a prominently displayed logo with the brand name \"CELINE\" in white and \"PARIS\" in smaller text underneath. The hoodie is styled with a relaxed fit and a simple design, showcasing a front pocket and adjustable drawstrings. The overall aesthetic is modern and casual, emphasizing bold colors and clean lines, which aligns with current streetwear trends."
+          }
+        ],
+        "video_post_count": 3
+      },
+      "comment_signals": {
+        "total_comments_scraped": 36,
+        "total_replies_scraped": 0,
+        "all_comments": [
+          {
+            "commenter_id": "user_f49ff738",
+            "text": "作者",
+            "likes": 0,
+            "replies": [],
+            "post_id": "live_0021"
+          },
+          {
+            "commenter_id": "user_f49ff738",
+            "text": "作者",
+            "likes": 0,
+            "replies": [],
+            "post_id": "live_0021"
+          },
+          {
+            "commenter_id": "user_a8a87a05",
+            "text": "多少钱",
+            "likes": 2,
+            "replies": [],
+            "post_id": "live_0021"
+          },
+          {
+            "commenter_id": "user_a8a87a05",
+            "text": "多少钱",
+            "likes": 2,
+            "replies": [],
+            "post_id": "live_0021"
+          },
+          {
+            "commenter_id": "user_f49ff738",
+            "text": "作者",
+            "likes": 0,
+            "replies": [],
+            "post_id": "live_0021"
+          },
+          {
+            "commenter_id": "user_e3d8cd00",
+            "text": "多少钱",
+            "likes": 0,
+            "replies": [],
+            "post_id": "live_0021"
+          },
+          {
+            "commenter_id": "user_e3d8cd00",
+            "text": "多少钱",
+            "likes": 0,
+            "replies": [],
+            "post_id": "live_0021"
+          },
+          {
+            "commenter_id": "user_f49ff738",
+            "text": "作者",
+            "likes": 0,
+            "replies": [],
+            "post_id": "live_0021"
+          },
+          {
+            "commenter_id": "user_e2c18e53",
+            "text": "这个多少入",
+            "likes": 0,
+            "replies": [],
+            "post_id": "live_0016"
+          },
+          {
+            "commenter_id": "user_e2c18e53",
+            "text": "这个多少入",
+            "likes": 0,
+            "replies": [],
+            "post_id": "live_0016"
+          },
+          {
+            "commenter_id": "user_3e4bf7e7",
+            "text": "作者",
+            "likes": 0,
+            "replies": [],
+            "post_id": "live_0016"
+          },
+          {
+            "commenter_id": "user_aa4a270b",
+            "text": "你这个size看起来刚刚好 这款有分大小size的嘛",
+            "likes": 1,
+            "replies": [],
+            "post_id": "live_0016"
+          },
+          {
+            "commenter_id": "user_aa4a270b",
+            "text": "你这个size看起来刚刚好 这款有分大小size的嘛",
+            "likes": 1,
+            "replies": [],
+            "post_id": "live_0016"
+          },
+          {
+            "commenter_id": "user_3e4bf7e7",
+            "text": "作者",
+            "likes": 1,
+            "replies": [],
+            "post_id": "live_0016"
+          },
+          {
+            "commenter_id": "user_31004864",
+            "text": "好看好看，我也想入这款，就是穿羽绒服背腋下包是不是有点紧",
+            "likes": 0,
+            "replies": [],
+            "post_id": "live_0016"
+          },
+          {
+            "commenter_id": "user_31004864",
+            "text": "好看好看，我也想入这款，就是穿羽绒服背腋下包是不是有点紧",
+            "likes": 0,
+            "replies": [],
+            "post_id": "live_0016"
+          },
+          {
+            "commenter_id": "user_3e4bf7e7",
+            "text": "作者",
+            "likes": 1,
+            "replies": [],
+            "post_id": "live_0016"
+          },
+          {
+            "commenter_id": "user_9e0ca2fb",
+            "text": "姐妹这是什么色",
+            "likes": 0,
+            "replies": [],
+            "post_id": "live_0016"
+          },
+          {
+            "commenter_id": "user_9e0ca2fb",
+            "text": "姐妹这是什么色",
+            "likes": 0,
+            "replies": [],
+            "post_id": "live_0016"
+          },
+          {
+            "commenter_id": "user_8262e924",
+            "text": "哇 好好看 多少啊",
+            "likes": 0,
+            "replies": [],
+            "post_id": "live_0016"
+          },
+          {
+            "commenter_id": "user_8262e924",
+            "text": "哇 好好看 多少啊",
+            "likes": 0,
+            "replies": [],
+            "post_id": "live_0016"
+          },
+          {
+            "commenter_id": "user_6400c453",
+            "text": "这个真的帅",
+            "likes": 0,
+            "replies": [],
+            "post_id": "live_0018"
+          },
+          {
+            "commenter_id": "user_6400c453",
+            "text": "这个真的帅",
+            "likes": 0,
+            "replies": [],
+            "post_id": "live_0018"
+          },
+          {
+            "commenter_id": "user_e8b6db41",
+            "text": "作者",
+            "likes": 0,
+            "replies": [],
+            "post_id": "live_0018"
+          },
+          {
+            "commenter_id": "user_ebccc48c",
+            "text": "衬衫是什么呀",
+            "likes": 0,
+            "replies": [],
+            "post_id": "live_0015"
+          },
+          {
+            "commenter_id": "user_ebccc48c",
+            "text": "衬衫是什么呀",
+            "likes": 0,
+            "replies": [],
+            "post_id": "live_0015"
+          },
+          {
+            "commenter_id": "user_fb51357e",
+            "text": "作者",
+            "likes": 1,
+            "replies": [],
+            "post_id": "live_0015"
+          },
+          {
+            "commenter_id": "user_2144cb98",
+            "text": "大卫哥是不是改了腰围呀",
+            "likes": 0,
+            "replies": [],
+            "post_id": "live_0015"
+          },
+          {
+            "commenter_id": "user_2144cb98",
+            "text": "大卫哥是不是改了腰围呀",
+            "likes": 0,
+            "replies": [],
+            "post_id": "live_0015"
+          },
+          {
+            "commenter_id": "user_19f83989",
+            "text": "大卫哥上身超帅啊",
+            "likes": 0,
+            "replies": [],
+            "post_id": "live_0015"
+          },
+          {
+            "commenter_id": "user_19f83989",
+            "text": "大卫哥上身超帅啊",
+            "likes": 0,
+            "replies": [],
+            "post_id": "live_0015"
+          },
+          {
+            "commenter_id": "user_99d139c0",
+            "text": "短袖多少这个老板",
+            "likes": 0,
+            "replies": [],
+            "post_id": "live_0004"
+          },
+          {
+            "commenter_id": "user_99d139c0",
+            "text": "短袖多少这个老板",
+            "likes": 0,
+            "replies": [],
+            "post_id": "live_0004"
+          },
+          {
+            "commenter_id": "user_b5cd8f66",
+            "text": "作者",
+            "likes": 0,
+            "replies": [],
+            "post_id": "live_0004"
+          },
+          {
+            "commenter_id": "user_1014c702",
+            "text": "礼貌询价",
+            "likes": 0,
+            "replies": [],
+            "post_id": "live_0004"
+          },
+          {
+            "commenter_id": "user_1014c702",
+            "text": "礼貌询价",
+            "likes": 0,
+            "replies": [],
+            "post_id": "live_0004"
+          }
+        ]
+      }
+    }
+  ],
+  "schema_file": "outputs/trend_object_schema.json"
+}

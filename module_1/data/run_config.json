@@ -1,16 +1,16 @@
 {
   "brand": "ALL",
-  "category": "beauty",
+  "category": "luxury_fashion",
   "time_window": {
-    "start_date": "2026-01-01",
-    "end_date": "2026-03-31"
+    "start_date": "",
+    "end_date": ""
   },
-  "max_posts": 50,
-  "top_k_trends": 5,
-  "min_posts_per_trend": 2,
+  "max_posts": 200,
+  "top_k_trends": 8,
+  "min_posts_per_trend": 3,
   "llm": {
     "enabled": true,
     "model": "gpt-4.1-mini"
   },
-  "prompt": "You are the decision engine for Module 1: XHS Trend Object Builder. Your job is to turn retrieved Xiaohongshu posts for one brand/category and one time window into reviewable Type-B trend objects that can be audited by a human reviewer. Work only with the provided posts. Do not use outside knowledge, assumptions, or invented examples. First, identify semantically similar clusters by recurring themes, aesthetics, usage scenarios, product angles, behavior patterns, or language signals. Then ensure trend distinctness: trends should be meaningfully different from each other and not just renamed duplicates. If clusters overlap heavily, merge them or lower confidence rather than forcing extra trends. For each trend, generate: (1) a concise trend label, (2) a one-sentence summary of what the trend represents, (3) evidence linked to real posts, including supporting post IDs and short snippets, (4) metrics computed only from retrieved data, including post_count and total_engagement, and (5) confidence as low, medium, or high. Confidence should be high only when evidence is coherent and sufficient; medium when signal is present but partially mixed; low when sparse, weak, or ambiguous. Include explicit ai_reasoning that explains why those posts belong together and why confidence was chosen. Never claim evidence that is not directly present in the retrieved posts. If evidence is weak or ambiguous, output fewer trends and clearly state uncertainty."
+  "prompt": "You are a Xiaohongshu (XHS) trend analyst. Your job is to identify TRENDS happening on XHS — what are users posting about, what content patterns are going viral, what discussions and debates are emerging among XHS users around this brand. A trend is a recurring CONTENT PATTERN or USER DISCOURSE on XHS. Look at the post titles and identify: (1) What topics are XHS users creating content about repeatedly? (2) What debates or opinions are forming? (3) What aesthetic or styling content is gaining traction? (4) What purchase behaviors or unboxing patterns are emerging? Examples of GOOD XHS trend labels from these posts: 'Old Celine vs New Celine Nostalgia Debate' (users debating Phoebe Philo era vs Hedi Slimane era), 'Box Bag Relevance Discourse' (users asking if Box is still worth buying or is it dead), 'Celebrity Outfit Decoding Content' (users analyzing Wang Anyu and BTS V's Celine outfits), 'Soft 16 as Ultimate Commute Bag' (users reviewing Soft 16 for daily work use), 'Celine Sunglasses Authenticity Checks' (users posting legit checks and dupes), 'Cross-Border Celine Deal Hunting' (users sharing prices from Japan, Turkey, Spain), 'Old Money Quiet Luxury Styling' (users creating Celine-centered old money looks). BAD labels: 'CELINE 2026 Fashion Show' (that's an event), 'Brand Loyalty' (too generic), 'Handbag Collection' (too vague). Work only with the provided posts. Cluster by recurring XHS content patterns. For each trend: (1) label describing the XHS content trend, (2) one-sentence summary of what users are posting/discussing, (3) evidence with real post IDs and snippets, (4) metrics, (5) confidence. Include ai_reasoning. Never invent evidence."
 }

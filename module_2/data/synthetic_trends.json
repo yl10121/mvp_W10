@@ -1,0 +1,944 @@
+{
+  "run_id": "synthetic_batch_001",
+  "brand": "Celine",
+  "category": "luxury_fashion",
+  "time_window": {
+    "start_date": "2026-03-01",
+    "end_date": "2026-03-31"
+  },
+  "generated_at_utc": "2026-03-29T00:00:00Z",
+  "data_type": "synthetic",
+  "note": "Synthetic trend objects created for Module 2 batch testing. Marked data_type=synthetic on each object. Structure matches module_1/outputs/runs/ exactly.",
+  "trend_objects": [
+    {
+      "trend_id": "t01",
+      "label": "Quiet Luxury Street Style",
+      "category": "luxury_fashion",
+      "summary": "A wave of XHS posts reject overt branding in favour of understated, high-quality dressing — anchored in neutral palettes, precise tailoring, and restrained accessories. Creators frame this as a philosophy of dressing, not a product category.",
+      "ai_reasoning": "Grouped because posts share recurring keywords and themes around '静奢风', '不露牌子', '高级感', and show consistent engagement patterns from design-literate fashion creators.",
+      "confidence": "high",
+      "labeling_source": "synthetic",
+      "data_type": "synthetic",
+      "evidence": {
+        "post_ids": ["sp001", "sp002", "sp003", "sp004", "sp005", "sp006"],
+        "snippets": [
+          "为什么「静奢风」让人一眼觉得有钱｜穿搭逻辑拆解",
+          "不露牌子也能显贵｜静奢穿搭公式",
+          "高级感≠大牌logo｜极简穿搭的本质",
+          "静奢穿搭避坑指南｜这三种单品千万别买",
+          "从Celine学静奢｜为什么少就是多"
+        ],
+        "posts": [
+          {"post_id": "sp001", "title": "为什么「静奢风」让人一眼觉得有钱｜穿搭逻辑拆解", "date": "2026-03-22", "brand": "Celine", "likes": 18432, "comments": 1124, "saves": 5673, "creator": "user_a1b2c3d4"},
+          {"post_id": "sp002", "title": "不露牌子也能显贵｜静奢穿搭公式", "date": "2026-03-20", "brand": "Celine", "likes": 14521, "comments": 876, "saves": 4312, "creator": "user_b2c3d4e5"},
+          {"post_id": "sp003", "title": "高级感≠大牌logo｜极简穿搭的本质", "date": "2026-03-18", "brand": "The Row", "likes": 12340, "comments": 743, "saves": 3891, "creator": "user_c3d4e5f6"},
+          {"post_id": "sp004", "title": "静奢穿搭避坑指南｜这三种单品千万别买", "date": "2026-03-15", "brand": "Toteme", "likes": 9876, "comments": 612, "saves": 2934, "creator": "user_d4e5f6a1"},
+          {"post_id": "sp005", "title": "从Celine学静奢｜为什么少就是多", "date": "2026-03-12", "brand": "Celine", "likes": 11203, "comments": 698, "saves": 3412, "creator": "user_e5f6a1b2"},
+          {"post_id": "sp006", "title": "静奢≠无聊｜如何穿出层次感", "date": "2026-03-10", "brand": "A.P.C.", "likes": 8765, "comments": 521, "saves": 2543, "creator": "user_f6a1b2c3"}
+        ]
+      },
+      "metrics": {
+        "post_count": 18,
+        "total_engagement": 265576,
+        "avg_engagement": 14754.2,
+        "total_likes": 205137,
+        "total_comments": 12574,
+        "total_saves": 47865,
+        "top_keywords": ["静奢风", "高级感", "极简穿搭", "无logo", "质感"]
+      },
+      "timestamp": "2026-03-29T00:00:00Z"
+    },
+    {
+      "trend_id": "t02",
+      "label": "Architectural Silhouette Dressing",
+      "category": "luxury_fashion",
+      "summary": "Posts cluster around structured, architectural garment shapes — oversized coats with strong shoulders, boxy blazers, and sculptural knitwear — framed as wearable art. Creators emphasise the geometry of the garment over decoration.",
+      "ai_reasoning": "Grouped because posts share recurring keywords around '廓形', '结构感', '建筑感', and evidence.posts show consistent engagement from fashion editorial and design-adjacent creators.",
+      "confidence": "high",
+      "labeling_source": "synthetic",
+      "data_type": "synthetic",
+      "evidence": {
+        "post_ids": ["sp007", "sp008", "sp009", "sp010", "sp011"],
+        "snippets": [
+          "廓形感大衣｜穿出「行走的艺术品」",
+          "结构主义穿搭｜硬朗线条里的女性力量",
+          "建筑感西装｜为什么版型比面料更重要",
+          "Celine廓形外套｜一件穿十年的投资",
+          "方肩 vs 溜肩｜2026年廓形选择指南"
+        ],
+        "posts": [
+          {"post_id": "sp007", "title": "廓形感大衣｜穿出「行走的艺术品」", "date": "2026-03-25", "brand": "Celine", "likes": 22341, "comments": 1432, "saves": 6789, "creator": "user_g7h8i9j0"},
+          {"post_id": "sp008", "title": "结构主义穿搭｜硬朗线条里的女性力量", "date": "2026-03-21", "brand": "Celine", "likes": 16543, "comments": 987, "saves": 4987, "creator": "user_h8i9j0k1"},
+          {"post_id": "sp009", "title": "建筑感西装｜为什么版型比面料更重要", "date": "2026-03-19", "brand": "Loewe", "likes": 13210, "comments": 812, "saves": 3876, "creator": "user_i9j0k1l2"},
+          {"post_id": "sp010", "title": "Celine廓形外套｜一件穿十年的投资", "date": "2026-03-16", "brand": "Celine", "likes": 19876, "comments": 1234, "saves": 5432, "creator": "user_j0k1l2m3"},
+          {"post_id": "sp011", "title": "方肩 vs 溜肩｜2026年廓形选择指南", "date": "2026-03-13", "brand": "Toteme", "likes": 11234, "comments": 698, "saves": 3210, "creator": "user_k1l2m3n4"}
+        ]
+      },
+      "metrics": {
+        "post_count": 14,
+        "total_engagement": 312665,
+        "avg_engagement": 22333.2,
+        "total_likes": 241204,
+        "total_comments": 14863,
+        "total_saves": 56598,
+        "top_keywords": ["廓形", "结构感", "建筑感", "版型", "大衣"]
+      },
+      "timestamp": "2026-03-29T00:00:00Z"
+    },
+    {
+      "trend_id": "t03",
+      "label": "Triomphe Hardware Investment",
+      "category": "luxury_fashion",
+      "summary": "Celine's Triomphe hardware — the double-C gold clasp — is driving dedicated content around its investment value, styling versatility, and brand signifier status among design-literate audiences who reject conventional logo display.",
+      "ai_reasoning": "Grouped because posts share recurring keywords around 'Triomphe', '金扣', 'Celine投资', and all evidence.posts are Celine-brand specific with strong saves indicating purchase-intent engagement.",
+      "confidence": "high",
+      "labeling_source": "synthetic",
+      "data_type": "synthetic",
+      "evidence": {
+        "post_ids": ["sp012", "sp013", "sp014", "sp015", "sp016", "sp017"],
+        "snippets": [
+          "Celine Triomphe｜为什么这个金扣值得等",
+          "论金属扣的格调｜Celine Triomphe深度测评",
+          "三年后回看Triomphe｜保值还是贬值？",
+          "Triomphe链条包 vs Classic flap｜理智选择指南",
+          "Celine金扣单品汇总｜包包 腰带 鞋子",
+          "第一只Celine应该买哪个款｜Triomphe入门指南"
+        ],
+        "posts": [
+          {"post_id": "sp012", "title": "Celine Triomphe｜为什么这个金扣值得等", "date": "2026-03-27", "brand": "Celine", "likes": 24532, "comments": 1876, "saves": 8234, "creator": "user_l2m3n4o5"},
+          {"post_id": "sp013", "title": "论金属扣的格调｜Celine Triomphe深度测评", "date": "2026-03-24", "brand": "Celine", "likes": 19876, "comments": 1432, "saves": 6543, "creator": "user_m3n4o5p6"},
+          {"post_id": "sp014", "title": "三年后回看Triomphe｜保值还是贬值？", "date": "2026-03-21", "brand": "Celine", "likes": 16543, "comments": 1123, "saves": 5678, "creator": "user_n4o5p6q7"},
+          {"post_id": "sp015", "title": "Triomphe链条包 vs Classic flap｜理智选择指南", "date": "2026-03-18", "brand": "Celine", "likes": 21234, "comments": 1654, "saves": 7123, "creator": "user_o5p6q7r8"},
+          {"post_id": "sp016", "title": "Celine金扣单品汇总｜包包 腰带 鞋子", "date": "2026-03-15", "brand": "Celine", "likes": 18765, "comments": 1234, "saves": 6234, "creator": "user_p6q7r8s9"},
+          {"post_id": "sp017", "title": "第一只Celine应该买哪个款｜Triomphe入门指南", "date": "2026-03-12", "brand": "Celine", "likes": 22341, "comments": 1543, "saves": 7654, "creator": "user_q7r8s9t0"}
+        ]
+      },
+      "metrics": {
+        "post_count": 22,
+        "total_engagement": 490173,
+        "avg_engagement": 22280.6,
+        "total_likes": 378291,
+        "total_comments": 23862,
+        "total_saves": 88020,
+        "top_keywords": ["Triomphe", "金扣", "Celine", "投资", "链条包"]
+      },
+      "timestamp": "2026-03-29T00:00:00Z"
+    },
+    {
+      "trend_id": "t04",
+      "label": "Monochromatic Precision Dressing",
+      "category": "luxury_fashion",
+      "summary": "Creators are styling head-to-toe monochromatic looks — particularly camel, cream, and black — as a precision exercise in proportion and texture contrast rather than colour-blocking. The trend foregrounds garment quality over novelty.",
+      "ai_reasoning": "Grouped because posts share recurring keywords '单色', '全身同色', '质感层次', and evidence.posts consistently feature neutral palette content from minimalist fashion creators.",
+      "confidence": "high",
+      "labeling_source": "synthetic",
+      "data_type": "synthetic",
+      "evidence": {
+        "post_ids": ["sp018", "sp019", "sp020", "sp021", "sp022"],
+        "snippets": [
+          "一套驼色｜从头到脚的质感方程式",
+          "黑色极简穿搭｜永远不会错的答案",
+          "全身米白｜怎么穿才不显脏显贵",
+          "单色穿搭的高级感｜比撞色难但值得",
+          "奶油色系全套｜Celine大衣的最佳搭档"
+        ],
+        "posts": [
+          {"post_id": "sp018", "title": "一套驼色｜从头到脚的质感方程式", "date": "2026-03-26", "brand": "Celine", "likes": 16543, "comments": 987, "saves": 4876, "creator": "user_r8s9t0u1"},
+          {"post_id": "sp019", "title": "黑色极简穿搭｜永远不会错的答案", "date": "2026-03-23", "brand": "Toteme", "likes": 13210, "comments": 812, "saves": 3654, "creator": "user_s9t0u1v2"},
+          {"post_id": "sp020", "title": "全身米白｜怎么穿才不显脏显贵", "date": "2026-03-20", "brand": "A.P.C.", "likes": 11234, "comments": 698, "saves": 3123, "creator": "user_t0u1v2w3"},
+          {"post_id": "sp021", "title": "单色穿搭的高级感｜比撞色难但值得", "date": "2026-03-17", "brand": "Celine", "likes": 14321, "comments": 876, "saves": 4012, "creator": "user_u1v2w3x4"},
+          {"post_id": "sp022", "title": "奶油色系全套｜Celine大衣的最佳搭档", "date": "2026-03-14", "brand": "Celine", "likes": 17654, "comments": 1087, "saves": 4987, "creator": "user_v2w3x4y5"}
+        ]
+      },
+      "metrics": {
+        "post_count": 12,
+        "total_engagement": 196074,
+        "avg_engagement": 16339.5,
+        "total_likes": 151962,
+        "total_comments": 9460,
+        "total_saves": 34652,
+        "top_keywords": ["单色穿搭", "驼色", "米白", "极简", "全身同色"]
+      },
+      "timestamp": "2026-03-29T00:00:00Z"
+    },
+    {
+      "trend_id": "t05",
+      "label": "Slim Bootcut Trouser Revival",
+      "category": "luxury_fashion",
+      "summary": "The slim bootcut silhouette is returning as a counter to wide-leg dominance, positioned by creators as a more precise, flattering alternative that reads more European than its predecessors. Celine's tailored iterations are frequently cited.",
+      "ai_reasoning": "Grouped because posts share recurring keywords '微喇裤', '靴型裤', '修身', and evidence.posts show consistent styling comparisons against wide-leg alternatives.",
+      "confidence": "medium",
+      "labeling_source": "synthetic",
+      "data_type": "synthetic",
+      "evidence": {
+        "post_ids": ["sp023", "sp024", "sp025", "sp026", "sp027"],
+        "snippets": [
+          "微喇裤｜拉腿显高的秘密武器",
+          "今年最不容忽视的裤型｜微喇 vs 直筒",
+          "靴型裤回来了｜比阔腿更显精致",
+          "Celine微喇裤上身｜腿型救星真的假的",
+          "从阔腿到微喇｜我的穿搭审美进化"
+        ],
+        "posts": [
+          {"post_id": "sp023", "title": "微喇裤｜拉腿显高的秘密武器", "date": "2026-03-25", "brand": "Celine", "likes": 14321, "comments": 876, "saves": 4234, "creator": "user_w3x4y5z6"},
+          {"post_id": "sp024", "title": "今年最不容忽视的裤型｜微喇 vs 直筒", "date": "2026-03-22", "brand": "Toteme", "likes": 11234, "comments": 698, "saves": 3123, "creator": "user_x4y5z6a7"},
+          {"post_id": "sp025", "title": "靴型裤回来了｜比阔腿更显精致", "date": "2026-03-19", "brand": "The Row", "likes": 9876, "comments": 612, "saves": 2765, "creator": "user_y5z6a7b8"},
+          {"post_id": "sp026", "title": "Celine微喇裤上身｜腿型救星真的假的", "date": "2026-03-16", "brand": "Celine", "likes": 16543, "comments": 1023, "saves": 4987, "creator": "user_z6a7b8c9"},
+          {"post_id": "sp027", "title": "从阔腿到微喇｜我的穿搭审美进化", "date": "2026-03-13", "brand": "A.P.C.", "likes": 8765, "comments": 543, "saves": 2432, "creator": "user_a7b8c9d0"}
+        ]
+      },
+      "metrics": {
+        "post_count": 9,
+        "total_engagement": 121032,
+        "avg_engagement": 13448.0,
+        "total_likes": 93739,
+        "total_comments": 5752,
+        "total_saves": 21541,
+        "top_keywords": ["微喇裤", "靴型裤", "修身", "显腿长", "裤型"]
+      },
+      "timestamp": "2026-03-29T00:00:00Z"
+    },
+    {
+      "trend_id": "t06",
+      "label": "French Intellectual Editorial Aesthetic",
+      "category": "luxury_fashion",
+      "summary": "Creators draw on a French intellectual archetype — combining tailored separates, minimal accessories, and an effortless attitude — as a counter-programming to maximalist trends. Celine is the brand most frequently cited as the definitive reference.",
+      "ai_reasoning": "Grouped because posts share recurring keywords '法式', '知性', '巴黎女孩', and evidence.posts consistently reference Parisian styling codes and intellectual confidence.",
+      "confidence": "high",
+      "labeling_source": "synthetic",
+      "data_type": "synthetic",
+      "evidence": {
+        "post_ids": ["sp028", "sp029", "sp030", "sp031", "sp032", "sp033"],
+        "snippets": [
+          "法式穿搭的核心｜为什么法国人从不用力",
+          "知性美怎么穿｜从巴黎女人那里偷来的配方",
+          "法式穿搭 ≠ 贝雷帽｜真正的格调在哪里",
+          "Celine为什么是法式智识的代名词",
+          "巴黎知性穿搭｜三件单品建立完整风格",
+          "法式女人不穿什么｜审美减法才是关键"
+        ],
+        "posts": [
+          {"post_id": "sp028", "title": "法式穿搭的核心｜为什么法国人从不用力", "date": "2026-03-28", "brand": "Celine", "likes": 23456, "comments": 1543, "saves": 7234, "creator": "user_b8c9d0e1"},
+          {"post_id": "sp029", "title": "知性美怎么穿｜从巴黎女人那里偷来的配方", "date": "2026-03-25", "brand": "Celine", "likes": 19876, "comments": 1234, "saves": 5987, "creator": "user_c9d0e1f2"},
+          {"post_id": "sp030", "title": "法式穿搭 ≠ 贝雷帽｜真正的格调在哪里", "date": "2026-03-22", "brand": "Jacquemus", "likes": 14321, "comments": 876, "saves": 4123, "creator": "user_d0e1f2g3"},
+          {"post_id": "sp031", "title": "Celine为什么是法式智识的代名词", "date": "2026-03-19", "brand": "Celine", "likes": 21234, "comments": 1432, "saves": 6543, "creator": "user_e1f2g3h4"},
+          {"post_id": "sp032", "title": "巴黎知性穿搭｜三件单品建立完整风格", "date": "2026-03-16", "brand": "Celine", "likes": 16543, "comments": 1023, "saves": 4876, "creator": "user_f2g3h4i5"},
+          {"post_id": "sp033", "title": "法式女人不穿什么｜审美减法才是关键", "date": "2026-03-13", "brand": "A.P.C.", "likes": 12345, "comments": 765, "saves": 3456, "creator": "user_g3h4i5j6"}
+        ]
+      },
+      "metrics": {
+        "post_count": 16,
+        "total_engagement": 366866,
+        "avg_engagement": 22929.1,
+        "total_likes": 283775,
+        "total_comments": 17873,
+        "total_saves": 65218,
+        "top_keywords": ["法式", "知性", "巴黎女孩", "Celine", "极简"]
+      },
+      "timestamp": "2026-03-29T00:00:00Z"
+    },
+    {
+      "trend_id": "t07",
+      "label": "Investment Leather Tote Culture",
+      "category": "luxury_fashion",
+      "summary": "XHS posts reframe the luxury leather tote as a rational long-term investment — analysing cost-per-wear, material aging, and resale value. Celine's Cabas and vertical tote formats are the most frequently benchmarked pieces.",
+      "ai_reasoning": "Grouped because posts share recurring keywords '投资包', '皮具投资', 'Cabas', and evidence.posts show high save counts indicating purchase-intent research behaviour.",
+      "confidence": "high",
+      "labeling_source": "synthetic",
+      "data_type": "synthetic",
+      "evidence": {
+        "post_ids": ["sp034", "sp035", "sp036", "sp037", "sp038"],
+        "snippets": [
+          "选一只能用十年的皮包｜Celine Cabas值吗",
+          "为什么托特包是最聪明的投资",
+          "Celine竖款托特｜通勤包的终极答案",
+          "包包投资逻辑｜哪些款保值不贬值",
+          "每天背的包值多少钱才合理｜成本计算"
+        ],
+        "posts": [
+          {"post_id": "sp034", "title": "选一只能用十年的皮包｜Celine Cabas值吗", "date": "2026-03-27", "brand": "Celine", "likes": 25432, "comments": 1987, "saves": 9234, "creator": "user_h4i5j6k7"},
+          {"post_id": "sp035", "title": "为什么托特包是最聪明的投资", "date": "2026-03-24", "brand": "Celine", "likes": 18765, "comments": 1234, "saves": 6543, "creator": "user_i5j6k7l8"},
+          {"post_id": "sp036", "title": "Celine竖款托特｜通勤包的终极答案", "date": "2026-03-21", "brand": "Celine", "likes": 22341, "comments": 1543, "saves": 7654, "creator": "user_j6k7l8m9"},
+          {"post_id": "sp037", "title": "包包投资逻辑｜哪些款保值不贬值", "date": "2026-03-18", "brand": "Bottega Veneta", "likes": 16543, "comments": 1123, "saves": 5678, "creator": "user_k7l8m9n0"},
+          {"post_id": "sp038", "title": "每天背的包值多少钱才合理｜成本计算", "date": "2026-03-15", "brand": "Celine", "likes": 14321, "comments": 987, "saves": 4987, "creator": "user_l8m9n0o1"}
+        ]
+      },
+      "metrics": {
+        "post_count": 13,
+        "total_engagement": 358375,
+        "avg_engagement": 27567.3,
+        "total_likes": 277402,
+        "total_comments": 17374,
+        "total_saves": 63599,
+        "top_keywords": ["投资包", "Cabas", "皮具", "托特包", "保值"]
+      },
+      "timestamp": "2026-03-29T00:00:00Z"
+    },
+    {
+      "trend_id": "t08",
+      "label": "Cashmere Quiet Luxury Layering",
+      "category": "luxury_fashion",
+      "summary": "High-quality cashmere and merino layering is framed as the tactile expression of quiet luxury — with creators focusing on fabric weight, origin, and subtle colour difference across layers rather than visible branding or surface decoration.",
+      "ai_reasoning": "Grouped because posts share recurring keywords '羊绒', '叠穿', '质感', and evidence.posts consistently focus on material quality and understated layering techniques.",
+      "confidence": "high",
+      "labeling_source": "synthetic",
+      "data_type": "synthetic",
+      "evidence": {
+        "post_ids": ["sp039", "sp040", "sp041", "sp042", "sp043"],
+        "snippets": [
+          "一件好羊绒能改变你对穿衣的理解",
+          "高品质叠穿｜不用露品牌也能懂你",
+          "羊绒vs美利奴｜冬季叠穿面料选择指南",
+          "Celine羊绒衫｜为什么手感值这个价",
+          "叠穿的层次感｜如何用质地替代颜色"
+        ],
+        "posts": [
+          {"post_id": "sp039", "title": "一件好羊绒能改变你对穿衣的理解", "date": "2026-03-26", "brand": "Celine", "likes": 17654, "comments": 1087, "saves": 5432, "creator": "user_m9n0o1p2"},
+          {"post_id": "sp040", "title": "高品质叠穿｜不用露品牌也能懂你", "date": "2026-03-23", "brand": "Loro Piana", "likes": 13210, "comments": 812, "saves": 3987, "creator": "user_n0o1p2q3"},
+          {"post_id": "sp041", "title": "羊绒vs美利奴｜冬季叠穿面料选择指南", "date": "2026-03-20", "brand": "Toteme", "likes": 11234, "comments": 698, "saves": 3234, "creator": "user_o1p2q3r4"},
+          {"post_id": "sp042", "title": "Celine羊绒衫｜为什么手感值这个价", "date": "2026-03-17", "brand": "Celine", "likes": 19876, "comments": 1234, "saves": 5987, "creator": "user_p2q3r4s5"},
+          {"post_id": "sp043", "title": "叠穿的层次感｜如何用质地替代颜色", "date": "2026-03-14", "brand": "The Row", "likes": 15432, "comments": 987, "saves": 4654, "creator": "user_q3r4s5t6"}
+        ]
+      },
+      "metrics": {
+        "post_count": 11,
+        "total_engagement": 215712,
+        "avg_engagement": 19610.2,
+        "total_likes": 166406,
+        "total_comments": 10318,
+        "total_saves": 39294,
+        "top_keywords": ["羊绒", "叠穿", "质感", "美利奴", "面料"]
+      },
+      "timestamp": "2026-03-29T00:00:00Z"
+    },
+    {
+      "trend_id": "t09",
+      "label": "Neutral Palette Color Theory",
+      "category": "luxury_fashion",
+      "summary": "Creators are publishing detailed colour theory content around neutral palette construction — camel, ecru, sand, and bone — positioning the mastery of neutrals as a mark of sophisticated taste over trend-chasing.",
+      "ai_reasoning": "Grouped because posts share recurring keywords '中性色', '驼色', '奶油色', and evidence.posts show consistent content framing neutral palettes as an advanced styling skill.",
+      "confidence": "medium",
+      "labeling_source": "synthetic",
+      "data_type": "synthetic",
+      "evidence": {
+        "post_ids": ["sp044", "sp045", "sp046", "sp047", "sp048"],
+        "snippets": [
+          "驼色 x 米白 x 卡其｜中性调色板的无限可能",
+          "为什么高端大衣都选这几个颜色",
+          "奶油色系｜比白色高级的理由",
+          "中性色穿搭｜不是没有颜色，是颜色的减法",
+          "沙色 卡其 驼色｜如何区分三者细微差别"
+        ],
+        "posts": [
+          {"post_id": "sp044", "title": "驼色 x 米白 x 卡其｜中性调色板的无限可能", "date": "2026-03-24", "brand": "Celine", "likes": 16543, "comments": 1023, "saves": 4876, "creator": "user_r4s5t6u7"},
+          {"post_id": "sp045", "title": "为什么高端大衣都选这几个颜色", "date": "2026-03-21", "brand": "Max Mara", "likes": 12345, "comments": 765, "saves": 3456, "creator": "user_s5t6u7v8"},
+          {"post_id": "sp046", "title": "奶油色系｜比白色高级的理由", "date": "2026-03-18", "brand": "Toteme", "likes": 9876, "comments": 612, "saves": 2765, "creator": "user_t6u7v8w9"},
+          {"post_id": "sp047", "title": "中性色穿搭｜不是没有颜色，是颜色的减法", "date": "2026-03-15", "brand": "Celine", "likes": 14321, "comments": 876, "saves": 4012, "creator": "user_u7v8w9x0"},
+          {"post_id": "sp048", "title": "沙色 卡其 驼色｜如何区分三者细微差别", "date": "2026-03-12", "brand": "A.P.C.", "likes": 8765, "comments": 543, "saves": 2432, "creator": "user_v8w9x0y1"}
+        ]
+      },
+      "metrics": {
+        "post_count": 8,
+        "total_engagement": 107211,
+        "avg_engagement": 13401.4,
+        "total_likes": 82850,
+        "total_comments": 5119,
+        "total_saves": 19242,
+        "top_keywords": ["中性色", "驼色", "奶油色", "调色板", "卡其"]
+      },
+      "timestamp": "2026-03-29T00:00:00Z"
+    },
+    {
+      "trend_id": "t10",
+      "label": "Oversized Structured Blazer Power Dressing",
+      "category": "luxury_fashion",
+      "summary": "Oversized, precisely structured blazers are framed as a contemporary power dressing statement — combining authority with ease. Creators emphasise the importance of internal construction, drape, and shoulder line over visible branding.",
+      "ai_reasoning": "Grouped because posts share recurring keywords '廓形西装', '权力穿搭', '大码西装', and evidence.posts show high engagement from professional women in creative and corporate sectors.",
+      "confidence": "high",
+      "labeling_source": "synthetic",
+      "data_type": "synthetic",
+      "evidence": {
+        "post_ids": ["sp049", "sp050", "sp051", "sp052", "sp053"],
+        "snippets": [
+          "一件廓形西装｜穿出整套造型的灵魂",
+          "大码西装的力量感穿搭法",
+          "西装不用合身｜为什么Oversized更现代",
+          "Celine西装外套｜权力感的极简方程式",
+          "西装内搭哲学｜简单才是王道"
+        ],
+        "posts": [
+          {"post_id": "sp049", "title": "一件廓形西装｜穿出整套造型的灵魂", "date": "2026-03-29", "brand": "Celine", "likes": 20123, "comments": 1345, "saves": 6234, "creator": "user_w9x0y1z2"},
+          {"post_id": "sp050", "title": "大码西装的力量感穿搭法", "date": "2026-03-26", "brand": "Celine", "likes": 16543, "comments": 1023, "saves": 4987, "creator": "user_x0y1z2a3"},
+          {"post_id": "sp051", "title": "西装不用合身｜为什么Oversized更现代", "date": "2026-03-23", "brand": "Loewe", "likes": 13210, "comments": 812, "saves": 3876, "creator": "user_y1z2a3b4"},
+          {"post_id": "sp052", "title": "Celine西装外套｜权力感的极简方程式", "date": "2026-03-20", "brand": "Celine", "likes": 18765, "comments": 1234, "saves": 5678, "creator": "user_z2a3b4c5"},
+          {"post_id": "sp053", "title": "西装内搭哲学｜简单才是王道", "date": "2026-03-17", "brand": "Toteme", "likes": 11234, "comments": 698, "saves": 3210, "creator": "user_a3b4c5d6"}
+        ]
+      },
+      "metrics": {
+        "post_count": 15,
+        "total_engagement": 269755,
+        "avg_engagement": 17983.7,
+        "total_likes": 208875,
+        "total_comments": 12912,
+        "total_saves": 47968,
+        "top_keywords": ["廓形西装", "权力穿搭", "Oversized", "Celine", "大码西装"]
+      },
+      "timestamp": "2026-03-29T00:00:00Z"
+    },
+    {
+      "trend_id": "t11",
+      "label": "Silk Slip Dress Minimalism",
+      "category": "luxury_fashion",
+      "summary": "The slip dress is being restyled away from its 90s connotations toward a confident minimalist statement — worn alone in premium silk or layered over fine knitwear. Creators emphasise fabrication and drape as the primary differentiators.",
+      "ai_reasoning": "Grouped because posts share recurring keywords '丝绸连衣裙', '真丝', '极简连衣裙', and evidence.posts consistently foreground material quality and understated styling.",
+      "confidence": "medium",
+      "labeling_source": "synthetic",
+      "data_type": "synthetic",
+      "evidence": {
+        "post_ids": ["sp054", "sp055", "sp056", "sp057", "sp058"],
+        "snippets": [
+          "极简丝绒｜最高级的懒人穿法",
+          "这条裙子让我理解了「少即是多」",
+          "真丝滑裙｜夏秋过渡的终极答案",
+          "Celine丝绸单品｜穿上就是风格",
+          "吊带裙的高级穿法｜不靠暴露靠质地"
+        ],
+        "posts": [
+          {"post_id": "sp054", "title": "极简丝绒｜最高级的懒人穿法", "date": "2026-03-25", "brand": "Celine", "likes": 17654, "comments": 1087, "saves": 5234, "creator": "user_b4c5d6e7"},
+          {"post_id": "sp055", "title": "这条裙子让我理解了「少即是多」", "date": "2026-03-22", "brand": "The Row", "likes": 14321, "comments": 876, "saves": 4123, "creator": "user_c5d6e7f8"},
+          {"post_id": "sp056", "title": "真丝滑裙｜夏秋过渡的终极答案", "date": "2026-03-19", "brand": "Celine", "likes": 12345, "comments": 765, "saves": 3543, "creator": "user_d6e7f8g9"},
+          {"post_id": "sp057", "title": "Celine丝绸单品｜穿上就是风格", "date": "2026-03-16", "brand": "Celine", "likes": 19876, "comments": 1234, "saves": 5987, "creator": "user_e7f8g9h0"},
+          {"post_id": "sp058", "title": "吊带裙的高级穿法｜不靠暴露靠质地", "date": "2026-03-13", "brand": "Jacquemus", "likes": 9876, "comments": 612, "saves": 2876, "creator": "user_f8g9h0i1"}
+        ]
+      },
+      "metrics": {
+        "post_count": 9,
+        "total_engagement": 160179,
+        "avg_engagement": 17797.7,
+        "total_likes": 124072,
+        "total_comments": 7574,
+        "total_saves": 28533,
+        "top_keywords": ["丝绸连衣裙", "真丝", "极简", "吊带裙", "质地"]
+      },
+      "timestamp": "2026-03-29T00:00:00Z"
+    },
+    {
+      "trend_id": "t12",
+      "label": "Belt Bag Hands-Free Luxury",
+      "category": "luxury_fashion",
+      "summary": "Luxury belt bags and crossbody mini bags are framed as a functional but elevated hands-free solution — a mark of confidence that doesn't sacrifice refinement. Celine's belt bag formats are most cited for hardware precision and leather quality.",
+      "ai_reasoning": "Grouped because posts share recurring keywords '腰包', '斜挎包', '解放双手', and evidence.posts show styling guides linking form, function, and luxury brand positioning.",
+      "confidence": "medium",
+      "labeling_source": "synthetic",
+      "data_type": "synthetic",
+      "evidence": {
+        "post_ids": ["sp059", "sp060", "sp061", "sp062", "sp063"],
+        "snippets": [
+          "解放双手的日常｜腰包的高级穿法",
+          "为什么Celine腰包显档次",
+          "迷你包的进化｜从装饰到实用的设计逻辑",
+          "腰包不土｜关键在怎么戴和配什么",
+          "斜挎包选购指南｜比大包更考验品味"
+        ],
+        "posts": [
+          {"post_id": "sp059", "title": "解放双手的日常｜腰包的高级穿法", "date": "2026-03-28", "brand": "Celine", "likes": 15432, "comments": 987, "saves": 4654, "creator": "user_g9h0i1j2"},
+          {"post_id": "sp060", "title": "为什么Celine腰包显档次", "date": "2026-03-25", "brand": "Celine", "likes": 18765, "comments": 1234, "saves": 5678, "creator": "user_h0i1j2k3"},
+          {"post_id": "sp061", "title": "迷你包的进化｜从装饰到实用的设计逻辑", "date": "2026-03-22", "brand": "Bottega Veneta", "likes": 12345, "comments": 765, "saves": 3456, "creator": "user_i1j2k3l4"},
+          {"post_id": "sp062", "title": "腰包不土｜关键在怎么戴和配什么", "date": "2026-03-19", "brand": "Celine", "likes": 10234, "comments": 634, "saves": 2987, "creator": "user_j2k3l4m5"},
+          {"post_id": "sp063", "title": "斜挎包选购指南｜比大包更考验品味", "date": "2026-03-16", "brand": "Loewe", "likes": 13210, "comments": 812, "saves": 3876, "creator": "user_k3l4m5n6"}
+        ]
+      },
+      "metrics": {
+        "post_count": 8,
+        "total_engagement": 130069,
+        "avg_engagement": 16258.6,
+        "total_likes": 100986,
+        "total_comments": 6232,
+        "total_saves": 22851,
+        "top_keywords": ["腰包", "斜挎包", "解放双手", "Celine", "迷你包"]
+      },
+      "timestamp": "2026-03-29T00:00:00Z"
+    },
+    {
+      "trend_id": "t13",
+      "label": "Intellectual Feminine Dressing",
+      "category": "luxury_fashion",
+      "summary": "Posts construct a femininity based on confidence and precision rather than decoration — drawing on Celine's design philosophy to articulate an aesthetic that communicates authority, restraint, and intellectual clarity.",
+      "ai_reasoning": "Grouped because posts share recurring keywords '知性女性', '不靠性感靠质感', '女性力量', and evidence.posts consistently frame dressing as a form of intellectual expression.",
+      "confidence": "high",
+      "labeling_source": "synthetic",
+      "data_type": "synthetic",
+      "evidence": {
+        "post_ids": ["sp064", "sp065", "sp066", "sp067", "sp068"],
+        "snippets": [
+          "不靠性感，靠质感｜知性风格打造手册",
+          "让穿衣说话｜无需声量的高级感",
+          "知性穿搭的误区｜不是穿得像教授",
+          "Celine的女性美学｜克制即是力量",
+          "如何用穿搭表达智识自信"
+        ],
+        "posts": [
+          {"post_id": "sp064", "title": "不靠性感，靠质感｜知性风格打造手册", "date": "2026-03-27", "brand": "Celine", "likes": 24532, "comments": 1654, "saves": 7654, "creator": "user_l4m5n6o7"},
+          {"post_id": "sp065", "title": "让穿衣说话｜无需声量的高级感", "date": "2026-03-24", "brand": "Celine", "likes": 19876, "comments": 1234, "saves": 5987, "creator": "user_m5n6o7p8"},
+          {"post_id": "sp066", "title": "知性穿搭的误区｜不是穿得像教授", "date": "2026-03-21", "brand": "The Row", "likes": 15432, "comments": 987, "saves": 4543, "creator": "user_n6o7p8q9"},
+          {"post_id": "sp067", "title": "Celine的女性美学｜克制即是力量", "date": "2026-03-18", "brand": "Celine", "likes": 21234, "comments": 1432, "saves": 6543, "creator": "user_o7p8q9r0"},
+          {"post_id": "sp068", "title": "如何用穿搭表达智识自信", "date": "2026-03-15", "brand": "Toteme", "likes": 12345, "comments": 765, "saves": 3456, "creator": "user_p8q9r0s1"}
+        ]
+      },
+      "metrics": {
+        "post_count": 14,
+        "total_engagement": 316668,
+        "avg_engagement": 22619.1,
+        "total_likes": 245419,
+        "total_comments": 15072,
+        "total_saves": 56177,
+        "top_keywords": ["知性", "女性力量", "质感", "克制", "Celine"]
+      },
+      "timestamp": "2026-03-29T00:00:00Z"
+    },
+    {
+      "trend_id": "t14",
+      "label": "Capsule Wardrobe Investment Mentality",
+      "category": "luxury_fashion",
+      "summary": "Creators advocate buying fewer, better pieces — constructing a rigorously curated capsule wardrobe anchored in luxury investment pieces. Celine is the brand most frequently cited as the anchor of an aspirational capsule.",
+      "ai_reasoning": "Grouped because posts share recurring keywords '胶囊衣橱', '投资单品', '少而精', and evidence.posts show detailed wardrobe deconstruction content from minimalist fashion creators.",
+      "confidence": "high",
+      "labeling_source": "synthetic",
+      "data_type": "synthetic",
+      "evidence": {
+        "post_ids": ["sp069", "sp070", "sp071", "sp072", "sp073"],
+        "snippets": [
+          "胶囊衣橱的终极答案｜5件单品撑起全年造型",
+          "穿出品味不靠数量靠选择",
+          "我的Celine胶囊｜3年实测哪件最值",
+          "极简衣橱构建指南｜从买法到穿法",
+          "为什么不应该每季买新衣｜品质思维"
+        ],
+        "posts": [
+          {"post_id": "sp069", "title": "胶囊衣橱的终极答案｜5件单品撑起全年造型", "date": "2026-03-26", "brand": "Celine", "likes": 26543, "comments": 1876, "saves": 8765, "creator": "user_q9r0s1t2"},
+          {"post_id": "sp070", "title": "穿出品味不靠数量靠选择", "date": "2026-03-23", "brand": "Celine", "likes": 21234, "comments": 1432, "saves": 6543, "creator": "user_r0s1t2u3"},
+          {"post_id": "sp071", "title": "我的Celine胶囊｜3年实测哪件最值", "date": "2026-03-20", "brand": "Celine", "likes": 18765, "comments": 1234, "saves": 5987, "creator": "user_s1t2u3v4"},
+          {"post_id": "sp072", "title": "极简衣橱构建指南｜从买法到穿法", "date": "2026-03-17", "brand": "The Row", "likes": 14321, "comments": 876, "saves": 4234, "creator": "user_t2u3v4w5"},
+          {"post_id": "sp073", "title": "为什么不应该每季买新衣｜品质思维", "date": "2026-03-14", "brand": "Toteme", "likes": 11234, "comments": 698, "saves": 3210, "creator": "user_u3v4w5x6"}
+        ]
+      },
+      "metrics": {
+        "post_count": 16,
+        "total_engagement": 336952,
+        "avg_engagement": 21059.5,
+        "total_likes": 260097,
+        "total_comments": 16116,
+        "total_saves": 60739,
+        "top_keywords": ["胶囊衣橱", "投资单品", "少而精", "Celine", "极简"]
+      },
+      "timestamp": "2026-03-29T00:00:00Z"
+    },
+    {
+      "trend_id": "t15",
+      "label": "Understated Leather Goods Connoisseurship",
+      "category": "luxury_fashion",
+      "summary": "A growing segment of XHS creators specialise in the craft and material knowledge of luxury leather goods — evaluating tanning, stitching, hardware weight, and patina over time. Content explicitly rejects visible branding as a quality signal.",
+      "ai_reasoning": "Grouped because posts share recurring keywords '皮具鉴赏', '皮革工艺', '无logo', and evidence.posts consistently foreground craft knowledge and material expertise.",
+      "confidence": "high",
+      "labeling_source": "synthetic",
+      "data_type": "synthetic",
+      "evidence": {
+        "post_ids": ["sp074", "sp075", "sp076", "sp077", "sp078"],
+        "snippets": [
+          "真正懂皮具的人｜为什么选无logo款",
+          "低调奢华｜皮具里的隐形财富密码",
+          "皮革鞣制工艺｜为什么贵的皮好在哪里",
+          "Celine皮具｜三年养皮实录",
+          "辨别好皮的五个细节｜不靠牌子靠工艺"
+        ],
+        "posts": [
+          {"post_id": "sp074", "title": "真正懂皮具的人｜为什么选无logo款", "date": "2026-03-25", "brand": "Celine", "likes": 22341, "comments": 1543, "saves": 7234, "creator": "user_v4w5x6y7"},
+          {"post_id": "sp075", "title": "低调奢华｜皮具里的隐形财富密码", "date": "2026-03-22", "brand": "Bottega Veneta", "likes": 18765, "comments": 1234, "saves": 5678, "creator": "user_w5x6y7z8"},
+          {"post_id": "sp076", "title": "皮革鞣制工艺｜为什么贵的皮好在哪里", "date": "2026-03-19", "brand": "Celine", "likes": 15432, "comments": 987, "saves": 4543, "creator": "user_x6y7z8a9"},
+          {"post_id": "sp077", "title": "Celine皮具｜三年养皮实录", "date": "2026-03-16", "brand": "Celine", "likes": 19876, "comments": 1345, "saves": 5987, "creator": "user_y7z8a9b0"},
+          {"post_id": "sp078", "title": "辨别好皮的五个细节｜不靠牌子靠工艺", "date": "2026-03-13", "brand": "Celine", "likes": 13210, "comments": 812, "saves": 3876, "creator": "user_z8a9b0c1"}
+        ]
+      },
+      "metrics": {
+        "post_count": 12,
+        "total_engagement": 261863,
+        "avg_engagement": 21821.9,
+        "total_likes": 202624,
+        "total_comments": 12921,
+        "total_saves": 46318,
+        "top_keywords": ["皮具鉴赏", "皮革工艺", "无logo", "Celine", "低调奢华"]
+      },
+      "timestamp": "2026-03-29T00:00:00Z"
+    },
+    {
+      "trend_id": "t16",
+      "label": "Caramel and Cognac Color Story",
+      "category": "luxury_fashion",
+      "summary": "Warm amber tones — caramel, cognac, and burnt sienna — are emerging as the signature palette for Spring 2026 luxury fashion on XHS. Creators consistently pair these tones with natural leather goods and minimal gold hardware.",
+      "ai_reasoning": "Grouped because posts share recurring keywords '焦糖色', '科涅克棕', '琥珀色', and evidence.posts consistently demonstrate warm-toned styling with luxury leather pairings.",
+      "confidence": "medium",
+      "labeling_source": "synthetic",
+      "data_type": "synthetic",
+      "evidence": {
+        "post_ids": ["sp079", "sp080", "sp081", "sp082", "sp083"],
+        "snippets": [
+          "今春最显贵的颜色｜焦糖 & 科涅克棕",
+          "焦糖色系穿搭｜温暖中的高级感",
+          "琥珀色皮包｜春季最对的颜色选择",
+          "棕色系全员集合｜层次感穿法",
+          "从黑色到焦糖｜颜色升级的高级逻辑"
+        ],
+        "posts": [
+          {"post_id": "sp079", "title": "今春最显贵的颜色｜焦糖 & 科涅克棕", "date": "2026-03-27", "brand": "Celine", "likes": 17654, "comments": 1087, "saves": 5234, "creator": "user_a9b0c1d2"},
+          {"post_id": "sp080", "title": "焦糖色系穿搭｜温暖中的高级感", "date": "2026-03-24", "brand": "Loewe", "likes": 13210, "comments": 812, "saves": 3876, "creator": "user_b0c1d2e3"},
+          {"post_id": "sp081", "title": "琥珀色皮包｜春季最对的颜色选择", "date": "2026-03-21", "brand": "Celine", "likes": 11234, "comments": 698, "saves": 3234, "creator": "user_c1d2e3f4"},
+          {"post_id": "sp082", "title": "棕色系全员集合｜层次感穿法", "date": "2026-03-18", "brand": "Bottega Veneta", "likes": 14321, "comments": 876, "saves": 4012, "creator": "user_d2e3f4g5"},
+          {"post_id": "sp083", "title": "从黑色到焦糖｜颜色升级的高级逻辑", "date": "2026-03-15", "brand": "Celine", "likes": 9876, "comments": 612, "saves": 2765, "creator": "user_e3f4g5h6"}
+        ]
+      },
+      "metrics": {
+        "post_count": 7,
+        "total_engagement": 108501,
+        "avg_engagement": 15500.1,
+        "total_likes": 83295,
+        "total_comments": 5085,
+        "total_saves": 20121,
+        "top_keywords": ["焦糖色", "科涅克棕", "琥珀色", "棕色系", "春季色彩"]
+      },
+      "timestamp": "2026-03-29T00:00:00Z"
+    },
+    {
+      "trend_id": "t17",
+      "label": "High-Waist Wide Leg Trouser Mastery",
+      "category": "luxury_fashion",
+      "summary": "The high-waist wide leg trouser continues as a dominant silhouette, now maturing from a trend into a considered staple — with creators focusing on fabric weight, rise precision, and how luxury tailoring elevates the silhouette beyond its mass-market versions.",
+      "ai_reasoning": "Grouped because posts share recurring keywords '高腰阔腿裤', '高腰裤', '版型', and evidence.posts consistently compare luxury versus high-street executions of the silhouette.",
+      "confidence": "high",
+      "labeling_source": "synthetic",
+      "data_type": "synthetic",
+      "evidence": {
+        "post_ids": ["sp084", "sp085", "sp086", "sp087", "sp088"],
+        "snippets": [
+          "高腰阔腿裤｜塑造完美比例的第一步",
+          "为什么这个版型每个高级品牌都在出",
+          "Celine高腰裤｜同款版型差距在哪里",
+          "阔腿裤面料指南｜棉麻 vs 羊毛 vs 真丝",
+          "高腰设计的逻辑｜不只是显腿长这么简单"
+        ],
+        "posts": [
+          {"post_id": "sp084", "title": "高腰阔腿裤｜塑造完美比例的第一步", "date": "2026-03-26", "brand": "Celine", "likes": 16543, "comments": 1023, "saves": 4987, "creator": "user_f4g5h6i7"},
+          {"post_id": "sp085", "title": "为什么这个版型每个高级品牌都在出", "date": "2026-03-23", "brand": "Toteme", "likes": 12345, "comments": 765, "saves": 3543, "creator": "user_g5h6i7j8"},
+          {"post_id": "sp086", "title": "Celine高腰裤｜同款版型差距在哪里", "date": "2026-03-20", "brand": "Celine", "likes": 19876, "comments": 1234, "saves": 5987, "creator": "user_h6i7j8k9"},
+          {"post_id": "sp087", "title": "阔腿裤面料指南｜棉麻 vs 羊毛 vs 真丝", "date": "2026-03-17", "brand": "Celine", "likes": 11234, "comments": 698, "saves": 3210, "creator": "user_i7j8k9l0"},
+          {"post_id": "sp088", "title": "高腰设计的逻辑｜不只是显腿长这么简单", "date": "2026-03-14", "brand": "The Row", "likes": 14321, "comments": 876, "saves": 4234, "creator": "user_j8k9l0m1"}
+        ]
+      },
+      "metrics": {
+        "post_count": 11,
+        "total_engagement": 200396,
+        "avg_engagement": 18217.8,
+        "total_likes": 154319,
+        "total_comments": 9596,
+        "total_saves": 36481,
+        "top_keywords": ["高腰阔腿裤", "版型", "比例", "面料", "Celine"]
+      },
+      "timestamp": "2026-03-29T00:00:00Z"
+    },
+    {
+      "trend_id": "t18",
+      "label": "Day-to-Night Minimalist Dressing",
+      "category": "luxury_fashion",
+      "summary": "Creators are demonstrating the versatility of minimalist luxury dressing — showing how one precisely chosen outfit transitions from professional to social settings with only minor adjustments. The narrative emphasises considered buying over reactive trend following.",
+      "ai_reasoning": "Grouped because posts share recurring keywords '通勤到夜晚', '一套穿两场', '极简万能', and evidence.posts consistently demonstrate single-outfit versatility as a luxury styling skill.",
+      "confidence": "medium",
+      "labeling_source": "synthetic",
+      "data_type": "synthetic",
+      "evidence": {
+        "post_ids": ["sp089", "sp090", "sp091", "sp092", "sp093"],
+        "snippets": [
+          "一套穿两场｜极简通勤晚宴穿搭",
+          "白天开会晚上赴约｜换一双鞋就够了",
+          "Celine一套走天下｜从早到晚都在线",
+          "通勤晚宴两用穿搭｜极简主义的实用价值",
+          "不换衣服的一天｜高级感如何支撑全天"
+        ],
+        "posts": [
+          {"post_id": "sp089", "title": "一套穿两场｜极简通勤晚宴穿搭", "date": "2026-03-28", "brand": "Celine", "likes": 15432, "comments": 987, "saves": 4543, "creator": "user_k9l0m1n2"},
+          {"post_id": "sp090", "title": "白天开会晚上赴约｜换一双鞋就够了", "date": "2026-03-25", "brand": "Toteme", "likes": 11234, "comments": 698, "saves": 3210, "creator": "user_l0m1n2o3"},
+          {"post_id": "sp091", "title": "Celine一套走天下｜从早到晚都在线", "date": "2026-03-22", "brand": "Celine", "likes": 17654, "comments": 1087, "saves": 5234, "creator": "user_m1n2o3p4"},
+          {"post_id": "sp092", "title": "通勤晚宴两用穿搭｜极简主义的实用价值", "date": "2026-03-19", "brand": "Celine", "likes": 13210, "comments": 812, "saves": 3876, "creator": "user_n2o3p4q5"},
+          {"post_id": "sp093", "title": "不换衣服的一天｜高级感如何支撑全天", "date": "2026-03-16", "brand": "The Row", "likes": 9876, "comments": 612, "saves": 2765, "creator": "user_o3p4q5r6"}
+        ]
+      },
+      "metrics": {
+        "post_count": 8,
+        "total_engagement": 130130,
+        "avg_engagement": 16266.3,
+        "total_likes": 100406,
+        "total_comments": 6196,
+        "total_saves": 23528,
+        "top_keywords": ["通勤到夜晚", "一套穿两场", "极简万能", "Celine", "通勤"]
+      },
+      "timestamp": "2026-03-29T00:00:00Z"
+    },
+    {
+      "trend_id": "t19",
+      "label": "Structured Leather Jacket as Investment",
+      "category": "luxury_fashion",
+      "summary": "Luxury leather jackets are reframed as long-term wardrobe investments — with creators analysing leather grade, construction, and how pieces from houses like Celine age and develop character over time rather than dating.",
+      "ai_reasoning": "Grouped because posts share recurring keywords '皮夹克', '皮革投资', '经典款', and evidence.posts consistently compare quality levels and frame leather jacket purchase as a considered one-time investment.",
+      "confidence": "medium",
+      "labeling_source": "synthetic",
+      "data_type": "synthetic",
+      "evidence": {
+        "post_ids": ["sp094", "sp095", "sp096", "sp097", "sp098"],
+        "snippets": [
+          "皮夹克什么价位才不烂｜从快时尚到Celine的认知升级",
+          "结构感皮夹克｜秋冬最硬的单品",
+          "Celine皮夹克｜为什么越穿越好看",
+          "皮夹克投资指南｜哪些品牌五年后还能穿",
+          "好皮夹克的细节｜线迹 拉链 领型都有讲究"
+        ],
+        "posts": [
+          {"post_id": "sp094", "title": "皮夹克什么价位才不烂｜从快时尚到Celine的认知升级", "date": "2026-03-24", "brand": "Celine", "likes": 21234, "comments": 1432, "saves": 6543, "creator": "user_p4q5r6s7"},
+          {"post_id": "sp095", "title": "结构感皮夹克｜秋冬最硬的单品", "date": "2026-03-21", "brand": "Celine", "likes": 16543, "comments": 1023, "saves": 4987, "creator": "user_q5r6s7t8"},
+          {"post_id": "sp096", "title": "Celine皮夹克｜为什么越穿越好看", "date": "2026-03-18", "brand": "Celine", "likes": 18765, "comments": 1234, "saves": 5678, "creator": "user_r6s7t8u9"},
+          {"post_id": "sp097", "title": "皮夹克投资指南｜哪些品牌五年后还能穿", "date": "2026-03-15", "brand": "Loewe", "likes": 14321, "comments": 876, "saves": 4234, "creator": "user_s7t8u9v0"},
+          {"post_id": "sp098", "title": "好皮夹克的细节｜线迹 拉链 领型都有讲究", "date": "2026-03-12", "brand": "Celine", "likes": 12345, "comments": 765, "saves": 3543, "creator": "user_t8u9v0w1"}
+        ]
+      },
+      "metrics": {
+        "post_count": 9,
+        "total_engagement": 233543,
+        "avg_engagement": 25949.2,
+        "total_likes": 181208,
+        "total_comments": 11330,
+        "total_saves": 40985,
+        "top_keywords": ["皮夹克", "投资", "Celine", "皮革", "经典款"]
+      },
+      "timestamp": "2026-03-29T00:00:00Z"
+    },
+    {
+      "trend_id": "t20",
+      "label": "Minimal Jewelry as Styling Anchor",
+      "category": "luxury_fashion",
+      "summary": "Fine, minimal jewelry — thin gold chains, architectural ear studs, and single-ring styling — is positioned as the finishing element that elevates minimalist dressing without competing with it. The trend emphasises restraint and curation over accumulation.",
+      "ai_reasoning": "Grouped because posts share recurring keywords '极简珠宝', '细链', '点睛之笔', and evidence.posts consistently frame minimal jewelry as a deliberate curation choice rather than a default.",
+      "confidence": "medium",
+      "labeling_source": "synthetic",
+      "data_type": "synthetic",
+      "evidence": {
+        "post_ids": ["sp099", "sp100", "sp101", "sp102", "sp103"],
+        "snippets": [
+          "细金项链 + 极简穿搭｜黄金比例的答案",
+          "极简珠宝哲学｜1件胜过10件",
+          "点睛之笔｜如何选一件珠宝完成整套造型",
+          "耳钉的选择哲学｜简单才是最高级",
+          "Celine珠宝｜和极简穿搭的化学反应"
+        ],
+        "posts": [
+          {"post_id": "sp099", "title": "细金项链 + 极简穿搭｜黄金比例的答案", "date": "2026-03-26", "brand": "Celine", "likes": 14321, "comments": 876, "saves": 4234, "creator": "user_u9v0w1x2"},
+          {"post_id": "sp100", "title": "极简珠宝哲学｜1件胜过10件", "date": "2026-03-23", "brand": "Celine", "likes": 17654, "comments": 1087, "saves": 5234, "creator": "user_v0w1x2y3"},
+          {"post_id": "sp101", "title": "点睛之笔｜如何选一件珠宝完成整套造型", "date": "2026-03-20", "brand": "Bottega Veneta", "likes": 11234, "comments": 698, "saves": 3210, "creator": "user_w1x2y3z4"},
+          {"post_id": "sp102", "title": "耳钉的选择哲学｜简单才是最高级", "date": "2026-03-17", "brand": "Celine", "likes": 13210, "comments": 812, "saves": 3876, "creator": "user_x2y3z4a5"},
+          {"post_id": "sp103", "title": "Celine珠宝｜和极简穿搭的化学反应", "date": "2026-03-14", "brand": "Celine", "likes": 19876, "comments": 1234, "saves": 5987, "creator": "user_y3z4a5b6"}
+        ]
+      },
+      "metrics": {
+        "post_count": 7,
+        "total_engagement": 152543,
+        "avg_engagement": 21791.9,
+        "total_likes": 118295,
+        "total_comments": 7207,
+        "total_saves": 27041,
+        "top_keywords": ["极简珠宝", "细链", "点睛", "耳钉", "Celine"]
+      },
+      "timestamp": "2026-03-29T00:00:00Z"
+    },
+    {
+      "trend_id": "t21",
+      "label": "Parisian Academic Intellectual Style",
+      "category": "luxury_fashion",
+      "summary": "A literary, bookish French aesthetic is gaining traction — combining tailored separates with intellectual references (bookstores, museums, café settings) as a counter to purely commercial fashion content. Celine and The Row are the brands most frequently referenced.",
+      "ai_reasoning": "Grouped because posts share recurring keywords '法式学院风', '书卷气', '知识分子穿搭', and evidence.posts consistently use intellectual settings and references as styling context.",
+      "confidence": "medium",
+      "labeling_source": "synthetic",
+      "data_type": "synthetic",
+      "evidence": {
+        "post_ids": ["sp104", "sp105", "sp106", "sp107", "sp108"],
+        "snippets": [
+          "法式学院风｜为什么总比英式更高级",
+          "巴黎女孩的书卷气穿搭｜知性感的来源",
+          "图书馆穿搭｜穿得像一个有品味的读书人",
+          "法式知识分子美学｜Celine的文化底色",
+          "书店 美术馆 咖啡馆｜场景穿搭的哲学"
+        ],
+        "posts": [
+          {"post_id": "sp104", "title": "法式学院风｜为什么总比英式更高级", "date": "2026-03-27", "brand": "Celine", "likes": 16543, "comments": 1023, "saves": 4987, "creator": "user_z4a5b6c7"},
+          {"post_id": "sp105", "title": "巴黎女孩的书卷气穿搭｜知性感的来源", "date": "2026-03-24", "brand": "Celine", "likes": 21234, "comments": 1432, "saves": 6543, "creator": "user_a5b6c7d8"},
+          {"post_id": "sp106", "title": "图书馆穿搭｜穿得像一个有品味的读书人", "date": "2026-03-21", "brand": "The Row", "likes": 12345, "comments": 765, "saves": 3456, "creator": "user_b6c7d8e9"},
+          {"post_id": "sp107", "title": "法式知识分子美学｜Celine的文化底色", "date": "2026-03-18", "brand": "Celine", "likes": 19876, "comments": 1234, "saves": 5987, "creator": "user_c7d8e9f0"},
+          {"post_id": "sp108", "title": "书店 美术馆 咖啡馆｜场景穿搭的哲学", "date": "2026-03-15", "brand": "A.P.C.", "likes": 11234, "comments": 698, "saves": 3210, "creator": "user_d8e9f0g1"}
+        ]
+      },
+      "metrics": {
+        "post_count": 9,
+        "total_engagement": 205567,
+        "avg_engagement": 22840.8,
+        "total_likes": 159232,
+        "total_comments": 9852,
+        "total_saves": 36483,
+        "top_keywords": ["法式学院风", "书卷气", "知识分子", "Celine", "知性感"]
+      },
+      "timestamp": "2026-03-29T00:00:00Z"
+    },
+    {
+      "trend_id": "t22",
+      "label": "Season-less Wardrobe Building",
+      "category": "luxury_fashion",
+      "summary": "Creators advocate buying pieces that transcend seasonal trends and work across multiple years — reframing luxury purchase decisions as rational long-term wardrobe architecture. The season-less mindset is positioned as the opposite of trend consumption.",
+      "ai_reasoning": "Grouped because posts share recurring keywords '跨季单品', '不过时', '经典款', and evidence.posts consistently frame wardrobe building as a rational long-term investment decision.",
+      "confidence": "medium",
+      "labeling_source": "synthetic",
+      "data_type": "synthetic",
+      "evidence": {
+        "post_ids": ["sp109", "sp110", "sp111", "sp112", "sp113"],
+        "snippets": [
+          "为什么要买「跨季单品」｜算一算其实更省",
+          "四季通用的投资单品清单",
+          "Celine经典款｜为什么十年不过时",
+          "跨季穿搭逻辑｜面料和廓形比颜色更重要",
+          "不追季节的穿搭哲学｜真正的时尚是永恒"
+        ],
+        "posts": [
+          {"post_id": "sp109", "title": "为什么要买「跨季单品」｜算一算其实更省", "date": "2026-03-25", "brand": "Celine", "likes": 18765, "comments": 1234, "saves": 5678, "creator": "user_e9f0g1h2"},
+          {"post_id": "sp110", "title": "四季通用的投资单品清单", "date": "2026-03-22", "brand": "The Row", "likes": 14321, "comments": 876, "saves": 4234, "creator": "user_f0g1h2i3"},
+          {"post_id": "sp111", "title": "Celine经典款｜为什么十年不过时", "date": "2026-03-19", "brand": "Celine", "likes": 22341, "comments": 1543, "saves": 6987, "creator": "user_g1h2i3j4"},
+          {"post_id": "sp112", "title": "跨季穿搭逻辑｜面料和廓形比颜色更重要", "date": "2026-03-16", "brand": "Toteme", "likes": 11234, "comments": 698, "saves": 3210, "creator": "user_h2i3j4k5"},
+          {"post_id": "sp113", "title": "不追季节的穿搭哲学｜真正的时尚是永恒", "date": "2026-03-13", "brand": "Celine", "likes": 16543, "comments": 1023, "saves": 4987, "creator": "user_i3j4k5l6"}
+        ]
+      },
+      "metrics": {
+        "post_count": 8,
+        "total_engagement": 183474,
+        "avg_engagement": 22934.3,
+        "total_likes": 141204,
+        "total_comments": 8874,
+        "total_saves": 33396,
+        "top_keywords": ["跨季单品", "经典款", "不过时", "Celine", "投资"]
+      },
+      "timestamp": "2026-03-29T00:00:00Z"
+    },
+    {
+      "trend_id": "t23",
+      "label": "Satin and Silk Luxury Surface Dressing",
+      "category": "luxury_fashion",
+      "summary": "Premium satin and silk fabrications are driving a surface-led approach to dressing — where the material itself communicates luxury without the need for additional ornamentation. Creators specifically discuss how Celine uses silk to signal restraint rather than excess.",
+      "ai_reasoning": "Grouped because posts share recurring keywords '缎面', '真丝', '面料语言', and evidence.posts consistently frame textile quality as the primary carrier of luxury meaning.",
+      "confidence": "high",
+      "labeling_source": "synthetic",
+      "data_type": "synthetic",
+      "evidence": {
+        "post_ids": ["sp114", "sp115", "sp116", "sp117", "sp118"],
+        "snippets": [
+          "缎面衬衫｜高级感直线拉满",
+          "真丝的高级，不是假缎能替代的",
+          "面料即语言｜如何用质地说话",
+          "Celine真丝单品｜为什么贵得有道理",
+          "缎面的保养和穿法｜高级感的代价值得付"
+        ],
+        "posts": [
+          {"post_id": "sp114", "title": "缎面衬衫｜高级感直线拉满", "date": "2026-03-29", "brand": "Celine", "likes": 19876, "comments": 1234, "saves": 5987, "creator": "user_j4k5l6m7"},
+          {"post_id": "sp115", "title": "真丝的高级，不是假缎能替代的", "date": "2026-03-26", "brand": "Celine", "likes": 23456, "comments": 1543, "saves": 7234, "creator": "user_k5l6m7n8"},
+          {"post_id": "sp116", "title": "面料即语言｜如何用质地说话", "date": "2026-03-23", "brand": "The Row", "likes": 16543, "comments": 1023, "saves": 4987, "creator": "user_l6m7n8o9"},
+          {"post_id": "sp117", "title": "Celine真丝单品｜为什么贵得有道理", "date": "2026-03-20", "brand": "Celine", "likes": 21234, "comments": 1432, "saves": 6543, "creator": "user_m7n8o9p0"},
+          {"post_id": "sp118", "title": "缎面的保养和穿法｜高级感的代价值得付", "date": "2026-03-17", "brand": "Celine", "likes": 14321, "comments": 876, "saves": 4234, "creator": "user_n8o9p0q1"}
+        ]
+      },
+      "metrics": {
+        "post_count": 10,
+        "total_engagement": 249543,
+        "avg_engagement": 24954.3,
+        "total_likes": 193430,
+        "total_comments": 11108,
+        "total_saves": 45005,
+        "top_keywords": ["缎面", "真丝", "面料", "Celine", "质地"]
+      },
+      "timestamp": "2026-03-29T00:00:00Z"
+    },
+    {
+      "trend_id": "t24",
+      "label": "Clean Minimalist Aesthetic as Identity",
+      "category": "luxury_fashion",
+      "summary": "Creators are framing the minimalist aesthetic not as a trend but as a personal identity system — distinct from the Clean Girl trend of prior seasons and anchored instead in material quality, proportion mastery, and the deliberate elimination of all decorative elements.",
+      "ai_reasoning": "Grouped because posts share recurring keywords '极简美学', '干净感', '去装饰', and evidence.posts consistently argue that true minimalism is intellectually demanding, not merely a visual style.",
+      "confidence": "high",
+      "labeling_source": "synthetic",
+      "data_type": "synthetic",
+      "evidence": {
+        "post_ids": ["sp119", "sp120", "sp121", "sp122", "sp123"],
+        "snippets": [
+          "极简美学的核心｜为什么干净比繁复更难",
+          "「Clean Girl」的升级版｜Celine式极简",
+          "去装饰的勇气｜真正的极简不是没有选择",
+          "干净感穿搭｜误区与正确理解",
+          "极简主义不是风格，是世界观"
+        ],
+        "posts": [
+          {"post_id": "sp119", "title": "极简美学的核心｜为什么干净比繁复更难", "date": "2026-03-28", "brand": "Celine", "likes": 28765, "comments": 1987, "saves": 9234, "creator": "user_o9p0q1r2"},
+          {"post_id": "sp120", "title": "「Clean Girl」的升级版｜Celine式极简", "date": "2026-03-25", "brand": "Celine", "likes": 24532, "comments": 1654, "saves": 7654, "creator": "user_p0q1r2s3"},
+          {"post_id": "sp121", "title": "去装饰的勇气｜真正的极简不是没有选择", "date": "2026-03-22", "brand": "The Row", "likes": 19876, "comments": 1234, "saves": 5987, "creator": "user_q1r2s3t4"},
+          {"post_id": "sp122", "title": "干净感穿搭｜误区与正确理解", "date": "2026-03-19", "brand": "Celine", "likes": 16543, "comments": 1023, "saves": 4987, "creator": "user_r2s3t4u5"},
+          {"post_id": "sp123", "title": "极简主义不是风格，是世界观", "date": "2026-03-16", "brand": "Toteme", "likes": 13210, "comments": 812, "saves": 3876, "creator": "user_s3t4u5v6"}
+        ]
+      },
+      "metrics": {
+        "post_count": 17,
+        "total_engagement": 390177,
+        "avg_engagement": 22951.6,
+        "total_likes": 302926,
+        "total_comments": 18710,
+        "total_saves": 68541,
+        "top_keywords": ["极简美学", "干净感", "去装饰", "Celine", "极简主义"]
+      },
+      "timestamp": "2026-03-29T00:00:00Z"
+    },
+    {
+      "trend_id": "t25",
+      "label": "Celine Cat-Eye Sunglasses as Signature",
+      "category": "luxury_fashion",
+      "summary": "Celine's cat-eye sunglass frames are emerging as a signature accessory marker for the Parisian-intellectual aesthetic — with creators treating them as the single accessory that anchors an otherwise restrained look and signals aesthetic literacy.",
+      "ai_reasoning": "Grouped because posts share recurring keywords 'Celine猫眼', '墨镜', '配件点睛', and evidence.posts consistently frame the cat-eye frame as a deliberate aesthetic signal rather than a fashion-forward statement.",
+      "confidence": "medium",
+      "labeling_source": "synthetic",
+      "data_type": "synthetic",
+      "evidence": {
+        "post_ids": ["sp124", "sp125", "sp126", "sp127", "sp128"],
+        "snippets": [
+          "Celine猫眼墨镜｜一副改变整套造型的配件",
+          "为什么猫眼框是极简穿搭的最佳配件",
+          "Celine墨镜｜法式智识的视觉符号",
+          "配件的选择逻辑｜少而精的极简哲学",
+          "一副墨镜能做什么｜造型点睛实验"
+        ],
+        "posts": [
+          {"post_id": "sp124", "title": "Celine猫眼墨镜｜一副改变整套造型的配件", "date": "2026-03-27", "brand": "Celine", "likes": 22341, "comments": 1432, "saves": 6987, "creator": "user_t4u5v6w7"},
+          {"post_id": "sp125", "title": "为什么猫眼框是极简穿搭的最佳配件", "date": "2026-03-24", "brand": "Celine", "likes": 17654, "comments": 1087, "saves": 5234, "creator": "user_u5v6w7x8"},
+          {"post_id": "sp126", "title": "Celine墨镜｜法式智识的视觉符号", "date": "2026-03-21", "brand": "Celine", "likes": 19876, "comments": 1234, "saves": 5987, "creator": "user_v6w7x8y9"},
+          {"post_id": "sp127", "title": "配件的选择逻辑｜少而精的极简哲学", "date": "2026-03-18", "brand": "Celine", "likes": 14321, "comments": 876, "saves": 4234, "creator": "user_w7x8y9z0"},
+          {"post_id": "sp128", "title": "一副墨镜能做什么｜造型点睛实验", "date": "2026-03-15", "brand": "Celine", "likes": 11234, "comments": 698, "saves": 3210, "creator": "user_x8y9z0a1"}
+        ]
+      },
+      "metrics": {
+        "post_count": 7,
+        "total_engagement": 175399,
+        "avg_engagement": 25057.0,
+        "total_likes": 136426,
+        "total_comments": 8327,
+        "total_saves": 30646,
+        "top_keywords": ["Celine墨镜", "猫眼框", "配件", "极简", "法式"]
+      },
+      "timestamp": "2026-03-29T00:00:00Z"
+    }
+  ]
+}

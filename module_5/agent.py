@@ -19,7 +19,7 @@ import os
 import sys
 from datetime import datetime
 from pathlib import Path
-import anthropic
+from openai import OpenAI
 
 _REPO_ROOT = Path(__file__).resolve().parent.parent
 if str(_REPO_ROOT) not in sys.path:
@@ -43,23 +43,10 @@ _load_env_file(Path(__file__).resolve().parent / ".env")
 # ============================================================
 # 配置区
 # ============================================================
-API_KEY = os.environ.get("ANTHROPIC_API_KEY") or ""
-MODEL = os.environ.get("DEFAULT_MODEL", "claude-sonnet-4-20250514")
-BRAND = os.environ.get("BRAND", "Celine")
-
-
-def _env_float(key: str, default: float) -> float:
-    v = os.environ.get(key, "").strip()
-    if not v:
-        return default
-    try:
-        return float(v)
-    except ValueError:
-        return default
-
-
-TEMPERATURE = _env_float("M5_TEMPERATURE", 0.55)
-PROMPT_VERSION = os.environ.get("M5_PROMPT_VERSION", "v2").strip() or "v2"
+API_KEY = os.environ.get("OPENROUTER_API_KEY") or os.environ.get("ANTHROPIC_API_KEY")
+if not API_KEY:
+    raise ValueError("OPENROUTER_API_KEY not set. Please add it to your .env file or environment.")
+MODEL = os.environ.get("DEFAULT_MODEL", "openai/gpt-4o-mini")
 
 # ============================================================
 # 文件路径
@@ -79,70 +66,24 @@ def load_text(path):
         return f.read()
 
 
-def call_llm(system_prompt, user_prompt, temperature: float | None = None):
-    """
-    直连 Anthropic：不设 ANTHROPIC_API_BASE_URL。
-    OpenRouter：设 ANTHROPIC_API_BASE_URL=https://openrouter.ai/api/v1 ，且 DEFAULT_MODEL 用
-    OpenRouter 模型 id（如 anthropic/claude-3.5-sonnet）。OpenRouter 走 OpenAI 兼容接口，而非 Anthropic /v1/messages。
-    """
-    t = TEMPERATURE if temperature is None else temperature
-    _base = os.environ.get("ANTHROPIC_API_BASE_URL", "").strip()
-    if "openrouter" in _base.lower():
-        from openai import OpenAI
-
-        key = os.environ.get("OPENROUTER_API_KEY", "").strip() or API_KEY
-        if not key:
-            raise ValueError(
-                "OpenRouter：请设置 OPENROUTER_API_KEY 或 ANTHROPIC_API_KEY（可填同一 OpenRouter key）"
-            )
-        client = OpenAI(
-            base_url=_base.rstrip("/"),
-            api_key=key,
-            default_headers={
-                "HTTP-Referer": os.environ.get("OPENROUTER_HTTP_REFERER", "https://github.com/m-ny-mvp"),
-                "X-Title": os.environ.get("OPENROUTER_X_TITLE", "Module 5 Outreach"),
-            },
-        )
-        response = client.chat.completions.create(
-            model=MODEL,
-            max_tokens=4096,
-            temperature=t,
-            messages=[
-                {"role": "system", "content": system_prompt},
-                {"role": "user", "content": user_prompt},
-            ],
-        )
-        content = (response.choices[0].message.content or "").strip()
-        u = response.usage
-        pt = getattr(u, "prompt_tokens", None) or 0
-        ct = getattr(u, "completion_tokens", None) or 0
-        return content, {
-            "model": MODEL,
-            "input_tokens": pt,
-            "output_tokens": ct,
-            "total_tokens": pt + ct,
-        }
-
-    if not API_KEY:
-        raise ValueError("ANTHROPIC_API_KEY not set. Please add it to your .env file or environment.")
-    _kw = {"api_key": API_KEY}
-    if _base:
-        _kw["base_url"] = _base
-    client = anthropic.Anthropic(**_kw)
-    response = client.messages.create(
+def call_llm(system_prompt, user_prompt):
+    client = OpenAI(api_key=API_KEY, base_url="https://openrouter.ai/api/v1")
+    response = client.chat.completions.create(
         model=MODEL,
         max_tokens=4096,
-        system=system_prompt,
-        messages=[{"role": "user", "content": user_prompt}],
-        temperature=t,
+        messages=[
+            {"role": "system", "content": system_prompt},
+            {"role": "user", "content": user_prompt},
+        ],
+        temperature=0.7,
     )
-    content = response.content[0].text
+    content = response.choices[0].message.content
     usage = response.usage
     return content, {
         "model": MODEL,
-        "input_tokens": usage.input_tokens,
-        "output_tokens": usage.output_tokens,
-        "total_tokens": usage.input_tokens + usage.output_tokens,
+        "input_tokens": getattr(usage, "prompt_tokens", 0) or 0,
+        "output_tokens": getattr(usage, "completion_tokens", 0) or 0,
+        "total_tokens": getattr(usage, "total_tokens", 0) or 0,
     }
 
 
@@ -373,14 +314,7 @@ def main():
         if sys.stdin.isatty():
             choice = input("\n  请输入（然后回车）: ").strip()
         else:
-            line = sys.stdin.readline()
-            choice = (line or "").strip() or "all"
-        clients_to_run, err = resolve_ca_selection(choice, all_clients)
-        if err:
-            print(f"  错误：{err}")
-            return
-        if not clients_to_run:
-            return
+            choice = "all"
         if choice.lower() == "all":
             print(f"\n  已确认全选：共 {len(clients_to_run)} 人，将各调用一次模型")
         else:

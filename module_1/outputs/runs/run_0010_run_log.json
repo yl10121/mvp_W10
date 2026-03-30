@@ -1,0 +1,89 @@
+{
+  "run_id": "run_0010",
+  "retrieved_sources": [
+    "data/xhs_posts.json",
+    "data/run_config.json"
+  ],
+  "retrieved_post_ids": [
+    "p034",
+    "p004",
+    "p040",
+    "p019",
+    "p038",
+    "p047",
+    "p003",
+    "p009",
+    "p043",
+    "p022",
+    "p008",
+    "p048",
+    "p025",
+    "p001",
+    "p050",
+    "p005",
+    "p039",
+    "p030",
+    "p020",
+    "p049",
+    "p029",
+    "p015",
+    "p027",
+    "p002",
+    "p044",
+    "p011",
+    "p023",
+    "p031",
+    "p006",
+    "p041",
+    "p018",
+    "p037",
+    "p035",
+    "p045",
+    "p007",
+    "p017",
+    "p032",
+    "p010"
+  ],
+  "decision_output_file": "outputs/runs/run_0010_trend_objects.json",
+  "decision_mode": "rules-first with optional LLM",
+  "prompt_in_use_for_decision": true,
+  "llm_enabled": true,
+  "llm_model": "gpt-4.1-mini",
+  "llm_label_calls_succeeded": 0,
+  "llm_label_calls_total": 3,
+  "llm_errors": [
+    "OPENROUTER_API_KEY missing",
+    "OPENROUTER_API_KEY missing",
+    "OPENROUTER_API_KEY missing"
+  ],
+  "evidence_used": {
+    "t01": [
+      "p034",
+      "p004",
+      "p040",
+      "p019",
+      "p038"
+    ],
+    "t02": [
+      "p030",
+      "p023",
+      "p018"
+    ],
+    "t03": [
+      "p022",
+      "p031"
+    ]
+  },
+  "labeling_sources": {
+    "t01": "heuristic",
+    "t02": "heuristic",
+    "t03": "heuristic"
+  },
+  "confidence": {
+    "t01": "high",
+    "t02": "medium",
+    "t03": "medium"
+  },
+  "next_step_suggestion": "Send approved trend objects into Module 2 for materiality ranking.",
+  "timestamp_utc": "2026-03-29T09:42:28.506280+00:00"
+}

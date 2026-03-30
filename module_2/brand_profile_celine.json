@@ -4,7 +4,7 @@
   "clientele": "design-literate women 28-52, values precise tailoring and understated authority, drawn to minimalist power dressing over ornamentation",
   "preferred_sources": ["minimalist fashion KOL", "Parisian lifestyle editorial", "Celine brand accounts", "architecture and art creators", "intellectual fashion writers"],
   "avoided_sources": ["streetwear influencers", "maximalist fashion bloggers", "hypebeast culture", "fast fashion accounts", "logomania content"],
-  "active_categories": ["ready-to-wear", "leather goods"],
+  "active_categories": ["ready-to-wear", "leather goods", "luxury_fashion"],
   "category_cadence": {
     "ready-to-wear": "fast",
     "leather goods": "medium"

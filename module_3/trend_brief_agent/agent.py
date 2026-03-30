@@ -985,19 +985,22 @@ def main():
 
     # ── Supabase sync (optional) ──────────────────────────────────────────────
     if _HAS_DB:
-        run_id = run_log.get("run_timestamp", datetime.datetime.now().isoformat())
-        md_text = output_path.read_text(encoding="utf-8") if output_path.exists() else ""
-        html_text = html_path.read_text(encoding="utf-8") if html_path.exists() else ""
-        write_trend_brief(
-            run_id=run_id, brand=brand, city=city,
-            output_markdown=md_text, output_html=html_text,
-            trend_cards=log_trends, source_file=str(JSON_PATH),
-            model_used=MODEL,
-        )
-        db_write_run_log(
-            run_id=run_id, brand=brand, city=city,
-            model_used=MODEL, brief_count=len(selected),
-        )
+        try:
+            run_id = run_log.get("run_timestamp", datetime.datetime.now().isoformat())
+            md_text = output_path.read_text(encoding="utf-8") if output_path.exists() else ""
+            html_text = html_path.read_text(encoding="utf-8") if html_path.exists() else ""
+            write_trend_brief(
+                run_id=run_id, brand=brand, city=city,
+                output_markdown=md_text, output_html=html_text,
+                trend_cards=log_trends, source_file=str(JSON_PATH),
+                model_used=MODEL,
+            )
+            db_write_run_log(
+                run_id=run_id, brand=brand, city=city,
+                model_used=MODEL, brief_count=len(selected),
+            )
+        except Exception as e:
+            print(f"  [DB] Supabase sync failed (non-fatal): {e}")
 
     print(f"\nDone!")
     print(f"  HTML    → {html_path.name}  (open in browser, print to PDF)")

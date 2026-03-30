@@ -1,0 +1,378 @@
+{
+  "run_id": "run_0010",
+  "agent": {
+    "name": "XHS Trend Object Builder",
+    "module": "Module 1 - Trend Object Builder",
+    "owner": "Manny"
+  },
+  "decision": "From XHS posts in a brand/category/time window, produce distinct trend objects with evidence and metrics.",
+  "output_type": "Type B - Reviewable output",
+  "mvp_outcome_statement": "If our MVP works, trend signals from Xiaohongshu become faster to validate and easier for downstream teams to reuse, because the system converts raw API/XHS inputs into strict, evidence-backed Trend Objects.",
+  "brand": "Celine",
+  "category": "luxury_fashion",
+  "time_window": {
+    "start_date": "2026-03-01",
+    "end_date": "2026-03-31"
+  },
+  "retrieval": {
+    "sources": [
+      "data/xhs_posts.json",
+      "data/run_config.json"
+    ],
+    "records_loaded": 50,
+    "records_retrieved": 38
+  },
+  "prompt": "You are the decision engine for Module 1: XHS Trend Object Builder. Your job is to turn retrieved Xiaohongshu posts for one brand/category and one time window into reviewable Type-B trend objects that can be audited by a human reviewer. Work only with the provided posts. Do not use outside knowledge, assumptions, or invented examples. First, identify semantically similar clusters by recurring themes, aesthetics, usage scenarios, product angles, behavior patterns, or language signals. Then ensure trend distinctness: trends should be meaningfully different from each other and not just renamed duplicates. If clusters overlap heavily, merge them or lower confidence rather than forcing extra trends. For each trend, generate: (1) a concise trend label, (2) a one-sentence summary of what the trend represents, (3) evidence linked to real posts, including supporting post IDs and short snippets, (4) metrics computed only from retrieved data, including post_count and total_engagement, and (5) confidence as low, medium, or high. Confidence should be high only when evidence is coherent and sufficient; medium when signal is present but partially mixed; low when sparse, weak, or ambiguous. Include explicit ai_reasoning that explains why those posts belong together and why confidence was chosen. Never claim evidence that is not directly present in the retrieved posts. If evidence is weak or ambiguous, output fewer trends and clearly state uncertainty.",
+  "prompt_in_use_for_decision": true,
+  "generated_at_utc": "2026-03-29T09:42:28.504035+00:00",
+  "decision_logic": {
+    "mode": "rules-first with optional LLM label/summary",
+    "llm_enabled": true,
+    "llm_model": "gpt-4.1-mini",
+    "llm_label_calls_succeeded": 0,
+    "llm_label_calls_total": 3,
+    "llm_errors": [
+      "OPENROUTER_API_KEY missing",
+      "OPENROUTER_API_KEY missing",
+      "OPENROUTER_API_KEY missing"
+    ]
+  },
+  "trend_objects": [
+    {
+      "trend_id": "t01",
+      "label": "Minimalist Tailoring & Structure",
+      "category": "luxury_fashion",
+      "summary": "Posts cluster around minimalist tailoring & structure with recurring evidence such as: 极简主义的反面教材｜为什么你穿极简不好看；Celine Triomphe链条包开箱｜极简主义的终极答案.",
+      "ai_reasoning": "Grouped because posts share recurring keywords/themes ['celine', 'triomphe', 'box', '胶囊衣橱', 'lv'] and show consistent engagement patterns in the same category.",
+      "confidence": "high",
+      "labeling_source": "heuristic",
+      "evidence": {
+        "post_ids": [
+          "p034",
+          "p004",
+          "p040",
+          "p019",
+          "p038"
+        ],
+        "snippets": [
+          "极简主义的反面教材｜为什么你穿极简不好看",
+          "静奢风才是真正的有钱人穿搭｜Celine教科书",
+          "为什么我从LV换到了Celine｜审美进阶之路",
+          "从Zara到Celine的穿搭升级之路｜质感>数量",
+          "上海安福路街拍｜Celine出镜率也太高了吧"
+        ],
+        "posts": [
+          {
+            "post_id": "p034",
+            "title": "极简主义的反面教材｜为什么你穿极简不好看",
+            "date": "2026-03-25",
+            "brand": "Celine",
+            "likes": 19876,
+            "comments": 1234,
+            "saves": 6543,
+            "creator": "user_c3d4e5f6",
+            "post_link": "",
+            "cover_url": "",
+            "all_image_urls": [],
+            "is_video": false,
+            "video_url": "",
+            "image_caption": "",
+            "comments_scraped": [],
+            "comments_count_scraped": 0
+          },
+          {
+            "post_id": "p004",
+            "title": "静奢风才是真正的有钱人穿搭｜Celine教科书",
+            "date": "2026-03-22",
+            "brand": "Celine",
+            "likes": 18765,
+            "comments": 1023,
+            "saves": 5432,
+            "creator": "user_m3n4o5p6",
+            "post_link": "",
+            "cover_url": "",
+            "all_image_urls": [],
+            "is_video": false,
+            "video_url": "",
+            "image_caption": "",
+            "comments_scraped": [],
+            "comments_count_scraped": 0
+          },
+          {
+            "post_id": "p040",
+            "title": "为什么我从LV换到了Celine｜审美进阶之路",
+            "date": "2026-03-27",
+            "brand": "Celine",
+            "likes": 17654,
+            "comments": 1123,
+            "saves": 5432,
+            "creator": "user_a7b8c9d0",
+            "post_link": "",
+            "cover_url": "",
+            "all_image_urls": [],
+            "is_video": false,
+            "video_url": "",
+            "image_caption": "",
+            "comments_scraped": [],
+            "comments_count_scraped": 0
+          },
+          {
+            "post_id": "p019",
+            "title": "从Zara到Celine的穿搭升级之路｜质感>数量",
+            "date": "2026-03-07",
+            "brand": "Celine",
+            "likes": 16543,
+            "comments": 987,
+            "saves": 5678,
+            "creator": "user_u3v4w5x6",
+            "post_link": "",
+            "cover_url": "",
+            "all_image_urls": [],
+            "is_video": false,
+            "video_url": "",
+            "image_caption": "",
+            "comments_scraped": [],
+            "comments_count_scraped": 0
+          },
+          {
+            "post_id": "p038",
+            "title": "上海安福路街拍｜Celine出镜率也太高了吧",
+            "date": "2026-03-10",
+            "brand": "Celine",
+            "likes": 15234,
+            "comments": 876,
+            "saves": 4321,
+            "creator": "user_s9t0u1v2",
+            "post_link": "",
+            "cover_url": "",
+            "all_image_urls": [],
+            "is_video": false,
+            "video_url": "",
+            "image_caption": "",
+            "comments_scraped": [],
+            "comments_count_scraped": 0
+          }
+        ]
+      },
+      "metrics": {
+        "post_count": 25,
+        "total_engagement": 412277,
+        "avg_engagement": 16491.08,
+        "total_likes": 301171,
+        "total_comments": 18211,
+        "total_saves": 92895,
+        "top_keywords": [
+          "celine",
+          "triomphe",
+          "box",
+          "胶囊衣橱",
+          "lv"
+        ],
+        "video_post_count": 0,
+        "image_count": 0
+      },
+      "timestamp": "2026-03-29T09:42:28.503917+00:00",
+      "visual_assets": {
+        "all_image_urls": [],
+        "image_captions": [],
+        "video_post_count": 0
+      },
+      "comment_signals": {
+        "total_comments_scraped": 0,
+        "total_replies_scraped": 0,
+        "all_comments": []
+      }
+    },
+    {
+      "trend_id": "t02",
+      "label": "Luxury Handbag & Leather Goods",
+      "category": "luxury_fashion",
+      "summary": "Posts cluster around luxury handbag & leather goods with recurring evidence such as: Power dressing 2026｜Celine让职场穿搭不再无聊；Celine Cabas横款托特｜打工人的通勤神器.",
+      "ai_reasoning": "Grouped because posts share recurring keywords/themes ['celine', '职场穿搭', 'power', 'dressing', '横款托特'] and show consistent engagement patterns in the same category.",
+      "confidence": "medium",
+      "labeling_source": "heuristic",
+      "evidence": {
+        "post_ids": [
+          "p030",
+          "p023",
+          "p018"
+        ],
+        "snippets": [
+          "Power dressing 2026｜Celine让职场穿搭不再无聊",
+          "Celine Cabas横款托特｜打工人的通勤神器",
+          "Celine 16手袋两年使用报告｜越用越爱的包"
+        ],
+        "posts": [
+          {
+            "post_id": "p030",
+            "title": "Power dressing 2026｜Celine让职场穿搭不再无聊",
+            "date": "2026-03-23",
+            "brand": "Celine",
+            "likes": 11234,
+            "comments": 678,
+            "saves": 3456,
+            "creator": "user_m7n8o9p0",
+            "post_link": "",
+            "cover_url": "",
+            "all_image_urls": [],
+            "is_video": false,
+            "video_url": "",
+            "image_caption": "",
+            "comments_scraped": [],
+            "comments_count_scraped": 0
+          },
+          {
+            "post_id": "p023",
+            "title": "Celine Cabas横款托特｜打工人的通勤神器",
+            "date": "2026-03-27",
+            "brand": "Celine",
+            "likes": 8765,
+            "comments": 543,
+            "saves": 2876,
+            "creator": "user_k9l0m1n2",
+            "post_link": "",
+            "cover_url": "",
+            "all_image_urls": [],
+            "is_video": false,
+            "video_url": "",
+            "image_caption": "",
+            "comments_scraped": [],
+            "comments_count_scraped": 0
+          },
+          {
+            "post_id": "p018",
+            "title": "Celine 16手袋两年使用报告｜越用越爱的包",
+            "date": "2026-03-26",
+            "brand": "Celine",
+            "likes": 8432,
+            "comments": 498,
+            "saves": 2543,
+            "creator": "user_q9r0s1t2",
+            "post_link": "",
+            "cover_url": "",
+            "all_image_urls": [],
+            "is_video": false,
+            "video_url": "",
+            "image_caption": "",
+            "comments_scraped": [],
+            "comments_count_scraped": 0
+          }
+        ]
+      },
+      "metrics": {
+        "post_count": 3,
+        "total_engagement": 39025,
+        "avg_engagement": 13008.33,
+        "total_likes": 28431,
+        "total_comments": 1719,
+        "total_saves": 8875,
+        "top_keywords": [
+          "celine",
+          "职场穿搭",
+          "power",
+          "dressing",
+          "横款托特"
+        ],
+        "video_post_count": 0,
+        "image_count": 0
+      },
+      "timestamp": "2026-03-29T09:42:28.503983+00:00",
+      "visual_assets": {
+        "all_image_urls": [],
+        "image_captions": [],
+        "video_post_count": 0
+      },
+      "comment_signals": {
+        "total_comments_scraped": 0,
+        "total_replies_scraped": 0,
+        "all_comments": []
+      }
+    },
+    {
+      "trend_id": "t03",
+      "label": "Minimalist Tailoring & Structure",
+      "category": "luxury_fashion",
+      "summary": "Posts cluster around minimalist tailoring & structure with recurring evidence such as: Celine西装外套的版型为什么封神？裁缝视角解析；Celine的面料为什么摸起来不一样？面料科普.",
+      "ai_reasoning": "Grouped because posts share recurring keywords/themes ['celine', '高奢工艺', '面料科普', '西装外套的版型为', '什么封神'] and show consistent engagement patterns in the same category.",
+      "confidence": "medium",
+      "labeling_source": "heuristic",
+      "evidence": {
+        "post_ids": [
+          "p022",
+          "p031"
+        ],
+        "snippets": [
+          "Celine西装外套的版型为什么封神？裁缝视角解析",
+          "Celine的面料为什么摸起来不一样？面料科普"
+        ],
+        "posts": [
+          {
+            "post_id": "p022",
+            "title": "Celine西装外套的版型为什么封神？裁缝视角解析",
+            "date": "2026-03-09",
+            "brand": "Celine",
+            "likes": 13456,
+            "comments": 876,
+            "saves": 4321,
+            "creator": "user_g5h6i7j8",
+            "post_link": "",
+            "cover_url": "",
+            "all_image_urls": [],
+            "is_video": false,
+            "video_url": "",
+            "image_caption": "",
+            "comments_scraped": [],
+            "comments_count_scraped": 0
+          },
+          {
+            "post_id": "p031",
+            "title": "Celine的面料为什么摸起来不一样？面料科普",
+            "date": "2026-03-05",
+            "brand": "Celine",
+            "likes": 8765,
+            "comments": 534,
+            "saves": 2654,
+            "creator": "user_q1r2s3t4",
+            "post_link": "",
+            "cover_url": "",
+            "all_image_urls": [],
+            "is_video": false,
+            "video_url": "",
+            "image_caption": "",
+            "comments_scraped": [],
+            "comments_count_scraped": 0
+          }
+        ]
+      },
+      "metrics": {
+        "post_count": 2,
+        "total_engagement": 30606,
+        "avg_engagement": 15303.0,
+        "total_likes": 22221,
+        "total_comments": 1410,
+        "total_saves": 6975,
+        "top_keywords": [
+          "celine",
+          "高奢工艺",
+          "面料科普",
+          "西装外套的版型为",
+          "什么封神"
+        ],
+        "video_post_count": 0,
+        "image_count": 0
+      },
+      "timestamp": "2026-03-29T09:42:28.504018+00:00",
+      "visual_assets": {
+        "all_image_urls": [],
+        "image_captions": [],
+        "video_post_count": 0
+      },
+      "comment_signals": {
+        "total_comments_scraped": 0,
+        "total_replies_scraped": 0,
+        "all_comments": []
+      }
+    }
+  ],
+  "schema_file": "outputs/trend_object_schema.json"
+}

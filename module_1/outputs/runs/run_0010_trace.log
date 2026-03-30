@@ -1,0 +1,15 @@
+{"timestamp_utc": "2026-03-29T09:42:28.496226+00:00", "level": "stage", "step": "Prompt", "message": "Loading prompt + config + retrieval sources", "meta": {}}
+{"timestamp_utc": "2026-03-29T09:42:28.497176+00:00", "level": "ok", "step": "Prompt", "message": "Completed in 0.00s", "meta": {}}
+{"timestamp_utc": "2026-03-29T09:42:28.497198+00:00", "level": "stage", "step": "Retrieve", "message": "Normalizing and filtering XHS posts", "meta": {}}
+{"timestamp_utc": "2026-03-29T09:42:28.499441+00:00", "level": "ok", "step": "Retrieve", "message": "Completed in 0.00s", "meta": {}}
+{"timestamp_utc": "2026-03-29T09:42:28.499449+00:00", "level": "ok", "step": "Retrieve", "message": "Retrieved 38 posts from 50 loaded records", "meta": {"max_posts": 50, "posts_path": "data/xhs_posts.json"}}
+{"timestamp_utc": "2026-03-29T09:42:28.499452+00:00", "level": "stage", "step": "Decide", "message": "Clustering semantically similar posts into trend candidates", "meta": {}}
+{"timestamp_utc": "2026-03-29T09:42:28.501482+00:00", "level": "ok", "step": "Decide", "message": "Completed in 0.00s", "meta": {}}
+{"timestamp_utc": "2026-03-29T09:42:28.501490+00:00", "level": "ok", "step": "Decide", "message": "Selected 3 trend clusters", "meta": {}}
+{"timestamp_utc": "2026-03-29T09:42:28.502219+00:00", "level": "ok", "step": "Prompt", "message": "Assignment prompt found and will be used in decision flow", "meta": {}}
+{"timestamp_utc": "2026-03-29T09:42:28.502231+00:00", "level": "info", "step": "Decide", "message": "LLM labeling enabled (gpt-4.1-mini)", "meta": {}}
+{"timestamp_utc": "2026-03-29T09:42:28.504023+00:00", "level": "ok", "step": "Decide", "message": "Trend objects built (3 total, 0 LLM-labeled)", "meta": {}}
+{"timestamp_utc": "2026-03-29T09:42:28.504029+00:00", "level": "warn", "step": "Decide", "message": "LLM enabled but 0 labels used. First issue: OPENROUTER_API_KEY missing", "meta": {}}
+{"timestamp_utc": "2026-03-29T09:42:28.504031+00:00", "level": "stage", "step": "Output", "message": "Building structured Type-B trend object JSON", "meta": {}}
+{"timestamp_utc": "2026-03-29T09:42:28.506653+00:00", "level": "ok", "step": "Trace/Log", "message": "Saved run log to outputs/runs/run_0010_run_log.json", "meta": {}}
+{"timestamp_utc": "2026-03-29T09:42:28.506981+00:00", "level": "ok", "step": "Feedback", "message": "Saved reviewer feedback template to outputs/runs/run_0010_feedback.json", "meta": {}}
