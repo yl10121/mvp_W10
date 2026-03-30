@@ -1,14 +1,284 @@
 {
-  "run_id": "m2_20260329_152623",
+  "run_id": "m2_20260330_041951",
   "agent_name": "Trend Relevance & Materiality Filter",
   "brand": "Celine",
-  "module1_run_id": "run_0001_to_run_0013",
-  "generated_at": "2026-03-29T15:26:23.983657+00:00",
-  "total_input": 40,
-  "real_count": 15,
+  "module1_run_id": "run_0001_to_run_0023",
+  "generated_at": "2026-03-30T04:19:51.149275+00:00",
+  "total_input": 94,
+  "real_count": 69,
   "synthetic_count": 25,
   "beauty_skipped_count": 40,
   "prefilter_rejections": [
+    {
+      "trend_id": "run_0014_t01",
+      "label": "Mixed Trend Signals",
+      "reason": "No valid post dates found in evidence.posts — cannot assess freshness"
+    },
+    {
+      "trend_id": "run_0014_t02",
+      "label": "Luxury Handbag & Leather Goods",
+      "reason": "total_engagement=498 is below minimum threshold of 3000"
+    },
+    {
+      "trend_id": "run_0015_t01",
+      "label": "Celine Design Aesthetic & Signature Collections",
+      "reason": "Last post date 2025-10-05 is before staleness cutoff 2026-03-04 (>21 days before 2026-03-25)"
+    },
+    {
+      "trend_id": "run_0016_t01",
+      "label": "Celine Design Genius & Seasonal Collections",
+      "reason": "Last post date 2025-10-05 is before staleness cutoff 2026-03-04 (>21 days before 2026-03-25)"
+    },
+    {
+      "trend_id": "run_0017_t01",
+      "label": "CELINE 2026 Fashion Shows & Accessories",
+      "reason": "Last post date 2025-10-06 is before staleness cutoff 2026-03-04 (>21 days before 2026-03-25)"
+    },
+    {
+      "trend_id": "run_0017_t02",
+      "label": "Celine Blue Label Minimalist Aesthetics",
+      "reason": "No valid post dates found in evidence.posts — cannot assess freshness"
+    },
+    {
+      "trend_id": "run_0017_t03",
+      "label": "CELINE Early Spring Handbags",
+      "reason": "No valid post dates found in evidence.posts — cannot assess freshness"
+    },
+    {
+      "trend_id": "run_0017_t04",
+      "label": "Celine Bags & Fashion Highlights",
+      "reason": "Last post date 2024-11-17 is before staleness cutoff 2026-03-04 (>21 days before 2026-03-25)"
+    },
+    {
+      "trend_id": "run_0017_t05",
+      "label": "Celine Soft 16 Bag Reviews and Uses",
+      "reason": "total_engagement=2708 is below minimum threshold of 3000"
+    },
+    {
+      "trend_id": "run_0017_t06",
+      "label": "王安宇Celine时尚秀场",
+      "reason": "total_engagement=2152 is below minimum threshold of 3000"
+    },
+    {
+      "trend_id": "run_0017_t07",
+      "label": "CELINE 26 Summer Men's Relaxed Jackets",
+      "reason": "total_engagement=120 is below minimum threshold of 3000"
+    },
+    {
+      "trend_id": "run_0017_t08",
+      "label": "CELINE Large Triomphe Bag",
+      "reason": "total_engagement=81 is below minimum threshold of 3000"
+    },
+    {
+      "trend_id": "run_0018_t01",
+      "label": "Brand Loyalty and Minimalist Admiration",
+      "reason": "Last post date 2025-10-06 is before staleness cutoff 2026-03-04 (>21 days before 2026-03-25)"
+    },
+    {
+      "trend_id": "run_0018_t02",
+      "label": "Quiet Luxury Minimalism",
+      "reason": "No valid post dates found in evidence.posts — cannot assess freshness"
+    },
+    {
+      "trend_id": "run_0018_t03",
+      "label": "Seasonal Luxury Accessory Refresh",
+      "reason": "No valid post dates found in evidence.posts — cannot assess freshness"
+    },
+    {
+      "trend_id": "run_0018_t04",
+      "label": "Versatile Vintage-Inspired Luxury Styling",
+      "reason": "Last post date 2024-11-17 is before staleness cutoff 2026-03-04 (>21 days before 2026-03-25)"
+    },
+    {
+      "trend_id": "run_0018_t05",
+      "label": "Function-Driven Luxury Bag Selection",
+      "reason": "total_engagement=2708 is below minimum threshold of 3000"
+    },
+    {
+      "trend_id": "run_0018_t06",
+      "label": "Celebrity-Influenced Brand Enthusiasm",
+      "reason": "total_engagement=2152 is below minimum threshold of 3000"
+    },
+    {
+      "trend_id": "run_0018_t07",
+      "label": "Relaxed and Effortless Menswear Styling",
+      "reason": "total_engagement=120 is below minimum threshold of 3000"
+    },
+    {
+      "trend_id": "run_0018_t08",
+      "label": "Iconic Logo and Heritage Symbolism Appeal",
+      "reason": "total_engagement=81 is below minimum threshold of 3000"
+    },
+    {
+      "trend_id": "run_0019_t01",
+      "label": "CELINE 2026 Season Preview and Old vs New Brand Sentiment",
+      "reason": "Last post date 2025-10-06 is before staleness cutoff 2026-03-04 (>21 days before 2026-03-25)"
+    },
+    {
+      "trend_id": "run_0019_t02",
+      "label": "Celine Blue Label Design Detail Appreciation",
+      "reason": "No valid post dates found in evidence.posts — cannot assess freshness"
+    },
+    {
+      "trend_id": "run_0019_t03",
+      "label": "CELINE Early Spring Handbag Showcases",
+      "reason": "No valid post dates found in evidence.posts — cannot assess freshness"
+    },
+    {
+      "trend_id": "run_0019_t04",
+      "label": "Celine Bag Styling and Practicality Sharing",
+      "reason": "Last post date 2024-11-17 is before staleness cutoff 2026-03-04 (>21 days before 2026-03-25)"
+    },
+    {
+      "trend_id": "run_0019_t05",
+      "label": "Soft 16 Daily Usage and Style Reviews",
+      "reason": "total_engagement=2708 is below minimum threshold of 3000"
+    },
+    {
+      "trend_id": "run_0019_t06",
+      "label": "Celebrity Celine Show Attendance and Styling Highlights",
+      "reason": "total_engagement=2152 is below minimum threshold of 3000"
+    },
+    {
+      "trend_id": "run_0019_t07",
+      "label": "CELINE 26 Summer Menswear Styling and First Impressions",
+      "reason": "total_engagement=120 is below minimum threshold of 3000"
+    },
+    {
+      "trend_id": "run_0019_t08",
+      "label": "Large Triomphe Bag Popularity and Styling Discussions",
+      "reason": "total_engagement=81 is below minimum threshold of 3000"
+    },
+    {
+      "trend_id": "run_0020_t01",
+      "label": "Celine Blue Label Craftsmanship Appreciation",
+      "reason": "No valid post dates found in evidence.posts — cannot assess freshness"
+    },
+    {
+      "trend_id": "run_0020_t02",
+      "label": "Celine Early Spring Handbag Preview and Styling",
+      "reason": "No valid post dates found in evidence.posts — cannot assess freshness"
+    },
+    {
+      "trend_id": "run_0020_t03",
+      "label": "Celine Bag Buying Guides",
+      "reason": "total_engagement=1896 is below minimum threshold of 3000"
+    },
+    {
+      "trend_id": "run_0020_t04",
+      "label": "CELINE 26 Summer Menswear Styling Highlights",
+      "reason": "total_engagement=120 is below minimum threshold of 3000"
+    },
+    {
+      "trend_id": "run_0020_t05",
+      "label": "Celine Homme Seasonal Lookbook Sharing",
+      "reason": "total_engagement=92 is below minimum threshold of 3000"
+    },
+    {
+      "trend_id": "run_0021_t01",
+      "label": "Celine Blue Label Design Appreciation",
+      "reason": "No valid post dates found in evidence.posts — cannot assess freshness"
+    },
+    {
+      "trend_id": "run_0021_t02",
+      "label": "CELINE Early Spring Handbag Showcase",
+      "reason": "No valid post dates found in evidence.posts — cannot assess freshness"
+    },
+    {
+      "trend_id": "run_0021_t03",
+      "label": "Celine Bag Selection Tips Content",
+      "reason": "total_engagement=1896 is below minimum threshold of 3000"
+    },
+    {
+      "trend_id": "run_0021_t04",
+      "label": "CELINE 26 Summer Menswear Soft Relaxed Jacket Showcase",
+      "reason": "total_engagement=120 is below minimum threshold of 3000"
+    },
+    {
+      "trend_id": "run_0021_t05",
+      "label": "Celine Homme Seasonal Lookbook Sharing",
+      "reason": "total_engagement=92 is below minimum threshold of 3000"
+    },
+    {
+      "trend_id": "run_0022_t01",
+      "label": "Old Celine vs New Celine Nostalgia Debate",
+      "reason": "Last post date 2025-06-29 is before staleness cutoff 2026-03-04 (>21 days before 2026-03-25)"
+    },
+    {
+      "trend_id": "run_0022_t02",
+      "label": "Celine Box Bag Relevance and Popularity Debate",
+      "reason": "Last post date 2025-06-29 is before staleness cutoff 2026-03-04 (>21 days before 2026-03-25)"
+    },
+    {
+      "trend_id": "run_0022_t03",
+      "label": "Soft 16 Bag Functional Reviews and Styling",
+      "reason": "Last post date 2025-10-14 is before staleness cutoff 2026-03-04 (>21 days before 2026-03-25)"
+    },
+    {
+      "trend_id": "run_0022_t04",
+      "label": "Celine 26 Spring/Summer and 2026 Fashion Show Content",
+      "reason": "Last post date 2025-10-17 is before staleness cutoff 2026-03-04 (>21 days before 2026-03-25)"
+    },
+    {
+      "trend_id": "run_0022_t05",
+      "label": "Celebrity Outfit Decoding and Influence on Celine Styling",
+      "reason": "Last post date 2025-09-03 is before staleness cutoff 2026-03-04 (>21 days before 2026-03-25)"
+    },
+    {
+      "trend_id": "run_0022_t06",
+      "label": "Celine Bag Unboxing and Purchase Experience Sharing",
+      "reason": "total_engagement=917 is below minimum threshold of 3000"
+    },
+    {
+      "trend_id": "run_0022_t07",
+      "label": "Celine Men’s Fashion and Male Accessory Focus",
+      "reason": "Last post date 2025-12-01 is before staleness cutoff 2026-03-04 (>21 days before 2026-03-25)"
+    },
+    {
+      "trend_id": "run_0022_t08",
+      "label": "Celine Bag Styling with French Old Money and Elegant Aesthetic",
+      "reason": "total_engagement=1381 is below minimum threshold of 3000"
+    },
+    {
+      "trend_id": "run_0023_t01",
+      "label": "Old Celine vs New Celine Nostalgia Debate",
+      "reason": "Last post date 2025-09-03 is before staleness cutoff 2026-03-04 (>21 days before 2026-03-25)"
+    },
+    {
+      "trend_id": "run_0023_t02",
+      "label": "Celebrity Outfit Decoding and Influence Content",
+      "reason": "No valid post dates found in evidence.posts — cannot assess freshness"
+    },
+    {
+      "trend_id": "run_0023_t03",
+      "label": "Soft 16 as Ultimate Commute and Everyday Bag",
+      "reason": "Last post date 2021-10-18 is before staleness cutoff 2026-03-04 (>21 days before 2026-03-25)"
+    },
+    {
+      "trend_id": "run_0023_t04",
+      "label": "Box Bag Relevance Discourse",
+      "reason": "Last post date 2025-10-04 is before staleness cutoff 2026-03-04 (>21 days before 2026-03-25)"
+    },
+    {
+      "trend_id": "run_0023_t05",
+      "label": "Celine New Collection Unboxings and Purchase Sharing",
+      "reason": "total_engagement=1384 is below minimum threshold of 3000"
+    },
+    {
+      "trend_id": "run_0023_t06",
+      "label": "Celine Menswear and French Casual Styling",
+      "reason": "Last post date 2025-10-05 is before staleness cutoff 2026-03-04 (>21 days before 2026-03-25)"
+    },
+    {
+      "trend_id": "run_0023_t07",
+      "label": "Celine Sunglasses and Accessories Authenticity and Styling",
+      "reason": "total_engagement=1861 is below minimum threshold of 3000"
+    },
+    {
+      "trend_id": "run_0023_t08",
+      "label": "Cross-Border Celine Shopping and Deal Hunting",
+      "reason": "total_engagement=255 is below minimum threshold of 3000"
+    },
     {
       "trend_id": "synthetic_t01",
       "label": "Quiet Luxury Street Style",
@@ -20,19 +290,18 @@
       "trend_id": "run_0009_t01",
       "shortlist": true,
       "scores": {
-        "freshness": 10,
+        "freshness": 8,
         "brand_fit": 9,
-        "category_fit": 10,
+        "category_fit": 8,
         "materiality": 8,
         "actionability": 9
       },
-      "composite_score": 9.25,
-      "reasoning": "This trend is highly relevant, with recent posts such as '极简主义的反面教材｜为什么你穿极简不好看' from March 25th, 2026, indicating it is currently gaining traction. The content aligns closely with Celine's aesthetic of Parisian minimalism, as designers and content creators are discussing the subtleties of minimalistic dressing, which resonates with Celine's design-literate clientele who appreciate clean structures. With a total engagement of 412,277 across 25 posts, this topic reflects significant materiality and consistent interest. Celine Client Advisors can reference specific Celine pieces, including the Triomphe bag and tailoring, comfortably in conversations with clients.",
+      "composite_score": 8.2,
+      "reasoning": "The trend demonstrates high engagement with the most recent posts dated March 2026. Specifically, the post '极简主义的反面教材｜为什么你穿极简不好看', which gained 19,876 likes, illustrates the ongoing conversation around minimalism, resonating with Celine's aesthetic of clean structure and confident restraint. Furthermore, posts reference Celine's products directly, providing an actionable link for Client Advisors to discuss minimalist power dressing. Given the metrics, this trend aligns well with Celine's target clientele and values.",
       "confidence": "high",
       "evidence_references": [
-        "'极简主义的反面教材｜为什么你穿极简不好看'",
-        "total engagement: 412,277",
-        "post count: 25"
+        "19,876 likes on post p034",
+        "'极简主义的反面教材｜为什么你穿极简不好看'"
       ],
       "disqualifying_reason": null,
       "label": "Mixed Beauty Trend Signals",
@@ -47,21 +316,20 @@
       "trend_id": "run_0009_t02",
       "shortlist": false,
       "scores": {
-        "freshness": 9,
-        "brand_fit": 7,
-        "category_fit": 6,
+        "freshness": 7,
+        "brand_fit": 8,
+        "category_fit": 5,
         "materiality": 6,
-        "actionability": 5
+        "actionability": 6
       },
-      "composite_score": 6.65,
-      "reasoning": "Though recent posts like 'Power dressing 2026｜Celine让职场穿搭不再无聊' from March 23rd indicate adequate freshness and specific relevance to power dressing, the overall interest in the posts is weaker, reflected by only 3 total posts with an average engagement of 13,008.33, underlining a lack of consistent interest in this area. While it touches on workplace attire, which aligns with the interests of Celine's clients, the posts do not represent a robust trend flushing out the nuances of minimalist power dressing adequately. The narrow post count and lack of actionable insights make it challenging for CAs to discuss concretely with clients.",
+      "composite_score": 6.15,
+      "reasoning": "While this trend is gaining traction, evidenced by engagement on posts such as 'Celine Cabas横款托特' and 'Power dressing 2026', the overall post count is low (only 3), which indicates limited sustained interest. It captures aspects of Celine’s clientele with a focus on power dressing but lacks depth in brand-specific nuances for a meaningful conversation. Additionally, the low engagement across fewer posts suggests this trend is not yet robust enough for a luxury client discussion.",
       "confidence": "medium",
       "evidence_references": [
-        "'Power dressing 2026｜Celine让职场穿搭不再无聊'",
-        "post count: 3",
-        "average engagement: 13,008.33"
+        "3 posts total with an engagement average of 13,008.33",
+        "'Celine Cabas横款托特｜打工人的通勤神器'"
       ],
-      "disqualifying_reason": "materiality: insufficient sustained interest with only 3 posts",
+      "disqualifying_reason": "materiality — insufficient engagement across posts",
       "label": "Scenario-Based Skincare Routines",
       "category": "luxury_fashion",
       "metric_signal": {
@@ -74,21 +342,20 @@
       "trend_id": "run_0009_t03",
       "shortlist": false,
       "scores": {
-        "freshness": 7,
-        "brand_fit": 8,
-        "category_fit": 5,
-        "materiality": 4,
+        "freshness": 6,
+        "brand_fit": 7,
+        "category_fit": 4,
+        "materiality": 5,
         "actionability": 5
       },
-      "composite_score": 5.4,
-      "reasoning": "While the trend discusses high craftsmanship through posts like 'Celine西装外套的版型为什么封神？裁缝视角解析,' this trend lacks freshness due to only 2 posts with total engagement reaching 30,606, indicating a limited audience reach. The topic resonates with Celine's values yet feels niche and not directly aligned with mainstream consumer interest in luxury fashion, suggesting a less actionable trend for Client Advisors, who might struggle to engage clients around such specific discussions on fabrics and tailoring. The low post count hinders its materiality.",
+      "composite_score": 5.2,
+      "reasoning": "This trend presents low freshness with only 2 posts dated in early March 2026. The engagement level is modest, which does not indicate a strong continuous interest, as evidenced by the total engagement at 30,606 across only 2 posts. Although it connects to Celine's craftsmanship and tailoring, a Celine Client Advisor may find it challenging to integrate this trend into client conversations meaningfully, given its limited scope and lower engagement.",
       "confidence": "medium",
       "evidence_references": [
-        "'Celine西装外套的版型为什么封神？裁缝视角解析'",
-        "post count: 2",
-        "total engagement: 30,606"
+        "Total engagement of 30,606 across 2 posts",
+        "'Celine西装外套的版型为什么封神？裁缝视角解析'"
       ],
-      "disqualifying_reason": "materiality: insufficient engagement and post count",
+      "disqualifying_reason": "category_fit — insufficient relevance for Celine's luxury positioning",
       "label": "Mixed Beauty Trend Signals",
       "category": "luxury_fashion",
       "metric_signal": {
@@ -101,19 +368,18 @@
       "trend_id": "run_0010_t01",
       "shortlist": true,
       "scores": {
-        "freshness": 10,
+        "freshness": 8,
         "brand_fit": 9,
-        "category_fit": 10,
+        "category_fit": 8,
         "materiality": 8,
         "actionability": 9
       },
-      "composite_score": 9.25,
-      "reasoning": "This trend shows high freshness with multiple recent posts on minimalism such as '静奢风才是真正的有钱人穿搭｜Celine教科书' from March 22, 2026, signaling strong engagement. It fits Celine's aesthetic perfectly, with conversations around minimalism aligning with the tailored, understated authority favored by the brand's clientele. The total engagement of 412,277 across 25 posts showcases broad interest and the potential for meaningful discussions around Celine's offerings, particularly regarding their signature bags and minimalist silhouettes. Client Advisors would feel equipped to leverage this trend in client conversations effectively.",
+      "composite_score": 8.2,
+      "reasoning": "Similar to the previous trend, this one displays a high freshness with noteworthy posts like '静奢风才是真正的有钱人穿搭｜Celine教科书', which gained 18,765 likes. It aligns seamlessly with Celine's minimalist ethos and is particularly actionable for advisors looking to emphasize the strength of tailored pieces in their outreach. The total engagement is solid, ensuring that it commands the attention of a design-literate audience, thus making it a strong choice for client discussions.",
       "confidence": "high",
       "evidence_references": [
-        "'静奢风才是真正的有钱人穿搭｜Celine教科书'",
-        "total engagement: 412,277",
-        "post count: 25"
+        "18,765 likes on post p004",
+        "'静奢风才是真正的有钱人穿搭｜Celine教科书'"
       ],
       "disqualifying_reason": null,
       "label": "Minimalist Tailoring & Structure",
@@ -128,21 +394,20 @@
       "trend_id": "run_0010_t02",
       "shortlist": false,
       "scores": {
-        "freshness": 7,
-        "brand_fit": 6,
+        "freshness": 6,
+        "brand_fit": 7,
         "category_fit": 5,
-        "materiality": 4,
-        "actionability": 5
+        "materiality": 6,
+        "actionability": 6
       },
-      "composite_score": 5.25,
-      "reasoning": "The recency of posts related to luxury handbags appears limited, with only 3 posts such as 'Celine Cabas横款托特｜打工人的通勤神器' from March 27, 2026, indicating freshness yet a lack of broader engagement, with a total of only 39,025 across disparate submissions. While it touches on relevant themes, the narrow focus and insufficient material engagement suggest it would not resonate with a discerning luxury audience for substantive conversation. Client Advisors would find it challenging to weave this into client discussions effectively.",
+      "composite_score": 5.75,
+      "reasoning": "Though posts in this trend address power dressing, the overall freshness suffers due to a limited number of recent posts (only 3) and thereby indicates a lack of ongoing traction in the market. The posts reference Celine products, such as the 'Celine 16手袋', highlighting some brand relevance, yet the low engagement metrics do not support a sustainable client conversation within Celine's luxury context. The trend fails to meet the necessary criteria for actionable insight for Client Advisors at this time.",
       "confidence": "medium",
       "evidence_references": [
-        "'Celine Cabas横款托特｜打工人的通勤神器'",
-        "total engagement: 39,025",
-        "post count: 3"
+        "Total engagement of 39,025 across 3 posts",
+        "'Celine Cabas横款托特｜打工人的通勤神器'"
       ],
-      "disqualifying_reason": "materiality: insufficient engagement and interest with only 3 posts",
+      "disqualifying_reason": "materiality — insufficient engagement across posts",
       "label": "Luxury Handbag & Leather Goods",
       "category": "luxury_fashion",
       "metric_signal": {
@@ -155,20 +420,20 @@
       "trend_id": "run_0010_t03",
       "shortlist": false,
       "scores": {
-        "freshness": 4,
+        "freshness": 5,
         "brand_fit": 8,
         "category_fit": 5,
         "materiality": 4,
-        "actionability": 5
+        "actionability": 6
       },
-      "composite_score": 5.1,
-      "reasoning": "While this trend on 'Minimalist Tailoring & Structure' resonates with Celine's aesthetic through topics like tailored jackets, it lacks freshness due to only two posts dated earlier this month, and both posts fall below the critical engagement threshold. The snippets, such as 'Celine西装外套的版型为什么封神？裁缝视角解析,' appeal to design-literate audiences, but the limited post count of 2 suggests a lack of sustained interest. Overall, it fails to reach Celine's actionable conversation standards given the low engagement relative to a luxury audience.",
+      "composite_score": 5.85,
+      "reasoning": "While the trend discusses minimalist tailoring in a way that aligns with Celine's aesthetic, evidenced by snippets like 'Celine西装外套的版型为什么封神', the freshness of the posts is lacking, with the most recent being from March 9, 2026, and a low post count of only 2. This indicates limited traction in recent discussions. Additionally, while the brand fit is strong, the low engagement metrics and low post count diminish its materiality, making it less actionable for client conversations.",
       "confidence": "medium",
       "evidence_references": [
-        "Celine西装外套的版型为什么封神？裁缝视角解析",
-        "post_count=2 is below 5"
+        "Celine西装外套的版型为什么封神",
+        "post_count=2"
       ],
-      "disqualifying_reason": "freshness and materiality – not enough traction and low engagement",
+      "disqualifying_reason": "materiality - total_engagement is not strong enough",
       "label": "Minimalist Tailoring & Structure",
       "category": "luxury_fashion",
       "metric_signal": {
@@ -181,18 +446,18 @@
       "trend_id": "run_0011_t01",
       "shortlist": true,
       "scores": {
-        "freshness": 9,
+        "freshness": 8,
         "brand_fit": 9,
-        "category_fit": 10,
-        "materiality": 9,
+        "category_fit": 7,
+        "materiality": 8,
         "actionability": 8
       },
-      "composite_score": 8.6,
-      "reasoning": "The trend surrounding 'Celine Minimalism and Quiet Luxury' displays a strong alignment with Celine's aesthetic, especially regarding the nuanced views presented about minimalist fashion, specifically in titles like '静奢风才是真正的有钱人穿搭｜Celine教科书.' With 25 posts and high engagement metrics, including 301,171 likes and a considerable conversation space around '质感>数量,' this trend indicates active consumer interest. A Celine CA can comfortably reference this trend with specific products, as it reflects a growing preference for understated luxury appreciated by its target clientele.",
+      "composite_score": 8.2,
+      "reasoning": "This trend reflects a marked interest in Celine's minimalist and quietly luxurious aesthetic, as discussed in recent posts like '静奢风才是真正的有钱人穿搭｜Celine教科书' from March 22 and '为什么从LV换到了Celine' dated March 27. The total engagement of 412,277 across 25 posts shows strong traction and fit for the luxury fashion category. This material interest is actionable for CAs, who can reference specific products in conversation, reinforcing their value of understated luxury.",
       "confidence": "high",
       "evidence_references": [
-        "301,171 likes",
-        "25 posts showcasing sustained interest"
+        "静奢风才是真正的有钱人穿搭｜Celine教科书",
+        "total_engagement=412277"
       ],
       "disqualifying_reason": null,
       "label": "Celine Minimalism and Quiet Luxury",
@@ -205,22 +470,22 @@
     },
     {
       "trend_id": "run_0011_t02",
-      "shortlist": true,
+      "shortlist": false,
       "scores": {
         "freshness": 6,
-        "brand_fit": 9,
-        "category_fit": 8,
-        "materiality": 7,
-        "actionability": 8
+        "brand_fit": 7,
+        "category_fit": 5,
+        "materiality": 5,
+        "actionability": 5
       },
-      "composite_score": 7.45,
-      "reasoning": "The trend about 'Celine Workwear Essentials' fits well within Celine's DNA, resonating with design-literate women's needs for professional attire, affirming the importance of power dressing as seen in posts like 'Power dressing 2026｜Celine让职场穿搭不再无聊.' Engagement stands at 39,025 across three notable posts, indicating that while this trend has potential, it could still grow. The references to products and their practical appeal make it actionable for Celine CAs, enriching client conversations. Its focus on functional elegance aligns with Celine's brand identity.",
-      "confidence": "high",
+      "composite_score": 5.95,
+      "reasoning": "Although this trend highlights Celine's offerings for workwear, with posts like 'Power dressing 2026｜Celine让职场穿搭不再无聊', there is limited freshness with the latest post on March 27 and only 3 total posts. The engagement is modest, totaling 39,025, indicating weak sustained interest. This affects its materiality, thus making it less actionable for CAs, as they may struggle to discuss robustly around this theme.",
+      "confidence": "medium",
       "evidence_references": [
-        "39,025 total engagement",
-        "Power dressing 2026 post"
+        "Power dressing 2026｜Celine让职场穿搭不再无聊",
+        "total_engagement=39025"
       ],
-      "disqualifying_reason": null,
+      "disqualifying_reason": "materiality - engagement is not strong enough",
       "label": "Celine Workwear Essentials",
       "category": "luxury_fashion",
       "metric_signal": {
@@ -231,22 +496,22 @@
     },
     {
       "trend_id": "run_0011_t03",
-      "shortlist": true,
+      "shortlist": false,
       "scores": {
-        "freshness": 6,
+        "freshness": 5,
         "brand_fit": 8,
-        "category_fit": 7,
-        "materiality": 7,
-        "actionability": 8
+        "category_fit": 5,
+        "materiality": 4,
+        "actionability": 5
       },
-      "composite_score": 7.05,
-      "reasoning": "Focusing on 'Celine Tailoring Insights,' this trend shows a commitment to craftsmanship that aligns with Celine's core values through posts discussing unique tailoring and fabric quality, such as in 'Celine西装外套的版型为什么封神？裁缝视角解析.' While it lacks a higher post count with only two posts, the mentions indicate significant consumer interest. A Celine CA can reference this trend comfortably, connecting with the audience seeking informed discussions around luxury fashion and tailoring excellence.",
-      "confidence": "high",
+      "composite_score": 5.45,
+      "reasoning": "This trend addresses tailoring insights for Celine, with details like 'Celine的面料为什么摸起来不一样' from posts in early March. The freshness is concerning as the most recent post dates back to March 9, with only 2 posts in total showing engagement of 30,606. While there is a clear alignment with Celine's commitment to craftsmanship, the low metrics on engagement and post count prevent it from being actionable in client conversations.",
+      "confidence": "medium",
       "evidence_references": [
-        "Celine西装外套的版型为什么封神",
-        "2 recent posts with good engagement"
+        "Celine的面料为什么摸起来不一样",
+        "post_count=2"
       ],
-      "disqualifying_reason": null,
+      "disqualifying_reason": "materiality - total_engagement is not strong enough",
       "label": "Celine Tailoring Insights",
       "category": "luxury_fashion",
       "metric_signal": {
@@ -257,22 +522,22 @@
     },
     {
       "trend_id": "run_0012_t01",
-      "shortlist": false,
+      "shortlist": true,
       "scores": {
-        "freshness": 4,
-        "brand_fit": 6,
-        "category_fit": 5,
-        "materiality": 4,
-        "actionability": 5
+        "freshness": 8,
+        "brand_fit": 9,
+        "category_fit": 7,
+        "materiality": 9,
+        "actionability": 9
       },
-      "composite_score": 4.55,
-      "reasoning": "The trend on 'Celine's Minimalist Aesthetic' reflects elements of Celine's ethos, but engagement is lacking with only 25 posts and no significant momentum in the past two weeks. Snippets like '静奢风才是真正的有钱人穿搭｜Celine教科书' indicate high-level discussions, but without consistently high engagement or a tangible connection to specific products, it's less actionable for Celine CAs to reference in conversation.",
-      "confidence": "medium",
+      "composite_score": 8.5,
+      "reasoning": "This trend solidly encapsulates Celine's minimalist aesthetic, as highlighted in numerous posts like '静奢风才是真正的有钱人穿搭｜Celine教科书', accumulating significant engagement of over 412,277 across 25 posts. The recency and coherence between the themes discussed ensure that this trend resonates highly with Celine's clientele of design-literate women. The actionable nature of the references gives CAs ample material to discuss specific products comfortably.",
+      "confidence": "high",
       "evidence_references": [
-        "Only 25 posts but low engagement",
-        "search patterns exhibiting fading appeal"
+        "静奢风才是真正的有钱人穿搭｜Celine教科书",
+        "total_engagement=412277"
       ],
-      "disqualifying_reason": "freshness and materiality – insufficient recent traction",
+      "disqualifying_reason": null,
       "label": "Celine's Minimalist Aesthetic",
       "category": "luxury_fashion",
       "metric_signal": {
@@ -285,20 +550,20 @@
       "trend_id": "run_0012_t02",
       "shortlist": false,
       "scores": {
-        "freshness": 4,
-        "brand_fit": 8,
-        "category_fit": 5,
-        "materiality": 5,
+        "freshness": 6,
+        "brand_fit": 7,
+        "category_fit": 8,
+        "materiality": 7,
         "actionability": 6
       },
-      "composite_score": 5.55,
-      "reasoning": "While this trend focuses on Celine's products enhancing workplace fashion, the recent posts from March 2026 exhibit a low freshness score with a total engagement of 39,025 mostly from three posts, indicating a lack of sustained interest. Phrases like 'Power dressing 2026' show a clear appeal to Celine's clientele who value professional aesthetics. However, the limited post count and declining momentum suggests it may not resonate deeply enough for actionable client conversations at this time.",
+      "composite_score": 6.5,
+      "reasoning": "While there is a recent interest in 'Celine Workplace Fashion', with posts dated March 23 and 27, the post count is only three, which indicates limited engagement potential. The focus on power dressing aligns with Celine's aesthetic of minimalist power dressing, as seen in the snippet 'Celine让职场穿搭不再无聊'. However, the average engagement suggests a nascent trend rather than a fully formed movement, highlighting a potential gap in materiality and actionable dialogue for CAs.",
       "confidence": "medium",
       "evidence_references": [
-        "Total engagement of 39,025 from 3 posts.",
-        "'Power dressing 2026｜Celine让职场穿搭不再无聊' as a title."
+        "Power dressing 2026｜Celine让职场穿搭不再无聊",
+        "total_engagement: 39025"
       ],
-      "disqualifying_reason": "freshness - low engagement and limited recency of posts",
+      "disqualifying_reason": "materiality: engagement metrics show insufficient sustained interest",
       "label": "Celine Workplace Fashion",
       "category": "luxury_fashion",
       "metric_signal": {
@@ -313,18 +578,18 @@
       "scores": {
         "freshness": 4,
         "brand_fit": 9,
-        "category_fit": 5,
-        "materiality": 5,
-        "actionability": 6
+        "category_fit": 6,
+        "materiality": 7,
+        "actionability": 5
       },
-      "composite_score": 5.55,
-      "reasoning": "This trend focuses on Celine's unique tailoring and fabric quality, aligning well with the brand's ethos of craftsmanship. Despite the strong brand fit evidenced by titles referencing specific tailoring insights, limited engagement (30,606 total across 2 posts) and freshness (with posts dated in March 2026 showing no posts in the last week) hinder its viability for immediate actionable discussions with clientele.",
+      "composite_score": 6.2,
+      "reasoning": "This trend demonstrates strong brand fit due to its emphasis on Celine's craftsmanship, aligning with the designers' values of precision and minimalism. However, the freshness score is low given that the most recent post is from March 9, leading to concerns about its current relevance. Although tailoring insights are valuable, the limited posting frequency restricts the trend's actionable potential for CAs, as seen in engagement metrics like 'total_engagement: 30606'.",
       "confidence": "medium",
       "evidence_references": [
-        "'Celine西装外套的版型为什么封神？裁缝视角解析' highlights tailored craftsmanship.",
-        "Total engagement of 30,606 from only 2 posts."
+        "Celine西装外套的版型为什么封神？裁缝视角解析",
+        "total_engagement: 30606"
       ],
-      "disqualifying_reason": "freshness - insufficient recent posts and engagements",
+      "disqualifying_reason": "freshness: the latest post is not recent enough",
       "label": "Celine Tailoring and Fabric Insights",
       "category": "luxury_fashion",
       "metric_signal": {
@@ -337,18 +602,18 @@
       "trend_id": "run_0013_t01",
       "shortlist": true,
       "scores": {
-        "freshness": 10,
+        "freshness": 9,
         "brand_fit": 10,
         "category_fit": 8,
-        "materiality": 10,
+        "materiality": 9,
         "actionability": 8
       },
-      "composite_score": 9.0,
-      "reasoning": "This trend exhibits strong recent activity with 25 posts and an impressive total engagement of 412,277, reflecting robust interest in quiet luxury and minimalist aesthetics as perceived in Celine's offerings. The title '静奢风才是真正的有钱人穿搭｜Celine教科书' directly appeals to affluent consumers, making it ideal for discussions in client meetings. The strong indicators of engagement and a clear connection to the brand's identity justify its actionable nature for Client Advisors.",
+      "composite_score": 8.3,
+      "reasoning": "The 'Celine's Quiet Luxury Trend' scored high on freshness with multiple recent posts, including one from March 25, indicating ongoing engagement. It closely aligns with Celine's aesthetic as it emphasizes quiet luxury and minimalist design. The engagement metrics are robust, particularly 'total_likes: 301171', demonstrating sustainable interest. This trend offers ample actionable insights for CAs through discussions of specific products related to minimalist aesthetics, such as Celine's clean structural designs.",
       "confidence": "high",
       "evidence_references": [
-        "Total engagement of 412,277 across 25 posts.",
-        "'静奢风才是真正的有钱人穿搭｜Celine教科书' reinforces Celine's brand message."
+        "静奢风才是真正的有钱人穿搭｜Celine教科书",
+        "total_likes: 301171"
       ],
       "disqualifying_reason": null,
       "label": "Celine's Quiet Luxury Trend",
@@ -363,20 +628,20 @@
       "trend_id": "run_0013_t02",
       "shortlist": false,
       "scores": {
-        "freshness": 4,
-        "brand_fit": 9,
-        "category_fit": 5,
-        "materiality": 5,
-        "actionability": 6
+        "freshness": 6,
+        "brand_fit": 8,
+        "category_fit": 7,
+        "materiality": 6,
+        "actionability": 5
       },
-      "composite_score": 5.55,
-      "reasoning": "Although this trend emphasizes Celine's contributions to stylish workwear, it suffers from low freshness with recent posts being limited and insufficient engagement (39,025 total from 3 posts). Titles like 'Power dressing 2026' align with Celine's aesthetic, but the lack of sustainable interaction indicates that it might not be compelling enough for significant client interactions at present.",
+      "composite_score": 6.0,
+      "reasoning": "Though the 'Celine Workwear Aesthetic' shows promise in highlighting functional workwear, there are only three recent posts with an average engagement of 13008, a concerning indicator for a luxury brand. While it fits the brand ethos of minimalist power dressing, the insufficient depth and recurring mention weakens its actionable potential in client discussions. A snippet like '打工人的通勤神器' does connect to the Celine ethos but lacks a distinct push that clients would find compelling.",
       "confidence": "medium",
       "evidence_references": [
-        "Total engagement of 39,025 from 3 posts.",
-        "'Celine Cabas横款托特｜打工人的通勤神器' highlights functional fashion."
+        "Celine Cabas横款托特｜打工人的通勤神器",
+        "avg_engagement: 13008"
       ],
-      "disqualifying_reason": "freshness - insufficient engagement and recency",
+      "disqualifying_reason": "materiality: insufficient sustained interest across posts",
       "label": "Celine Workwear Aesthetic",
       "category": "luxury_fashion",
       "metric_signal": {
@@ -390,19 +655,19 @@
       "shortlist": false,
       "scores": {
         "freshness": 4,
-        "brand_fit": 9,
-        "category_fit": 5,
+        "brand_fit": 8,
+        "category_fit": 7,
         "materiality": 5,
-        "actionability": 6
+        "actionability": 5
       },
-      "composite_score": 5.55,
-      "reasoning": "This trend highlights the craftsmanship of Celine's tailoring but lacks sustained engagement (30,606 total across 2 posts). The snippet 'Celine的面料为什么摸起来不一样？面料科普' aligns with Celine's commitment to quality, but again, the limited recency of posts and overall interest prevents it from being actionable for a Celine CA at this time.",
+      "composite_score": 5.8,
+      "reasoning": "While focused on tailoring and craftsmanship, this trend has a low freshness score, with the latest post dating back to March 9, indicating diminished relevance. It maintains brand fit through its analysis of Celine's designs, yet the engagement metrics like 'total_engagement: 30606' imply limited enthusiasm from the audience. The complexity of tailoring insights makes it difficult for CAs to seamlessly integrate this trend into client conversations, hence reducing its actionable potential.",
       "confidence": "medium",
       "evidence_references": [
-        "'Celine西装外套的版型为什么封神？裁缝视角解析' emphasizes expert tailoring.",
-        "Total engagement of 30,606 from only 2 posts."
+        "Celine的面料为什么摸起来不一样？面料科普",
+        "total_engagement: 30606"
       ],
-      "disqualifying_reason": "freshness - lack of recent posts and engagement",
+      "disqualifying_reason": "freshness: insufficient recent activity in posts",
       "label": "Celine Tailoring Insights",
       "category": "luxury_fashion",
       "metric_signal": {
@@ -417,17 +682,17 @@
       "scores": {
         "freshness": 10,
         "brand_fit": 10,
-        "category_fit": 8,
-        "materiality": 9,
+        "category_fit": 10,
+        "materiality": 8,
         "actionability": 8
       },
       "composite_score": 9.1,
-      "reasoning": "The trend of Architectural Silhouette Dressing is highly relevant and gaining traction, with recent posts like 'Celine廓形外套｜一件穿十年的投资' dated March 16 receiving 19,876 likes. It fits seamlessly within Celine's aesthetic of clean structure and confident restraint, aligning with the clientele's preference for precise tailoring. The trend's total engagement of 312,665 across 14 posts shows significant interest, making it easy for CAs to reference specific structured pieces in client conversations, such as Celine's outerwear that embodies this architectural silhouette.",
+      "reasoning": "This trend of 'Architectural Silhouette Dressing' is characterized by posts featuring structured, geometric garment shapes, which resonates profoundly with Celine's aesthetic of clean structure and rigorous simplicity. The most recent posts, with engagement metrics such as 22,341 likes from sp007, and the focus on '廓形' (silhouettes) reflect a sustained interest within the last two weeks. Creators associated with this trend emphasize the geometry of garments, appealing to Celine's design-literate clientele who value precision in tailoring. Given the total engagement of 312,665 across 14 posts, this trend demonstrates strong, sustainable interest.",
       "confidence": "high",
       "evidence_references": [
-        "Celine廓形外套｜一件穿十年的投资",
-        "total_engagement: 312665",
-        "recent posts dated March 16 and 25"
+        "每件 Celine 廓形外套的投资回报率",
+        "总互动 312665",
+        "最新帖子 sp007 日期 2026-03-25"
       ],
       "disqualifying_reason": null,
       "label": "Architectural Silhouette Dressing",
@@ -443,18 +708,18 @@
       "shortlist": true,
       "scores": {
         "freshness": 10,
-        "brand_fit": 9,
-        "category_fit": 8,
+        "brand_fit": 10,
+        "category_fit": 10,
         "materiality": 9,
         "actionability": 9
       },
-      "composite_score": 9.3,
-      "reasoning": "The Triomphe Hardware Investment trend is fresh, with posts as recent as March 27, showing strong engagement in the luxury segment. As a hallmark of Celine's design ethos, the high-quality Triomphe hardware reflects the brand's commitment to understated luxury, resonating with design-literate women. The trend garnered a total engagement of 490,173 over 22 posts, which suggests a sustained interest that CAs can leverage in conversations about investment pieces, emphasizing the versatility of the Triomphe line across various product categories.",
+      "composite_score": 9.5,
+      "reasoning": "The 'Triomphe Hardware Investment' trend aligns perfectly with Celine's clientele values of understated authority, focusing on the investment value of the Triomphe hardware. Posts discussing its significance have garnered significant engagement, with the most recent post achieving 24,532 likes. The focus on quality over excess connects seamlessly with Celine's commitment to minimalism, and the recurring keyword 'Celine' indicates direct relevance. Given the total engagement of 490,173 across 22 posts, this trend has strong, sustained traction, making it actionable in client discussions about luxury investment pieces.",
       "confidence": "high",
       "evidence_references": [
-        "Celine Triomphe｜为什么这个金扣值得等",
-        "total_engagement: 490173",
-        "recent posts dated March 27"
+        "24532 likes on the latest post sp012",
+        "总互动 490173",
+        "关键词 'Triomphe'"
       ],
       "disqualifying_reason": null,
       "label": "Triomphe Hardware Investment",
@@ -469,19 +734,19 @@
       "trend_id": "synthetic_t04",
       "shortlist": true,
       "scores": {
-        "freshness": 9,
-        "brand_fit": 9,
-        "category_fit": 8,
+        "freshness": 10,
+        "brand_fit": 10,
+        "category_fit": 10,
         "materiality": 7,
-        "actionability": 8
+        "actionability": 9
       },
-      "composite_score": 8.5,
-      "reasoning": "Monochromatic Precision Dressing is trending with recent posts like '一套驼色｜从头到脚的质感方程式' from March 26, highlighting the focus on quality and texture contrasts. The minimalistic approach resonates well with Celine’s aesthetic of clean and rigorous simplicity. While the total engagement of 196,074 is slightly lower compared to others, the sustained interest is evident, allowing CAs to recommend specific Celine pieces to create sophisticated monochromatic ensembles. This trend encourages clients to see the value in investment garments that articulate their timeless style.",
+      "composite_score": 9.0,
+      "reasoning": "'Monochromatic Precision Dressing' reflects Celine's aesthetic, showcasing head-to-toe monochromatic outfits where quality and proportion are emphasized over flamboyance. The latest posts, particularly from Celine, highlight a sustained interest with metrics like 17,654 likes on the post discussing a cream ensemble. This trend resonates with the design-literate clientele who appreciate understated elegance, underlining the brand's commitment to minimalist sophistication. The total engagement metric of 196,074 across multiple posts further strengthens its materiality and relevance to Celine's offerings.",
       "confidence": "high",
       "evidence_references": [
-        "一套驼色｜从头到脚的质感方程式",
-        "total_engagement: 196074",
-        "recent posts dated March 26"
+        "总互动 196074",
+        "最新帖子 的灵感于 Celine",
+        "关键词 '单色穿搭'"
       ],
       "disqualifying_reason": null,
       "label": "Monochromatic Precision Dressing",
@@ -496,20 +761,20 @@
       "trend_id": "synthetic_t05",
       "shortlist": false,
       "scores": {
-        "freshness": 6,
-        "brand_fit": 7,
-        "category_fit": 6,
+        "freshness": 7,
+        "brand_fit": 8,
+        "category_fit": 9,
         "materiality": 6,
         "actionability": 6
       },
-      "composite_score": 6.3,
-      "reasoning": "The Slim Bootcut Trouser Revival shows moderate freshness with posts from late March and a total engagement of 121,032, but engagement levels and momentum are weaker compared to trends above. While some posts reference Celine, such as 'Celine微喇裤上身｜腿型救星真的假的', the focus on trousers does not strongly embody Celine’s clean, architectural aesthetic. Moreover, the lower engagement and fewer posts indicate it may not maintain sustained interest, making it less actionable for CAs in direct client conversations.",
+      "composite_score": 7.45,
+      "reasoning": "While the trend 'Slim Bootcut Trouser Revival' showcases tailored silhouettes, aligning with Celine's minimalist style, it lacks significant momentum with posts dated as far back as March 13, indicating a waning interest. The engagement metrics, with 16,543 likes for Celine's post, indicate moderate traction, but the trend has not yet achieved the necessary total engagement or sustained interest to position it as a focal point for Celine. Additionally, while bootcut styles can resonate with the clientele, the conversation around this silhouette isn't as actionable or specific for discussions with affluent clients compared to the higher-scoring trends.",
       "confidence": "medium",
       "evidence_references": [
-        "Celine微喇裤上身｜腿型救星真的假的",
-        "total_engagement: 121032"
+        "最后一条发布于2026-03-13",
+        "总互动 121032"
       ],
-      "disqualifying_reason": "materiality - lower engagement suggests weak sustained interest.",
+      "disqualifying_reason": "materiality - lacks strong engagement across posts",
       "label": "Slim Bootcut Trouser Revival",
       "category": "luxury_fashion",
       "metric_signal": {
@@ -522,19 +787,19 @@
       "trend_id": "synthetic_t06",
       "shortlist": true,
       "scores": {
-        "freshness": 8,
+        "freshness": 10,
         "brand_fit": 10,
-        "category_fit": 8,
+        "category_fit": 10,
         "materiality": 8,
-        "actionability": 9
+        "actionability": 10
       },
-      "composite_score": 8.7,
-      "reasoning": "The French Intellectual Editorial Aesthetic trend is fresh with posts from late March, showcasing a clear connection to Celine's brand identity. Recent posts like 'Celine为什么是法式智识的代名词' echo the intellectual and minimalist virtues that Celine embodies, appealing directly to the design-literate clientele. The total engagement of 366,866 reflects a robust interest level, and CAs can discuss specific Celine pieces that align with this effortless Parisian style, facilitating a natural conversation with clients looking for timeless sophistication.",
+      "composite_score": 9.2,
+      "reasoning": "The 'French Intellectual Editorial Aesthetic' trend encapsulates the essence of Celine's identity, embodying tailored separates and effortless sophistication. Recent posts, particularly the one from March 28 with 23,456 likes, illustrate a strong and growing interest and directly reference Celine as a cultural touchstone. The metrics reveal a total engagement of 366,866 across 16 posts, showcasing its material relevance and engagement distribution. This trend is highly actionable for CAs, who can leverage this reference in conversations with affluent clients looking to embody that chic Parisian elegance.",
       "confidence": "high",
       "evidence_references": [
-        "Celine为什么是法式智识的代名词",
-        "total_engagement: 366866",
-        "recent posts dated March 28"
+        "最新帖子 sp028 日期 2026-03-28",
+        "总互动 366866",
+        "关键词 '法式'"
       ],
       "disqualifying_reason": null,
       "label": "French Intellectual Editorial Aesthetic",
@@ -551,15 +816,17 @@
       "scores": {
         "freshness": 8,
         "brand_fit": 9,
-        "category_fit": 9,
+        "category_fit": 8,
         "materiality": 8,
-        "actionability": 7
+        "actionability": 9
       },
-      "composite_score": 8.2,
-      "reasoning": "The trend of Investment Leather Tote Culture is gaining significant traction, with the most recent posts dated 2026-03-27 and previous posts showing strong engagement metrics, such as 25,432 likes on '选一只能用十年的皮包｜Celine Cabas值吗'. This trend aligns perfectly with Celine's minimalist aesthetic and is particularly relevant for the brand's core clientele, who value items like the Cabas for their long-term investment potential. The emphasis on structured leather goods resonates with the Celine narrative of timeless simplicity and luxury. Additionally, the subject matter sits within Celine's active category of leather goods, enhancing its relevance for client conversations.",
+      "composite_score": 8.1,
+      "reasoning": "The trend of Investment Leather Tote Culture is highly relevant for Celine, particularly as the most recent post dates back to March 27, 2026, indicating strong recent traction. The frequent discussion around Celine's Cabas in posts like '选一只能用十年的皮包｜Celine Cabas值吗' aligns perfectly with the brand's aesthetic of functional luxury. Moreover, the substantial engagement metrics – total likes of 277,402 and total saves of 63,599 – suggest a solid, active interest among the target audience. This trend is easily mentionable by Celine Client Advisors, who can reference specific models as smart, long-term investments.",
       "confidence": "high",
       "evidence_references": [
-        "2026-03-27, 选一只能用十年的皮包｜Celine Cabas值吗, 25432 likes"
+        "total engagement: 358375",
+        "recent post date: 2026-03-27",
+        "high save counts indicating purchase intent: 9234 saves from sp034"
       ],
       "disqualifying_reason": null,
       "label": "Investment Leather Tote Culture",
@@ -574,17 +841,19 @@
       "trend_id": "synthetic_t08",
       "shortlist": true,
       "scores": {
-        "freshness": 9,
+        "freshness": 8,
         "brand_fit": 9,
-        "category_fit": 9,
-        "materiality": 8,
+        "category_fit": 8,
+        "materiality": 7,
         "actionability": 8
       },
-      "composite_score": 8.6,
-      "reasoning": "Cashmere Quiet Luxury Layering is a highly contemporary trend, with active posts as recent as 2026-03-26 demonstrating consistent engagement (17,654 likes on '一件好羊绒能改变你对穿衣的理解'). Reflecting Celine's ethos of clean structure, this trend centers around high-quality materials like cashmere, appealing to design-literate women who favor understated luxury. The layering aspect directly connects to Celine's power dressing narrative, making this actionable in client discussions about seasonal styling. Overall, it displays strong alignment with both brand aesthetics and category fit.",
+      "composite_score": 8.0,
+      "reasoning": "Cashmere Quiet Luxury Layering is gaining momentum, evidenced by posts as recent as March 26, 2026. The emphasis on high-quality materials and subtle layering techniques resonates with Celine's clientele, reinforcing their preference for understated luxury. Posts like 'Celine羊绒衫｜为什么手感值这个价' directly reference Celine products and showcase the brand's ethos. The total engagement figure of 215,712 also indicates a notable interest in luxurious materials, making this trend actionable for Client Advisors who can discuss specific cashmere pieces.",
       "confidence": "high",
       "evidence_references": [
-        "2026-03-26, 一件好羊绒能改变你对穿衣的理解, 17654 likes"
+        "total engagement: 215712",
+        "recent post date: 2026-03-26",
+        "Celine-specific reference in sp042"
       ],
       "disqualifying_reason": null,
       "label": "Cashmere Quiet Luxury Layering",
@@ -599,19 +868,21 @@
       "trend_id": "synthetic_t09",
       "shortlist": false,
       "scores": {
-        "freshness": 6,
+        "freshness": 5,
         "brand_fit": 7,
-        "category_fit": 8,
-        "materiality": 6,
-        "actionability": 5
+        "category_fit": 6,
+        "materiality": 5,
+        "actionability": 6
       },
-      "composite_score": 6.3,
-      "reasoning": "The trend around Neutral Palette Color Theory is interesting but shows signs of slowing traction, with the most recent posts dating back to 2026-03-24. While posts exhibit engagement (16,543 likes on '驼色 x 米白 x 卡其｜中性调色板的无限可能'), they lack the same depth and consistency of interest as the leading trends. Although it aligns with Celine's minimalist style and is appropriate for a luxury fashion discussion, the application to client conversations may not be as direct, lacking specific references to Celine products or timelines. It could be valuable, but not compelling enough for immediate client action.",
+      "composite_score": 5.8,
+      "reasoning": "Although the trend of Neutral Palette Color Theory includes some engaging content with posts up until March 24, 2026, its momentum appears to be waning, as the most recent post indicated less engagement (only 14,321 likes for a Celine-related post). Furthermore, while the color palette is sophisticated, the trend lacks a direct relationship to specific Celine collections, making it challenging for Client Advisors to use in conversations. The trend does not strongly embody the actionable insights that Celine clientele typically value, leading to a composite score below the necessary threshold.",
       "confidence": "medium",
       "evidence_references": [
-        "2026-03-24, 驼色 x 米白 x 卡其｜中性调色板的无限可能, 16543 likes"
+        "recent post date: 2026-03-24",
+        "low engagement 14,321 on particular post",
+        "average engagement: 13401.4"
       ],
-      "disqualifying_reason": "freshness - shows signs of slowing traction",
+      "disqualifying_reason": "materiality — lacks strong enough engagement and direct product relevance",
       "label": "Neutral Palette Color Theory",
       "category": "luxury_fashion",
       "metric_signal": {
@@ -624,17 +895,19 @@
       "trend_id": "synthetic_t10",
       "shortlist": true,
       "scores": {
-        "freshness": 8,
+        "freshness": 9,
         "brand_fit": 10,
         "category_fit": 9,
         "materiality": 9,
-        "actionability": 9
+        "actionability": 10
       },
-      "composite_score": 8.7,
-      "reasoning": "Oversized Structured Blazer Power Dressing maximizes engagement with posts dated as recently as 2026-03-29, with significant metrics such as 20,123 likes on '一件廓形西装｜穿出整套造型的灵魂'. This trend is highly aligned with Celine's commitment to precise tailoring and minimalist authority, appealing directly to the brand's target demographic. It directly relates to the ready-to-wear category, facilitating natural references to Celine's offerings in client conversations focused on power dressing and contemporary authority in style.",
+      "composite_score": 9.1,
+      "reasoning": "Oversized Structured Blazer Power Dressing showcases recent and robust interest, with the latest post being on March 29, 2026. The trend aligns perfectly with Celine's aesthetic of confident restraint and power dressing, exemplified by comments such as 'Celine西装外套｜权力感的极简方程式'. The ability for Celine Client Advisors to reference specific high-profile tailored pieces in client conversations enriches its practicality. Moreover, the high engagement metrics, including over 200K total likes, affirm a strong connection with the audience seeking structured elegance.",
       "confidence": "high",
       "evidence_references": [
-        "2026-03-29, 一件廓形西装｜穿出整套造型的灵魂, 20123 likes"
+        "total engagement: 269755",
+        "recent post date: 2026-03-29",
+        "'Celine西装外套｜权力感的极简方程式'"
       ],
       "disqualifying_reason": null,
       "label": "Oversized Structured Blazer Power Dressing",
@@ -649,19 +922,21 @@
       "trend_id": "synthetic_t11",
       "shortlist": false,
       "scores": {
-        "freshness": 5,
-        "brand_fit": 6,
-        "category_fit": 8,
+        "freshness": 6,
+        "brand_fit": 7,
+        "category_fit": 5,
         "materiality": 6,
-        "actionability": 5
+        "actionability": 6
       },
-      "composite_score": 5.8,
-      "reasoning": "While Silk Slip Dress Minimalism shows some interest, it appears to be fading, with the most recent relevant post from 2026-03-25 likely indicating a limited ongoing dialogue. Engagement levels are varied, exemplified by only 17,654 likes on '极简丝绒｜最高级的懒人穿法'. Although it touches on key aspects of Celine's aesthetic and aligns somewhat with the ready-to-wear category, its connection to power dressing is limited. The lack of strong, actionable insights makes it challenging for Celine CAs to discuss meaningfully with clients.",
+      "composite_score": 6.1,
+      "reasoning": "Silk Slip Dress Minimalism shows some potential with posts as fresh as March 25, 2026, however, it trails behind other trends in relevance for Celine's luxury positioning. The engagement is uneven, with a significant portion of likes drawn from non-Celine entities, diluting its strength for direct Celine conversations, as shown by a post from The Row capturing attention. The slip dress style is more playful and less aligned with Celine's structured, minimalistic approach, ultimately resulting in lower scores across the board, especially in categories like actionability.",
       "confidence": "medium",
       "evidence_references": [
-        "2026-03-25, 极简丝绒｜最高级的懒人穿法, 17654 likes"
+        "total engagement: 160179",
+        "fluctuating metrics; last post from Celine is lower engaging compared to others",
+        "'吊带裙的高级穿法｜不靠暴露靠质地' from Jacquemus"
       ],
-      "disqualifying_reason": "freshness - appears to be fading",
+      "disqualifying_reason": "category_fit — less aligned with Celine's core product focus",
       "label": "Silk Slip Dress Minimalism",
       "category": "luxury_fashion",
       "metric_signal": {
@@ -674,20 +949,20 @@
       "trend_id": "synthetic_t12",
       "shortlist": false,
       "scores": {
-        "freshness": 7,
-        "brand_fit": 5,
-        "category_fit": 7,
-        "materiality": 6,
+        "freshness": 6,
+        "brand_fit": 7,
+        "category_fit": 6,
+        "materiality": 7,
         "actionability": 5
       },
       "composite_score": 6.15,
-      "reasoning": "While belt bags present functionality consistent with Celine's ethos, the commentary on practicality and hands-free luxury alongside visual styling lacks depth to resonate with Celine's design-literate clientele. The interest in the hardware precision of Celine bags shows potential, with posts like '为什么Celine腰包显档次' (sp060) garnering significant engagement. However, the trend's focus remains on functional aesthetics which slightly diverges from a conversation CAs would prioritize around intellectual minimalism. This trend's overall potential does not fully align with Celine's core identity, resulting in a score that does not meet the threshold.",
+      "reasoning": "While the belt bag trend is gaining traction, as evidenced by posts dated March 28 and March 25, the overall interest seems to be fluctuating rather than showing consistent growth, exemplified by the engagement metrics. Posts like '为什么Celine腰包显档次' with 18,765 likes indicate some interest, but Celine's clientele values more rigorous simplicity than what these bags typically present. The actionability score suffers because the conversation around belt bags can feel less refined, conflicting with Celine's minimalist power dressing narrative.",
       "confidence": "medium",
       "evidence_references": [
-        "'为什么Celine腰包显档次'",
-        "'腰包不土｜关键在怎么戴和配什么'"
+        "posts dated March 25 and 28",
+        "post '为什么Celine腰包显档次' with 18,765 likes"
       ],
-      "disqualifying_reason": "brand_fit - does not fully align with Celine's clean and intellectual aesthetic",
+      "disqualifying_reason": "actionability score failed; the trend's conversation lacks refined alignment with Celine's brand values.",
       "label": "Belt Bag Hands-Free Luxury",
       "category": "luxury_fashion",
       "metric_signal": {
@@ -700,18 +975,18 @@
       "trend_id": "synthetic_t13",
       "shortlist": true,
       "scores": {
-        "freshness": 9,
-        "brand_fit": 10,
+        "freshness": 8,
+        "brand_fit": 9,
         "category_fit": 8,
-        "materiality": 8,
-        "actionability": 9
+        "materiality": 9,
+        "actionability": 8
       },
-      "composite_score": 8.45,
-      "reasoning": "This trend epitomizes Celine's philosophy of understated elegance and intellectual dressing, targeting design-literate women who value quality over ornamentation. Posts such as '让穿衣说话｜无需声量的高级感' (sp065) with high engagement reflect this preference, presenting a nuanced perspective on feminine authority. Furthermore, the trend encourages conversations around specific Celine items as well as its feminine aesthetic, making it actionable in client dialogues. The engagement metrics reinforce sustained interest, justifying a composite score indicative of a well-aligned opportunity.",
+      "composite_score": 8.1,
+      "reasoning": "The trend around intellectual feminine dressing is currently resonating deeply, with posts dated as recently as March 27 showing strong engagement (24,532 likes). This trend aligns perfectly with Celine’s aesthetic of rigorous simplicity, emphasizing confidence and precision. The language used in posts, such as '不靠性感，靠质感' directly appeals to a design-literate clientele valuing understated authority. Celine CAs can naturally reference the brand's commitment to understated elegance in discussions about this theme.",
       "confidence": "high",
       "evidence_references": [
-        "'让穿衣说话｜无需声量的高级感'",
-        "'Celine的女性美学｜克制即是力量'"
+        "post dated March 27 with 24,532 likes",
+        "'不靠性感，靠质感' competing with Celine’s values"
       ],
       "disqualifying_reason": null,
       "label": "Intellectual Feminine Dressing",
@@ -726,18 +1001,18 @@
       "trend_id": "synthetic_t14",
       "shortlist": true,
       "scores": {
-        "freshness": 9,
-        "brand_fit": 10,
-        "category_fit": 9,
+        "freshness": 8,
+        "brand_fit": 9,
+        "category_fit": 8,
         "materiality": 9,
-        "actionability": 8
+        "actionability": 9
       },
-      "composite_score": 8.55,
-      "reasoning": "The capsule wardrobe investment mentality closely aligns with Celine’s core offering of luxury, timeless pieces that enhance a minimalist aesthetic. Posts that feature Celine highlight its role in capsule wardrobes, such as '我的Celine胶囊｜3年实测哪件最值' (sp071), signaling a strong fit for our discerning clientele. The total engagement metrics signal a robust dialogue around curated collections that are a hallmark of Celine’s positioning, thus making it easy for CAs to reference specific pieces in a sophisticated manner. This trend scores well across all dimensions, qualifying it for shortlisting.",
+      "composite_score": 8.25,
+      "reasoning": "The capsule wardrobe investment mentality is increasingly popular, with high engagement reflected in the post dated March 26 that gained 26,543 likes. This trend embraces minimalism and quality over quantity, perfectly aligned with Celine’s values. The posts frame Celine pieces as essential anchors in a curated wardrobe, enhancing actionability for CAs who can reference specific pieces in the context of a cohesive and refined wardrobe strategy.",
       "confidence": "high",
       "evidence_references": [
-        "'我的Celine胶囊｜3年实测哪件最值'",
-        "'胶囊衣橱的终极答案｜5件单品撑起全年造型'"
+        "post dated March 26 with 26,543 likes",
+        "'我的Celine胶囊｜3年实测哪件最值' indicates sustained interest"
       ],
       "disqualifying_reason": null,
       "label": "Capsule Wardrobe Investment Mentality",
@@ -752,18 +1027,18 @@
       "trend_id": "synthetic_t15",
       "shortlist": true,
       "scores": {
-        "freshness": 9,
-        "brand_fit": 10,
+        "freshness": 8,
+        "brand_fit": 9,
         "category_fit": 9,
-        "materiality": 8,
-        "actionability": 9
+        "materiality": 9,
+        "actionability": 8
       },
-      "composite_score": 8.65,
-      "reasoning": "The trend of understated leather goods connoisseurship resonates strongly with Celine's commitment to refined craftsmanship and quality materials. Posts like '真正懂皮具的人｜为什么选无logo款' (sp074) highlight an interest in the nuances of leather that matches the preferences of Celine's clientele. Additionally, the rejection of overt branding aligns perfectly with Celine's aesthetic of confident restraint. With over 200,000 likes accumulated across multiple posts, the engagement reflects a genuine appreciation for the quality of luxury that Celine embodies, thus validating its high score and immediate relevance for client conversations.",
+      "composite_score": 8.35,
+      "reasoning": "Understated leather goods connoisseurship is a prominent trend currently, demonstrated by posts dating up to March 25 that have strong engagement (22,341 likes). The emphasis on craftsmanship and rejection of overt branding aligns perfectly with Celine's aesthetic value of clean structure and confident restraint. With a rich dialogue around leather quality, CAs can engage clients by discussing the specific attributes of Celine leather goods in the context of this trend.",
       "confidence": "high",
       "evidence_references": [
-        "'真正懂皮具的人｜为什么选无logo款'",
-        "'Celine皮具｜三年养皮实录'"
+        "post dated March 25 with 22,341 likes",
+        "'真正懂皮具的人｜为什么选无logo款' emphasizes craft over branding"
       ],
       "disqualifying_reason": null,
       "label": "Understated Leather Goods Connoisseurship",
@@ -780,18 +1055,18 @@
       "scores": {
         "freshness": 7,
         "brand_fit": 6,
-        "category_fit": 7,
+        "category_fit": 6,
         "materiality": 6,
         "actionability": 5
       },
-      "composite_score": 6.15,
-      "reasoning": "Despite the growing interest in caramel and cognac tones evident in the posts such as '今春最显贵的颜色｜焦糖 & 科涅克棕' (sp079), Celine's Parisian minimalism emphasizes a more timeless palette focused on structural integrity than seasonal color trends. The overall engagement suggests some excitement, but it does not translate into a fitting context for the brand's typical conversation about lasting pieces. The scores reflect a promising trend in the broader luxury market, but it lacks depth in relation to Celine’s core aesthetic and client values.",
+      "composite_score": 6.35,
+      "reasoning": "The caramel and cognac color story is trending, but posts dated up to March 27 show mixed engagement, with the highest post receiving only 17,654 likes. While these warm tones can complement leather goods, the trend lacks a direct alignment with Celine's abstract minimalist style and may come off as overly decorative for the brand’s design-literate clientele. The actionability score is low due to its generalized nature, hindering a refined conversation that fits Celine’s ethos.",
       "confidence": "medium",
       "evidence_references": [
-        "'今春最显贵的颜色｜焦糖 & 科涅克棕'",
-        "'焦糖色系穿搭｜温暖中的高级感'"
+        "post dated March 27 with 17,654 likes",
+        "the overarching theme of '焦糖色' lacks sophistication for Celine"
       ],
-      "disqualifying_reason": "brand_fit - does not strongly align with Celine's core aesthetic and prioritization of timelessness",
+      "disqualifying_reason": "brand fit score failed; the trend lacks a direct alignment with Celine's aesthetic.",
       "label": "Caramel and Cognac Color Story",
       "category": "luxury_fashion",
       "metric_signal": {
@@ -804,19 +1079,19 @@
       "trend_id": "synthetic_t17",
       "shortlist": true,
       "scores": {
-        "freshness": 9,
+        "freshness": 8,
         "brand_fit": 9,
         "category_fit": 8,
-        "materiality": 8,
-        "actionability": 9
+        "materiality": 9,
+        "actionability": 8
       },
-      "composite_score": 8.4,
-      "reasoning": "The trend of high-waist wide leg trousers has seen substantial recent engagement with posts like 'Celine高腰裤｜同款版型差距在哪里' garnering 19,876 likes. It aligns with Celine's aesthetic of clean structure and tailored silhouettes, appealing to the design-literate clientele who appreciate the perceived sophistication of quality versus fast fashion. Additionally, the focus on fabric quality in posts enhances its fit within Celine's luxury context.",
+      "composite_score": 8.25,
+      "reasoning": "The trend of 'High-Waist Wide Leg Trouser Mastery' scores highly on freshness with recent posts as of March 26, 2026, showing consistent engagement (total 154319 likes). It strongly fits Celine's aesthetic with minimalism and sophisticated structure evident in its popularity among brand-affine creators. Additionally,  'Celine高腰裤｜同款版型差距在哪里' achieved a high engagement level of 19876 likes, demonstrating this silhouette's ongoing appeal. Celine Client Advisors can confidently reference this trend as it aligns perfectly with the power dressing ethos valued by their clientele.",
       "confidence": "high",
       "evidence_references": [
-        "高腰裤面料指南｜棉麻 vs 羊毛 vs 真丝",
-        "Celine高腰裤｜同款版型差距在哪里",
-        "total_engagement: 200396"
+        "total_engagement 154319",
+        "recent posts as of March 26, 2026",
+        "'Celine高腰裤｜同款版型差距在哪里' 19876 likes"
       ],
       "disqualifying_reason": null,
       "label": "High-Waist Wide Leg Trouser Mastery",
@@ -831,19 +1106,19 @@
       "trend_id": "synthetic_t18",
       "shortlist": true,
       "scores": {
-        "freshness": 8,
+        "freshness": 9,
         "brand_fit": 9,
-        "category_fit": 7,
-        "materiality": 7,
-        "actionability": 8
+        "category_fit": 8,
+        "materiality": 8,
+        "actionability": 9
       },
-      "composite_score": 7.7,
-      "reasoning": "The trend of day-to-night minimalist dressing shows significant engagement, particularly through posts like 'Celine一套走天下｜从早到晚都在线' with 17,654 likes. It resonates with Celine's ethos of refined versatility and appeals to its clientele's preference for practical yet sophisticated fashion. The focus on subtle transitions in minimalism effectively illustrates the Celine approach to adaptable luxury.",
-      "confidence": "medium",
+      "composite_score": 8.55,
+      "reasoning": "The 'Day-to-Night Minimalist Dressing' trend shows recent activity with posts dated as late as March 28, 2026, indicating strong momentum captured by user engagement averaging 16266.3 likes per post. This trend beautifully aligns with Celine’s minimalist aesthetic and the lifestyles of design-literate clientele who value versatility and tailored pieces. Posts from creators reflect substantial understanding of luxury, making it an effortless conversation point for CAs to discuss with clients about choosing versatile Celine outfits. With snippets like 'Celine一套走天下｜从早到晚都在线' achieving 17654 likes, it's clear this trend resonates strongly.",
+      "confidence": "high",
       "evidence_references": [
-        "一套穿两场｜极简通勤晚宴穿搭",
-        "Celine一套走天下｜从早到晚都在线",
-        "total_engagement: 130130"
+        "avg_engagement 16266.3",
+        "recent posts as of March 28, 2026",
+        "'Celine一套走天下｜从早到晚都在线' 17654 likes"
       ],
       "disqualifying_reason": null,
       "label": "Day-to-Night Minimalist Dressing",
@@ -859,19 +1134,20 @@
       "shortlist": false,
       "scores": {
         "freshness": 7,
-        "brand_fit": 8,
+        "brand_fit": 9,
         "category_fit": 8,
         "materiality": 7,
         "actionability": 6
       },
-      "composite_score": 7.3,
-      "reasoning": "While the trend of structured leather jackets reflects Celine's timeless investment approach, recent engagement is not high enough, with notable posts like 'Celine皮夹克｜为什么越穿越好看' only reaching 18,765 likes. The emphasis on leather as an investment aligns with Celine's narrative, but the overall actionability for a conversation focused solely on leather jackets might be limited. Additionally, it depends heavily on a specific product context where the client could equate value with the structured approach noted in posts.",
+      "composite_score": 7.35,
+      "reasoning": "While the 'Structured Leather Jacket as Investment' trend aligns well with Celine's brand fit and aesthetic due to its focus on quality and longevity, evidenced by posts like 'Celine皮夹克｜为什么越穿越好看' yielding 18765 likes, its freshness is slightly lower with some posts dating back to mid-March. The overall engagement, while significant, lacks the momentum seen in the other shortlisted trends. Moreover, the nature of leather jackets may not translate as naturally into conversation for CAs regarding current collections. This led to lower scores in actionability despite strong product category relevance.",
       "confidence": "medium",
       "evidence_references": [
-        "皮夹克投资指南｜哪些品牌五年后还能穿",
-        "total_engagement: 233543"
+        "'Celine皮夹克｜为什么越穿越好看' 18765 likes",
+        "recent posts up until March 24, 2026",
+        "category relevance for luxury fashion"
       ],
-      "disqualifying_reason": "actionability - specific reference to leather jackets may not translate well in diverse client encounters",
+      "disqualifying_reason": "actionability lacks specificity related to current collections",
       "label": "Structured Leather Jacket as Investment",
       "category": "luxury_fashion",
       "metric_signal": {
@@ -882,23 +1158,23 @@
     },
     {
       "trend_id": "synthetic_t20",
-      "shortlist": true,
+      "shortlist": false,
       "scores": {
-        "freshness": 8,
-        "brand_fit": 9,
-        "category_fit": 8,
-        "materiality": 8,
-        "actionability": 9
+        "freshness": 6,
+        "brand_fit": 8,
+        "category_fit": 7,
+        "materiality": 6,
+        "actionability": 5
       },
-      "composite_score": 8.3,
-      "reasoning": "The trend of minimal jewelry complements Celine's ethos by enhancing minimalist styles rather than competing against them. Posts such as 'Celine珠宝｜和极简穿搭的化学反应' have garnered significant interest, with 19,876 likes, indicating a solid connection with the audience. This aligns well with the Celine aesthetic of restraint and focus, making it an easy, actionable point for CAs to discuss fine jewelry as an extension of their clients' minimalist wardrobes.",
-      "confidence": "high",
+      "composite_score": 6.45,
+      "reasoning": "The 'Minimal Jewelry as Styling Anchor' trend captured some initial interest but shows a decline in freshness as many posts date back to mid-March 2026. Engagement totals of 118295 are decent but do not indicate a striking preference shift. While minimal jewelry fits well within Celine’s aesthetic, evidenced by mentions such as 'Celine珠宝｜和极简穿搭的化学反应' with 19876 likes, it does not provide a compelling narrative for CAs regarding current jewelry options in collections. The lower actionability score reflects concerns in discussing this as a cohesive styling element day-to-day.",
+      "confidence": "medium",
       "evidence_references": [
-        "点睛之笔｜如何选一件珠宝完成整套造型",
-        "Celine珠宝｜和极简穿搭的化学反应",
-        "total_engagement: 152543"
+        "total_engagement 118295",
+        "'Celine珠宝｜和极简穿搭的化学反应' 19876 likes",
+        "recent posts dated mid-March"
       ],
-      "disqualifying_reason": null,
+      "disqualifying_reason": "freshness below threshold and overall engagement lacking sufficient momentum",
       "label": "Minimal Jewelry as Styling Anchor",
       "category": "luxury_fashion",
       "metric_signal": {
@@ -911,19 +1187,19 @@
       "trend_id": "synthetic_t21",
       "shortlist": true,
       "scores": {
-        "freshness": 9,
-        "brand_fit": 10,
-        "category_fit": 9,
+        "freshness": 8,
+        "brand_fit": 9,
+        "category_fit": 8,
         "materiality": 9,
-        "actionability": 10
+        "actionability": 8
       },
-      "composite_score": 9.1,
-      "reasoning": "The Parisian academic intellectual style embodies Celine's aesthetic of restrained sophistication, evidenced by strong engagement such as '法式知识分子美学｜Celine的文化底色' with 19,876 likes. The intellectual context allows for deep narrative exchanges, aligning with Celine's clientele who value a culture-oriented wardrobe. This trend offers a wealth of conversational material for CAs, making references to tailored separates and their intersection with art and literature, solidifying the brand's position as a leader in intellectual style.",
+      "composite_score": 8.15,
+      "reasoning": "The 'Parisian Academic Intellectual Style' trend reflects significant engagement with recent posts as of late March 2026, such as '法式知识分子美学｜Celine的文化底色', which shows 19876 likes, evidencing alignment with Celine’s emphasis on intellectual minimalism and sophisticated detailing. This trend captures the essence of a design-literate audience, demonstrating thoughtful styling in secure settings that echo a refined lifestyle. Client Advisors can discuss this with a variety of tailored offerings and how they embrace this intellectual flavor. Overall, its substantial engagement and cultural relevance earn it a strong position within the shortlist.",
       "confidence": "high",
       "evidence_references": [
-        "巴黎女孩的书卷气穿搭｜知性感的来源",
-        "法式知识分子美学｜Celine的文化底色",
-        "total_engagement: 205567"
+        "total_engagement 205567",
+        "recent posts as of March 29, 2026",
+        "'法式知识分子美学｜Celine的文化底色' 19876 likes"
       ],
       "disqualifying_reason": null,
       "label": "Parisian Academic Intellectual Style",
@@ -938,18 +1214,18 @@
       "trend_id": "synthetic_t22",
       "shortlist": true,
       "scores": {
-        "freshness": 10,
-        "brand_fit": 10,
+        "freshness": 8,
+        "brand_fit": 9,
         "category_fit": 8,
-        "materiality": 8,
-        "actionability": 9
+        "materiality": 7,
+        "actionability": 8
       },
-      "composite_score": 9.2,
-      "reasoning": "This trend is very fresh, with the most recent post dated March 25, 2026, and significant engagement metrics like 22341 likes on a Celine post discussing timelessness and investment value in fashion. It perfectly embodies Celine's aesthetic of rational long-term wardrobe architecture and appeals to the clientele who value classic pieces; phrases like '跨季单品' and 'Celine经典款' are particularly resonant. The focus is on enduring quality, which aligns with both the ready-to-wear pace and Celine's minimalist philosophy, allowing for precise, intellectually confident client conversations.",
+      "composite_score": 8.05,
+      "reasoning": "The 'Season-less Wardrobe Building' trend shows strong freshness, with recent posts such as 'Celine经典款｜为什么十年不过时' (sp111) gaining significant engagement (likes: 22,341). This trend underscores Celine's commitment to timeless designs, aligning perfectly with the clientele's preference for investment pieces over fleeting trends. The discourse around rational wardrobe choices enhances the Celine narrative of intellectual minimalism. Notably, the average engagement of posts is high at 22,934, indicating ongoing interest.",
       "confidence": "high",
       "evidence_references": [
-        "Celine经典款｜为什么十年不过时 with 22341 likes",
-        "为什么要买「跨季单品」｜算一算其实更省 with 18765 likes"
+        "Celine经典款｜为什么十年不过时 (sp111) - likes: 22,341",
+        "average engagement: 22,934"
       ],
       "disqualifying_reason": null,
       "label": "Season-less Wardrobe Building",
@@ -967,15 +1243,15 @@
         "freshness": 9,
         "brand_fit": 10,
         "category_fit": 9,
-        "materiality": 9,
+        "materiality": 8,
         "actionability": 9
       },
-      "composite_score": 9.0,
-      "reasoning": "This trend showcases premium textile qualities, with posts featuring Celine's silk and satin pieces that are currently engaging a wide audience, evidenced by a total engagement of 249,543. The theme encapsulates Celine's rigorous simplicity, positioning materials as primary expressions of luxury, aligning with the brand's clean and structured aesthetic. It allows CAs to reference specific products like silk blouses in client conversations, backed by metrics showing ongoing interest through March 29, 2026, which is critical for the ready-to-wear pace.",
+      "composite_score": 8.55,
+      "reasoning": "The 'Satin and Silk Luxury Surface Dressing' trend is highly relevant, reflecting Celine's aesthetic of luxury through minimalist textiles. With posts like 'Celine真丝单品｜为什么贵得有道理' (sp117) receiving 21,234 likes, this trend emphasizes quality and restraint, resonating strongly with the Celine clientele. Furthermore, the focus on silk and satin as carriers of luxury communicates an ethos of confident restraint that the brand embodies. The trend has seen robust engagement with an average of 24,954 across posts.",
       "confidence": "high",
       "evidence_references": [
-        "Celine真丝单品｜为什么贵得有道理 with 21234 likes",
-        "缎面的保养和穿法｜高级感的代价值得付 with 14321 likes"
+        "Celine真丝单品｜为什么贵得有道理 (sp117) - likes: 21,234",
+        "average engagement: 24,954"
       ],
       "disqualifying_reason": null,
       "label": "Satin and Silk Luxury Surface Dressing",
@@ -990,18 +1266,18 @@
       "trend_id": "synthetic_t24",
       "shortlist": true,
       "scores": {
-        "freshness": 10,
+        "freshness": 9,
         "brand_fit": 10,
         "category_fit": 8,
-        "materiality": 10,
-        "actionability": 8
+        "materiality": 9,
+        "actionability": 9
       },
-      "composite_score": 9.0,
-      "reasoning": "Recent postings reveal a thriving discourse around clean minimalism, with posts still gaining traction as of March 28, 2026, along with a total engagement of 390,177, showing widespread interest. The trend connects with the design-literate clientele's appreciation for meticulous proportion and elimination of ornamentation, which are core to Celine's ethos. The distinct framing of minimalism as an identity rather than merely style makes it a rich topic for client discussions, even though its category fit is slightly less direct compared to the first two trends.",
+      "composite_score": 8.75,
+      "reasoning": "The trend of 'Clean Minimalist Aesthetic as Identity' resonates deeply with Celine's ethos of rigorous simplicity and confident restraint. Posts such as 'Celine式极简' (sp120) have garnered 24,532 likes, reflecting a strong client engagement with the minimalist aesthetic as not just a trend but a lifestyle. The consistent focus on eliminating decorative elements speaks directly to the Celine clientele's value for precise tailoring over ornamentation. With an impressive total engagement of 302,926, this trend is a substantial discussion point for client interactions.",
       "confidence": "high",
       "evidence_references": [
-        "极简美学的核心｜为什么干净比繁复更难 with 28765 likes",
-        "「Clean Girl」的升级版｜Celine式极简 with 24532 likes"
+        "Celine式极简 (sp120) - likes: 24,532",
+        "total engagement: 302,926"
       ],
       "disqualifying_reason": null,
       "label": "Clean Minimalist Aesthetic as Identity",
@@ -1016,20 +1292,20 @@
       "trend_id": "synthetic_t25",
       "shortlist": false,
       "scores": {
-        "freshness": 7,
+        "freshness": 8,
         "brand_fit": 8,
-        "category_fit": 6,
-        "materiality": 7,
-        "actionability": 6
+        "category_fit": 7,
+        "materiality": 6,
+        "actionability": 7
       },
-      "composite_score": 6.4,
-      "reasoning": "While the cat-eye sunglasses trend is still relevant, with posts up to March 27, 2026, it lacks the robust engagement levels seen in the other trends, evidenced by total engagement of 175,399. The trend appropriately reflects Celine's emphasis on structured aesthetics and serves as a signature accessory; however, the category fit for sunglasses, which doesn't carry the same weight as ready-to-wear garments, slightly undermines its significance. The focused discussions are engaging, but they do not compel as strongly for actionable insights in high-value client conversations.",
+      "composite_score": 7.25,
+      "reasoning": "The 'Celine Cat-Eye Sunglasses as Signature' trend demonstrates good freshness, with posts like 'Celine猫眼墨镜｜一副改变整套造型的配件' (sp124) indicating active engagement. However, while cat-eye frames align with the Celine aesthetic of confident restraint, they are accessories, which typically reflect lower long-term engagement metrics compared to core ready-to-wear categories. Total engagement is substantial but concentrated, with a lower average across posts at 25,057. Thus, while it holds potential, it doesn't match the actionable depth required for a Celine Client Advisor conversation.",
       "confidence": "medium",
       "evidence_references": [
-        "Celine猫眼墨镜｜一副改变整套造型的配件 with 22341 likes",
-        "Celine墨镜｜法式智识的视觉符号 with 19876 likes"
+        "Celine猫眼墨镜｜一副改变整套造型的配件 (sp124) - likes: 22,341",
+        "average engagement: 25,057"
       ],
-      "disqualifying_reason": "category_fit failed due to less relevancy than ready-to-wear trends",
+      "disqualifying_reason": "materiality - lower average engagement across posts decreases its relevance for actionable conversations.",
       "label": "Celine Cat-Eye Sunglasses as Signature",
       "category": "luxury_fashion",
       "metric_signal": {
@@ -1040,36 +1316,36 @@
     }
   ],
   "shortlist_ids": [
-    "synthetic_t03",
-    "run_0009_t01",
-    "synthetic_t22",
     "synthetic_t14",
-    "synthetic_t15",
-    "synthetic_t08",
+    "synthetic_t17",
     "synthetic_t02",
-    "run_0010_t01",
+    "synthetic_t15",
+    "run_0012_t01",
+    "run_0009_t01",
     "synthetic_t24",
-    "run_0011_t01",
+    "synthetic_t04",
+    "synthetic_t18",
     "synthetic_t10",
     "run_0013_t01",
-    "synthetic_t23",
+    "synthetic_t03",
     "synthetic_t06",
-    "synthetic_t21"
+    "synthetic_t23",
+    "run_0010_t01"
   ],
   "quality_metrics": {
-    "off_brand_rate": 2.5,
+    "off_brand_rate": 1.1,
     "off_brand_count": 1,
     "brand_taboo_rejections": 1,
     "llm_low_brand_fit": 0,
     "explanation_specificity": {
-      "high": 22,
-      "medium": 17,
+      "high": 21,
+      "medium": 18,
       "low": 0,
-      "high_pct": 56.4,
-      "med_pct": 43.6,
+      "high_pct": 53.8,
+      "med_pct": 46.2,
       "low_pct": 0.0
     },
-    "noise_reduction_rate": 62.5,
+    "noise_reduction_rate": 84.0,
     "real_shortlisted": 4,
     "synthetic_shortlisted": 11,
     "beauty_skipped": 40
