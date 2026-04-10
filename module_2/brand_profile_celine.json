@@ -1,14 +1,118 @@
 {
   "brand_name": "Celine",
-  "aesthetic": "Parisian intellectual minimalism, clean structure, rigorous simplicity, confident restraint",
-  "clientele": "design-literate women 28-52, values precise tailoring and understated authority, drawn to minimalist power dressing over ornamentation",
-  "preferred_sources": ["minimalist fashion KOL", "Parisian lifestyle editorial", "Celine brand accounts", "architecture and art creators", "intellectual fashion writers"],
-  "avoided_sources": ["streetwear influencers", "maximalist fashion bloggers", "hypebeast culture", "fast fashion accounts", "logomania content"],
+  "current_creative_director": "Hedi Slimane",
+  "aesthetic_dna": "Celine under Hedi Slimane occupies a precise tension: the austere Parisian intellectual meets the studied rock-and-roll dropout. The tailoring is sharp enough to feel architectural but cut close enough to feel sensual. Unlike The Row, which retreats into anonymity and fabric-first quietness, Celine insists on attitude — the clothes are worn by people who have opinions. Unlike Saint Laurent, which is overtly sexual and theatrical in its rock references, Celine's rock influence is worn-in and private, more backstage than stage. Unlike Bottega Veneta, which foregrounds craft, weave, and texture as the brand's intellectual project, Celine forgets craft is even a conversation — the point is the person wearing it, not the object itself.",
+  "current_direction": "Sharp, narrow silhouettes with 1970s rock references as cultural DNA. Youth culture elevated without apology — the brand consistently casts young faces but dresses them with a seriousness that flatters rather than infantilizes. Leather goods, particularly the Triomphe, function as identity objects: understated hardware, quiet brand signal, instantly legible to those who know. The Triomphe Arc de Triomphe hardware is the defining brand symbol — present on everything from bags to belts to footwear.",
+  "client_archetypes": [
+    {
+      "name": "智识派 Zhishì Pài",
+      "age_range": "32-42",
+      "lifestyle": "Senior creative director or cultural industry professional in Shanghai. Reads design press in English and Chinese. Weekend: gallery openings, small-run bookstores, private dinners with artists. Travel: Paris twice a year, always has a reason to be there.",
+      "current_wardrobe": "Strong Lemaire, some vintage Margiela, a few quiet Bottega pieces. Has been watching Celine for two seasons but waiting for the right entry point.",
+      "aspiration": "Dresses as a form of self-authorship. Wants clothes that say she has already arrived, not that she is trying to.",
+      "trend_language_that_resonates": "French intellectual heritage, architecture references, the idea of clothes that hold their shape over years, quiet authority",
+      "what_they_would_never_buy": "Logo-heavy pieces, anything seasonal-trend-driven, influencer-worn styles, overly feminine or romantic silhouettes"
+    },
+    {
+      "name": "独立新贵 Dúlì Xīnguì",
+      "age_range": "26-34",
+      "lifestyle": "Founder of a design or tech startup, or senior at a global consultancy. First-generation luxury buyer making considered choices. Researches brands like she researches investments.",
+      "current_wardrobe": "Currently COS, Toteme, maybe one Loewe Puzzle. Watching Celine specifically because of the Triomphe hardware story — she understands why the Arc matters.",
+      "aspiration": "Wants to signal taste, not wealth. The Triomphe says she knows something about Paris that the logo crowd doesn't.",
+      "trend_language_that_resonates": "Investment dressing, quiet luxury, capsule thinking, the idea that the right piece eliminates many wrong ones",
+      "what_they_would_never_buy": "Fast luxury, seasonal drops, anything that looks like it was chosen because an influencer wore it"
+    },
+    {
+      "name": "摇滚缪斯 Yáogǔn Miùsī",
+      "age_range": "22-30",
+      "lifestyle": "Artist, musician, fashion media, or cultural creative. Deeply immersed in Celine's rock-and-roll aesthetic references — knows her Patti Smith, understands why Hedi cast the models he casts. Shanghai's equivalent of downtown New York.",
+      "current_wardrobe": "Vintage denim, some Acne, already owns one Celine piece — probably footwear or a small leather good. Saves for months for the right purchase.",
+      "aspiration": "The clothes are the biography. Wants pieces that feel like they have a past even when new.",
+      "trend_language_that_resonates": "Rock references, youth culture elevation, the lived-in luxury aesthetic, Triomphe as subcultural badge",
+      "what_they_would_never_buy": "Conservative luxury, heritage-heavy branding, anything that reads as corporate or establishment"
+    }
+  ],
+  "hero_products": {
+    "ready_to_wear": [
+      "Celine Essential slim-cut tuxedo blazer",
+      "Celine oversized leather biker jacket",
+      "Celine 70s high-waist wide-leg trousers",
+      "Celine rib-knit fitted turtleneck sweater"
+    ],
+    "leather_goods": [
+      "Celine Triomphe canvas shoulder bag",
+      "Celine Teen Triomphe bag in natural calfskin",
+      "Celine Classique 16 bag",
+      "Celine Folco messenger bag in smooth calfskin",
+      "Celine Cuir Triomphe belt bag"
+    ],
+    "accessories": [
+      "Celine Triomphe chain and resin sunglasses",
+      "Celine logo-clasp leather belt",
+      "Celine Triomphe metal-toe ankle boots"
+    ]
+  },
+  "brand_voice": "Spare, confident, never explains itself. No exclamation marks. No warmth for warmth's sake. States the fact and trusts the reader to feel it. Celine does not say 'timeless' — it simply makes things that last.",
+  "competitive_differentiation": {
+    "Bottega_Veneta": "Bottega competes on craft mastery and texture as intellectual discourse — the Intrecciato weave is the brand's primary conversation. Celine does not want to be about how it's made; it wants to be about who is wearing it and what that says about them. In the Chinese market where craft appreciation runs high, Celine targets clients who have already moved past the craft conversation and arrived at attitude.",
+    "The_Row": "The Row maximises anonymity — the brand deliberately eliminates all signal except fabric quality and cut precision. Celine under Slimane insists on personality: the rock reference, the Triomphe hardware, the casting of young faces. Chinese clients who choose Celine over The Row are choosing a legible attitude over pure material connoisseurship — they want their taste to be slightly readable by the right people.",
+    "Saint_Laurent": "Saint Laurent is overtly sexual, theatrically rock, and designed for visibility — it wants to be seen across the room. Celine shares the same rock DNA but wears it privately, as subcultural knowledge rather than performance. In the Shanghai market, Celine attracts clients who find Saint Laurent's energy too loud and the fashion credentialling too obvious."
+  },
+  "aesthetic_pillars": [
+    {
+      "name": "Rock Intellectualism",
+      "description": "The 1970s rock reference is not costume — it is worn as a private cultural inheritance, the reference understood by those who know Patti Smith and Iggy Pop, not as performance but as genuine taste formation."
+    },
+    {
+      "name": "Architectural Restraint",
+      "description": "Every silhouette resolves toward the essential: nothing decorative that is not structural, nothing ornamental that is not load-bearing — the clothes hold their shape because the shape was worth keeping."
+    },
+    {
+      "name": "Youth Without Apology",
+      "description": "Celine consistently elevates youth culture rather than pandering to it — the casting, the reference pool, and the energy are young but the authority in the clothes is absolute and unchallengeable."
+    },
+    {
+      "name": "The Triomphe Identity",
+      "description": "The Triomphe hardware is the brand's primary symbol — not a monogram to be read at distance but a piece of hardware legible to those already initiated, signalling belonging to a specific taste community."
+    }
+  ],
   "active_categories": ["ready-to-wear", "leather goods", "luxury_fashion"],
   "category_cadence": {
     "ready-to-wear": "fast",
     "leather goods": "medium"
   },
-  "brand_taboos": ["maximalism", "logomania", "streetwear", "athleisure", "fast fashion", "overt branding", "hypebeast", "overly ornate styling"],
-  "clienteling_tone": "precise, intellectually confident, unhurried, references architecture and art naturally"
+  "brand_taboos": {
+    "ready_to_wear_taboos": [
+      "maximalism",
+      "overly ornate styling",
+      "romantic florals",
+      "boho aesthetic",
+      "streetwear silhouettes",
+      "athleisure",
+      "logoed athletic wear"
+    ],
+    "leather_goods_taboos": [
+      "logomania",
+      "overt branding",
+      "novelty shapes",
+      "heavily embellished bags",
+      "fast fashion collaborations",
+      "logo-covered canvas"
+    ],
+    "general_taboos": [
+      "hypebeast",
+      "fast fashion",
+      "influencer haul",
+      "affordable luxury",
+      "dupe culture",
+      "mass market",
+      "viral trend without brand anchor"
+    ]
+  },
+  "aesthetic": "Sharp tailoring meets rock-influenced youth culture; austere intellectualism with sensuality; Parisian cool that feels earned not inherited",
+  "clientele": "Design-literate women 26-52 in Shanghai: creative professionals, first-generation luxury investors, and cultural creatives who dress as self-authorship",
+  "preferred_sources": ["minimalist fashion KOL", "Parisian lifestyle editorial", "Celine brand accounts", "architecture and art creators", "intellectual fashion writers", "indie music and cultural media"],
+  "avoided_sources": ["streetwear influencers", "maximalist fashion bloggers", "hypebeast culture", "fast fashion accounts", "logomania content", "mass market lifestyle accounts"],
+  "clienteling_tone": "spare, confident, never explains itself, no exclamation marks, no warmth for warmth's sake, states the fact and trusts the reader",
+  "brand_name_cn": "赛琳"
 }

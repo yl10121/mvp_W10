@@ -1,0 +1,4 @@
+reviewer_name,correctness_quality (1-5),missing_info (yes/no + what),duplicates_noise (yes/no + which),comments
+Reviewer 1,4,No,Reasoning why selected is duplicated,Summaries should all be in one language
+Reviewer 2,3,No,Reasoning why selected is duplicated,"More visuals, emojis in Codex, us LLM to produce more nuanced reasoning"
+Reviewer 3,4,No,Reasoning why selected is duplicated,Use more trendy terms in xhs to relate more with consumers

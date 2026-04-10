@@ -185,12 +185,18 @@ def build_shortlist_output(
             "data_type": original.get("data_type", "unknown"),
             "composite_score": ev.get("composite_score"),
             "scores": {
-                "freshness": scores.get("freshness"),
                 "brand_fit": scores.get("brand_fit"),
+                "ca_conversational_utility": scores.get("ca_conversational_utility"),
+                "trend_velocity": scores.get("trend_velocity"),
+                "language_specificity": scores.get("language_specificity"),
+                "client_persona_match": scores.get("client_persona_match"),
+                "novelty": scores.get("novelty"),
                 "category_fit": scores.get("category_fit"),
-                "materiality": scores.get("materiality"),
-                "actionability": scores.get("actionability"),
+                "cross_run_persistence": scores.get("cross_run_persistence"),
             },
+            "matched_archetype": ev.get("matched_archetype"),
+            "matched_pillar": ev.get("matched_pillar"),
+            "hero_product_link": ev.get("hero_product_link"),
             "confidence": ev.get("confidence"),
             "why_selected": ev.get("reasoning", ev.get("why_selected", "")),
             "evidence_references": ev.get("evidence_references", []),
@@ -198,6 +204,8 @@ def build_shortlist_output(
                 "total_engagement": ev.get("metric_signal", {}).get("total_engagement"),
                 "post_count": ev.get("metric_signal", {}).get("post_count"),
                 "avg_engagement": ev.get("metric_signal", {}).get("avg_engagement"),
+                "engagement_recency_pct": ev.get("engagement_recency_pct"),
+                "run_count": ev.get("run_count"),
             },
         }
         shortlist_items.append(item)
@@ -332,6 +340,16 @@ def write_eval_report(
         "### 3. Noise Reduction",
         f"- {quality['noise_reduction_rate']}% of input trends were filtered before reaching the shortlist.",
         "",
+        "### 4. New Dimensions (Week 11)",
+        "- **CA Conversational Utility**: % of shortlisted trends with a named hero product link — "
+        f"{sum(1 for ev in all_evaluations if ev.get('hero_product_link'))} of {len(all_evaluations)} evaluated trends had a specific product anchor.",
+        "- **Client Archetype Coverage**: archetypes matched across shortlist — "
+        + ", ".join(
+            sorted({ev.get('matched_archetype') for ev in all_evaluations if ev.get('matched_archetype')})
+        ) or "none recorded",
+        "- **Trend Velocity**: scores computed from engagement_recency_pct (7-day recency window).",
+        "- **Cross-Run Persistence**: scores computed from run_count (deduplication merged trends retain count).",
+        "",
         "---",
         "",
         "## Shortlist Summary",
@@ -339,11 +357,19 @@ def write_eval_report(
         f"Shortlisted **{len(shortlisted)}** trends "
         f"(real: {quality['real_shortlisted']}, synthetic: {quality['synthetic_shortlisted']}):",
         "",
+        "| # | Trend | Score | Archetype | Hero Product | Pillar | CA Utility | Velocity |",
+        "|---|-------|-------|-----------|-------------|--------|-----------|---------|",
     ]
-    for ev in shortlisted:
+    for i, ev in enumerate(shortlisted, 1):
+        scores = ev.get("scores", {})
         lines.append(
-            f"- **[{ev.get('trend_id')}]** {ev.get('label', '')} "
-            f"— score: {ev.get('composite_score', 0):.2f}"
+            f"| {i} | **[{ev.get('trend_id')}]** {ev.get('label', '')} "
+            f"| {ev.get('composite_score', 0):.2f} "
+            f"| {ev.get('matched_archetype') or '—'} "
+            f"| {ev.get('hero_product_link') or '—'} "
+            f"| {ev.get('matched_pillar') or '—'} "
+            f"| {scores.get('ca_conversational_utility', '—')} "
+            f"| {scores.get('trend_velocity', '—')} |"
         )
 
     lines += [
@@ -356,11 +382,19 @@ def write_eval_report(
     if failure_cases:
         for ev in failure_cases:
             reason = ev.get("disqualifying_reason") or "Below threshold or LLM rejected"
+            archetype = ev.get("matched_archetype") or "no archetype matched"
+            scores = ev.get("scores", {})
             lines.append(
                 f"- **[{ev.get('trend_id')}]** {ev.get('label', '')} "
                 f"— score: {ev.get('composite_score', 0):.2f}"
             )
             lines.append(f"  - Reason: {reason}")
+            lines.append(
+                f"  - Target archetype: {archetype} "
+                f"| client_persona_match: {scores.get('client_persona_match', '—')} "
+                f"| ca_conversational_utility: {scores.get('ca_conversational_utility', '—')} "
+                f"| novelty: {scores.get('novelty', '—')}"
+            )
     else:
         lines.append("- No failure cases (all evaluated trends were shortlisted).")
 

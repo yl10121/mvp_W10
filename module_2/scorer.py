@@ -1,22 +1,202 @@
 """
 scorer.py — Deterministic pre-filter for Module 2 Trend Relevance & Materiality Filter Agent.
 
-Rejects trends immediately without calling the LLM if they fail hard structural rules.
-This keeps LLM costs low and response time fast by removing obvious non-qualifiers early.
+Rejects trends before any LLM call if they fail hard structural rules.
+Also handles cross-run deduplication and engagement recency calculation.
 """
 
-from datetime import datetime, timezone
+from datetime import datetime, timedelta, timezone
 from typing import Optional
 
-# Reference date: the run date
+# Reference date for the data collection window
 TODAY = datetime.fromisoformat("2026-03-25").replace(tzinfo=timezone.utc)
-STALENESS_CUTOFF_DAYS = 21  # reject if last post is older than this
-STALENESS_CUTOFF_DATE = datetime(2026, 3, 4, tzinfo=timezone.utc)  # 2026-03-25 minus 21 days
+STALENESS_CUTOFF_DAYS = 21
+STALENESS_CUTOFF_DATE = datetime(2026, 3, 4, tzinfo=timezone.utc)
 
 MIN_POST_COUNT = 5
 MIN_TOTAL_ENGAGEMENT = 3000
 MIN_SNIPPETS = 2
+SIMILARITY_THRESHOLD = 0.70   # Jaccard threshold for cross-run deduplication
+RECENCY_DAYS = 7              # window for engagement_recency_pct calculation
 
+CONFIDENCE_RANK = {"high": 3, "medium": 2, "low": 1, "": 0}
+
+
+# ── Helpers ────────────────────────────────────────────────────────────────────
+
+def _flatten_taboos(taboos) -> list:
+    """Handle brand_taboos whether it's a flat list or a dict of lists."""
+    if isinstance(taboos, list):
+        return taboos
+    if isinstance(taboos, dict):
+        flat = []
+        for group in taboos.values():
+            if isinstance(group, list):
+                flat.extend(group)
+        return flat
+    return []
+
+
+def _get_hero_product_names(brand_profile: dict) -> list:
+    """Extract all hero product name strings from brand_profile.hero_products."""
+    hero = brand_profile.get("hero_products", {})
+    if isinstance(hero, list):
+        return [str(p) for p in hero]
+    names = []
+    for cat_products in hero.values():
+        if isinstance(cat_products, list):
+            names.extend([str(p) for p in cat_products])
+    return names
+
+
+def _jaccard_similarity(text1: str, text2: str) -> float:
+    """Jaccard word-token similarity between two strings."""
+    words1 = set(text1.lower().split())
+    words2 = set(text2.lower().split())
+    if not words1 and not words2:
+        return 1.0
+    if not words1 or not words2:
+        return 0.0
+    return len(words1 & words2) / len(words1 | words2)
+
+
+def _merge_trends(primary: dict, secondary: dict) -> dict:
+    """
+    Merge two similar trends. Primary wins on ID/label/summary.
+    Evidence snippets and posts are combined. Post counts and engagement are summed.
+    data_type is set to 'merged'. run_count accumulates.
+    """
+    merged = dict(primary)
+
+    # Combine snippets (deduplicated, order preserved)
+    snippets_a = primary.get("evidence", {}).get("snippets", [])
+    snippets_b = secondary.get("evidence", {}).get("snippets", [])
+    merged_snippets = list(dict.fromkeys(snippets_a + snippets_b))
+
+    # Combine posts (deduplicated by post_id)
+    posts_a = primary.get("evidence", {}).get("posts", [])
+    posts_b = secondary.get("evidence", {}).get("posts", [])
+    seen_ids = {p.get("post_id") for p in posts_a}
+    merged_posts = list(posts_a)
+    for p in posts_b:
+        if p.get("post_id") not in seen_ids:
+            merged_posts.append(p)
+            seen_ids.add(p.get("post_id"))
+
+    merged["evidence"] = dict(primary.get("evidence", {}))
+    merged["evidence"]["snippets"] = merged_snippets
+    merged["evidence"]["posts"] = merged_posts
+
+    # Sum metrics
+    metrics_a = primary.get("metrics", {})
+    metrics_b = secondary.get("metrics", {})
+    merged["metrics"] = dict(metrics_a)
+    merged["metrics"]["post_count"] = (
+        metrics_a.get("post_count", 0) + metrics_b.get("post_count", 0)
+    )
+    merged["metrics"]["total_engagement"] = (
+        metrics_a.get("total_engagement", 0) + metrics_b.get("total_engagement", 0)
+    )
+    pc = merged["metrics"]["post_count"]
+    if pc > 0:
+        merged["metrics"]["avg_engagement"] = round(
+            merged["metrics"]["total_engagement"] / pc, 1
+        )
+
+    merged["data_type"] = "merged"
+    merged["run_count"] = primary.get("run_count", 1) + secondary.get("run_count", 1)
+    return merged
+
+
+# ── New Rule A: Cross-run deduplication ───────────────────────────────────────
+
+def deduplicate_batch(trends: list) -> "tuple[list, int]":
+    """
+    Cross-run deduplication. Compares all trend objects by Jaccard similarity
+    of combined label+summary text. If similarity >= SIMILARITY_THRESHOLD,
+    merges them into one object (higher-confidence trend wins as primary).
+
+    Returns (deduplicated_list, merge_count).
+    Called once at the top of run_prefilter_batch before per-trend rules.
+    """
+    if not trends:
+        return trends, 0
+
+    # Sort descending by confidence so primary is always the more confident trend
+    candidates = sorted(
+        trends,
+        key=lambda t: CONFIDENCE_RANK.get(t.get("confidence", ""), 0),
+        reverse=True,
+    )
+
+    merged_into: set = set()
+    result = []
+    merge_count = 0
+
+    for i, trend_a in enumerate(candidates):
+        if i in merged_into:
+            continue
+        current = dict(trend_a)
+        current.setdefault("run_count", 1)
+        text_a = f"{trend_a.get('label', '')} {trend_a.get('summary', '')}"
+
+        for j, trend_b in enumerate(candidates):
+            if j <= i or j in merged_into:
+                continue
+            text_b = f"{trend_b.get('label', '')} {trend_b.get('summary', '')}"
+            if _jaccard_similarity(text_a, text_b) >= SIMILARITY_THRESHOLD:
+                current = _merge_trends(current, trend_b)
+                merged_into.add(j)
+                merge_count += 1
+
+        result.append(current)
+
+    return result, merge_count
+
+
+# ── New Rule B: Engagement recency calculation ─────────────────────────────────
+
+def compute_engagement_recency(
+    trend: dict,
+    today: datetime = TODAY,
+    days: int = RECENCY_DAYS,
+) -> float:
+    """
+    Calculate what % of total engagement (likes + comments + saves) came from
+    posts dated within the last N days. Stores result on trend as
+    engagement_recency_pct for use in LLM trend_velocity scoring.
+    """
+    posts = trend.get("evidence", {}).get("posts", [])
+    cutoff = today - timedelta(days=days)
+    recent_eng = 0
+    total_eng = 0
+
+    for post in posts:
+        likes = post.get("likes", 0) or 0
+        comments = post.get("comments", 0) or 0
+        saves = post.get("saves", 0) or 0
+        eng = likes + comments + saves
+        total_eng += eng
+
+        raw_date = post.get("date", "")
+        if not raw_date:
+            continue
+        try:
+            if "T" in raw_date:
+                dt = datetime.fromisoformat(raw_date.replace("Z", "+00:00"))
+            else:
+                dt = datetime.fromisoformat(raw_date).replace(tzinfo=timezone.utc)
+            if dt >= cutoff:
+                recent_eng += eng
+        except ValueError:
+            pass
+
+    pct = round(recent_eng / total_eng * 100, 1) if total_eng > 0 else 0.0
+    trend["engagement_recency_pct"] = pct
+    return pct
+
+
+# ── Existing helpers ───────────────────────────────────────────────────────────
 
 def _get_last_post_date(trend: dict) -> Optional[datetime]:
     """Extract the most recent post date from evidence.posts."""
@@ -29,7 +209,6 @@ def _get_last_post_date(trend: dict) -> Optional[datetime]:
         if not raw:
             continue
         try:
-            # Handle both date-only and datetime strings
             if "T" in raw:
                 dt = datetime.fromisoformat(raw.replace("Z", "+00:00"))
             else:
@@ -49,32 +228,32 @@ def _contains_taboo(text: str, taboos: list) -> Optional[str]:
     return None
 
 
+# ── Per-trend pre-filter ───────────────────────────────────────────────────────
+
 def pre_filter(trend: dict, brand_profile: dict) -> "tuple[bool, Optional[str]]":
     """
     Apply deterministic pre-filter rules to a single trend object.
 
     Returns:
         (passed: bool, rejection_reason: str or None)
-        If passed=True, rejection_reason is None.
-        If passed=False, rejection_reason explains why.
     """
-    trend_id = trend.get("trend_id", "unknown")
     label = trend.get("label", "")
     summary = trend.get("summary", "")
     category = trend.get("category", "")
+    data_type = trend.get("data_type", "real")
     metrics = trend.get("metrics", {})
     evidence = trend.get("evidence", {})
     snippets = evidence.get("snippets", [])
 
     active_categories = brand_profile.get("active_categories", [])
-    brand_taboos = brand_profile.get("brand_taboos", [])
+    brand_taboos = _flatten_taboos(brand_profile.get("brand_taboos", []))
 
     # Rule 1: Category must be active
     if category not in active_categories:
         return False, f"Category '{category}' not in brand active_categories {active_categories}"
 
     # Rule 2: Minimum post count
-    # luxury_fashion with 2–4 posts: pass with low_signal_warning (niche signals still valuable)
+    # luxury_fashion with 2–4 posts: pass with low_signal_warning
     # All other categories: hard reject below MIN_POST_COUNT
     post_count = metrics.get("post_count", 0)
     if post_count < MIN_POST_COUNT:
@@ -83,16 +262,18 @@ def pre_filter(trend: dict, brand_profile: dict) -> "tuple[bool, Optional[str]]"
                 f"post_count={post_count} is below {MIN_POST_COUNT} — "
                 "passed to LLM with low_signal warning"
             )
-            # Do not return False — let it through to LLM evaluation
         else:
             return False, f"post_count={post_count} is below minimum threshold of {MIN_POST_COUNT}"
 
     # Rule 3: Minimum total engagement
     total_engagement = metrics.get("total_engagement", 0)
     if total_engagement < MIN_TOTAL_ENGAGEMENT:
-        return False, f"total_engagement={total_engagement} is below minimum threshold of {MIN_TOTAL_ENGAGEMENT}"
+        return False, (
+            f"total_engagement={total_engagement} is below minimum "
+            f"threshold of {MIN_TOTAL_ENGAGEMENT}"
+        )
 
-    # Rule 4: Freshness — last post must be within 21 days of today (2026-03-25)
+    # Rule 4: Freshness — last post within 21 days of 2026-03-25
     last_post_date = _get_last_post_date(trend)
     if last_post_date is None:
         return False, "No valid post dates found in evidence.posts — cannot assess freshness"
@@ -112,18 +293,59 @@ def pre_filter(trend: dict, brand_profile: dict) -> "tuple[bool, Optional[str]]"
     if matched_taboo:
         return False, f"Brand taboo keyword '{matched_taboo}' detected in label/summary"
 
+    # Rule 7: Brand signal check — real XHS trends only (synthetic pass automatically)
+    if data_type == "real":
+        brand_name = brand_profile.get("brand_name", "")
+        brand_name_cn = brand_profile.get("brand_name_cn", "")
+        hero_names = _get_hero_product_names(brand_profile)
+        signal_terms = [t for t in [brand_name, brand_name_cn] + hero_names if t]
+
+        has_brand_signal = any(
+            any(term.lower() in snippet.lower() for term in signal_terms)
+            for snippet in snippets
+        )
+        if not has_brand_signal:
+            return False, (
+                f"No brand-specific signal in snippets — none of the {len(snippets)} "
+                f"snippet(s) mention '{brand_name}' or any hero product by name"
+            )
+
     return True, None
 
+
+# ── Batch entry point ──────────────────────────────────────────────────────────
 
 def run_prefilter_batch(trends: list, brand_profile: dict) -> "tuple[list, list]":
     """
     Run pre-filter across all trends.
 
+    Processing order:
+      Step A — Cross-run deduplication (batch-level, merges near-duplicates)
+      Step B — Engagement recency calculation (per trend, stores engagement_recency_pct)
+      Step C — Per-trend pre-filter rules 1–7
+
     Returns:
         (passed_trends: list, rejected_log: list)
-        passed_trends: trends that survived the pre-filter
-        rejected_log: list of dicts with trend_id, label, reason
     """
+    # Step A: Cross-run deduplication
+    trends, merge_count = deduplicate_batch(trends)
+    if merge_count > 0:
+        print(
+            f"  [Dedup] Merged {merge_count} near-duplicate pair(s) "
+            f"(>{SIMILARITY_THRESHOLD*100:.0f}% similarity). "
+            f"Batch now: {len(trends)} trends."
+        )
+    else:
+        print(
+            f"  [Dedup] No duplicates above {SIMILARITY_THRESHOLD*100:.0f}% "
+            f"similarity threshold."
+        )
+
+    # Step B: Compute engagement recency for all trends
+    for trend in trends:
+        compute_engagement_recency(trend)
+
+    # Step C: Per-trend pre-filter
     passed = []
     rejected = []
 
@@ -133,7 +355,10 @@ def run_prefilter_batch(trends: list, brand_profile: dict) -> "tuple[list, list]
             passed.append(trend)
             warning = trend.get("low_signal_warning")
             if warning:
-                print(f"  ⚠ [{trend.get('trend_id', 'unknown')}] {trend.get('label', '')} — {warning}")
+                print(
+                    f"  ⚠ [{trend.get('trend_id', 'unknown')}] "
+                    f"{trend.get('label', '')} — {warning}"
+                )
         else:
             rejected.append({
                 "trend_id": trend.get("trend_id", "unknown"),

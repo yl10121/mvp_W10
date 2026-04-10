@@ -3,6 +3,15 @@ evaluator.py — LLM evaluation engine for Module 2 Trend Relevance & Materialit
 
 Uses OpenRouter (OpenAI-compatible) so it shares the same API key and model config
 as the rest of the pipeline (OPENROUTER_API_KEY / DEFAULT_MODEL from .env).
+
+Composite score formula (Week 11):
+  brand_fit × 0.20 + ca_conversational_utility × 0.20 + trend_velocity × 0.15
+  + language_specificity × 0.15 + client_persona_match × 0.10 + novelty × 0.10
+  + category_fit × 0.05 + cross_run_persistence × 0.05
+
+trend_velocity and cross_run_persistence are computed algorithmically from
+engagement_recency_pct and run_count stored on each trend object by scorer.py.
+All other dimensions are LLM-scored.
 """
 
 import json
@@ -20,6 +29,18 @@ from prompts import build_system_prompt, build_batch_evaluation_prompt
 
 BATCH_SIZE = 5
 TODAY = "2026-03-25"
+
+# New composite score weights (Week 11)
+SCORE_WEIGHTS = {
+    "brand_fit": 0.20,
+    "ca_conversational_utility": 0.20,
+    "trend_velocity": 0.15,
+    "language_specificity": 0.15,
+    "client_persona_match": 0.10,
+    "novelty": 0.10,
+    "category_fit": 0.05,
+    "cross_run_persistence": 0.05,
+}
 
 
 def _get_client():
@@ -45,7 +66,44 @@ def _get_model() -> str:
     return os.environ.get("DEFAULT_MODEL", "anthropic/claude-3-5-sonnet")
 
 
-def _call_llm(client, model: str, prompt: str, system_prompt: str = "", attempt: int = 1) -> Optional[str]:
+def _compute_trend_velocity(engagement_recency_pct: float) -> float:
+    """
+    Convert engagement_recency_pct (% of engagement from last 7 days) to 0-10 score.
+    >70% recent → 8-10 | 40-70% → 5-7 | <40% → 1-4
+    """
+    if engagement_recency_pct >= 70:
+        return round(8.0 + (engagement_recency_pct - 70) / 30 * 2, 1)
+    elif engagement_recency_pct >= 40:
+        return round(5.0 + (engagement_recency_pct - 40) / 30 * 2, 1)
+    else:
+        return round(max(1.0, 1.0 + engagement_recency_pct / 40 * 3), 1)
+
+
+def _compute_cross_run_persistence(run_count: int) -> float:
+    """
+    Convert number of runs a trend appeared in to 0-10 score.
+    ≥5 runs → 10 | 4 → 8 | 3 → 6 | 2 → 4 | 1 → 2
+    """
+    if run_count >= 5:
+        return 10.0
+    return {4: 8.0, 3: 6.0, 2: 4.0}.get(run_count, 2.0)
+
+
+def _compute_composite(scores: dict) -> float:
+    """Compute composite score using Week 11 weights."""
+    return round(
+        sum(scores.get(dim, 0) * weight for dim, weight in SCORE_WEIGHTS.items()),
+        2,
+    )
+
+
+def _call_llm(
+    client,
+    model: str,
+    prompt: str,
+    system_prompt: str = "",
+    attempt: int = 1,
+) -> Optional[str]:
     """Call OpenRouter and return raw text. Retries once on failure."""
     try:
         response = client.chat.completions.create(
@@ -98,17 +156,8 @@ def _parse_llm_response(raw: str, expected_trend_ids: list) -> list:
         if not trend_id:
             print(f"  [WARN] Evaluation missing trend_id, skipping: {str(item)[:200]}")
             continue
-        if "composite_score" not in item:
-            scores = item.get("scores", {})
-            if scores:
-                cs = (
-                    scores.get("freshness", 0) * 0.20
-                    + scores.get("brand_fit", 0) * 0.30
-                    + scores.get("category_fit", 0) * 0.20
-                    + scores.get("materiality", 0) * 0.15
-                    + scores.get("actionability", 0) * 0.15
-                )
-                item["composite_score"] = round(cs, 2)
+        # composite_score will be recomputed after adding algorithmic dimensions
+        # but store LLM-provided one as a reference if present
         valid.append(item)
 
     return valid
@@ -122,15 +171,26 @@ def evaluate_batch(
     """
     Evaluate a list of trend objects using the LLM.
     Processes in batches of BATCH_SIZE.
+    After LLM evaluation, adds algorithmically computed dimensions
+    (trend_velocity, cross_run_persistence) and recomputes composite_score.
     """
     if client is None:
         client = _get_client()
     model = _get_model()
     system_prompt = build_system_prompt(brand_profile)
 
+    # Build lookup for trend metadata (engagement_recency_pct, run_count)
+    trend_meta = {
+        t.get("trend_id"): {
+            "engagement_recency_pct": t.get("engagement_recency_pct", 0.0),
+            "run_count": t.get("run_count", 1),
+        }
+        for t in trends
+    }
+
     all_evaluations = []
     total = len(trends)
-    batches = [trends[i : i + BATCH_SIZE] for i in range(0, total, BATCH_SIZE)]
+    batches = [trends[i: i + BATCH_SIZE] for i in range(0, total, BATCH_SIZE)]
 
     evaluated_count = 0
     for batch_num, batch in enumerate(batches, start=1):
@@ -158,6 +218,29 @@ def evaluate_batch(
         if not evaluations:
             print(f"  [ERROR] Could not parse any evaluations from batch {batch_num}")
         else:
+            # Attach algorithmic dimensions and recompute composite_score
+            for ev in evaluations:
+                tid = ev.get("trend_id")
+                meta = trend_meta.get(tid, {})
+
+                recency_pct = meta.get("engagement_recency_pct", 0.0)
+                run_count = meta.get("run_count", 1)
+
+                trend_velocity = _compute_trend_velocity(recency_pct)
+                cross_run_persistence = _compute_cross_run_persistence(run_count)
+
+                scores = ev.get("scores", {})
+                scores["trend_velocity"] = trend_velocity
+                scores["cross_run_persistence"] = cross_run_persistence
+                ev["scores"] = scores
+
+                # Recompute composite with new formula
+                ev["composite_score"] = _compute_composite(scores)
+
+                # Store computed metadata for reporting
+                ev["engagement_recency_pct"] = recency_pct
+                ev["run_count"] = run_count
+
             print(
                 f"  Successfully parsed {len(evaluations)} evaluation(s) from batch {batch_num}"
             )
@@ -199,7 +282,7 @@ def select_shortlist(evaluations: list, max_shortlist: int = 5) -> list:
         scores = ev.get("scores", {})
         failed_dim = None
         for dim, score in scores.items():
-            if score < 4:
+            if isinstance(score, (int, float)) and score < 4:
                 failed_dim = dim
                 break
         if failed_dim:
