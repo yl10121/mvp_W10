@@ -14,8 +14,8 @@ STALENESS_CUTOFF_DAYS = 21
 STALENESS_CUTOFF_DATE = datetime(2026, 3, 4, tzinfo=timezone.utc)
 
 MIN_POST_COUNT = 5
-MIN_TOTAL_ENGAGEMENT = 3000
 MIN_SNIPPETS = 2
+MIN_BRAND_SIGNAL_SNIPPETS = 2  # min snippets containing Celine-specific language
 SIMILARITY_THRESHOLD = 0.70   # Jaccard threshold for cross-run deduplication
 RECENCY_DAYS = 7              # window for engagement_recency_pct calculation
 
@@ -47,6 +47,21 @@ def _get_hero_product_names(brand_profile: dict) -> list:
         if isinstance(cat_products, list):
             names.extend([str(p) for p in cat_products])
     return names
+
+
+def _get_pillar_keywords(brand_profile: dict) -> list:
+    """
+    Extract searchable keywords from brand_profile.aesthetic_pillars.
+    Uses individual words from pillar names (length > 3) as signal terms.
+    e.g. 'The Triomphe Identity' → ['triomphe', 'identity']
+    """
+    keywords = []
+    for pillar in brand_profile.get("aesthetic_pillars", []):
+        name = pillar.get("name", "")
+        for word in name.lower().split():
+            if len(word) > 3 and word not in {"with", "from", "that", "this", "without"}:
+                keywords.append(word)
+    return list(set(keywords))
 
 
 def _jaccard_similarity(text1: str, text2: str) -> float:
@@ -265,19 +280,18 @@ def pre_filter(trend: dict, brand_profile: dict) -> "tuple[bool, Optional[str]]"
         else:
             return False, f"post_count={post_count} is below minimum threshold of {MIN_POST_COUNT}"
 
-    # Rule 3: Minimum total engagement
-    total_engagement = metrics.get("total_engagement", 0)
-    if total_engagement < MIN_TOTAL_ENGAGEMENT:
-        return False, (
-            f"total_engagement={total_engagement} is below minimum "
-            f"threshold of {MIN_TOTAL_ENGAGEMENT}"
-        )
+    # Rule 3: REMOVED — engagement volume is not a hard disqualifier for luxury brands.
+    # Low engagement flows into trend_velocity scoring in LLM evaluation instead.
 
-    # Rule 4: Freshness — last post within 21 days of 2026-03-25
+    # Rule 4: Freshness — hard reject only when dates are confirmed older than 21 days.
+    # If no valid dates found at all, pass with no_date_signal warning for LLM assessment.
     last_post_date = _get_last_post_date(trend)
     if last_post_date is None:
-        return False, "No valid post dates found in evidence.posts — cannot assess freshness"
-    if last_post_date < STALENESS_CUTOFF_DATE:
+        trend["no_date_signal"] = (
+            "No valid post dates found in evidence.posts — "
+            "LLM will assess freshness from content quality"
+        )
+    elif last_post_date < STALENESS_CUTOFF_DATE:
         return False, (
             f"Last post date {last_post_date.date()} is before staleness cutoff "
             f"{STALENESS_CUTOFF_DATE.date()} (>{STALENESS_CUTOFF_DAYS} days before 2026-03-25)"
@@ -293,21 +307,28 @@ def pre_filter(trend: dict, brand_profile: dict) -> "tuple[bool, Optional[str]]"
     if matched_taboo:
         return False, f"Brand taboo keyword '{matched_taboo}' detected in label/summary"
 
-    # Rule 7: Brand signal check — real XHS trends only (synthetic pass automatically)
+    # Rule 7: Brand signal strength check — real XHS trends only (synthetic pass automatically)
+    # Requires at least MIN_BRAND_SIGNAL_SNIPPETS snippets containing Celine-specific language:
+    # brand name, hero product name, or aesthetic pillar keyword.
     if data_type == "real":
         brand_name = brand_profile.get("brand_name", "")
         brand_name_cn = brand_profile.get("brand_name_cn", "")
         hero_names = _get_hero_product_names(brand_profile)
-        signal_terms = [t for t in [brand_name, brand_name_cn] + hero_names if t]
+        pillar_keywords = _get_pillar_keywords(brand_profile)
+        signal_terms = [
+            t.lower() for t in [brand_name, brand_name_cn] + hero_names + pillar_keywords if t
+        ]
 
-        has_brand_signal = any(
-            any(term.lower() in snippet.lower() for term in signal_terms)
-            for snippet in snippets
+        signal_count = sum(
+            1 for snippet in snippets
+            if any(term in snippet.lower() for term in signal_terms)
         )
-        if not has_brand_signal:
+        if signal_count < MIN_BRAND_SIGNAL_SNIPPETS:
             return False, (
-                f"No brand-specific signal in snippets — none of the {len(snippets)} "
-                f"snippet(s) mention '{brand_name}' or any hero product by name"
+                f"Insufficient brand signal in snippets — only {signal_count} of "
+                f"{len(snippets)} snippet(s) mention Celine brand name, "
+                f"a hero product, or an aesthetic pillar keyword "
+                f"(minimum required: {MIN_BRAND_SIGNAL_SNIPPETS})"
             )
 
     return True, None
@@ -322,7 +343,7 @@ def run_prefilter_batch(trends: list, brand_profile: dict) -> "tuple[list, list]
     Processing order:
       Step A — Cross-run deduplication (batch-level, merges near-duplicates)
       Step B — Engagement recency calculation (per trend, stores engagement_recency_pct)
-      Step C — Per-trend pre-filter rules 1–7
+      Step C — Per-trend pre-filter rules 1–2, 4–7 (Rule 3 engagement threshold removed)
 
     Returns:
         (passed_trends: list, rejected_log: list)

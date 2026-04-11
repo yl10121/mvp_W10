@@ -82,11 +82,12 @@ def _compute_trend_velocity(engagement_recency_pct: float) -> float:
 def _compute_cross_run_persistence(run_count: int) -> float:
     """
     Convert number of runs a trend appeared in to 0-10 score.
-    ≥5 runs → 10 | 4 → 8 | 3 → 6 | 2 → 4 | 1 → 2
+    Real XHS trends typically appear in 1 run — 1 run scores 5 (not disqualifying).
+    ≥3 runs → 10 | 2 runs → 7 | 1 run → 5
     """
-    if run_count >= 5:
+    if run_count >= 3:
         return 10.0
-    return {4: 8.0, 3: 6.0, 2: 4.0}.get(run_count, 2.0)
+    return {2: 7.0}.get(run_count, 5.0)
 
 
 def _compute_composite(scores: dict) -> float:
@@ -280,11 +281,16 @@ def select_shortlist(evaluations: list, max_shortlist: int = 5) -> list:
             continue
 
         scores = ev.get("scores", {})
+        # cross_run_persistence minimum is 3 (real trends naturally appear in 1 run)
+        # all other dimensions minimum is 4
+        DIM_MINIMUMS = {"cross_run_persistence": 3}
         failed_dim = None
         for dim, score in scores.items():
-            if isinstance(score, (int, float)) and score < 4:
-                failed_dim = dim
-                break
+            if isinstance(score, (int, float)):
+                min_score = DIM_MINIMUMS.get(dim, 4)
+                if score < min_score:
+                    failed_dim = dim
+                    break
         if failed_dim:
             ev["shortlist"] = False
             ev["disqualifying_reason"] = (

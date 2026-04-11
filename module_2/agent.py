@@ -501,11 +501,10 @@ def main():
     print(f"  Beauty skipped: {len(beauty_skipped)} objects")
     print(f"  Real luxury_fashion loaded: {len(real_trends)}")
 
-    print("\nLoading synthetic trend objects...")
-    synthetic_trends = load_synthetic_trends()
-    print(f"  Synthetic loaded: {len(synthetic_trends)}")
+    print("\nSynthetic trends skipped — running on real XHS data only (Week 11 requirement)")
+    synthetic_trends = []
 
-    all_trends = real_trends + synthetic_trends
+    all_trends = real_trends
     total_input = len(all_trends)
     print(f"\nReal (XHS): {len(real_trends)} / Synthetic: {len(synthetic_trends)} / Total: {total_input}")
 

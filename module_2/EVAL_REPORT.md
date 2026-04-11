@@ -1,7 +1,7 @@
 # Module 2 — Evaluation Report
 
-**Run ID:** m2_20260330_041951  
-**Generated at:** 2026-03-30T04:19:51.149275+00:00  
+**Run ID:** m2_20260411_060252  
+**Generated at:** 2026-04-11T06:02:52.274733+00:00  
 **Brand:** Celine
 
 ---
@@ -11,72 +11,74 @@
 | Source | Count |
 |--------|-------|
 | Real XHS (luxury_fashion) | 69 |
-| Synthetic (luxury_fashion) | 25 |
+| Synthetic (luxury_fashion) | 0 |
 | Beauty runs skipped | 40 |
-| **Total input to filter** | **94** |
+| **Total input to filter** | **69** |
 
 ---
 
 ## Filter Results
 
-- Pre-filter rejected: **55**
-- Passed to LLM: **39**
-- Shortlisted: **15**
-- Noise reduction rate: **84.0%**
+- Pre-filter rejected: **30**
+- Passed to LLM: **34**
+- Shortlisted: **4**
+- Noise reduction rate: **94.2%**
 
 ---
 
 ## Quality Checks
 
 ### 1. Off-Brand Rate
-- Off-brand count: 1 (1.1% of input)
-  - Taboo keyword rejections: 1
-  - LLM brand_fit < 5: 0
+- Off-brand count: 1 (1.4% of input)
+  - Taboo keyword rejections: 0
+  - LLM brand_fit < 5: 1
 
 ### 2. Explanation Specificity (LLM confidence breakdown)
-- High: 21 (53.8%)
-- Medium: 18 (46.2%)
+- High: 15 (44.1%)
+- Medium: 19 (55.9%)
 - Low: 0 (0.0%)
 
 ### 3. Noise Reduction
-- 84.0% of input trends were filtered before reaching the shortlist.
+- 94.2% of input trends were filtered before reaching the shortlist.
+
+### 4. New Dimensions (Week 11)
+- **CA Conversational Utility**: % of shortlisted trends with a named hero product link — 14 of 34 evaluated trends had a specific product anchor.
+- **Client Archetype Coverage**: archetypes matched across shortlist — 摇滚缪斯 Yáogǔn Miùsī, 智识派 Zhishì Pài, 独立新贵 Dúlì Xīnguì
+- **Trend Velocity**: scores computed from engagement_recency_pct (7-day recency window).
+- **Cross-Run Persistence**: scores computed from run_count (deduplication merged trends retain count).
 
 ---
 
 ## Shortlist Summary
 
-Shortlisted **15** trends (real: 4, synthetic: 11):
+Shortlisted **4** trends (real: 4, synthetic: 0):
 
-- **[synthetic_t03]** Triomphe Hardware Investment — score: 9.50
-- **[synthetic_t06]** French Intellectual Editorial Aesthetic — score: 9.20
-- **[synthetic_t02]** Architectural Silhouette Dressing — score: 9.10
-- **[synthetic_t10]** Oversized Structured Blazer Power Dressing — score: 9.10
-- **[synthetic_t04]** Monochromatic Precision Dressing — score: 9.00
-- **[synthetic_t24]** Clean Minimalist Aesthetic as Identity — score: 8.75
-- **[synthetic_t18]** Day-to-Night Minimalist Dressing — score: 8.55
-- **[synthetic_t23]** Satin and Silk Luxury Surface Dressing — score: 8.55
-- **[run_0012_t01]** Celine's Minimalist Aesthetic — score: 8.50
-- **[synthetic_t15]** Understated Leather Goods Connoisseurship — score: 8.35
-- **[run_0013_t01]** Celine's Quiet Luxury Trend — score: 8.30
-- **[synthetic_t14]** Capsule Wardrobe Investment Mentality — score: 8.25
-- **[synthetic_t17]** High-Waist Wide Leg Trouser Mastery — score: 8.25
-- **[run_0009_t01]** Mixed Beauty Trend Signals — score: 8.20
-- **[run_0010_t01]** Minimalist Tailoring & Structure — score: 8.20
+| # | Trend | Score | Archetype | Hero Product | Pillar | CA Utility | Velocity |
+|---|-------|-------|-----------|-------------|--------|-----------|---------|
+| 1 | **[run_0011_t01]** Celine Minimalism and Quiet Luxury | 8.24 | 独立新贵 Dúlì Xīnguì | Celine 70s high-waist wide-leg trousers | Architectural Restraint | 9 | 6.6 |
+| 2 | **[run_0013_t01]** Celine's Quiet Luxury Trend | 8.14 | 智识派 Zhishì Pài | Triomphe canvas shoulder bag | Architectural Restraint | 9 | 6.6 |
+| 3 | **[run_0012_t01]** Celine's Minimalist Aesthetic | 7.79 | 智识派 Zhishì Pài | Triomphe chain bag | Architectural Restraint | 8 | 6.6 |
+| 4 | **[run_0010_t01]** Minimalist Tailoring & Structure | 7.66 | 智识派 Zhishì Pài | Celine Essential slim-cut tuxedo blazer | Architectural Restraint | 8 | 5.7 |
 
 ---
 
 ## Failure Cases (5 Lowest Scoring)
 
-- **[run_0009_t03]** Mixed Beauty Trend Signals — score: 5.20
-  - Reason: category_fit — insufficient relevance for Celine's luxury positioning
-- **[run_0011_t03]** Celine Tailoring Insights — score: 5.45
-  - Reason: materiality - total_engagement is not strong enough
-- **[run_0010_t02]** Luxury Handbag & Leather Goods — score: 5.75
-  - Reason: materiality — insufficient engagement across posts
-- **[run_0013_t03]** Celine Tailoring Insights — score: 5.80
-  - Reason: freshness: insufficient recent activity in posts
-- **[synthetic_t09]** Neutral Palette Color Theory — score: 5.80
-  - Reason: materiality — lacks strong enough engagement and direct product relevance
+- **[run_0017_t07]** CELINE 26 Summer Men's Relaxed Jackets — score: 3.65
+  - Reason: client_persona_match — lacks deep resonance with archetypes
+  - Target archetype: no archetype matched | client_persona_match: 3 | ca_conversational_utility: 4 | novelty: 3
+- **[run_0020_t04]** CELINE 26 Summer Menswear Styling Highlights — score: 4.05
+  - Reason: ca_conversational_utility: lacks specific product link for effective conversation.
+  - Target archetype: 摇滚缪斯 Yáogǔn Miùsī | client_persona_match: 6 | ca_conversational_utility: 1 | novelty: 5
+- **[run_0018_t07]** Relaxed and Effortless Menswear Styling — score: 4.05
+  - Reason: client_persona_match - this trend does not align significantly with Celine's archetypes focusing on luxury attitude.
+  - Target archetype: no archetype matched | client_persona_match: 3 | ca_conversational_utility: 5 | novelty: 4
+- **[run_0021_t04]** CELINE 26 Summer Menswear Soft Relaxed Jacket Showcase — score: 4.25
+  - Reason: client_persona_match — does not align well with Celine's client archetypes that are specifically focused on women's fashion.
+  - Target archetype: no archetype matched | client_persona_match: 3 | ca_conversational_utility: 4 | novelty: 5
+- **[run_0021_t03]** Celine Bag Selection Tips Content — score: 4.25
+  - Reason: client_persona_match - it does not align well with the high-design expectations of Celine's intended clientele.
+  - Target archetype: no archetype matched | client_persona_match: 4 | ca_conversational_utility: 5 | novelty: 4
 
 ---
 
