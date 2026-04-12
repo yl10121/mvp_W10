@@ -1,5 +1,5 @@
 {
-  "run_id": "run_0036",
+  "run_id": "run_0035",
   "retrieved_sources": [
     "data/xhs_posts.json",
     "data/run_config.json"
@@ -206,7 +206,7 @@
     "live_0163",
     "live_0168"
   ],
-  "decision_output_file": "outputs/runs/run_0036_trend_objects.json",
+  "decision_output_file": "outputs/runs/run_0035_trend_objects.json",
   "decision_mode": "rules-first with optional LLM",
   "prompt_in_use_for_decision": true,
   "llm_enabled": true,
@@ -512,5 +512,5 @@
     "t30": "high"
   },
   "next_step_suggestion": "Send approved trend objects into Module 2 for materiality ranking.",
-  "timestamp_utc": "2026-04-12T06:09:46.073938+00:00"
+  "timestamp_utc": "2026-04-12T05:43:09.955761+00:00"
 }

@@ -1,5 +1,5 @@
 {
-  "run_id": "run_0036",
+  "run_id": "run_0030",
   "retrieved_sources": [
     "data/xhs_posts.json",
     "data/run_config.json"
@@ -206,20 +206,14 @@
     "live_0163",
     "live_0168"
   ],
-  "decision_output_file": "outputs/runs/run_0036_trend_objects.json",
+  "decision_output_file": "outputs/runs/run_0030_trend_objects.json",
   "decision_mode": "rules-first with optional LLM",
   "prompt_in_use_for_decision": true,
   "llm_enabled": true,
   "llm_model": "gpt-4.1-mini",
   "llm_label_calls_succeeded": 0,
-  "llm_label_calls_total": 30,
+  "llm_label_calls_total": 14,
   "llm_errors": [
-    "OPENROUTER_API_KEY missing",
-    "OPENROUTER_API_KEY missing",
-    "OPENROUTER_API_KEY missing",
-    "OPENROUTER_API_KEY missing",
-    "OPENROUTER_API_KEY missing",
-    "OPENROUTER_API_KEY missing",
     "OPENROUTER_API_KEY missing",
     "OPENROUTER_API_KEY missing",
     "OPENROUTER_API_KEY missing",
@@ -239,212 +233,66 @@
     "t01": [
       "live_0033",
       "live_0159",
-      "live_0024",
-      "live_0158",
-      "live_0010"
+      "live_0010",
+      "live_0041",
+      "live_0002"
     ],
     "t02": [
-      "live_0048",
-      "live_0002",
-      "live_0028",
-      "live_0185",
-      "live_0090"
+      "live_0024",
+      "live_0158"
     ],
     "t03": [
-      "live_0172",
-      "live_0109",
-      "live_0068",
-      "live_0199",
-      "live_0036"
+      "live_0001",
+      "live_0048",
+      "live_0061",
+      "live_0134",
+      "live_0141"
     ],
     "t04": [
-      "live_0008",
-      "live_0070",
-      "live_0011",
-      "live_0078",
-      "live_0195"
+      "live_0119",
+      "live_0190"
     ],
     "t05": [
       "live_0047",
       "live_0069",
-      "live_0128",
-      "live_0183",
-      "live_0111"
+      "live_0128"
     ],
     "t06": [
-      "live_0076",
-      "live_0037",
-      "live_0031",
-      "live_0169",
-      "live_0061"
+      "live_0008",
+      "live_0070"
     ],
     "t07": [
-      "live_0089",
-      "live_0020",
       "live_0021",
-      "live_0052",
-      "live_0003"
+      "live_0052"
     ],
     "t08": [
-      "live_0122",
-      "live_0120",
-      "live_0189",
-      "live_0059",
-      "live_0087"
+      "live_0003",
+      "live_0025"
     ],
     "t09": [
-      "live_0181",
-      "live_0007",
-      "live_0116",
-      "live_0176",
-      "live_0100"
+      "live_0133",
+      "live_0132"
     ],
     "t10": [
-      "live_0149",
-      "live_0167",
-      "live_0045",
-      "live_0196",
-      "live_0064"
+      "live_0100",
+      "live_0099"
     ],
     "t11": [
-      "live_0082",
-      "live_0147",
-      "live_0009",
-      "live_0027",
-      "live_0112"
+      "live_0018",
+      "live_0023",
+      "live_0179"
     ],
     "t12": [
-      "live_0146",
-      "live_0057",
-      "live_0049",
-      "live_0071",
-      "live_0106"
+      "live_0016",
+      "live_0135"
     ],
     "t13": [
-      "live_0063",
-      "live_0056",
-      "live_0093",
-      "live_0074",
-      "live_0058"
+      "live_0110",
+      "live_0114"
     ],
     "t14": [
-      "live_0042",
-      "live_0188",
-      "live_0086",
-      "live_0150",
-      "live_0015"
-    ],
-    "t15": [
-      "live_0193",
-      "live_0032",
-      "live_0006",
-      "live_0026",
-      "live_0192"
-    ],
-    "t16": [
-      "live_0117",
-      "live_0156",
-      "live_0171",
-      "live_0115",
-      "live_0121"
-    ],
-    "t17": [
-      "live_0140",
-      "live_0016",
-      "live_0135",
-      "live_0051",
-      "live_0136"
-    ],
-    "t18": [
-      "live_0153",
-      "live_0054",
-      "live_0130",
-      "live_0099",
-      "live_0017"
-    ],
-    "t19": [
-      "live_0013",
-      "live_0129",
-      "live_0053",
-      "live_0018",
-      "live_0023"
-    ],
-    "t20": [
-      "live_0004",
-      "live_0030",
-      "live_0177",
-      "live_0029",
-      "live_0080"
-    ],
-    "t21": [
-      "live_0175",
-      "live_0132",
-      "live_0043",
-      "live_0044",
-      "live_0173"
-    ],
-    "t22": [
-      "live_0142",
-      "live_0191",
-      "live_0050",
-      "live_0065",
-      "live_0194"
-    ],
-    "t23": [
-      "live_0148",
-      "live_0154",
-      "live_0126",
-      "live_0096",
-      "live_0012"
-    ],
-    "t24": [
-      "live_0046",
-      "live_0067",
-      "live_0157",
-      "live_0174",
-      "live_0197"
-    ],
-    "t25": [
-      "live_0131",
-      "live_0138",
-      "live_0098",
-      "live_0113",
-      "live_0164"
-    ],
-    "t26": [
-      "live_0005",
-      "live_0022",
-      "live_0104",
-      "live_0035",
-      "live_0062"
-    ],
-    "t27": [
-      "live_0139",
-      "live_0143",
-      "live_0060",
-      "live_0094",
-      "live_0110"
-    ],
-    "t28": [
-      "live_0092",
-      "live_0124",
-      "live_0178",
-      "live_0190",
-      "live_0072"
-    ],
-    "t29": [
-      "live_0014",
-      "live_0077",
-      "live_0114",
-      "live_0165",
-      "live_0137"
-    ],
-    "t30": [
-      "live_0079",
-      "live_0084",
-      "live_0103",
-      "live_0145",
-      "live_0163"
+      "live_0072",
+      "live_0084"
     ]
   },
   "labeling_sources": {
@@ -461,56 +309,24 @@
     "t11": "heuristic",
     "t12": "heuristic",
     "t13": "heuristic",
-    "t14": "heuristic",
-    "t15": "heuristic",
-    "t16": "heuristic",
-    "t17": "heuristic",
-    "t18": "heuristic",
-    "t19": "heuristic",
-    "t20": "heuristic",
-    "t21": "heuristic",
-    "t22": "heuristic",
-    "t23": "heuristic",
-    "t24": "heuristic",
-    "t25": "heuristic",
-    "t26": "heuristic",
-    "t27": "heuristic",
-    "t28": "heuristic",
-    "t29": "heuristic",
-    "t30": "heuristic"
+    "t14": "heuristic"
   },
   "confidence": {
     "t01": "high",
-    "t02": "high",
+    "t02": "medium",
     "t03": "high",
-    "t04": "high",
-    "t05": "high",
-    "t06": "high",
-    "t07": "high",
-    "t08": "high",
-    "t09": "high",
-    "t10": "high",
-    "t11": "high",
-    "t12": "high",
-    "t13": "high",
-    "t14": "high",
-    "t15": "high",
-    "t16": "high",
-    "t17": "high",
-    "t18": "high",
-    "t19": "high",
-    "t20": "high",
-    "t21": "high",
-    "t22": "high",
-    "t23": "high",
-    "t24": "high",
-    "t25": "high",
-    "t26": "high",
-    "t27": "high",
-    "t28": "high",
-    "t29": "high",
-    "t30": "high"
+    "t04": "medium",
+    "t05": "medium",
+    "t06": "medium",
+    "t07": "medium",
+    "t08": "medium",
+    "t09": "medium",
+    "t10": "medium",
+    "t11": "medium",
+    "t12": "medium",
+    "t13": "medium",
+    "t14": "medium"
   },
   "next_step_suggestion": "Send approved trend objects into Module 2 for materiality ranking.",
-  "timestamp_utc": "2026-04-12T06:09:46.073938+00:00"
+  "timestamp_utc": "2026-04-12T05:40:44.961420+00:00"
 }

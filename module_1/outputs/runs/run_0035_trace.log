@@ -1,0 +1,16 @@
+{"timestamp_utc": "2026-04-12T05:43:09.889713+00:00", "level": "stage", "step": "Prompt", "message": "Loading prompt + config + retrieval sources", "meta": {}}
+{"timestamp_utc": "2026-04-12T05:43:09.895639+00:00", "level": "ok", "step": "Prompt", "message": "Completed in 0.01s", "meta": {}}
+{"timestamp_utc": "2026-04-12T05:43:09.895665+00:00", "level": "stage", "step": "Retrieve", "message": "Normalizing and filtering XHS posts", "meta": {}}
+{"timestamp_utc": "2026-04-12T05:43:09.898896+00:00", "level": "ok", "step": "Retrieve", "message": "Completed in 0.00s", "meta": {}}
+{"timestamp_utc": "2026-04-12T05:43:09.898903+00:00", "level": "ok", "step": "Retrieve", "message": "Retrieved 200 posts from 200 loaded records", "meta": {"max_posts": 200, "posts_path": "data/xhs_posts.json"}}
+{"timestamp_utc": "2026-04-12T05:43:09.898905+00:00", "level": "stage", "step": "Decide", "message": "Clustering semantically similar posts into trend candidates", "meta": {}}
+{"timestamp_utc": "2026-04-12T05:43:09.906550+00:00", "level": "ok", "step": "Decide", "message": "Completed in 0.01s", "meta": {}}
+{"timestamp_utc": "2026-04-12T05:43:09.906577+00:00", "level": "ok", "step": "Decide", "message": "Using equal engagement bins: 30 clusters (config force_equal_engagement_bins)", "meta": {}}
+{"timestamp_utc": "2026-04-12T05:43:09.906581+00:00", "level": "ok", "step": "Decide", "message": "Selected 30 trend clusters", "meta": {}}
+{"timestamp_utc": "2026-04-12T05:43:09.907497+00:00", "level": "ok", "step": "Prompt", "message": "Assignment prompt found and will be used in decision flow", "meta": {}}
+{"timestamp_utc": "2026-04-12T05:43:09.907503+00:00", "level": "info", "step": "Decide", "message": "LLM labeling enabled (gpt-4.1-mini)", "meta": {}}
+{"timestamp_utc": "2026-04-12T05:43:09.913666+00:00", "level": "ok", "step": "Decide", "message": "Trend objects built (30 total, 0 LLM-labeled)", "meta": {}}
+{"timestamp_utc": "2026-04-12T05:43:09.913671+00:00", "level": "warn", "step": "Decide", "message": "LLM enabled but 0 labels used. First issue: OPENROUTER_API_KEY missing", "meta": {}}
+{"timestamp_utc": "2026-04-12T05:43:09.913673+00:00", "level": "stage", "step": "Output", "message": "Building structured Type-B trend object JSON", "meta": {}}
+{"timestamp_utc": "2026-04-12T05:43:09.958441+00:00", "level": "ok", "step": "Trace/Log", "message": "Saved run log to outputs/runs/run_0035_run_log.json", "meta": {}}
+{"timestamp_utc": "2026-04-12T05:43:09.958653+00:00", "level": "ok", "step": "Feedback", "message": "Saved reviewer feedback template to outputs/runs/run_0035_feedback.json", "meta": {}}

@@ -6,8 +6,12 @@
     "end_date": ""
   },
   "max_posts": 200,
-  "top_k_trends": 8,
-  "min_posts_per_trend": 3,
+  "top_k_trends": 40,
+  "min_posts_per_trend": 2,
+  "force_equal_engagement_bins": 30,
+  "cluster_min_jaccard": 0.14,
+  "cluster_min_token_overlap": 2,
+  "cluster_stratify_by_keyword": true,
   "llm": {
     "enabled": true,
     "model": "gpt-4.1-mini"

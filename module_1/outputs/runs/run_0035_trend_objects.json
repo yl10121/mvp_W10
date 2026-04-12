@@ -1,5 +1,5 @@
 {
-  "run_id": "run_0036",
+  "run_id": "run_0035",
   "agent": {
     "name": "XHS Trend Object Builder",
     "module": "Module 1 - Trend Object Builder",
@@ -24,7 +24,7 @@
   },
   "prompt": "You are a Xiaohongshu (XHS) trend analyst. Your job is to identify TRENDS happening on XHS — what are users posting about, what content patterns are going viral, what discussions and debates are emerging among XHS users around this brand. A trend is a recurring CONTENT PATTERN or USER DISCOURSE on XHS. Look at the post titles and identify: (1) What topics are XHS users creating content about repeatedly? (2) What debates or opinions are forming? (3) What aesthetic or styling content is gaining traction? (4) What purchase behaviors or unboxing patterns are emerging? Examples of GOOD XHS trend labels from these posts: 'Old Celine vs New Celine Nostalgia Debate' (users debating Phoebe Philo era vs Hedi Slimane era), 'Box Bag Relevance Discourse' (users asking if Box is still worth buying or is it dead), 'Celebrity Outfit Decoding Content' (users analyzing Wang Anyu and BTS V's Celine outfits), 'Soft 16 as Ultimate Commute Bag' (users reviewing Soft 16 for daily work use), 'Celine Sunglasses Authenticity Checks' (users posting legit checks and dupes), 'Cross-Border Celine Deal Hunting' (users sharing prices from Japan, Turkey, Spain), 'Old Money Quiet Luxury Styling' (users creating Celine-centered old money looks). BAD labels: 'CELINE 2026 Fashion Show' (that's an event), 'Brand Loyalty' (too generic), 'Handbag Collection' (too vague). Work only with the provided posts. Cluster by recurring XHS content patterns. For each trend: (1) label describing the XHS content trend, (2) one-sentence summary of what users are posting/discussing, (3) evidence with real post IDs and snippets, (4) metrics, (5) confidence. Include ai_reasoning. Never invent evidence.",
   "prompt_in_use_for_decision": true,
-  "generated_at_utc": "2026-04-12T06:09:46.034085+00:00",
+  "generated_at_utc": "2026-04-12T05:43:09.913677+00:00",
   "decision_logic": {
     "mode": "rules-first with optional LLM label/summary",
     "llm_enabled": true,
@@ -916,7 +916,7 @@
         "engagement_per_day": 675.92,
         "high_comment_post_ratio": 0.0
       },
-      "timestamp": "2026-04-12T06:09:46.028490+00:00",
+      "timestamp": "2026-04-12T05:43:09.908804+00:00",
       "visual_assets": {
         "all_image_urls": [
           "https://sns-webpic-qc.xhscdn.com/202603292325/c9b7a06906404cfd959a3a1246b3671f/1040g2sg31nld1odk4sdg5q3rd837h9l5dfqqu28!nc_n_webp_mw_1",
@@ -2776,7 +2776,7 @@
         "engagement_per_day": 113.75,
         "high_comment_post_ratio": 0.0
       },
-      "timestamp": "2026-04-12T06:09:46.028601+00:00",
+      "timestamp": "2026-04-12T05:43:09.908907+00:00",
       "visual_assets": {
         "all_image_urls": [
           "https://sns-webpic-qc.xhscdn.com/202603292333/6e7d1090ca3b59c24243c1de4a7bcc62/notes_uhdr/1040g3qo31tvl977gn2804a52pc7sic3e8np4r78!nd_dft_wlteh_webp_3",
@@ -4442,7 +4442,7 @@
         "engagement_per_day": 6.46,
         "high_comment_post_ratio": 0.0
       },
-      "timestamp": "2026-04-12T06:09:46.028766+00:00",
+      "timestamp": "2026-04-12T05:43:09.909058+00:00",
       "visual_assets": {
         "all_image_urls": [
           "https://sns-webpic-qc.xhscdn.com/202603300004/be2c9c0be4bc13cbde37754ceae9feb3/note_pre_post_uhdr/1040g3r831r6goga30a9g48bag50ugf06haicrvo!nd_dft_wlteh_webp_3",
@@ -6375,7 +6375,7 @@
         "engagement_per_day": 37.32,
         "high_comment_post_ratio": 0.0
       },
-      "timestamp": "2026-04-12T06:09:46.028941+00:00",
+      "timestamp": "2026-04-12T05:43:09.909218+00:00",
       "visual_assets": {
         "all_image_urls": [
           "https://sns-webpic-qc.xhscdn.com/202603292323/ce7d3284e60ac8d167a08220e6273c63/notes_pre_post/1040g3k031h9mr4p7jq105p543rinoidnqdk8cio!nd_dft_wlteh_webp_3",
@@ -7935,7 +7935,7 @@
         "engagement_per_day": 119.55,
         "high_comment_post_ratio": 0.0
       },
-      "timestamp": "2026-04-12T06:09:46.029030+00:00",
+      "timestamp": "2026-04-12T05:43:09.909293+00:00",
       "visual_assets": {
         "all_image_urls": [
           "https://sns-webpic-qc.xhscdn.com/202603292332/70da67c11e494182c69cd23830459051/notes_pre_post/1040g3k831rrjbnbniacg4a61v2qmhieojkcf240!nd_dft_wlteh_webp_3",
@@ -9022,7 +9022,7 @@
         "engagement_per_day": 18.85,
         "high_comment_post_ratio": 0.0
       },
-      "timestamp": "2026-04-12T06:09:46.029191+00:00",
+      "timestamp": "2026-04-12T05:43:09.909426+00:00",
       "visual_assets": {
         "all_image_urls": [
           "https://sns-webpic-qc.xhscdn.com/202603292337/1b0fcb7ad9407e8788b28944bf1b230a/1040g00831tjqj1opne2g5n1na041bke9hvpkcio!nc_n_webp_mw_1",
@@ -10667,7 +10667,7 @@
         "engagement_per_day": 17.11,
         "high_comment_post_ratio": 0.0
       },
-      "timestamp": "2026-04-12T06:09:46.029484+00:00",
+      "timestamp": "2026-04-12T05:43:09.909619+00:00",
       "visual_assets": {
         "all_image_urls": [
           "https://sns-webpic-qc.xhscdn.com/202603292342/88690ce24021fb50b83cd9411bb0d325/1040g2sg31kc8og63j0dg49o58b3edskfeb6j5fo!nc_n_webp_mw_1",
@@ -12305,7 +12305,7 @@
         "engagement_per_day": 7.32,
         "high_comment_post_ratio": 0.0
       },
-      "timestamp": "2026-04-12T06:09:46.029667+00:00",
+      "timestamp": "2026-04-12T05:43:09.909746+00:00",
       "visual_assets": {
         "all_image_urls": [
           "https://sns-webpic-qc.xhscdn.com/202603292350/f1138855ad238d9cc3f0a30b7d8423c0/1000g00822o1nd0ifk03g48h3mdkos0rgnmhmtr8!nd_dft_wlteh_webp_3",
@@ -13750,7 +13750,7 @@
         "engagement_per_day": 2.8,
         "high_comment_post_ratio": 0.0
       },
-      "timestamp": "2026-04-12T06:09:46.029823+00:00",
+      "timestamp": "2026-04-12T05:43:09.909870+00:00",
       "visual_assets": {
         "all_image_urls": [
           "https://sns-webpic-qc.xhscdn.com/202603300007/97d8e6dd0786afb88fd30859d8fd8962/notes_pre_post/1040g3k831og9bra9mm504anfcr75bkfkop37fg8!nd_dft_wlteh_webp_3",
@@ -15196,7 +15196,7 @@
         "engagement_per_day": 3.04,
         "high_comment_post_ratio": 0.0
       },
-      "timestamp": "2026-04-12T06:09:46.029990+00:00",
+      "timestamp": "2026-04-12T05:43:09.910009+00:00",
       "visual_assets": {
         "all_image_urls": [
           "https://sns-webpic-qc.xhscdn.com/202603292356/16a5d5352459f2885c59e3e704695997/spectrum/1040g0k031piakihtjo005o3t9es08657ugmhdno!nc_n_webp_mw_1",
@@ -16369,7 +16369,7 @@
         "engagement_per_day": 2.9,
         "high_comment_post_ratio": 0.0
       },
-      "timestamp": "2026-04-12T06:09:46.030138+00:00",
+      "timestamp": "2026-04-12T05:43:09.910135+00:00",
       "visual_assets": {
         "all_image_urls": [
           "https://sns-webpic-qc.xhscdn.com/202603292341/26c406b294011b9cfb12ef3d02fed654/spectrum/1040g0k031ipf3mkp0o40414c9a0ao9na9u42no8!nd_dft_wlteh_webp_3",
@@ -17384,7 +17384,7 @@
         "engagement_per_day": 4.2,
         "high_comment_post_ratio": 0.0
       },
-      "timestamp": "2026-04-12T06:09:46.030274+00:00",
+      "timestamp": "2026-04-12T05:43:09.910246+00:00",
       "visual_assets": {
         "all_image_urls": [
           "https://sns-webpic-qc.xhscdn.com/202603292358/94648304836e2c0219d34f61b6ab67f1/notes_pre_post/1040g3k831sb50mqqm2fg5o1tilh089n7hke26a8!nd_dft_wlteh_webp_3",
@@ -18740,7 +18740,7 @@
         "engagement_per_day": 2.09,
         "high_comment_post_ratio": 0.0
       },
-      "timestamp": "2026-04-12T06:09:46.030404+00:00",
+      "timestamp": "2026-04-12T05:43:09.910357+00:00",
       "visual_assets": {
         "all_image_urls": [
           "https://sns-webpic-qc.xhscdn.com/202603292336/860f02897d1e2b6ea789a184ceb32995/notes_pre_post/1040g3k831ikbs00s0chg5pjl36j1ojj64is9md8!nd_dft_wlteh_webp_3",
@@ -20104,7 +20104,7 @@
         "engagement_per_day": 114.5,
         "high_comment_post_ratio": 0.0
       },
-      "timestamp": "2026-04-12T06:09:46.030540+00:00",
+      "timestamp": "2026-04-12T05:43:09.910472+00:00",
       "visual_assets": {
         "all_image_urls": [
           "https://sns-webpic-qc.xhscdn.com/202603292330/6a8ff0f8df01f56c5cbea88887bd2b83/notes_pre_post/1040g3k031s49lrgo5s505q755r0ttu8e7u9o0so!nd_dft_wlteh_webp_3",
@@ -20923,7 +20923,7 @@
         "engagement_per_day": 627.0,
         "high_comment_post_ratio": 0.0
       },
-      "timestamp": "2026-04-12T06:09:46.030727+00:00",
+      "timestamp": "2026-04-12T05:43:09.910645+00:00",
       "visual_assets": {
         "all_image_urls": [
           "https://sns-webpic-qc.xhscdn.com/202603300009/151305c8bde381b9bdff3ed1ebcec9fe/notes_pre_post/1040g3k031npburmlkq3049vkq9ohm1a37ab3vvo!nd_dft_wlteh_webp_3",
@@ -21952,7 +21952,7 @@
         "engagement_per_day": 0.93,
         "high_comment_post_ratio": 0.0
       },
-      "timestamp": "2026-04-12T06:09:46.030833+00:00",
+      "timestamp": "2026-04-12T05:43:09.910792+00:00",
       "visual_assets": {
         "all_image_urls": [
           "https://sns-webpic-qc.xhscdn.com/202603292349/b271afd8f2708284fa45315eb61ffbea/1040g2sg317i5st2b3qb05nvs04r08ic425eidq0!nd_dft_wlteh_webp_3",
@@ -22862,7 +22862,7 @@
         "engagement_per_day": 0.3,
         "high_comment_post_ratio": 0.0
       },
-      "timestamp": "2026-04-12T06:09:46.031008+00:00",
+      "timestamp": "2026-04-12T05:43:09.910984+00:00",
       "visual_assets": {
         "all_image_urls": [
           "https://sns-webpic-qc.xhscdn.com/202603292352/9dcf59198e1cc0e91feeea20f2f9c682/1040g2sg31nsljent50705n6t19b5q9iefvu3a9g!nc_n_webp_mw_1",
@@ -24086,7 +24086,7 @@
         "engagement_per_day": 1.62,
         "high_comment_post_ratio": 0.0
       },
-      "timestamp": "2026-04-12T06:09:46.031119+00:00",
+      "timestamp": "2026-04-12T05:43:09.911100+00:00",
       "visual_assets": {
         "all_image_urls": [
           "https://sns-webpic-qc.xhscdn.com/202603292356/d810b1e95a4d61c6b8190595a4ad542a/1040g00831te6lgvs5k005oos7to8vea2m0ls7e8!nc_n_webp_mw_1",
@@ -24982,7 +24982,7 @@
         "engagement_per_day": 2.34,
         "high_comment_post_ratio": 0.0
       },
-      "timestamp": "2026-04-12T06:09:46.032946+00:00",
+      "timestamp": "2026-04-12T05:43:09.912579+00:00",
       "visual_assets": {
         "all_image_urls": [
           "https://sns-webpic-qc.xhscdn.com/202603292324/d8a0c55efaeb01cb332759ce951433ab/1040g2sg31nevess3lm70411jf4q1foaaomparso!nd_dft_wlteh_webp_3",
@@ -25702,7 +25702,7 @@
         "engagement_per_day": 2.78,
         "high_comment_post_ratio": 0.0
       },
-      "timestamp": "2026-04-12T06:09:46.033056+00:00",
+      "timestamp": "2026-04-12T05:43:09.912679+00:00",
       "visual_assets": {
         "all_image_urls": [
           "https://sns-webpic-qc.xhscdn.com/202603292322/9b6c5279939c7bb5704bbf025346cc74/notes_uhdr/1040g3qo31ol9skng4s905p0g79gqh1b0lscn3q0!nd_dft_wlteh_webp_3",
@@ -26499,7 +26499,7 @@
         "engagement_per_day": 0.56,
         "high_comment_post_ratio": 0.0
       },
-      "timestamp": "2026-04-12T06:09:46.033146+00:00",
+      "timestamp": "2026-04-12T05:43:09.912758+00:00",
       "visual_assets": {
         "all_image_urls": [
           "https://sns-webpic-qc.xhscdn.com/202603300006/1f56a44a76c0e4347de5e5508a5ddb98/1040g2sg31u0s19pgnqe048pvklo7288d233hoi0!nd_dft_wlteh_webp_3",
@@ -27534,7 +27534,7 @@
         "engagement_per_day": 1.52,
         "high_comment_post_ratio": 0.0
       },
-      "timestamp": "2026-04-12T06:09:46.033275+00:00",
+      "timestamp": "2026-04-12T05:43:09.912879+00:00",
       "visual_assets": {
         "all_image_urls": [
           "https://sns-webpic-qc.xhscdn.com/202603292355/4476120d51aa695e463f4874c56b9e39/notes_uhdr/1040g3qg31sjhfvub5k1g48pv95q4aihn4rr69ho!nd_dft_wlteh_webp_3",
@@ -28693,7 +28693,7 @@
         "engagement_per_day": 1.97,
         "high_comment_post_ratio": 0.0
       },
-      "timestamp": "2026-04-12T06:09:46.033351+00:00",
+      "timestamp": "2026-04-12T05:43:09.912954+00:00",
       "visual_assets": {
         "all_image_urls": [
           "https://sns-webpic-qc.xhscdn.com/202603292358/b209e357dd74c50759e9218fde3627ae/1040g2sg31jmgjdubiifg5nng0ve087123eo68c8!nd_dft_wlteh_webp_3",
@@ -29285,7 +29285,7 @@
         "engagement_per_day": 0.98,
         "high_comment_post_ratio": 0.0
       },
-      "timestamp": "2026-04-12T06:09:46.033422+00:00",
+      "timestamp": "2026-04-12T05:43:09.913026+00:00",
       "visual_assets": {
         "all_image_urls": [
           "https://sns-webpic-qc.xhscdn.com/202603292332/ed80a21b2f08b99e4a11c901111b9031/1040g2sg31l0ba8p7ig705on8ga5nog0rhsl45vg!nd_dft_wlteh_webp_3",
@@ -29795,7 +29795,7 @@
         "engagement_per_day": 0.41,
         "high_comment_post_ratio": 0.0
       },
-      "timestamp": "2026-04-12T06:09:46.033512+00:00",
+      "timestamp": "2026-04-12T05:43:09.913119+00:00",
       "visual_assets": {
         "all_image_urls": [
           "https://sns-webpic-qc.xhscdn.com/202603292353/887fee827cb43f5e89a9ee615101de67/note_pre_post_uhdr/1040g3r831t71cf335e7g4a4tk3occc4igkg0jng!nd_dft_wlteh_webp_3",
@@ -30491,7 +30491,7 @@
         "engagement_per_day": 0.47,
         "high_comment_post_ratio": 0.0
       },
-      "timestamp": "2026-04-12T06:09:46.033675+00:00",
+      "timestamp": "2026-04-12T05:43:09.913280+00:00",
       "visual_assets": {
         "all_image_urls": [
           "https://sns-webpic-qc.xhscdn.com/202603292322/2a4ab2b7f3d0987ca1803da08a15484d/notes_pre_post/1040g3k831tm9vn8p7e8g5n4920aklvf9v8cvsr0!nd_dft_wgth_webp_3",
@@ -31286,7 +31286,7 @@
         "engagement_per_day": 0.41,
         "high_comment_post_ratio": 0.0
       },
-      "timestamp": "2026-04-12T06:09:46.033763+00:00",
+      "timestamp": "2026-04-12T05:43:09.913369+00:00",
       "visual_assets": {
         "all_image_urls": [
           "https://sns-webpic-qc.xhscdn.com/202603292355/bdbfad5b56d7faca30dd9a452c775935/notes_pre_post/1040g3k831jgru5mg2u7g45fno9utovi6s0gjobg!nd_dft_wlteh_webp_3",
@@ -32083,7 +32083,7 @@
         "engagement_per_day": 2.0,
         "high_comment_post_ratio": 0.0
       },
-      "timestamp": "2026-04-12T06:09:46.033873+00:00",
+      "timestamp": "2026-04-12T05:43:09.913468+00:00",
       "visual_assets": {
         "all_image_urls": [
           "https://sns-webpic-qc.xhscdn.com/202603292344/aa4a9389eebc3f8153406fb21ac736de/notes_pre_post/1040g3k031tk08h1vno005o6lmsog86i8rrf92h0!nd_dft_wlteh_webp_3",
@@ -32491,7 +32491,7 @@
         "engagement_per_day": 0.18,
         "high_comment_post_ratio": 0.0
       },
-      "timestamp": "2026-04-12T06:09:46.033966+00:00",
+      "timestamp": "2026-04-12T05:43:09.913558+00:00",
       "visual_assets": {
         "all_image_urls": [
           "https://sns-webpic-qc.xhscdn.com/202603292324/282054a91106c99d0c43b6c58b5b26ed/notes_pre_post/1040g3k031u8hbab72o105qadajm0pqh91kv8eq0!nd_dft_wlteh_webp_3",
@@ -32821,7 +32821,7 @@
         "engagement_per_day": 0.09,
         "high_comment_post_ratio": 0.0
       },
-      "timestamp": "2026-04-12T06:09:46.034069+00:00",
+      "timestamp": "2026-04-12T05:43:09.913660+00:00",
       "visual_assets": {
         "all_image_urls": [
           "https://sns-webpic-qc.xhscdn.com/202603292340/ab1a6d84738a6277f67cbc6df4e88d5f/notes_pre_post/1040g3k031ru006qsig1g5p99f5tamm72jpav0s0!nd_dft_wlteh_webp_3",

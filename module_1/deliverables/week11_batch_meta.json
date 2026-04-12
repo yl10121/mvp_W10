@@ -1,0 +1,25 @@
+{
+  "deliverable": "Week 11 — Deliverable 1 (Module 1 slice)",
+  "dataset_id": "xhs_posts_m1_run_0036",
+  "input_file": "module_1/data/xhs_posts.json",
+  "run_config": "module_1/data/run_config.json",
+  "module_1_run_id": "run_0036",
+  "generated_at_utc": "2026-03-28T12:00:00Z",
+  "market": "China — Xiaohongshu (XHS) luxury fashion",
+  "brand_focus": "Celine / 赛琳 (search-keyword scrape)",
+  "date_range_note": "Post-level dates in XHS vary (e.g. 03-21, 编辑于 2025-11-09, 2026-03-xx). Treat as a cross-section of live XHS notes; narrow ISO window not enforced in source export.",
+  "counts": {
+    "posts_in_batch": 200,
+    "trend_objects_emitted": 30,
+    "clustering_mode": "force_equal_engagement_bins_30"
+  },
+  "outputs_module_1": {
+    "trend_objects_json": "module_1/outputs/runs/run_0036_trend_objects.json",
+    "trend_objects_latest_symlink_copy": "module_1/outputs/trend_objects.json",
+    "run_log_json": "module_1/outputs/runs/run_0036_run_log.json",
+    "run_log_latest": "module_1/outputs/run_log.json",
+    "trace_log": "module_1/outputs/runs/run_0036_trace.log",
+    "reviewer_feedback_template": "module_1/outputs/runs/run_0036_feedback.json"
+  },
+  "module_2_module_3_note": "Run module_2/agent.py then module_3 with M3_TOP_N=10 for ≥10 cards. Module 2 reads latest Module 1 trend_objects.json."
+}

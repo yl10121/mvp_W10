@@ -1,161 +1,2337 @@
 {
-  "run_id": "run_0022",
-  "eval_timestamp_utc": "2026-03-29T16:57:26.052381+00:00",
-  "source_file": "run_0022_trend_objects.json",
-  "trend_count": 8,
+  "run_id": "run_0036",
+  "eval_timestamp_utc": "2026-04-12T06:10:38.386880+00:00",
+  "source_file": "run_0036_trend_objects.json",
+  "trend_count": 30,
   "all_passed": false,
   "checks": [
     {
       "check": "duplication_rate",
       "passed": false,
-      "pass_rate": "3/8",
-      "similar_label_pairs": [],
-      "shared_post_ids": [
+      "pass_rate": "0/30",
+      "similar_label_pairs": [
         {
-          "post_id": "live_0159",
-          "in_trends": [
-            "t01",
-            "t03"
-          ]
+          "trend_a": "t01",
+          "trend_b": "t04",
+          "overlap": 1.0
         },
         {
-          "post_id": "live_0090",
-          "in_trends": [
-            "t01",
-            "t02"
-          ]
+          "trend_a": "t01",
+          "trend_b": "t08",
+          "overlap": 1.0
         },
         {
-          "post_id": "live_0039",
-          "in_trends": [
-            "t02",
-            "t08"
-          ]
+          "trend_a": "t01",
+          "trend_b": "t15",
+          "overlap": 1.0
         },
         {
-          "post_id": "live_0111",
-          "in_trends": [
-            "t03",
-            "t05"
-          ]
+          "trend_a": "t01",
+          "trend_b": "t24",
+          "overlap": 1.0
         },
         {
-          "post_id": "live_0078",
-          "in_trends": [
-            "t05",
-            "t08"
-          ]
+          "trend_a": "t01",
+          "trend_b": "t25",
+          "overlap": 1.0
+        },
+        {
+          "trend_a": "t02",
+          "trend_b": "t03",
+          "overlap": 1.0
+        },
+        {
+          "trend_a": "t02",
+          "trend_b": "t05",
+          "overlap": 1.0
+        },
+        {
+          "trend_a": "t02",
+          "trend_b": "t06",
+          "overlap": 1.0
+        },
+        {
+          "trend_a": "t02",
+          "trend_b": "t07",
+          "overlap": 1.0
+        },
+        {
+          "trend_a": "t02",
+          "trend_b": "t09",
+          "overlap": 1.0
+        },
+        {
+          "trend_a": "t02",
+          "trend_b": "t11",
+          "overlap": 1.0
+        },
+        {
+          "trend_a": "t02",
+          "trend_b": "t12",
+          "overlap": 1.0
+        },
+        {
+          "trend_a": "t02",
+          "trend_b": "t13",
+          "overlap": 1.0
+        },
+        {
+          "trend_a": "t02",
+          "trend_b": "t16",
+          "overlap": 1.0
+        },
+        {
+          "trend_a": "t02",
+          "trend_b": "t17",
+          "overlap": 1.0
+        },
+        {
+          "trend_a": "t02",
+          "trend_b": "t19",
+          "overlap": 1.0
+        },
+        {
+          "trend_a": "t02",
+          "trend_b": "t20",
+          "overlap": 1.0
+        },
+        {
+          "trend_a": "t02",
+          "trend_b": "t22",
+          "overlap": 1.0
+        },
+        {
+          "trend_a": "t02",
+          "trend_b": "t23",
+          "overlap": 1.0
+        },
+        {
+          "trend_a": "t02",
+          "trend_b": "t26",
+          "overlap": 1.0
+        },
+        {
+          "trend_a": "t02",
+          "trend_b": "t27",
+          "overlap": 1.0
+        },
+        {
+          "trend_a": "t02",
+          "trend_b": "t28",
+          "overlap": 1.0
+        },
+        {
+          "trend_a": "t02",
+          "trend_b": "t29",
+          "overlap": 1.0
+        },
+        {
+          "trend_a": "t02",
+          "trend_b": "t30",
+          "overlap": 1.0
+        },
+        {
+          "trend_a": "t03",
+          "trend_b": "t05",
+          "overlap": 1.0
+        },
+        {
+          "trend_a": "t03",
+          "trend_b": "t06",
+          "overlap": 1.0
+        },
+        {
+          "trend_a": "t03",
+          "trend_b": "t07",
+          "overlap": 1.0
+        },
+        {
+          "trend_a": "t03",
+          "trend_b": "t09",
+          "overlap": 1.0
+        },
+        {
+          "trend_a": "t03",
+          "trend_b": "t11",
+          "overlap": 1.0
+        },
+        {
+          "trend_a": "t03",
+          "trend_b": "t12",
+          "overlap": 1.0
+        },
+        {
+          "trend_a": "t03",
+          "trend_b": "t13",
+          "overlap": 1.0
+        },
+        {
+          "trend_a": "t03",
+          "trend_b": "t16",
+          "overlap": 1.0
+        },
+        {
+          "trend_a": "t03",
+          "trend_b": "t17",
+          "overlap": 1.0
+        },
+        {
+          "trend_a": "t03",
+          "trend_b": "t19",
+          "overlap": 1.0
+        },
+        {
+          "trend_a": "t03",
+          "trend_b": "t20",
+          "overlap": 1.0
+        },
+        {
+          "trend_a": "t03",
+          "trend_b": "t22",
+          "overlap": 1.0
+        },
+        {
+          "trend_a": "t03",
+          "trend_b": "t23",
+          "overlap": 1.0
+        },
+        {
+          "trend_a": "t03",
+          "trend_b": "t26",
+          "overlap": 1.0
+        },
+        {
+          "trend_a": "t03",
+          "trend_b": "t27",
+          "overlap": 1.0
+        },
+        {
+          "trend_a": "t03",
+          "trend_b": "t28",
+          "overlap": 1.0
+        },
+        {
+          "trend_a": "t03",
+          "trend_b": "t29",
+          "overlap": 1.0
+        },
+        {
+          "trend_a": "t03",
+          "trend_b": "t30",
+          "overlap": 1.0
+        },
+        {
+          "trend_a": "t04",
+          "trend_b": "t08",
+          "overlap": 1.0
+        },
+        {
+          "trend_a": "t04",
+          "trend_b": "t15",
+          "overlap": 1.0
+        },
+        {
+          "trend_a": "t04",
+          "trend_b": "t24",
+          "overlap": 1.0
+        },
+        {
+          "trend_a": "t04",
+          "trend_b": "t25",
+          "overlap": 1.0
+        },
+        {
+          "trend_a": "t05",
+          "trend_b": "t06",
+          "overlap": 1.0
+        },
+        {
+          "trend_a": "t05",
+          "trend_b": "t07",
+          "overlap": 1.0
+        },
+        {
+          "trend_a": "t05",
+          "trend_b": "t09",
+          "overlap": 1.0
+        },
+        {
+          "trend_a": "t05",
+          "trend_b": "t11",
+          "overlap": 1.0
+        },
+        {
+          "trend_a": "t05",
+          "trend_b": "t12",
+          "overlap": 1.0
+        },
+        {
+          "trend_a": "t05",
+          "trend_b": "t13",
+          "overlap": 1.0
+        },
+        {
+          "trend_a": "t05",
+          "trend_b": "t16",
+          "overlap": 1.0
+        },
+        {
+          "trend_a": "t05",
+          "trend_b": "t17",
+          "overlap": 1.0
+        },
+        {
+          "trend_a": "t05",
+          "trend_b": "t19",
+          "overlap": 1.0
+        },
+        {
+          "trend_a": "t05",
+          "trend_b": "t20",
+          "overlap": 1.0
+        },
+        {
+          "trend_a": "t05",
+          "trend_b": "t22",
+          "overlap": 1.0
+        },
+        {
+          "trend_a": "t05",
+          "trend_b": "t23",
+          "overlap": 1.0
+        },
+        {
+          "trend_a": "t05",
+          "trend_b": "t26",
+          "overlap": 1.0
+        },
+        {
+          "trend_a": "t05",
+          "trend_b": "t27",
+          "overlap": 1.0
+        },
+        {
+          "trend_a": "t05",
+          "trend_b": "t28",
+          "overlap": 1.0
+        },
+        {
+          "trend_a": "t05",
+          "trend_b": "t29",
+          "overlap": 1.0
+        },
+        {
+          "trend_a": "t05",
+          "trend_b": "t30",
+          "overlap": 1.0
+        },
+        {
+          "trend_a": "t06",
+          "trend_b": "t07",
+          "overlap": 1.0
+        },
+        {
+          "trend_a": "t06",
+          "trend_b": "t09",
+          "overlap": 1.0
+        },
+        {
+          "trend_a": "t06",
+          "trend_b": "t11",
+          "overlap": 1.0
+        },
+        {
+          "trend_a": "t06",
+          "trend_b": "t12",
+          "overlap": 1.0
+        },
+        {
+          "trend_a": "t06",
+          "trend_b": "t13",
+          "overlap": 1.0
+        },
+        {
+          "trend_a": "t06",
+          "trend_b": "t16",
+          "overlap": 1.0
+        },
+        {
+          "trend_a": "t06",
+          "trend_b": "t17",
+          "overlap": 1.0
+        },
+        {
+          "trend_a": "t06",
+          "trend_b": "t19",
+          "overlap": 1.0
+        },
+        {
+          "trend_a": "t06",
+          "trend_b": "t20",
+          "overlap": 1.0
+        },
+        {
+          "trend_a": "t06",
+          "trend_b": "t22",
+          "overlap": 1.0
+        },
+        {
+          "trend_a": "t06",
+          "trend_b": "t23",
+          "overlap": 1.0
+        },
+        {
+          "trend_a": "t06",
+          "trend_b": "t26",
+          "overlap": 1.0
+        },
+        {
+          "trend_a": "t06",
+          "trend_b": "t27",
+          "overlap": 1.0
+        },
+        {
+          "trend_a": "t06",
+          "trend_b": "t28",
+          "overlap": 1.0
+        },
+        {
+          "trend_a": "t06",
+          "trend_b": "t29",
+          "overlap": 1.0
+        },
+        {
+          "trend_a": "t06",
+          "trend_b": "t30",
+          "overlap": 1.0
+        },
+        {
+          "trend_a": "t07",
+          "trend_b": "t09",
+          "overlap": 1.0
+        },
+        {
+          "trend_a": "t07",
+          "trend_b": "t11",
+          "overlap": 1.0
+        },
+        {
+          "trend_a": "t07",
+          "trend_b": "t12",
+          "overlap": 1.0
+        },
+        {
+          "trend_a": "t07",
+          "trend_b": "t13",
+          "overlap": 1.0
+        },
+        {
+          "trend_a": "t07",
+          "trend_b": "t16",
+          "overlap": 1.0
+        },
+        {
+          "trend_a": "t07",
+          "trend_b": "t17",
+          "overlap": 1.0
+        },
+        {
+          "trend_a": "t07",
+          "trend_b": "t19",
+          "overlap": 1.0
+        },
+        {
+          "trend_a": "t07",
+          "trend_b": "t20",
+          "overlap": 1.0
+        },
+        {
+          "trend_a": "t07",
+          "trend_b": "t22",
+          "overlap": 1.0
+        },
+        {
+          "trend_a": "t07",
+          "trend_b": "t23",
+          "overlap": 1.0
+        },
+        {
+          "trend_a": "t07",
+          "trend_b": "t26",
+          "overlap": 1.0
+        },
+        {
+          "trend_a": "t07",
+          "trend_b": "t27",
+          "overlap": 1.0
+        },
+        {
+          "trend_a": "t07",
+          "trend_b": "t28",
+          "overlap": 1.0
+        },
+        {
+          "trend_a": "t07",
+          "trend_b": "t29",
+          "overlap": 1.0
+        },
+        {
+          "trend_a": "t07",
+          "trend_b": "t30",
+          "overlap": 1.0
+        },
+        {
+          "trend_a": "t08",
+          "trend_b": "t15",
+          "overlap": 1.0
+        },
+        {
+          "trend_a": "t08",
+          "trend_b": "t24",
+          "overlap": 1.0
+        },
+        {
+          "trend_a": "t08",
+          "trend_b": "t25",
+          "overlap": 1.0
+        },
+        {
+          "trend_a": "t09",
+          "trend_b": "t11",
+          "overlap": 1.0
+        },
+        {
+          "trend_a": "t09",
+          "trend_b": "t12",
+          "overlap": 1.0
+        },
+        {
+          "trend_a": "t09",
+          "trend_b": "t13",
+          "overlap": 1.0
+        },
+        {
+          "trend_a": "t09",
+          "trend_b": "t16",
+          "overlap": 1.0
+        },
+        {
+          "trend_a": "t09",
+          "trend_b": "t17",
+          "overlap": 1.0
+        },
+        {
+          "trend_a": "t09",
+          "trend_b": "t19",
+          "overlap": 1.0
+        },
+        {
+          "trend_a": "t09",
+          "trend_b": "t20",
+          "overlap": 1.0
+        },
+        {
+          "trend_a": "t09",
+          "trend_b": "t22",
+          "overlap": 1.0
+        },
+        {
+          "trend_a": "t09",
+          "trend_b": "t23",
+          "overlap": 1.0
+        },
+        {
+          "trend_a": "t09",
+          "trend_b": "t26",
+          "overlap": 1.0
+        },
+        {
+          "trend_a": "t09",
+          "trend_b": "t27",
+          "overlap": 1.0
+        },
+        {
+          "trend_a": "t09",
+          "trend_b": "t28",
+          "overlap": 1.0
+        },
+        {
+          "trend_a": "t09",
+          "trend_b": "t29",
+          "overlap": 1.0
+        },
+        {
+          "trend_a": "t09",
+          "trend_b": "t30",
+          "overlap": 1.0
+        },
+        {
+          "trend_a": "t10",
+          "trend_b": "t14",
+          "overlap": 1.0
+        },
+        {
+          "trend_a": "t10",
+          "trend_b": "t18",
+          "overlap": 1.0
+        },
+        {
+          "trend_a": "t10",
+          "trend_b": "t21",
+          "overlap": 1.0
+        },
+        {
+          "trend_a": "t11",
+          "trend_b": "t12",
+          "overlap": 1.0
+        },
+        {
+          "trend_a": "t11",
+          "trend_b": "t13",
+          "overlap": 1.0
+        },
+        {
+          "trend_a": "t11",
+          "trend_b": "t16",
+          "overlap": 1.0
+        },
+        {
+          "trend_a": "t11",
+          "trend_b": "t17",
+          "overlap": 1.0
+        },
+        {
+          "trend_a": "t11",
+          "trend_b": "t19",
+          "overlap": 1.0
+        },
+        {
+          "trend_a": "t11",
+          "trend_b": "t20",
+          "overlap": 1.0
+        },
+        {
+          "trend_a": "t11",
+          "trend_b": "t22",
+          "overlap": 1.0
+        },
+        {
+          "trend_a": "t11",
+          "trend_b": "t23",
+          "overlap": 1.0
+        },
+        {
+          "trend_a": "t11",
+          "trend_b": "t26",
+          "overlap": 1.0
+        },
+        {
+          "trend_a": "t11",
+          "trend_b": "t27",
+          "overlap": 1.0
+        },
+        {
+          "trend_a": "t11",
+          "trend_b": "t28",
+          "overlap": 1.0
+        },
+        {
+          "trend_a": "t11",
+          "trend_b": "t29",
+          "overlap": 1.0
+        },
+        {
+          "trend_a": "t11",
+          "trend_b": "t30",
+          "overlap": 1.0
+        },
+        {
+          "trend_a": "t12",
+          "trend_b": "t13",
+          "overlap": 1.0
+        },
+        {
+          "trend_a": "t12",
+          "trend_b": "t16",
+          "overlap": 1.0
+        },
+        {
+          "trend_a": "t12",
+          "trend_b": "t17",
+          "overlap": 1.0
+        },
+        {
+          "trend_a": "t12",
+          "trend_b": "t19",
+          "overlap": 1.0
+        },
+        {
+          "trend_a": "t12",
+          "trend_b": "t20",
+          "overlap": 1.0
+        },
+        {
+          "trend_a": "t12",
+          "trend_b": "t22",
+          "overlap": 1.0
+        },
+        {
+          "trend_a": "t12",
+          "trend_b": "t23",
+          "overlap": 1.0
+        },
+        {
+          "trend_a": "t12",
+          "trend_b": "t26",
+          "overlap": 1.0
+        },
+        {
+          "trend_a": "t12",
+          "trend_b": "t27",
+          "overlap": 1.0
+        },
+        {
+          "trend_a": "t12",
+          "trend_b": "t28",
+          "overlap": 1.0
+        },
+        {
+          "trend_a": "t12",
+          "trend_b": "t29",
+          "overlap": 1.0
+        },
+        {
+          "trend_a": "t12",
+          "trend_b": "t30",
+          "overlap": 1.0
+        },
+        {
+          "trend_a": "t13",
+          "trend_b": "t16",
+          "overlap": 1.0
+        },
+        {
+          "trend_a": "t13",
+          "trend_b": "t17",
+          "overlap": 1.0
+        },
+        {
+          "trend_a": "t13",
+          "trend_b": "t19",
+          "overlap": 1.0
+        },
+        {
+          "trend_a": "t13",
+          "trend_b": "t20",
+          "overlap": 1.0
+        },
+        {
+          "trend_a": "t13",
+          "trend_b": "t22",
+          "overlap": 1.0
+        },
+        {
+          "trend_a": "t13",
+          "trend_b": "t23",
+          "overlap": 1.0
+        },
+        {
+          "trend_a": "t13",
+          "trend_b": "t26",
+          "overlap": 1.0
+        },
+        {
+          "trend_a": "t13",
+          "trend_b": "t27",
+          "overlap": 1.0
+        },
+        {
+          "trend_a": "t13",
+          "trend_b": "t28",
+          "overlap": 1.0
+        },
+        {
+          "trend_a": "t13",
+          "trend_b": "t29",
+          "overlap": 1.0
+        },
+        {
+          "trend_a": "t13",
+          "trend_b": "t30",
+          "overlap": 1.0
+        },
+        {
+          "trend_a": "t14",
+          "trend_b": "t18",
+          "overlap": 1.0
+        },
+        {
+          "trend_a": "t14",
+          "trend_b": "t21",
+          "overlap": 1.0
+        },
+        {
+          "trend_a": "t15",
+          "trend_b": "t24",
+          "overlap": 1.0
+        },
+        {
+          "trend_a": "t15",
+          "trend_b": "t25",
+          "overlap": 1.0
+        },
+        {
+          "trend_a": "t16",
+          "trend_b": "t17",
+          "overlap": 1.0
+        },
+        {
+          "trend_a": "t16",
+          "trend_b": "t19",
+          "overlap": 1.0
+        },
+        {
+          "trend_a": "t16",
+          "trend_b": "t20",
+          "overlap": 1.0
+        },
+        {
+          "trend_a": "t16",
+          "trend_b": "t22",
+          "overlap": 1.0
+        },
+        {
+          "trend_a": "t16",
+          "trend_b": "t23",
+          "overlap": 1.0
+        },
+        {
+          "trend_a": "t16",
+          "trend_b": "t26",
+          "overlap": 1.0
+        },
+        {
+          "trend_a": "t16",
+          "trend_b": "t27",
+          "overlap": 1.0
+        },
+        {
+          "trend_a": "t16",
+          "trend_b": "t28",
+          "overlap": 1.0
+        },
+        {
+          "trend_a": "t16",
+          "trend_b": "t29",
+          "overlap": 1.0
+        },
+        {
+          "trend_a": "t16",
+          "trend_b": "t30",
+          "overlap": 1.0
+        },
+        {
+          "trend_a": "t17",
+          "trend_b": "t19",
+          "overlap": 1.0
+        },
+        {
+          "trend_a": "t17",
+          "trend_b": "t20",
+          "overlap": 1.0
+        },
+        {
+          "trend_a": "t17",
+          "trend_b": "t22",
+          "overlap": 1.0
+        },
+        {
+          "trend_a": "t17",
+          "trend_b": "t23",
+          "overlap": 1.0
+        },
+        {
+          "trend_a": "t17",
+          "trend_b": "t26",
+          "overlap": 1.0
+        },
+        {
+          "trend_a": "t17",
+          "trend_b": "t27",
+          "overlap": 1.0
+        },
+        {
+          "trend_a": "t17",
+          "trend_b": "t28",
+          "overlap": 1.0
+        },
+        {
+          "trend_a": "t17",
+          "trend_b": "t29",
+          "overlap": 1.0
+        },
+        {
+          "trend_a": "t17",
+          "trend_b": "t30",
+          "overlap": 1.0
+        },
+        {
+          "trend_a": "t18",
+          "trend_b": "t21",
+          "overlap": 1.0
+        },
+        {
+          "trend_a": "t19",
+          "trend_b": "t20",
+          "overlap": 1.0
+        },
+        {
+          "trend_a": "t19",
+          "trend_b": "t22",
+          "overlap": 1.0
+        },
+        {
+          "trend_a": "t19",
+          "trend_b": "t23",
+          "overlap": 1.0
+        },
+        {
+          "trend_a": "t19",
+          "trend_b": "t26",
+          "overlap": 1.0
+        },
+        {
+          "trend_a": "t19",
+          "trend_b": "t27",
+          "overlap": 1.0
+        },
+        {
+          "trend_a": "t19",
+          "trend_b": "t28",
+          "overlap": 1.0
+        },
+        {
+          "trend_a": "t19",
+          "trend_b": "t29",
+          "overlap": 1.0
+        },
+        {
+          "trend_a": "t19",
+          "trend_b": "t30",
+          "overlap": 1.0
+        },
+        {
+          "trend_a": "t20",
+          "trend_b": "t22",
+          "overlap": 1.0
+        },
+        {
+          "trend_a": "t20",
+          "trend_b": "t23",
+          "overlap": 1.0
+        },
+        {
+          "trend_a": "t20",
+          "trend_b": "t26",
+          "overlap": 1.0
+        },
+        {
+          "trend_a": "t20",
+          "trend_b": "t27",
+          "overlap": 1.0
+        },
+        {
+          "trend_a": "t20",
+          "trend_b": "t28",
+          "overlap": 1.0
+        },
+        {
+          "trend_a": "t20",
+          "trend_b": "t29",
+          "overlap": 1.0
+        },
+        {
+          "trend_a": "t20",
+          "trend_b": "t30",
+          "overlap": 1.0
+        },
+        {
+          "trend_a": "t22",
+          "trend_b": "t23",
+          "overlap": 1.0
+        },
+        {
+          "trend_a": "t22",
+          "trend_b": "t26",
+          "overlap": 1.0
+        },
+        {
+          "trend_a": "t22",
+          "trend_b": "t27",
+          "overlap": 1.0
+        },
+        {
+          "trend_a": "t22",
+          "trend_b": "t28",
+          "overlap": 1.0
+        },
+        {
+          "trend_a": "t22",
+          "trend_b": "t29",
+          "overlap": 1.0
+        },
+        {
+          "trend_a": "t22",
+          "trend_b": "t30",
+          "overlap": 1.0
+        },
+        {
+          "trend_a": "t23",
+          "trend_b": "t26",
+          "overlap": 1.0
+        },
+        {
+          "trend_a": "t23",
+          "trend_b": "t27",
+          "overlap": 1.0
+        },
+        {
+          "trend_a": "t23",
+          "trend_b": "t28",
+          "overlap": 1.0
+        },
+        {
+          "trend_a": "t23",
+          "trend_b": "t29",
+          "overlap": 1.0
+        },
+        {
+          "trend_a": "t23",
+          "trend_b": "t30",
+          "overlap": 1.0
+        },
+        {
+          "trend_a": "t24",
+          "trend_b": "t25",
+          "overlap": 1.0
+        },
+        {
+          "trend_a": "t26",
+          "trend_b": "t27",
+          "overlap": 1.0
+        },
+        {
+          "trend_a": "t26",
+          "trend_b": "t28",
+          "overlap": 1.0
+        },
+        {
+          "trend_a": "t26",
+          "trend_b": "t29",
+          "overlap": 1.0
+        },
+        {
+          "trend_a": "t26",
+          "trend_b": "t30",
+          "overlap": 1.0
+        },
+        {
+          "trend_a": "t27",
+          "trend_b": "t28",
+          "overlap": 1.0
+        },
+        {
+          "trend_a": "t27",
+          "trend_b": "t29",
+          "overlap": 1.0
+        },
+        {
+          "trend_a": "t27",
+          "trend_b": "t30",
+          "overlap": 1.0
+        },
+        {
+          "trend_a": "t28",
+          "trend_b": "t29",
+          "overlap": 1.0
+        },
+        {
+          "trend_a": "t28",
+          "trend_b": "t30",
+          "overlap": 1.0
+        },
+        {
+          "trend_a": "t29",
+          "trend_b": "t30",
+          "overlap": 1.0
         }
       ],
+      "shared_post_ids": [],
       "per_trend": [
         {
           "trend_id": "t01",
-          "label": "Old Celine vs New Celine Nostalgia Debate",
+          "label": "Mixed Trend Signals",
           "passed": false,
           "issues": [
-            "post_id live_0159 shared with ['t03']",
-            "post_id live_0090 shared with ['t02']"
+            "Label too similar to t04 (overlap 100%)",
+            "Label too similar to t08 (overlap 100%)",
+            "Label too similar to t15 (overlap 100%)",
+            "Label too similar to t24 (overlap 100%)",
+            "Label too similar to t25 (overlap 100%)"
           ]
         },
         {
           "trend_id": "t02",
-          "label": "Celine Box Bag Relevance and Popularity Debate",
+          "label": "Luxury Handbag & Leather Goods",
           "passed": false,
           "issues": [
-            "post_id live_0090 shared with ['t01']",
-            "post_id live_0039 shared with ['t08']"
+            "Label too similar to t03 (overlap 100%)",
+            "Label too similar to t05 (overlap 100%)",
+            "Label too similar to t06 (overlap 100%)",
+            "Label too similar to t07 (overlap 100%)",
+            "Label too similar to t09 (overlap 100%)",
+            "Label too similar to t11 (overlap 100%)",
+            "Label too similar to t12 (overlap 100%)",
+            "Label too similar to t13 (overlap 100%)",
+            "Label too similar to t16 (overlap 100%)",
+            "Label too similar to t17 (overlap 100%)",
+            "Label too similar to t19 (overlap 100%)",
+            "Label too similar to t20 (overlap 100%)",
+            "Label too similar to t22 (overlap 100%)",
+            "Label too similar to t23 (overlap 100%)",
+            "Label too similar to t26 (overlap 100%)",
+            "Label too similar to t27 (overlap 100%)",
+            "Label too similar to t28 (overlap 100%)",
+            "Label too similar to t29 (overlap 100%)",
+            "Label too similar to t30 (overlap 100%)"
           ]
         },
         {
           "trend_id": "t03",
-          "label": "Soft 16 Bag Functional Reviews and Styling",
+          "label": "Luxury Handbag & Leather Goods",
           "passed": false,
           "issues": [
-            "post_id live_0159 shared with ['t01']",
-            "post_id live_0111 shared with ['t05']"
+            "Label too similar to t02 (overlap 100%)",
+            "Label too similar to t05 (overlap 100%)",
+            "Label too similar to t06 (overlap 100%)",
+            "Label too similar to t07 (overlap 100%)",
+            "Label too similar to t09 (overlap 100%)",
+            "Label too similar to t11 (overlap 100%)",
+            "Label too similar to t12 (overlap 100%)",
+            "Label too similar to t13 (overlap 100%)",
+            "Label too similar to t16 (overlap 100%)",
+            "Label too similar to t17 (overlap 100%)",
+            "Label too similar to t19 (overlap 100%)",
+            "Label too similar to t20 (overlap 100%)",
+            "Label too similar to t22 (overlap 100%)",
+            "Label too similar to t23 (overlap 100%)",
+            "Label too similar to t26 (overlap 100%)",
+            "Label too similar to t27 (overlap 100%)",
+            "Label too similar to t28 (overlap 100%)",
+            "Label too similar to t29 (overlap 100%)",
+            "Label too similar to t30 (overlap 100%)"
           ]
         },
         {
           "trend_id": "t04",
-          "label": "Celine 26 Spring/Summer and 2026 Fashion Show Content",
-          "passed": true,
-          "issues": []
+          "label": "Mixed Trend Signals",
+          "passed": false,
+          "issues": [
+            "Label too similar to t01 (overlap 100%)",
+            "Label too similar to t08 (overlap 100%)",
+            "Label too similar to t15 (overlap 100%)",
+            "Label too similar to t24 (overlap 100%)",
+            "Label too similar to t25 (overlap 100%)"
+          ]
         },
         {
           "trend_id": "t05",
-          "label": "Celebrity Outfit Decoding and Influence on Celine Styling",
+          "label": "Luxury Handbag & Leather Goods",
           "passed": false,
           "issues": [
-            "post_id live_0111 shared with ['t03']",
-            "post_id live_0078 shared with ['t08']"
+            "Label too similar to t02 (overlap 100%)",
+            "Label too similar to t03 (overlap 100%)",
+            "Label too similar to t06 (overlap 100%)",
+            "Label too similar to t07 (overlap 100%)",
+            "Label too similar to t09 (overlap 100%)",
+            "Label too similar to t11 (overlap 100%)",
+            "Label too similar to t12 (overlap 100%)",
+            "Label too similar to t13 (overlap 100%)",
+            "Label too similar to t16 (overlap 100%)",
+            "Label too similar to t17 (overlap 100%)",
+            "Label too similar to t19 (overlap 100%)",
+            "Label too similar to t20 (overlap 100%)",
+            "Label too similar to t22 (overlap 100%)",
+            "Label too similar to t23 (overlap 100%)",
+            "Label too similar to t26 (overlap 100%)",
+            "Label too similar to t27 (overlap 100%)",
+            "Label too similar to t28 (overlap 100%)",
+            "Label too similar to t29 (overlap 100%)",
+            "Label too similar to t30 (overlap 100%)"
           ]
         },
         {
           "trend_id": "t06",
-          "label": "Celine Bag Unboxing and Purchase Experience Sharing",
-          "passed": true,
-          "issues": []
+          "label": "Luxury Handbag & Leather Goods",
+          "passed": false,
+          "issues": [
+            "Label too similar to t02 (overlap 100%)",
+            "Label too similar to t03 (overlap 100%)",
+            "Label too similar to t05 (overlap 100%)",
+            "Label too similar to t07 (overlap 100%)",
+            "Label too similar to t09 (overlap 100%)",
+            "Label too similar to t11 (overlap 100%)",
+            "Label too similar to t12 (overlap 100%)",
+            "Label too similar to t13 (overlap 100%)",
+            "Label too similar to t16 (overlap 100%)",
+            "Label too similar to t17 (overlap 100%)",
+            "Label too similar to t19 (overlap 100%)",
+            "Label too similar to t20 (overlap 100%)",
+            "Label too similar to t22 (overlap 100%)",
+            "Label too similar to t23 (overlap 100%)",
+            "Label too similar to t26 (overlap 100%)",
+            "Label too similar to t27 (overlap 100%)",
+            "Label too similar to t28 (overlap 100%)",
+            "Label too similar to t29 (overlap 100%)",
+            "Label too similar to t30 (overlap 100%)"
+          ]
         },
         {
           "trend_id": "t07",
-          "label": "Celine Men’s Fashion and Male Accessory Focus",
-          "passed": true,
-          "issues": []
+          "label": "Luxury Handbag & Leather Goods",
+          "passed": false,
+          "issues": [
+            "Label too similar to t02 (overlap 100%)",
+            "Label too similar to t03 (overlap 100%)",
+            "Label too similar to t05 (overlap 100%)",
+            "Label too similar to t06 (overlap 100%)",
+            "Label too similar to t09 (overlap 100%)",
+            "Label too similar to t11 (overlap 100%)",
+            "Label too similar to t12 (overlap 100%)",
+            "Label too similar to t13 (overlap 100%)",
+            "Label too similar to t16 (overlap 100%)",
+            "Label too similar to t17 (overlap 100%)",
+            "Label too similar to t19 (overlap 100%)",
+            "Label too similar to t20 (overlap 100%)",
+            "Label too similar to t22 (overlap 100%)",
+            "Label too similar to t23 (overlap 100%)",
+            "Label too similar to t26 (overlap 100%)",
+            "Label too similar to t27 (overlap 100%)",
+            "Label too similar to t28 (overlap 100%)",
+            "Label too similar to t29 (overlap 100%)",
+            "Label too similar to t30 (overlap 100%)"
+          ]
         },
         {
           "trend_id": "t08",
-          "label": "Celine Bag Styling with French Old Money and Elegant Aesthetic",
+          "label": "Mixed Trend Signals",
           "passed": false,
           "issues": [
-            "post_id live_0039 shared with ['t02']",
-            "post_id live_0078 shared with ['t05']"
+            "Label too similar to t01 (overlap 100%)",
+            "Label too similar to t04 (overlap 100%)",
+            "Label too similar to t15 (overlap 100%)",
+            "Label too similar to t24 (overlap 100%)",
+            "Label too similar to t25 (overlap 100%)"
+          ]
+        },
+        {
+          "trend_id": "t09",
+          "label": "Luxury Handbag & Leather Goods",
+          "passed": false,
+          "issues": [
+            "Label too similar to t02 (overlap 100%)",
+            "Label too similar to t03 (overlap 100%)",
+            "Label too similar to t05 (overlap 100%)",
+            "Label too similar to t06 (overlap 100%)",
+            "Label too similar to t07 (overlap 100%)",
+            "Label too similar to t11 (overlap 100%)",
+            "Label too similar to t12 (overlap 100%)",
+            "Label too similar to t13 (overlap 100%)",
+            "Label too similar to t16 (overlap 100%)",
+            "Label too similar to t17 (overlap 100%)",
+            "Label too similar to t19 (overlap 100%)",
+            "Label too similar to t20 (overlap 100%)",
+            "Label too similar to t22 (overlap 100%)",
+            "Label too similar to t23 (overlap 100%)",
+            "Label too similar to t26 (overlap 100%)",
+            "Label too similar to t27 (overlap 100%)",
+            "Label too similar to t28 (overlap 100%)",
+            "Label too similar to t29 (overlap 100%)",
+            "Label too similar to t30 (overlap 100%)"
+          ]
+        },
+        {
+          "trend_id": "t10",
+          "label": "Seasonal Styling & Capsule Wardrobe",
+          "passed": false,
+          "issues": [
+            "Label too similar to t14 (overlap 100%)",
+            "Label too similar to t18 (overlap 100%)",
+            "Label too similar to t21 (overlap 100%)"
+          ]
+        },
+        {
+          "trend_id": "t11",
+          "label": "Luxury Handbag & Leather Goods",
+          "passed": false,
+          "issues": [
+            "Label too similar to t02 (overlap 100%)",
+            "Label too similar to t03 (overlap 100%)",
+            "Label too similar to t05 (overlap 100%)",
+            "Label too similar to t06 (overlap 100%)",
+            "Label too similar to t07 (overlap 100%)",
+            "Label too similar to t09 (overlap 100%)",
+            "Label too similar to t12 (overlap 100%)",
+            "Label too similar to t13 (overlap 100%)",
+            "Label too similar to t16 (overlap 100%)",
+            "Label too similar to t17 (overlap 100%)",
+            "Label too similar to t19 (overlap 100%)",
+            "Label too similar to t20 (overlap 100%)",
+            "Label too similar to t22 (overlap 100%)",
+            "Label too similar to t23 (overlap 100%)",
+            "Label too similar to t26 (overlap 100%)",
+            "Label too similar to t27 (overlap 100%)",
+            "Label too similar to t28 (overlap 100%)",
+            "Label too similar to t29 (overlap 100%)",
+            "Label too similar to t30 (overlap 100%)"
+          ]
+        },
+        {
+          "trend_id": "t12",
+          "label": "Luxury Handbag & Leather Goods",
+          "passed": false,
+          "issues": [
+            "Label too similar to t02 (overlap 100%)",
+            "Label too similar to t03 (overlap 100%)",
+            "Label too similar to t05 (overlap 100%)",
+            "Label too similar to t06 (overlap 100%)",
+            "Label too similar to t07 (overlap 100%)",
+            "Label too similar to t09 (overlap 100%)",
+            "Label too similar to t11 (overlap 100%)",
+            "Label too similar to t13 (overlap 100%)",
+            "Label too similar to t16 (overlap 100%)",
+            "Label too similar to t17 (overlap 100%)",
+            "Label too similar to t19 (overlap 100%)",
+            "Label too similar to t20 (overlap 100%)",
+            "Label too similar to t22 (overlap 100%)",
+            "Label too similar to t23 (overlap 100%)",
+            "Label too similar to t26 (overlap 100%)",
+            "Label too similar to t27 (overlap 100%)",
+            "Label too similar to t28 (overlap 100%)",
+            "Label too similar to t29 (overlap 100%)",
+            "Label too similar to t30 (overlap 100%)"
+          ]
+        },
+        {
+          "trend_id": "t13",
+          "label": "Luxury Handbag & Leather Goods",
+          "passed": false,
+          "issues": [
+            "Label too similar to t02 (overlap 100%)",
+            "Label too similar to t03 (overlap 100%)",
+            "Label too similar to t05 (overlap 100%)",
+            "Label too similar to t06 (overlap 100%)",
+            "Label too similar to t07 (overlap 100%)",
+            "Label too similar to t09 (overlap 100%)",
+            "Label too similar to t11 (overlap 100%)",
+            "Label too similar to t12 (overlap 100%)",
+            "Label too similar to t16 (overlap 100%)",
+            "Label too similar to t17 (overlap 100%)",
+            "Label too similar to t19 (overlap 100%)",
+            "Label too similar to t20 (overlap 100%)",
+            "Label too similar to t22 (overlap 100%)",
+            "Label too similar to t23 (overlap 100%)",
+            "Label too similar to t26 (overlap 100%)",
+            "Label too similar to t27 (overlap 100%)",
+            "Label too similar to t28 (overlap 100%)",
+            "Label too similar to t29 (overlap 100%)",
+            "Label too similar to t30 (overlap 100%)"
+          ]
+        },
+        {
+          "trend_id": "t14",
+          "label": "Seasonal Styling & Capsule Wardrobe",
+          "passed": false,
+          "issues": [
+            "Label too similar to t10 (overlap 100%)",
+            "Label too similar to t18 (overlap 100%)",
+            "Label too similar to t21 (overlap 100%)"
+          ]
+        },
+        {
+          "trend_id": "t15",
+          "label": "Mixed Trend Signals",
+          "passed": false,
+          "issues": [
+            "Label too similar to t01 (overlap 100%)",
+            "Label too similar to t04 (overlap 100%)",
+            "Label too similar to t08 (overlap 100%)",
+            "Label too similar to t24 (overlap 100%)",
+            "Label too similar to t25 (overlap 100%)"
+          ]
+        },
+        {
+          "trend_id": "t16",
+          "label": "Luxury Handbag & Leather Goods",
+          "passed": false,
+          "issues": [
+            "Label too similar to t02 (overlap 100%)",
+            "Label too similar to t03 (overlap 100%)",
+            "Label too similar to t05 (overlap 100%)",
+            "Label too similar to t06 (overlap 100%)",
+            "Label too similar to t07 (overlap 100%)",
+            "Label too similar to t09 (overlap 100%)",
+            "Label too similar to t11 (overlap 100%)",
+            "Label too similar to t12 (overlap 100%)",
+            "Label too similar to t13 (overlap 100%)",
+            "Label too similar to t17 (overlap 100%)",
+            "Label too similar to t19 (overlap 100%)",
+            "Label too similar to t20 (overlap 100%)",
+            "Label too similar to t22 (overlap 100%)",
+            "Label too similar to t23 (overlap 100%)",
+            "Label too similar to t26 (overlap 100%)",
+            "Label too similar to t27 (overlap 100%)",
+            "Label too similar to t28 (overlap 100%)",
+            "Label too similar to t29 (overlap 100%)",
+            "Label too similar to t30 (overlap 100%)"
+          ]
+        },
+        {
+          "trend_id": "t17",
+          "label": "Luxury Handbag & Leather Goods",
+          "passed": false,
+          "issues": [
+            "Label too similar to t02 (overlap 100%)",
+            "Label too similar to t03 (overlap 100%)",
+            "Label too similar to t05 (overlap 100%)",
+            "Label too similar to t06 (overlap 100%)",
+            "Label too similar to t07 (overlap 100%)",
+            "Label too similar to t09 (overlap 100%)",
+            "Label too similar to t11 (overlap 100%)",
+            "Label too similar to t12 (overlap 100%)",
+            "Label too similar to t13 (overlap 100%)",
+            "Label too similar to t16 (overlap 100%)",
+            "Label too similar to t19 (overlap 100%)",
+            "Label too similar to t20 (overlap 100%)",
+            "Label too similar to t22 (overlap 100%)",
+            "Label too similar to t23 (overlap 100%)",
+            "Label too similar to t26 (overlap 100%)",
+            "Label too similar to t27 (overlap 100%)",
+            "Label too similar to t28 (overlap 100%)",
+            "Label too similar to t29 (overlap 100%)",
+            "Label too similar to t30 (overlap 100%)"
+          ]
+        },
+        {
+          "trend_id": "t18",
+          "label": "Seasonal Styling & Capsule Wardrobe",
+          "passed": false,
+          "issues": [
+            "Label too similar to t10 (overlap 100%)",
+            "Label too similar to t14 (overlap 100%)",
+            "Label too similar to t21 (overlap 100%)"
+          ]
+        },
+        {
+          "trend_id": "t19",
+          "label": "Luxury Handbag & Leather Goods",
+          "passed": false,
+          "issues": [
+            "Label too similar to t02 (overlap 100%)",
+            "Label too similar to t03 (overlap 100%)",
+            "Label too similar to t05 (overlap 100%)",
+            "Label too similar to t06 (overlap 100%)",
+            "Label too similar to t07 (overlap 100%)",
+            "Label too similar to t09 (overlap 100%)",
+            "Label too similar to t11 (overlap 100%)",
+            "Label too similar to t12 (overlap 100%)",
+            "Label too similar to t13 (overlap 100%)",
+            "Label too similar to t16 (overlap 100%)",
+            "Label too similar to t17 (overlap 100%)",
+            "Label too similar to t20 (overlap 100%)",
+            "Label too similar to t22 (overlap 100%)",
+            "Label too similar to t23 (overlap 100%)",
+            "Label too similar to t26 (overlap 100%)",
+            "Label too similar to t27 (overlap 100%)",
+            "Label too similar to t28 (overlap 100%)",
+            "Label too similar to t29 (overlap 100%)",
+            "Label too similar to t30 (overlap 100%)"
+          ]
+        },
+        {
+          "trend_id": "t20",
+          "label": "Luxury Handbag & Leather Goods",
+          "passed": false,
+          "issues": [
+            "Label too similar to t02 (overlap 100%)",
+            "Label too similar to t03 (overlap 100%)",
+            "Label too similar to t05 (overlap 100%)",
+            "Label too similar to t06 (overlap 100%)",
+            "Label too similar to t07 (overlap 100%)",
+            "Label too similar to t09 (overlap 100%)",
+            "Label too similar to t11 (overlap 100%)",
+            "Label too similar to t12 (overlap 100%)",
+            "Label too similar to t13 (overlap 100%)",
+            "Label too similar to t16 (overlap 100%)",
+            "Label too similar to t17 (overlap 100%)",
+            "Label too similar to t19 (overlap 100%)",
+            "Label too similar to t22 (overlap 100%)",
+            "Label too similar to t23 (overlap 100%)",
+            "Label too similar to t26 (overlap 100%)",
+            "Label too similar to t27 (overlap 100%)",
+            "Label too similar to t28 (overlap 100%)",
+            "Label too similar to t29 (overlap 100%)",
+            "Label too similar to t30 (overlap 100%)"
+          ]
+        },
+        {
+          "trend_id": "t21",
+          "label": "Seasonal Styling & Capsule Wardrobe",
+          "passed": false,
+          "issues": [
+            "Label too similar to t10 (overlap 100%)",
+            "Label too similar to t14 (overlap 100%)",
+            "Label too similar to t18 (overlap 100%)"
+          ]
+        },
+        {
+          "trend_id": "t22",
+          "label": "Luxury Handbag & Leather Goods",
+          "passed": false,
+          "issues": [
+            "Label too similar to t02 (overlap 100%)",
+            "Label too similar to t03 (overlap 100%)",
+            "Label too similar to t05 (overlap 100%)",
+            "Label too similar to t06 (overlap 100%)",
+            "Label too similar to t07 (overlap 100%)",
+            "Label too similar to t09 (overlap 100%)",
+            "Label too similar to t11 (overlap 100%)",
+            "Label too similar to t12 (overlap 100%)",
+            "Label too similar to t13 (overlap 100%)",
+            "Label too similar to t16 (overlap 100%)",
+            "Label too similar to t17 (overlap 100%)",
+            "Label too similar to t19 (overlap 100%)",
+            "Label too similar to t20 (overlap 100%)",
+            "Label too similar to t23 (overlap 100%)",
+            "Label too similar to t26 (overlap 100%)",
+            "Label too similar to t27 (overlap 100%)",
+            "Label too similar to t28 (overlap 100%)",
+            "Label too similar to t29 (overlap 100%)",
+            "Label too similar to t30 (overlap 100%)"
+          ]
+        },
+        {
+          "trend_id": "t23",
+          "label": "Luxury Handbag & Leather Goods",
+          "passed": false,
+          "issues": [
+            "Label too similar to t02 (overlap 100%)",
+            "Label too similar to t03 (overlap 100%)",
+            "Label too similar to t05 (overlap 100%)",
+            "Label too similar to t06 (overlap 100%)",
+            "Label too similar to t07 (overlap 100%)",
+            "Label too similar to t09 (overlap 100%)",
+            "Label too similar to t11 (overlap 100%)",
+            "Label too similar to t12 (overlap 100%)",
+            "Label too similar to t13 (overlap 100%)",
+            "Label too similar to t16 (overlap 100%)",
+            "Label too similar to t17 (overlap 100%)",
+            "Label too similar to t19 (overlap 100%)",
+            "Label too similar to t20 (overlap 100%)",
+            "Label too similar to t22 (overlap 100%)",
+            "Label too similar to t26 (overlap 100%)",
+            "Label too similar to t27 (overlap 100%)",
+            "Label too similar to t28 (overlap 100%)",
+            "Label too similar to t29 (overlap 100%)",
+            "Label too similar to t30 (overlap 100%)"
+          ]
+        },
+        {
+          "trend_id": "t24",
+          "label": "Mixed Trend Signals",
+          "passed": false,
+          "issues": [
+            "Label too similar to t01 (overlap 100%)",
+            "Label too similar to t04 (overlap 100%)",
+            "Label too similar to t08 (overlap 100%)",
+            "Label too similar to t15 (overlap 100%)",
+            "Label too similar to t25 (overlap 100%)"
+          ]
+        },
+        {
+          "trend_id": "t25",
+          "label": "Mixed Trend Signals",
+          "passed": false,
+          "issues": [
+            "Label too similar to t01 (overlap 100%)",
+            "Label too similar to t04 (overlap 100%)",
+            "Label too similar to t08 (overlap 100%)",
+            "Label too similar to t15 (overlap 100%)",
+            "Label too similar to t24 (overlap 100%)"
+          ]
+        },
+        {
+          "trend_id": "t26",
+          "label": "Luxury Handbag & Leather Goods",
+          "passed": false,
+          "issues": [
+            "Label too similar to t02 (overlap 100%)",
+            "Label too similar to t03 (overlap 100%)",
+            "Label too similar to t05 (overlap 100%)",
+            "Label too similar to t06 (overlap 100%)",
+            "Label too similar to t07 (overlap 100%)",
+            "Label too similar to t09 (overlap 100%)",
+            "Label too similar to t11 (overlap 100%)",
+            "Label too similar to t12 (overlap 100%)",
+            "Label too similar to t13 (overlap 100%)",
+            "Label too similar to t16 (overlap 100%)",
+            "Label too similar to t17 (overlap 100%)",
+            "Label too similar to t19 (overlap 100%)",
+            "Label too similar to t20 (overlap 100%)",
+            "Label too similar to t22 (overlap 100%)",
+            "Label too similar to t23 (overlap 100%)",
+            "Label too similar to t27 (overlap 100%)",
+            "Label too similar to t28 (overlap 100%)",
+            "Label too similar to t29 (overlap 100%)",
+            "Label too similar to t30 (overlap 100%)"
+          ]
+        },
+        {
+          "trend_id": "t27",
+          "label": "Luxury Handbag & Leather Goods",
+          "passed": false,
+          "issues": [
+            "Label too similar to t02 (overlap 100%)",
+            "Label too similar to t03 (overlap 100%)",
+            "Label too similar to t05 (overlap 100%)",
+            "Label too similar to t06 (overlap 100%)",
+            "Label too similar to t07 (overlap 100%)",
+            "Label too similar to t09 (overlap 100%)",
+            "Label too similar to t11 (overlap 100%)",
+            "Label too similar to t12 (overlap 100%)",
+            "Label too similar to t13 (overlap 100%)",
+            "Label too similar to t16 (overlap 100%)",
+            "Label too similar to t17 (overlap 100%)",
+            "Label too similar to t19 (overlap 100%)",
+            "Label too similar to t20 (overlap 100%)",
+            "Label too similar to t22 (overlap 100%)",
+            "Label too similar to t23 (overlap 100%)",
+            "Label too similar to t26 (overlap 100%)",
+            "Label too similar to t28 (overlap 100%)",
+            "Label too similar to t29 (overlap 100%)",
+            "Label too similar to t30 (overlap 100%)"
+          ]
+        },
+        {
+          "trend_id": "t28",
+          "label": "Luxury Handbag & Leather Goods",
+          "passed": false,
+          "issues": [
+            "Label too similar to t02 (overlap 100%)",
+            "Label too similar to t03 (overlap 100%)",
+            "Label too similar to t05 (overlap 100%)",
+            "Label too similar to t06 (overlap 100%)",
+            "Label too similar to t07 (overlap 100%)",
+            "Label too similar to t09 (overlap 100%)",
+            "Label too similar to t11 (overlap 100%)",
+            "Label too similar to t12 (overlap 100%)",
+            "Label too similar to t13 (overlap 100%)",
+            "Label too similar to t16 (overlap 100%)",
+            "Label too similar to t17 (overlap 100%)",
+            "Label too similar to t19 (overlap 100%)",
+            "Label too similar to t20 (overlap 100%)",
+            "Label too similar to t22 (overlap 100%)",
+            "Label too similar to t23 (overlap 100%)",
+            "Label too similar to t26 (overlap 100%)",
+            "Label too similar to t27 (overlap 100%)",
+            "Label too similar to t29 (overlap 100%)",
+            "Label too similar to t30 (overlap 100%)"
+          ]
+        },
+        {
+          "trend_id": "t29",
+          "label": "Luxury Handbag & Leather Goods",
+          "passed": false,
+          "issues": [
+            "Label too similar to t02 (overlap 100%)",
+            "Label too similar to t03 (overlap 100%)",
+            "Label too similar to t05 (overlap 100%)",
+            "Label too similar to t06 (overlap 100%)",
+            "Label too similar to t07 (overlap 100%)",
+            "Label too similar to t09 (overlap 100%)",
+            "Label too similar to t11 (overlap 100%)",
+            "Label too similar to t12 (overlap 100%)",
+            "Label too similar to t13 (overlap 100%)",
+            "Label too similar to t16 (overlap 100%)",
+            "Label too similar to t17 (overlap 100%)",
+            "Label too similar to t19 (overlap 100%)",
+            "Label too similar to t20 (overlap 100%)",
+            "Label too similar to t22 (overlap 100%)",
+            "Label too similar to t23 (overlap 100%)",
+            "Label too similar to t26 (overlap 100%)",
+            "Label too similar to t27 (overlap 100%)",
+            "Label too similar to t28 (overlap 100%)",
+            "Label too similar to t30 (overlap 100%)"
+          ]
+        },
+        {
+          "trend_id": "t30",
+          "label": "Luxury Handbag & Leather Goods",
+          "passed": false,
+          "issues": [
+            "Label too similar to t02 (overlap 100%)",
+            "Label too similar to t03 (overlap 100%)",
+            "Label too similar to t05 (overlap 100%)",
+            "Label too similar to t06 (overlap 100%)",
+            "Label too similar to t07 (overlap 100%)",
+            "Label too similar to t09 (overlap 100%)",
+            "Label too similar to t11 (overlap 100%)",
+            "Label too similar to t12 (overlap 100%)",
+            "Label too similar to t13 (overlap 100%)",
+            "Label too similar to t16 (overlap 100%)",
+            "Label too similar to t17 (overlap 100%)",
+            "Label too similar to t19 (overlap 100%)",
+            "Label too similar to t20 (overlap 100%)",
+            "Label too similar to t22 (overlap 100%)",
+            "Label too similar to t23 (overlap 100%)",
+            "Label too similar to t26 (overlap 100%)",
+            "Label too similar to t27 (overlap 100%)",
+            "Label too similar to t28 (overlap 100%)",
+            "Label too similar to t29 (overlap 100%)"
           ]
         }
       ],
       "failures": [
         {
           "trend_id": "t01",
-          "label": "Old Celine vs New Celine Nostalgia Debate",
+          "label": "Mixed Trend Signals",
           "passed": false,
           "issues": [
-            "post_id live_0159 shared with ['t03']",
-            "post_id live_0090 shared with ['t02']"
+            "Label too similar to t04 (overlap 100%)",
+            "Label too similar to t08 (overlap 100%)",
+            "Label too similar to t15 (overlap 100%)",
+            "Label too similar to t24 (overlap 100%)",
+            "Label too similar to t25 (overlap 100%)"
           ]
         },
         {
           "trend_id": "t02",
-          "label": "Celine Box Bag Relevance and Popularity Debate",
+          "label": "Luxury Handbag & Leather Goods",
           "passed": false,
           "issues": [
-            "post_id live_0090 shared with ['t01']",
-            "post_id live_0039 shared with ['t08']"
+            "Label too similar to t03 (overlap 100%)",
+            "Label too similar to t05 (overlap 100%)",
+            "Label too similar to t06 (overlap 100%)",
+            "Label too similar to t07 (overlap 100%)",
+            "Label too similar to t09 (overlap 100%)",
+            "Label too similar to t11 (overlap 100%)",
+            "Label too similar to t12 (overlap 100%)",
+            "Label too similar to t13 (overlap 100%)",
+            "Label too similar to t16 (overlap 100%)",
+            "Label too similar to t17 (overlap 100%)",
+            "Label too similar to t19 (overlap 100%)",
+            "Label too similar to t20 (overlap 100%)",
+            "Label too similar to t22 (overlap 100%)",
+            "Label too similar to t23 (overlap 100%)",
+            "Label too similar to t26 (overlap 100%)",
+            "Label too similar to t27 (overlap 100%)",
+            "Label too similar to t28 (overlap 100%)",
+            "Label too similar to t29 (overlap 100%)",
+            "Label too similar to t30 (overlap 100%)"
           ]
         },
         {
           "trend_id": "t03",
-          "label": "Soft 16 Bag Functional Reviews and Styling",
+          "label": "Luxury Handbag & Leather Goods",
           "passed": false,
           "issues": [
-            "post_id live_0159 shared with ['t01']",
-            "post_id live_0111 shared with ['t05']"
+            "Label too similar to t02 (overlap 100%)",
+            "Label too similar to t05 (overlap 100%)",
+            "Label too similar to t06 (overlap 100%)",
+            "Label too similar to t07 (overlap 100%)",
+            "Label too similar to t09 (overlap 100%)",
+            "Label too similar to t11 (overlap 100%)",
+            "Label too similar to t12 (overlap 100%)",
+            "Label too similar to t13 (overlap 100%)",
+            "Label too similar to t16 (overlap 100%)",
+            "Label too similar to t17 (overlap 100%)",
+            "Label too similar to t19 (overlap 100%)",
+            "Label too similar to t20 (overlap 100%)",
+            "Label too similar to t22 (overlap 100%)",
+            "Label too similar to t23 (overlap 100%)",
+            "Label too similar to t26 (overlap 100%)",
+            "Label too similar to t27 (overlap 100%)",
+            "Label too similar to t28 (overlap 100%)",
+            "Label too similar to t29 (overlap 100%)",
+            "Label too similar to t30 (overlap 100%)"
+          ]
+        },
+        {
+          "trend_id": "t04",
+          "label": "Mixed Trend Signals",
+          "passed": false,
+          "issues": [
+            "Label too similar to t01 (overlap 100%)",
+            "Label too similar to t08 (overlap 100%)",
+            "Label too similar to t15 (overlap 100%)",
+            "Label too similar to t24 (overlap 100%)",
+            "Label too similar to t25 (overlap 100%)"
           ]
         },
         {
           "trend_id": "t05",
-          "label": "Celebrity Outfit Decoding and Influence on Celine Styling",
+          "label": "Luxury Handbag & Leather Goods",
           "passed": false,
           "issues": [
-            "post_id live_0111 shared with ['t03']",
-            "post_id live_0078 shared with ['t08']"
+            "Label too similar to t02 (overlap 100%)",
+            "Label too similar to t03 (overlap 100%)",
+            "Label too similar to t06 (overlap 100%)",
+            "Label too similar to t07 (overlap 100%)",
+            "Label too similar to t09 (overlap 100%)",
+            "Label too similar to t11 (overlap 100%)",
+            "Label too similar to t12 (overlap 100%)",
+            "Label too similar to t13 (overlap 100%)",
+            "Label too similar to t16 (overlap 100%)",
+            "Label too similar to t17 (overlap 100%)",
+            "Label too similar to t19 (overlap 100%)",
+            "Label too similar to t20 (overlap 100%)",
+            "Label too similar to t22 (overlap 100%)",
+            "Label too similar to t23 (overlap 100%)",
+            "Label too similar to t26 (overlap 100%)",
+            "Label too similar to t27 (overlap 100%)",
+            "Label too similar to t28 (overlap 100%)",
+            "Label too similar to t29 (overlap 100%)",
+            "Label too similar to t30 (overlap 100%)"
+          ]
+        },
+        {
+          "trend_id": "t06",
+          "label": "Luxury Handbag & Leather Goods",
+          "passed": false,
+          "issues": [
+            "Label too similar to t02 (overlap 100%)",
+            "Label too similar to t03 (overlap 100%)",
+            "Label too similar to t05 (overlap 100%)",
+            "Label too similar to t07 (overlap 100%)",
+            "Label too similar to t09 (overlap 100%)",
+            "Label too similar to t11 (overlap 100%)",
+            "Label too similar to t12 (overlap 100%)",
+            "Label too similar to t13 (overlap 100%)",
+            "Label too similar to t16 (overlap 100%)",
+            "Label too similar to t17 (overlap 100%)",
+            "Label too similar to t19 (overlap 100%)",
+            "Label too similar to t20 (overlap 100%)",
+            "Label too similar to t22 (overlap 100%)",
+            "Label too similar to t23 (overlap 100%)",
+            "Label too similar to t26 (overlap 100%)",
+            "Label too similar to t27 (overlap 100%)",
+            "Label too similar to t28 (overlap 100%)",
+            "Label too similar to t29 (overlap 100%)",
+            "Label too similar to t30 (overlap 100%)"
+          ]
+        },
+        {
+          "trend_id": "t07",
+          "label": "Luxury Handbag & Leather Goods",
+          "passed": false,
+          "issues": [
+            "Label too similar to t02 (overlap 100%)",
+            "Label too similar to t03 (overlap 100%)",
+            "Label too similar to t05 (overlap 100%)",
+            "Label too similar to t06 (overlap 100%)",
+            "Label too similar to t09 (overlap 100%)",
+            "Label too similar to t11 (overlap 100%)",
+            "Label too similar to t12 (overlap 100%)",
+            "Label too similar to t13 (overlap 100%)",
+            "Label too similar to t16 (overlap 100%)",
+            "Label too similar to t17 (overlap 100%)",
+            "Label too similar to t19 (overlap 100%)",
+            "Label too similar to t20 (overlap 100%)",
+            "Label too similar to t22 (overlap 100%)",
+            "Label too similar to t23 (overlap 100%)",
+            "Label too similar to t26 (overlap 100%)",
+            "Label too similar to t27 (overlap 100%)",
+            "Label too similar to t28 (overlap 100%)",
+            "Label too similar to t29 (overlap 100%)",
+            "Label too similar to t30 (overlap 100%)"
           ]
         },
         {
           "trend_id": "t08",
-          "label": "Celine Bag Styling with French Old Money and Elegant Aesthetic",
+          "label": "Mixed Trend Signals",
           "passed": false,
           "issues": [
-            "post_id live_0039 shared with ['t02']",
-            "post_id live_0078 shared with ['t05']"
+            "Label too similar to t01 (overlap 100%)",
+            "Label too similar to t04 (overlap 100%)",
+            "Label too similar to t15 (overlap 100%)",
+            "Label too similar to t24 (overlap 100%)",
+            "Label too similar to t25 (overlap 100%)"
+          ]
+        },
+        {
+          "trend_id": "t09",
+          "label": "Luxury Handbag & Leather Goods",
+          "passed": false,
+          "issues": [
+            "Label too similar to t02 (overlap 100%)",
+            "Label too similar to t03 (overlap 100%)",
+            "Label too similar to t05 (overlap 100%)",
+            "Label too similar to t06 (overlap 100%)",
+            "Label too similar to t07 (overlap 100%)",
+            "Label too similar to t11 (overlap 100%)",
+            "Label too similar to t12 (overlap 100%)",
+            "Label too similar to t13 (overlap 100%)",
+            "Label too similar to t16 (overlap 100%)",
+            "Label too similar to t17 (overlap 100%)",
+            "Label too similar to t19 (overlap 100%)",
+            "Label too similar to t20 (overlap 100%)",
+            "Label too similar to t22 (overlap 100%)",
+            "Label too similar to t23 (overlap 100%)",
+            "Label too similar to t26 (overlap 100%)",
+            "Label too similar to t27 (overlap 100%)",
+            "Label too similar to t28 (overlap 100%)",
+            "Label too similar to t29 (overlap 100%)",
+            "Label too similar to t30 (overlap 100%)"
+          ]
+        },
+        {
+          "trend_id": "t10",
+          "label": "Seasonal Styling & Capsule Wardrobe",
+          "passed": false,
+          "issues": [
+            "Label too similar to t14 (overlap 100%)",
+            "Label too similar to t18 (overlap 100%)",
+            "Label too similar to t21 (overlap 100%)"
+          ]
+        },
+        {
+          "trend_id": "t11",
+          "label": "Luxury Handbag & Leather Goods",
+          "passed": false,
+          "issues": [
+            "Label too similar to t02 (overlap 100%)",
+            "Label too similar to t03 (overlap 100%)",
+            "Label too similar to t05 (overlap 100%)",
+            "Label too similar to t06 (overlap 100%)",
+            "Label too similar to t07 (overlap 100%)",
+            "Label too similar to t09 (overlap 100%)",
+            "Label too similar to t12 (overlap 100%)",
+            "Label too similar to t13 (overlap 100%)",
+            "Label too similar to t16 (overlap 100%)",
+            "Label too similar to t17 (overlap 100%)",
+            "Label too similar to t19 (overlap 100%)",
+            "Label too similar to t20 (overlap 100%)",
+            "Label too similar to t22 (overlap 100%)",
+            "Label too similar to t23 (overlap 100%)",
+            "Label too similar to t26 (overlap 100%)",
+            "Label too similar to t27 (overlap 100%)",
+            "Label too similar to t28 (overlap 100%)",
+            "Label too similar to t29 (overlap 100%)",
+            "Label too similar to t30 (overlap 100%)"
+          ]
+        },
+        {
+          "trend_id": "t12",
+          "label": "Luxury Handbag & Leather Goods",
+          "passed": false,
+          "issues": [
+            "Label too similar to t02 (overlap 100%)",
+            "Label too similar to t03 (overlap 100%)",
+            "Label too similar to t05 (overlap 100%)",
+            "Label too similar to t06 (overlap 100%)",
+            "Label too similar to t07 (overlap 100%)",
+            "Label too similar to t09 (overlap 100%)",
+            "Label too similar to t11 (overlap 100%)",
+            "Label too similar to t13 (overlap 100%)",
+            "Label too similar to t16 (overlap 100%)",
+            "Label too similar to t17 (overlap 100%)",
+            "Label too similar to t19 (overlap 100%)",
+            "Label too similar to t20 (overlap 100%)",
+            "Label too similar to t22 (overlap 100%)",
+            "Label too similar to t23 (overlap 100%)",
+            "Label too similar to t26 (overlap 100%)",
+            "Label too similar to t27 (overlap 100%)",
+            "Label too similar to t28 (overlap 100%)",
+            "Label too similar to t29 (overlap 100%)",
+            "Label too similar to t30 (overlap 100%)"
+          ]
+        },
+        {
+          "trend_id": "t13",
+          "label": "Luxury Handbag & Leather Goods",
+          "passed": false,
+          "issues": [
+            "Label too similar to t02 (overlap 100%)",
+            "Label too similar to t03 (overlap 100%)",
+            "Label too similar to t05 (overlap 100%)",
+            "Label too similar to t06 (overlap 100%)",
+            "Label too similar to t07 (overlap 100%)",
+            "Label too similar to t09 (overlap 100%)",
+            "Label too similar to t11 (overlap 100%)",
+            "Label too similar to t12 (overlap 100%)",
+            "Label too similar to t16 (overlap 100%)",
+            "Label too similar to t17 (overlap 100%)",
+            "Label too similar to t19 (overlap 100%)",
+            "Label too similar to t20 (overlap 100%)",
+            "Label too similar to t22 (overlap 100%)",
+            "Label too similar to t23 (overlap 100%)",
+            "Label too similar to t26 (overlap 100%)",
+            "Label too similar to t27 (overlap 100%)",
+            "Label too similar to t28 (overlap 100%)",
+            "Label too similar to t29 (overlap 100%)",
+            "Label too similar to t30 (overlap 100%)"
+          ]
+        },
+        {
+          "trend_id": "t14",
+          "label": "Seasonal Styling & Capsule Wardrobe",
+          "passed": false,
+          "issues": [
+            "Label too similar to t10 (overlap 100%)",
+            "Label too similar to t18 (overlap 100%)",
+            "Label too similar to t21 (overlap 100%)"
+          ]
+        },
+        {
+          "trend_id": "t15",
+          "label": "Mixed Trend Signals",
+          "passed": false,
+          "issues": [
+            "Label too similar to t01 (overlap 100%)",
+            "Label too similar to t04 (overlap 100%)",
+            "Label too similar to t08 (overlap 100%)",
+            "Label too similar to t24 (overlap 100%)",
+            "Label too similar to t25 (overlap 100%)"
+          ]
+        },
+        {
+          "trend_id": "t16",
+          "label": "Luxury Handbag & Leather Goods",
+          "passed": false,
+          "issues": [
+            "Label too similar to t02 (overlap 100%)",
+            "Label too similar to t03 (overlap 100%)",
+            "Label too similar to t05 (overlap 100%)",
+            "Label too similar to t06 (overlap 100%)",
+            "Label too similar to t07 (overlap 100%)",
+            "Label too similar to t09 (overlap 100%)",
+            "Label too similar to t11 (overlap 100%)",
+            "Label too similar to t12 (overlap 100%)",
+            "Label too similar to t13 (overlap 100%)",
+            "Label too similar to t17 (overlap 100%)",
+            "Label too similar to t19 (overlap 100%)",
+            "Label too similar to t20 (overlap 100%)",
+            "Label too similar to t22 (overlap 100%)",
+            "Label too similar to t23 (overlap 100%)",
+            "Label too similar to t26 (overlap 100%)",
+            "Label too similar to t27 (overlap 100%)",
+            "Label too similar to t28 (overlap 100%)",
+            "Label too similar to t29 (overlap 100%)",
+            "Label too similar to t30 (overlap 100%)"
+          ]
+        },
+        {
+          "trend_id": "t17",
+          "label": "Luxury Handbag & Leather Goods",
+          "passed": false,
+          "issues": [
+            "Label too similar to t02 (overlap 100%)",
+            "Label too similar to t03 (overlap 100%)",
+            "Label too similar to t05 (overlap 100%)",
+            "Label too similar to t06 (overlap 100%)",
+            "Label too similar to t07 (overlap 100%)",
+            "Label too similar to t09 (overlap 100%)",
+            "Label too similar to t11 (overlap 100%)",
+            "Label too similar to t12 (overlap 100%)",
+            "Label too similar to t13 (overlap 100%)",
+            "Label too similar to t16 (overlap 100%)",
+            "Label too similar to t19 (overlap 100%)",
+            "Label too similar to t20 (overlap 100%)",
+            "Label too similar to t22 (overlap 100%)",
+            "Label too similar to t23 (overlap 100%)",
+            "Label too similar to t26 (overlap 100%)",
+            "Label too similar to t27 (overlap 100%)",
+            "Label too similar to t28 (overlap 100%)",
+            "Label too similar to t29 (overlap 100%)",
+            "Label too similar to t30 (overlap 100%)"
+          ]
+        },
+        {
+          "trend_id": "t18",
+          "label": "Seasonal Styling & Capsule Wardrobe",
+          "passed": false,
+          "issues": [
+            "Label too similar to t10 (overlap 100%)",
+            "Label too similar to t14 (overlap 100%)",
+            "Label too similar to t21 (overlap 100%)"
+          ]
+        },
+        {
+          "trend_id": "t19",
+          "label": "Luxury Handbag & Leather Goods",
+          "passed": false,
+          "issues": [
+            "Label too similar to t02 (overlap 100%)",
+            "Label too similar to t03 (overlap 100%)",
+            "Label too similar to t05 (overlap 100%)",
+            "Label too similar to t06 (overlap 100%)",
+            "Label too similar to t07 (overlap 100%)",
+            "Label too similar to t09 (overlap 100%)",
+            "Label too similar to t11 (overlap 100%)",
+            "Label too similar to t12 (overlap 100%)",
+            "Label too similar to t13 (overlap 100%)",
+            "Label too similar to t16 (overlap 100%)",
+            "Label too similar to t17 (overlap 100%)",
+            "Label too similar to t20 (overlap 100%)",
+            "Label too similar to t22 (overlap 100%)",
+            "Label too similar to t23 (overlap 100%)",
+            "Label too similar to t26 (overlap 100%)",
+            "Label too similar to t27 (overlap 100%)",
+            "Label too similar to t28 (overlap 100%)",
+            "Label too similar to t29 (overlap 100%)",
+            "Label too similar to t30 (overlap 100%)"
+          ]
+        },
+        {
+          "trend_id": "t20",
+          "label": "Luxury Handbag & Leather Goods",
+          "passed": false,
+          "issues": [
+            "Label too similar to t02 (overlap 100%)",
+            "Label too similar to t03 (overlap 100%)",
+            "Label too similar to t05 (overlap 100%)",
+            "Label too similar to t06 (overlap 100%)",
+            "Label too similar to t07 (overlap 100%)",
+            "Label too similar to t09 (overlap 100%)",
+            "Label too similar to t11 (overlap 100%)",
+            "Label too similar to t12 (overlap 100%)",
+            "Label too similar to t13 (overlap 100%)",
+            "Label too similar to t16 (overlap 100%)",
+            "Label too similar to t17 (overlap 100%)",
+            "Label too similar to t19 (overlap 100%)",
+            "Label too similar to t22 (overlap 100%)",
+            "Label too similar to t23 (overlap 100%)",
+            "Label too similar to t26 (overlap 100%)",
+            "Label too similar to t27 (overlap 100%)",
+            "Label too similar to t28 (overlap 100%)",
+            "Label too similar to t29 (overlap 100%)",
+            "Label too similar to t30 (overlap 100%)"
+          ]
+        },
+        {
+          "trend_id": "t21",
+          "label": "Seasonal Styling & Capsule Wardrobe",
+          "passed": false,
+          "issues": [
+            "Label too similar to t10 (overlap 100%)",
+            "Label too similar to t14 (overlap 100%)",
+            "Label too similar to t18 (overlap 100%)"
+          ]
+        },
+        {
+          "trend_id": "t22",
+          "label": "Luxury Handbag & Leather Goods",
+          "passed": false,
+          "issues": [
+            "Label too similar to t02 (overlap 100%)",
+            "Label too similar to t03 (overlap 100%)",
+            "Label too similar to t05 (overlap 100%)",
+            "Label too similar to t06 (overlap 100%)",
+            "Label too similar to t07 (overlap 100%)",
+            "Label too similar to t09 (overlap 100%)",
+            "Label too similar to t11 (overlap 100%)",
+            "Label too similar to t12 (overlap 100%)",
+            "Label too similar to t13 (overlap 100%)",
+            "Label too similar to t16 (overlap 100%)",
+            "Label too similar to t17 (overlap 100%)",
+            "Label too similar to t19 (overlap 100%)",
+            "Label too similar to t20 (overlap 100%)",
+            "Label too similar to t23 (overlap 100%)",
+            "Label too similar to t26 (overlap 100%)",
+            "Label too similar to t27 (overlap 100%)",
+            "Label too similar to t28 (overlap 100%)",
+            "Label too similar to t29 (overlap 100%)",
+            "Label too similar to t30 (overlap 100%)"
+          ]
+        },
+        {
+          "trend_id": "t23",
+          "label": "Luxury Handbag & Leather Goods",
+          "passed": false,
+          "issues": [
+            "Label too similar to t02 (overlap 100%)",
+            "Label too similar to t03 (overlap 100%)",
+            "Label too similar to t05 (overlap 100%)",
+            "Label too similar to t06 (overlap 100%)",
+            "Label too similar to t07 (overlap 100%)",
+            "Label too similar to t09 (overlap 100%)",
+            "Label too similar to t11 (overlap 100%)",
+            "Label too similar to t12 (overlap 100%)",
+            "Label too similar to t13 (overlap 100%)",
+            "Label too similar to t16 (overlap 100%)",
+            "Label too similar to t17 (overlap 100%)",
+            "Label too similar to t19 (overlap 100%)",
+            "Label too similar to t20 (overlap 100%)",
+            "Label too similar to t22 (overlap 100%)",
+            "Label too similar to t26 (overlap 100%)",
+            "Label too similar to t27 (overlap 100%)",
+            "Label too similar to t28 (overlap 100%)",
+            "Label too similar to t29 (overlap 100%)",
+            "Label too similar to t30 (overlap 100%)"
+          ]
+        },
+        {
+          "trend_id": "t24",
+          "label": "Mixed Trend Signals",
+          "passed": false,
+          "issues": [
+            "Label too similar to t01 (overlap 100%)",
+            "Label too similar to t04 (overlap 100%)",
+            "Label too similar to t08 (overlap 100%)",
+            "Label too similar to t15 (overlap 100%)",
+            "Label too similar to t25 (overlap 100%)"
+          ]
+        },
+        {
+          "trend_id": "t25",
+          "label": "Mixed Trend Signals",
+          "passed": false,
+          "issues": [
+            "Label too similar to t01 (overlap 100%)",
+            "Label too similar to t04 (overlap 100%)",
+            "Label too similar to t08 (overlap 100%)",
+            "Label too similar to t15 (overlap 100%)",
+            "Label too similar to t24 (overlap 100%)"
+          ]
+        },
+        {
+          "trend_id": "t26",
+          "label": "Luxury Handbag & Leather Goods",
+          "passed": false,
+          "issues": [
+            "Label too similar to t02 (overlap 100%)",
+            "Label too similar to t03 (overlap 100%)",
+            "Label too similar to t05 (overlap 100%)",
+            "Label too similar to t06 (overlap 100%)",
+            "Label too similar to t07 (overlap 100%)",
+            "Label too similar to t09 (overlap 100%)",
+            "Label too similar to t11 (overlap 100%)",
+            "Label too similar to t12 (overlap 100%)",
+            "Label too similar to t13 (overlap 100%)",
+            "Label too similar to t16 (overlap 100%)",
+            "Label too similar to t17 (overlap 100%)",
+            "Label too similar to t19 (overlap 100%)",
+            "Label too similar to t20 (overlap 100%)",
+            "Label too similar to t22 (overlap 100%)",
+            "Label too similar to t23 (overlap 100%)",
+            "Label too similar to t27 (overlap 100%)",
+            "Label too similar to t28 (overlap 100%)",
+            "Label too similar to t29 (overlap 100%)",
+            "Label too similar to t30 (overlap 100%)"
+          ]
+        },
+        {
+          "trend_id": "t27",
+          "label": "Luxury Handbag & Leather Goods",
+          "passed": false,
+          "issues": [
+            "Label too similar to t02 (overlap 100%)",
+            "Label too similar to t03 (overlap 100%)",
+            "Label too similar to t05 (overlap 100%)",
+            "Label too similar to t06 (overlap 100%)",
+            "Label too similar to t07 (overlap 100%)",
+            "Label too similar to t09 (overlap 100%)",
+            "Label too similar to t11 (overlap 100%)",
+            "Label too similar to t12 (overlap 100%)",
+            "Label too similar to t13 (overlap 100%)",
+            "Label too similar to t16 (overlap 100%)",
+            "Label too similar to t17 (overlap 100%)",
+            "Label too similar to t19 (overlap 100%)",
+            "Label too similar to t20 (overlap 100%)",
+            "Label too similar to t22 (overlap 100%)",
+            "Label too similar to t23 (overlap 100%)",
+            "Label too similar to t26 (overlap 100%)",
+            "Label too similar to t28 (overlap 100%)",
+            "Label too similar to t29 (overlap 100%)",
+            "Label too similar to t30 (overlap 100%)"
+          ]
+        },
+        {
+          "trend_id": "t28",
+          "label": "Luxury Handbag & Leather Goods",
+          "passed": false,
+          "issues": [
+            "Label too similar to t02 (overlap 100%)",
+            "Label too similar to t03 (overlap 100%)",
+            "Label too similar to t05 (overlap 100%)",
+            "Label too similar to t06 (overlap 100%)",
+            "Label too similar to t07 (overlap 100%)",
+            "Label too similar to t09 (overlap 100%)",
+            "Label too similar to t11 (overlap 100%)",
+            "Label too similar to t12 (overlap 100%)",
+            "Label too similar to t13 (overlap 100%)",
+            "Label too similar to t16 (overlap 100%)",
+            "Label too similar to t17 (overlap 100%)",
+            "Label too similar to t19 (overlap 100%)",
+            "Label too similar to t20 (overlap 100%)",
+            "Label too similar to t22 (overlap 100%)",
+            "Label too similar to t23 (overlap 100%)",
+            "Label too similar to t26 (overlap 100%)",
+            "Label too similar to t27 (overlap 100%)",
+            "Label too similar to t29 (overlap 100%)",
+            "Label too similar to t30 (overlap 100%)"
+          ]
+        },
+        {
+          "trend_id": "t29",
+          "label": "Luxury Handbag & Leather Goods",
+          "passed": false,
+          "issues": [
+            "Label too similar to t02 (overlap 100%)",
+            "Label too similar to t03 (overlap 100%)",
+            "Label too similar to t05 (overlap 100%)",
+            "Label too similar to t06 (overlap 100%)",
+            "Label too similar to t07 (overlap 100%)",
+            "Label too similar to t09 (overlap 100%)",
+            "Label too similar to t11 (overlap 100%)",
+            "Label too similar to t12 (overlap 100%)",
+            "Label too similar to t13 (overlap 100%)",
+            "Label too similar to t16 (overlap 100%)",
+            "Label too similar to t17 (overlap 100%)",
+            "Label too similar to t19 (overlap 100%)",
+            "Label too similar to t20 (overlap 100%)",
+            "Label too similar to t22 (overlap 100%)",
+            "Label too similar to t23 (overlap 100%)",
+            "Label too similar to t26 (overlap 100%)",
+            "Label too similar to t27 (overlap 100%)",
+            "Label too similar to t28 (overlap 100%)",
+            "Label too similar to t30 (overlap 100%)"
+          ]
+        },
+        {
+          "trend_id": "t30",
+          "label": "Luxury Handbag & Leather Goods",
+          "passed": false,
+          "issues": [
+            "Label too similar to t02 (overlap 100%)",
+            "Label too similar to t03 (overlap 100%)",
+            "Label too similar to t05 (overlap 100%)",
+            "Label too similar to t06 (overlap 100%)",
+            "Label too similar to t07 (overlap 100%)",
+            "Label too similar to t09 (overlap 100%)",
+            "Label too similar to t11 (overlap 100%)",
+            "Label too similar to t12 (overlap 100%)",
+            "Label too similar to t13 (overlap 100%)",
+            "Label too similar to t16 (overlap 100%)",
+            "Label too similar to t17 (overlap 100%)",
+            "Label too similar to t19 (overlap 100%)",
+            "Label too similar to t20 (overlap 100%)",
+            "Label too similar to t22 (overlap 100%)",
+            "Label too similar to t23 (overlap 100%)",
+            "Label too similar to t26 (overlap 100%)",
+            "Label too similar to t27 (overlap 100%)",
+            "Label too similar to t28 (overlap 100%)",
+            "Label too similar to t29 (overlap 100%)"
           ]
         }
       ]
@@ -163,78 +2339,276 @@
     {
       "check": "evidence_sufficiency",
       "passed": true,
-      "pass_rate": "8/8",
+      "pass_rate": "30/30",
       "per_trend": [
         {
           "trend_id": "t01",
-          "label": "Old Celine vs New Celine Nostalgia Debate",
-          "passed": true,
-          "snippet_count": 5,
-          "evidence_post_count": 5,
-          "post_count": 12,
-          "issues": []
-        },
-        {
-          "trend_id": "t02",
-          "label": "Celine Box Bag Relevance and Popularity Debate",
-          "passed": true,
-          "snippet_count": 5,
-          "evidence_post_count": 5,
-          "post_count": 10,
-          "issues": []
-        },
-        {
-          "trend_id": "t03",
-          "label": "Soft 16 Bag Functional Reviews and Styling",
-          "passed": true,
-          "snippet_count": 5,
-          "evidence_post_count": 5,
-          "post_count": 8,
-          "issues": []
-        },
-        {
-          "trend_id": "t04",
-          "label": "Celine 26 Spring/Summer and 2026 Fashion Show Content",
-          "passed": true,
-          "snippet_count": 5,
-          "evidence_post_count": 5,
-          "post_count": 14,
-          "issues": []
-        },
-        {
-          "trend_id": "t05",
-          "label": "Celebrity Outfit Decoding and Influence on Celine Styling",
-          "passed": true,
-          "snippet_count": 5,
-          "evidence_post_count": 5,
-          "post_count": 10,
-          "issues": []
-        },
-        {
-          "trend_id": "t06",
-          "label": "Celine Bag Unboxing and Purchase Experience Sharing",
-          "passed": true,
-          "snippet_count": 5,
-          "evidence_post_count": 5,
-          "post_count": 10,
-          "issues": []
-        },
-        {
-          "trend_id": "t07",
-          "label": "Celine Men’s Fashion and Male Accessory Focus",
-          "passed": true,
-          "snippet_count": 5,
-          "evidence_post_count": 5,
-          "post_count": 12,
-          "issues": []
-        },
-        {
-          "trend_id": "t08",
-          "label": "Celine Bag Styling with French Old Money and Elegant Aesthetic",
+          "label": "Mixed Trend Signals",
           "passed": true,
           "snippet_count": 5,
           "evidence_post_count": 5,
           "post_count": 7,
+          "issues": []
+        },
+        {
+          "trend_id": "t02",
+          "label": "Luxury Handbag & Leather Goods",
+          "passed": true,
+          "snippet_count": 5,
+          "evidence_post_count": 5,
+          "post_count": 7,
+          "issues": []
+        },
+        {
+          "trend_id": "t03",
+          "label": "Luxury Handbag & Leather Goods",
+          "passed": true,
+          "snippet_count": 5,
+          "evidence_post_count": 5,
+          "post_count": 7,
+          "issues": []
+        },
+        {
+          "trend_id": "t04",
+          "label": "Mixed Trend Signals",
+          "passed": true,
+          "snippet_count": 5,
+          "evidence_post_count": 5,
+          "post_count": 7,
+          "issues": []
+        },
+        {
+          "trend_id": "t05",
+          "label": "Luxury Handbag & Leather Goods",
+          "passed": true,
+          "snippet_count": 5,
+          "evidence_post_count": 5,
+          "post_count": 7,
+          "issues": []
+        },
+        {
+          "trend_id": "t06",
+          "label": "Luxury Handbag & Leather Goods",
+          "passed": true,
+          "snippet_count": 5,
+          "evidence_post_count": 5,
+          "post_count": 7,
+          "issues": []
+        },
+        {
+          "trend_id": "t07",
+          "label": "Luxury Handbag & Leather Goods",
+          "passed": true,
+          "snippet_count": 5,
+          "evidence_post_count": 5,
+          "post_count": 7,
+          "issues": []
+        },
+        {
+          "trend_id": "t08",
+          "label": "Mixed Trend Signals",
+          "passed": true,
+          "snippet_count": 5,
+          "evidence_post_count": 5,
+          "post_count": 7,
+          "issues": []
+        },
+        {
+          "trend_id": "t09",
+          "label": "Luxury Handbag & Leather Goods",
+          "passed": true,
+          "snippet_count": 5,
+          "evidence_post_count": 5,
+          "post_count": 7,
+          "issues": []
+        },
+        {
+          "trend_id": "t10",
+          "label": "Seasonal Styling & Capsule Wardrobe",
+          "passed": true,
+          "snippet_count": 5,
+          "evidence_post_count": 5,
+          "post_count": 7,
+          "issues": []
+        },
+        {
+          "trend_id": "t11",
+          "label": "Luxury Handbag & Leather Goods",
+          "passed": true,
+          "snippet_count": 5,
+          "evidence_post_count": 5,
+          "post_count": 7,
+          "issues": []
+        },
+        {
+          "trend_id": "t12",
+          "label": "Luxury Handbag & Leather Goods",
+          "passed": true,
+          "snippet_count": 5,
+          "evidence_post_count": 5,
+          "post_count": 7,
+          "issues": []
+        },
+        {
+          "trend_id": "t13",
+          "label": "Luxury Handbag & Leather Goods",
+          "passed": true,
+          "snippet_count": 5,
+          "evidence_post_count": 5,
+          "post_count": 7,
+          "issues": []
+        },
+        {
+          "trend_id": "t14",
+          "label": "Seasonal Styling & Capsule Wardrobe",
+          "passed": true,
+          "snippet_count": 5,
+          "evidence_post_count": 5,
+          "post_count": 7,
+          "issues": []
+        },
+        {
+          "trend_id": "t15",
+          "label": "Mixed Trend Signals",
+          "passed": true,
+          "snippet_count": 5,
+          "evidence_post_count": 5,
+          "post_count": 7,
+          "issues": []
+        },
+        {
+          "trend_id": "t16",
+          "label": "Luxury Handbag & Leather Goods",
+          "passed": true,
+          "snippet_count": 5,
+          "evidence_post_count": 5,
+          "post_count": 7,
+          "issues": []
+        },
+        {
+          "trend_id": "t17",
+          "label": "Luxury Handbag & Leather Goods",
+          "passed": true,
+          "snippet_count": 5,
+          "evidence_post_count": 5,
+          "post_count": 7,
+          "issues": []
+        },
+        {
+          "trend_id": "t18",
+          "label": "Seasonal Styling & Capsule Wardrobe",
+          "passed": true,
+          "snippet_count": 5,
+          "evidence_post_count": 5,
+          "post_count": 7,
+          "issues": []
+        },
+        {
+          "trend_id": "t19",
+          "label": "Luxury Handbag & Leather Goods",
+          "passed": true,
+          "snippet_count": 5,
+          "evidence_post_count": 5,
+          "post_count": 7,
+          "issues": []
+        },
+        {
+          "trend_id": "t20",
+          "label": "Luxury Handbag & Leather Goods",
+          "passed": true,
+          "snippet_count": 5,
+          "evidence_post_count": 5,
+          "post_count": 7,
+          "issues": []
+        },
+        {
+          "trend_id": "t21",
+          "label": "Seasonal Styling & Capsule Wardrobe",
+          "passed": true,
+          "snippet_count": 5,
+          "evidence_post_count": 5,
+          "post_count": 6,
+          "issues": []
+        },
+        {
+          "trend_id": "t22",
+          "label": "Luxury Handbag & Leather Goods",
+          "passed": true,
+          "snippet_count": 5,
+          "evidence_post_count": 5,
+          "post_count": 6,
+          "issues": []
+        },
+        {
+          "trend_id": "t23",
+          "label": "Luxury Handbag & Leather Goods",
+          "passed": true,
+          "snippet_count": 5,
+          "evidence_post_count": 5,
+          "post_count": 6,
+          "issues": []
+        },
+        {
+          "trend_id": "t24",
+          "label": "Mixed Trend Signals",
+          "passed": true,
+          "snippet_count": 5,
+          "evidence_post_count": 5,
+          "post_count": 6,
+          "issues": []
+        },
+        {
+          "trend_id": "t25",
+          "label": "Mixed Trend Signals",
+          "passed": true,
+          "snippet_count": 5,
+          "evidence_post_count": 5,
+          "post_count": 6,
+          "issues": []
+        },
+        {
+          "trend_id": "t26",
+          "label": "Luxury Handbag & Leather Goods",
+          "passed": true,
+          "snippet_count": 5,
+          "evidence_post_count": 5,
+          "post_count": 6,
+          "issues": []
+        },
+        {
+          "trend_id": "t27",
+          "label": "Luxury Handbag & Leather Goods",
+          "passed": true,
+          "snippet_count": 5,
+          "evidence_post_count": 5,
+          "post_count": 6,
+          "issues": []
+        },
+        {
+          "trend_id": "t28",
+          "label": "Luxury Handbag & Leather Goods",
+          "passed": true,
+          "snippet_count": 5,
+          "evidence_post_count": 5,
+          "post_count": 6,
+          "issues": []
+        },
+        {
+          "trend_id": "t29",
+          "label": "Luxury Handbag & Leather Goods",
+          "passed": true,
+          "snippet_count": 5,
+          "evidence_post_count": 5,
+          "post_count": 6,
+          "issues": []
+        },
+        {
+          "trend_id": "t30",
+          "label": "Luxury Handbag & Leather Goods",
+          "passed": true,
+          "snippet_count": 5,
+          "evidence_post_count": 5,
+          "post_count": 6,
           "issues": []
         }
       ],
@@ -243,75 +2617,1344 @@
     {
       "check": "label_clarity",
       "passed": false,
-      "pass_rate": "7/8",
+      "pass_rate": "0/30",
       "per_trend": [
         {
           "trend_id": "t01",
-          "label": "Old Celine vs New Celine Nostalgia Debate",
-          "word_count": 7,
-          "passed": true,
-          "issues": []
+          "label": "Mixed Trend Signals",
+          "word_count": 3,
+          "passed": false,
+          "issues": [
+            "Label contains generic term 'mixed'",
+            "Label not distinct from t04 ('Mixed Trend Signals', overlap 100%)",
+            "Label not distinct from t08 ('Mixed Trend Signals', overlap 100%)",
+            "Label not distinct from t15 ('Mixed Trend Signals', overlap 100%)",
+            "Label not distinct from t24 ('Mixed Trend Signals', overlap 100%)",
+            "Label not distinct from t25 ('Mixed Trend Signals', overlap 100%)"
+          ]
         },
         {
           "trend_id": "t02",
-          "label": "Celine Box Bag Relevance and Popularity Debate",
-          "word_count": 7,
-          "passed": true,
-          "issues": []
+          "label": "Luxury Handbag & Leather Goods",
+          "word_count": 4,
+          "passed": false,
+          "issues": [
+            "Label not distinct from t03 ('Luxury Handbag & Leather Goods', overlap 100%)",
+            "Label not distinct from t05 ('Luxury Handbag & Leather Goods', overlap 100%)",
+            "Label not distinct from t06 ('Luxury Handbag & Leather Goods', overlap 100%)",
+            "Label not distinct from t07 ('Luxury Handbag & Leather Goods', overlap 100%)",
+            "Label not distinct from t09 ('Luxury Handbag & Leather Goods', overlap 100%)",
+            "Label not distinct from t11 ('Luxury Handbag & Leather Goods', overlap 100%)",
+            "Label not distinct from t12 ('Luxury Handbag & Leather Goods', overlap 100%)",
+            "Label not distinct from t13 ('Luxury Handbag & Leather Goods', overlap 100%)",
+            "Label not distinct from t16 ('Luxury Handbag & Leather Goods', overlap 100%)",
+            "Label not distinct from t17 ('Luxury Handbag & Leather Goods', overlap 100%)",
+            "Label not distinct from t19 ('Luxury Handbag & Leather Goods', overlap 100%)",
+            "Label not distinct from t20 ('Luxury Handbag & Leather Goods', overlap 100%)",
+            "Label not distinct from t22 ('Luxury Handbag & Leather Goods', overlap 100%)",
+            "Label not distinct from t23 ('Luxury Handbag & Leather Goods', overlap 100%)",
+            "Label not distinct from t26 ('Luxury Handbag & Leather Goods', overlap 100%)",
+            "Label not distinct from t27 ('Luxury Handbag & Leather Goods', overlap 100%)",
+            "Label not distinct from t28 ('Luxury Handbag & Leather Goods', overlap 100%)",
+            "Label not distinct from t29 ('Luxury Handbag & Leather Goods', overlap 100%)",
+            "Label not distinct from t30 ('Luxury Handbag & Leather Goods', overlap 100%)"
+          ]
         },
         {
           "trend_id": "t03",
-          "label": "Soft 16 Bag Functional Reviews and Styling",
-          "word_count": 6,
-          "passed": true,
-          "issues": []
+          "label": "Luxury Handbag & Leather Goods",
+          "word_count": 4,
+          "passed": false,
+          "issues": [
+            "Label not distinct from t02 ('Luxury Handbag & Leather Goods', overlap 100%)",
+            "Label not distinct from t05 ('Luxury Handbag & Leather Goods', overlap 100%)",
+            "Label not distinct from t06 ('Luxury Handbag & Leather Goods', overlap 100%)",
+            "Label not distinct from t07 ('Luxury Handbag & Leather Goods', overlap 100%)",
+            "Label not distinct from t09 ('Luxury Handbag & Leather Goods', overlap 100%)",
+            "Label not distinct from t11 ('Luxury Handbag & Leather Goods', overlap 100%)",
+            "Label not distinct from t12 ('Luxury Handbag & Leather Goods', overlap 100%)",
+            "Label not distinct from t13 ('Luxury Handbag & Leather Goods', overlap 100%)",
+            "Label not distinct from t16 ('Luxury Handbag & Leather Goods', overlap 100%)",
+            "Label not distinct from t17 ('Luxury Handbag & Leather Goods', overlap 100%)",
+            "Label not distinct from t19 ('Luxury Handbag & Leather Goods', overlap 100%)",
+            "Label not distinct from t20 ('Luxury Handbag & Leather Goods', overlap 100%)",
+            "Label not distinct from t22 ('Luxury Handbag & Leather Goods', overlap 100%)",
+            "Label not distinct from t23 ('Luxury Handbag & Leather Goods', overlap 100%)",
+            "Label not distinct from t26 ('Luxury Handbag & Leather Goods', overlap 100%)",
+            "Label not distinct from t27 ('Luxury Handbag & Leather Goods', overlap 100%)",
+            "Label not distinct from t28 ('Luxury Handbag & Leather Goods', overlap 100%)",
+            "Label not distinct from t29 ('Luxury Handbag & Leather Goods', overlap 100%)",
+            "Label not distinct from t30 ('Luxury Handbag & Leather Goods', overlap 100%)"
+          ]
         },
         {
           "trend_id": "t04",
-          "label": "Celine 26 Spring/Summer and 2026 Fashion Show Content",
-          "word_count": 7,
-          "passed": true,
-          "issues": []
+          "label": "Mixed Trend Signals",
+          "word_count": 3,
+          "passed": false,
+          "issues": [
+            "Label contains generic term 'mixed'",
+            "Label not distinct from t01 ('Mixed Trend Signals', overlap 100%)",
+            "Label not distinct from t08 ('Mixed Trend Signals', overlap 100%)",
+            "Label not distinct from t15 ('Mixed Trend Signals', overlap 100%)",
+            "Label not distinct from t24 ('Mixed Trend Signals', overlap 100%)",
+            "Label not distinct from t25 ('Mixed Trend Signals', overlap 100%)"
+          ]
         },
         {
           "trend_id": "t05",
-          "label": "Celebrity Outfit Decoding and Influence on Celine Styling",
-          "word_count": 8,
-          "passed": true,
-          "issues": []
+          "label": "Luxury Handbag & Leather Goods",
+          "word_count": 4,
+          "passed": false,
+          "issues": [
+            "Label not distinct from t02 ('Luxury Handbag & Leather Goods', overlap 100%)",
+            "Label not distinct from t03 ('Luxury Handbag & Leather Goods', overlap 100%)",
+            "Label not distinct from t06 ('Luxury Handbag & Leather Goods', overlap 100%)",
+            "Label not distinct from t07 ('Luxury Handbag & Leather Goods', overlap 100%)",
+            "Label not distinct from t09 ('Luxury Handbag & Leather Goods', overlap 100%)",
+            "Label not distinct from t11 ('Luxury Handbag & Leather Goods', overlap 100%)",
+            "Label not distinct from t12 ('Luxury Handbag & Leather Goods', overlap 100%)",
+            "Label not distinct from t13 ('Luxury Handbag & Leather Goods', overlap 100%)",
+            "Label not distinct from t16 ('Luxury Handbag & Leather Goods', overlap 100%)",
+            "Label not distinct from t17 ('Luxury Handbag & Leather Goods', overlap 100%)",
+            "Label not distinct from t19 ('Luxury Handbag & Leather Goods', overlap 100%)",
+            "Label not distinct from t20 ('Luxury Handbag & Leather Goods', overlap 100%)",
+            "Label not distinct from t22 ('Luxury Handbag & Leather Goods', overlap 100%)",
+            "Label not distinct from t23 ('Luxury Handbag & Leather Goods', overlap 100%)",
+            "Label not distinct from t26 ('Luxury Handbag & Leather Goods', overlap 100%)",
+            "Label not distinct from t27 ('Luxury Handbag & Leather Goods', overlap 100%)",
+            "Label not distinct from t28 ('Luxury Handbag & Leather Goods', overlap 100%)",
+            "Label not distinct from t29 ('Luxury Handbag & Leather Goods', overlap 100%)",
+            "Label not distinct from t30 ('Luxury Handbag & Leather Goods', overlap 100%)"
+          ]
         },
         {
           "trend_id": "t06",
-          "label": "Celine Bag Unboxing and Purchase Experience Sharing",
-          "word_count": 7,
-          "passed": true,
-          "issues": []
+          "label": "Luxury Handbag & Leather Goods",
+          "word_count": 4,
+          "passed": false,
+          "issues": [
+            "Label not distinct from t02 ('Luxury Handbag & Leather Goods', overlap 100%)",
+            "Label not distinct from t03 ('Luxury Handbag & Leather Goods', overlap 100%)",
+            "Label not distinct from t05 ('Luxury Handbag & Leather Goods', overlap 100%)",
+            "Label not distinct from t07 ('Luxury Handbag & Leather Goods', overlap 100%)",
+            "Label not distinct from t09 ('Luxury Handbag & Leather Goods', overlap 100%)",
+            "Label not distinct from t11 ('Luxury Handbag & Leather Goods', overlap 100%)",
+            "Label not distinct from t12 ('Luxury Handbag & Leather Goods', overlap 100%)",
+            "Label not distinct from t13 ('Luxury Handbag & Leather Goods', overlap 100%)",
+            "Label not distinct from t16 ('Luxury Handbag & Leather Goods', overlap 100%)",
+            "Label not distinct from t17 ('Luxury Handbag & Leather Goods', overlap 100%)",
+            "Label not distinct from t19 ('Luxury Handbag & Leather Goods', overlap 100%)",
+            "Label not distinct from t20 ('Luxury Handbag & Leather Goods', overlap 100%)",
+            "Label not distinct from t22 ('Luxury Handbag & Leather Goods', overlap 100%)",
+            "Label not distinct from t23 ('Luxury Handbag & Leather Goods', overlap 100%)",
+            "Label not distinct from t26 ('Luxury Handbag & Leather Goods', overlap 100%)",
+            "Label not distinct from t27 ('Luxury Handbag & Leather Goods', overlap 100%)",
+            "Label not distinct from t28 ('Luxury Handbag & Leather Goods', overlap 100%)",
+            "Label not distinct from t29 ('Luxury Handbag & Leather Goods', overlap 100%)",
+            "Label not distinct from t30 ('Luxury Handbag & Leather Goods', overlap 100%)"
+          ]
         },
         {
           "trend_id": "t07",
-          "label": "Celine Men’s Fashion and Male Accessory Focus",
-          "word_count": 8,
-          "passed": true,
-          "issues": []
+          "label": "Luxury Handbag & Leather Goods",
+          "word_count": 4,
+          "passed": false,
+          "issues": [
+            "Label not distinct from t02 ('Luxury Handbag & Leather Goods', overlap 100%)",
+            "Label not distinct from t03 ('Luxury Handbag & Leather Goods', overlap 100%)",
+            "Label not distinct from t05 ('Luxury Handbag & Leather Goods', overlap 100%)",
+            "Label not distinct from t06 ('Luxury Handbag & Leather Goods', overlap 100%)",
+            "Label not distinct from t09 ('Luxury Handbag & Leather Goods', overlap 100%)",
+            "Label not distinct from t11 ('Luxury Handbag & Leather Goods', overlap 100%)",
+            "Label not distinct from t12 ('Luxury Handbag & Leather Goods', overlap 100%)",
+            "Label not distinct from t13 ('Luxury Handbag & Leather Goods', overlap 100%)",
+            "Label not distinct from t16 ('Luxury Handbag & Leather Goods', overlap 100%)",
+            "Label not distinct from t17 ('Luxury Handbag & Leather Goods', overlap 100%)",
+            "Label not distinct from t19 ('Luxury Handbag & Leather Goods', overlap 100%)",
+            "Label not distinct from t20 ('Luxury Handbag & Leather Goods', overlap 100%)",
+            "Label not distinct from t22 ('Luxury Handbag & Leather Goods', overlap 100%)",
+            "Label not distinct from t23 ('Luxury Handbag & Leather Goods', overlap 100%)",
+            "Label not distinct from t26 ('Luxury Handbag & Leather Goods', overlap 100%)",
+            "Label not distinct from t27 ('Luxury Handbag & Leather Goods', overlap 100%)",
+            "Label not distinct from t28 ('Luxury Handbag & Leather Goods', overlap 100%)",
+            "Label not distinct from t29 ('Luxury Handbag & Leather Goods', overlap 100%)",
+            "Label not distinct from t30 ('Luxury Handbag & Leather Goods', overlap 100%)"
+          ]
         },
         {
           "trend_id": "t08",
-          "label": "Celine Bag Styling with French Old Money and Elegant Aesthetic",
-          "word_count": 10,
+          "label": "Mixed Trend Signals",
+          "word_count": 3,
           "passed": false,
           "issues": [
-            "Label has 10 words, max is 8"
+            "Label contains generic term 'mixed'",
+            "Label not distinct from t01 ('Mixed Trend Signals', overlap 100%)",
+            "Label not distinct from t04 ('Mixed Trend Signals', overlap 100%)",
+            "Label not distinct from t15 ('Mixed Trend Signals', overlap 100%)",
+            "Label not distinct from t24 ('Mixed Trend Signals', overlap 100%)",
+            "Label not distinct from t25 ('Mixed Trend Signals', overlap 100%)"
+          ]
+        },
+        {
+          "trend_id": "t09",
+          "label": "Luxury Handbag & Leather Goods",
+          "word_count": 4,
+          "passed": false,
+          "issues": [
+            "Label not distinct from t02 ('Luxury Handbag & Leather Goods', overlap 100%)",
+            "Label not distinct from t03 ('Luxury Handbag & Leather Goods', overlap 100%)",
+            "Label not distinct from t05 ('Luxury Handbag & Leather Goods', overlap 100%)",
+            "Label not distinct from t06 ('Luxury Handbag & Leather Goods', overlap 100%)",
+            "Label not distinct from t07 ('Luxury Handbag & Leather Goods', overlap 100%)",
+            "Label not distinct from t11 ('Luxury Handbag & Leather Goods', overlap 100%)",
+            "Label not distinct from t12 ('Luxury Handbag & Leather Goods', overlap 100%)",
+            "Label not distinct from t13 ('Luxury Handbag & Leather Goods', overlap 100%)",
+            "Label not distinct from t16 ('Luxury Handbag & Leather Goods', overlap 100%)",
+            "Label not distinct from t17 ('Luxury Handbag & Leather Goods', overlap 100%)",
+            "Label not distinct from t19 ('Luxury Handbag & Leather Goods', overlap 100%)",
+            "Label not distinct from t20 ('Luxury Handbag & Leather Goods', overlap 100%)",
+            "Label not distinct from t22 ('Luxury Handbag & Leather Goods', overlap 100%)",
+            "Label not distinct from t23 ('Luxury Handbag & Leather Goods', overlap 100%)",
+            "Label not distinct from t26 ('Luxury Handbag & Leather Goods', overlap 100%)",
+            "Label not distinct from t27 ('Luxury Handbag & Leather Goods', overlap 100%)",
+            "Label not distinct from t28 ('Luxury Handbag & Leather Goods', overlap 100%)",
+            "Label not distinct from t29 ('Luxury Handbag & Leather Goods', overlap 100%)",
+            "Label not distinct from t30 ('Luxury Handbag & Leather Goods', overlap 100%)"
+          ]
+        },
+        {
+          "trend_id": "t10",
+          "label": "Seasonal Styling & Capsule Wardrobe",
+          "word_count": 4,
+          "passed": false,
+          "issues": [
+            "Label not distinct from t14 ('Seasonal Styling & Capsule Wardrobe', overlap 100%)",
+            "Label not distinct from t18 ('Seasonal Styling & Capsule Wardrobe', overlap 100%)",
+            "Label not distinct from t21 ('Seasonal Styling & Capsule Wardrobe', overlap 100%)"
+          ]
+        },
+        {
+          "trend_id": "t11",
+          "label": "Luxury Handbag & Leather Goods",
+          "word_count": 4,
+          "passed": false,
+          "issues": [
+            "Label not distinct from t02 ('Luxury Handbag & Leather Goods', overlap 100%)",
+            "Label not distinct from t03 ('Luxury Handbag & Leather Goods', overlap 100%)",
+            "Label not distinct from t05 ('Luxury Handbag & Leather Goods', overlap 100%)",
+            "Label not distinct from t06 ('Luxury Handbag & Leather Goods', overlap 100%)",
+            "Label not distinct from t07 ('Luxury Handbag & Leather Goods', overlap 100%)",
+            "Label not distinct from t09 ('Luxury Handbag & Leather Goods', overlap 100%)",
+            "Label not distinct from t12 ('Luxury Handbag & Leather Goods', overlap 100%)",
+            "Label not distinct from t13 ('Luxury Handbag & Leather Goods', overlap 100%)",
+            "Label not distinct from t16 ('Luxury Handbag & Leather Goods', overlap 100%)",
+            "Label not distinct from t17 ('Luxury Handbag & Leather Goods', overlap 100%)",
+            "Label not distinct from t19 ('Luxury Handbag & Leather Goods', overlap 100%)",
+            "Label not distinct from t20 ('Luxury Handbag & Leather Goods', overlap 100%)",
+            "Label not distinct from t22 ('Luxury Handbag & Leather Goods', overlap 100%)",
+            "Label not distinct from t23 ('Luxury Handbag & Leather Goods', overlap 100%)",
+            "Label not distinct from t26 ('Luxury Handbag & Leather Goods', overlap 100%)",
+            "Label not distinct from t27 ('Luxury Handbag & Leather Goods', overlap 100%)",
+            "Label not distinct from t28 ('Luxury Handbag & Leather Goods', overlap 100%)",
+            "Label not distinct from t29 ('Luxury Handbag & Leather Goods', overlap 100%)",
+            "Label not distinct from t30 ('Luxury Handbag & Leather Goods', overlap 100%)"
+          ]
+        },
+        {
+          "trend_id": "t12",
+          "label": "Luxury Handbag & Leather Goods",
+          "word_count": 4,
+          "passed": false,
+          "issues": [
+            "Label not distinct from t02 ('Luxury Handbag & Leather Goods', overlap 100%)",
+            "Label not distinct from t03 ('Luxury Handbag & Leather Goods', overlap 100%)",
+            "Label not distinct from t05 ('Luxury Handbag & Leather Goods', overlap 100%)",
+            "Label not distinct from t06 ('Luxury Handbag & Leather Goods', overlap 100%)",
+            "Label not distinct from t07 ('Luxury Handbag & Leather Goods', overlap 100%)",
+            "Label not distinct from t09 ('Luxury Handbag & Leather Goods', overlap 100%)",
+            "Label not distinct from t11 ('Luxury Handbag & Leather Goods', overlap 100%)",
+            "Label not distinct from t13 ('Luxury Handbag & Leather Goods', overlap 100%)",
+            "Label not distinct from t16 ('Luxury Handbag & Leather Goods', overlap 100%)",
+            "Label not distinct from t17 ('Luxury Handbag & Leather Goods', overlap 100%)",
+            "Label not distinct from t19 ('Luxury Handbag & Leather Goods', overlap 100%)",
+            "Label not distinct from t20 ('Luxury Handbag & Leather Goods', overlap 100%)",
+            "Label not distinct from t22 ('Luxury Handbag & Leather Goods', overlap 100%)",
+            "Label not distinct from t23 ('Luxury Handbag & Leather Goods', overlap 100%)",
+            "Label not distinct from t26 ('Luxury Handbag & Leather Goods', overlap 100%)",
+            "Label not distinct from t27 ('Luxury Handbag & Leather Goods', overlap 100%)",
+            "Label not distinct from t28 ('Luxury Handbag & Leather Goods', overlap 100%)",
+            "Label not distinct from t29 ('Luxury Handbag & Leather Goods', overlap 100%)",
+            "Label not distinct from t30 ('Luxury Handbag & Leather Goods', overlap 100%)"
+          ]
+        },
+        {
+          "trend_id": "t13",
+          "label": "Luxury Handbag & Leather Goods",
+          "word_count": 4,
+          "passed": false,
+          "issues": [
+            "Label not distinct from t02 ('Luxury Handbag & Leather Goods', overlap 100%)",
+            "Label not distinct from t03 ('Luxury Handbag & Leather Goods', overlap 100%)",
+            "Label not distinct from t05 ('Luxury Handbag & Leather Goods', overlap 100%)",
+            "Label not distinct from t06 ('Luxury Handbag & Leather Goods', overlap 100%)",
+            "Label not distinct from t07 ('Luxury Handbag & Leather Goods', overlap 100%)",
+            "Label not distinct from t09 ('Luxury Handbag & Leather Goods', overlap 100%)",
+            "Label not distinct from t11 ('Luxury Handbag & Leather Goods', overlap 100%)",
+            "Label not distinct from t12 ('Luxury Handbag & Leather Goods', overlap 100%)",
+            "Label not distinct from t16 ('Luxury Handbag & Leather Goods', overlap 100%)",
+            "Label not distinct from t17 ('Luxury Handbag & Leather Goods', overlap 100%)",
+            "Label not distinct from t19 ('Luxury Handbag & Leather Goods', overlap 100%)",
+            "Label not distinct from t20 ('Luxury Handbag & Leather Goods', overlap 100%)",
+            "Label not distinct from t22 ('Luxury Handbag & Leather Goods', overlap 100%)",
+            "Label not distinct from t23 ('Luxury Handbag & Leather Goods', overlap 100%)",
+            "Label not distinct from t26 ('Luxury Handbag & Leather Goods', overlap 100%)",
+            "Label not distinct from t27 ('Luxury Handbag & Leather Goods', overlap 100%)",
+            "Label not distinct from t28 ('Luxury Handbag & Leather Goods', overlap 100%)",
+            "Label not distinct from t29 ('Luxury Handbag & Leather Goods', overlap 100%)",
+            "Label not distinct from t30 ('Luxury Handbag & Leather Goods', overlap 100%)"
+          ]
+        },
+        {
+          "trend_id": "t14",
+          "label": "Seasonal Styling & Capsule Wardrobe",
+          "word_count": 4,
+          "passed": false,
+          "issues": [
+            "Label not distinct from t10 ('Seasonal Styling & Capsule Wardrobe', overlap 100%)",
+            "Label not distinct from t18 ('Seasonal Styling & Capsule Wardrobe', overlap 100%)",
+            "Label not distinct from t21 ('Seasonal Styling & Capsule Wardrobe', overlap 100%)"
+          ]
+        },
+        {
+          "trend_id": "t15",
+          "label": "Mixed Trend Signals",
+          "word_count": 3,
+          "passed": false,
+          "issues": [
+            "Label contains generic term 'mixed'",
+            "Label not distinct from t01 ('Mixed Trend Signals', overlap 100%)",
+            "Label not distinct from t04 ('Mixed Trend Signals', overlap 100%)",
+            "Label not distinct from t08 ('Mixed Trend Signals', overlap 100%)",
+            "Label not distinct from t24 ('Mixed Trend Signals', overlap 100%)",
+            "Label not distinct from t25 ('Mixed Trend Signals', overlap 100%)"
+          ]
+        },
+        {
+          "trend_id": "t16",
+          "label": "Luxury Handbag & Leather Goods",
+          "word_count": 4,
+          "passed": false,
+          "issues": [
+            "Label not distinct from t02 ('Luxury Handbag & Leather Goods', overlap 100%)",
+            "Label not distinct from t03 ('Luxury Handbag & Leather Goods', overlap 100%)",
+            "Label not distinct from t05 ('Luxury Handbag & Leather Goods', overlap 100%)",
+            "Label not distinct from t06 ('Luxury Handbag & Leather Goods', overlap 100%)",
+            "Label not distinct from t07 ('Luxury Handbag & Leather Goods', overlap 100%)",
+            "Label not distinct from t09 ('Luxury Handbag & Leather Goods', overlap 100%)",
+            "Label not distinct from t11 ('Luxury Handbag & Leather Goods', overlap 100%)",
+            "Label not distinct from t12 ('Luxury Handbag & Leather Goods', overlap 100%)",
+            "Label not distinct from t13 ('Luxury Handbag & Leather Goods', overlap 100%)",
+            "Label not distinct from t17 ('Luxury Handbag & Leather Goods', overlap 100%)",
+            "Label not distinct from t19 ('Luxury Handbag & Leather Goods', overlap 100%)",
+            "Label not distinct from t20 ('Luxury Handbag & Leather Goods', overlap 100%)",
+            "Label not distinct from t22 ('Luxury Handbag & Leather Goods', overlap 100%)",
+            "Label not distinct from t23 ('Luxury Handbag & Leather Goods', overlap 100%)",
+            "Label not distinct from t26 ('Luxury Handbag & Leather Goods', overlap 100%)",
+            "Label not distinct from t27 ('Luxury Handbag & Leather Goods', overlap 100%)",
+            "Label not distinct from t28 ('Luxury Handbag & Leather Goods', overlap 100%)",
+            "Label not distinct from t29 ('Luxury Handbag & Leather Goods', overlap 100%)",
+            "Label not distinct from t30 ('Luxury Handbag & Leather Goods', overlap 100%)"
+          ]
+        },
+        {
+          "trend_id": "t17",
+          "label": "Luxury Handbag & Leather Goods",
+          "word_count": 4,
+          "passed": false,
+          "issues": [
+            "Label not distinct from t02 ('Luxury Handbag & Leather Goods', overlap 100%)",
+            "Label not distinct from t03 ('Luxury Handbag & Leather Goods', overlap 100%)",
+            "Label not distinct from t05 ('Luxury Handbag & Leather Goods', overlap 100%)",
+            "Label not distinct from t06 ('Luxury Handbag & Leather Goods', overlap 100%)",
+            "Label not distinct from t07 ('Luxury Handbag & Leather Goods', overlap 100%)",
+            "Label not distinct from t09 ('Luxury Handbag & Leather Goods', overlap 100%)",
+            "Label not distinct from t11 ('Luxury Handbag & Leather Goods', overlap 100%)",
+            "Label not distinct from t12 ('Luxury Handbag & Leather Goods', overlap 100%)",
+            "Label not distinct from t13 ('Luxury Handbag & Leather Goods', overlap 100%)",
+            "Label not distinct from t16 ('Luxury Handbag & Leather Goods', overlap 100%)",
+            "Label not distinct from t19 ('Luxury Handbag & Leather Goods', overlap 100%)",
+            "Label not distinct from t20 ('Luxury Handbag & Leather Goods', overlap 100%)",
+            "Label not distinct from t22 ('Luxury Handbag & Leather Goods', overlap 100%)",
+            "Label not distinct from t23 ('Luxury Handbag & Leather Goods', overlap 100%)",
+            "Label not distinct from t26 ('Luxury Handbag & Leather Goods', overlap 100%)",
+            "Label not distinct from t27 ('Luxury Handbag & Leather Goods', overlap 100%)",
+            "Label not distinct from t28 ('Luxury Handbag & Leather Goods', overlap 100%)",
+            "Label not distinct from t29 ('Luxury Handbag & Leather Goods', overlap 100%)",
+            "Label not distinct from t30 ('Luxury Handbag & Leather Goods', overlap 100%)"
+          ]
+        },
+        {
+          "trend_id": "t18",
+          "label": "Seasonal Styling & Capsule Wardrobe",
+          "word_count": 4,
+          "passed": false,
+          "issues": [
+            "Label not distinct from t10 ('Seasonal Styling & Capsule Wardrobe', overlap 100%)",
+            "Label not distinct from t14 ('Seasonal Styling & Capsule Wardrobe', overlap 100%)",
+            "Label not distinct from t21 ('Seasonal Styling & Capsule Wardrobe', overlap 100%)"
+          ]
+        },
+        {
+          "trend_id": "t19",
+          "label": "Luxury Handbag & Leather Goods",
+          "word_count": 4,
+          "passed": false,
+          "issues": [
+            "Label not distinct from t02 ('Luxury Handbag & Leather Goods', overlap 100%)",
+            "Label not distinct from t03 ('Luxury Handbag & Leather Goods', overlap 100%)",
+            "Label not distinct from t05 ('Luxury Handbag & Leather Goods', overlap 100%)",
+            "Label not distinct from t06 ('Luxury Handbag & Leather Goods', overlap 100%)",
+            "Label not distinct from t07 ('Luxury Handbag & Leather Goods', overlap 100%)",
+            "Label not distinct from t09 ('Luxury Handbag & Leather Goods', overlap 100%)",
+            "Label not distinct from t11 ('Luxury Handbag & Leather Goods', overlap 100%)",
+            "Label not distinct from t12 ('Luxury Handbag & Leather Goods', overlap 100%)",
+            "Label not distinct from t13 ('Luxury Handbag & Leather Goods', overlap 100%)",
+            "Label not distinct from t16 ('Luxury Handbag & Leather Goods', overlap 100%)",
+            "Label not distinct from t17 ('Luxury Handbag & Leather Goods', overlap 100%)",
+            "Label not distinct from t20 ('Luxury Handbag & Leather Goods', overlap 100%)",
+            "Label not distinct from t22 ('Luxury Handbag & Leather Goods', overlap 100%)",
+            "Label not distinct from t23 ('Luxury Handbag & Leather Goods', overlap 100%)",
+            "Label not distinct from t26 ('Luxury Handbag & Leather Goods', overlap 100%)",
+            "Label not distinct from t27 ('Luxury Handbag & Leather Goods', overlap 100%)",
+            "Label not distinct from t28 ('Luxury Handbag & Leather Goods', overlap 100%)",
+            "Label not distinct from t29 ('Luxury Handbag & Leather Goods', overlap 100%)",
+            "Label not distinct from t30 ('Luxury Handbag & Leather Goods', overlap 100%)"
+          ]
+        },
+        {
+          "trend_id": "t20",
+          "label": "Luxury Handbag & Leather Goods",
+          "word_count": 4,
+          "passed": false,
+          "issues": [
+            "Label not distinct from t02 ('Luxury Handbag & Leather Goods', overlap 100%)",
+            "Label not distinct from t03 ('Luxury Handbag & Leather Goods', overlap 100%)",
+            "Label not distinct from t05 ('Luxury Handbag & Leather Goods', overlap 100%)",
+            "Label not distinct from t06 ('Luxury Handbag & Leather Goods', overlap 100%)",
+            "Label not distinct from t07 ('Luxury Handbag & Leather Goods', overlap 100%)",
+            "Label not distinct from t09 ('Luxury Handbag & Leather Goods', overlap 100%)",
+            "Label not distinct from t11 ('Luxury Handbag & Leather Goods', overlap 100%)",
+            "Label not distinct from t12 ('Luxury Handbag & Leather Goods', overlap 100%)",
+            "Label not distinct from t13 ('Luxury Handbag & Leather Goods', overlap 100%)",
+            "Label not distinct from t16 ('Luxury Handbag & Leather Goods', overlap 100%)",
+            "Label not distinct from t17 ('Luxury Handbag & Leather Goods', overlap 100%)",
+            "Label not distinct from t19 ('Luxury Handbag & Leather Goods', overlap 100%)",
+            "Label not distinct from t22 ('Luxury Handbag & Leather Goods', overlap 100%)",
+            "Label not distinct from t23 ('Luxury Handbag & Leather Goods', overlap 100%)",
+            "Label not distinct from t26 ('Luxury Handbag & Leather Goods', overlap 100%)",
+            "Label not distinct from t27 ('Luxury Handbag & Leather Goods', overlap 100%)",
+            "Label not distinct from t28 ('Luxury Handbag & Leather Goods', overlap 100%)",
+            "Label not distinct from t29 ('Luxury Handbag & Leather Goods', overlap 100%)",
+            "Label not distinct from t30 ('Luxury Handbag & Leather Goods', overlap 100%)"
+          ]
+        },
+        {
+          "trend_id": "t21",
+          "label": "Seasonal Styling & Capsule Wardrobe",
+          "word_count": 4,
+          "passed": false,
+          "issues": [
+            "Label not distinct from t10 ('Seasonal Styling & Capsule Wardrobe', overlap 100%)",
+            "Label not distinct from t14 ('Seasonal Styling & Capsule Wardrobe', overlap 100%)",
+            "Label not distinct from t18 ('Seasonal Styling & Capsule Wardrobe', overlap 100%)"
+          ]
+        },
+        {
+          "trend_id": "t22",
+          "label": "Luxury Handbag & Leather Goods",
+          "word_count": 4,
+          "passed": false,
+          "issues": [
+            "Label not distinct from t02 ('Luxury Handbag & Leather Goods', overlap 100%)",
+            "Label not distinct from t03 ('Luxury Handbag & Leather Goods', overlap 100%)",
+            "Label not distinct from t05 ('Luxury Handbag & Leather Goods', overlap 100%)",
+            "Label not distinct from t06 ('Luxury Handbag & Leather Goods', overlap 100%)",
+            "Label not distinct from t07 ('Luxury Handbag & Leather Goods', overlap 100%)",
+            "Label not distinct from t09 ('Luxury Handbag & Leather Goods', overlap 100%)",
+            "Label not distinct from t11 ('Luxury Handbag & Leather Goods', overlap 100%)",
+            "Label not distinct from t12 ('Luxury Handbag & Leather Goods', overlap 100%)",
+            "Label not distinct from t13 ('Luxury Handbag & Leather Goods', overlap 100%)",
+            "Label not distinct from t16 ('Luxury Handbag & Leather Goods', overlap 100%)",
+            "Label not distinct from t17 ('Luxury Handbag & Leather Goods', overlap 100%)",
+            "Label not distinct from t19 ('Luxury Handbag & Leather Goods', overlap 100%)",
+            "Label not distinct from t20 ('Luxury Handbag & Leather Goods', overlap 100%)",
+            "Label not distinct from t23 ('Luxury Handbag & Leather Goods', overlap 100%)",
+            "Label not distinct from t26 ('Luxury Handbag & Leather Goods', overlap 100%)",
+            "Label not distinct from t27 ('Luxury Handbag & Leather Goods', overlap 100%)",
+            "Label not distinct from t28 ('Luxury Handbag & Leather Goods', overlap 100%)",
+            "Label not distinct from t29 ('Luxury Handbag & Leather Goods', overlap 100%)",
+            "Label not distinct from t30 ('Luxury Handbag & Leather Goods', overlap 100%)"
+          ]
+        },
+        {
+          "trend_id": "t23",
+          "label": "Luxury Handbag & Leather Goods",
+          "word_count": 4,
+          "passed": false,
+          "issues": [
+            "Label not distinct from t02 ('Luxury Handbag & Leather Goods', overlap 100%)",
+            "Label not distinct from t03 ('Luxury Handbag & Leather Goods', overlap 100%)",
+            "Label not distinct from t05 ('Luxury Handbag & Leather Goods', overlap 100%)",
+            "Label not distinct from t06 ('Luxury Handbag & Leather Goods', overlap 100%)",
+            "Label not distinct from t07 ('Luxury Handbag & Leather Goods', overlap 100%)",
+            "Label not distinct from t09 ('Luxury Handbag & Leather Goods', overlap 100%)",
+            "Label not distinct from t11 ('Luxury Handbag & Leather Goods', overlap 100%)",
+            "Label not distinct from t12 ('Luxury Handbag & Leather Goods', overlap 100%)",
+            "Label not distinct from t13 ('Luxury Handbag & Leather Goods', overlap 100%)",
+            "Label not distinct from t16 ('Luxury Handbag & Leather Goods', overlap 100%)",
+            "Label not distinct from t17 ('Luxury Handbag & Leather Goods', overlap 100%)",
+            "Label not distinct from t19 ('Luxury Handbag & Leather Goods', overlap 100%)",
+            "Label not distinct from t20 ('Luxury Handbag & Leather Goods', overlap 100%)",
+            "Label not distinct from t22 ('Luxury Handbag & Leather Goods', overlap 100%)",
+            "Label not distinct from t26 ('Luxury Handbag & Leather Goods', overlap 100%)",
+            "Label not distinct from t27 ('Luxury Handbag & Leather Goods', overlap 100%)",
+            "Label not distinct from t28 ('Luxury Handbag & Leather Goods', overlap 100%)",
+            "Label not distinct from t29 ('Luxury Handbag & Leather Goods', overlap 100%)",
+            "Label not distinct from t30 ('Luxury Handbag & Leather Goods', overlap 100%)"
+          ]
+        },
+        {
+          "trend_id": "t24",
+          "label": "Mixed Trend Signals",
+          "word_count": 3,
+          "passed": false,
+          "issues": [
+            "Label contains generic term 'mixed'",
+            "Label not distinct from t01 ('Mixed Trend Signals', overlap 100%)",
+            "Label not distinct from t04 ('Mixed Trend Signals', overlap 100%)",
+            "Label not distinct from t08 ('Mixed Trend Signals', overlap 100%)",
+            "Label not distinct from t15 ('Mixed Trend Signals', overlap 100%)",
+            "Label not distinct from t25 ('Mixed Trend Signals', overlap 100%)"
+          ]
+        },
+        {
+          "trend_id": "t25",
+          "label": "Mixed Trend Signals",
+          "word_count": 3,
+          "passed": false,
+          "issues": [
+            "Label contains generic term 'mixed'",
+            "Label not distinct from t01 ('Mixed Trend Signals', overlap 100%)",
+            "Label not distinct from t04 ('Mixed Trend Signals', overlap 100%)",
+            "Label not distinct from t08 ('Mixed Trend Signals', overlap 100%)",
+            "Label not distinct from t15 ('Mixed Trend Signals', overlap 100%)",
+            "Label not distinct from t24 ('Mixed Trend Signals', overlap 100%)"
+          ]
+        },
+        {
+          "trend_id": "t26",
+          "label": "Luxury Handbag & Leather Goods",
+          "word_count": 4,
+          "passed": false,
+          "issues": [
+            "Label not distinct from t02 ('Luxury Handbag & Leather Goods', overlap 100%)",
+            "Label not distinct from t03 ('Luxury Handbag & Leather Goods', overlap 100%)",
+            "Label not distinct from t05 ('Luxury Handbag & Leather Goods', overlap 100%)",
+            "Label not distinct from t06 ('Luxury Handbag & Leather Goods', overlap 100%)",
+            "Label not distinct from t07 ('Luxury Handbag & Leather Goods', overlap 100%)",
+            "Label not distinct from t09 ('Luxury Handbag & Leather Goods', overlap 100%)",
+            "Label not distinct from t11 ('Luxury Handbag & Leather Goods', overlap 100%)",
+            "Label not distinct from t12 ('Luxury Handbag & Leather Goods', overlap 100%)",
+            "Label not distinct from t13 ('Luxury Handbag & Leather Goods', overlap 100%)",
+            "Label not distinct from t16 ('Luxury Handbag & Leather Goods', overlap 100%)",
+            "Label not distinct from t17 ('Luxury Handbag & Leather Goods', overlap 100%)",
+            "Label not distinct from t19 ('Luxury Handbag & Leather Goods', overlap 100%)",
+            "Label not distinct from t20 ('Luxury Handbag & Leather Goods', overlap 100%)",
+            "Label not distinct from t22 ('Luxury Handbag & Leather Goods', overlap 100%)",
+            "Label not distinct from t23 ('Luxury Handbag & Leather Goods', overlap 100%)",
+            "Label not distinct from t27 ('Luxury Handbag & Leather Goods', overlap 100%)",
+            "Label not distinct from t28 ('Luxury Handbag & Leather Goods', overlap 100%)",
+            "Label not distinct from t29 ('Luxury Handbag & Leather Goods', overlap 100%)",
+            "Label not distinct from t30 ('Luxury Handbag & Leather Goods', overlap 100%)"
+          ]
+        },
+        {
+          "trend_id": "t27",
+          "label": "Luxury Handbag & Leather Goods",
+          "word_count": 4,
+          "passed": false,
+          "issues": [
+            "Label not distinct from t02 ('Luxury Handbag & Leather Goods', overlap 100%)",
+            "Label not distinct from t03 ('Luxury Handbag & Leather Goods', overlap 100%)",
+            "Label not distinct from t05 ('Luxury Handbag & Leather Goods', overlap 100%)",
+            "Label not distinct from t06 ('Luxury Handbag & Leather Goods', overlap 100%)",
+            "Label not distinct from t07 ('Luxury Handbag & Leather Goods', overlap 100%)",
+            "Label not distinct from t09 ('Luxury Handbag & Leather Goods', overlap 100%)",
+            "Label not distinct from t11 ('Luxury Handbag & Leather Goods', overlap 100%)",
+            "Label not distinct from t12 ('Luxury Handbag & Leather Goods', overlap 100%)",
+            "Label not distinct from t13 ('Luxury Handbag & Leather Goods', overlap 100%)",
+            "Label not distinct from t16 ('Luxury Handbag & Leather Goods', overlap 100%)",
+            "Label not distinct from t17 ('Luxury Handbag & Leather Goods', overlap 100%)",
+            "Label not distinct from t19 ('Luxury Handbag & Leather Goods', overlap 100%)",
+            "Label not distinct from t20 ('Luxury Handbag & Leather Goods', overlap 100%)",
+            "Label not distinct from t22 ('Luxury Handbag & Leather Goods', overlap 100%)",
+            "Label not distinct from t23 ('Luxury Handbag & Leather Goods', overlap 100%)",
+            "Label not distinct from t26 ('Luxury Handbag & Leather Goods', overlap 100%)",
+            "Label not distinct from t28 ('Luxury Handbag & Leather Goods', overlap 100%)",
+            "Label not distinct from t29 ('Luxury Handbag & Leather Goods', overlap 100%)",
+            "Label not distinct from t30 ('Luxury Handbag & Leather Goods', overlap 100%)"
+          ]
+        },
+        {
+          "trend_id": "t28",
+          "label": "Luxury Handbag & Leather Goods",
+          "word_count": 4,
+          "passed": false,
+          "issues": [
+            "Label not distinct from t02 ('Luxury Handbag & Leather Goods', overlap 100%)",
+            "Label not distinct from t03 ('Luxury Handbag & Leather Goods', overlap 100%)",
+            "Label not distinct from t05 ('Luxury Handbag & Leather Goods', overlap 100%)",
+            "Label not distinct from t06 ('Luxury Handbag & Leather Goods', overlap 100%)",
+            "Label not distinct from t07 ('Luxury Handbag & Leather Goods', overlap 100%)",
+            "Label not distinct from t09 ('Luxury Handbag & Leather Goods', overlap 100%)",
+            "Label not distinct from t11 ('Luxury Handbag & Leather Goods', overlap 100%)",
+            "Label not distinct from t12 ('Luxury Handbag & Leather Goods', overlap 100%)",
+            "Label not distinct from t13 ('Luxury Handbag & Leather Goods', overlap 100%)",
+            "Label not distinct from t16 ('Luxury Handbag & Leather Goods', overlap 100%)",
+            "Label not distinct from t17 ('Luxury Handbag & Leather Goods', overlap 100%)",
+            "Label not distinct from t19 ('Luxury Handbag & Leather Goods', overlap 100%)",
+            "Label not distinct from t20 ('Luxury Handbag & Leather Goods', overlap 100%)",
+            "Label not distinct from t22 ('Luxury Handbag & Leather Goods', overlap 100%)",
+            "Label not distinct from t23 ('Luxury Handbag & Leather Goods', overlap 100%)",
+            "Label not distinct from t26 ('Luxury Handbag & Leather Goods', overlap 100%)",
+            "Label not distinct from t27 ('Luxury Handbag & Leather Goods', overlap 100%)",
+            "Label not distinct from t29 ('Luxury Handbag & Leather Goods', overlap 100%)",
+            "Label not distinct from t30 ('Luxury Handbag & Leather Goods', overlap 100%)"
+          ]
+        },
+        {
+          "trend_id": "t29",
+          "label": "Luxury Handbag & Leather Goods",
+          "word_count": 4,
+          "passed": false,
+          "issues": [
+            "Label not distinct from t02 ('Luxury Handbag & Leather Goods', overlap 100%)",
+            "Label not distinct from t03 ('Luxury Handbag & Leather Goods', overlap 100%)",
+            "Label not distinct from t05 ('Luxury Handbag & Leather Goods', overlap 100%)",
+            "Label not distinct from t06 ('Luxury Handbag & Leather Goods', overlap 100%)",
+            "Label not distinct from t07 ('Luxury Handbag & Leather Goods', overlap 100%)",
+            "Label not distinct from t09 ('Luxury Handbag & Leather Goods', overlap 100%)",
+            "Label not distinct from t11 ('Luxury Handbag & Leather Goods', overlap 100%)",
+            "Label not distinct from t12 ('Luxury Handbag & Leather Goods', overlap 100%)",
+            "Label not distinct from t13 ('Luxury Handbag & Leather Goods', overlap 100%)",
+            "Label not distinct from t16 ('Luxury Handbag & Leather Goods', overlap 100%)",
+            "Label not distinct from t17 ('Luxury Handbag & Leather Goods', overlap 100%)",
+            "Label not distinct from t19 ('Luxury Handbag & Leather Goods', overlap 100%)",
+            "Label not distinct from t20 ('Luxury Handbag & Leather Goods', overlap 100%)",
+            "Label not distinct from t22 ('Luxury Handbag & Leather Goods', overlap 100%)",
+            "Label not distinct from t23 ('Luxury Handbag & Leather Goods', overlap 100%)",
+            "Label not distinct from t26 ('Luxury Handbag & Leather Goods', overlap 100%)",
+            "Label not distinct from t27 ('Luxury Handbag & Leather Goods', overlap 100%)",
+            "Label not distinct from t28 ('Luxury Handbag & Leather Goods', overlap 100%)",
+            "Label not distinct from t30 ('Luxury Handbag & Leather Goods', overlap 100%)"
+          ]
+        },
+        {
+          "trend_id": "t30",
+          "label": "Luxury Handbag & Leather Goods",
+          "word_count": 4,
+          "passed": false,
+          "issues": [
+            "Label not distinct from t02 ('Luxury Handbag & Leather Goods', overlap 100%)",
+            "Label not distinct from t03 ('Luxury Handbag & Leather Goods', overlap 100%)",
+            "Label not distinct from t05 ('Luxury Handbag & Leather Goods', overlap 100%)",
+            "Label not distinct from t06 ('Luxury Handbag & Leather Goods', overlap 100%)",
+            "Label not distinct from t07 ('Luxury Handbag & Leather Goods', overlap 100%)",
+            "Label not distinct from t09 ('Luxury Handbag & Leather Goods', overlap 100%)",
+            "Label not distinct from t11 ('Luxury Handbag & Leather Goods', overlap 100%)",
+            "Label not distinct from t12 ('Luxury Handbag & Leather Goods', overlap 100%)",
+            "Label not distinct from t13 ('Luxury Handbag & Leather Goods', overlap 100%)",
+            "Label not distinct from t16 ('Luxury Handbag & Leather Goods', overlap 100%)",
+            "Label not distinct from t17 ('Luxury Handbag & Leather Goods', overlap 100%)",
+            "Label not distinct from t19 ('Luxury Handbag & Leather Goods', overlap 100%)",
+            "Label not distinct from t20 ('Luxury Handbag & Leather Goods', overlap 100%)",
+            "Label not distinct from t22 ('Luxury Handbag & Leather Goods', overlap 100%)",
+            "Label not distinct from t23 ('Luxury Handbag & Leather Goods', overlap 100%)",
+            "Label not distinct from t26 ('Luxury Handbag & Leather Goods', overlap 100%)",
+            "Label not distinct from t27 ('Luxury Handbag & Leather Goods', overlap 100%)",
+            "Label not distinct from t28 ('Luxury Handbag & Leather Goods', overlap 100%)",
+            "Label not distinct from t29 ('Luxury Handbag & Leather Goods', overlap 100%)"
           ]
         }
       ],
       "failures": [
         {
-          "trend_id": "t08",
-          "label": "Celine Bag Styling with French Old Money and Elegant Aesthetic",
-          "word_count": 10,
+          "trend_id": "t01",
+          "label": "Mixed Trend Signals",
+          "word_count": 3,
           "passed": false,
           "issues": [
-            "Label has 10 words, max is 8"
+            "Label contains generic term 'mixed'",
+            "Label not distinct from t04 ('Mixed Trend Signals', overlap 100%)",
+            "Label not distinct from t08 ('Mixed Trend Signals', overlap 100%)",
+            "Label not distinct from t15 ('Mixed Trend Signals', overlap 100%)",
+            "Label not distinct from t24 ('Mixed Trend Signals', overlap 100%)",
+            "Label not distinct from t25 ('Mixed Trend Signals', overlap 100%)"
+          ]
+        },
+        {
+          "trend_id": "t02",
+          "label": "Luxury Handbag & Leather Goods",
+          "word_count": 4,
+          "passed": false,
+          "issues": [
+            "Label not distinct from t03 ('Luxury Handbag & Leather Goods', overlap 100%)",
+            "Label not distinct from t05 ('Luxury Handbag & Leather Goods', overlap 100%)",
+            "Label not distinct from t06 ('Luxury Handbag & Leather Goods', overlap 100%)",
+            "Label not distinct from t07 ('Luxury Handbag & Leather Goods', overlap 100%)",
+            "Label not distinct from t09 ('Luxury Handbag & Leather Goods', overlap 100%)",
+            "Label not distinct from t11 ('Luxury Handbag & Leather Goods', overlap 100%)",
+            "Label not distinct from t12 ('Luxury Handbag & Leather Goods', overlap 100%)",
+            "Label not distinct from t13 ('Luxury Handbag & Leather Goods', overlap 100%)",
+            "Label not distinct from t16 ('Luxury Handbag & Leather Goods', overlap 100%)",
+            "Label not distinct from t17 ('Luxury Handbag & Leather Goods', overlap 100%)",
+            "Label not distinct from t19 ('Luxury Handbag & Leather Goods', overlap 100%)",
+            "Label not distinct from t20 ('Luxury Handbag & Leather Goods', overlap 100%)",
+            "Label not distinct from t22 ('Luxury Handbag & Leather Goods', overlap 100%)",
+            "Label not distinct from t23 ('Luxury Handbag & Leather Goods', overlap 100%)",
+            "Label not distinct from t26 ('Luxury Handbag & Leather Goods', overlap 100%)",
+            "Label not distinct from t27 ('Luxury Handbag & Leather Goods', overlap 100%)",
+            "Label not distinct from t28 ('Luxury Handbag & Leather Goods', overlap 100%)",
+            "Label not distinct from t29 ('Luxury Handbag & Leather Goods', overlap 100%)",
+            "Label not distinct from t30 ('Luxury Handbag & Leather Goods', overlap 100%)"
+          ]
+        },
+        {
+          "trend_id": "t03",
+          "label": "Luxury Handbag & Leather Goods",
+          "word_count": 4,
+          "passed": false,
+          "issues": [
+            "Label not distinct from t02 ('Luxury Handbag & Leather Goods', overlap 100%)",
+            "Label not distinct from t05 ('Luxury Handbag & Leather Goods', overlap 100%)",
+            "Label not distinct from t06 ('Luxury Handbag & Leather Goods', overlap 100%)",
+            "Label not distinct from t07 ('Luxury Handbag & Leather Goods', overlap 100%)",
+            "Label not distinct from t09 ('Luxury Handbag & Leather Goods', overlap 100%)",
+            "Label not distinct from t11 ('Luxury Handbag & Leather Goods', overlap 100%)",
+            "Label not distinct from t12 ('Luxury Handbag & Leather Goods', overlap 100%)",
+            "Label not distinct from t13 ('Luxury Handbag & Leather Goods', overlap 100%)",
+            "Label not distinct from t16 ('Luxury Handbag & Leather Goods', overlap 100%)",
+            "Label not distinct from t17 ('Luxury Handbag & Leather Goods', overlap 100%)",
+            "Label not distinct from t19 ('Luxury Handbag & Leather Goods', overlap 100%)",
+            "Label not distinct from t20 ('Luxury Handbag & Leather Goods', overlap 100%)",
+            "Label not distinct from t22 ('Luxury Handbag & Leather Goods', overlap 100%)",
+            "Label not distinct from t23 ('Luxury Handbag & Leather Goods', overlap 100%)",
+            "Label not distinct from t26 ('Luxury Handbag & Leather Goods', overlap 100%)",
+            "Label not distinct from t27 ('Luxury Handbag & Leather Goods', overlap 100%)",
+            "Label not distinct from t28 ('Luxury Handbag & Leather Goods', overlap 100%)",
+            "Label not distinct from t29 ('Luxury Handbag & Leather Goods', overlap 100%)",
+            "Label not distinct from t30 ('Luxury Handbag & Leather Goods', overlap 100%)"
+          ]
+        },
+        {
+          "trend_id": "t04",
+          "label": "Mixed Trend Signals",
+          "word_count": 3,
+          "passed": false,
+          "issues": [
+            "Label contains generic term 'mixed'",
+            "Label not distinct from t01 ('Mixed Trend Signals', overlap 100%)",
+            "Label not distinct from t08 ('Mixed Trend Signals', overlap 100%)",
+            "Label not distinct from t15 ('Mixed Trend Signals', overlap 100%)",
+            "Label not distinct from t24 ('Mixed Trend Signals', overlap 100%)",
+            "Label not distinct from t25 ('Mixed Trend Signals', overlap 100%)"
+          ]
+        },
+        {
+          "trend_id": "t05",
+          "label": "Luxury Handbag & Leather Goods",
+          "word_count": 4,
+          "passed": false,
+          "issues": [
+            "Label not distinct from t02 ('Luxury Handbag & Leather Goods', overlap 100%)",
+            "Label not distinct from t03 ('Luxury Handbag & Leather Goods', overlap 100%)",
+            "Label not distinct from t06 ('Luxury Handbag & Leather Goods', overlap 100%)",
+            "Label not distinct from t07 ('Luxury Handbag & Leather Goods', overlap 100%)",
+            "Label not distinct from t09 ('Luxury Handbag & Leather Goods', overlap 100%)",
+            "Label not distinct from t11 ('Luxury Handbag & Leather Goods', overlap 100%)",
+            "Label not distinct from t12 ('Luxury Handbag & Leather Goods', overlap 100%)",
+            "Label not distinct from t13 ('Luxury Handbag & Leather Goods', overlap 100%)",
+            "Label not distinct from t16 ('Luxury Handbag & Leather Goods', overlap 100%)",
+            "Label not distinct from t17 ('Luxury Handbag & Leather Goods', overlap 100%)",
+            "Label not distinct from t19 ('Luxury Handbag & Leather Goods', overlap 100%)",
+            "Label not distinct from t20 ('Luxury Handbag & Leather Goods', overlap 100%)",
+            "Label not distinct from t22 ('Luxury Handbag & Leather Goods', overlap 100%)",
+            "Label not distinct from t23 ('Luxury Handbag & Leather Goods', overlap 100%)",
+            "Label not distinct from t26 ('Luxury Handbag & Leather Goods', overlap 100%)",
+            "Label not distinct from t27 ('Luxury Handbag & Leather Goods', overlap 100%)",
+            "Label not distinct from t28 ('Luxury Handbag & Leather Goods', overlap 100%)",
+            "Label not distinct from t29 ('Luxury Handbag & Leather Goods', overlap 100%)",
+            "Label not distinct from t30 ('Luxury Handbag & Leather Goods', overlap 100%)"
+          ]
+        },
+        {
+          "trend_id": "t06",
+          "label": "Luxury Handbag & Leather Goods",
+          "word_count": 4,
+          "passed": false,
+          "issues": [
+            "Label not distinct from t02 ('Luxury Handbag & Leather Goods', overlap 100%)",
+            "Label not distinct from t03 ('Luxury Handbag & Leather Goods', overlap 100%)",
+            "Label not distinct from t05 ('Luxury Handbag & Leather Goods', overlap 100%)",
+            "Label not distinct from t07 ('Luxury Handbag & Leather Goods', overlap 100%)",
+            "Label not distinct from t09 ('Luxury Handbag & Leather Goods', overlap 100%)",
+            "Label not distinct from t11 ('Luxury Handbag & Leather Goods', overlap 100%)",
+            "Label not distinct from t12 ('Luxury Handbag & Leather Goods', overlap 100%)",
+            "Label not distinct from t13 ('Luxury Handbag & Leather Goods', overlap 100%)",
+            "Label not distinct from t16 ('Luxury Handbag & Leather Goods', overlap 100%)",
+            "Label not distinct from t17 ('Luxury Handbag & Leather Goods', overlap 100%)",
+            "Label not distinct from t19 ('Luxury Handbag & Leather Goods', overlap 100%)",
+            "Label not distinct from t20 ('Luxury Handbag & Leather Goods', overlap 100%)",
+            "Label not distinct from t22 ('Luxury Handbag & Leather Goods', overlap 100%)",
+            "Label not distinct from t23 ('Luxury Handbag & Leather Goods', overlap 100%)",
+            "Label not distinct from t26 ('Luxury Handbag & Leather Goods', overlap 100%)",
+            "Label not distinct from t27 ('Luxury Handbag & Leather Goods', overlap 100%)",
+            "Label not distinct from t28 ('Luxury Handbag & Leather Goods', overlap 100%)",
+            "Label not distinct from t29 ('Luxury Handbag & Leather Goods', overlap 100%)",
+            "Label not distinct from t30 ('Luxury Handbag & Leather Goods', overlap 100%)"
+          ]
+        },
+        {
+          "trend_id": "t07",
+          "label": "Luxury Handbag & Leather Goods",
+          "word_count": 4,
+          "passed": false,
+          "issues": [
+            "Label not distinct from t02 ('Luxury Handbag & Leather Goods', overlap 100%)",
+            "Label not distinct from t03 ('Luxury Handbag & Leather Goods', overlap 100%)",
+            "Label not distinct from t05 ('Luxury Handbag & Leather Goods', overlap 100%)",
+            "Label not distinct from t06 ('Luxury Handbag & Leather Goods', overlap 100%)",
+            "Label not distinct from t09 ('Luxury Handbag & Leather Goods', overlap 100%)",
+            "Label not distinct from t11 ('Luxury Handbag & Leather Goods', overlap 100%)",
+            "Label not distinct from t12 ('Luxury Handbag & Leather Goods', overlap 100%)",
+            "Label not distinct from t13 ('Luxury Handbag & Leather Goods', overlap 100%)",
+            "Label not distinct from t16 ('Luxury Handbag & Leather Goods', overlap 100%)",
+            "Label not distinct from t17 ('Luxury Handbag & Leather Goods', overlap 100%)",
+            "Label not distinct from t19 ('Luxury Handbag & Leather Goods', overlap 100%)",
+            "Label not distinct from t20 ('Luxury Handbag & Leather Goods', overlap 100%)",
+            "Label not distinct from t22 ('Luxury Handbag & Leather Goods', overlap 100%)",
+            "Label not distinct from t23 ('Luxury Handbag & Leather Goods', overlap 100%)",
+            "Label not distinct from t26 ('Luxury Handbag & Leather Goods', overlap 100%)",
+            "Label not distinct from t27 ('Luxury Handbag & Leather Goods', overlap 100%)",
+            "Label not distinct from t28 ('Luxury Handbag & Leather Goods', overlap 100%)",
+            "Label not distinct from t29 ('Luxury Handbag & Leather Goods', overlap 100%)",
+            "Label not distinct from t30 ('Luxury Handbag & Leather Goods', overlap 100%)"
+          ]
+        },
+        {
+          "trend_id": "t08",
+          "label": "Mixed Trend Signals",
+          "word_count": 3,
+          "passed": false,
+          "issues": [
+            "Label contains generic term 'mixed'",
+            "Label not distinct from t01 ('Mixed Trend Signals', overlap 100%)",
+            "Label not distinct from t04 ('Mixed Trend Signals', overlap 100%)",
+            "Label not distinct from t15 ('Mixed Trend Signals', overlap 100%)",
+            "Label not distinct from t24 ('Mixed Trend Signals', overlap 100%)",
+            "Label not distinct from t25 ('Mixed Trend Signals', overlap 100%)"
+          ]
+        },
+        {
+          "trend_id": "t09",
+          "label": "Luxury Handbag & Leather Goods",
+          "word_count": 4,
+          "passed": false,
+          "issues": [
+            "Label not distinct from t02 ('Luxury Handbag & Leather Goods', overlap 100%)",
+            "Label not distinct from t03 ('Luxury Handbag & Leather Goods', overlap 100%)",
+            "Label not distinct from t05 ('Luxury Handbag & Leather Goods', overlap 100%)",
+            "Label not distinct from t06 ('Luxury Handbag & Leather Goods', overlap 100%)",
+            "Label not distinct from t07 ('Luxury Handbag & Leather Goods', overlap 100%)",
+            "Label not distinct from t11 ('Luxury Handbag & Leather Goods', overlap 100%)",
+            "Label not distinct from t12 ('Luxury Handbag & Leather Goods', overlap 100%)",
+            "Label not distinct from t13 ('Luxury Handbag & Leather Goods', overlap 100%)",
+            "Label not distinct from t16 ('Luxury Handbag & Leather Goods', overlap 100%)",
+            "Label not distinct from t17 ('Luxury Handbag & Leather Goods', overlap 100%)",
+            "Label not distinct from t19 ('Luxury Handbag & Leather Goods', overlap 100%)",
+            "Label not distinct from t20 ('Luxury Handbag & Leather Goods', overlap 100%)",
+            "Label not distinct from t22 ('Luxury Handbag & Leather Goods', overlap 100%)",
+            "Label not distinct from t23 ('Luxury Handbag & Leather Goods', overlap 100%)",
+            "Label not distinct from t26 ('Luxury Handbag & Leather Goods', overlap 100%)",
+            "Label not distinct from t27 ('Luxury Handbag & Leather Goods', overlap 100%)",
+            "Label not distinct from t28 ('Luxury Handbag & Leather Goods', overlap 100%)",
+            "Label not distinct from t29 ('Luxury Handbag & Leather Goods', overlap 100%)",
+            "Label not distinct from t30 ('Luxury Handbag & Leather Goods', overlap 100%)"
+          ]
+        },
+        {
+          "trend_id": "t10",
+          "label": "Seasonal Styling & Capsule Wardrobe",
+          "word_count": 4,
+          "passed": false,
+          "issues": [
+            "Label not distinct from t14 ('Seasonal Styling & Capsule Wardrobe', overlap 100%)",
+            "Label not distinct from t18 ('Seasonal Styling & Capsule Wardrobe', overlap 100%)",
+            "Label not distinct from t21 ('Seasonal Styling & Capsule Wardrobe', overlap 100%)"
+          ]
+        },
+        {
+          "trend_id": "t11",
+          "label": "Luxury Handbag & Leather Goods",
+          "word_count": 4,
+          "passed": false,
+          "issues": [
+            "Label not distinct from t02 ('Luxury Handbag & Leather Goods', overlap 100%)",
+            "Label not distinct from t03 ('Luxury Handbag & Leather Goods', overlap 100%)",
+            "Label not distinct from t05 ('Luxury Handbag & Leather Goods', overlap 100%)",
+            "Label not distinct from t06 ('Luxury Handbag & Leather Goods', overlap 100%)",
+            "Label not distinct from t07 ('Luxury Handbag & Leather Goods', overlap 100%)",
+            "Label not distinct from t09 ('Luxury Handbag & Leather Goods', overlap 100%)",
+            "Label not distinct from t12 ('Luxury Handbag & Leather Goods', overlap 100%)",
+            "Label not distinct from t13 ('Luxury Handbag & Leather Goods', overlap 100%)",
+            "Label not distinct from t16 ('Luxury Handbag & Leather Goods', overlap 100%)",
+            "Label not distinct from t17 ('Luxury Handbag & Leather Goods', overlap 100%)",
+            "Label not distinct from t19 ('Luxury Handbag & Leather Goods', overlap 100%)",
+            "Label not distinct from t20 ('Luxury Handbag & Leather Goods', overlap 100%)",
+            "Label not distinct from t22 ('Luxury Handbag & Leather Goods', overlap 100%)",
+            "Label not distinct from t23 ('Luxury Handbag & Leather Goods', overlap 100%)",
+            "Label not distinct from t26 ('Luxury Handbag & Leather Goods', overlap 100%)",
+            "Label not distinct from t27 ('Luxury Handbag & Leather Goods', overlap 100%)",
+            "Label not distinct from t28 ('Luxury Handbag & Leather Goods', overlap 100%)",
+            "Label not distinct from t29 ('Luxury Handbag & Leather Goods', overlap 100%)",
+            "Label not distinct from t30 ('Luxury Handbag & Leather Goods', overlap 100%)"
+          ]
+        },
+        {
+          "trend_id": "t12",
+          "label": "Luxury Handbag & Leather Goods",
+          "word_count": 4,
+          "passed": false,
+          "issues": [
+            "Label not distinct from t02 ('Luxury Handbag & Leather Goods', overlap 100%)",
+            "Label not distinct from t03 ('Luxury Handbag & Leather Goods', overlap 100%)",
+            "Label not distinct from t05 ('Luxury Handbag & Leather Goods', overlap 100%)",
+            "Label not distinct from t06 ('Luxury Handbag & Leather Goods', overlap 100%)",
+            "Label not distinct from t07 ('Luxury Handbag & Leather Goods', overlap 100%)",
+            "Label not distinct from t09 ('Luxury Handbag & Leather Goods', overlap 100%)",
+            "Label not distinct from t11 ('Luxury Handbag & Leather Goods', overlap 100%)",
+            "Label not distinct from t13 ('Luxury Handbag & Leather Goods', overlap 100%)",
+            "Label not distinct from t16 ('Luxury Handbag & Leather Goods', overlap 100%)",
+            "Label not distinct from t17 ('Luxury Handbag & Leather Goods', overlap 100%)",
+            "Label not distinct from t19 ('Luxury Handbag & Leather Goods', overlap 100%)",
+            "Label not distinct from t20 ('Luxury Handbag & Leather Goods', overlap 100%)",
+            "Label not distinct from t22 ('Luxury Handbag & Leather Goods', overlap 100%)",
+            "Label not distinct from t23 ('Luxury Handbag & Leather Goods', overlap 100%)",
+            "Label not distinct from t26 ('Luxury Handbag & Leather Goods', overlap 100%)",
+            "Label not distinct from t27 ('Luxury Handbag & Leather Goods', overlap 100%)",
+            "Label not distinct from t28 ('Luxury Handbag & Leather Goods', overlap 100%)",
+            "Label not distinct from t29 ('Luxury Handbag & Leather Goods', overlap 100%)",
+            "Label not distinct from t30 ('Luxury Handbag & Leather Goods', overlap 100%)"
+          ]
+        },
+        {
+          "trend_id": "t13",
+          "label": "Luxury Handbag & Leather Goods",
+          "word_count": 4,
+          "passed": false,
+          "issues": [
+            "Label not distinct from t02 ('Luxury Handbag & Leather Goods', overlap 100%)",
+            "Label not distinct from t03 ('Luxury Handbag & Leather Goods', overlap 100%)",
+            "Label not distinct from t05 ('Luxury Handbag & Leather Goods', overlap 100%)",
+            "Label not distinct from t06 ('Luxury Handbag & Leather Goods', overlap 100%)",
+            "Label not distinct from t07 ('Luxury Handbag & Leather Goods', overlap 100%)",
+            "Label not distinct from t09 ('Luxury Handbag & Leather Goods', overlap 100%)",
+            "Label not distinct from t11 ('Luxury Handbag & Leather Goods', overlap 100%)",
+            "Label not distinct from t12 ('Luxury Handbag & Leather Goods', overlap 100%)",
+            "Label not distinct from t16 ('Luxury Handbag & Leather Goods', overlap 100%)",
+            "Label not distinct from t17 ('Luxury Handbag & Leather Goods', overlap 100%)",
+            "Label not distinct from t19 ('Luxury Handbag & Leather Goods', overlap 100%)",
+            "Label not distinct from t20 ('Luxury Handbag & Leather Goods', overlap 100%)",
+            "Label not distinct from t22 ('Luxury Handbag & Leather Goods', overlap 100%)",
+            "Label not distinct from t23 ('Luxury Handbag & Leather Goods', overlap 100%)",
+            "Label not distinct from t26 ('Luxury Handbag & Leather Goods', overlap 100%)",
+            "Label not distinct from t27 ('Luxury Handbag & Leather Goods', overlap 100%)",
+            "Label not distinct from t28 ('Luxury Handbag & Leather Goods', overlap 100%)",
+            "Label not distinct from t29 ('Luxury Handbag & Leather Goods', overlap 100%)",
+            "Label not distinct from t30 ('Luxury Handbag & Leather Goods', overlap 100%)"
+          ]
+        },
+        {
+          "trend_id": "t14",
+          "label": "Seasonal Styling & Capsule Wardrobe",
+          "word_count": 4,
+          "passed": false,
+          "issues": [
+            "Label not distinct from t10 ('Seasonal Styling & Capsule Wardrobe', overlap 100%)",
+            "Label not distinct from t18 ('Seasonal Styling & Capsule Wardrobe', overlap 100%)",
+            "Label not distinct from t21 ('Seasonal Styling & Capsule Wardrobe', overlap 100%)"
+          ]
+        },
+        {
+          "trend_id": "t15",
+          "label": "Mixed Trend Signals",
+          "word_count": 3,
+          "passed": false,
+          "issues": [
+            "Label contains generic term 'mixed'",
+            "Label not distinct from t01 ('Mixed Trend Signals', overlap 100%)",
+            "Label not distinct from t04 ('Mixed Trend Signals', overlap 100%)",
+            "Label not distinct from t08 ('Mixed Trend Signals', overlap 100%)",
+            "Label not distinct from t24 ('Mixed Trend Signals', overlap 100%)",
+            "Label not distinct from t25 ('Mixed Trend Signals', overlap 100%)"
+          ]
+        },
+        {
+          "trend_id": "t16",
+          "label": "Luxury Handbag & Leather Goods",
+          "word_count": 4,
+          "passed": false,
+          "issues": [
+            "Label not distinct from t02 ('Luxury Handbag & Leather Goods', overlap 100%)",
+            "Label not distinct from t03 ('Luxury Handbag & Leather Goods', overlap 100%)",
+            "Label not distinct from t05 ('Luxury Handbag & Leather Goods', overlap 100%)",
+            "Label not distinct from t06 ('Luxury Handbag & Leather Goods', overlap 100%)",
+            "Label not distinct from t07 ('Luxury Handbag & Leather Goods', overlap 100%)",
+            "Label not distinct from t09 ('Luxury Handbag & Leather Goods', overlap 100%)",
+            "Label not distinct from t11 ('Luxury Handbag & Leather Goods', overlap 100%)",
+            "Label not distinct from t12 ('Luxury Handbag & Leather Goods', overlap 100%)",
+            "Label not distinct from t13 ('Luxury Handbag & Leather Goods', overlap 100%)",
+            "Label not distinct from t17 ('Luxury Handbag & Leather Goods', overlap 100%)",
+            "Label not distinct from t19 ('Luxury Handbag & Leather Goods', overlap 100%)",
+            "Label not distinct from t20 ('Luxury Handbag & Leather Goods', overlap 100%)",
+            "Label not distinct from t22 ('Luxury Handbag & Leather Goods', overlap 100%)",
+            "Label not distinct from t23 ('Luxury Handbag & Leather Goods', overlap 100%)",
+            "Label not distinct from t26 ('Luxury Handbag & Leather Goods', overlap 100%)",
+            "Label not distinct from t27 ('Luxury Handbag & Leather Goods', overlap 100%)",
+            "Label not distinct from t28 ('Luxury Handbag & Leather Goods', overlap 100%)",
+            "Label not distinct from t29 ('Luxury Handbag & Leather Goods', overlap 100%)",
+            "Label not distinct from t30 ('Luxury Handbag & Leather Goods', overlap 100%)"
+          ]
+        },
+        {
+          "trend_id": "t17",
+          "label": "Luxury Handbag & Leather Goods",
+          "word_count": 4,
+          "passed": false,
+          "issues": [
+            "Label not distinct from t02 ('Luxury Handbag & Leather Goods', overlap 100%)",
+            "Label not distinct from t03 ('Luxury Handbag & Leather Goods', overlap 100%)",
+            "Label not distinct from t05 ('Luxury Handbag & Leather Goods', overlap 100%)",
+            "Label not distinct from t06 ('Luxury Handbag & Leather Goods', overlap 100%)",
+            "Label not distinct from t07 ('Luxury Handbag & Leather Goods', overlap 100%)",
+            "Label not distinct from t09 ('Luxury Handbag & Leather Goods', overlap 100%)",
+            "Label not distinct from t11 ('Luxury Handbag & Leather Goods', overlap 100%)",
+            "Label not distinct from t12 ('Luxury Handbag & Leather Goods', overlap 100%)",
+            "Label not distinct from t13 ('Luxury Handbag & Leather Goods', overlap 100%)",
+            "Label not distinct from t16 ('Luxury Handbag & Leather Goods', overlap 100%)",
+            "Label not distinct from t19 ('Luxury Handbag & Leather Goods', overlap 100%)",
+            "Label not distinct from t20 ('Luxury Handbag & Leather Goods', overlap 100%)",
+            "Label not distinct from t22 ('Luxury Handbag & Leather Goods', overlap 100%)",
+            "Label not distinct from t23 ('Luxury Handbag & Leather Goods', overlap 100%)",
+            "Label not distinct from t26 ('Luxury Handbag & Leather Goods', overlap 100%)",
+            "Label not distinct from t27 ('Luxury Handbag & Leather Goods', overlap 100%)",
+            "Label not distinct from t28 ('Luxury Handbag & Leather Goods', overlap 100%)",
+            "Label not distinct from t29 ('Luxury Handbag & Leather Goods', overlap 100%)",
+            "Label not distinct from t30 ('Luxury Handbag & Leather Goods', overlap 100%)"
+          ]
+        },
+        {
+          "trend_id": "t18",
+          "label": "Seasonal Styling & Capsule Wardrobe",
+          "word_count": 4,
+          "passed": false,
+          "issues": [
+            "Label not distinct from t10 ('Seasonal Styling & Capsule Wardrobe', overlap 100%)",
+            "Label not distinct from t14 ('Seasonal Styling & Capsule Wardrobe', overlap 100%)",
+            "Label not distinct from t21 ('Seasonal Styling & Capsule Wardrobe', overlap 100%)"
+          ]
+        },
+        {
+          "trend_id": "t19",
+          "label": "Luxury Handbag & Leather Goods",
+          "word_count": 4,
+          "passed": false,
+          "issues": [
+            "Label not distinct from t02 ('Luxury Handbag & Leather Goods', overlap 100%)",
+            "Label not distinct from t03 ('Luxury Handbag & Leather Goods', overlap 100%)",
+            "Label not distinct from t05 ('Luxury Handbag & Leather Goods', overlap 100%)",
+            "Label not distinct from t06 ('Luxury Handbag & Leather Goods', overlap 100%)",
+            "Label not distinct from t07 ('Luxury Handbag & Leather Goods', overlap 100%)",
+            "Label not distinct from t09 ('Luxury Handbag & Leather Goods', overlap 100%)",
+            "Label not distinct from t11 ('Luxury Handbag & Leather Goods', overlap 100%)",
+            "Label not distinct from t12 ('Luxury Handbag & Leather Goods', overlap 100%)",
+            "Label not distinct from t13 ('Luxury Handbag & Leather Goods', overlap 100%)",
+            "Label not distinct from t16 ('Luxury Handbag & Leather Goods', overlap 100%)",
+            "Label not distinct from t17 ('Luxury Handbag & Leather Goods', overlap 100%)",
+            "Label not distinct from t20 ('Luxury Handbag & Leather Goods', overlap 100%)",
+            "Label not distinct from t22 ('Luxury Handbag & Leather Goods', overlap 100%)",
+            "Label not distinct from t23 ('Luxury Handbag & Leather Goods', overlap 100%)",
+            "Label not distinct from t26 ('Luxury Handbag & Leather Goods', overlap 100%)",
+            "Label not distinct from t27 ('Luxury Handbag & Leather Goods', overlap 100%)",
+            "Label not distinct from t28 ('Luxury Handbag & Leather Goods', overlap 100%)",
+            "Label not distinct from t29 ('Luxury Handbag & Leather Goods', overlap 100%)",
+            "Label not distinct from t30 ('Luxury Handbag & Leather Goods', overlap 100%)"
+          ]
+        },
+        {
+          "trend_id": "t20",
+          "label": "Luxury Handbag & Leather Goods",
+          "word_count": 4,
+          "passed": false,
+          "issues": [
+            "Label not distinct from t02 ('Luxury Handbag & Leather Goods', overlap 100%)",
+            "Label not distinct from t03 ('Luxury Handbag & Leather Goods', overlap 100%)",
+            "Label not distinct from t05 ('Luxury Handbag & Leather Goods', overlap 100%)",
+            "Label not distinct from t06 ('Luxury Handbag & Leather Goods', overlap 100%)",
+            "Label not distinct from t07 ('Luxury Handbag & Leather Goods', overlap 100%)",
+            "Label not distinct from t09 ('Luxury Handbag & Leather Goods', overlap 100%)",
+            "Label not distinct from t11 ('Luxury Handbag & Leather Goods', overlap 100%)",
+            "Label not distinct from t12 ('Luxury Handbag & Leather Goods', overlap 100%)",
+            "Label not distinct from t13 ('Luxury Handbag & Leather Goods', overlap 100%)",
+            "Label not distinct from t16 ('Luxury Handbag & Leather Goods', overlap 100%)",
+            "Label not distinct from t17 ('Luxury Handbag & Leather Goods', overlap 100%)",
+            "Label not distinct from t19 ('Luxury Handbag & Leather Goods', overlap 100%)",
+            "Label not distinct from t22 ('Luxury Handbag & Leather Goods', overlap 100%)",
+            "Label not distinct from t23 ('Luxury Handbag & Leather Goods', overlap 100%)",
+            "Label not distinct from t26 ('Luxury Handbag & Leather Goods', overlap 100%)",
+            "Label not distinct from t27 ('Luxury Handbag & Leather Goods', overlap 100%)",
+            "Label not distinct from t28 ('Luxury Handbag & Leather Goods', overlap 100%)",
+            "Label not distinct from t29 ('Luxury Handbag & Leather Goods', overlap 100%)",
+            "Label not distinct from t30 ('Luxury Handbag & Leather Goods', overlap 100%)"
+          ]
+        },
+        {
+          "trend_id": "t21",
+          "label": "Seasonal Styling & Capsule Wardrobe",
+          "word_count": 4,
+          "passed": false,
+          "issues": [
+            "Label not distinct from t10 ('Seasonal Styling & Capsule Wardrobe', overlap 100%)",
+            "Label not distinct from t14 ('Seasonal Styling & Capsule Wardrobe', overlap 100%)",
+            "Label not distinct from t18 ('Seasonal Styling & Capsule Wardrobe', overlap 100%)"
+          ]
+        },
+        {
+          "trend_id": "t22",
+          "label": "Luxury Handbag & Leather Goods",
+          "word_count": 4,
+          "passed": false,
+          "issues": [
+            "Label not distinct from t02 ('Luxury Handbag & Leather Goods', overlap 100%)",
+            "Label not distinct from t03 ('Luxury Handbag & Leather Goods', overlap 100%)",
+            "Label not distinct from t05 ('Luxury Handbag & Leather Goods', overlap 100%)",
+            "Label not distinct from t06 ('Luxury Handbag & Leather Goods', overlap 100%)",
+            "Label not distinct from t07 ('Luxury Handbag & Leather Goods', overlap 100%)",
+            "Label not distinct from t09 ('Luxury Handbag & Leather Goods', overlap 100%)",
+            "Label not distinct from t11 ('Luxury Handbag & Leather Goods', overlap 100%)",
+            "Label not distinct from t12 ('Luxury Handbag & Leather Goods', overlap 100%)",
+            "Label not distinct from t13 ('Luxury Handbag & Leather Goods', overlap 100%)",
+            "Label not distinct from t16 ('Luxury Handbag & Leather Goods', overlap 100%)",
+            "Label not distinct from t17 ('Luxury Handbag & Leather Goods', overlap 100%)",
+            "Label not distinct from t19 ('Luxury Handbag & Leather Goods', overlap 100%)",
+            "Label not distinct from t20 ('Luxury Handbag & Leather Goods', overlap 100%)",
+            "Label not distinct from t23 ('Luxury Handbag & Leather Goods', overlap 100%)",
+            "Label not distinct from t26 ('Luxury Handbag & Leather Goods', overlap 100%)",
+            "Label not distinct from t27 ('Luxury Handbag & Leather Goods', overlap 100%)",
+            "Label not distinct from t28 ('Luxury Handbag & Leather Goods', overlap 100%)",
+            "Label not distinct from t29 ('Luxury Handbag & Leather Goods', overlap 100%)",
+            "Label not distinct from t30 ('Luxury Handbag & Leather Goods', overlap 100%)"
+          ]
+        },
+        {
+          "trend_id": "t23",
+          "label": "Luxury Handbag & Leather Goods",
+          "word_count": 4,
+          "passed": false,
+          "issues": [
+            "Label not distinct from t02 ('Luxury Handbag & Leather Goods', overlap 100%)",
+            "Label not distinct from t03 ('Luxury Handbag & Leather Goods', overlap 100%)",
+            "Label not distinct from t05 ('Luxury Handbag & Leather Goods', overlap 100%)",
+            "Label not distinct from t06 ('Luxury Handbag & Leather Goods', overlap 100%)",
+            "Label not distinct from t07 ('Luxury Handbag & Leather Goods', overlap 100%)",
+            "Label not distinct from t09 ('Luxury Handbag & Leather Goods', overlap 100%)",
+            "Label not distinct from t11 ('Luxury Handbag & Leather Goods', overlap 100%)",
+            "Label not distinct from t12 ('Luxury Handbag & Leather Goods', overlap 100%)",
+            "Label not distinct from t13 ('Luxury Handbag & Leather Goods', overlap 100%)",
+            "Label not distinct from t16 ('Luxury Handbag & Leather Goods', overlap 100%)",
+            "Label not distinct from t17 ('Luxury Handbag & Leather Goods', overlap 100%)",
+            "Label not distinct from t19 ('Luxury Handbag & Leather Goods', overlap 100%)",
+            "Label not distinct from t20 ('Luxury Handbag & Leather Goods', overlap 100%)",
+            "Label not distinct from t22 ('Luxury Handbag & Leather Goods', overlap 100%)",
+            "Label not distinct from t26 ('Luxury Handbag & Leather Goods', overlap 100%)",
+            "Label not distinct from t27 ('Luxury Handbag & Leather Goods', overlap 100%)",
+            "Label not distinct from t28 ('Luxury Handbag & Leather Goods', overlap 100%)",
+            "Label not distinct from t29 ('Luxury Handbag & Leather Goods', overlap 100%)",
+            "Label not distinct from t30 ('Luxury Handbag & Leather Goods', overlap 100%)"
+          ]
+        },
+        {
+          "trend_id": "t24",
+          "label": "Mixed Trend Signals",
+          "word_count": 3,
+          "passed": false,
+          "issues": [
+            "Label contains generic term 'mixed'",
+            "Label not distinct from t01 ('Mixed Trend Signals', overlap 100%)",
+            "Label not distinct from t04 ('Mixed Trend Signals', overlap 100%)",
+            "Label not distinct from t08 ('Mixed Trend Signals', overlap 100%)",
+            "Label not distinct from t15 ('Mixed Trend Signals', overlap 100%)",
+            "Label not distinct from t25 ('Mixed Trend Signals', overlap 100%)"
+          ]
+        },
+        {
+          "trend_id": "t25",
+          "label": "Mixed Trend Signals",
+          "word_count": 3,
+          "passed": false,
+          "issues": [
+            "Label contains generic term 'mixed'",
+            "Label not distinct from t01 ('Mixed Trend Signals', overlap 100%)",
+            "Label not distinct from t04 ('Mixed Trend Signals', overlap 100%)",
+            "Label not distinct from t08 ('Mixed Trend Signals', overlap 100%)",
+            "Label not distinct from t15 ('Mixed Trend Signals', overlap 100%)",
+            "Label not distinct from t24 ('Mixed Trend Signals', overlap 100%)"
+          ]
+        },
+        {
+          "trend_id": "t26",
+          "label": "Luxury Handbag & Leather Goods",
+          "word_count": 4,
+          "passed": false,
+          "issues": [
+            "Label not distinct from t02 ('Luxury Handbag & Leather Goods', overlap 100%)",
+            "Label not distinct from t03 ('Luxury Handbag & Leather Goods', overlap 100%)",
+            "Label not distinct from t05 ('Luxury Handbag & Leather Goods', overlap 100%)",
+            "Label not distinct from t06 ('Luxury Handbag & Leather Goods', overlap 100%)",
+            "Label not distinct from t07 ('Luxury Handbag & Leather Goods', overlap 100%)",
+            "Label not distinct from t09 ('Luxury Handbag & Leather Goods', overlap 100%)",
+            "Label not distinct from t11 ('Luxury Handbag & Leather Goods', overlap 100%)",
+            "Label not distinct from t12 ('Luxury Handbag & Leather Goods', overlap 100%)",
+            "Label not distinct from t13 ('Luxury Handbag & Leather Goods', overlap 100%)",
+            "Label not distinct from t16 ('Luxury Handbag & Leather Goods', overlap 100%)",
+            "Label not distinct from t17 ('Luxury Handbag & Leather Goods', overlap 100%)",
+            "Label not distinct from t19 ('Luxury Handbag & Leather Goods', overlap 100%)",
+            "Label not distinct from t20 ('Luxury Handbag & Leather Goods', overlap 100%)",
+            "Label not distinct from t22 ('Luxury Handbag & Leather Goods', overlap 100%)",
+            "Label not distinct from t23 ('Luxury Handbag & Leather Goods', overlap 100%)",
+            "Label not distinct from t27 ('Luxury Handbag & Leather Goods', overlap 100%)",
+            "Label not distinct from t28 ('Luxury Handbag & Leather Goods', overlap 100%)",
+            "Label not distinct from t29 ('Luxury Handbag & Leather Goods', overlap 100%)",
+            "Label not distinct from t30 ('Luxury Handbag & Leather Goods', overlap 100%)"
+          ]
+        },
+        {
+          "trend_id": "t27",
+          "label": "Luxury Handbag & Leather Goods",
+          "word_count": 4,
+          "passed": false,
+          "issues": [
+            "Label not distinct from t02 ('Luxury Handbag & Leather Goods', overlap 100%)",
+            "Label not distinct from t03 ('Luxury Handbag & Leather Goods', overlap 100%)",
+            "Label not distinct from t05 ('Luxury Handbag & Leather Goods', overlap 100%)",
+            "Label not distinct from t06 ('Luxury Handbag & Leather Goods', overlap 100%)",
+            "Label not distinct from t07 ('Luxury Handbag & Leather Goods', overlap 100%)",
+            "Label not distinct from t09 ('Luxury Handbag & Leather Goods', overlap 100%)",
+            "Label not distinct from t11 ('Luxury Handbag & Leather Goods', overlap 100%)",
+            "Label not distinct from t12 ('Luxury Handbag & Leather Goods', overlap 100%)",
+            "Label not distinct from t13 ('Luxury Handbag & Leather Goods', overlap 100%)",
+            "Label not distinct from t16 ('Luxury Handbag & Leather Goods', overlap 100%)",
+            "Label not distinct from t17 ('Luxury Handbag & Leather Goods', overlap 100%)",
+            "Label not distinct from t19 ('Luxury Handbag & Leather Goods', overlap 100%)",
+            "Label not distinct from t20 ('Luxury Handbag & Leather Goods', overlap 100%)",
+            "Label not distinct from t22 ('Luxury Handbag & Leather Goods', overlap 100%)",
+            "Label not distinct from t23 ('Luxury Handbag & Leather Goods', overlap 100%)",
+            "Label not distinct from t26 ('Luxury Handbag & Leather Goods', overlap 100%)",
+            "Label not distinct from t28 ('Luxury Handbag & Leather Goods', overlap 100%)",
+            "Label not distinct from t29 ('Luxury Handbag & Leather Goods', overlap 100%)",
+            "Label not distinct from t30 ('Luxury Handbag & Leather Goods', overlap 100%)"
+          ]
+        },
+        {
+          "trend_id": "t28",
+          "label": "Luxury Handbag & Leather Goods",
+          "word_count": 4,
+          "passed": false,
+          "issues": [
+            "Label not distinct from t02 ('Luxury Handbag & Leather Goods', overlap 100%)",
+            "Label not distinct from t03 ('Luxury Handbag & Leather Goods', overlap 100%)",
+            "Label not distinct from t05 ('Luxury Handbag & Leather Goods', overlap 100%)",
+            "Label not distinct from t06 ('Luxury Handbag & Leather Goods', overlap 100%)",
+            "Label not distinct from t07 ('Luxury Handbag & Leather Goods', overlap 100%)",
+            "Label not distinct from t09 ('Luxury Handbag & Leather Goods', overlap 100%)",
+            "Label not distinct from t11 ('Luxury Handbag & Leather Goods', overlap 100%)",
+            "Label not distinct from t12 ('Luxury Handbag & Leather Goods', overlap 100%)",
+            "Label not distinct from t13 ('Luxury Handbag & Leather Goods', overlap 100%)",
+            "Label not distinct from t16 ('Luxury Handbag & Leather Goods', overlap 100%)",
+            "Label not distinct from t17 ('Luxury Handbag & Leather Goods', overlap 100%)",
+            "Label not distinct from t19 ('Luxury Handbag & Leather Goods', overlap 100%)",
+            "Label not distinct from t20 ('Luxury Handbag & Leather Goods', overlap 100%)",
+            "Label not distinct from t22 ('Luxury Handbag & Leather Goods', overlap 100%)",
+            "Label not distinct from t23 ('Luxury Handbag & Leather Goods', overlap 100%)",
+            "Label not distinct from t26 ('Luxury Handbag & Leather Goods', overlap 100%)",
+            "Label not distinct from t27 ('Luxury Handbag & Leather Goods', overlap 100%)",
+            "Label not distinct from t29 ('Luxury Handbag & Leather Goods', overlap 100%)",
+            "Label not distinct from t30 ('Luxury Handbag & Leather Goods', overlap 100%)"
+          ]
+        },
+        {
+          "trend_id": "t29",
+          "label": "Luxury Handbag & Leather Goods",
+          "word_count": 4,
+          "passed": false,
+          "issues": [
+            "Label not distinct from t02 ('Luxury Handbag & Leather Goods', overlap 100%)",
+            "Label not distinct from t03 ('Luxury Handbag & Leather Goods', overlap 100%)",
+            "Label not distinct from t05 ('Luxury Handbag & Leather Goods', overlap 100%)",
+            "Label not distinct from t06 ('Luxury Handbag & Leather Goods', overlap 100%)",
+            "Label not distinct from t07 ('Luxury Handbag & Leather Goods', overlap 100%)",
+            "Label not distinct from t09 ('Luxury Handbag & Leather Goods', overlap 100%)",
+            "Label not distinct from t11 ('Luxury Handbag & Leather Goods', overlap 100%)",
+            "Label not distinct from t12 ('Luxury Handbag & Leather Goods', overlap 100%)",
+            "Label not distinct from t13 ('Luxury Handbag & Leather Goods', overlap 100%)",
+            "Label not distinct from t16 ('Luxury Handbag & Leather Goods', overlap 100%)",
+            "Label not distinct from t17 ('Luxury Handbag & Leather Goods', overlap 100%)",
+            "Label not distinct from t19 ('Luxury Handbag & Leather Goods', overlap 100%)",
+            "Label not distinct from t20 ('Luxury Handbag & Leather Goods', overlap 100%)",
+            "Label not distinct from t22 ('Luxury Handbag & Leather Goods', overlap 100%)",
+            "Label not distinct from t23 ('Luxury Handbag & Leather Goods', overlap 100%)",
+            "Label not distinct from t26 ('Luxury Handbag & Leather Goods', overlap 100%)",
+            "Label not distinct from t27 ('Luxury Handbag & Leather Goods', overlap 100%)",
+            "Label not distinct from t28 ('Luxury Handbag & Leather Goods', overlap 100%)",
+            "Label not distinct from t30 ('Luxury Handbag & Leather Goods', overlap 100%)"
+          ]
+        },
+        {
+          "trend_id": "t30",
+          "label": "Luxury Handbag & Leather Goods",
+          "word_count": 4,
+          "passed": false,
+          "issues": [
+            "Label not distinct from t02 ('Luxury Handbag & Leather Goods', overlap 100%)",
+            "Label not distinct from t03 ('Luxury Handbag & Leather Goods', overlap 100%)",
+            "Label not distinct from t05 ('Luxury Handbag & Leather Goods', overlap 100%)",
+            "Label not distinct from t06 ('Luxury Handbag & Leather Goods', overlap 100%)",
+            "Label not distinct from t07 ('Luxury Handbag & Leather Goods', overlap 100%)",
+            "Label not distinct from t09 ('Luxury Handbag & Leather Goods', overlap 100%)",
+            "Label not distinct from t11 ('Luxury Handbag & Leather Goods', overlap 100%)",
+            "Label not distinct from t12 ('Luxury Handbag & Leather Goods', overlap 100%)",
+            "Label not distinct from t13 ('Luxury Handbag & Leather Goods', overlap 100%)",
+            "Label not distinct from t16 ('Luxury Handbag & Leather Goods', overlap 100%)",
+            "Label not distinct from t17 ('Luxury Handbag & Leather Goods', overlap 100%)",
+            "Label not distinct from t19 ('Luxury Handbag & Leather Goods', overlap 100%)",
+            "Label not distinct from t20 ('Luxury Handbag & Leather Goods', overlap 100%)",
+            "Label not distinct from t22 ('Luxury Handbag & Leather Goods', overlap 100%)",
+            "Label not distinct from t23 ('Luxury Handbag & Leather Goods', overlap 100%)",
+            "Label not distinct from t26 ('Luxury Handbag & Leather Goods', overlap 100%)",
+            "Label not distinct from t27 ('Luxury Handbag & Leather Goods', overlap 100%)",
+            "Label not distinct from t28 ('Luxury Handbag & Leather Goods', overlap 100%)",
+            "Label not distinct from t29 ('Luxury Handbag & Leather Goods', overlap 100%)"
           ]
         }
       ]
@@ -321,46 +3964,103 @@
     {
       "check": "duplication_rate",
       "trend_id": "t01",
-      "label": "Old Celine vs New Celine Nostalgia Debate",
+      "label": "Mixed Trend Signals",
       "issues": [
-        "post_id live_0159 shared with ['t03']",
-        "post_id live_0090 shared with ['t02']"
+        "Label too similar to t04 (overlap 100%)",
+        "Label too similar to t08 (overlap 100%)",
+        "Label too similar to t15 (overlap 100%)",
+        "Label too similar to t24 (overlap 100%)",
+        "Label too similar to t25 (overlap 100%)"
       ]
     },
     {
       "check": "duplication_rate",
       "trend_id": "t02",
-      "label": "Celine Box Bag Relevance and Popularity Debate",
+      "label": "Luxury Handbag & Leather Goods",
       "issues": [
-        "post_id live_0090 shared with ['t01']",
-        "post_id live_0039 shared with ['t08']"
+        "Label too similar to t03 (overlap 100%)",
+        "Label too similar to t05 (overlap 100%)",
+        "Label too similar to t06 (overlap 100%)",
+        "Label too similar to t07 (overlap 100%)",
+        "Label too similar to t09 (overlap 100%)",
+        "Label too similar to t11 (overlap 100%)",
+        "Label too similar to t12 (overlap 100%)",
+        "Label too similar to t13 (overlap 100%)",
+        "Label too similar to t16 (overlap 100%)",
+        "Label too similar to t17 (overlap 100%)",
+        "Label too similar to t19 (overlap 100%)",
+        "Label too similar to t20 (overlap 100%)",
+        "Label too similar to t22 (overlap 100%)",
+        "Label too similar to t23 (overlap 100%)",
+        "Label too similar to t26 (overlap 100%)",
+        "Label too similar to t27 (overlap 100%)",
+        "Label too similar to t28 (overlap 100%)",
+        "Label too similar to t29 (overlap 100%)",
+        "Label too similar to t30 (overlap 100%)"
       ]
     },
     {
       "check": "duplication_rate",
       "trend_id": "t03",
-      "label": "Soft 16 Bag Functional Reviews and Styling",
+      "label": "Luxury Handbag & Leather Goods",
       "issues": [
-        "post_id live_0159 shared with ['t01']",
-        "post_id live_0111 shared with ['t05']"
+        "Label too similar to t02 (overlap 100%)",
+        "Label too similar to t05 (overlap 100%)",
+        "Label too similar to t06 (overlap 100%)",
+        "Label too similar to t07 (overlap 100%)",
+        "Label too similar to t09 (overlap 100%)",
+        "Label too similar to t11 (overlap 100%)",
+        "Label too similar to t12 (overlap 100%)",
+        "Label too similar to t13 (overlap 100%)",
+        "Label too similar to t16 (overlap 100%)",
+        "Label too similar to t17 (overlap 100%)",
+        "Label too similar to t19 (overlap 100%)",
+        "Label too similar to t20 (overlap 100%)",
+        "Label too similar to t22 (overlap 100%)",
+        "Label too similar to t23 (overlap 100%)",
+        "Label too similar to t26 (overlap 100%)",
+        "Label too similar to t27 (overlap 100%)",
+        "Label too similar to t28 (overlap 100%)",
+        "Label too similar to t29 (overlap 100%)",
+        "Label too similar to t30 (overlap 100%)"
+      ]
+    },
+    {
+      "check": "duplication_rate",
+      "trend_id": "t04",
+      "label": "Mixed Trend Signals",
+      "issues": [
+        "Label too similar to t01 (overlap 100%)",
+        "Label too similar to t08 (overlap 100%)",
+        "Label too similar to t15 (overlap 100%)",
+        "Label too similar to t24 (overlap 100%)",
+        "Label too similar to t25 (overlap 100%)"
       ]
     },
     {
       "check": "duplication_rate",
       "trend_id": "t05",
-      "label": "Celebrity Outfit Decoding and Influence on Celine Styling",
+      "label": "Luxury Handbag & Leather Goods",
       "issues": [
-        "post_id live_0111 shared with ['t03']",
-        "post_id live_0078 shared with ['t08']"
-      ]
-    },
-    {
-      "check": "duplication_rate",
-      "trend_id": "t08",
-      "label": "Celine Bag Styling with French Old Money and Elegant Aesthetic",
-      "issues": [
-        "post_id live_0039 shared with ['t02']",
-        "post_id live_0078 shared with ['t05']"
+        "Label too similar to t02 (overlap 100%)",
+        "Label too similar to t03 (overlap 100%)",
+        "Label too similar to t06 (overlap 100%)",
+        "Label too similar to t07 (overlap 100%)",
+        "Label too similar to t09 (overlap 100%)",
+        "Label too similar to t11 (overlap 100%)",
+        "Label too similar to t12 (overlap 100%)",
+        "Label too similar to t13 (overlap 100%)",
+        "Label too similar to t16 (overlap 100%)",
+        "Label too similar to t17 (overlap 100%)",
+        "Label too similar to t19 (overlap 100%)",
+        "Label too similar to t20 (overlap 100%)",
+        "Label too similar to t22 (overlap 100%)",
+        "Label too similar to t23 (overlap 100%)",
+        "Label too similar to t26 (overlap 100%)",
+        "Label too similar to t27 (overlap 100%)",
+        "Label too similar to t28 (overlap 100%)",
+        "Label too similar to t29 (overlap 100%)",
+        "Label too similar to t30 (overlap 100%)"
       ]
     }
   ]

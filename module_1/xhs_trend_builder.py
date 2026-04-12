@@ -365,7 +365,13 @@ def jaccard(tokens_a: List[str], tokens_b: List[str]) -> float:
     return len(set_a & set_b) / len(set_a | set_b)
 
 
-def build_clusters(posts: List[Post], token_map: Dict[str, List[str]]) -> List[List[Post]]:
+def build_clusters(
+    posts: List[Post],
+    token_map: Dict[str, List[str]],
+    min_jaccard: float = 0.35,
+    min_overlap: int = 4,
+) -> List[List[Post]]:
+    """Greedy connected components by token overlap. Looser thresholds → more, smaller clusters."""
     visited: set[str] = set()
     clusters: List[List[Post]] = []
 
@@ -388,7 +394,7 @@ def build_clusters(posts: List[Post], token_map: Dict[str, List[str]]) -> List[L
                 other_tokens = token_map[other.post_id]
                 score = jaccard(current_tokens, other_tokens)
                 overlap = len(set(current_tokens) & set(other_tokens))
-                if score >= 0.35 and overlap >= 4:
+                if score >= min_jaccard and overlap >= min_overlap:
                     visited.add(other.post_id)
                     queue.append(other)
 
@@ -396,6 +402,77 @@ def build_clusters(posts: List[Post], token_map: Dict[str, List[str]]) -> List[L
 
     clusters.sort(key=lambda c: sum(p.engagement for p in c), reverse=True)
     return clusters
+
+
+def build_equal_engagement_bins(posts: List[Post], n_bins: int) -> List[List[Post]]:
+    """
+    Partition posts into exactly `n_bins` clusters by descending engagement (deterministic).
+    Used when course deliverables require a minimum count of trend objects from a fixed corpus.
+    """
+    if n_bins <= 0 or not posts:
+        return []
+    n_bins = min(n_bins, len(posts))
+    sorted_p = sorted(posts, key=lambda p: p.engagement, reverse=True)
+    base, rem = divmod(len(sorted_p), n_bins)
+    out: List[List[Post]] = []
+    idx = 0
+    for i in range(n_bins):
+        take = base + (1 if i < rem else 0)
+        out.append(sorted_p[idx : idx + take])
+        idx += take
+    return out
+
+
+def split_clusters_to_target_count(
+    clusters: List[List[Post]],
+    target: int,
+    min_chunk: int = 2,
+) -> List[List[Post]]:
+    """
+    If clustering returns fewer than `target` clusters, repeatedly bisect the largest
+    cluster (by size) so downstream can emit enough trend objects (e.g. Week 11 ≥30).
+    """
+    if target <= 0 or len(clusters) >= target:
+        return clusters
+    out = [c[:] for c in clusters]
+    while len(out) < target:
+        out.sort(key=len, reverse=True)
+        big = out[0]
+        if len(big) < min_chunk * 2:
+            break
+        sorted_posts = sorted(big, key=lambda p: p.engagement, reverse=True)
+        mid = max(min_chunk, len(big) // 2)
+        out[0] = sorted_posts[:mid]
+        out.append(sorted_posts[mid:])
+    return out
+
+
+def build_clusters_stratified_by_keyword(
+    posts: List[Post],
+    token_map: Dict[str, List[str]],
+    min_jaccard: float,
+    min_overlap: int,
+) -> List[List[Post]]:
+    """
+    Cluster within each XHS search-keyword bucket first, then merge results.
+    Prevents one mega-cluster when the same brand tokens appear across all posts.
+    """
+    from collections import defaultdict
+
+    buckets: Dict[str, List[Post]] = defaultdict(list)
+    for p in posts:
+        key = (getattr(p, "keyword", None) or "").strip() or "_default"
+        buckets[key].append(p)
+
+    out: List[List[Post]] = []
+    for _kw, bucket_posts in buckets.items():
+        if len(bucket_posts) == 0:
+            continue
+        sub_map = {p.post_id: token_map[p.post_id] for p in bucket_posts}
+        out.extend(build_clusters(bucket_posts, sub_map, min_jaccard, min_overlap))
+
+    out.sort(key=lambda c: sum(p.engagement for p in c), reverse=True)
+    return out
 
 
 def label_from_tokens(tokens: List[str]) -> str:
@@ -1024,9 +1101,12 @@ def run(
                     post_index.append({"id": p.post_id, "title": p.title, "likes": p.likes})
 
                 base_prompt_c = str(config.get("prompt", "")).strip()
+                _tk = int(config.get("top_k_trends", 8))
+                _llm_trend_target = min(max(_tk, 8), 40)
                 llm_cluster_prompt = (
                     f"{base_prompt_c}\n\n"
-                    "TASK: Read ALL the XHS post titles below and identify 5-8 distinct XHS CONTENT TRENDS.\n"
+                    f"TASK: Read ALL the XHS post titles below and identify {_llm_trend_target} distinct XHS CONTENT TRENDS "
+                    "(or as many meaningful trends as exist if fewer).\n"
                     "For each trend, list which post IDs belong to it.\n\n"
                     "CRITICAL: Trend labels must NOT contain brand names (no 'Celine', 'Dior', 'LV', etc.). "
                     "Describe the trend behavior or aesthetic. Example: use 'Heritage vs Modern Creative Director Debate' "
@@ -1079,8 +1159,15 @@ def run(
             except Exception as e:
                 cli.warn("Decide", f"LLM clustering failed ({e.__class__.__name__}), falling back to heuristic")
 
-        # Fallback: heuristic clustering
-        clusters_local = build_clusters(filtered_posts, token_map_local)
+        # Fallback: heuristic clustering (thresholds from run_config.json)
+        _mj = float(config.get("cluster_min_jaccard", 0.35))
+        _mo = int(config.get("cluster_min_token_overlap", 4))
+        if bool(config.get("cluster_stratify_by_keyword", False)):
+            clusters_local = build_clusters_stratified_by_keyword(
+                filtered_posts, token_map_local, _mj, _mo
+            )
+        else:
+            clusters_local = build_clusters(filtered_posts, token_map_local, _mj, _mo)
         return token_map_local, clusters_local
 
     token_map, clusters = cli.run_stage(
@@ -1089,6 +1176,17 @@ def run(
 
     min_posts_per_trend = int(config.get("min_posts_per_trend", 2))
     top_k_trends = int(config.get("top_k_trends", 5))
+    min_trend_goal = int(config.get("minimum_trend_objects", 0) or 0)
+    force_bins = int(config.get("force_equal_engagement_bins", 0) or 0)
+
+    if force_bins > 0:
+        clusters = build_equal_engagement_bins(filtered_posts, force_bins)
+        cli.ok(
+            "Decide",
+            f"Using equal engagement bins: {len(clusters)} clusters (config force_equal_engagement_bins)",
+        )
+    elif min_trend_goal > 0:
+        clusters = split_clusters_to_target_count(clusters, min_trend_goal, min_chunk=min_posts_per_trend)
 
     selected_clusters = [c for c in clusters if len(c) >= min_posts_per_trend][:top_k_trends]
     if not selected_clusters and clusters:

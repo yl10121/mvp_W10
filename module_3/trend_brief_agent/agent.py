@@ -816,7 +816,8 @@ def write_html_report(brand, city, week, source, selected, cards, used_fallback)
 
 def write_report(brand, city, week, source, selected, cards, used_fallback):
     """B4: Write city- and brand-specific markdown report."""
-    output_path = SCRIPT_DIR / f"trend_cards_{brand.lower()}_{city.lower()}.md"
+    slug = brand.lower().strip().replace(" ", "_").replace("-", "_")
+    output_path = SCRIPT_DIR / f"trend_cards_{slug}_{city.lower()}.md"
 
     with open(output_path, "w", encoding="utf-8") as f:
         f.write(f"# CA Trend Brief — {brand} {city}\n\n")
@@ -846,6 +847,14 @@ def main():
     parser = argparse.ArgumentParser(description="Module 3: CA Trend Brief Generator")
     parser.add_argument("--brand", default=None, help="Brand name (e.g. Dior, Chanel)")
     parser.add_argument("--city", default=None, help="Store city (e.g. Shanghai, Beijing)")
+    _default_top = int(os.environ.get("M3_TOP_N", "3"))
+    parser.add_argument(
+        "--top-n",
+        type=int,
+        default=_default_top,
+        metavar="N",
+        help="Max trend cards to generate after filtering (default: env M3_TOP_N or 3). Use ≥10 for Week 11.",
+    )
     args, _ = parser.parse_known_args()
 
     api_key = os.environ.get("OPENROUTER_API_KEY", "")
@@ -872,7 +881,9 @@ def main():
     print(f"Applying decision logic for: {brand} — {city}\n")
 
     # B3: Apply decision logic
-    selected, used_fallback, failed_trends = select_trends(all_trends, city)
+    selected, used_fallback, failed_trends = select_trends(
+        all_trends, city, top_n=max(1, args.top_n)
+    )
 
     if failed_trends:
         print(f"Excluded {len(failed_trends)} trend(s) due to failure checks:")
