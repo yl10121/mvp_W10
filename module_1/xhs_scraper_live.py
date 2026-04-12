@@ -26,10 +26,18 @@ PREREQUISITES
 
 USAGE
   # with venv (recommended on Mac):
-  .venv/bin/python3 xhs_scraper_live.py --keywords "美白" "Dior" --times 3
+  .venv/bin/python3 xhs_scraper_live.py --keywords "Louis Vuitton" "LV" "路易威登" --times 3
 
   # with system python3 (if packages already installed globally):
-  python3 xhs_scraper_live.py --keywords "Dior" --times 2 --no-caption
+  python3 xhs_scraper_live.py --keywords "LV" "路易威登" --times 2 --no-caption
+
+  # After scraping, restrict to March–April (or any window in run_config.json):
+  #   cd module_1 && ../.venv/bin/python3 filter_posts_by_config.py
+  # See WEEK11_DATE_FILTER.md
+
+  # Fast ~200 posts (detail + trends, skip slow vision API):
+  #   ../.venv/bin/python3 xhs_scraper_live.py -k "LV" "路易威登" "LV包包" --times 5 \
+  #     --max-posts 200 --fast --no-caption
 """
 
 from __future__ import annotations
@@ -197,7 +205,7 @@ class XHSLiveScraper:
     Extracts post cards + detail-page images/videos.
     """
 
-    def __init__(self):
+    def __init__(self, fast: bool = False, skip_comments: bool = False):
         try:
             from DrissionPage import ChromiumPage, ChromiumOptions
         except ImportError:
@@ -211,6 +219,8 @@ class XHSLiveScraper:
         opts = ChromiumOptions()
         self.browser  = ChromiumPage(addr_or_opts=opts)  # the browser / main tab
         self.main_tab = self.browser                     # alias — used for search page
+        self.fast = fast
+        self.skip_comments = skip_comments
 
     # ── Login ──────────────────────────────────────────────────────
     def ensure_login(self):
@@ -248,40 +258,84 @@ class XHSLiveScraper:
                 else:
                     raise
 
+    def _recover_search_tab(self, url: str) -> None:
+        """Re-open search URL after PageDisconnectedError (long scroll sessions)."""
+        try:
+            self.main_tab = self.browser.get_tab()
+        except Exception:
+            pass
+        self._get_safe(self.main_tab, url, retries=3)
+        time.sleep(3.0 if not self.fast else 1.5)
+
     # ── Search ─────────────────────────────────────────────────────
-    def search(self, keyword: str, scroll_times: int = 3,
-               filter_words: list[str] | None = None) -> list[dict]:
+    def search(
+        self,
+        keyword: str,
+        scroll_times: int = 3,
+        filter_words: list[str] | None = None,
+        max_cards: int | None = None,
+    ) -> list[dict]:
         """
         Search XHS for `keyword`, scroll `scroll_times` pages, return card dicts.
         Optional `filter_words`: only keep posts whose title contains at least
         one of these words (case-insensitive). Use for luxury/fashion filtering.
+        `max_cards`: stop collecting once this many unique cards (faster path to N posts).
         """
         from urllib.parse import quote
+
+        try:
+            from DrissionPage.errors import PageDisconnectedError
+        except Exception:  # pragma: no cover
+            PageDisconnectedError = Exception  # type: ignore
+
         encoded = quote(keyword)
         # note_type=0 → all notes; type=51 → image posts only (better for fashion)
         url = XHS_SEARCH_URL.format(keyword=encoded) + "&type=51"
         print(f"  [SEARCH] {url}")
         self._get_safe(self.main_tab, url)
-        time.sleep(4)  # give XHS time to fully render
+        time.sleep(4.0 if not self.fast else 2.5)  # give XHS time to fully render
 
         cards: list[dict] = []
         seen_links: set[str] = set()
 
-        for scroll_n in range(scroll_times):
+        scroll_n = 0
+        disconnect_streak = 0
+        while scroll_n < scroll_times:
             print(f"  [SCROLL] {scroll_n + 1}/{scroll_times}")
-            new_cards = self._extract_cards(keyword)
-            for c in new_cards:
-                if not c["post_link"] or c["post_link"] in seen_links:
-                    continue
-                # optional relevance filter
-                if filter_words:
-                    title_lower = (c.get("title") or "").lower()
-                    if not any(w.lower() in title_lower for w in filter_words):
+            try:
+                new_cards = self._extract_cards(keyword)
+                for c in new_cards:
+                    if not c["post_link"] or c["post_link"] in seen_links:
                         continue
-                seen_links.add(c["post_link"])
-                cards.append(c)
-            self.main_tab.scroll.to_bottom()
-            time.sleep(2.5)
+                    if filter_words:
+                        title_lower = (c.get("title") or "").lower()
+                        if not any(w.lower() in title_lower for w in filter_words):
+                            continue
+                    seen_links.add(c["post_link"])
+                    cards.append(c)
+                    if max_cards is not None and len(cards) >= max_cards:
+                        print(f"  [CAP] Reached max_cards={max_cards} for this keyword")
+                        print(f"  [FOUND] {len(cards)} cards for '{keyword}'")
+                        return cards
+                self.main_tab.scroll.to_bottom()
+                time.sleep(2.5 if not self.fast else 1.0)
+            except PageDisconnectedError:
+                disconnect_streak += 1
+                if disconnect_streak > 6:
+                    print(
+                        "    [Abort] Too many disconnects on this keyword — "
+                        f"returning {len(cards)} cards collected so far."
+                    )
+                    print(f"  [FOUND] {len(cards)} cards for '{keyword}'")
+                    return cards
+                print(
+                    f"    [RECOVER] Page disconnected at scroll {scroll_n + 1} — "
+                    "reloading search and continuing…"
+                )
+                self._recover_search_tab(url)
+                continue
+            disconnect_streak = 0
+            scroll_n += 1
 
         print(f"  [FOUND] {len(cards)} cards for '{keyword}'")
         return cards
@@ -345,7 +399,7 @@ class XHSLiveScraper:
         detail_tab = None
         try:
             detail_tab = self.browser.new_tab(link)
-            time.sleep(3)
+            time.sleep(3.0 if not self.fast else 1.2)
 
             # ── stats ──
             date_el = detail_tab.ele(".date", timeout=4)
@@ -403,7 +457,12 @@ class XHSLiveScraper:
                 post["video_url"] = ""
 
             # ── comments + replies ──
-            post["raw_comments"] = self._scrape_comments(detail_tab)
+            if self.skip_comments:
+                post["raw_comments"] = []
+            else:
+                post["raw_comments"] = self._scrape_comments(
+                    detail_tab, max_scrolls=3 if not self.fast else 1
+                )
 
         except Exception as e:
             print(f"    [WARN] Detail fetch failed for {link}: {e.__class__.__name__}")
@@ -639,6 +698,23 @@ def main():
                         help="Skip detail-page visits (faster, but no caption/hashtag/date/images)")
     parser.add_argument("--no-caption", action="store_true",
                         help="Skip AI image captioning")
+    parser.add_argument(
+        "--max-posts",
+        type=int,
+        default=None,
+        metavar="N",
+        help="Stop after N total posts (caps scroll + detail work). Use with --times 5–8 to reach ~200.",
+    )
+    parser.add_argument(
+        "--fast",
+        action="store_true",
+        help="Shorter sleeps on search/detail (still real browser; much faster than default).",
+    )
+    parser.add_argument(
+        "--skip-comments",
+        action="store_true",
+        help="Do not scrape comment threads (saves a lot of time per post).",
+    )
     args = parser.parse_args()
 
     print("=" * 60)
@@ -649,27 +725,46 @@ def main():
     print(f"Filter    : {args.filter_words or 'none (all results kept)'}")
     print(f"Detail    : {not args.no_detail}")
     print(f"AI caption: {not args.no_caption}")
+    print(f"Max posts : {args.max_posts or 'no cap'}")
+    print(f"Fast mode : {args.fast}")
+    print(f"Comments  : {not args.skip_comments}")
     print("=" * 60)
 
-    scraper = XHSLiveScraper()
+    scraper = XHSLiveScraper(fast=args.fast, skip_comments=args.skip_comments)
     scraper.ensure_login()
 
     all_raw: list[dict] = []
+    remaining: int | None = args.max_posts
 
     for kw in args.keywords:
+        if remaining is not None and remaining <= 0:
+            break
         print(f"\n[KEYWORD] {kw}")
-        cards = scraper.search(kw, scroll_times=args.times,
-                               filter_words=args.filter_words or None)
+        need_this_keyword = remaining if remaining is not None else None
+        cards = scraper.search(
+            kw,
+            scroll_times=args.times,
+            filter_words=args.filter_words or None,
+            max_cards=need_this_keyword,
+        )
 
         if not args.no_detail:
             enriched = []
             for i, card in enumerate(cards, 1):
+                if remaining is not None and remaining <= 0:
+                    break
                 print(f"  [DETAIL] {i}/{len(cards)} — {card.get('title','')[:40]}")
                 enriched.append(scraper.fetch_detail(card))
-                time.sleep(2)  # polite rate limit
+                time.sleep(2.0 if not args.fast else 0.45)
+                if remaining is not None:
+                    remaining -= 1
             all_raw.extend(enriched)
         else:
+            if remaining is not None:
+                cards = cards[:remaining]
             all_raw.extend(cards)
+            if remaining is not None:
+                remaining -= len(cards)
 
     scraper.close()
 

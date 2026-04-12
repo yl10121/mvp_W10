@@ -1,0 +1,1184 @@
+{
+  "clients": [
+    {
+      "client_id": "BENCH_001",
+      "name": "林婉清",
+      "persona_tag": "艺术策展·静奢",
+      "vip_tier": "VIC",
+      "source_table": "benchmark_module4_shape",
+      "module4_run_id": "bench_m4_20260330",
+      "module4_memory_row_id": 1,
+      "generated_at": "2026-03-30T12:00:00+00:00",
+      "model_used": "benchmark_generator/1.0",
+      "missing_fields_count": 1,
+      "raw_voice_note": "林女士上周来看了春季风衣，说下个月香港巴塞尔想穿得不张扬但有质感，不喜欢大logo。",
+      "summary": "偏好低调质感，即将参加香港艺术周，需要得体且不显logo的造型。",
+      "life_event": {
+        "value": "香港巴塞尔/艺术场合",
+        "confidence": "High",
+        "evidence": "明确提到巴塞尔与下个月"
+      },
+      "timeline": {
+        "value": "约一个月后",
+        "confidence": "Medium",
+        "evidence": "下月活动"
+      },
+      "aesthetic_preference": {
+        "value": "无logo、质感、克制",
+        "confidence": "High",
+        "evidence": "反复强调"
+      },
+      "size_height": {
+        "value": "N/A",
+        "confidence": "Low",
+        "evidence": "未在本次备忘中提及"
+      },
+      "budget": {
+        "value": "未提具体数字",
+        "confidence": "Low",
+        "evidence": "未提及"
+      },
+      "mood": {
+        "value": "期待但不想张扬",
+        "confidence": "Medium",
+        "evidence": "语气描述"
+      },
+      "trend_signals": {
+        "value": "静奢、大衣、配饰点缀",
+        "confidence": "Medium",
+        "evidence": "与静奢趋势可衔接"
+      },
+      "next_step_intent": {
+        "value": "预约搭配咨询与看新款风衣",
+        "confidence": "High",
+        "evidence": "主动提到春季风衣"
+      },
+      "confidence_summary": {
+        "High": 2,
+        "Medium": 4,
+        "Low": 2
+      }
+    },
+    {
+      "client_id": "BENCH_002",
+      "name": "陈柏言",
+      "persona_tag": "科技高管·效率",
+      "vip_tier": "Platinum",
+      "source_table": "benchmark_module4_shape",
+      "module4_run_id": "bench_m4_20260330",
+      "module4_memory_row_id": 2,
+      "generated_at": "2026-03-30T12:00:00+00:00",
+      "model_used": "benchmark_generator/1.0",
+      "missing_fields_count": 2,
+      "raw_voice_note": "陈先生问有没有黑色不打皱的西装裤，下周连续出差三周，只想要好打理。",
+      "summary": "高频差旅，需要易打理、黑色、正式场合裤装。",
+      "life_event": {
+        "value": "连续商务差旅",
+        "confidence": "High",
+        "evidence": "三周出差"
+      },
+      "timeline": {
+        "value": "下周起",
+        "confidence": "High",
+        "evidence": "下周"
+      },
+      "aesthetic_preference": {
+        "value": "黑色、免烫、极简",
+        "confidence": "High",
+        "evidence": "直接表述"
+      },
+      "size_height": {
+        "value": "N/A",
+        "confidence": "Low",
+        "evidence": "未在本次备忘中提及"
+      },
+      "budget": {
+        "value": "未提",
+        "confidence": "Low",
+        "evidence": "未提及"
+      },
+      "mood": {
+        "value": "务实、略疲惫",
+        "confidence": "Medium",
+        "evidence": "强调效率"
+      },
+      "trend_signals": {
+        "value": "软结构西装、旅行鞋履",
+        "confidence": "Medium",
+        "evidence": "可与T_B05/B08结合"
+      },
+      "next_step_intent": {
+        "value": "发裤装选项与面料说明",
+        "confidence": "High",
+        "evidence": "明确询问"
+      },
+      "confidence_summary": {
+        "High": 2,
+        "Medium": 4,
+        "Low": 2
+      }
+    },
+    {
+      "client_id": "BENCH_003",
+      "name": "周晓彤",
+      "persona_tag": "Z世代·社交种草",
+      "vip_tier": "Gold",
+      "source_table": "benchmark_module4_shape",
+      "module4_run_id": "bench_m4_20260330",
+      "module4_memory_row_id": 3,
+      "generated_at": "2026-03-30T12:00:00+00:00",
+      "model_used": "benchmark_generator/1.0",
+      "missing_fields_count": 2,
+      "raw_voice_note": "周小姐说看到小红书爆款迷你包新色到了没，想和闺蜜下午茶拍照。",
+      "summary": "关注限量色迷你包与社交出片场景。",
+      "life_event": {
+        "value": "闺蜜下午茶",
+        "confidence": "Medium",
+        "evidence": "提到拍照"
+      },
+      "timeline": {
+        "value": "近期周末",
+        "confidence": "Low",
+        "evidence": "未说死期"
+      },
+      "aesthetic_preference": {
+        "value": "亮色、迷你包、上镜",
+        "confidence": "High",
+        "evidence": "爆款、新色"
+      },
+      "size_height": {
+        "value": "N/A",
+        "confidence": "Low",
+        "evidence": "未在本次备忘中提及"
+      },
+      "budget": {
+        "value": "未提",
+        "confidence": "Low",
+        "evidence": "未提及"
+      },
+      "mood": {
+        "value": "兴奋、跟风",
+        "confidence": "Medium",
+        "evidence": "爆款语境"
+      },
+      "trend_signals": {
+        "value": "小皮件色彩、话题款",
+        "confidence": "High",
+        "evidence": "与T_B06契合"
+      },
+      "next_step_intent": {
+        "value": "确认到货与留货",
+        "confidence": "High",
+        "evidence": "追问新色"
+      },
+      "confidence_summary": {
+        "High": 2,
+        "Medium": 4,
+        "Low": 2
+      }
+    },
+    {
+      "client_id": "BENCH_004",
+      "name": "王景行",
+      "persona_tag": "传统藏家",
+      "vip_tier": "VIC",
+      "source_table": "benchmark_module4_shape",
+      "module4_run_id": "bench_m4_20260330",
+      "module4_memory_row_id": 4,
+      "generated_at": "2026-03-30T12:00:00+00:00",
+      "model_used": "benchmark_generator/1.0",
+      "missing_fields_count": 1,
+      "raw_voice_note": "王先生只想看植鞣皮具的故事，讨厌潮流词，要听得懂工艺的那种介绍。",
+      "summary": "重工艺叙事，排斥潮流话术；偏好植鞣与传统皮具。",
+      "life_event": {
+        "value": "私人收藏与日常用皮具",
+        "confidence": "Medium",
+        "evidence": "长期偏好"
+      },
+      "timeline": {
+        "value": "无紧迫节点",
+        "confidence": "Low",
+        "evidence": "未提"
+      },
+      "aesthetic_preference": {
+        "value": "植鞣、工艺、反潮流话术",
+        "confidence": "High",
+        "evidence": "明确反感潮流词"
+      },
+      "size_height": {
+        "value": "N/A",
+        "confidence": "Low",
+        "evidence": "未在本次备忘中提及"
+      },
+      "budget": {
+        "value": "高客单但不愿谈价",
+        "confidence": "Low",
+        "evidence": "未提数字"
+      },
+      "mood": {
+        "value": "克制、挑剔",
+        "confidence": "Medium",
+        "evidence": "语气"
+      },
+      "trend_signals": {
+        "value": "静奢与可持续叙事可谨慎嫁接",
+        "confidence": "Low",
+        "evidence": "需避免爆款话术"
+      },
+      "next_step_intent": {
+        "value": "安排工坊纪录片素材与实物触摸",
+        "confidence": "High",
+        "evidence": "要工艺故事"
+      },
+      "confidence_summary": {
+        "High": 2,
+        "Medium": 4,
+        "Low": 2
+      }
+    },
+    {
+      "client_id": "BENCH_005",
+      "name": "赵思琳",
+      "persona_tag": "晚宴常客",
+      "vip_tier": "VIC",
+      "source_table": "benchmark_module4_shape",
+      "module4_run_id": "bench_m4_20260330",
+      "module4_memory_row_id": 5,
+      "generated_at": "2026-03-30T12:00:00+00:00",
+      "model_used": "benchmark_generator/1.0",
+      "missing_fields_count": 0,
+      "raw_voice_note": "赵小姐四月中旬慈善晚宴，需要长礼服，希望改衣周期留足。",
+      "summary": "固定晚宴场景，重视剪裁与改衣时效。",
+      "life_event": {
+        "value": "慈善晚宴",
+        "confidence": "High",
+        "evidence": "四月中旬"
+      },
+      "timeline": {
+        "value": "四月中旬",
+        "confidence": "High",
+        "evidence": "明确日期窗口"
+      },
+      "aesthetic_preference": {
+        "value": "长礼服、垂感、改衣",
+        "confidence": "High",
+        "evidence": "直接需求"
+      },
+      "size_height": {
+        "value": "N/A",
+        "confidence": "Low",
+        "evidence": "未在本次备忘中提及"
+      },
+      "budget": {
+        "value": "高预算区间暗示",
+        "confidence": "Medium",
+        "evidence": "未说具体"
+      },
+      "mood": {
+        "value": "焦虑时间节点",
+        "confidence": "Medium",
+        "evidence": "强调改衣"
+      },
+      "trend_signals": {
+        "value": "投资型连衣裙",
+        "confidence": "High",
+        "evidence": "与T_B04强相关"
+      },
+      "next_step_intent": {
+        "value": "量体与改衣排期",
+        "confidence": "High",
+        "evidence": "强需求"
+      },
+      "confidence_summary": {
+        "High": 2,
+        "Medium": 4,
+        "Low": 2
+      }
+    },
+    {
+      "client_id": "BENCH_006",
+      "name": "刘凯文",
+      "persona_tag": "深圳·效率派",
+      "vip_tier": "Platinum",
+      "source_table": "benchmark_module4_shape",
+      "module4_run_id": "bench_m4_20260330",
+      "module4_memory_row_id": 6,
+      "generated_at": "2026-03-30T12:00:00+00:00",
+      "model_used": "benchmark_generator/1.0",
+      "missing_fields_count": 2,
+      "raw_voice_note": "刘先生要轻量旅行鞋，四月连续出差，消息请短，带图。",
+      "summary": "差旅鞋需求，偏好短消息与图片决策。",
+      "life_event": {
+        "value": "四月连续出差",
+        "confidence": "High",
+        "evidence": "明确月份"
+      },
+      "timeline": {
+        "value": "四月",
+        "confidence": "High",
+        "evidence": "四月"
+      },
+      "aesthetic_preference": {
+        "value": "轻量、功能、黑灰白",
+        "confidence": "High",
+        "evidence": "自述"
+      },
+      "size_height": {
+        "value": "N/A",
+        "confidence": "Low",
+        "evidence": "未在本次备忘中提及"
+      },
+      "budget": {
+        "value": "未提",
+        "confidence": "Low",
+        "evidence": "未提及"
+      },
+      "mood": {
+        "value": "急躁但礼貌",
+        "confidence": "Medium",
+        "evidence": "要求短消息"
+      },
+      "trend_signals": {
+        "value": "旅行鞋履轻量化",
+        "confidence": "High",
+        "evidence": "T_B08"
+      },
+      "next_step_intent": {
+        "value": "发三款鞋图+一句话参数",
+        "confidence": "High",
+        "evidence": "明确要图"
+      },
+      "confidence_summary": {
+        "High": 2,
+        "Medium": 4,
+        "Low": 2
+      }
+    },
+    {
+      "client_id": "BENCH_007",
+      "name": "孙若宁",
+      "persona_tag": "新婚·珠宝",
+      "vip_tier": "Gold",
+      "source_table": "benchmark_module4_shape",
+      "module4_run_id": "bench_m4_20260330",
+      "module4_memory_row_id": 7,
+      "generated_at": "2026-03-30T12:00:00+00:00",
+      "model_used": "benchmark_generator/1.0",
+      "missing_fields_count": 1,
+      "raw_voice_note": "孙小姐备婚，想要日常也能戴的素圈对戒，不要夸张钻。",
+      "summary": "备婚阶段，偏好低调日常珠宝。",
+      "life_event": {
+        "value": "备婚",
+        "confidence": "High",
+        "evidence": "备婚"
+      },
+      "timeline": {
+        "value": "婚期未说",
+        "confidence": "Low",
+        "evidence": "未提"
+      },
+      "aesthetic_preference": {
+        "value": "素圈、低调、日常",
+        "confidence": "High",
+        "evidence": "明确"
+      },
+      "size_height": {
+        "value": "N/A",
+        "confidence": "Low",
+        "evidence": "未在本次备忘中提及"
+      },
+      "budget": {
+        "value": "中等预算暗示",
+        "confidence": "Medium",
+        "evidence": "未提数字"
+      },
+      "mood": {
+        "value": "温柔期待",
+        "confidence": "Medium",
+        "evidence": "备婚语境"
+      },
+      "trend_signals": {
+        "value": "珍珠银饰叠戴可作陪衬",
+        "confidence": "Medium",
+        "evidence": "T_B07"
+      },
+      "next_step_intent": {
+        "value": "对戒与日常款对比图",
+        "confidence": "High",
+        "evidence": "明确品类"
+      },
+      "confidence_summary": {
+        "High": 2,
+        "Medium": 4,
+        "Low": 2
+      }
+    },
+    {
+      "client_id": "BENCH_008",
+      "name": "马东宇",
+      "persona_tag": "东北·御寒外套",
+      "vip_tier": "Gold",
+      "source_table": "benchmark_module4_shape",
+      "module4_run_id": "bench_m4_20260330",
+      "module4_memory_row_id": 8,
+      "generated_at": "2026-03-30T12:00:00+00:00",
+      "model_used": "benchmark_generator/1.0",
+      "missing_fields_count": 2,
+      "raw_voice_note": "马先生问有没有更厚但不显笨的大衣，过年回老家冷。",
+      "summary": "御寒大衣需求，兼顾体面与保暖。",
+      "life_event": {
+        "value": "春节返乡",
+        "confidence": "High",
+        "evidence": "过年回老家"
+      },
+      "timeline": {
+        "value": "春节前后",
+        "confidence": "Medium",
+        "evidence": "过年"
+      },
+      "aesthetic_preference": {
+        "value": "厚而不笨、深色",
+        "confidence": "High",
+        "evidence": "自述"
+      },
+      "size_height": {
+        "value": "N/A",
+        "confidence": "Low",
+        "evidence": "未在本次备忘中提及"
+      },
+      "budget": {
+        "value": "未提",
+        "confidence": "Low",
+        "evidence": "未提及"
+      },
+      "mood": {
+        "value": "务实",
+        "confidence": "Medium",
+        "evidence": "气候驱动"
+      },
+      "trend_signals": {
+        "value": "高智感针织叠穿",
+        "confidence": "Medium",
+        "evidence": "T_B03"
+      },
+      "next_step_intent": {
+        "value": "大衣厚度与叠穿方案",
+        "confidence": "High",
+        "evidence": "明确问"
+      },
+      "confidence_summary": {
+        "High": 2,
+        "Medium": 4,
+        "Low": 2
+      }
+    },
+    {
+      "client_id": "BENCH_009",
+      "name": "何雅文",
+      "persona_tag": "妈妈客群·亲子",
+      "vip_tier": "Gold",
+      "source_table": "benchmark_module4_shape",
+      "module4_run_id": "bench_m4_20260330",
+      "module4_memory_row_id": 9,
+      "generated_at": "2026-03-30T12:00:00+00:00",
+      "model_used": "benchmark_generator/1.0",
+      "missing_fields_count": 1,
+      "raw_voice_note": "何女士想给女儿成人礼买一件能穿很多年的包，不要花里胡哨。",
+      "summary": "成人礼赠礼，重耐久与经典。",
+      "life_event": {
+        "value": "女儿成人礼",
+        "confidence": "High",
+        "evidence": "成人礼"
+      },
+      "timeline": {
+        "value": "数月内",
+        "confidence": "Medium",
+        "evidence": "未说死期"
+      },
+      "aesthetic_preference": {
+        "value": "经典款、耐看、少装饰",
+        "confidence": "High",
+        "evidence": "不要花里胡哨"
+      },
+      "size_height": {
+        "value": "N/A",
+        "confidence": "Low",
+        "evidence": "未在本次备忘中提及"
+      },
+      "budget": {
+        "value": "愿为品质付溢价",
+        "confidence": "Medium",
+        "evidence": "语气暗示"
+      },
+      "mood": {
+        "value": "慎重",
+        "confidence": "Medium",
+        "evidence": "礼物决策"
+      },
+      "trend_signals": {
+        "value": "Quiet Luxury 皮具",
+        "confidence": "High",
+        "evidence": "T_B01"
+      },
+      "next_step_intent": {
+        "value": "经典款对比与刻字服务",
+        "confidence": "High",
+        "evidence": "礼物场景"
+      },
+      "confidence_summary": {
+        "High": 2,
+        "Medium": 4,
+        "Low": 2
+      }
+    },
+    {
+      "client_id": "BENCH_010",
+      "name": "丁一辰",
+      "persona_tag": "男大学生·入门",
+      "vip_tier": "Silver",
+      "source_table": "benchmark_module4_shape",
+      "module4_run_id": "bench_m4_20260330",
+      "module4_memory_row_id": 10,
+      "generated_at": "2026-03-30T12:00:00+00:00",
+      "model_used": "benchmark_generator/1.0",
+      "missing_fields_count": 0,
+      "raw_voice_note": "小丁第一次进店，预算有限，想要一条能面试也能周末穿的皮带。",
+      "summary": "低预算入门，皮带多场景。",
+      "life_event": {
+        "value": "求职面试",
+        "confidence": "High",
+        "evidence": "面试"
+      },
+      "timeline": {
+        "value": "近期",
+        "confidence": "Low",
+        "evidence": "未提"
+      },
+      "aesthetic_preference": {
+        "value": "黑色、简约、性价比",
+        "confidence": "High",
+        "evidence": "预算有限"
+      },
+      "size_height": {
+        "value": "N/A",
+        "confidence": "Low",
+        "evidence": "未在本次备忘中提及"
+      },
+      "budget": {
+        "value": "低预算",
+        "confidence": "High",
+        "evidence": "明确"
+      },
+      "mood": {
+        "value": "紧张",
+        "confidence": "Medium",
+        "evidence": "第一次"
+      },
+      "trend_signals": {
+        "value": "男士软结构/小皮件",
+        "confidence": "Medium",
+        "evidence": "T_B05/B06"
+      },
+      "next_step_intent": {
+        "value": "入门皮带与护理说明",
+        "confidence": "High",
+        "evidence": "明确皮带"
+      },
+      "confidence_summary": {
+        "High": 2,
+        "Medium": 4,
+        "Low": 2
+      }
+    },
+    {
+      "client_id": "BENCH_011",
+      "name": "沈曼",
+      "persona_tag": "博主·曝光顾虑",
+      "vip_tier": "Gold",
+      "source_table": "benchmark_module4_shape",
+      "module4_run_id": "bench_m4_20260330",
+      "module4_memory_row_id": 11,
+      "generated_at": "2026-03-30T12:00:00+00:00",
+      "model_used": "benchmark_generator/1.0",
+      "missing_fields_count": 3,
+      "raw_voice_note": "沈小姐说品牌如果借拍要合同条款写清能不能发小红书。",
+      "summary": "合作拍摄，关注肖像与社媒使用权。",
+      "life_event": {
+        "value": "品牌合作拍摄",
+        "confidence": "High",
+        "evidence": "借拍"
+      },
+      "timeline": {
+        "value": "未定",
+        "confidence": "Low",
+        "evidence": "未提"
+      },
+      "aesthetic_preference": {
+        "value": "合同条款、可控曝光",
+        "confidence": "High",
+        "evidence": "合同"
+      },
+      "size_height": {
+        "value": "N/A",
+        "confidence": "Low",
+        "evidence": "未在本次备忘中提及"
+      },
+      "budget": {
+        "value": "未提",
+        "confidence": "Low",
+        "evidence": "未提及"
+      },
+      "mood": {
+        "value": "谨慎专业",
+        "confidence": "Medium",
+        "evidence": "博主身份"
+      },
+      "trend_signals": {
+        "value": "弱相关",
+        "confidence": "Low",
+        "evidence": "需谨慎"
+      },
+      "next_step_intent": {
+        "value": "转法务/公关话术模板",
+        "confidence": "Medium",
+        "evidence": "非销售主线"
+      },
+      "confidence_summary": {
+        "High": 2,
+        "Medium": 4,
+        "Low": 2
+      }
+    },
+    {
+      "client_id": "BENCH_012",
+      "name": "高以翔",
+      "persona_tag": "高尔夫·户外",
+      "vip_tier": "Platinum",
+      "source_table": "benchmark_module4_shape",
+      "module4_run_id": "bench_m4_20260330",
+      "module4_memory_row_id": 12,
+      "generated_at": "2026-03-30T12:00:00+00:00",
+      "model_used": "benchmark_generator/1.0",
+      "missing_fields_count": 1,
+      "raw_voice_note": "高先生下周球场活动，想要透气防晒的外套，不要紧身。",
+      "summary": "户外运动场景，防晒透气外套。",
+      "life_event": {
+        "value": "高尔夫活动",
+        "confidence": "High",
+        "evidence": "球场"
+      },
+      "timeline": {
+        "value": "下周",
+        "confidence": "High",
+        "evidence": "下周"
+      },
+      "aesthetic_preference": {
+        "value": "透气、防晒、宽松",
+        "confidence": "High",
+        "evidence": "自述"
+      },
+      "size_height": {
+        "value": "N/A",
+        "confidence": "Low",
+        "evidence": "未在本次备忘中提及"
+      },
+      "budget": {
+        "value": "未提",
+        "confidence": "Low",
+        "evidence": "未提及"
+      },
+      "mood": {
+        "value": "轻松",
+        "confidence": "Medium",
+        "evidence": "运动"
+      },
+      "trend_signals": {
+        "value": "机能面料、旅行鞋",
+        "confidence": "Medium",
+        "evidence": "T_B08"
+      },
+      "next_step_intent": {
+        "value": "外套尺码与防晒指数说明",
+        "confidence": "High",
+        "evidence": "明确需求"
+      },
+      "confidence_summary": {
+        "High": 2,
+        "Medium": 4,
+        "Low": 2
+      }
+    },
+    {
+      "client_id": "BENCH_013",
+      "name": "罗薇",
+      "persona_tag": "投诉后回访",
+      "vip_tier": "VIC",
+      "source_table": "benchmark_module4_shape",
+      "module4_run_id": "bench_m4_20260330",
+      "module4_memory_row_id": 13,
+      "generated_at": "2026-03-30T12:00:00+00:00",
+      "model_used": "benchmark_generator/1.0",
+      "missing_fields_count": 1,
+      "raw_voice_note": "罗女士上次改衣延迟不满意，这次只想先确认服务流程再谈购买。",
+      "summary": "服务修复优先，购买意愿暂时低。",
+      "life_event": {
+        "value": "改衣服务争议后续",
+        "confidence": "High",
+        "evidence": "上次延迟"
+      },
+      "timeline": {
+        "value": "立即沟通",
+        "confidence": "High",
+        "evidence": "当下情绪"
+      },
+      "aesthetic_preference": {
+        "value": "流程透明、尊重",
+        "confidence": "High",
+        "evidence": "明确"
+      },
+      "size_height": {
+        "value": "N/A",
+        "confidence": "Low",
+        "evidence": "未在本次备忘中提及"
+      },
+      "budget": {
+        "value": "未提新购",
+        "confidence": "Low",
+        "evidence": "未提"
+      },
+      "mood": {
+        "value": "不满但愿意听",
+        "confidence": "Medium",
+        "evidence": "回访语境"
+      },
+      "trend_signals": {
+        "value": "不宜强推产品",
+        "confidence": "Low",
+        "evidence": "风险"
+      },
+      "next_step_intent": {
+        "value": "服务SOP说明与专属顾问",
+        "confidence": "High",
+        "evidence": "先修复信任"
+      },
+      "confidence_summary": {
+        "High": 2,
+        "Medium": 4,
+        "Low": 2
+      }
+    },
+    {
+      "client_id": "BENCH_014",
+      "name": "郑可",
+      "persona_tag": "礼品采购",
+      "vip_tier": "Gold",
+      "source_table": "benchmark_module4_shape",
+      "module4_run_id": "bench_m4_20260330",
+      "module4_memory_row_id": 14,
+      "generated_at": "2026-03-30T12:00:00+00:00",
+      "model_used": "benchmark_generator/1.0",
+      "missing_fields_count": 0,
+      "raw_voice_note": "郑先生要给客户送礼，预算卡死两万，要包装体面。",
+      "summary": "商务送礼，预算上限明确。",
+      "life_event": {
+        "value": "客户送礼",
+        "confidence": "High",
+        "evidence": "送礼"
+      },
+      "timeline": {
+        "value": "尽快",
+        "confidence": "Medium",
+        "evidence": "未说日期"
+      },
+      "aesthetic_preference": {
+        "value": "体面包装、低调",
+        "confidence": "High",
+        "evidence": "商务"
+      },
+      "size_height": {
+        "value": "N/A",
+        "confidence": "Low",
+        "evidence": "未在本次备忘中提及"
+      },
+      "budget": {
+        "value": "两万上限",
+        "confidence": "High",
+        "evidence": "明确数字"
+      },
+      "mood": {
+        "value": "赶时间",
+        "confidence": "Medium",
+        "evidence": "尽快"
+      },
+      "trend_signals": {
+        "value": "小皮件、丝巾礼盒",
+        "confidence": "Medium",
+        "evidence": "T_B06/B09"
+      },
+      "next_step_intent": {
+        "value": "两万内礼盒组合",
+        "confidence": "High",
+        "evidence": "预算明确"
+      },
+      "confidence_summary": {
+        "High": 2,
+        "Medium": 4,
+        "Low": 2
+      }
+    },
+    {
+      "client_id": "BENCH_015",
+      "name": "蒋梦",
+      "persona_tag": "孕晚期",
+      "vip_tier": "Silver",
+      "source_table": "benchmark_module4_shape",
+      "module4_run_id": "bench_m4_20260330",
+      "module4_memory_row_id": 15,
+      "generated_at": "2026-03-30T12:00:00+00:00",
+      "model_used": "benchmark_generator/1.0",
+      "missing_fields_count": 1,
+      "raw_voice_note": "蒋小姐孕晚期，只想看宽松连衣裙和平底鞋，不要推荐紧身。",
+      "summary": "孕期体型与舒适度优先。",
+      "life_event": {
+        "value": "孕晚期",
+        "confidence": "High",
+        "evidence": "孕晚期"
+      },
+      "timeline": {
+        "value": "产前数月",
+        "confidence": "Medium",
+        "evidence": "未说预产期"
+      },
+      "aesthetic_preference": {
+        "value": "宽松、平底、安全",
+        "confidence": "High",
+        "evidence": "明确不要紧身"
+      },
+      "size_height": {
+        "value": "N/A",
+        "confidence": "Low",
+        "evidence": "未在本次备忘中提及"
+      },
+      "budget": {
+        "value": "敏感",
+        "confidence": "Low",
+        "evidence": "未提"
+      },
+      "mood": {
+        "value": "疲惫",
+        "confidence": "Medium",
+        "evidence": "孕晚期"
+      },
+      "trend_signals": {
+        "value": "仅宽松针织/裙装",
+        "confidence": "Medium",
+        "evidence": "谨慎"
+      },
+      "next_step_intent": {
+        "value": "宽松款与尺码建议",
+        "confidence": "High",
+        "evidence": "明确限制"
+      },
+      "confidence_summary": {
+        "High": 2,
+        "Medium": 4,
+        "Low": 2
+      }
+    },
+    {
+      "client_id": "BENCH_016",
+      "name": "谢远",
+      "persona_tag": "企业团购",
+      "vip_tier": "Platinum",
+      "source_table": "benchmark_module4_shape",
+      "module4_run_id": "bench_m4_20260330",
+      "module4_memory_row_id": 16,
+      "generated_at": "2026-03-30T12:00:00+00:00",
+      "model_used": "benchmark_generator/1.0",
+      "missing_fields_count": 2,
+      "raw_voice_note": "谢先生问能否给团队订统一领带与口袋巾，要发票明细。",
+      "summary": "B端团购，发票与统一规格。",
+      "life_event": {
+        "value": "团队活动",
+        "confidence": "High",
+        "evidence": "团队"
+      },
+      "timeline": {
+        "value": "下月活动",
+        "confidence": "Medium",
+        "evidence": "下月"
+      },
+      "aesthetic_preference": {
+        "value": "统一、可开票",
+        "confidence": "High",
+        "evidence": "发票"
+      },
+      "size_height": {
+        "value": "N/A",
+        "confidence": "Low",
+        "evidence": "未在本次备忘中提及"
+      },
+      "budget": {
+        "value": "待报价",
+        "confidence": "Low",
+        "evidence": "未提"
+      },
+      "mood": {
+        "value": "公事公办",
+        "confidence": "Medium",
+        "evidence": "采购口吻"
+      },
+      "trend_signals": {
+        "value": "弱相关",
+        "confidence": "Low",
+        "evidence": "团购逻辑"
+      },
+      "next_step_intent": {
+        "value": "对公报价单与SKU",
+        "confidence": "High",
+        "evidence": "明确发票"
+      },
+      "confidence_summary": {
+        "High": 2,
+        "Medium": 4,
+        "Low": 2
+      }
+    },
+    {
+      "client_id": "BENCH_017",
+      "name": "唐诗琪",
+      "persona_tag": "艺考·舞台装",
+      "vip_tier": "Silver",
+      "source_table": "benchmark_module4_shape",
+      "module4_run_id": "bench_m4_20260330",
+      "module4_memory_row_id": 17,
+      "generated_at": "2026-03-30T12:00:00+00:00",
+      "model_used": "benchmark_generator/1.0",
+      "missing_fields_count": 1,
+      "raw_voice_note": "唐小姐女儿艺考，想要简洁黑色套装，不要太成熟。",
+      "summary": "艺考家长代购，简洁黑色套装。",
+      "life_event": {
+        "value": "女儿艺考",
+        "confidence": "High",
+        "evidence": "艺考"
+      },
+      "timeline": {
+        "value": "考试季",
+        "confidence": "Medium",
+        "evidence": "未说具体日"
+      },
+      "aesthetic_preference": {
+        "value": "黑色、简洁、不过度成熟",
+        "confidence": "High",
+        "evidence": "明确"
+      },
+      "size_height": {
+        "value": "N/A",
+        "confidence": "Low",
+        "evidence": "未在本次备忘中提及"
+      },
+      "budget": {
+        "value": "中等",
+        "confidence": "Low",
+        "evidence": "未提数字"
+      },
+      "mood": {
+        "value": "焦虑",
+        "confidence": "Medium",
+        "evidence": "考试压力"
+      },
+      "trend_signals": {
+        "value": "Quiet 套装线",
+        "confidence": "Medium",
+        "evidence": "T_B01/B05"
+      },
+      "next_step_intent": {
+        "value": "套装尺码与学生气质",
+        "confidence": "High",
+        "evidence": "明确场景"
+      },
+      "confidence_summary": {
+        "High": 2,
+        "Medium": 4,
+        "Low": 2
+      }
+    },
+    {
+      "client_id": "BENCH_018",
+      "name": "冯朗",
+      "persona_tag": "海归·尺码困惑",
+      "vip_tier": "Gold",
+      "source_table": "benchmark_module4_shape",
+      "module4_run_id": "bench_m4_20260330",
+      "module4_memory_row_id": 18,
+      "generated_at": "2026-03-30T12:00:00+00:00",
+      "model_used": "benchmark_generator/1.0",
+      "missing_fields_count": 2,
+      "raw_voice_note": "冯先生常年买欧码，回国试穿总是肩宽不合，希望有人帮他系统建档。",
+      "summary": "尺码与版型咨询，需长期档案。",
+      "life_event": {
+        "value": "回国定居",
+        "confidence": "Medium",
+        "evidence": "语境"
+      },
+      "timeline": {
+        "value": "持续",
+        "confidence": "Low",
+        "evidence": "未提"
+      },
+      "aesthetic_preference": {
+        "value": "肩宽、欧码差异",
+        "confidence": "High",
+        "evidence": "核心痛点"
+      },
+      "size_height": {
+        "value": "N/A",
+        "confidence": "Low",
+        "evidence": "未在本次备忘中提及"
+      },
+      "budget": {
+        "value": "未提",
+        "confidence": "Low",
+        "evidence": "未提及"
+      },
+      "mood": {
+        "value": "挫败但开放",
+        "confidence": "Medium",
+        "evidence": "愿意建档"
+      },
+      "trend_signals": {
+        "value": "男装剪裁趋势弱相关",
+        "confidence": "Low",
+        "evidence": "以服务为主"
+      },
+      "next_step_intent": {
+        "value": "量体建档与版型对照",
+        "confidence": "High",
+        "evidence": "明确诉求"
+      },
+      "confidence_summary": {
+        "High": 2,
+        "Medium": 4,
+        "Low": 2
+      }
+    },
+    {
+      "client_id": "BENCH_019",
+      "name": "曹颖",
+      "persona_tag": "过敏·材质敏感",
+      "vip_tier": "Gold",
+      "source_table": "benchmark_module4_shape",
+      "module4_run_id": "bench_m4_20260330",
+      "module4_memory_row_id": 19,
+      "generated_at": "2026-03-30T12:00:00+00:00",
+      "model_used": "benchmark_generator/1.0",
+      "missing_fields_count": 0,
+      "raw_voice_note": "曹小姐说羊毛贴肤会痒，只能穿丝棉混纺，买之前要成分标照片。",
+      "summary": "材质过敏约束强，决策前需成分证明。",
+      "life_event": {
+        "value": "日常穿着",
+        "confidence": "Low",
+        "evidence": "未提事件"
+      },
+      "timeline": {
+        "value": "每次购买前",
+        "confidence": "High",
+        "evidence": "每次"
+      },
+      "aesthetic_preference": {
+        "value": "丝棉混纺、避免羊毛贴肤",
+        "confidence": "High",
+        "evidence": "过敏"
+      },
+      "size_height": {
+        "value": "N/A",
+        "confidence": "Low",
+        "evidence": "未在本次备忘中提及"
+      },
+      "budget": {
+        "value": "未提",
+        "confidence": "Low",
+        "evidence": "未提及"
+      },
+      "mood": {
+        "value": "谨慎",
+        "confidence": "High",
+        "evidence": "成分标"
+      },
+      "trend_signals": {
+        "value": "针织趋势需过滤材质",
+        "confidence": "Medium",
+        "evidence": "T_B03风险"
+      },
+      "next_step_intent": {
+        "value": "成分标与替代面料",
+        "confidence": "High",
+        "evidence": "强约束"
+      },
+      "confidence_summary": {
+        "High": 2,
+        "Medium": 4,
+        "Low": 2
+      }
+    },
+    {
+      "client_id": "BENCH_020",
+      "name": "许静",
+      "persona_tag": "长期未联系",
+      "vip_tier": "Silver",
+      "source_table": "benchmark_module4_shape",
+      "module4_run_id": "bench_m4_20260330",
+      "module4_memory_row_id": 20,
+      "generated_at": "2026-03-30T12:00:00+00:00",
+      "model_used": "benchmark_generator/1.0",
+      "missing_fields_count": 4,
+      "raw_voice_note": "许小姐两年没来店，只说最近看到品牌纪录片有点想念。",
+      "summary": "弱信号回归，信息极少。",
+      "life_event": {
+        "value": "无具体事件",
+        "confidence": "Low",
+        "evidence": "仅情绪"
+      },
+      "timeline": {
+        "value": "两年空窗",
+        "confidence": "High",
+        "evidence": "两年"
+      },
+      "aesthetic_preference": {
+        "value": "不明确",
+        "confidence": "Low",
+        "evidence": "未更新"
+      },
+      "size_height": {
+        "value": "N/A",
+        "confidence": "Low",
+        "evidence": "未在本次备忘中提及"
+      },
+      "budget": {
+        "value": "未提",
+        "confidence": "Low",
+        "evidence": "未提及"
+      },
+      "mood": {
+        "value": "怀旧、试探",
+        "confidence": "Medium",
+        "evidence": "想念"
+      },
+      "trend_signals": {
+        "value": "宜极软触达",
+        "confidence": "Low",
+        "evidence": "避免推销"
+      },
+      "next_step_intent": {
+        "value": "轻问候与内容分享",
+        "confidence": "Medium",
+        "evidence": "不宜硬推"
+      },
+      "confidence_summary": {
+        "High": 2,
+        "Medium": 4,
+        "Low": 2
+      }
+    }
+  ]
+}

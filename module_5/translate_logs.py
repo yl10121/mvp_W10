@@ -1,29 +1,42 @@
 """
-读取 run_log.json，调用 Claude 将每条记录的 parsed output 翻译为英文，
+读取 run_log.json，调用 Claude（Anthropic API）将每条记录的 parsed output 翻译为英文，
 生成双语版 run_log.json（每条记录同时包含 parsed_zh 和 parsed_en）。
 """
 
 import json
 import os
-from datetime import datetime
 from pathlib import Path
+
 import anthropic
 
-# 自动加载 .env 文件
-_env_path = Path(__file__).parent / ".env"
-if _env_path.exists():
-    for _line in _env_path.read_text().splitlines():
-        if "=" in _line and not _line.startswith("#"):
-            _k, _v = _line.split("=", 1)
-            os.environ.setdefault(_k.strip(), _v.strip())
+
+def _load_env_file(path: Path) -> None:
+    if not path.exists():
+        return
+    for line in path.read_text().splitlines():
+        line = line.strip()
+        if "=" in line and not line.startswith("#"):
+            k, v = line.split("=", 1)
+            os.environ.setdefault(k.strip(), v.strip())
+
+
+_REPO = Path(__file__).resolve().parent.parent
+_load_env_file(_REPO / ".env")
+_load_env_file(Path(__file__).resolve().parent / ".env")
+
+API_KEY = os.environ.get("ANTHROPIC_API_KEY", "").strip()
+if not API_KEY:
+    raise ValueError("ANTHROPIC_API_KEY not set. Add it to the repo root .env.")
+MODEL = os.environ.get("DEFAULT_MODEL", "claude-sonnet-4-20250514")
 
 SCRIPT_DIR = os.path.dirname(os.path.abspath(__file__))
-API_KEY = os.environ.get("ANTHROPIC_API_KEY")
-if not API_KEY:
-    raise ValueError("ANTHROPIC_API_KEY not set. Please add it to your .env file or environment.")
 RUN_LOG_PATH = os.path.join(SCRIPT_DIR, "run_log.json")
 
-client = anthropic.Anthropic(api_key=API_KEY, base_url="https://openrouter.ai/api/v1")
+_base = os.environ.get("ANTHROPIC_API_BASE_URL", "").strip()
+_kw = {"api_key": API_KEY}
+if _base:
+    _kw["base_url"] = _base
+client = anthropic.Anthropic(**_kw)
 
 TRANSLATE_PROMPT = """Translate the following JSON object from Chinese to English. 
 Keep the exact same JSON structure and keys (do not translate keys). 
@@ -34,11 +47,11 @@ Return ONLY valid JSON, no markdown fencing, no explanation."""
 
 def translate_parsed(parsed_zh):
     response = client.messages.create(
-        model="claude-sonnet-4-20250514",
+        model=MODEL,
         max_tokens=4096,
         messages=[{
             "role": "user",
-            "content": f"{TRANSLATE_PROMPT}\n\n{json.dumps(parsed_zh, ensure_ascii=False, indent=2)}"
+            "content": f"{TRANSLATE_PROMPT}\n\n{json.dumps(parsed_zh, ensure_ascii=False, indent=2)}",
         }],
         temperature=0.3,
     )

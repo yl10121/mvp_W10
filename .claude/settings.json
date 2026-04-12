@@ -1,0 +1,10 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(../.venv/bin/python3 -m py_compile xhs_scraper_pw.py)",
+      "Bash(../.venv/bin/python3 -m py_compile run_luxury_scrape.py)",
+      "Bash(../.venv/bin/python3 -m py_compile eval_harness.py)",
+      "Bash(python3 -c \":*)"
+    ]
+  }
+}

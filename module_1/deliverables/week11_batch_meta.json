@@ -1,0 +1,26 @@
+{
+  "deliverable": "Week 11 — Deliverable 1 (Module 1 slice)",
+  "dataset_id": "xhs_posts_m1_mar_apr_2026_run_0038",
+  "input_file": "module_1/data/xhs_posts.json",
+  "run_config": "module_1/data/run_config.json",
+  "module_1_run_id": "run_0038",
+  "generated_at_utc": "2026-04-12T07:15:00Z",
+  "market": "China — Xiaohongshu (XHS) luxury fashion",
+  "brand_focus": "Louis Vuitton / 路易威登 (search-keyword scrape)",
+  "date_range_note": "Posts filtered to instructor window March–April 2026 (see run_config time_window). Full unfiltered export backed up at module_1/data/xhs_posts_before_date_filter.json.",
+  "counts": {
+    "posts_in_batch": 55,
+    "posts_before_date_filter": 200,
+    "trend_objects_emitted": 50,
+    "clustering_mode": "heuristic_stratified_min_posts_1_top_k_120"
+  },
+  "outputs_module_1": {
+    "trend_objects_json": "module_1/outputs/runs/run_0038_trend_objects.json",
+    "trend_objects_latest_symlink_copy": "module_1/outputs/trend_objects.json",
+    "run_log_json": "module_1/outputs/runs/run_0038_run_log.json",
+    "run_log_latest": "module_1/outputs/run_log.json",
+    "trace_log": "module_1/outputs/runs/run_0038_trace.log",
+    "reviewer_feedback_template": "module_1/outputs/runs/run_0038_feedback.json"
+  },
+  "module_2_module_3_note": "Run module_2/agent.py then module_3 with M3_TOP_N=10 for ≥10 cards. Module 2 reads latest Module 1 trend_objects.json. For ≥200 posts in-window, re-scrape March–April and re-run filter_posts_by_config.py."
+}

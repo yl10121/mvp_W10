@@ -1,4 +1,20 @@
-# Module 5 — Outreach Angle Agent: 7-Step Demo Script
+# Module 5 — In-Class Demo Script (Week 10, 5 minutes)
+
+> **Part E: 7-line demo script — shows batch run, Supabase I/O, evaluation report, failure case + fix**
+
+| # | Line | Action | What to show |
+|---|------|--------|-------------|
+| 1 | **Load inputs from Supabase** | `M5_SOURCE=supabase python3 module_5/agent.py --demo` | 20 clients loaded from `module4_client_memories` + 10 trends from `module2_trend_shortlist` |
+| 2 | **Batch run** | `M5_SOURCE=supabase python3 module_5/agent.py --all` | 20 clients × 1 LLM call each; terminal prints angle + draft per client |
+| 3 | **Supabase write** | *(auto after run)* | `module5_outreach_suggestions`: 20 new rows with `trend_signals_used` + `client_memory_ref` |
+| 4 | **Evaluation report** | `python3 module_5/eval_agent.py` | Runs Quality Auditor on all 20 outputs → prints avg scores |
+| 5 | **Show scores** | Open `EVAL_REPORT.md` | Groundedness 5.0, Over-Promotion 4.9, Would You Send 4.65 |
+| 6 | **Failure case** | Point to BENCH_012 高以翔 (Would You Send = 4) | Draft cites UPF specs ("280g以下") — too technical for casual WeChat |
+| 7 | **Planned fix** | Show `EVAL_REPORT.md → Fix section` | Add ≤80 char cap + anti-spec rule to `system-prompt v3` next week |
+
+---
+
+# Module 5 — Outreach Angle Agent: Full Demo Script (detailed)
 
 > **Decision**: Given one client memory object + trend shortlist, suggest the best outreach angles and automatically draft WeChat messages referencing the relevant context.
 

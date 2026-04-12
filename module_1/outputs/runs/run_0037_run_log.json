@@ -1,0 +1,88 @@
+{
+  "run_id": "run_0037",
+  "retrieved_sources": [
+    "data/xhs_posts.json",
+    "data/run_config.json"
+  ],
+  "retrieved_post_ids": [
+    "live_0010",
+    "live_0041",
+    "live_0001",
+    "live_0048",
+    "live_0002",
+    "live_0200",
+    "live_0199",
+    "live_0011",
+    "live_0066",
+    "live_0198",
+    "live_0076",
+    "live_0037",
+    "live_0169",
+    "live_0061",
+    "live_0055",
+    "live_0089",
+    "live_0021",
+    "live_0052",
+    "live_0003",
+    "live_0025",
+    "live_0120",
+    "live_0087",
+    "live_0007",
+    "live_0064",
+    "live_0101",
+    "live_0188",
+    "live_0150",
+    "live_0032",
+    "live_0121",
+    "live_0155",
+    "live_0051",
+    "live_0034",
+    "live_0153",
+    "live_0054",
+    "live_0129",
+    "live_0018",
+    "live_0023",
+    "live_0179",
+    "live_0102",
+    "live_0175",
+    "live_0050",
+    "live_0194",
+    "live_0131",
+    "live_0164",
+    "live_0005",
+    "live_0035",
+    "live_0060",
+    "live_0092",
+    "live_0178",
+    "live_0072",
+    "live_0014",
+    "live_0077",
+    "live_0141",
+    "live_0145",
+    "live_0168"
+  ],
+  "decision_output_file": "outputs/runs/run_0037_trend_objects.json",
+  "decision_mode": "rules-first with optional LLM",
+  "prompt_in_use_for_decision": true,
+  "llm_enabled": true,
+  "llm_model": "gpt-4.1-mini",
+  "llm_label_calls_succeeded": 0,
+  "llm_label_calls_total": 1,
+  "llm_errors": [
+    "OPENROUTER_API_KEY missing"
+  ],
+  "evidence_used": {
+    "t01": [
+      "live_0048",
+      "live_0061"
+    ]
+  },
+  "labeling_sources": {
+    "t01": "heuristic"
+  },
+  "confidence": {
+    "t01": "medium"
+  },
+  "next_step_suggestion": "Send approved trend objects into Module 2 for materiality ranking.",
+  "timestamp_utc": "2026-04-12T07:09:17.210927+00:00"
+}

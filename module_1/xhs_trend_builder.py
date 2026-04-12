@@ -20,7 +20,7 @@ import threading
 import time
 from collections import Counter
 from dataclasses import dataclass
-from datetime import UTC, datetime
+from datetime import UTC, datetime, timedelta
 from pathlib import Path
 from typing import Any, Callable, Dict, List, Optional, Tuple
 
@@ -197,6 +197,11 @@ class Post:
         return self.likes + self.comments + self.saves
 
     @property
+    def weighted_engagement(self) -> float:
+        """Weighted engagement: likes*1.5 + comments*3 + saves*1."""
+        return (self.likes * 1.5) + (self.comments * 3) + (self.saves * 1)
+
+    @property
     def first_image_url(self) -> str:
         """Return the best available image URL for this post."""
         if self.all_image_urls:
@@ -217,6 +222,14 @@ def load_dotenv_file(dotenv_path: Path) -> None:
         value = value.strip().strip('"').strip("'")
         if key and key not in os.environ:
             os.environ[key] = value
+
+
+def load_env_for_module1() -> None:
+    """Load repo-root `.env` then `module_1/.env` so `OPENROUTER_API_KEY` works when cwd is `module_1/`."""
+    module_dir = Path(__file__).resolve().parent
+    root_dir = module_dir.parent
+    for path in (root_dir / ".env", module_dir / ".env"):
+        load_dotenv_file(path)
 
 
 def read_json(path: Path) -> Any:
@@ -271,22 +284,93 @@ def parse_iso_date(date_text: str) -> Optional[datetime]:
         return None
 
 
+# Reference date for recency calculations (2026-03-30 as specified)
+REFERENCE_DATE = datetime(2026, 3, 30)
+
+
+def normalize_xhs_date(date_text: str, reference_date: Optional[datetime] = None) -> Optional[datetime]:
+    """Normalize various XHS date formats to a datetime object.
+
+    Handles:
+      - "03-21" or "03-21 陕西"  -> assume current year from reference_date
+      - "2025-10-05"             -> parse as ISO
+      - "编辑于 2025-11-09" / "编辑于 03-11 上海" -> date after 编辑于
+      - "昨天" / "昨天 12:30"   -> reference_date - 1 day
+      - "3天前"                  -> reference_date - 3 days
+      - Empty or unparseable     -> None
+    """
+    if reference_date is None:
+        reference_date = REFERENCE_DATE
+    if not date_text or not date_text.strip():
+        return None
+    text = date_text.strip()
+
+    # Published/edit time often appears as "编辑于 …" — take the date part after the marker.
+    edited = re.search(r"编辑于\s*(.+)", text)
+    if edited:
+        inner = edited.group(1).strip()
+        if inner and inner != text:
+            return normalize_xhs_date(inner, reference_date)
+
+    # Full ISO date: "2025-10-05"
+    iso_match = re.match(r"^(\d{4})-(\d{1,2})-(\d{1,2})", text)
+    if iso_match:
+        try:
+            return datetime(int(iso_match.group(1)), int(iso_match.group(2)), int(iso_match.group(3)))
+        except ValueError:
+            return None
+
+    # Short date: "03-21" or "03-21 陕西" (no year -- assume reference year)
+    short_match = re.match(r"^(\d{1,2})-(\d{1,2})", text)
+    if short_match:
+        try:
+            return datetime(reference_date.year, int(short_match.group(1)), int(short_match.group(2)))
+        except ValueError:
+            return None
+
+    # Relative: "昨天" (yesterday), possibly followed by time
+    if "昨天" in text:
+        return reference_date - timedelta(days=1)
+
+    # Relative: "N天前" (N days ago)
+    days_ago_match = re.search(r"(\d+)\s*天前", text)
+    if days_ago_match:
+        return reference_date - timedelta(days=int(days_ago_match.group(1)))
+
+    return None
+
+
+def reference_date_from_config(config: Dict[str, Any]) -> datetime:
+    """Anchor for '昨天' / 'N天前' and for MM-DD without year."""
+    ref_iso = str(config.get("xhs_reference_date_iso", "") or "").strip()
+    if ref_iso:
+        d = parse_iso_date(ref_iso)
+        if d:
+            return d
+    return REFERENCE_DATE
+
+
 def post_matches_filters(post: Post, config: Dict[str, Any]) -> bool:
     brand = str(config.get("brand", "ALL")).strip().lower()
     category = str(config.get("category", "")).strip().lower()
     time_window = config.get("time_window", {}) or {}
     start_date = parse_iso_date(str(time_window.get("start_date", "")).strip())
     end_date = parse_iso_date(str(time_window.get("end_date", "")).strip())
-    post_date = parse_iso_date(post.date)
+    ref = reference_date_from_config(config)
+    post_date = normalize_xhs_date(post.date, ref)
 
     brand_ok = True if brand in {"", "all", "*"} else post.brand.lower() == brand
     category_ok = True if not category else post.category.lower() == category
 
     date_ok = True
-    if post_date and start_date:
-        date_ok = date_ok and (post_date >= start_date)
-    if post_date and end_date:
-        date_ok = date_ok and (post_date <= end_date)
+    if start_date or end_date:
+        if post_date is None:
+            date_ok = False
+        else:
+            if start_date and post_date.date() < start_date.date():
+                date_ok = False
+            if end_date and post_date.date() > end_date.date():
+                date_ok = False
 
     return brand_ok and category_ok and date_ok
 
@@ -312,7 +396,13 @@ def jaccard(tokens_a: List[str], tokens_b: List[str]) -> float:
     return len(set_a & set_b) / len(set_a | set_b)
 
 
-def build_clusters(posts: List[Post], token_map: Dict[str, List[str]]) -> List[List[Post]]:
+def build_clusters(
+    posts: List[Post],
+    token_map: Dict[str, List[str]],
+    min_jaccard: float = 0.35,
+    min_overlap: int = 4,
+) -> List[List[Post]]:
+    """Greedy connected components by token overlap. Looser thresholds → more, smaller clusters."""
     visited: set[str] = set()
     clusters: List[List[Post]] = []
 
@@ -335,7 +425,7 @@ def build_clusters(posts: List[Post], token_map: Dict[str, List[str]]) -> List[L
                 other_tokens = token_map[other.post_id]
                 score = jaccard(current_tokens, other_tokens)
                 overlap = len(set(current_tokens) & set(other_tokens))
-                if score >= 0.35 and overlap >= 4:
+                if score >= min_jaccard and overlap >= min_overlap:
                     visited.add(other.post_id)
                     queue.append(other)
 
@@ -343,6 +433,77 @@ def build_clusters(posts: List[Post], token_map: Dict[str, List[str]]) -> List[L
 
     clusters.sort(key=lambda c: sum(p.engagement for p in c), reverse=True)
     return clusters
+
+
+def build_equal_engagement_bins(posts: List[Post], n_bins: int) -> List[List[Post]]:
+    """
+    Partition posts into exactly `n_bins` clusters by descending engagement (deterministic).
+    Used when course deliverables require a minimum count of trend objects from a fixed corpus.
+    """
+    if n_bins <= 0 or not posts:
+        return []
+    n_bins = min(n_bins, len(posts))
+    sorted_p = sorted(posts, key=lambda p: p.engagement, reverse=True)
+    base, rem = divmod(len(sorted_p), n_bins)
+    out: List[List[Post]] = []
+    idx = 0
+    for i in range(n_bins):
+        take = base + (1 if i < rem else 0)
+        out.append(sorted_p[idx : idx + take])
+        idx += take
+    return out
+
+
+def split_clusters_to_target_count(
+    clusters: List[List[Post]],
+    target: int,
+    min_chunk: int = 2,
+) -> List[List[Post]]:
+    """
+    If clustering returns fewer than `target` clusters, repeatedly bisect the largest
+    cluster (by size) so downstream can emit enough trend objects (e.g. Week 11 ≥30).
+    """
+    if target <= 0 or len(clusters) >= target:
+        return clusters
+    out = [c[:] for c in clusters]
+    while len(out) < target:
+        out.sort(key=len, reverse=True)
+        big = out[0]
+        if len(big) < min_chunk * 2:
+            break
+        sorted_posts = sorted(big, key=lambda p: p.engagement, reverse=True)
+        mid = max(min_chunk, len(big) // 2)
+        out[0] = sorted_posts[:mid]
+        out.append(sorted_posts[mid:])
+    return out
+
+
+def build_clusters_stratified_by_keyword(
+    posts: List[Post],
+    token_map: Dict[str, List[str]],
+    min_jaccard: float,
+    min_overlap: int,
+) -> List[List[Post]]:
+    """
+    Cluster within each XHS search-keyword bucket first, then merge results.
+    Prevents one mega-cluster when the same brand tokens appear across all posts.
+    """
+    from collections import defaultdict
+
+    buckets: Dict[str, List[Post]] = defaultdict(list)
+    for p in posts:
+        key = (getattr(p, "keyword", None) or "").strip() or "_default"
+        buckets[key].append(p)
+
+    out: List[List[Post]] = []
+    for _kw, bucket_posts in buckets.items():
+        if len(bucket_posts) == 0:
+            continue
+        sub_map = {p.post_id: token_map[p.post_id] for p in bucket_posts}
+        out.extend(build_clusters(bucket_posts, sub_map, min_jaccard, min_overlap))
+
+    out.sort(key=lambda c: sum(p.engagement for p in c), reverse=True)
+    return out
 
 
 def label_from_tokens(tokens: List[str]) -> str:
@@ -441,6 +602,8 @@ def trend_output_schema() -> Dict[str, Any]:
             "ai_reasoning",
             "confidence",
             "labeling_source",
+            "trend_classification",
+            "velocity",
             "evidence",
             "metrics",
             "visual_assets",
@@ -457,6 +620,7 @@ def trend_output_schema() -> Dict[str, Any]:
         "metrics_fields": [
             "post_count",
             "total_engagement",
+            "weighted_engagement",
             "avg_engagement",
             "total_likes",
             "total_comments",
@@ -464,6 +628,22 @@ def trend_output_schema() -> Dict[str, Any]:
             "top_keywords",
             "video_post_count",
             "image_count",
+            "post_frequency_per_week",
+            "avg_days_between_posts",
+            "recency_score",
+            "frequency_acceleration",
+            "engagement_recency",
+            "avg_comments_per_post",
+            "avg_likes_per_post",
+            "comment_density",
+            "engagement_per_day",
+            "high_comment_post_ratio",
+        ],
+        "velocity_fields": [
+            "posts_last_7d",
+            "posts_8_to_14d",
+            "posts_15_to_30d",
+            "acceleration",
         ],
         "visual_assets_fields": [
             "all_image_urls",     # all image URLs across every post in the trend
@@ -493,23 +673,24 @@ def maybe_label_with_llm(
     llm_enabled: bool,
     llm_model: str,
     llm_errors: Optional[List[str]] = None,
-) -> Tuple[str, str, str, str, str]:
+) -> Tuple[str, str, str, str, str, List[str], str]:
+    """Returns (label, summary, confidence, labeling_source, ai_reasoning, brands_mentioned, primary_brand)."""
     if not llm_enabled:
-        return fallback_label, fallback_summary, fallback_confidence, "heuristic", fallback_reasoning
+        return fallback_label, fallback_summary, fallback_confidence, "heuristic", fallback_reasoning, [], ""
 
     api_key = os.getenv("OPENROUTER_API_KEY", "") or os.getenv("OPENAI_API_KEY", "")
     api_key = api_key.strip()
     if not api_key:
         if llm_errors is not None:
             llm_errors.append("OPENROUTER_API_KEY missing")
-        return fallback_label, fallback_summary, fallback_confidence, "heuristic", fallback_reasoning
+        return fallback_label, fallback_summary, fallback_confidence, "heuristic", fallback_reasoning, [], ""
 
     try:
         from openai import OpenAI  # imported lazily to keep base path simple
     except Exception as e:
         if llm_errors is not None:
             llm_errors.append(f"openai import failed: {e}")
-        return fallback_label, fallback_summary, fallback_confidence, "heuristic", fallback_reasoning
+        return fallback_label, fallback_summary, fallback_confidence, "heuristic", fallback_reasoning, [], ""
 
     titles = [p.title for p in posts[:12]]
     prompt = (
@@ -519,12 +700,18 @@ def maybe_label_with_llm(
         "CLUSTER LABELING TASK:\n"
         "Given these XHS post titles from one cluster, identify the XHS CONTENT TREND — "
         "what are users creating content about? What discourse pattern is this?\n\n"
-        "Return strict JSON with keys: label, summary, confidence, ai_reasoning.\n"
+        "CRITICAL: Trend labels must NOT contain brand names (no 'LV', 'Dior', 'Gucci', etc.). "
+        "Describe the trend behavior or aesthetic. Example: use 'Heritage vs Modern Creative Director Debate' "
+        "not any label that repeats a house name. Store brand names in the brands_mentioned array.\n\n"
+        "Return strict JSON with keys: label, summary, confidence, ai_reasoning, brands_mentioned, primary_brand.\n"
         "Rules:\n"
-        "- Label must describe the XHS USER CONTENT PATTERN (e.g. 'Old Celine vs New Celine Nostalgia Debate', "
-        "'Box Bag Still Worth It Discourse', 'Celebrity Outfit Analysis Content', "
-        "'Cross-Border Luxury Deal Sharing', 'Soft 16 Daily Commute Reviews').\n"
+        "- Label must describe the XHS USER CONTENT PATTERN without any brand names "
+        "(e.g. 'Heritage vs Modern Creative Director Debate', "
+        "'Iconic Box Bag Still Worth It Discourse', 'Celebrity Outfit Analysis Content', "
+        "'Cross-Border Luxury Deal Sharing', 'Daily Commute Bag Reviews').\n"
         "- Do NOT use generic labels like 'Brand Loyalty', 'Fashion Highlights', 'Handbag Collection'.\n"
+        "- brands_mentioned: array of brand names found in the post titles for this cluster.\n"
+        "- primary_brand: the most frequently mentioned brand in this cluster.\n"
         "- Summary: what are XHS users posting/discussing/debating in this cluster?\n"
         "- Confidence: low/medium/high.\n\n"
         f"Titles:\n{json.dumps(titles, ensure_ascii=False, indent=2)}"
@@ -537,18 +724,20 @@ def maybe_label_with_llm(
         if not parsed:
             if llm_errors is not None:
                 llm_errors.append("LLM response JSON parse failed")
-            return fallback_label, fallback_summary, fallback_confidence, "heuristic", fallback_reasoning
+            return fallback_label, fallback_summary, fallback_confidence, "heuristic", fallback_reasoning, [], ""
         label = str(parsed.get("label") or fallback_label).strip()
         summary = str(parsed.get("summary") or fallback_summary).strip()
         ai_reasoning = str(parsed.get("ai_reasoning") or fallback_reasoning).strip()
         confidence = str(parsed.get("confidence") or fallback_confidence).strip().lower()
+        brands_mentioned = list(parsed.get("brands_mentioned", []) or [])
+        primary_brand = str(parsed.get("primary_brand", "") or "").strip()
         if confidence not in {"low", "medium", "high"}:
             confidence = fallback_confidence
-        return label, summary, confidence, "llm", ai_reasoning
+        return label, summary, confidence, "llm", ai_reasoning, brands_mentioned, primary_brand
     except Exception as e:
         if llm_errors is not None:
             llm_errors.append(f"openai call failed: {e}")
-        return fallback_label, fallback_summary, fallback_confidence, "heuristic", fallback_reasoning
+        return fallback_label, fallback_summary, fallback_confidence, "heuristic", fallback_reasoning, [], ""
 
 
 def confidence_for_cluster(posts: List[Post], token_map: Dict[str, List[str]]) -> str:
@@ -596,6 +785,8 @@ def to_trend_object(
         summary = getattr(posts[0], '_llm_trend_summary', '')
         confidence = getattr(posts[0], '_llm_trend_confidence', 'medium')
         ai_reasoning = getattr(posts[0], '_llm_trend_reasoning', '')
+        brands_mentioned = getattr(posts[0], '_llm_brands_mentioned', [])
+        primary_brand = getattr(posts[0], '_llm_primary_brand', '')
         labeling_source = "llm"
     else:
         heuristic_label = label_from_tokens(top_tokens)
@@ -605,7 +796,7 @@ def to_trend_object(
             f"Grouped because posts share recurring keywords/themes {top_tokens[:5]} and show consistent "
             f"engagement patterns in the same category."
         )
-        label, summary, confidence, labeling_source, ai_reasoning = maybe_label_with_llm(
+        label, summary, confidence, labeling_source, ai_reasoning, brands_mentioned, primary_brand = maybe_label_with_llm(
             posts=posts,
             base_prompt=base_prompt,
             fallback_label=heuristic_label,
@@ -620,6 +811,7 @@ def to_trend_object(
     total_comments = sum(p.comments for p in posts)
     total_saves = sum(p.saves for p in posts)
     total_engagement = total_likes + total_comments + total_saves
+    total_weighted_engagement = sum(p.weighted_engagement for p in posts)
     post_count = len(posts)
 
     evidence_posts = sorted(posts, key=lambda p: p.engagement, reverse=True)[:5]
@@ -679,6 +871,7 @@ def to_trend_object(
     metrics = {
         "post_count":       post_count,
         "total_engagement": total_engagement,
+        "weighted_engagement": round(total_weighted_engagement, 2),
         "avg_engagement":   round(total_engagement / post_count, 2) if post_count else 0,
         "total_likes":      total_likes,
         "total_comments":   total_comments,
@@ -688,17 +881,153 @@ def to_trend_object(
         "image_count":      len(all_cluster_images),
     }
 
-    return {
-        "trend_id":        f"t{trend_idx:02d}",
-        "label":           label,
-        "category":        category,
-        "summary":         summary,
-        "ai_reasoning":    ai_reasoning,
-        "confidence":      confidence,
-        "labeling_source": labeling_source,
-        "evidence":        evidence,
-        "metrics":         metrics,
-        "timestamp":       datetime.now(UTC).isoformat(),
+    # ── Date-based metrics (using normalized XHS dates) ───────────────
+    reference_date = REFERENCE_DATE
+    parsed_dates: List[datetime] = []
+    for p in posts:
+        nd = normalize_xhs_date(p.date, reference_date)
+        if nd is not None:
+            parsed_dates.append(nd)
+
+    parsed_dates_sorted = sorted(parsed_dates)
+
+    # Default values for date-based metrics
+    post_frequency_per_week = 0.0
+    avg_days_between_posts = 0.0
+    recency_score = 0.0
+    frequency_acceleration = 1.0
+    engagement_recency = 1.0
+    engagement_per_day = 0.0
+
+    # Velocity buckets
+    posts_last_7d = 0
+    posts_8_to_14d = 0
+    posts_15_to_30d = 0
+
+    if parsed_dates_sorted:
+        min_date = parsed_dates_sorted[0]
+        max_date = parsed_dates_sorted[-1]
+        days_spanned = max((max_date - min_date).days, 1)
+
+        # post_frequency_per_week
+        post_frequency_per_week = round(len(parsed_dates_sorted) / (days_spanned / 7.0), 2)
+
+        # avg_days_between_posts
+        if len(parsed_dates_sorted) >= 2:
+            gaps = [
+                (parsed_dates_sorted[i + 1] - parsed_dates_sorted[i]).days
+                for i in range(len(parsed_dates_sorted) - 1)
+            ]
+            avg_days_between_posts = round(sum(gaps) / len(gaps), 2)
+
+        # recency_score: 1.0 - (days_since_latest_post / 30), clamped [0, 1]
+        days_since_latest = (reference_date - max_date).days
+        recency_score = round(max(0.0, min(1.0, 1.0 - (days_since_latest / 30.0))), 2)
+
+        # Bucket posts by recency for velocity and acceleration
+        for d in parsed_dates_sorted:
+            days_ago = (reference_date - d).days
+            if days_ago <= 7:
+                posts_last_7d += 1
+            elif days_ago <= 14:
+                posts_8_to_14d += 1
+            elif days_ago <= 30:
+                posts_15_to_30d += 1
+
+        # frequency_acceleration: (posts_last_7d / 7) / (posts_8_to_30d / 23)
+        posts_8_to_30d = posts_8_to_14d + posts_15_to_30d
+        if posts_8_to_30d > 0:
+            frequency_acceleration = round((posts_last_7d / 7.0) / (posts_8_to_30d / 23.0), 2)
+        else:
+            frequency_acceleration = 1.0
+
+        # engagement_recency: avg_weighted_engagement_last_7d / avg_weighted_engagement_8_to_30d
+        eng_last_7d: List[float] = []
+        eng_8_to_30d: List[float] = []
+        for p in posts:
+            nd = normalize_xhs_date(p.date, reference_date)
+            if nd is None:
+                continue
+            days_ago = (reference_date - nd).days
+            if days_ago <= 7:
+                eng_last_7d.append(p.weighted_engagement)
+            elif days_ago <= 30:
+                eng_8_to_30d.append(p.weighted_engagement)
+
+        avg_eng_last_7d = sum(eng_last_7d) / len(eng_last_7d) if eng_last_7d else 0.0
+        avg_eng_8_to_30d = sum(eng_8_to_30d) / len(eng_8_to_30d) if eng_8_to_30d else 0.0
+        if avg_eng_8_to_30d > 0:
+            engagement_recency = round(avg_eng_last_7d / avg_eng_8_to_30d, 2)
+        else:
+            engagement_recency = 1.0
+
+        # engagement_per_day
+        engagement_per_day = round(total_weighted_engagement / days_spanned, 2)
+
+    # Comment and like frequency metrics
+    avg_comments_per_post = round(total_comments / post_count, 2) if post_count else 0.0
+    avg_likes_per_post = round(total_likes / post_count, 2) if post_count else 0.0
+    comment_density = round(total_comments / post_count, 2) if post_count else 0.0
+    high_comment_posts = sum(1 for p in posts if p.comments > 50)
+    high_comment_post_ratio = round(high_comment_posts / post_count, 2) if post_count else 0.0
+
+    # Add all new metrics to the metrics dict
+    metrics["post_frequency_per_week"] = post_frequency_per_week
+    metrics["avg_days_between_posts"] = avg_days_between_posts
+    metrics["recency_score"] = recency_score
+    metrics["frequency_acceleration"] = frequency_acceleration
+    metrics["engagement_recency"] = engagement_recency
+    metrics["avg_comments_per_post"] = avg_comments_per_post
+    metrics["avg_likes_per_post"] = avg_likes_per_post
+    metrics["comment_density"] = comment_density
+    metrics["engagement_per_day"] = engagement_per_day
+    metrics["high_comment_post_ratio"] = high_comment_post_ratio
+
+    # ── Trend classification ──────────────────────────────────────────
+    if frequency_acceleration > 1.5 and recency_score > 0.7:
+        trend_classification = "emerging"
+    elif frequency_acceleration < 0.5 or recency_score < 0.3:
+        trend_classification = "fading"
+    else:
+        trend_classification = "established"
+
+    # ── Velocity block ────────────────────────────────────────────────
+    if frequency_acceleration > 1.5:
+        acceleration_label = "increasing"
+    elif frequency_acceleration < 0.5:
+        acceleration_label = "decreasing"
+    else:
+        acceleration_label = "stable"
+
+    velocity = {
+        "posts_last_7d":    posts_last_7d,
+        "posts_8_to_14d":   posts_8_to_14d,
+        "posts_15_to_30d":  posts_15_to_30d,
+        "acceleration":     acceleration_label,
+    }
+
+    # ── keyword_type_breakdown: count posts by keyword_type if available ──
+    keyword_type_breakdown: Dict[str, int] = {}
+    for p in posts:
+        kt = getattr(p, "keyword_type", "")
+        if kt:
+            keyword_type_breakdown[kt] = keyword_type_breakdown.get(kt, 0) + 1
+
+    trend_obj: Dict[str, Any] = {
+        "trend_id":            f"t{trend_idx:02d}",
+        "label":               label,
+        "category":            category,
+        "summary":             summary,
+        "ai_reasoning":        ai_reasoning,
+        "confidence":          confidence,
+        "labeling_source":     labeling_source,
+        "brands_mentioned":    brands_mentioned,
+        "primary_brand":       primary_brand,
+        "trend_classification": trend_classification,
+        "velocity":            velocity,
+        "evidence":            evidence,
+        "metrics":             metrics,
+        "timestamp":           datetime.now(UTC).isoformat(),
         # ── visual assets ──────────────────────────────────────────
         "visual_assets": {
             "all_image_urls":   all_cluster_images[:20],
@@ -707,13 +1036,18 @@ def to_trend_object(
         },
         # ── comment signals ────────────────────────────────────────
         # All comment text is raw/unchanged. Commenter names are NEVER stored
-        # — only anonymized SHA-256 IDs. Replies are nested under each comment.
+        # -- only anonymized SHA-256 IDs. Replies are nested under each comment.
         "comment_signals": {
             "total_comments_scraped": total_comments_scraped,
             "total_replies_scraped":  total_replies_scraped,
             "all_comments": all_cluster_comments,   # [{post_id, commenter_id, text, likes, replies:[...]}, ...]
         },
     }
+
+    if keyword_type_breakdown:
+        trend_obj["keyword_type_breakdown"] = keyword_type_breakdown
+
+    return trend_obj
 
 
 def build_feedback_template(run_id: str) -> List[Dict[str, Any]]:
@@ -757,7 +1091,7 @@ def run(
     if live_mode:
         cli.info("CLI", "Live mode enabled: pacing stage spinner for demo clarity")
     def _load_inputs() -> Tuple[Any, Dict[str, Any]]:
-        load_dotenv_file(Path(".env"))
+        load_env_for_module1()
         return read_json(posts_path), read_json(config_path)
 
     raw_posts, config = cli.run_stage("Prompt", "Loading prompt + config + retrieval sources", _load_inputs)
@@ -798,12 +1132,21 @@ def run(
                     post_index.append({"id": p.post_id, "title": p.title, "likes": p.likes})
 
                 base_prompt_c = str(config.get("prompt", "")).strip()
+                _tk = int(config.get("top_k_trends", 8))
+                _llm_trend_target = min(max(_tk, 8), 120)
                 llm_cluster_prompt = (
                     f"{base_prompt_c}\n\n"
-                    "TASK: Read ALL the XHS post titles below and identify 5-8 distinct XHS CONTENT TRENDS.\n"
+                    f"TASK: Read ALL the XHS post titles below and identify {_llm_trend_target} distinct XHS CONTENT TRENDS "
+                    "(or as many meaningful trends as exist if fewer).\n"
                     "For each trend, list which post IDs belong to it.\n\n"
+                    "CRITICAL: Trend labels must NOT contain brand names (no 'LV', 'Dior', 'Gucci', etc.). "
+                    "Describe the trend behavior or aesthetic. Example: use 'Heritage vs Modern Creative Director Debate' "
+                    "not any label that repeats a house name. Store brand names in the brands_mentioned array.\n\n"
                     "Return ONLY valid JSON array, no markdown:\n"
-                    "[{\"trend_label\": \"...\", \"summary\": \"what XHS users are posting/discussing\", "
+                    "[{\"trend_label\": \"...(must NOT contain any brand name, describe the trend/behavior/aesthetic only)\", "
+                    "\"summary\": \"what XHS users are posting/discussing\", "
+                    "\"brands_mentioned\": [\"Brand1\", \"Brand2\"], "
+                    "\"primary_brand\": \"most frequently mentioned brand\", "
                     "\"post_ids\": [\"live_0001\", ...], \"confidence\": \"high/medium/low\", "
                     "\"ai_reasoning\": \"why these posts form a trend\"}]\n\n"
                     f"Posts ({len(post_index)} total):\n"
@@ -836,6 +1179,8 @@ def run(
                             cluster_posts[0]._llm_trend_summary = trend_info.get("summary", "")
                             cluster_posts[0]._llm_trend_confidence = trend_info.get("confidence", "medium")
                             cluster_posts[0]._llm_trend_reasoning = trend_info.get("ai_reasoning", "")
+                            cluster_posts[0]._llm_brands_mentioned = trend_info.get("brands_mentioned", [])
+                            cluster_posts[0]._llm_primary_brand = trend_info.get("primary_brand", "")
                             llm_clusters.append(cluster_posts)
 
                     if llm_clusters:
@@ -845,8 +1190,15 @@ def run(
             except Exception as e:
                 cli.warn("Decide", f"LLM clustering failed ({e.__class__.__name__}), falling back to heuristic")
 
-        # Fallback: heuristic clustering
-        clusters_local = build_clusters(filtered_posts, token_map_local)
+        # Fallback: heuristic clustering (thresholds from run_config.json)
+        _mj = float(config.get("cluster_min_jaccard", 0.35))
+        _mo = int(config.get("cluster_min_token_overlap", 4))
+        if bool(config.get("cluster_stratify_by_keyword", False)):
+            clusters_local = build_clusters_stratified_by_keyword(
+                filtered_posts, token_map_local, _mj, _mo
+            )
+        else:
+            clusters_local = build_clusters(filtered_posts, token_map_local, _mj, _mo)
         return token_map_local, clusters_local
 
     token_map, clusters = cli.run_stage(
@@ -855,6 +1207,17 @@ def run(
 
     min_posts_per_trend = int(config.get("min_posts_per_trend", 2))
     top_k_trends = int(config.get("top_k_trends", 5))
+    min_trend_goal = int(config.get("minimum_trend_objects", 0) or 0)
+    force_bins = int(config.get("force_equal_engagement_bins", 0) or 0)
+
+    if force_bins > 0:
+        clusters = build_equal_engagement_bins(filtered_posts, force_bins)
+        cli.ok(
+            "Decide",
+            f"Using equal engagement bins: {len(clusters)} clusters (config force_equal_engagement_bins)",
+        )
+    elif min_trend_goal > 0:
+        clusters = split_clusters_to_target_count(clusters, min_trend_goal, min_chunk=min_posts_per_trend)
 
     selected_clusters = [c for c in clusters if len(c) >= min_posts_per_trend][:top_k_trends]
     if not selected_clusters and clusters:

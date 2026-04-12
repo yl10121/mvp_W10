@@ -1,0 +1,786 @@
+{
+  "run_id": "run_0037",
+  "agent": {
+    "name": "XHS Trend Object Builder",
+    "module": "Module 1 - Trend Object Builder",
+    "owner": "Manny"
+  },
+  "decision": "From XHS posts in a brand/category/time window, produce distinct trend objects with evidence and metrics.",
+  "output_type": "Type B - Reviewable output",
+  "mvp_outcome_statement": "If our MVP works, trend signals from Xiaohongshu become faster to validate and easier for downstream teams to reuse, because the system converts raw API/XHS inputs into strict, evidence-backed Trend Objects.",
+  "brand": "ALL",
+  "category": "luxury_fashion",
+  "time_window": {
+    "start_date": "2026-03-01",
+    "end_date": "2026-04-30"
+  },
+  "retrieval": {
+    "sources": [
+      "data/xhs_posts.json",
+      "data/run_config.json"
+    ],
+    "records_loaded": 55,
+    "records_retrieved": 55
+  },
+  "prompt": "You are a Xiaohongshu (XHS) trend analyst. Your job is to identify TRENDS happening on XHS — what are users posting about, what content patterns are going viral, what discussions and debates are emerging among XHS users around this brand. A trend is a recurring CONTENT PATTERN or USER DISCOURSE on XHS. Look at the post titles and identify: (1) What topics are XHS users creating content about repeatedly? (2) What debates or opinions are forming? (3) What aesthetic or styling content is gaining traction? (4) What purchase behaviors or unboxing patterns are emerging? Examples of GOOD XHS trend labels from these posts: 'Old Celine vs New Celine Nostalgia Debate' (users debating Phoebe Philo era vs Hedi Slimane era), 'Box Bag Relevance Discourse' (users asking if Box is still worth buying or is it dead), 'Celebrity Outfit Decoding Content' (users analyzing Wang Anyu and BTS V's Celine outfits), 'Soft 16 as Ultimate Commute Bag' (users reviewing Soft 16 for daily work use), 'Celine Sunglasses Authenticity Checks' (users posting legit checks and dupes), 'Cross-Border Celine Deal Hunting' (users sharing prices from Japan, Turkey, Spain), 'Old Money Quiet Luxury Styling' (users creating Celine-centered old money looks). BAD labels: 'CELINE 2026 Fashion Show' (that's an event), 'Brand Loyalty' (too generic), 'Handbag Collection' (too vague). Work only with the provided posts. Cluster by recurring XHS content patterns. For each trend: (1) label describing the XHS content trend, (2) one-sentence summary of what users are posting/discussing, (3) evidence with real post IDs and snippets, (4) metrics, (5) confidence. Include ai_reasoning. Never invent evidence.",
+  "prompt_in_use_for_decision": true,
+  "generated_at_utc": "2026-04-12T07:09:17.207905+00:00",
+  "decision_logic": {
+    "mode": "rules-first with optional LLM label/summary",
+    "llm_enabled": true,
+    "llm_model": "gpt-4.1-mini",
+    "llm_label_calls_succeeded": 0,
+    "llm_label_calls_total": 1,
+    "llm_errors": [
+      "OPENROUTER_API_KEY missing"
+    ]
+  },
+  "trend_objects": [
+    {
+      "trend_id": "t01",
+      "label": "Luxury Handbag & Leather Goods",
+      "category": "luxury_fashion",
+      "summary": "Posts cluster around luxury handbag & leather goods with recurring evidence such as: CELINE早春手袋｜🌸；CELINE早春手袋｜🍈.",
+      "ai_reasoning": "Grouped because posts share recurring keywords/themes ['包包我爱这个色', '春夏包包分享', '早春手袋', '质感包包', '小众包包必入'] and show consistent engagement patterns in the same category.",
+      "confidence": "medium",
+      "labeling_source": "heuristic",
+      "brands_mentioned": [],
+      "primary_brand": "",
+      "trend_classification": "fading",
+      "velocity": {
+        "posts_last_7d": 0,
+        "posts_8_to_14d": 2,
+        "posts_15_to_30d": 0,
+        "acceleration": "decreasing"
+      },
+      "evidence": {
+        "post_ids": [
+          "live_0048",
+          "live_0061"
+        ],
+        "snippets": [
+          "CELINE早春手袋｜🌸",
+          "CELINE早春手袋｜🍈"
+        ],
+        "posts": [
+          {
+            "post_id": "live_0048",
+            "title": "CELINE早春手袋｜🌸",
+            "date": "03-21 陕西",
+            "brand": "Celine包包",
+            "likes": 3378,
+            "comments": 0,
+            "saves": 1162,
+            "creator": "user_683a7c8c",
+            "post_link": "https://www.xiaohongshu.com/explore/69be6efa000000002102f9aa",
+            "cover_url": "https://sns-webpic-qc.xhscdn.com/202603292331/fac069ed2952800d49ce0112400accb0/notes_uhdr/1040g3qo31tvl977gn2704a52pc7sic3e4ma86n0!nc_n_webp_mw_1",
+            "all_image_urls": [
+              "https://sns-webpic-qc.xhscdn.com/202603292333/6e7d1090ca3b59c24243c1de4a7bcc62/notes_uhdr/1040g3qo31tvl977gn2804a52pc7sic3e8np4r78!nd_dft_wlteh_webp_3",
+              "https://sns-webpic-qc.xhscdn.com/202603292333/3a640cc78e33ff8b53c811e592a4bdd8/notes_uhdr/1040g3qo31tvl977gn2704a52pc7sic3e4ma86n0!nd_dft_wlteh_webp_3",
+              "http://sns-webpic-qc.xhscdn.com/202603292333/3a640cc78e33ff8b53c811e592a4bdd8/notes_uhdr/1040g3qo31tvl977gn2704a52pc7sic3e4ma86n0!nd_dft_wlteh_webp_3",
+              "https://sns-webpic-qc.xhscdn.com/202603292333/c4d9b05b26841ca7a5f0f9f411822cc5/notes_uhdr/1040g3qo31tvl977gn27g4a52pc7sic3eqfvti80!nd_dft_wlteh_webp_3"
+            ],
+            "is_video": true,
+            "video_url": "blob:https://www.xiaohongshu.com/ac3daefa-f8f2-4d80-869e-c86fec620003",
+            "image_caption": "The image features a light beige CELINE handbag adorned with a signature gold clasp and two charm accessories: a pink \"CELINE CANDY\" tag and a gold heart-shaped tag inscribed with \"Céline Paris 1945.\" The visual aesthetic is elegant and minimalistic, highlighting the luxe materials and craftsmanship. The overall color palette is soft and pastel, enhancing the spring theme implied by the post title.",
+            "comments_scraped": [
+              {
+                "commenter_id": "user_622aa0ec",
+                "text": "非常不错",
+                "likes": 0,
+                "replies": []
+              },
+              {
+                "commenter_id": "user_622aa0ec",
+                "text": "非常不错",
+                "likes": 0,
+                "replies": []
+              },
+              {
+                "commenter_id": "user_c35e7cd0",
+                "text": "多少钱",
+                "likes": 6,
+                "replies": []
+              },
+              {
+                "commenter_id": "user_c35e7cd0",
+                "text": "多少钱",
+                "likes": 6,
+                "replies": []
+              },
+              {
+                "commenter_id": "user_08745ef0",
+                "text": "4【全文复制→开启🍠】 4月19日前进入，\"想要🔗进群就看到👀啦5️⃣\"一起来聊 CZ379 :/#z😀🎂🍈🍪🥞😆🍠🍔🐤🍇🤔🐨",
+                "likes": 4,
+                "replies": []
+              },
+              {
+                "commenter_id": "user_f7220ebb",
+                "text": "多少米",
+                "likes": 6,
+                "replies": []
+              },
+              {
+                "commenter_id": "user_f7220ebb",
+                "text": "多少米",
+                "likes": 6,
+                "replies": []
+              },
+              {
+                "commenter_id": "user_ea17f51e",
+                "text": "8【全选复制，xiaohongshu等你归来】 4月21日前可入，\"想要🔗进群就有啦\"趣味空间 MU5170 :/#b🐱😉🐦🍓🥑🍟😏🥯🍆🥦🍇🍉",
+                "likes": 3,
+                "replies": []
+              },
+              {
+                "commenter_id": "user_eac53df3",
+                "text": "好美😻",
+                "likes": 0,
+                "replies": []
+              },
+              {
+                "commenter_id": "user_eac53df3",
+                "text": "好美😻",
+                "likes": 0,
+                "replies": []
+              },
+              {
+                "commenter_id": "user_755ce2a1",
+                "text": "什么价格",
+                "likes": 3,
+                "replies": []
+              },
+              {
+                "commenter_id": "user_755ce2a1",
+                "text": "什么价格",
+                "likes": 3,
+                "replies": []
+              },
+              {
+                "commenter_id": "user_1db3658f",
+                "text": "抬眸一望- -便是心仪 - -链接自理----同款链接在这---点击购买 /*-",
+                "likes": 0,
+                "replies": []
+              },
+              {
+                "commenter_id": "user_1976f0ff",
+                "text": "好美",
+                "likes": 0,
+                "replies": []
+              },
+              {
+                "commenter_id": "user_1976f0ff",
+                "text": "好美",
+                "likes": 0,
+                "replies": []
+              },
+              {
+                "commenter_id": "user_c4585948",
+                "text": "多少",
+                "likes": 6,
+                "replies": []
+              },
+              {
+                "commenter_id": "user_c4585948",
+                "text": "多少",
+                "likes": 6,
+                "replies": []
+              },
+              {
+                "commenter_id": "user_f79e8174",
+                "text": "7【长按复制，小红书APP见】 4月18日到期，\"想要🔗的进群就👀到啦！9️⃣\"志同道合处 HU7131 :/#c🍔😋🍅🍅🐹🥒😝🌭🐹🐯😜🥭",
+                "likes": 4,
+                "replies": []
+              },
+              {
+                "commenter_id": "user_ccbc8f9f",
+                "text": "請問包包掛件怎麼賣",
+                "likes": 0,
+                "replies": []
+              },
+              {
+                "commenter_id": "user_ccbc8f9f",
+                "text": "請問包包掛件怎麼賣",
+                "likes": 0,
+                "replies": []
+              },
+              {
+                "commenter_id": "user_f184008b",
+                "text": "包挂好好看",
+                "likes": 6,
+                "replies": []
+              },
+              {
+                "commenter_id": "user_f184008b",
+                "text": "包挂好好看",
+                "likes": 6,
+                "replies": []
+              },
+              {
+                "commenter_id": "user_11e495a4",
+                "text": "5【长按复制，小红书APP见】 4月20日到期，\"想要🔗进群就有啦\"志同道合处 MU5524 :/#s🐱🌽🍙🍏🐧🍑🍙🥝🥪🤗🥮🍓",
+                "likes": 3,
+                "replies": []
+              },
+              {
+                "commenter_id": "user_e2184eec",
+                "text": "喜欢 什么价",
+                "likes": 0,
+                "replies": []
+              },
+              {
+                "commenter_id": "user_e2184eec",
+                "text": "喜欢 什么价",
+                "likes": 0,
+                "replies": []
+              }
+            ],
+            "comments_count_scraped": 25
+          },
+          {
+            "post_id": "live_0061",
+            "title": "CELINE早春手袋｜🍈",
+            "date": "03-20 陕西",
+            "brand": "Celine包包",
+            "likes": 304,
+            "comments": 0,
+            "saves": 97,
+            "creator": "user_683a7c8c",
+            "post_link": "https://www.xiaohongshu.com/explore/69bd00f400000000220025dd",
+            "cover_url": "https://sns-webpic-qc.xhscdn.com/202603292331/fff8097fa287ede51184e7c07d41bae4/notes_uhdr/1040g3qg31tu89q8o72204a52pc7sic3eriqkd98!nc_n_webp_mw_1",
+            "all_image_urls": [
+              "https://sns-webpic-qc.xhscdn.com/202603292335/38edac1711e114c9173ddd4029d0072b/notes_uhdr/1040g3qg31tu89q8o722g4a52pc7sic3ecsm03o0!nd_dft_wlteh_webp_3",
+              "https://sns-webpic-qc.xhscdn.com/202603292335/5ec25daf1227d9aeda9ace0d66791975/notes_uhdr/1040g3qg31tu89q8o72204a52pc7sic3eriqkd98!nd_dft_wlteh_webp_3",
+              "http://sns-webpic-qc.xhscdn.com/202603292335/5ec25daf1227d9aeda9ace0d66791975/notes_uhdr/1040g3qg31tu89q8o72204a52pc7sic3eriqkd98!nd_dft_wlteh_webp_3"
+            ],
+            "is_video": true,
+            "video_url": "blob:https://www.xiaohongshu.com/bbcd4138-496d-495a-a4db-fbc6b207e67a",
+            "image_caption": "The image features a CELINE handbag in a soft, pastel green color, characterized by its smooth leather texture. The bag is adorned with a prominent gold clasp that features the brand's logo, showcasing elegance and luxury. The overall aesthetic is minimalist and chic, set against a blurred, neutral background, which enhances the focus on the handbag's contemporary design.",
+            "comments_scraped": [
+              {
+                "commenter_id": "user_f3cf3500",
+                "text": "好好看这个色",
+                "likes": 0,
+                "replies": []
+              },
+              {
+                "commenter_id": "user_f3cf3500",
+                "text": "好好看这个色",
+                "likes": 0,
+                "replies": []
+              },
+              {
+                "commenter_id": "user_acf383ce",
+                "text": "多少钱",
+                "likes": 1,
+                "replies": []
+              },
+              {
+                "commenter_id": "user_acf383ce",
+                "text": "多少钱",
+                "likes": 1,
+                "replies": []
+              },
+              {
+                "commenter_id": "user_097d2c77",
+                "text": "这里宝宝7【全文复制→开启🍠】 4月20日前进入，\"想要🔗的进群就👀到啦！⑦\"一起来聊 CA4381 :/#l🐵😀🍈😙🐱🥟🐨🤗🎂🥟🍤😋",
+                "likes": 1,
+                "replies": []
+              },
+              {
+                "commenter_id": "user_422b262d",
+                "text": "这个颜色还有别的款式吗请问",
+                "likes": 1,
+                "replies": []
+              },
+              {
+                "commenter_id": "user_422b262d",
+                "text": "这个颜色还有别的款式吗请问",
+                "likes": 1,
+                "replies": []
+              },
+              {
+                "commenter_id": "user_07962f3a",
+                "text": "作者",
+                "likes": 1,
+                "replies": []
+              },
+              {
+                "commenter_id": "user_ce2e6529",
+                "text": "多少钱",
+                "likes": 1,
+                "replies": []
+              },
+              {
+                "commenter_id": "user_ce2e6529",
+                "text": "多少钱",
+                "likes": 1,
+                "replies": []
+              },
+              {
+                "commenter_id": "user_6c42544b",
+                "text": "请问价格",
+                "likes": 0,
+                "replies": []
+              },
+              {
+                "commenter_id": "user_6c42544b",
+                "text": "请问价格",
+                "likes": 0,
+                "replies": []
+              },
+              {
+                "commenter_id": "user_f5be4b62",
+                "text": "价格",
+                "likes": 0,
+                "replies": []
+              },
+              {
+                "commenter_id": "user_f5be4b62",
+                "text": "价格",
+                "likes": 0,
+                "replies": []
+              },
+              {
+                "commenter_id": "user_3420b2fd",
+                "text": "有没有其他颜色，白色，蓝色？",
+                "likes": 0,
+                "replies": []
+              },
+              {
+                "commenter_id": "user_3420b2fd",
+                "text": "有没有其他颜色，白色，蓝色？",
+                "likes": 0,
+                "replies": []
+              },
+              {
+                "commenter_id": "user_75843f96",
+                "text": "多少钱",
+                "likes": 0,
+                "replies": []
+              },
+              {
+                "commenter_id": "user_75843f96",
+                "text": "多少钱",
+                "likes": 0,
+                "replies": []
+              },
+              {
+                "commenter_id": "user_2ab3eecb",
+                "text": "好看",
+                "likes": 0,
+                "replies": []
+              },
+              {
+                "commenter_id": "user_2ab3eecb",
+                "text": "好看",
+                "likes": 0,
+                "replies": []
+              },
+              {
+                "commenter_id": "user_77c82878",
+                "text": "福寿康泰",
+                "likes": 0,
+                "replies": []
+              },
+              {
+                "commenter_id": "user_77c82878",
+                "text": "福寿康泰",
+                "likes": 0,
+                "replies": []
+              }
+            ],
+            "comments_count_scraped": 22
+          }
+        ]
+      },
+      "metrics": {
+        "post_count": 2,
+        "total_engagement": 4941,
+        "weighted_engagement": 6782.0,
+        "avg_engagement": 2470.5,
+        "total_likes": 3682,
+        "total_comments": 0,
+        "total_saves": 1259,
+        "top_keywords": [
+          "包包我爱这个色",
+          "春夏包包分享",
+          "早春手袋",
+          "质感包包",
+          "小众包包必入"
+        ],
+        "video_post_count": 2,
+        "image_count": 7,
+        "post_frequency_per_week": 14.0,
+        "avg_days_between_posts": 1.0,
+        "recency_score": 0.7,
+        "frequency_acceleration": 0.0,
+        "engagement_recency": 0.0,
+        "avg_comments_per_post": 0.0,
+        "avg_likes_per_post": 1841.0,
+        "comment_density": 0.0,
+        "engagement_per_day": 6782.0,
+        "high_comment_post_ratio": 0.0
+      },
+      "timestamp": "2026-04-12T07:09:17.207886+00:00",
+      "visual_assets": {
+        "all_image_urls": [
+          "https://sns-webpic-qc.xhscdn.com/202603292333/6e7d1090ca3b59c24243c1de4a7bcc62/notes_uhdr/1040g3qo31tvl977gn2804a52pc7sic3e8np4r78!nd_dft_wlteh_webp_3",
+          "https://sns-webpic-qc.xhscdn.com/202603292333/3a640cc78e33ff8b53c811e592a4bdd8/notes_uhdr/1040g3qo31tvl977gn2704a52pc7sic3e4ma86n0!nd_dft_wlteh_webp_3",
+          "http://sns-webpic-qc.xhscdn.com/202603292333/3a640cc78e33ff8b53c811e592a4bdd8/notes_uhdr/1040g3qo31tvl977gn2704a52pc7sic3e4ma86n0!nd_dft_wlteh_webp_3",
+          "https://sns-webpic-qc.xhscdn.com/202603292333/c4d9b05b26841ca7a5f0f9f411822cc5/notes_uhdr/1040g3qo31tvl977gn27g4a52pc7sic3eqfvti80!nd_dft_wlteh_webp_3",
+          "https://sns-webpic-qc.xhscdn.com/202603292335/38edac1711e114c9173ddd4029d0072b/notes_uhdr/1040g3qg31tu89q8o722g4a52pc7sic3ecsm03o0!nd_dft_wlteh_webp_3",
+          "https://sns-webpic-qc.xhscdn.com/202603292335/5ec25daf1227d9aeda9ace0d66791975/notes_uhdr/1040g3qg31tu89q8o72204a52pc7sic3eriqkd98!nd_dft_wlteh_webp_3",
+          "http://sns-webpic-qc.xhscdn.com/202603292335/5ec25daf1227d9aeda9ace0d66791975/notes_uhdr/1040g3qg31tu89q8o72204a52pc7sic3eriqkd98!nd_dft_wlteh_webp_3"
+        ],
+        "image_captions": [
+          {
+            "post_id": "live_0048",
+            "caption": "The image features a light beige CELINE handbag adorned with a signature gold clasp and two charm accessories: a pink \"CELINE CANDY\" tag and a gold heart-shaped tag inscribed with \"Céline Paris 1945.\" The visual aesthetic is elegant and minimalistic, highlighting the luxe materials and craftsmanship. The overall color palette is soft and pastel, enhancing the spring theme implied by the post title."
+          },
+          {
+            "post_id": "live_0061",
+            "caption": "The image features a CELINE handbag in a soft, pastel green color, characterized by its smooth leather texture. The bag is adorned with a prominent gold clasp that features the brand's logo, showcasing elegance and luxury. The overall aesthetic is minimalist and chic, set against a blurred, neutral background, which enhances the focus on the handbag's contemporary design."
+          }
+        ],
+        "video_post_count": 2
+      },
+      "comment_signals": {
+        "total_comments_scraped": 47,
+        "total_replies_scraped": 0,
+        "all_comments": [
+          {
+            "commenter_id": "user_622aa0ec",
+            "text": "非常不错",
+            "likes": 0,
+            "replies": [],
+            "post_id": "live_0048"
+          },
+          {
+            "commenter_id": "user_622aa0ec",
+            "text": "非常不错",
+            "likes": 0,
+            "replies": [],
+            "post_id": "live_0048"
+          },
+          {
+            "commenter_id": "user_c35e7cd0",
+            "text": "多少钱",
+            "likes": 6,
+            "replies": [],
+            "post_id": "live_0048"
+          },
+          {
+            "commenter_id": "user_c35e7cd0",
+            "text": "多少钱",
+            "likes": 6,
+            "replies": [],
+            "post_id": "live_0048"
+          },
+          {
+            "commenter_id": "user_08745ef0",
+            "text": "4【全文复制→开启🍠】 4月19日前进入，\"想要🔗进群就看到👀啦5️⃣\"一起来聊 CZ379 :/#z😀🎂🍈🍪🥞😆🍠🍔🐤🍇🤔🐨",
+            "likes": 4,
+            "replies": [],
+            "post_id": "live_0048"
+          },
+          {
+            "commenter_id": "user_f7220ebb",
+            "text": "多少米",
+            "likes": 6,
+            "replies": [],
+            "post_id": "live_0048"
+          },
+          {
+            "commenter_id": "user_f7220ebb",
+            "text": "多少米",
+            "likes": 6,
+            "replies": [],
+            "post_id": "live_0048"
+          },
+          {
+            "commenter_id": "user_ea17f51e",
+            "text": "8【全选复制，xiaohongshu等你归来】 4月21日前可入，\"想要🔗进群就有啦\"趣味空间 MU5170 :/#b🐱😉🐦🍓🥑🍟😏🥯🍆🥦🍇🍉",
+            "likes": 3,
+            "replies": [],
+            "post_id": "live_0048"
+          },
+          {
+            "commenter_id": "user_eac53df3",
+            "text": "好美😻",
+            "likes": 0,
+            "replies": [],
+            "post_id": "live_0048"
+          },
+          {
+            "commenter_id": "user_eac53df3",
+            "text": "好美😻",
+            "likes": 0,
+            "replies": [],
+            "post_id": "live_0048"
+          },
+          {
+            "commenter_id": "user_755ce2a1",
+            "text": "什么价格",
+            "likes": 3,
+            "replies": [],
+            "post_id": "live_0048"
+          },
+          {
+            "commenter_id": "user_755ce2a1",
+            "text": "什么价格",
+            "likes": 3,
+            "replies": [],
+            "post_id": "live_0048"
+          },
+          {
+            "commenter_id": "user_1db3658f",
+            "text": "抬眸一望- -便是心仪 - -链接自理----同款链接在这---点击购买 /*-",
+            "likes": 0,
+            "replies": [],
+            "post_id": "live_0048"
+          },
+          {
+            "commenter_id": "user_1976f0ff",
+            "text": "好美",
+            "likes": 0,
+            "replies": [],
+            "post_id": "live_0048"
+          },
+          {
+            "commenter_id": "user_1976f0ff",
+            "text": "好美",
+            "likes": 0,
+            "replies": [],
+            "post_id": "live_0048"
+          },
+          {
+            "commenter_id": "user_c4585948",
+            "text": "多少",
+            "likes": 6,
+            "replies": [],
+            "post_id": "live_0048"
+          },
+          {
+            "commenter_id": "user_c4585948",
+            "text": "多少",
+            "likes": 6,
+            "replies": [],
+            "post_id": "live_0048"
+          },
+          {
+            "commenter_id": "user_f79e8174",
+            "text": "7【长按复制，小红书APP见】 4月18日到期，\"想要🔗的进群就👀到啦！9️⃣\"志同道合处 HU7131 :/#c🍔😋🍅🍅🐹🥒😝🌭🐹🐯😜🥭",
+            "likes": 4,
+            "replies": [],
+            "post_id": "live_0048"
+          },
+          {
+            "commenter_id": "user_ccbc8f9f",
+            "text": "請問包包掛件怎麼賣",
+            "likes": 0,
+            "replies": [],
+            "post_id": "live_0048"
+          },
+          {
+            "commenter_id": "user_ccbc8f9f",
+            "text": "請問包包掛件怎麼賣",
+            "likes": 0,
+            "replies": [],
+            "post_id": "live_0048"
+          },
+          {
+            "commenter_id": "user_f184008b",
+            "text": "包挂好好看",
+            "likes": 6,
+            "replies": [],
+            "post_id": "live_0048"
+          },
+          {
+            "commenter_id": "user_f184008b",
+            "text": "包挂好好看",
+            "likes": 6,
+            "replies": [],
+            "post_id": "live_0048"
+          },
+          {
+            "commenter_id": "user_11e495a4",
+            "text": "5【长按复制，小红书APP见】 4月20日到期，\"想要🔗进群就有啦\"志同道合处 MU5524 :/#s🐱🌽🍙🍏🐧🍑🍙🥝🥪🤗🥮🍓",
+            "likes": 3,
+            "replies": [],
+            "post_id": "live_0048"
+          },
+          {
+            "commenter_id": "user_e2184eec",
+            "text": "喜欢 什么价",
+            "likes": 0,
+            "replies": [],
+            "post_id": "live_0048"
+          },
+          {
+            "commenter_id": "user_e2184eec",
+            "text": "喜欢 什么价",
+            "likes": 0,
+            "replies": [],
+            "post_id": "live_0048"
+          },
+          {
+            "commenter_id": "user_f3cf3500",
+            "text": "好好看这个色",
+            "likes": 0,
+            "replies": [],
+            "post_id": "live_0061"
+          },
+          {
+            "commenter_id": "user_f3cf3500",
+            "text": "好好看这个色",
+            "likes": 0,
+            "replies": [],
+            "post_id": "live_0061"
+          },
+          {
+            "commenter_id": "user_acf383ce",
+            "text": "多少钱",
+            "likes": 1,
+            "replies": [],
+            "post_id": "live_0061"
+          },
+          {
+            "commenter_id": "user_acf383ce",
+            "text": "多少钱",
+            "likes": 1,
+            "replies": [],
+            "post_id": "live_0061"
+          },
+          {
+            "commenter_id": "user_097d2c77",
+            "text": "这里宝宝7【全文复制→开启🍠】 4月20日前进入，\"想要🔗的进群就👀到啦！⑦\"一起来聊 CA4381 :/#l🐵😀🍈😙🐱🥟🐨🤗🎂🥟🍤😋",
+            "likes": 1,
+            "replies": [],
+            "post_id": "live_0061"
+          },
+          {
+            "commenter_id": "user_422b262d",
+            "text": "这个颜色还有别的款式吗请问",
+            "likes": 1,
+            "replies": [],
+            "post_id": "live_0061"
+          },
+          {
+            "commenter_id": "user_422b262d",
+            "text": "这个颜色还有别的款式吗请问",
+            "likes": 1,
+            "replies": [],
+            "post_id": "live_0061"
+          },
+          {
+            "commenter_id": "user_07962f3a",
+            "text": "作者",
+            "likes": 1,
+            "replies": [],
+            "post_id": "live_0061"
+          },
+          {
+            "commenter_id": "user_ce2e6529",
+            "text": "多少钱",
+            "likes": 1,
+            "replies": [],
+            "post_id": "live_0061"
+          },
+          {
+            "commenter_id": "user_ce2e6529",
+            "text": "多少钱",
+            "likes": 1,
+            "replies": [],
+            "post_id": "live_0061"
+          },
+          {
+            "commenter_id": "user_6c42544b",
+            "text": "请问价格",
+            "likes": 0,
+            "replies": [],
+            "post_id": "live_0061"
+          },
+          {
+            "commenter_id": "user_6c42544b",
+            "text": "请问价格",
+            "likes": 0,
+            "replies": [],
+            "post_id": "live_0061"
+          },
+          {
+            "commenter_id": "user_f5be4b62",
+            "text": "价格",
+            "likes": 0,
+            "replies": [],
+            "post_id": "live_0061"
+          },
+          {
+            "commenter_id": "user_f5be4b62",
+            "text": "价格",
+            "likes": 0,
+            "replies": [],
+            "post_id": "live_0061"
+          },
+          {
+            "commenter_id": "user_3420b2fd",
+            "text": "有没有其他颜色，白色，蓝色？",
+            "likes": 0,
+            "replies": [],
+            "post_id": "live_0061"
+          },
+          {
+            "commenter_id": "user_3420b2fd",
+            "text": "有没有其他颜色，白色，蓝色？",
+            "likes": 0,
+            "replies": [],
+            "post_id": "live_0061"
+          },
+          {
+            "commenter_id": "user_75843f96",
+            "text": "多少钱",
+            "likes": 0,
+            "replies": [],
+            "post_id": "live_0061"
+          },
+          {
+            "commenter_id": "user_75843f96",
+            "text": "多少钱",
+            "likes": 0,
+            "replies": [],
+            "post_id": "live_0061"
+          },
+          {
+            "commenter_id": "user_2ab3eecb",
+            "text": "好看",
+            "likes": 0,
+            "replies": [],
+            "post_id": "live_0061"
+          },
+          {
+            "commenter_id": "user_2ab3eecb",
+            "text": "好看",
+            "likes": 0,
+            "replies": [],
+            "post_id": "live_0061"
+          },
+          {
+            "commenter_id": "user_77c82878",
+            "text": "福寿康泰",
+            "likes": 0,
+            "replies": [],
+            "post_id": "live_0061"
+          },
+          {
+            "commenter_id": "user_77c82878",
+            "text": "福寿康泰",
+            "likes": 0,
+            "replies": [],
+            "post_id": "live_0061"
+          }
+        ]
+      }
+    }
+  ],
+  "schema_file": "outputs/trend_object_schema.json"
+}

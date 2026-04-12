@@ -1,6 +1,6 @@
 {
   "run_id": "001",
-  "timestamp": "2026-03-30 01:08:13.254767",
+  "timestamp": "2026-03-30 12:43:55.790608",
   "input": {
     "voice_memo_transcript": "额张小姐今天早上来了，我看到她瘦了挺多，尺码可能要换成M了。她说她最近一直在运动，也喜欢运动风格的衣服，和上班也好兼容。还有她说下周要去深圳开会参与活动。",
     "input_type": "free-form"
@@ -11,7 +11,7 @@
     "sample_voice_notes.json"
   ],
   "decision_output": {
-    "summary": "张小姐今天早上来店里，提到最近瘦了，可能需要换成M码，喜欢运动风格的衣服，并且下周要去深圳开会。",
+    "summary": "张小姐最近瘦了，可能需要换成M码，喜欢运动风格的衣服，准备下周去深圳开会。",
     "life_event": {
       "value": "去深圳开会",
       "confidence": "High",

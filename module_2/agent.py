@@ -3,7 +3,7 @@ agent.py — Module 2: Trend Relevance & Materiality Filter Agent
 
 Data flow:
   IN  → module_1/outputs/runs/run_*_trend_objects.json  (luxury_fashion only; beauty skipped)
-      → module_2/data/synthetic_trends.json              (25 synthetic Celine trends)
+      → module_2/data/synthetic_trends.json              (25 synthetic brand trends)
   OUT → module_2/outputs/output_shortlist.json          (local backup)
       → module_2/outputs/run_log.json
       → module_3/trend_brief_agent/trend_shortlist.json  (Module 3 compatible)
@@ -43,10 +43,10 @@ EVAL_REPORT_FILE = BASE_DIR / "EVAL_REPORT.md"
 
 # ── Config ─────────────────────────────────────────────────────────────────────
 AGENT_NAME = "Trend Relevance & Materiality Filter"
-BRAND = os.environ.get("BRAND", "Celine")
+BRAND = os.environ.get("BRAND", "Louis Vuitton")
 DEFAULT_CITY = os.environ.get("DEFAULT_CITY", "Shanghai")
 MAX_SHORTLIST = 15
-SKIP_CATEGORIES = {"beauty"}  # excluded from real runs; not relevant for Celine
+SKIP_CATEGORIES = {"beauty"}  # excluded from real runs; not relevant for luxury fashion brand runs
 
 
 # ── Known Celine products to scan for in real XHS evidence ─────────────────────
@@ -165,7 +165,7 @@ def load_all_real_trends() -> "tuple[list, list, str]":
                     "trend_id": namespaced_id,
                     "label": trend.get("label", ""),
                     "category": category,
-                    "reason": f"Category '{category}' excluded — beauty runs not relevant for Celine",
+                    "reason": f"Category '{category}' excluded — beauty runs not relevant for {BRAND}",
                 })
                 continue
 
@@ -467,7 +467,7 @@ def write_eval_report(
         "",
         "## Known Limitations",
         "",
-        "1. Runs 0001–0008 are beauty category and excluded — not relevant for Celine.",
+        "1. Runs 0001–0008 are beauty category and excluded — not relevant for luxury fashion brand filtering.",
         "2. Runs 0009–0013 contain identical underlying XHS data (same 3 posts scraped across 5 runs).",
         "3. Synthetic trends are clearly marked `data_type: synthetic` and should not be presented as real XHS signal.",
         "4. No image URLs captured — scraping ran with `--no-detail` flag.",

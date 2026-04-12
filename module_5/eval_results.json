@@ -1,0 +1,510 @@
+{
+  "eval_run_at": "2026-03-30T01:37:40.783645+00:00",
+  "total_entries": 20,
+  "results": [
+    {
+      "client_id": "BENCH_001",
+      "client_name": "林婉清",
+      "scores": {
+        "groundedness": {
+          "score": 5,
+          "justification": "Every detail in the message directly ties to client data - Hong Kong Basel attendance, preference for subtle luxury, timeline, and specific interest in spring coats."
+        },
+        "over_promotion": {
+          "score": 5,
+          "justification": "Both drafts maintain a sophisticated, service-oriented tone focused on styling advice rather than pushing products."
+        },
+        "would_you_send": {
+          "score": 4,
+          "justification": "Draft 2 is particularly natural and ready to send, though Draft 1 could be slightly more conversational."
+        }
+      },
+      "key_phrases": [
+        "为您的香港艺术周行程准备了几套搭配建议",
+        "不张扬但很有质感",
+        "我们可以提前约个时间试搭"
+      ],
+      "top_failure": "None"
+    },
+    {
+      "client_id": "BENCH_002",
+      "client_name": "陈柏言",
+      "scores": {
+        "groundedness": {
+          "score": 5,
+          "justification": "Every detail in the message directly ties to client data - the black wrinkle-free pants request, 3-week business travel timeline, and practical needs are all explicitly mentioned in the memory."
+        },
+        "over_promotion": {
+          "score": 5,
+          "justification": "Both drafts maintain a service-oriented, helpful tone focused on solving the client's specific needs without pushing products aggressively."
+        },
+        "would_you_send": {
+          "score": 4,
+          "justification": "Draft 1 is particularly strong and ready to send, though Draft 2 could be more specific about the fabric properties."
+        }
+      },
+      "key_phrases": [
+        "适合差旅的黑色免烫西装裤",
+        "面料选择都很耐穿，不易起皱",
+        "特别好打理的搭配",
+        "频繁商务场合"
+      ],
+      "top_failure": "None"
+    },
+    {
+      "client_id": "BENCH_003",
+      "client_name": "周晓彤",
+      "scores": {
+        "groundedness": {
+          "score": 5,
+          "justification": "Every detail in the output directly maps to client data - from the 小红书爆款 reference to 闺蜜下午茶 scenario and focus on new colors."
+        },
+        "over_promotion": {
+          "score": 5,
+          "justification": "Message maintains sophistication while naturally incorporating the product into the client's expressed photo-taking plans, avoiding pushy sales language."
+        },
+        "would_you_send": {
+          "score": 4,
+          "justification": "Draft is highly usable but could be slightly more specific about which new colors are available."
+        }
+      },
+      "key_phrases": [
+        "迷你包新色系列已到店",
+        "最上镜的色号",
+        "下午茶拍照",
+        "搭配建议"
+      ],
+      "top_failure": "None"
+    },
+    {
+      "client_id": "BENCH_004",
+      "client_name": "王景行",
+      "scores": {
+        "groundedness": {
+          "score": 5,
+          "justification": "Every element of the message directly ties to client data - from the focus on vegetable tanning to avoiding trend language, matching the raw_voice_note and aesthetic_preference perfectly."
+        },
+        "over_promotion": {
+          "score": 5,
+          "justification": "Message maintains a sophisticated, educational tone focused on craftsmanship documentation, with no direct product push - exactly matching the client's documented preferences."
+        },
+        "would_you_send": {
+          "score": 5,
+          "justification": "The message is perfectly calibrated - it focuses on workshop documentation and craftsmanship, avoiding trend language while maintaining a respectful, professional tone."
+        }
+      },
+      "key_phrases": [
+        "植鞣工艺的纪录",
+        "从选皮到手工缝制的完整过程",
+        "传统植鞣工艺的制作细节",
+        "皮料熟成与手工缝线的质感"
+      ],
+      "top_failure": "None"
+    },
+    {
+      "client_id": "BENCH_005",
+      "client_name": "赵思琳",
+      "scores": {
+        "groundedness": {
+          "score": 5,
+          "justification": "Every detail in the output directly maps to client data - charity gala timing, alteration needs, and dress requirements are all explicitly mentioned in the memory."
+        },
+        "over_promotion": {
+          "score": 5,
+          "justification": "Message focuses on service and timeline needs first, with product suggestions presented naturally as solutions rather than sales pitches."
+        },
+        "would_you_send": {
+          "score": 5,
+          "justification": "Both drafts are highly professional, culturally appropriate in Chinese, and strike the right balance between urgency and service."
+        }
+      },
+      "key_phrases": [
+        "为确保有充足改衣时间",
+        "已为您预留了两个最适合您的版型",
+        "改衣师也在现场给些专业建议"
+      ],
+      "top_failure": "None"
+    },
+    {
+      "client_id": "BENCH_006",
+      "client_name": "刘凯文",
+      "scores": {
+        "groundedness": {
+          "score": 5,
+          "justification": "Every detail in the output directly maps to client data - from 四月差旅 to preference for short messages with images, and alignment with T_B08 trend."
+        },
+        "over_promotion": {
+          "score": 5,
+          "justification": "Both drafts are appropriately succinct, focusing on practical needs (weight, color) without pushy sales language."
+        },
+        "would_you_send": {
+          "score": 5,
+          "justification": "Draft 1 is particularly strong - perfectly balances efficiency with professionalism while respecting client's communication preferences."
+        }
+      },
+      "key_phrases": [
+        "轻量商务鞋",
+        "280g以下",
+        "黑/深灰色系",
+        "供参考",
+        "看下哪款合适"
+      ],
+      "top_failure": "None"
+    },
+    {
+      "client_id": "BENCH_007",
+      "client_name": "孙若宁",
+      "scores": {
+        "groundedness": {
+          "score": 5,
+          "justification": "Every detail in the message directly ties to client data - 备婚 status, preference for 素圈/低调 style, and T_B07 trend integration."
+        },
+        "over_promotion": {
+          "score": 5,
+          "justification": "Maintains sophisticated consultation tone, focusing on style guidance rather than pushing products, with natural incorporation of trend insights."
+        },
+        "would_you_send": {
+          "score": 4,
+          "justification": "Strong professional quality that respects client preferences, though Draft 1 could be slightly more concise."
+        }
+      },
+      "key_phrases": [
+        "日常可戴的对戒",
+        "细款珍珠或银饰搭配",
+        "低调又耐看",
+        "发几张图片给您参考"
+      ],
+      "top_failure": "None"
+    },
+    {
+      "client_id": "BENCH_008",
+      "client_name": "马东宇",
+      "scores": {
+        "groundedness": {
+          "score": 5,
+          "justification": "Every detail in the message directly ties to client data - 春节返乡, 御寒需求, 厚而不笨 preference, and T_B03 trend elements are all accurately reflected."
+        },
+        "over_promotion": {
+          "score": 5,
+          "justification": "Messages focus on solving the client's specific need with a consultative tone, avoiding pushy sales language while naturally suggesting next steps."
+        },
+        "would_you_send": {
+          "score": 4,
+          "justification": "Strong personalization and natural tone, though Draft 2's weather comment could be more specific to client's exact destination."
+        }
+      },
+      "key_phrases": [
+        "既保暖又不显重的方案",
+        "内搭轻薄羊绒，外罩一件挺括大衣",
+        "既体面又够暖的穿搭方案"
+      ],
+      "top_failure": "None"
+    },
+    {
+      "client_id": "BENCH_009",
+      "client_name": "何雅文",
+      "scores": {
+        "groundedness": {
+          "score": 5,
+          "justification": "Every detail in the output directly maps to client data - from the daughter's coming of age gift to the preference for classic styles and the Quiet Luxury trend signal T_B01."
+        },
+        "over_promotion": {
+          "score": 5,
+          "justification": "Messages maintain a sophisticated, consultative tone focused on understanding and service, with products mentioned naturally within the context of the life event."
+        },
+        "would_you_send": {
+          "score": 5,
+          "justification": "Both drafts are polished, personalized, and strike the right balance between warmth and professionalism while respecting the client's specific needs."
+        }
+      },
+      "key_phrases": [
+        "成人礼的礼物",
+        "经典的小牛皮包",
+        "低调优雅的设计",
+        "特别的刻字服务",
+        "可以陪伴很长时间"
+      ],
+      "top_failure": "None"
+    },
+    {
+      "client_id": "BENCH_010",
+      "client_name": "丁一辰",
+      "scores": {
+        "groundedness": {
+          "score": 5,
+          "justification": "Every detail in the message directly maps to client data - from budget constraints to use case (interviews) to aesthetic preferences (black, simple)."
+        },
+        "over_promotion": {
+          "score": 5,
+          "justification": "Both drafts maintain a helpful, consultative tone focused on solving the client's specific needs without pushing products aggressively."
+        },
+        "would_you_send": {
+          "score": 5,
+          "justification": "The messages are natural, personalized, and perfectly balanced between professional and friendly tones, ready to send as-is."
+        }
+      },
+      "key_phrases": [
+        "面试和日常都能用的基础款",
+        "简约大方",
+        "保养小技巧",
+        "黑色的很百搭",
+        "周末休闲也不会太正式"
+      ],
+      "top_failure": "None"
+    },
+    {
+      "client_id": "BENCH_011",
+      "client_name": "沈曼",
+      "scores": {
+        "groundedness": {
+          "score": 5,
+          "justification": "Every detail in the message directly ties to client data - from the brand collaboration context to social media concerns and legal requirements mentioned in raw_voice_note."
+        },
+        "over_promotion": {
+          "score": 5,
+          "justification": "Message maintains strictly professional tone focused on legal/business matters with no product pushing, perfectly aligned with the client's professional concerns."
+        },
+        "would_you_send": {
+          "score": 5,
+          "justification": "Both drafts are polished, professional, and perfectly tailored to the specific business context and client needs around contract terms and social media rights."
+        }
+      },
+      "key_phrases": [
+        "标准协议模板",
+        "社媒发布条款",
+        "法务团队",
+        "具体条款需求"
+      ],
+      "top_failure": "None"
+    },
+    {
+      "client_id": "BENCH_012",
+      "client_name": "高以翔",
+      "scores": {
+        "groundedness": {
+          "score": 5,
+          "justification": "Every detail in the message directly ties to client data - golf event next week, need for breathable sun protection, and preference for non-tight fit."
+        },
+        "over_promotion": {
+          "score": 4,
+          "justification": "Natural, consultative tone focused on solving client's specific need, though could be slightly more subtle about UPF details."
+        },
+        "would_you_send": {
+          "score": 4,
+          "justification": "Strong, usable drafts that feel personal and professional, with clear next steps aligned to client needs."
+        }
+      },
+      "key_phrases": [
+        "下周球场活动的外套",
+        "轻薄透气",
+        "活动自如不会影响挥杆",
+        "透气防晒都考虑到了"
+      ],
+      "top_failure": "None"
+    },
+    {
+      "client_id": "BENCH_013",
+      "client_name": "罗薇",
+      "scores": {
+        "groundedness": {
+          "score": 5,
+          "justification": "Every element of the message directly ties to client data - from the alteration delay issue to the focus on process transparency and service recovery"
+        },
+        "over_promotion": {
+          "score": 5,
+          "justification": "Completely avoids product pushing, appropriately focuses on service recovery and relationship rebuilding as indicated by the client data"
+        },
+        "would_you_send": {
+          "score": 5,
+          "justification": "Draft is perfectly calibrated - professional, humble, and focused on service recovery with clear next steps"
+        }
+      },
+      "key_phrases": [
+        "重新梳理了完整流程",
+        "当面解释具体环节",
+        "了解哪些地方我们可以做得更好",
+        "专属顾问"
+      ],
+      "top_failure": "None"
+    },
+    {
+      "client_id": "BENCH_014",
+      "client_name": "郑可",
+      "scores": {
+        "groundedness": {
+          "score": 5,
+          "justification": "Every detail in the message ties directly to client data - budget (两万), purpose (商务送礼), preference (体面包装), and referenced trends (T_B01, T_B06)."
+        },
+        "over_promotion": {
+          "score": 5,
+          "justification": "Message maintains professional distance and focuses on service, avoiding pushy sales tactics while naturally incorporating product suggestions based on stated needs."
+        },
+        "would_you_send": {
+          "score": 5,
+          "justification": "Draft is concise, professional, and perfectly tailored to the client's specific needs while maintaining appropriate formality in Mandarin."
+        }
+      },
+      "key_phrases": [
+        "低调有质感",
+        "小牛皮工艺",
+        "包装很体面",
+        "都在两万以内",
+        "商务礼品"
+      ],
+      "top_failure": "None"
+    },
+    {
+      "client_id": "BENCH_015",
+      "client_name": "蒋梦",
+      "scores": {
+        "groundedness": {
+          "score": 5,
+          "justification": "Every detail in the output directly maps to client data - pregnancy status, preference for loose clothing, flat shoes, and comfort priority are all explicitly stated in the memory."
+        },
+        "over_promotion": {
+          "score": 4,
+          "justification": "The message maintains a caring, service-oriented tone focused on comfort and practical needs, though 'recently received items' feels slightly promotional."
+        },
+        "would_you_send": {
+          "score": 5,
+          "justification": "The drafts are natural, empathetic, and perfectly tailored to the client's specific situation with appropriate focus on comfort and practicality."
+        }
+      },
+      "key_phrases": [
+        "现在可能需要更舒适的穿着",
+        "宽松版型",
+        "不会有任何压迫感",
+        "产后也能继续穿",
+        "面料特别柔软透气"
+      ],
+      "top_failure": "None"
+    },
+    {
+      "client_id": "BENCH_016",
+      "client_name": "谢远",
+      "scores": {
+        "groundedness": {
+          "score": 5,
+          "justification": "Every element of the message is directly tied to the client memory - B2B nature, timeline, invoice requirements, and specific products (ties/pocket squares) are all explicitly mentioned in the data."
+        },
+        "over_promotion": {
+          "score": 5,
+          "justification": "The tone is perfectly calibrated for a B2B interaction - professional, focused on practical details, and appropriately formal for a corporate purchasing scenario."
+        },
+        "would_you_send": {
+          "score": 5,
+          "justification": "The message is ready to send, with proper business etiquette, clear next steps, and appropriate formality for a B2B context in Chinese business culture."
+        }
+      },
+      "key_phrases": [
+        "团队领带与口袋巾的询价",
+        "详细报价单",
+        "SKU明细",
+        "发票信息",
+        "下月活动能准时交付"
+      ],
+      "top_failure": "None"
+    },
+    {
+      "client_id": "BENCH_017",
+      "client_name": "唐诗琪",
+      "scores": {
+        "groundedness": {
+          "score": 5,
+          "justification": "Every detail in the message directly ties to client data - from the art exam context to specific style preferences (black, simple, not too mature) and the quiet luxury trend."
+        },
+        "over_promotion": {
+          "score": 5,
+          "justification": "Message maintains a helpful, consultative tone focused on the specific need (art exam outfit) without pushing products aggressively."
+        },
+        "would_you_send": {
+          "score": 5,
+          "justification": "Both drafts are natural, professional, and perfectly tailored to the situation with appropriate next steps around sizing."
+        }
+      },
+      "key_phrases": [
+        "简约黑色款",
+        "剪裁偏柔和",
+        "不会显得过于职场感",
+        "正式又保持学生感",
+        "容易搭配的版型"
+      ],
+      "top_failure": "None"
+    },
+    {
+      "client_id": "BENCH_018",
+      "client_name": "冯朗",
+      "scores": {
+        "groundedness": {
+          "score": 5,
+          "justification": "Every detail in the message directly ties to the client data - from the sizing issues (欧码/肩宽) to the specific need for measurement records (建档需求)."
+        },
+        "over_promotion": {
+          "score": 5,
+          "justification": "The message prioritizes service and consultation over sales, naturally incorporating the soft-structured jacket trend without pushing products."
+        },
+        "would_you_send": {
+          "score": 4,
+          "justification": "Both drafts are professional and usable, though Draft 2 feels slightly more natural for WeChat communication."
+        }
+      },
+      "key_phrases": [
+        "专业量体",
+        "建立个人尺码档案",
+        "软结构西装",
+        "详细的尺码记录"
+      ],
+      "top_failure": "None"
+    },
+    {
+      "client_id": "BENCH_019",
+      "client_name": "曹颖",
+      "scores": {
+        "groundedness": {
+          "score": 5,
+          "justification": "Every detail in the message directly ties to client data - material sensitivity, silk-cotton blend preference, and need for composition tags, while correctly incorporating T_B01 leather goods trend."
+        },
+        "over_promotion": {
+          "score": 5,
+          "justification": "Messages focus on service and understanding client needs first, with subtle product suggestions that align with health concerns."
+        },
+        "would_you_send": {
+          "score": 5,
+          "justification": "Both drafts are professional, thoughtful, and show genuine care for the client's specific needs while maintaining luxury standards."
+        }
+      },
+      "key_phrases": [
+        "为了让您放心选购",
+        "详细成分标",
+        "不会有贴肤过敏顾虑",
+        "适合敏感肌的面料",
+        "帮您确认过成分"
+      ],
+      "top_failure": "None"
+    },
+    {
+      "client_id": "BENCH_020",
+      "client_name": "许静",
+      "scores": {
+        "groundedness": {
+          "score": 5,
+          "justification": "Every detail in the message directly ties to the client memory, especially the documentary mention, 2-year gap, and cautious approach aligned with trend signals."
+        },
+        "over_promotion": {
+          "score": 5,
+          "justification": "Perfectly restrained approach focusing on brand culture and behind-the-scenes content, with no product pushing, exactly matching the 'extremely soft touch' signal."
+        },
+        "would_you_send": {
+          "score": 5,
+          "justification": "Both drafts are natural, sophisticated, and perfectly calibrated to re-engage a distant client through cultural connection rather than sales."
+        }
+      },
+      "key_phrases": [
+        "很高兴听到您看了品牌纪录片",
+        "工艺制作的幕后花絮",
+        "不知哪个部分让您印象深刻"
+      ],
+      "top_failure": "None"
+    }
+  ]
+}

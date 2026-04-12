@@ -1,8 +1,8 @@
-# Agent Pipeline — Modules 1–5 · Brand: Celine
+# Agent Pipeline — Modules 1–5 · Brand: Louis Vuitton
 
 A sequential multi-module AI agent pipeline for LVMH luxury clienteling. Scrapes Xiaohongshu (XHS) trends, filters them for brand relevance, generates CA briefing cards, structures client memory, and produces personalized outreach — persisting everything to Supabase automatically.
 
-**Brand:** Celine (configurable via `BRAND` in `.env`)  
+**Brand:** Louis Vuitton (configurable via `BRAND` in `.env`)  
 **Live repo:** [github.com/m-ny/mvp](https://github.com/m-ny/mvp)
 
 ---
@@ -53,8 +53,8 @@ Agent/
 │   ├── agent.py             ← main entry point
 │   ├── evaluator.py         ← LLM scoring engine (OpenRouter)
 │   ├── scorer.py            ← deterministic pre-filter (no LLM)
-│   ├── prompts.py           ← Celine-specific evaluation prompts
-│   ├── brand_profile.json   ← Celine brand config, taboos, categories
+│   ├── prompts.py           ← Brand-specific evaluation prompts
+│   ├── brand_profile.json   ← Brand config, taboos, categories
 │   └── supabase_writer.py
 │
 ├── module_3/trend_brief_agent/
@@ -101,7 +101,7 @@ OPENROUTER_API_KEY=your_openrouter_api_key_here
 DEFAULT_MODEL=openai/gpt-4o-mini
 
 # Brand (used by all modules)
-BRAND=Celine
+BRAND=Louis Vuitton
 
 # Supabase — from your project's connection settings
 SUPABASE_PASSWORD=your_supabase_db_password_here
@@ -134,7 +134,7 @@ Or run individual modules:
 ```bash
 # Module 1 — scrape XHS then build trend objects
 cd module_1
-.venv/bin/python3 xhs_scraper_live.py --keywords "Celine" "法式极简" "小众设计" --times 3
+.venv/bin/python3 xhs_scraper_live.py --keywords "Louis Vuitton" "LV" "路易威登" --times 3
 .venv/bin/python3 xhs_trend_builder.py
 
 # Module 2 — filter + score trends for brand relevance
@@ -158,7 +158,7 @@ python3 agent.py
 
 ## Module 2 — Trend Relevance & Materiality Filter
 
-Module 2 sits between the raw XHS trend builder and the CA brief generator. It applies a **two-stage qualification pipeline** to eliminate noise and surface only the most brand-relevant trends for Celine.
+Module 2 sits between the raw XHS trend builder and the CA brief generator. It applies a **two-stage qualification pipeline** to eliminate noise and surface only the most brand-relevant trends for the configured brand (`BRAND` in `.env`).
 
 ### What it does
 1. **Deterministic pre-filter** (no LLM cost): rejects trends that are stale (>21 days old), have too little engagement, wrong category, or contain brand taboo keywords.
@@ -166,7 +166,7 @@ Module 2 sits between the raw XHS trend builder and the CA brief generator. It a
 3. **Shortlist** top 5 trends above composite score 6.5 (weighted: brand fit ×0.30, freshness ×0.20, category fit ×0.20, materiality ×0.15, actionability ×0.15).
 4. **Writes Module 3 input**: converts shortlist to `trend_shortlist.json` format in `module_3/trend_brief_agent/`.
 
-### Brand profile (Celine)
+### Brand profile (Louis Vuitton by default)
 Located at `module_2/brand_profile.json`. Edit this to change the brand without touching any code:
 - `active_categories`: what product categories to accept (currently `ready-to-wear`, `leather goods`)
 - `brand_taboos`: keyword rejection list (streetwear, hypebeast, dupes, etc.)
@@ -245,7 +245,7 @@ Check written data: Supabase dashboard → Table Editor.
 ### Change the brand across all modules
 
 ```
-Update the pipeline in /Users/mannyhernandez/Documents/GitHub/Agent to target [BRAND_NAME] instead of Celine.
+Update the pipeline in /Users/mannyhernandez/Documents/GitHub/Agent to target [BRAND_NAME] instead of the current default.
 1. Update .env: BRAND=[BRAND_NAME]
 2. Update module_2/brand_profile.json: brand_name, aesthetic, clientele, brand_taboos, active_categories
 3. Update module_3/trend_brief_agent/agent.py: brand default and system prompt
@@ -302,7 +302,7 @@ python3 db/setup.py --dry-run
 ### Module 1 — XHS Trend Object Builder
 Scrapes Xiaohongshu live using Chrome automation. Keeps all post content raw and unchanged. Anonymizes creator names (SHA-256 hash). AI-captions images. Clusters posts into Trend Objects with engagement metrics, visual assets, and anonymized comment signals.
 
-**XHS keywords for Celine:** `Celine` `赛琳` `法式极简` `静奢` `小众皮具` `皮革配件`
+**XHS keywords for Louis Vuitton:** `Louis Vuitton` `LV` `路易威登` `LV包包` `LV穿搭` plus trend terms like `静奢` `通勤包` as needed
 
 ### Module 2 — Trend Relevance & Materiality Filter
 Two-stage filter: deterministic pre-filter (no LLM cost) → LLM brand-fit scoring → top 5 shortlist. Outputs a `trend_shortlist.json` directly into Module 3's folder so the pipeline is fully automated.

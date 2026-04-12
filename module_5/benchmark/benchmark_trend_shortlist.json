@@ -1,0 +1,210 @@
+{
+  "query_context": {
+    "brand": "Celine",
+    "module1_run_id": "bench_m1_x",
+    "module2_run_id": "bench_m2_x",
+    "source": "benchmark/M2_shape",
+    "week": "2026-W13",
+    "benchmark": true
+  },
+  "trends": [
+    {
+      "trend_id": "T_B01",
+      "trend_label": "Quiet Luxury 2.0 — 无logo皮具",
+      "category": "leather_goods",
+      "cluster_summary": "静奢话题持续；小牛皮、soft structure 手袋互动高。",
+      "composite_score": 8.9,
+      "scores": {
+        "freshness": 8,
+        "brand_fit": 9,
+        "category_fit": 9,
+        "materiality": 9,
+        "actionability": 8
+      },
+      "confidence": "high",
+      "evidence_references": [
+        "笔记: 静奢不是便宜是克制"
+      ],
+      "metric_signal": {
+        "total_engagement": 120000
+      },
+      "rank": 1
+    },
+    {
+      "trend_id": "T_B02",
+      "trend_label": "新中式 × 马术细节",
+      "category": "ready-to-wear",
+      "cluster_summary": "立领、盘扣与骑装线条在街拍中升温。",
+      "composite_score": 8.4,
+      "scores": {
+        "freshness": 9,
+        "brand_fit": 7,
+        "category_fit": 8,
+        "materiality": 8,
+        "actionability": 8
+      },
+      "confidence": "high",
+      "evidence_references": [
+        "#新中式马术"
+      ],
+      "metric_signal": {
+        "post_count": 420
+      },
+      "rank": 2
+    },
+    {
+      "trend_id": "T_B03",
+      "trend_label": "高智感松弛针织",
+      "category": "ready-to-wear",
+      "cluster_summary": "羊绒、燕麦色系、宽松廓形，职场与差旅场景。",
+      "composite_score": 8.2,
+      "scores": {
+        "freshness": 8,
+        "brand_fit": 8,
+        "category_fit": 8,
+        "materiality": 9,
+        "actionability": 8
+      },
+      "confidence": "medium",
+      "evidence_references": [
+        "搜索词: 松弛感针织"
+      ],
+      "metric_signal": {},
+      "rank": 3
+    },
+    {
+      "trend_id": "T_B04",
+      "trend_label": "投资型连衣裙",
+      "category": "ready-to-wear",
+      "cluster_summary": "单件礼服多场合适配，强调面料与剪裁耐久。",
+      "composite_score": 7.9,
+      "scores": {
+        "freshness": 7,
+        "brand_fit": 8,
+        "category_fit": 8,
+        "materiality": 8,
+        "actionability": 9
+      },
+      "confidence": "medium",
+      "evidence_references": [],
+      "metric_signal": {
+        "saves": 8900
+      },
+      "rank": 4
+    },
+    {
+      "trend_id": "T_B05",
+      "trend_label": "男士软结构西装",
+      "category": "ready-to-wear",
+      "cluster_summary": "无衬里、轻结构，商务与周末模糊边界。",
+      "composite_score": 7.8,
+      "scores": {
+        "freshness": 7,
+        "brand_fit": 8,
+        "category_fit": 7,
+        "materiality": 8,
+        "actionability": 8
+      },
+      "confidence": "medium",
+      "evidence_references": [
+        "男装笔记: 软结构"
+      ],
+      "metric_signal": {},
+      "rank": 5
+    },
+    {
+      "trend_id": "T_B06",
+      "trend_label": "小皮件色彩实验",
+      "category": "leather_goods",
+      "cluster_summary": "卡包、钥匙包等高饱和点缀，与中性衣橱对比。",
+      "composite_score": 7.5,
+      "scores": {
+        "freshness": 8,
+        "brand_fit": 7,
+        "category_fit": 7,
+        "materiality": 7,
+        "actionability": 8
+      },
+      "confidence": "medium",
+      "evidence_references": [],
+      "metric_signal": {},
+      "rank": 6
+    },
+    {
+      "trend_id": "T_B07",
+      "trend_label": "珍珠与银饰叠戴",
+      "category": "accessories",
+      "cluster_summary": "细珍珠与哑光银链叠戴，低对比度首饰叙事。",
+      "composite_score": 7.4,
+      "scores": {
+        "freshness": 8,
+        "brand_fit": 7,
+        "category_fit": 7,
+        "materiality": 7,
+        "actionability": 7
+      },
+      "confidence": "medium",
+      "evidence_references": [
+        "珠宝区: 叠戴教程"
+      ],
+      "metric_signal": {},
+      "rank": 7
+    },
+    {
+      "trend_id": "T_B08",
+      "trend_label": "旅行鞋履轻量化",
+      "category": "shoes",
+      "cluster_summary": "可折叠、单色、易搭配，强调步行舒适度。",
+      "composite_score": 7.2,
+      "scores": {
+        "freshness": 7,
+        "brand_fit": 7,
+        "category_fit": 7,
+        "materiality": 8,
+        "actionability": 8
+      },
+      "confidence": "low",
+      "evidence_references": [],
+      "metric_signal": {},
+      "rank": 8
+    },
+    {
+      "trend_id": "T_B09",
+      "trend_label": "艺术联名限量",
+      "category": "accessories",
+      "cluster_summary": "画廊合作丝巾/小皮件，收藏向讨论度高。",
+      "composite_score": 7.0,
+      "scores": {
+        "freshness": 9,
+        "brand_fit": 6,
+        "category_fit": 6,
+        "materiality": 7,
+        "actionability": 6
+      },
+      "confidence": "low",
+      "evidence_references": [
+        "联名话题"
+      ],
+      "metric_signal": {},
+      "rank": 9
+    },
+    {
+      "trend_id": "T_B10",
+      "trend_label": "可持续羊绒溯源",
+      "category": "ready-to-wear",
+      "cluster_summary": "牧场溯源、碳足迹标签，与品牌叙事结合。",
+      "composite_score": 6.8,
+      "scores": {
+        "freshness": 7,
+        "brand_fit": 7,
+        "category_fit": 7,
+        "materiality": 7,
+        "actionability": 6
+      },
+      "confidence": "low",
+      "evidence_references": [],
+      "metric_signal": {},
+      "rank": 10
+    }
+  ]
+}

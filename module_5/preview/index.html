@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Module 5 · 客户 Outreach 预览</title>
+  <link rel="stylesheet" href="preview.css" />
+</head>
+<body>
+  <header class="page-header">
+    <h1>客户 Outreach 预览</h1>
+    <p>点击卡片查看策略摘要、微信草稿与依据 · 共 20 位（数据来自 run_log + benchmark）</p>
+  </header>
+
+  <p id="empty-state" class="empty-hint" hidden>加载中…</p>
+
+  <main id="grid" class="grid" aria-live="polite"></main>
+
+  <div id="overlay" class="overlay" role="dialog" aria-modal="true" aria-labelledby="modal-title">
+    <div class="modal">
+      <div class="modal-header">
+        <div>
+          <h2 id="modal-title" class="modal-title"></h2>
+          <p id="modal-sub" class="modal-sub"></p>
+        </div>
+        <button type="button" id="modal-close" class="modal-close" aria-label="关闭">×</button>
+      </div>
+      <div class="modal-body">
+        <section class="modal-section">
+          <h3>策略摘要</h3>
+          <p id="modal-strategy"></p>
+        </section>
+        <section class="modal-section">
+          <h3>微信草稿</h3>
+          <div id="modal-drafts"></div>
+        </section>
+        <section class="modal-section">
+          <h3>依据</h3>
+          <div id="modal-evidence"></div>
+        </section>
+      </div>
+    </div>
+  </div>
+
+  <script src="preview.js" defer></script>
+</body>
+</html>
