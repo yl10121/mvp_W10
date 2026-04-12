@@ -1,7 +1,7 @@
 # Module 2 — Evaluation Report
 
-**Run ID:** m2_20260412_062446  
-**Generated at:** 2026-04-12T06:24:46.969004+00:00  
+**Run ID:** m2_20260412_072005  
+**Generated at:** 2026-04-12T07:20:05.245692+00:00  
 **Brand:** Celine
 
 ---
@@ -20,9 +20,9 @@
 ## Filter Results
 
 - Pre-filter rejected: **30**
-- Passed to LLM: **36**
-- Shortlisted: **14**
-- Noise reduction rate: **79.7%**
+- Passed to LLM: **35**
+- Shortlisted: **13**
+- Noise reduction rate: **81.2%**
 
 ---
 
@@ -34,16 +34,16 @@
   - LLM brand_fit < 5: 0
 
 ### 2. Explanation Specificity (LLM confidence breakdown)
-- High: 23 (63.9%)
-- Medium: 12 (33.3%)
-- Low: 1 (2.8%)
+- High: 16 (45.7%)
+- Medium: 19 (54.3%)
+- Low: 0 (0.0%)
 
 ### 3. Noise Reduction
-- 79.7% of input trends were filtered before reaching the shortlist.
+- 81.2% of input trends were filtered before reaching the shortlist.
 
 ### 4. New Dimensions (Week 11)
-- **CA Conversational Utility**: % of shortlisted trends with a named hero product link — 13 of 36 evaluated trends had a specific product anchor.
-- **Client Archetype Coverage**: archetypes matched across shortlist — 摇滚缪斯 Yáogǔn Miùsī, 智识派 Zhishì Pài, 独立新贵 Dúlì Xīnguì
+- **CA Conversational Utility**: % of shortlisted trends with a named hero product link — 13 of 35 evaluated trends had a specific product anchor.
+- **Client Archetype Coverage**: archetypes matched across shortlist — null, 摇滚缪斯 Yáogǔn Miùsī, 智识派 Zhishì Pài, 独立新贵 Dúlì Xīnguì
 - **Trend Velocity**: scores computed from engagement_recency_pct (7-day recency window).
 - **Cross-Run Persistence**: scores computed from run_count (deduplication merged trends retain count).
 
@@ -51,44 +51,43 @@
 
 ## Shortlist Summary
 
-Shortlisted **14** trends (real: 14, synthetic: 0):
+Shortlisted **13** trends (real: 13, synthetic: 0):
 
 | # | Trend | Score | Archetype | Hero Product | Pillar | CA Utility | Velocity |
 |---|-------|-------|-----------|-------------|--------|-----------|---------|
-| 1 | **[run_0013_t01]** Celine's Quiet Luxury Trend | 8.04 | 智识派 Zhishì Pài | Celine Triomphe canvas shoulder bag | Rock Intellectualism | 8 | 6.6 |
-| 2 | **[run_0011_t02]** Celine Workwear Essentials | 7.90 | 独立新贵 Dúlì Xīnguì | Celine Classique 16 bag | — | 9 | 10.0 |
-| 3 | **[run_0012_t01]** Celine's Minimalist Aesthetic | 7.89 | 智识派 Zhishì Pài | Celine Triomphe canvas shoulder bag | Architectural Restraint | 8 | 6.6 |
-| 4 | **[run_0011_t01]** Celine Minimalism and Quiet Luxury | 7.79 | 智识派 Zhishì Pài | Celine Essential slim-cut tuxedo blazer | Architectural Restraint | 8 | 6.6 |
-| 5 | **[run_0017_t02]** Celine Blue Label Minimalist Aesthetics | 7.75 | 摇滚缪斯 Yáogǔn Miùsī | Celine Classique 16 bag | Youth Without Apology | 9 | 5.0 |
-| 6 | **[run_0023_t02]** Celebrity Outfit Decoding and Influence Content | 7.55 | 摇滚缪斯 Yáogǔn Miùsī | Celine Essential slim-cut tuxedo blazer | Rock Intellectualism | 8 | 5.0 |
-| 7 | **[run_0014_t01]** Mixed Trend Signals | 7.45 | 摇滚缪斯 Yáogǔn Miùsī | Celine oversized leather biker jacket | Youth Without Apology | 8 | 5.0 |
-| 8 | **[run_0019_t06]** Celebrity Celine Show Attendance and Styling Highlights | 7.40 | 摇滚缪斯 Yáogǔn Miùsī | Celine oversized leather biker jacket | Youth Without Apology | 9 | 5.0 |
-| 9 | **[run_0018_t02]** Quiet Luxury Minimalism | 7.35 | 独立新贵 Dúlì Xīnguì | Celine essential slim-cut tuxedo blazer | Architectural Restraint | 8 | 5.0 |
-| 10 | **[run_0019_t02]** Celine Blue Label Design Detail Appreciation | 7.35 | 独立新贵 Dúlì Xīnguì | Celine essential slim-cut tuxedo blazer | Architectural Restraint | 8 | 5.0 |
-| 11 | **[run_0018_t06]** Celebrity-Influenced Brand Enthusiasm | 7.30 | 摇滚缪斯 Yáogǔn Miùsī | Celine oversized leather biker jacket | Youth Without Apology | 9 | 5.0 |
-| 12 | **[run_0014_t02]** Luxury Handbag & Leather Goods | 7.25 | 智识派 Zhishì Pài | Celine Teen Triomphe bag in natural calfskin | Architectural Restraint | 9 | 5.0 |
-| 13 | **[run_0017_t06]** 王安宇Celine时尚秀场 | 7.15 | 摇滚缪斯 Yáogǔn Miùsī | Celine oversized leather biker jacket | Youth Without Apology | 8 | 5.0 |
-| 14 | **[run_0021_t01]** Celine Blue Label Design Appreciation | 6.75 | 智识派 Zhishì Pài | — | Architectural Restraint | 6 | 5.0 |
+| 1 | **[run_0013_t01]** Celine's Quiet Luxury Trend | 8.34 | 智识派 Zhishì Pài | Celine Triomphe canvas shoulder bag | null | 9 | 6.6 |
+| 2 | **[run_0012_t01]** Celine's Minimalist Aesthetic | 7.89 | 智识派 Zhishì Pài | Celine Triomphe canvas shoulder bag | Architectural Restraint | 8 | 6.6 |
+| 3 | **[run_0009_t01]** Mixed Beauty Trend Signals | 7.86 | 独立新贵 Dúlì Xīnguì | Celine Triomphe canvas shoulder bag | Architectural Restraint | 8 | 5.7 |
+| 4 | **[run_0010_t01]** Minimalist Tailoring & Structure | 7.86 | 智识派 Zhishì Pài | Celine Essential slim-cut tuxedo blazer | Architectural Restraint | 9 | 5.7 |
+| 5 | **[run_0019_t02]** Celine Blue Label Design Detail Appreciation | 7.80 | 智识派 Zhishì Pài | Celine Classique 16 bag | Architectural Restraint | 8 | 5.0 |
+| 6 | **[run_0012_t02]** Celine Workplace Fashion | 7.70 | 独立新贵 Dúlì Xīnguì | Celine 16 bag | null | 7 | 10.0 |
+| 7 | **[run_0021_t01]** Celine Blue Label Design Appreciation | 7.70 | 智识派 Zhishì Pài | — | — | 8 | 5.0 |
+| 8 | **[run_0014_t01]** Mixed Trend Signals | 7.65 | 摇滚缪斯 Yáogǔn Miùsī | Celine oversized leather biker jacket | Youth Without Apology | 8 | 5.0 |
+| 9 | **[run_0018_t02]** Quiet Luxury Minimalism | 7.65 | 智识派 Zhishì Pài | Celine Essential slim-cut tuxedo blazer | Architectural Restraint | 8 | 5.0 |
+| 10 | **[run_0017_t02]** Celine Blue Label Minimalist Aesthetics | 7.60 | 独立新贵 Dúlì Xīnguì | — | Architectural Restraint | 8 | 5.0 |
+| 11 | **[run_0023_t02]** Celebrity Outfit Decoding and Influence Content | 7.35 | 摇滚缪斯 Yáogǔn Miùsī | CELINE 16手袋 (Soft16 bag) | Youth Without Apology | 8 | 5.0 |
+| 12 | **[run_0018_t06]** Celebrity-Influenced Brand Enthusiasm | 7.25 | 摇滚缪斯 Yáogǔn Miùsī | Celine 26 bag | Youth Without Apology | 8 | 5.0 |
+| 13 | **[run_0019_t06]** Celebrity Celine Show Attendance and Styling Highlights | 7.00 | 摇滚缪斯 Yáogǔn Miùsī | Celine oversized leather biker jacket | Youth Without Apology | 7 | 5.0 |
 
 ---
 
 ## Failure Cases (5 Lowest Scoring)
 
-- **[run_0021_t04]** CELINE 26 Summer Menswear Soft Relaxed Jacket Showcase — score: 4.60
-  - Reason: client_persona_match failed due to a lack of alignment with the core clientele profile focused on women's luxury apparel.
+- **[run_0011_t03]** Celine Tailoring Insights — score: 4.15
+  - Reason: ca_conversational_utility - no direct product connection undermines immediate usefulness for conversations.
+  - Target archetype: no archetype matched | client_persona_match: 3 | ca_conversational_utility: 4 | novelty: 4
+- **[run_0021_t02]** CELINE Early Spring Handbag Showcase — score: 4.45
+  - Reason: ca_conversational_utility below 5 — the trend is highly seasonal and might not align with current client interests.
+  - Target archetype: null | client_persona_match: 5 | ca_conversational_utility: 4 | novelty: 4
+- **[run_0021_t04]** CELINE 26 Summer Menswear Soft Relaxed Jacket Showcase — score: 4.55
+  - Reason: ca_conversational_utility below 5 — the trend lacks clear product references.
+  - Target archetype: null | client_persona_match: 4 | ca_conversational_utility: 3 | novelty: 5
+- **[run_0012_t03]** Celine Tailoring and Fabric Insights — score: 4.85
+  - Reason: ca_conversational_utility - no extracted product or strong actionable connection
+  - Target archetype: no archetype matched | client_persona_match: 6 | ca_conversational_utility: 4 | novelty: 5
+- **[run_0017_t07]** CELINE 26 Summer Men's Relaxed Jackets — score: 4.95
+  - Reason: client_persona_match: trend does not connect with defined archetypes due to a lack of specificity in style and audience engagement.
   - Target archetype: no archetype matched | client_persona_match: 3 | ca_conversational_utility: 4 | novelty: 5
-- **[run_0018_t07]** Relaxed and Effortless Menswear Styling — score: 4.60
-  - Reason: novelty — lacks significant new insights regarding engagement
-  - Target archetype: no archetype matched | client_persona_match: 5 | ca_conversational_utility: 4 | novelty: 3
-- **[run_0012_t03]** Celine Tailoring and Fabric Insights — score: 4.65
-  - Reason: client_persona_match failed — trend does not resonate with any archetype.
-  - Target archetype: no archetype matched | client_persona_match: 4 | ca_conversational_utility: 5 | novelty: 6
-- **[run_0018_t03]** Seasonal Luxury Accessory Refresh — score: 4.65
-  - Reason: client_persona_match — does not align with archetype values of timelessness and quiet luxury
-  - Target archetype: no archetype matched | client_persona_match: 4 | ca_conversational_utility: 4 | novelty: 3
-- **[run_0017_t07]** CELINE 26 Summer Men's Relaxed Jackets — score: 4.80
-  - Reason: All dimensions scores below threshold, especially low ca_conversational_utility due to gender misalignment.
-  - Target archetype: no archetype matched | client_persona_match: 5 | ca_conversational_utility: 4 | novelty: 3
 
 ---
 

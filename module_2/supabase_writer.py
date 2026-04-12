@@ -102,9 +102,12 @@ def write_shortlist(run_id: str, shortlist_output: dict) -> None:
         for item in shortlist_output.get("shortlist", []):
             scores = item.get("scores") or {}
             metric = item.get("metric_signal") or {}
-            hero_product = item.get("hero_product_link") or item.get("hero_product") or ""
             why_selected = item.get("why_selected") or ""
             label = item.get("label") or ""
+
+            # hero_product: prefer organically extracted name, fall back to LLM suggestion
+            hero_product = item.get("hero_product") or item.get("hero_product_link") or ""
+            hero_product_source = item.get("hero_product_source")  # "extracted_from_posts" or "llm_suggested"
 
             row = {
                 # ── Core identity ─────────────────────────────────────────
@@ -133,7 +136,8 @@ def write_shortlist(run_id: str, shortlist_output: dict) -> None:
                 "data_type":        item.get("data_type", "real"),
                 "subcategory":      _infer_subcategory(label, hero_product, why_selected),
                 "client_persona_match_name": item.get("matched_archetype"),
-                "hero_product":     hero_product,
+                "hero_product":        hero_product,
+                "hero_product_source": hero_product_source,
 
                 # ── Week 11 new scores ────────────────────────────────────
                 "score_ca_conversational_utility": scores.get("ca_conversational_utility"),

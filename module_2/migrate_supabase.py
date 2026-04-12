@@ -23,6 +23,7 @@ NEW_COLUMNS = [
     ("subcategory",                   "TEXT",                  "inferred product subcategory"),
     ("client_persona_match_name",     "TEXT",                  "matched archetype name"),
     ("hero_product",                  "TEXT",                  "specific Celine product linked to trend"),
+    ("hero_product_source",          "TEXT",                  "'extracted_from_posts' or 'llm_suggested'"),
     ("score_ca_conversational_utility", "NUMERIC(4,1)",        "Week 11 CA utility score 0-10"),
     ("score_language_specificity",    "NUMERIC(4,1)",          "Week 11 language specificity score 0-10"),
     ("score_client_persona_match",    "NUMERIC(4,1)",          "Week 11 client persona match score 0-10"),

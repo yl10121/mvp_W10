@@ -49,6 +49,53 @@ MAX_SHORTLIST = 15
 SKIP_CATEGORIES = {"beauty"}  # excluded from real runs; not relevant for Celine
 
 
+# ── Known Celine products to scan for in real XHS evidence ─────────────────────
+# Ordered longest-first so multi-word names (e.g. "Classique 16") match before
+# shorter substrings (e.g. "Classique") when both appear in the same text.
+CELINE_KNOWN_PRODUCTS = [
+    "Celine Arc de Triomphe",
+    "Classique 16",
+    "Teen Triomphe",
+    "tuxedo blazer",
+    "wide-leg trousers",
+    "biker jacket",
+    "Soft 16",
+    "Box bag",
+    "Triomphe",
+    "Cabas",
+    "Besace",
+    "loafers",
+    "boots",
+]
+
+
+def extract_product_from_trend(trend: dict) -> Optional[str]:
+    """
+    Scan all evidence snippets and post titles/bodies for known Celine product names.
+    Counts occurrences of each product name (case-insensitive) and returns the most
+    frequently mentioned one, or None if none are found.
+    Stores result as trend["extracted_product"] — call in-place before LLM evaluation.
+    """
+    evidence = trend.get("evidence", {})
+    texts = list(evidence.get("snippets", []))
+    for post in evidence.get("posts", []):
+        if isinstance(post, dict):
+            texts.append(post.get("title", ""))
+            texts.append(post.get("body", ""))
+    texts.append(trend.get("label", ""))
+    texts.append(trend.get("summary", ""))
+
+    combined = " ".join(str(t) for t in texts if t).lower()
+
+    counts: dict = {}
+    for product in CELINE_KNOWN_PRODUCTS:
+        n = combined.count(product.lower())
+        if n:
+            counts[product] = n
+
+    return max(counts, key=counts.get) if counts else None
+
+
 def load_json(path: Path) -> dict:
     with open(path, "r", encoding="utf-8") as f:
         return json.load(f)
@@ -176,6 +223,19 @@ def build_shortlist_output(
         tid = ev.get("trend_id")
         original = all_trends_lookup.get(tid, {})
         scores = ev.get("scores", {})
+        # ── Resolve hero_product with source tracking ──────────────────────
+        extracted_product = original.get("extracted_product")
+        llm_product = ev.get("hero_product_link")
+        if extracted_product:
+            hero_product = extracted_product
+            hero_product_source = "extracted_from_posts"
+        elif llm_product:
+            hero_product = llm_product
+            hero_product_source = "llm_suggested"
+        else:
+            hero_product = None
+            hero_product_source = None
+
         item = {
             "rank": rank,
             "trend_id": tid,
@@ -196,7 +256,10 @@ def build_shortlist_output(
             },
             "matched_archetype": ev.get("matched_archetype"),
             "matched_pillar": ev.get("matched_pillar"),
-            "hero_product_link": ev.get("hero_product_link"),
+            "extracted_product": extracted_product,
+            "hero_product": hero_product,
+            "hero_product_source": hero_product_source,
+            "hero_product_link": llm_product,   # LLM suggestion kept for reference
             "confidence": ev.get("confidence"),
             "why_selected": ev.get("reasoning", ev.get("why_selected", "")),
             "evidence_references": ev.get("evidence_references", []),
@@ -467,6 +530,9 @@ def convert_to_module3_format(
             "m2_composite_score": composite,
             "m2_confidence": ev.get("confidence", "medium"),
             "m2_why_selected": ev.get("why_selected", ev.get("reasoning", "")),
+            "extracted_product": original.get("extracted_product"),
+            "hero_product": ev.get("hero_product"),
+            "hero_product_source": ev.get("hero_product_source"),
         })
 
     week = datetime.now(timezone.utc).strftime("%Y-W%W")
@@ -531,6 +597,22 @@ def main():
     if not passed_trends:
         print("\n[WARNING] No trends passed pre-filter. Nothing to evaluate.")
         sys.exit(0)
+
+    # ── Step 1.5: Organic product extraction ──────────────────────────────────
+    print(f"\n{'─'*60}")
+    print("STEP 1.5 — Organic Product Extraction from XHS Snippets")
+    print(f"{'─'*60}")
+    extracted_count = 0
+    for trend in passed_trends:
+        product = extract_product_from_trend(trend)
+        if product:
+            trend["extracted_product"] = product
+            extracted_count += 1
+    print(f"  Organic product mention found in {extracted_count}/{len(passed_trends)} trends")
+    if extracted_count:
+        for t in passed_trends:
+            if t.get("extracted_product"):
+                print(f"  ✓ [{t['trend_id']}] → {t['extracted_product']}")
 
     # ── Step 2: LLM Evaluation ─────────────────────────────────────────────────
     print(f"\n{'─'*60}")

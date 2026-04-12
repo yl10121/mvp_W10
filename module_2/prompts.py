@@ -151,10 +151,15 @@ Does this trend match {brand_name}'s aesthetic DNA? Does it fit the clientele pr
 
 2. CA_CONVERSATIONAL_UTILITY (0–10)
 Can a {brand_name} CA use this trend in a real client conversation within the next 7 days?
-Score 8–10: trend directly names or strongly implies a specific {brand_name} hero product (e.g. Triomphe chain bag, Cabas tote, 70s wide-leg trousers, biker jacket). Name the exact product in hero_product_link.
-Score 6–7: trend is clearly and obviously linkable to a {brand_name} product category even without naming a specific piece — e.g. a trend about quiet luxury tailoring maps obviously to ready-to-wear; a trend about investment bag aesthetics maps obviously to leather goods. The CA does not need to stretch to make this connection.
+
+IMPORTANT: Check whether the trend object includes an "extracted_product" field. This means a specific product name was found organically mentioned in the real XHS posts — it is the most reliable signal for CA utility.
+- If "extracted_product" is present: reference it directly in your reasoning AND in hero_product_link. This product was mentioned by real consumers so a CA can confidently open with it.
+- If "extracted_product" is NOT present: do NOT invent a product name. Use hero_product_link only if you can genuinely infer the product from the trend content. Leave hero_product_link as null if unsure.
+
+Score 8–10: trend has an extracted_product (organically mentioned in posts), OR strongly and unmistakably implies a specific named {brand_name} hero product.
+Score 6–7: trend is clearly and obviously linkable to a {brand_name} product category even without naming a specific piece — e.g. a trend about quiet luxury tailoring maps obviously to ready-to-wear; a trend about investment bag aesthetics maps obviously to leather goods. No stretch required.
 Score 4–5: trend is brand-relevant and the CA could connect it to a product category with some effort and context-setting — the link is real but not immediate.
-Score 1–3: trend is purely aesthetic or abstract with no plausible product category connection at all — the CA would have to completely reframe the conversation to make it work.
+Score 1–3: trend is purely aesthetic or abstract with no plausible product category connection at all.
 
 3. LANGUAGE_SPECIFICITY (0–10)
 Are the XHS evidence snippets using specific, vivid, quotable Chinese language a CA could naturally echo to a client?
