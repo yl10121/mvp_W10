@@ -224,6 +224,14 @@ def load_dotenv_file(dotenv_path: Path) -> None:
             os.environ[key] = value
 
 
+def load_env_for_module1() -> None:
+    """Load repo-root `.env` then `module_1/.env` so `OPENROUTER_API_KEY` works when cwd is `module_1/`."""
+    module_dir = Path(__file__).resolve().parent
+    root_dir = module_dir.parent
+    for path in (root_dir / ".env", module_dir / ".env"):
+        load_dotenv_file(path)
+
+
 def read_json(path: Path) -> Any:
     with path.open("r", encoding="utf-8") as f:
         return json.load(f)
@@ -286,6 +294,7 @@ def normalize_xhs_date(date_text: str, reference_date: Optional[datetime] = None
     Handles:
       - "03-21" or "03-21 陕西"  -> assume current year from reference_date
       - "2025-10-05"             -> parse as ISO
+      - "编辑于 2025-11-09" / "编辑于 03-11 上海" -> date after 编辑于
       - "昨天" / "昨天 12:30"   -> reference_date - 1 day
       - "3天前"                  -> reference_date - 3 days
       - Empty or unparseable     -> None
@@ -295,6 +304,13 @@ def normalize_xhs_date(date_text: str, reference_date: Optional[datetime] = None
     if not date_text or not date_text.strip():
         return None
     text = date_text.strip()
+
+    # Published/edit time often appears as "编辑于 …" — take the date part after the marker.
+    edited = re.search(r"编辑于\s*(.+)", text)
+    if edited:
+        inner = edited.group(1).strip()
+        if inner and inner != text:
+            return normalize_xhs_date(inner, reference_date)
 
     # Full ISO date: "2025-10-05"
     iso_match = re.match(r"^(\d{4})-(\d{1,2})-(\d{1,2})", text)
@@ -324,22 +340,37 @@ def normalize_xhs_date(date_text: str, reference_date: Optional[datetime] = None
     return None
 
 
+def reference_date_from_config(config: Dict[str, Any]) -> datetime:
+    """Anchor for '昨天' / 'N天前' and for MM-DD without year."""
+    ref_iso = str(config.get("xhs_reference_date_iso", "") or "").strip()
+    if ref_iso:
+        d = parse_iso_date(ref_iso)
+        if d:
+            return d
+    return REFERENCE_DATE
+
+
 def post_matches_filters(post: Post, config: Dict[str, Any]) -> bool:
     brand = str(config.get("brand", "ALL")).strip().lower()
     category = str(config.get("category", "")).strip().lower()
     time_window = config.get("time_window", {}) or {}
     start_date = parse_iso_date(str(time_window.get("start_date", "")).strip())
     end_date = parse_iso_date(str(time_window.get("end_date", "")).strip())
-    post_date = parse_iso_date(post.date)
+    ref = reference_date_from_config(config)
+    post_date = normalize_xhs_date(post.date, ref)
 
     brand_ok = True if brand in {"", "all", "*"} else post.brand.lower() == brand
     category_ok = True if not category else post.category.lower() == category
 
     date_ok = True
-    if post_date and start_date:
-        date_ok = date_ok and (post_date >= start_date)
-    if post_date and end_date:
-        date_ok = date_ok and (post_date <= end_date)
+    if start_date or end_date:
+        if post_date is None:
+            date_ok = False
+        else:
+            if start_date and post_date.date() < start_date.date():
+                date_ok = False
+            if end_date and post_date.date() > end_date.date():
+                date_ok = False
 
     return brand_ok and category_ok and date_ok
 
@@ -669,9 +700,9 @@ def maybe_label_with_llm(
         "CLUSTER LABELING TASK:\n"
         "Given these XHS post titles from one cluster, identify the XHS CONTENT TREND — "
         "what are users creating content about? What discourse pattern is this?\n\n"
-        "CRITICAL: Trend labels must NOT contain brand names (no 'Celine', 'Dior', 'LV', etc.). "
+        "CRITICAL: Trend labels must NOT contain brand names (no 'LV', 'Dior', 'Gucci', etc.). "
         "Describe the trend behavior or aesthetic. Example: use 'Heritage vs Modern Creative Director Debate' "
-        "not 'Old Celine vs New Celine Debate'. Store brand names in the brands_mentioned array.\n\n"
+        "not any label that repeats a house name. Store brand names in the brands_mentioned array.\n\n"
         "Return strict JSON with keys: label, summary, confidence, ai_reasoning, brands_mentioned, primary_brand.\n"
         "Rules:\n"
         "- Label must describe the XHS USER CONTENT PATTERN without any brand names "
@@ -1060,7 +1091,7 @@ def run(
     if live_mode:
         cli.info("CLI", "Live mode enabled: pacing stage spinner for demo clarity")
     def _load_inputs() -> Tuple[Any, Dict[str, Any]]:
-        load_dotenv_file(Path(".env"))
+        load_env_for_module1()
         return read_json(posts_path), read_json(config_path)
 
     raw_posts, config = cli.run_stage("Prompt", "Loading prompt + config + retrieval sources", _load_inputs)
@@ -1102,15 +1133,15 @@ def run(
 
                 base_prompt_c = str(config.get("prompt", "")).strip()
                 _tk = int(config.get("top_k_trends", 8))
-                _llm_trend_target = min(max(_tk, 8), 40)
+                _llm_trend_target = min(max(_tk, 8), 120)
                 llm_cluster_prompt = (
                     f"{base_prompt_c}\n\n"
                     f"TASK: Read ALL the XHS post titles below and identify {_llm_trend_target} distinct XHS CONTENT TRENDS "
                     "(or as many meaningful trends as exist if fewer).\n"
                     "For each trend, list which post IDs belong to it.\n\n"
-                    "CRITICAL: Trend labels must NOT contain brand names (no 'Celine', 'Dior', 'LV', etc.). "
+                    "CRITICAL: Trend labels must NOT contain brand names (no 'LV', 'Dior', 'Gucci', etc.). "
                     "Describe the trend behavior or aesthetic. Example: use 'Heritage vs Modern Creative Director Debate' "
-                    "not 'Old Celine vs New Celine Debate'. Store brand names in the brands_mentioned array.\n\n"
+                    "not any label that repeats a house name. Store brand names in the brands_mentioned array.\n\n"
                     "Return ONLY valid JSON array, no markdown:\n"
                     "[{\"trend_label\": \"...(must NOT contain any brand name, describe the trend/behavior/aesthetic only)\", "
                     "\"summary\": \"what XHS users are posting/discussing\", "

@@ -2,13 +2,15 @@
   "brand": "ALL",
   "category": "luxury_fashion",
   "time_window": {
-    "start_date": "",
-    "end_date": ""
+    "start_date": "2026-03-01",
+    "end_date": "2026-04-30"
   },
-  "max_posts": 200,
-  "top_k_trends": 40,
-  "min_posts_per_trend": 2,
-  "force_equal_engagement_bins": 30,
+  "xhs_reference_date_iso": "2026-03-30",
+  "max_posts": 500,
+  "top_k_trends": 120,
+  "min_posts_per_trend": 1,
+  "force_equal_engagement_bins": 0,
+  "minimum_trend_objects": 0,
   "cluster_min_jaccard": 0.14,
   "cluster_min_token_overlap": 2,
   "cluster_stratify_by_keyword": true,
@@ -16,5 +18,5 @@
     "enabled": true,
     "model": "gpt-4.1-mini"
   },
-  "prompt": "You are a Xiaohongshu (XHS) trend analyst. Your job is to identify TRENDS happening on XHS — what are users posting about, what content patterns are going viral, what discussions and debates are emerging among XHS users around this brand. A trend is a recurring CONTENT PATTERN or USER DISCOURSE on XHS. Look at the post titles and identify: (1) What topics are XHS users creating content about repeatedly? (2) What debates or opinions are forming? (3) What aesthetic or styling content is gaining traction? (4) What purchase behaviors or unboxing patterns are emerging? Examples of GOOD XHS trend labels from these posts: 'Old Celine vs New Celine Nostalgia Debate' (users debating Phoebe Philo era vs Hedi Slimane era), 'Box Bag Relevance Discourse' (users asking if Box is still worth buying or is it dead), 'Celebrity Outfit Decoding Content' (users analyzing Wang Anyu and BTS V's Celine outfits), 'Soft 16 as Ultimate Commute Bag' (users reviewing Soft 16 for daily work use), 'Celine Sunglasses Authenticity Checks' (users posting legit checks and dupes), 'Cross-Border Celine Deal Hunting' (users sharing prices from Japan, Turkey, Spain), 'Old Money Quiet Luxury Styling' (users creating Celine-centered old money looks). BAD labels: 'CELINE 2026 Fashion Show' (that's an event), 'Brand Loyalty' (too generic), 'Handbag Collection' (too vague). Work only with the provided posts. Cluster by recurring XHS content patterns. For each trend: (1) label describing the XHS content trend, (2) one-sentence summary of what users are posting/discussing, (3) evidence with real post IDs and snippets, (4) metrics, (5) confidence. Include ai_reasoning. Never invent evidence."
+  "prompt": "You are a Xiaohongshu (XHS) trend analyst. Your job is to identify TRENDS happening on XHS — what are users posting about, what content patterns are going viral, what discussions and debates are emerging among XHS users around this brand. A trend is a recurring CONTENT PATTERN or USER DISCOURSE on XHS. Look at the post titles and identify: (1) What topics are XHS users creating content about repeatedly? (2) What debates or opinions are forming? (3) What aesthetic or styling content is gaining traction? (4) What purchase behaviors or unboxing patterns are emerging? Examples of GOOD XHS trend labels from these posts: 'Heritage Monogram vs Quiet Leather Debate' (users comparing canvas vs leather), 'Carryall and Neverfull Size Comparison Content' (capacity and commute fit discussions), 'Celebrity Show Attendance Outfit Breakdowns' (star styling at runway or events), 'Cross-Border Price and Duty-Free Hunting' (Japan/Europe vs China pricing), 'Travel Trunk and Luggage Aesthetic Content' (heritage travel storytelling), 'Classic Bag Relevance vs Resale Value Discourse' (whether icons still worth buying). BAD labels: 'LV 2026 Fashion Show' (that's an event), 'Brand Loyalty' (too generic), 'Handbag Collection' (too vague). Work only with the provided posts. Cluster by recurring XHS content patterns. For each trend: (1) label describing the XHS content trend, (2) one-sentence summary of what users are posting/discussing, (3) evidence with real post IDs and snippets, (4) metrics, (5) confidence. Include ai_reasoning. Never invent evidence."
 }

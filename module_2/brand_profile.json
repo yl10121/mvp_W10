@@ -1,14 +1,15 @@
 {
-  "brand_name": "Celine",
-  "aesthetic": "Parisian minimalism, quiet luxury, architectural precision, understated elegance, intellectual femininity",
-  "clientele": "affluent women 28-50, design-conscious, values craftsmanship over logos, appreciates restraint and quality over status signaling",
-  "preferred_sources": ["Chinese luxury fashion KOL", "minimalist lifestyle editorial", "Celine brand accounts", "high-fashion photographers", "luxury lifestyle bloggers"],
-  "avoided_sources": ["streetwear influencers", "mass-market fashion bloggers", "fast fashion accounts", "hypebeast culture", "loud logomania accounts"],
-  "active_categories": ["ready-to-wear", "leather goods"],
+  "brand_name": "Louis Vuitton",
+  "aesthetic": "French travel heritage, craft and canvas innovation, iconic monogram with leather savoir-faire, modern luxury with streetwear energy when relevant",
+  "clientele": "affluent women and men 25-55, aspirational and collector clients, travel and lifestyle-oriented, values both heritage icons and seasonal drops",
+  "preferred_sources": ["Chinese luxury fashion KOL", "travel and lifestyle editorial", "Louis Vuitton brand accounts", "high-fashion photographers", "luxury lifestyle bloggers"],
+  "avoided_sources": ["obvious counterfeit sellers", "dupes", "knockoff", "mass-market fashion bloggers", "fast fashion accounts"],
+  "active_categories": ["ready-to-wear", "leather goods", "travel"],
   "category_cadence": {
     "ready-to-wear": "fast",
-    "leather goods": "medium"
+    "leather goods": "medium",
+    "travel": "medium"
   },
-  "brand_taboos": ["streetwear", "hypebeast", "fast fashion", "logomania", "athleisure", "gender-neutral mass market", "dupes", "knockoff", "loud branding", "maximalism"],
-  "clienteling_tone": "refined, understated, expert, intellectually curious, quietly confident — never sales-y or flashy"
+  "brand_taboos": ["counterfeit", "dupes", "knockoff", "misleading resale claims", "fast fashion"],
+  "clienteling_tone": "refined, confident, knowledgeable about craft and heritage — warm but never pushy"
 }

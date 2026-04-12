@@ -11,16 +11,17 @@ Everything for **Week 11 Module 1** lives here or is linked below. Use this fold
 | [`DELIVERABLE_2_3_EXTRACT.md`](./DELIVERABLE_2_3_EXTRACT.md) | Deliverables 2 & 3 — sessions + quotes |
 | [`failure_notes.md`](./failure_notes.md) | Deliverable 4 — fail case text |
 | [`week11_batch_meta.json`](./week11_batch_meta.json) | Dataset ID, counts, output paths (machine-readable) |
+| [`../WEEK11_DATE_FILTER.md`](../WEEK11_DATE_FILTER.md) | March–April filter + how to re-scrape for ≥200 posts |
 
 ## Deliverable 1 — Data & run outputs (large files)
 
 | Artifact | Path (from repo root) |
 |----------|------------------------|
-| Input posts (200) | [`module_1/data/xhs_posts.json`](../data/xhs_posts.json) |
+| Input posts (Mar–Apr window) | [`module_1/data/xhs_posts.json`](../data/xhs_posts.json) — **55** posts; full backup **200** posts: [`xhs_posts_before_date_filter.json`](../data/xhs_posts_before_date_filter.json) |
 | Run config | [`module_1/data/run_config.json`](../data/run_config.json) |
-| Trend objects (30), run `run_0036` | [`module_1/outputs/runs/run_0036_trend_objects.json`](../outputs/runs/run_0036_trend_objects.json) |
-| Run log | [`module_1/outputs/runs/run_0036_run_log.json`](../outputs/runs/run_0036_run_log.json) |
-| CLI trace | [`module_1/outputs/runs/run_0036_trace.log`](../outputs/runs/run_0036_trace.log) |
+| Trend objects (**50**), run `run_0038` | [`module_1/outputs/runs/run_0038_trend_objects.json`](../outputs/runs/run_0038_trend_objects.json) |
+| Run log | [`module_1/outputs/runs/run_0038_run_log.json`](../outputs/runs/run_0038_run_log.json) |
+| CLI trace | [`module_1/outputs/runs/run_0038_trace.log`](../outputs/runs/run_0038_trace.log) |
 | Latest copies | [`module_1/outputs/trend_objects.json`](../outputs/trend_objects.json), [`module_1/outputs/run_log.json`](../outputs/run_log.json) |
 | Eval report (QA) | [`module_1/outputs/EVAL_REPORT.md`](../outputs/EVAL_REPORT.md) |
 
@@ -53,6 +54,7 @@ Set `OPENROUTER_API_KEY` in `.env` for LLM trend labels (see fail case if missin
 | Item | Path |
 |------|------|
 | Trend builder | [`../xhs_trend_builder.py`](../xhs_trend_builder.py) |
+| Filter posts to `run_config` window | [`../filter_posts_by_config.py`](../filter_posts_by_config.py) |
 | Week 11 improvements spec | [`../SPEC_WEEK11_IMPROVEMENTS.md`](../SPEC_WEEK11_IMPROVEMENTS.md) |
 
 ## Zip hint

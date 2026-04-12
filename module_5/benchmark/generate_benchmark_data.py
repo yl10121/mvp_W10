@@ -332,7 +332,7 @@ def main() -> None:
 
     trend_doc = {
         "query_context": {
-            "brand": "Celine",
+            "brand": "Louis Vuitton",
             "module1_run_id": "bench_m1_x",
             "module2_run_id": "bench_m2_x",
             "source": "benchmark/M2_shape",

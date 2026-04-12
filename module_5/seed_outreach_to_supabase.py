@@ -39,7 +39,7 @@ def seed_m2_trends(conn) -> int:
         row = {
             "run_id": run_id,
             "module1_run_id": qc.get("module1_run_id", ""),
-            "brand": qc.get("brand", "Celine"),
+            "brand": qc.get("brand", "Louis Vuitton"),
             "trend_id": t["trend_id"],
             "rank": t.get("rank"),
             "label": t.get("trend_label", ""),

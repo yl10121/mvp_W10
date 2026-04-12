@@ -1,0 +1,356 @@
+{
+  "run_id": "run_0039",
+  "retrieved_sources": [
+    "data/xhs_posts.json",
+    "data/run_config.json"
+  ],
+  "retrieved_post_ids": [
+    "live_0010",
+    "live_0041",
+    "live_0001",
+    "live_0048",
+    "live_0002",
+    "live_0200",
+    "live_0199",
+    "live_0011",
+    "live_0066",
+    "live_0198",
+    "live_0076",
+    "live_0037",
+    "live_0169",
+    "live_0061",
+    "live_0055",
+    "live_0089",
+    "live_0021",
+    "live_0052",
+    "live_0003",
+    "live_0025",
+    "live_0120",
+    "live_0087",
+    "live_0007",
+    "live_0064",
+    "live_0101",
+    "live_0188",
+    "live_0150",
+    "live_0032",
+    "live_0121",
+    "live_0155",
+    "live_0051",
+    "live_0034",
+    "live_0153",
+    "live_0054",
+    "live_0129",
+    "live_0018",
+    "live_0023",
+    "live_0179",
+    "live_0102",
+    "live_0175",
+    "live_0050",
+    "live_0194",
+    "live_0131",
+    "live_0164",
+    "live_0005",
+    "live_0035",
+    "live_0060",
+    "live_0092",
+    "live_0178",
+    "live_0072",
+    "live_0014",
+    "live_0077",
+    "live_0141",
+    "live_0145",
+    "live_0168"
+  ],
+  "decision_output_file": "outputs/runs/run_0039_trend_objects.json",
+  "decision_mode": "rules-first with optional LLM",
+  "prompt_in_use_for_decision": true,
+  "llm_enabled": true,
+  "llm_model": "gpt-4.1-mini",
+  "llm_label_calls_succeeded": 0,
+  "llm_label_calls_total": 50,
+  "llm_errors": [
+    "OPENROUTER_API_KEY missing",
+    "OPENROUTER_API_KEY missing",
+    "OPENROUTER_API_KEY missing",
+    "OPENROUTER_API_KEY missing",
+    "OPENROUTER_API_KEY missing",
+    "OPENROUTER_API_KEY missing",
+    "OPENROUTER_API_KEY missing",
+    "OPENROUTER_API_KEY missing",
+    "OPENROUTER_API_KEY missing",
+    "OPENROUTER_API_KEY missing",
+    "OPENROUTER_API_KEY missing",
+    "OPENROUTER_API_KEY missing",
+    "OPENROUTER_API_KEY missing",
+    "OPENROUTER_API_KEY missing",
+    "OPENROUTER_API_KEY missing",
+    "OPENROUTER_API_KEY missing",
+    "OPENROUTER_API_KEY missing",
+    "OPENROUTER_API_KEY missing",
+    "OPENROUTER_API_KEY missing",
+    "OPENROUTER_API_KEY missing"
+  ],
+  "evidence_used": {
+    "t01": [
+      "live_0010",
+      "live_0011",
+      "live_0007"
+    ],
+    "t02": [
+      "live_0041"
+    ],
+    "t03": [
+      "live_0048",
+      "live_0061"
+    ],
+    "t04": [
+      "live_0001"
+    ],
+    "t05": [
+      "live_0002"
+    ],
+    "t06": [
+      "live_0200"
+    ],
+    "t07": [
+      "live_0199"
+    ],
+    "t08": [
+      "live_0066"
+    ],
+    "t09": [
+      "live_0198"
+    ],
+    "t10": [
+      "live_0076"
+    ],
+    "t11": [
+      "live_0037"
+    ],
+    "t12": [
+      "live_0169"
+    ],
+    "t13": [
+      "live_0055"
+    ],
+    "t14": [
+      "live_0089"
+    ],
+    "t15": [
+      "live_0021"
+    ],
+    "t16": [
+      "live_0052"
+    ],
+    "t17": [
+      "live_0003"
+    ],
+    "t18": [
+      "live_0025"
+    ],
+    "t19": [
+      "live_0120"
+    ],
+    "t20": [
+      "live_0087"
+    ],
+    "t21": [
+      "live_0064"
+    ],
+    "t22": [
+      "live_0101"
+    ],
+    "t23": [
+      "live_0188",
+      "live_0194"
+    ],
+    "t24": [
+      "live_0150"
+    ],
+    "t25": [
+      "live_0032"
+    ],
+    "t26": [
+      "live_0121"
+    ],
+    "t27": [
+      "live_0155"
+    ],
+    "t28": [
+      "live_0051"
+    ],
+    "t29": [
+      "live_0034"
+    ],
+    "t30": [
+      "live_0153"
+    ],
+    "t31": [
+      "live_0054"
+    ],
+    "t32": [
+      "live_0129"
+    ],
+    "t33": [
+      "live_0018"
+    ],
+    "t34": [
+      "live_0023"
+    ],
+    "t35": [
+      "live_0179"
+    ],
+    "t36": [
+      "live_0102"
+    ],
+    "t37": [
+      "live_0175"
+    ],
+    "t38": [
+      "live_0050"
+    ],
+    "t39": [
+      "live_0131"
+    ],
+    "t40": [
+      "live_0164",
+      "live_0168"
+    ],
+    "t41": [
+      "live_0005"
+    ],
+    "t42": [
+      "live_0035"
+    ],
+    "t43": [
+      "live_0060"
+    ],
+    "t44": [
+      "live_0092"
+    ],
+    "t45": [
+      "live_0178"
+    ],
+    "t46": [
+      "live_0072"
+    ],
+    "t47": [
+      "live_0014"
+    ],
+    "t48": [
+      "live_0077"
+    ],
+    "t49": [
+      "live_0141"
+    ],
+    "t50": [
+      "live_0145"
+    ]
+  },
+  "labeling_sources": {
+    "t01": "heuristic",
+    "t02": "heuristic",
+    "t03": "heuristic",
+    "t04": "heuristic",
+    "t05": "heuristic",
+    "t06": "heuristic",
+    "t07": "heuristic",
+    "t08": "heuristic",
+    "t09": "heuristic",
+    "t10": "heuristic",
+    "t11": "heuristic",
+    "t12": "heuristic",
+    "t13": "heuristic",
+    "t14": "heuristic",
+    "t15": "heuristic",
+    "t16": "heuristic",
+    "t17": "heuristic",
+    "t18": "heuristic",
+    "t19": "heuristic",
+    "t20": "heuristic",
+    "t21": "heuristic",
+    "t22": "heuristic",
+    "t23": "heuristic",
+    "t24": "heuristic",
+    "t25": "heuristic",
+    "t26": "heuristic",
+    "t27": "heuristic",
+    "t28": "heuristic",
+    "t29": "heuristic",
+    "t30": "heuristic",
+    "t31": "heuristic",
+    "t32": "heuristic",
+    "t33": "heuristic",
+    "t34": "heuristic",
+    "t35": "heuristic",
+    "t36": "heuristic",
+    "t37": "heuristic",
+    "t38": "heuristic",
+    "t39": "heuristic",
+    "t40": "heuristic",
+    "t41": "heuristic",
+    "t42": "heuristic",
+    "t43": "heuristic",
+    "t44": "heuristic",
+    "t45": "heuristic",
+    "t46": "heuristic",
+    "t47": "heuristic",
+    "t48": "heuristic",
+    "t49": "heuristic",
+    "t50": "heuristic"
+  },
+  "confidence": {
+    "t01": "medium",
+    "t02": "low",
+    "t03": "medium",
+    "t04": "low",
+    "t05": "low",
+    "t06": "low",
+    "t07": "low",
+    "t08": "low",
+    "t09": "low",
+    "t10": "low",
+    "t11": "low",
+    "t12": "low",
+    "t13": "low",
+    "t14": "low",
+    "t15": "low",
+    "t16": "low",
+    "t17": "low",
+    "t18": "low",
+    "t19": "low",
+    "t20": "low",
+    "t21": "low",
+    "t22": "low",
+    "t23": "medium",
+    "t24": "low",
+    "t25": "low",
+    "t26": "low",
+    "t27": "low",
+    "t28": "low",
+    "t29": "low",
+    "t30": "low",
+    "t31": "low",
+    "t32": "low",
+    "t33": "low",
+    "t34": "low",
+    "t35": "low",
+    "t36": "low",
+    "t37": "low",
+    "t38": "low",
+    "t39": "low",
+    "t40": "medium",
+    "t41": "low",
+    "t42": "low",
+    "t43": "low",
+    "t44": "low",
+    "t45": "low",
+    "t46": "low",
+    "t47": "low",
+    "t48": "low",
+    "t49": "low",
+    "t50": "low"
+  },
+  "next_step_suggestion": "Send approved trend objects into Module 2 for materiality ranking.",
+  "timestamp_utc": "2026-04-12T07:12:48.496728+00:00"
+}

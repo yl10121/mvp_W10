@@ -1,34 +1,32 @@
-# Deliverable 1 — Module 1 package (Week 11)
-
-Paths below are from the **`module_1/`** directory (repo root = parent of `module_1/`).
+# Deliverable 1 — Module 1 package
 
 ## What this satisfies (instructor rubric)
 
 | Requirement | Module 1 status |
 |-------------|-----------------|
-| Real XHS market data | [`../data/xhs_posts.json`](../data/xhs_posts.json) — **200** posts |
-| ≥200 posts | **200** |
-| ≥30 trend objects | **30** in [`../outputs/runs/run_0036_trend_objects.json`](../outputs/runs/run_0036_trend_objects.json) (see [`../data/run_config.json`](../data/run_config.json): `force_equal_engagement_bins`) |
-| Save input dataset ID + date range | [`week11_batch_meta.json`](./week11_batch_meta.json) (copy; canonical also under [`../deliverables/week11_batch_meta.json`](../deliverables/week11_batch_meta.json)) |
+| Real XHS market data | `data/xhs_posts.json` — March–April 2026 window (see `run_config`); **55** posts after filter; unfiltered backup `data/xhs_posts_before_date_filter.json` (**200** posts) |
+| ≥200 posts | **Re-scrape + filter** until ≥200 posts fall in March–April (see `WEEK11_DATE_FILTER.md`) |
+| ≥30 trend objects | **50** in latest run (`outputs/runs/run_0038_trend_objects.json` as of Mar–Apr 2026 filter); `run_config.json` uses semantic clustering + `min_posts_per_trend` / `top_k_trends` |
+| Save input dataset ID + date range | **`deliverables/week11_batch_meta.json`** |
 | Save outputs | Paths listed in meta JSON |
-| Save run log / trace | [`../outputs/runs/run_0036_run_log.json`](../outputs/runs/run_0036_run_log.json) + [`../outputs/runs/run_0036_trace.log`](../outputs/runs/run_0036_trace.log) |
+| Save run log / trace | `outputs/runs/run_0038_run_log.json` + `run_0038_trace.log` |
 
 ## Files to zip or submit
 
-1. `module_1/week11/week11_batch_meta.json` (this folder)
-2. `module_1/data/xhs_posts.json`
-3. `module_1/outputs/runs/run_0036_trend_objects.json`
-4. `module_1/outputs/runs/run_0036_run_log.json`
-5. `module_1/outputs/runs/run_0036_trace.log` (optional but good “trace”)
+1. `deliverables/week11_batch_meta.json`
+2. `data/xhs_posts.json` (or a checksum + path if repo-only)
+3. `outputs/runs/run_0038_trend_objects.json`
+4. `outputs/runs/run_0038_run_log.json`
+5. `outputs/runs/run_0038_trace.log` (optional but good “trace”)
 
-## Next (Modules 2–3 — same Deliverable 1, team)
+## Next (Modules 2–3 — same Deliverable 1)
 
 From repo root:
 
 ```bash
 python3 module_2/agent.py
 # set M3_TOP_N=10 in .env, then:
-python3 module_3/trend_brief_agent/agent.py --brand "Celine" --city "Shanghai" --top-n 10
+python3 module_3/trend_brief_agent/agent.py --brand "Louis Vuitton" --city "Shanghai" --top-n 10
 ```
 
 Archive Module 2/3 outputs + their `run_log.json` alongside this folder.

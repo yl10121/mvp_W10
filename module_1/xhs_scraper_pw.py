@@ -7,7 +7,7 @@ DrissionPage. Same output format (data/xhs_raw_posts.json + data/xhs_posts.json)
 
 USAGE
   cd module_1
-  .venv/bin/python3 xhs_scraper_pw.py --keywords "Celine" "Celine穿搭" --times 2
+  .venv/bin/python3 xhs_scraper_pw.py --keywords "Louis Vuitton" "LV穿搭" "路易威登" --times 2
 """
 
 from __future__ import annotations

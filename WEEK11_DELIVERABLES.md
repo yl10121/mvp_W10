@@ -31,7 +31,7 @@ M3_TOP_N=10
 
 ```bash
 cd module_3/trend_brief_agent
-python3 agent.py --brand "Celine" --city "Shanghai" --top-n 10
+python3 agent.py --brand "Louis Vuitton" --city "Shanghai" --top-n 10
 ```
 
 ---
