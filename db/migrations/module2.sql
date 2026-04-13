@@ -26,6 +26,24 @@ CREATE TABLE IF NOT EXISTS module2_trend_shortlist (
 CREATE INDEX IF NOT EXISTS idx_m2_shortlist_run ON module2_trend_shortlist(run_id);
 CREATE INDEX IF NOT EXISTS idx_m2_shortlist_trend ON module2_trend_shortlist(trend_id);
 
+-- Align with production Supabase (extended M2 schema). Safe on DBs that already have these columns.
+ALTER TABLE module2_trend_shortlist ADD COLUMN IF NOT EXISTS location TEXT;
+ALTER TABLE module2_trend_shortlist ADD COLUMN IF NOT EXISTS data_type TEXT;
+ALTER TABLE module2_trend_shortlist ADD COLUMN IF NOT EXISTS subcategory TEXT;
+ALTER TABLE module2_trend_shortlist ADD COLUMN IF NOT EXISTS client_persona_match_name TEXT;
+ALTER TABLE module2_trend_shortlist ADD COLUMN IF NOT EXISTS hero_product TEXT;
+ALTER TABLE module2_trend_shortlist ADD COLUMN IF NOT EXISTS score_ca_conversational_utility NUMERIC(4,1);
+ALTER TABLE module2_trend_shortlist ADD COLUMN IF NOT EXISTS score_language_specificity NUMERIC(4,1);
+ALTER TABLE module2_trend_shortlist ADD COLUMN IF NOT EXISTS score_client_persona_match NUMERIC(4,1);
+ALTER TABLE module2_trend_shortlist ADD COLUMN IF NOT EXISTS score_novelty NUMERIC(4,1);
+ALTER TABLE module2_trend_shortlist ADD COLUMN IF NOT EXISTS score_trend_velocity NUMERIC(4,1);
+ALTER TABLE module2_trend_shortlist ADD COLUMN IF NOT EXISTS score_cross_run_persistence NUMERIC(4,1);
+ALTER TABLE module2_trend_shortlist ADD COLUMN IF NOT EXISTS engagement_recency_pct NUMERIC(5,2);
+ALTER TABLE module2_trend_shortlist ADD COLUMN IF NOT EXISTS low_signal_warning BOOLEAN;
+ALTER TABLE module2_trend_shortlist ADD COLUMN IF NOT EXISTS no_date_signal BOOLEAN;
+ALTER TABLE module2_trend_shortlist ADD COLUMN IF NOT EXISTS disqualifying_reason TEXT;
+ALTER TABLE module2_trend_shortlist ADD COLUMN IF NOT EXISTS hero_product_source TEXT;
+
 
 CREATE TABLE IF NOT EXISTS module2_run_logs (
     id                   BIGSERIAL PRIMARY KEY,

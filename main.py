@@ -1,29 +1,34 @@
 import os
 import sys
 import subprocess
-from config import OPENROUTER_API_KEY, DEFAULT_MODEL, BRAND
+from config import ANTHROPIC_API_KEY, OPENROUTER_API_KEY, DEFAULT_MODEL, BRAND
+
+REPO_ROOT = os.path.dirname(os.path.abspath(__file__))
+
 
 def run_module(module_dir, script_name, *args):
     print(f"\n{'='*60}")
     print(f"Running {module_dir}/{script_name}")
     print(f"{'='*60}")
-    script_path = os.path.join(module_dir, script_name)
+    workdir = os.path.join(REPO_ROOT, module_dir)
+    script_path = os.path.join(workdir, script_name)
     if not os.path.exists(script_path):
         print(f"Script {script_path} not found. Skipping.")
         return False
 
     env = os.environ.copy()
-    env["OPENROUTER_API_KEY"] = OPENROUTER_API_KEY
-    env["OPENAI_API_KEY"] = OPENROUTER_API_KEY
-    env["ANTHROPIC_API_KEY"] = OPENROUTER_API_KEY
-    env["DEEPSEEK_API_KEY"] = OPENROUTER_API_KEY
+    if ANTHROPIC_API_KEY:
+        env["ANTHROPIC_API_KEY"] = ANTHROPIC_API_KEY
+    if OPENROUTER_API_KEY:
+        env["OPENROUTER_API_KEY"] = OPENROUTER_API_KEY
+        env["OPENAI_API_KEY"] = OPENROUTER_API_KEY
     env["DEFAULT_MODEL"] = DEFAULT_MODEL
     env["BRAND"] = BRAND
 
     try:
         result = subprocess.run(
-            [sys.executable, script_name, *args],
-            cwd=module_dir,
+            [sys.executable, script_path, *args],
+            cwd=workdir,
             env=env,
             check=True
         )
@@ -47,7 +52,14 @@ def main():
     run_module("module_2", "agent.py")
 
     # Module 3 — CA trend brief generator
-    run_module("module_3/trend_brief_agent", "agent.py", "--brand", BRAND, "--city", "Shanghai")
+    run_module(
+        "module_3/trend_brief_agent",
+        "agent.py",
+        "--brand",
+        BRAND,
+        "--city",
+        "Shanghai",
+    )
 
     # Module 4 — Client memory structurer
     run_module("module_4", "First_Run.py")

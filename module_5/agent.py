@@ -1,6 +1,7 @@
 """
 Module 5 — Outreach Angle Agent MVP
-输入: Module 2 趋势短名单 + Module 4 客户记忆（本地 JSON 或 Supabase，见 pipeline_inputs）
+输入: Supabase — module2_trend_shortlist（经 Top-N + 只读知识库视图进模型）+ module4_client_memories
+      （列表仅轻量字段；调用模型前按人所选从数据库拉取该客户完整记忆，等价「按需 tool」）
 输出: outreach 建议 + 微信草稿 + run_log.json
 
 运行方式:
@@ -19,12 +20,16 @@ import os
 import sys
 from datetime import datetime
 from pathlib import Path
-from openai import OpenAI
+
+import anthropic
 
 _REPO_ROOT = Path(__file__).resolve().parent.parent
 if str(_REPO_ROOT) not in sys.path:
     sys.path.insert(0, str(_REPO_ROOT))
+import config  # noqa: F401 — 仓库根 .env + OPENROUTER→OPENAI 单钥传播
 from pipeline_inputs import load_m5_pipeline_inputs
+from module_5.supabase_reader import fetch_m4_client_full_by_pk
+from module_5.trend_kb import build_readonly_trend_kb
 
 
 def _load_env_file(path: Path) -> None:
@@ -43,10 +48,81 @@ _load_env_file(Path(__file__).resolve().parent / ".env")
 # ============================================================
 # 配置区
 # ============================================================
-API_KEY = os.environ.get("OPENROUTER_API_KEY") or os.environ.get("ANTHROPIC_API_KEY")
-if not API_KEY:
-    raise ValueError("OPENROUTER_API_KEY not set. Please add it to your .env file or environment.")
+API_KEY = os.environ.get("ANTHROPIC_API_KEY") or ""
 MODEL = os.environ.get("DEFAULT_MODEL", "openai/gpt-4o-mini")
+BRAND = os.environ.get("BRAND", "Louis Vuitton")
+
+
+def _env_float(key: str, default: float) -> float:
+    v = os.environ.get(key, "").strip()
+    if not v:
+        return default
+    try:
+        return float(v)
+    except ValueError:
+        return default
+
+
+TEMPERATURE = _env_float("M5_TEMPERATURE", 0.55)
+PROMPT_VERSION = os.environ.get("M5_PROMPT_VERSION", "v2").strip() or "v2"
+
+
+def _brand_catalog_block(mem: dict, trend_kb: dict) -> tuple[str, dict]:
+    """
+    M1 商品目录：默认 RAG Top-K（向量检索 + 词重叠回退）；M5_CATALOG_RAG=0 时为截断全量列表。
+    返回 (prompt_json 片段, 追溯用 meta)。
+    """
+    meta: dict = {}
+    if os.environ.get("M5_INCLUDE_BRAND_CATALOG", "1").strip() in ("0", "false", "no"):
+        return "", meta
+    try:
+        from supabase_client import is_configured
+
+        if not is_configured():
+            return "", meta
+        from module_1.supabase_reader import read_brand_products
+
+        rows = read_brand_products(brand=BRAND)
+        if not rows:
+            return "", meta
+
+        rag_on = os.environ.get("M5_CATALOG_RAG", "1").strip().lower() not in (
+            "0",
+            "false",
+            "no",
+            "off",
+        )
+        if not rag_on:
+            raw_max = os.environ.get("M5_CATALOG_PROMPT_MAX", "40").strip() or "40"
+            try:
+                max_n = int(raw_max)
+            except ValueError:
+                max_n = 40
+            picked = rows if max_n <= 0 else rows[:max_n]
+            meta = {"method": "full_list_truncated", "rows": len(picked)}
+            return json.dumps(picked, ensure_ascii=False, indent=2), meta
+
+        try:
+            top_k = int(os.environ.get("M5_CATALOG_RAG_TOP_K", "10").strip() or "10")
+        except ValueError:
+            top_k = 10
+        embed_model = (
+            os.environ.get("M5_CATALOG_EMBED_MODEL", "openai/text-embedding-3-small").strip()
+        )
+        api_key = (
+            os.environ.get("OPENROUTER_API_KEY", "").strip()
+            or os.environ.get("OPENAI_API_KEY", "").strip()
+        )
+        from module_5.catalog_rag import retrieve_top_products
+
+        picked, rmeta = retrieve_top_products(rows, mem, trend_kb, top_k, api_key, embed_model)
+        meta = dict(rmeta)
+        if not picked:
+            return "", meta
+        return json.dumps(picked, ensure_ascii=False, indent=2), meta
+    except Exception as e:
+        return "", {"error": str(e)[:200]}
+
 
 # ============================================================
 # 文件路径
@@ -66,24 +142,74 @@ def load_text(path):
         return f.read()
 
 
-def call_llm(system_prompt, user_prompt):
-    client = OpenAI(api_key=API_KEY, base_url="https://openrouter.ai/api/v1")
-    response = client.chat.completions.create(
+def call_llm(system_prompt, user_prompt, temperature: float | None = None):
+    """
+    优先 OpenRouter：设置了 OPENROUTER_API_KEY（或 ANTHROPIC_API_BASE_URL 指向 openrouter）时
+    走 OpenAI 兼容 /chat/completions；否则直连 Anthropic Messages API。
+    """
+    t = TEMPERATURE if temperature is None else temperature
+    _base = os.environ.get("ANTHROPIC_API_BASE_URL", "").strip()
+    _or_key = os.environ.get("OPENROUTER_API_KEY", "").strip()
+    _use_openrouter = bool(_or_key) or ("openrouter" in _base.lower())
+    if _use_openrouter:
+        from openai import OpenAI
+
+        key = _or_key or API_KEY
+        if not key:
+            raise ValueError(
+                "OpenRouter：请设置 OPENROUTER_API_KEY 或 ANTHROPIC_API_KEY（可填同一 OpenRouter key）"
+            )
+        or_base = _base if "openrouter" in _base.lower() else "https://openrouter.ai/api/v1"
+        client = OpenAI(
+            base_url=or_base.rstrip("/"),
+            api_key=key,
+            default_headers={
+                "HTTP-Referer": os.environ.get("OPENROUTER_HTTP_REFERER", "https://github.com/m-ny-mvp"),
+                "X-Title": os.environ.get("OPENROUTER_X_TITLE", "Module 5 Outreach"),
+            },
+        )
+        response = client.chat.completions.create(
+            model=MODEL,
+            max_tokens=4096,
+            temperature=t,
+            messages=[
+                {"role": "system", "content": system_prompt},
+                {"role": "user", "content": user_prompt},
+            ],
+        )
+        content = (response.choices[0].message.content or "").strip()
+        u = response.usage
+        pt = getattr(u, "prompt_tokens", None) or 0
+        ct = getattr(u, "completion_tokens", None) or 0
+        return content, {
+            "model": MODEL,
+            "input_tokens": pt,
+            "output_tokens": ct,
+            "total_tokens": pt + ct,
+        }
+
+    if not API_KEY:
+        raise ValueError(
+            "未配置 LLM：请设置 OPENROUTER_API_KEY（推荐）或 ANTHROPIC_API_KEY，并写入 .env。"
+        )
+    _kw = {"api_key": API_KEY}
+    if _base:
+        _kw["base_url"] = _base
+    client = anthropic.Anthropic(**_kw)
+    response = client.messages.create(
         model=MODEL,
         max_tokens=4096,
-        messages=[
-            {"role": "system", "content": system_prompt},
-            {"role": "user", "content": user_prompt},
-        ],
-        temperature=0.7,
+        system=system_prompt,
+        messages=[{"role": "user", "content": user_prompt}],
+        temperature=t,
     )
-    content = response.choices[0].message.content
+    content = response.content[0].text
     usage = response.usage
     return content, {
         "model": MODEL,
-        "input_tokens": getattr(usage, "prompt_tokens", 0) or 0,
-        "output_tokens": getattr(usage, "completion_tokens", 0) or 0,
-        "total_tokens": getattr(usage, "total_tokens", 0) or 0,
+        "input_tokens": usage.input_tokens,
+        "output_tokens": usage.output_tokens,
+        "total_tokens": usage.input_tokens + usage.output_tokens,
     }
 
 
@@ -170,10 +296,31 @@ def resolve_ca_selection(choice: str, all_clients: list) -> tuple[list | None, s
     return deduped, None
 
 
-def run_for_client(client, trends_data, system_prompt, retrieved_sources=None):
+def run_for_client(client, trends_data, system_prompt, retrieved_sources=None, m4_run_id=None):
+    """
+    client: 轻量 picker 行（含 memory_row_id）或已是完整记忆 dict。
+    若提供 m4_run_id 且 client 含 memory_row_id，则在调用模型前从 Supabase 拉取该行完整记忆。
+    """
+    mem = client
+    if m4_run_id and client.get("memory_row_id") is not None:
+        try:
+            mem = fetch_m4_client_full_by_pk(m4_run_id, int(client["memory_row_id"]))
+        except Exception as e:
+            print(f"\n  ⚠️ 无法拉取客户完整记忆 id={client.get('memory_row_id')}: {e}")
+            raise
+
+    trend_kb = build_readonly_trend_kb(trends_data)
+    catalog_json, catalog_meta = _brand_catalog_block(mem, trend_kb)
+    catalog_section = ""
+    if catalog_json:
+        catalog_section = f"""
+## Brand product catalog (read-only, M1, RAG Top-K)
+以下为根据**当前客户记忆 + 本批趋势知识库**从目录中检索出的相关 SKU（非全量表）。引用时请以块内字段为准，勿编造未出现的规格或价格。
+{catalog_json}
+"""
     user_prompt = f"""请为以下客户生成 **微信私聊用的 outreach 建议**（不是店内导购与顾客面对面说话的脚本）。
 
-**场景**：CA 同时管理多位客户；下方 Client Memory 与 Trend Shortlist 是系统里已有的「客户记忆 + 本季趋势」。常见用途：新品到店想轻触达、想联系一段时间未互动的客户、或需要基于记忆写一句不尴尬的开场。**消息是异步的**：客户不在店员面前，是在手机上看微信。
+**场景**：CA 同时管理多位客户；下方 Client Memory 与 **Trend Shortlist（只读知识库）** 是系统里已有的「客户记忆 + 本批可参考趋势」。趋势块为**只读参考**，用于分析与引用，不可当作可编辑数据。常见用途：新品到店想轻触达、想联系一段时间未互动的客户、或需要基于记忆写一句不尴尬的开场。**消息是异步的**：客户不在店员面前，是在手机上看微信。
 
 请按系统提示中的 OPERATING CONTEXT 与 VOICE AND TONE：草稿要像 **CA 打字发出去的短消息**，偏 conversation starter / 轻触达；需要时可点到 **可推荐的新品方向或品类**（来自趋势与记忆的合理衔接），避免写成「现场带您试穿、现在方便吗」一类当面话术。
 
@@ -181,12 +328,12 @@ def run_for_client(client, trends_data, system_prompt, retrieved_sources=None):
 - Brand (Maison): {BRAND}
 
 ## Client Memory
-{json.dumps(client, ensure_ascii=False, indent=2)}
+{json.dumps(mem, ensure_ascii=False, indent=2)}
 
-## Trend Shortlist
-{json.dumps(trends_data, ensure_ascii=False, indent=2)}
-"""
-    print(f"\n  正在为 {client['name']} ({client['client_id']}) 调用 Claude...")
+## Trend Shortlist (read-only knowledge base)
+{json.dumps(trend_kb, ensure_ascii=False, indent=2)}
+{catalog_section}"""
+    print(f"\n  正在为 {mem['name']} ({mem['client_id']}) 调用 LLM...")
     raw_output, token_usage = call_llm(system_prompt, user_prompt)
     parsed_output = parse_agent_output(raw_output)
 
@@ -208,19 +355,21 @@ def run_for_client(client, trends_data, system_prompt, retrieved_sources=None):
         parsed_output = parse_agent_output(raw_output)
 
     if parsed_output:
-        display_result(client, parsed_output)
+        display_result(mem, parsed_output)
     else:
-        print(f"\n  ⚠️ {client['name']} 的输出无法解析为 JSON（已重试一次）")
+        print(f"\n  ⚠️ {mem['name']} 的输出无法解析为 JSON（已重试一次）")
 
-    trace_sources = retrieved_sources or ["module4_memory", "module2_shortlist"]
+    trace_sources = list(retrieved_sources or ["module4_memory", "module2_shortlist"])
+    if catalog_json:
+        trace_sources.append("module1_brand_products_rag")
     return {
         "run_id": datetime.now().strftime("%Y%m%d_%H%M%S"),
         "timestamp": datetime.now().isoformat(),
         "model": token_usage["model"],
         "token_usage": token_usage,
         "input": {
-            "client_id": client["client_id"],
-            "client_name": client["name"],
+            "client_id": mem["client_id"],
+            "client_name": mem["name"],
             "trend_ids": [t["trend_id"] for t in trends_data["trends"]],
         },
         "output": {
@@ -229,6 +378,7 @@ def run_for_client(client, trends_data, system_prompt, retrieved_sources=None):
         },
         "trace": {
             "retrieved_sources": trace_sources,
+            "catalog_rag": catalog_meta or None,
             "decision_output": parsed_output.get("best_angle") if parsed_output else None,
             "evidence_used": parsed_output.get("evidence_used") if parsed_output else None,
             "confidence": parsed_output.get("confidence") if parsed_output else None,
@@ -278,7 +428,9 @@ def main():
     print("\n[输入] 数据源:")
     print(f"  趋势短名单: {src.get('trend_shortlist_path')}")
     print(f"  客户记忆:   {src.get('client_source_path')} ({src.get('client_source_kind')})")
+    print(f"  M4 run_id:  {src.get('module4_run_id', '')}")
 
+    m4_run_id = src.get("module4_run_id")
     all_clients = clients_data["clients"]
 
     if args.demo:
@@ -323,7 +475,11 @@ def main():
     run_logs = []
     for client in clients_to_run:
         log_entry = run_for_client(
-            client, trends_data, system_prompt, retrieved_sources=retrieved
+            client,
+            trends_data,
+            system_prompt,
+            retrieved_sources=retrieved,
+            m4_run_id=m4_run_id,
         )
         run_logs.append(log_entry)
 

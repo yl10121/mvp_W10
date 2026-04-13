@@ -1,6 +1,6 @@
 """
 Optional dev helper: push local Module 2 / Module 4 *output-shaped* JSON into Supabase
-so you can run M5 with M5_SOURCE=supabase without re-running upstream modules.
+so you can run M5 without re-running upstream modules (M5 reads Supabase only).
 
   --m2   module_2/outputs/output_shortlist.json  → module2_trend_shortlist
   --m4   module_4/run_log.json                  → module4_client_memories (decision_output)
@@ -17,6 +17,7 @@ Requires SUPABASE_PASSWORD in root .env.
 from __future__ import annotations
 
 import argparse
+import importlib.util
 import json
 import sys
 from pathlib import Path
@@ -27,7 +28,18 @@ sys.path.insert(0, str(REPO))
 from supabase_client import get_conn, insert_row, insert_rows, is_configured
 
 
+def _load_m2_writer():
+    spec = importlib.util.spec_from_file_location(
+        "m2_supabase_writer", REPO / "module_2" / "supabase_writer.py"
+    )
+    mod = importlib.util.module_from_spec(spec)
+    assert spec.loader is not None
+    spec.loader.exec_module(mod)
+    return mod
+
+
 def seed_m2(conn, path: Path | None = None) -> None:
+    m2w = _load_m2_writer()
     path = path or REPO / "module_2" / "outputs" / "output_shortlist.json"
     with open(path, "r", encoding="utf-8") as f:
         data = json.load(f)
@@ -38,27 +50,7 @@ def seed_m2(conn, path: Path | None = None) -> None:
         return
 
     run_id = data.get("run_id") or "seed_m2"
-    rows = []
-    for item in shortlist:
-        rows.append({
-            "run_id": run_id,
-            "module1_run_id": data.get("module1_run_id"),
-            "brand": data.get("brand"),
-            "trend_id": item.get("trend_id"),
-            "rank": item.get("rank"),
-            "label": item.get("label"),
-            "category": item.get("category"),
-            "composite_score": item.get("composite_score"),
-            "score_freshness": (item.get("scores") or {}).get("freshness"),
-            "score_brand_fit": (item.get("scores") or {}).get("brand_fit"),
-            "score_category_fit": (item.get("scores") or {}).get("category_fit"),
-            "score_materiality": (item.get("scores") or {}).get("materiality"),
-            "score_actionability": (item.get("scores") or {}).get("actionability"),
-            "confidence": item.get("confidence"),
-            "why_selected": item.get("why_selected"),
-            "evidence_references": item.get("evidence_references", []),
-            "metric_signal": item.get("metric_signal", {}),
-        })
+    rows = [m2w._shortlist_row(run_id, data, item) for item in shortlist]
     insert_rows(conn, "module2_trend_shortlist", rows)
     print(f"  module2_trend_shortlist: {len(rows)} rows (run_id={run_id}) ← {path.name}")
 
@@ -79,8 +71,13 @@ def seed_m4(conn, path: Path | None = None) -> None:
     if isinstance(inp, dict):
         raw = inp.get("voice_memo_transcript") or inp.get("transcript") or ""
 
+    display = decision.get("display_name") or decision.get("name") or ""
     insert_row(conn, "module4_client_memories", {
         "run_id": run_id,
+        "client_id": decision.get("client_id") or data.get("client_id"),
+        "display_name": display or None,
+        "persona_tag": decision.get("persona_tag") or data.get("persona_tag"),
+        "vip_tier": decision.get("vip_tier") or data.get("vip_tier"),
         "raw_voice_note": raw,
         "summary": decision.get("summary", ""),
         "life_event": decision.get("life_event", {}),
@@ -122,7 +119,7 @@ def main() -> None:
             seed_m4(conn)
     finally:
         conn.close()
-    print("\nDone. Run:  M5_SOURCE=supabase python3 module_5/agent.py")
+    print("\nDone. Run:  python3 module_5/agent.py")
 
 
 if __name__ == "__main__":

@@ -4,8 +4,7 @@ Module 5 — 最小 CA Web 工作台（本地）
 
 用法（在仓库根目录）:
   pip install flask
-  export M5_TREND_SHORTLIST_PATH=...   # 可选，见 pipeline_inputs
-  export M5_CLIENT_MEMORY_PATH=...
+  .env 配置 SUPABASE_PASSWORD（与 agent 相同，只读 Supabase）
   python module_5/web_ca.py
 
 浏览器打开 http://127.0.0.1:5050
@@ -27,6 +26,7 @@ if str(ROOT) not in sys.path:
 if str(ROOT / "module_5") not in sys.path:
     sys.path.insert(0, str(ROOT / "module_5"))
 
+import config  # noqa: F401 — 单钥 OPENROUTER→OPENAI
 import agent as m5
 
 app = Flask(__name__)
@@ -90,7 +90,7 @@ PAGE = """
         <tbody>
         {% for c in clients %}
           <tr>
-            <td><input class="cid" type="checkbox" name="client_id" value="{{ c.client_id }}"/></td>
+            <td><input class="cid" type="checkbox" name="memory_row_id" value="{{ c.memory_row_id }}"/></td>
             <td>{{ loop.index }}</td>
             <td>{{ c.client_id }}</td>
             <td>{{ c.name }}</td>
@@ -197,18 +197,19 @@ def index():
     client_src = src.get("client_source_path", "")
 
     if request.method == "POST":
-        ids = request.form.getlist("client_id")
+        ids = request.form.getlist("memory_row_id")
         if not ids:
             error = "请至少勾选一位客户。"
         else:
-            by_id = {c["client_id"]: c for c in clients}
-            missing = [i for i in ids if i not in by_id]
+            by_mid = {str(c["memory_row_id"]): c for c in clients}
+            missing = [i for i in ids if str(i) not in by_mid]
             if missing:
-                error = "无效 client_id: " + ", ".join(missing)
+                error = "无效 memory_row_id: " + ", ".join(missing)
             else:
-                selected = [by_id[i] for i in ids]
+                selected = [by_mid[str(i)] for i in ids]
                 system_prompt = m5.load_text(m5.SYSTEM_PROMPT_PATH)
                 retrieved = [client_src, trend_src]
+                m4_rid = src.get("module4_run_id")
                 run_logs = []
                 for client in selected:
                     run_logs.append(
@@ -217,6 +218,7 @@ def index():
                             bundle.trends_data,
                             system_prompt,
                             retrieved_sources=retrieved,
+                            m4_run_id=m4_rid,
                         )
                     )
                 with open(m5.RUN_LOG_PATH, "w", encoding="utf-8") as f:

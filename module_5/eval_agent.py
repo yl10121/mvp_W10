@@ -24,6 +24,7 @@ from pathlib import Path
 _REPO_ROOT = Path(__file__).resolve().parent.parent
 if str(_REPO_ROOT) not in sys.path:
     sys.path.insert(0, str(_REPO_ROOT))
+import config  # noqa: F401 — 仓库根 .env + OPENROUTER→OPENAI
 
 
 def _load_env_file(path: Path) -> None:
@@ -81,14 +82,16 @@ EVAL_OUTPUT_PATH = M5_DIR / "eval_results.json"
 def _call_llm(system_prompt: str, user_prompt: str) -> str:
     """Reuse agent.py's LLM routing logic."""
     api_key = os.environ.get("ANTHROPIC_API_KEY", "")
-    model = os.environ.get("DEFAULT_MODEL", "claude-sonnet-4-20250514")
+    or_key = os.environ.get("OPENROUTER_API_KEY", "").strip()
+    model = os.environ.get("DEFAULT_MODEL", "anthropic/claude-3.5-sonnet")
     base_url = os.environ.get("ANTHROPIC_API_BASE_URL", "").strip()
 
-    if "openrouter" in base_url.lower():
+    if or_key or "openrouter" in base_url.lower():
         from openai import OpenAI
-        key = os.environ.get("OPENROUTER_API_KEY", "").strip() or api_key
+        key = or_key or api_key
+        or_base = base_url if "openrouter" in base_url.lower() else "https://openrouter.ai/api/v1"
         client = OpenAI(
-            base_url=base_url.rstrip("/"),
+            base_url=or_base.rstrip("/"),
             api_key=key,
             default_headers={
                 "HTTP-Referer": "https://github.com/m-ny-mvp",

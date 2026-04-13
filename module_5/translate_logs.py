@@ -5,6 +5,7 @@
 
 import json
 import os
+import sys
 from pathlib import Path
 
 import anthropic
@@ -21,22 +22,43 @@ def _load_env_file(path: Path) -> None:
 
 
 _REPO = Path(__file__).resolve().parent.parent
+if str(_REPO) not in sys.path:
+    sys.path.insert(0, str(_REPO))
+import config  # noqa: F401 — 仓库根 .env + OPENROUTER→OPENAI
+
 _load_env_file(_REPO / ".env")
 _load_env_file(Path(__file__).resolve().parent / ".env")
 
-API_KEY = os.environ.get("ANTHROPIC_API_KEY", "").strip()
-if not API_KEY:
-    raise ValueError("ANTHROPIC_API_KEY not set. Add it to the repo root .env.")
-MODEL = os.environ.get("DEFAULT_MODEL", "claude-sonnet-4-20250514")
+ANTH_KEY = os.environ.get("ANTHROPIC_API_KEY", "").strip()
+OR_KEY = os.environ.get("OPENROUTER_API_KEY", "").strip()
+_base = os.environ.get("ANTHROPIC_API_BASE_URL", "").strip()
+_use_or = bool(OR_KEY) or ("openrouter" in _base.lower())
+if not OR_KEY and not ANTH_KEY:
+    raise ValueError("请设置 OPENROUTER_API_KEY 或 ANTHROPIC_API_KEY（根目录 .env）。")
+MODEL = os.environ.get("DEFAULT_MODEL", "anthropic/claude-3.5-sonnet")
 
 SCRIPT_DIR = os.path.dirname(os.path.abspath(__file__))
 RUN_LOG_PATH = os.path.join(SCRIPT_DIR, "run_log.json")
 
-_base = os.environ.get("ANTHROPIC_API_BASE_URL", "").strip()
-_kw = {"api_key": API_KEY}
-if _base:
-    _kw["base_url"] = _base
-client = anthropic.Anthropic(**_kw)
+if _use_or:
+    from openai import OpenAI
+
+    _or_base = _base if "openrouter" in _base.lower() else "https://openrouter.ai/api/v1"
+    _openai_client = OpenAI(
+        base_url=_or_base.rstrip("/"),
+        api_key=OR_KEY or ANTH_KEY,
+        default_headers={
+            "HTTP-Referer": os.environ.get("OPENROUTER_HTTP_REFERER", "https://github.com/m-ny-mvp"),
+            "X-Title": os.environ.get("OPENROUTER_X_TITLE", "Module 5 translate_logs"),
+        },
+    )
+    client = None
+else:
+    _openai_client = None
+    _kw = {"api_key": ANTH_KEY}
+    if _base:
+        _kw["base_url"] = _base
+    client = anthropic.Anthropic(**_kw)
 
 TRANSLATE_PROMPT = """Translate the following JSON object from Chinese to English. 
 Keep the exact same JSON structure and keys (do not translate keys). 
@@ -46,16 +68,23 @@ Return ONLY valid JSON, no markdown fencing, no explanation."""
 
 
 def translate_parsed(parsed_zh):
-    response = client.messages.create(
-        model=MODEL,
-        max_tokens=4096,
-        messages=[{
-            "role": "user",
-            "content": f"{TRANSLATE_PROMPT}\n\n{json.dumps(parsed_zh, ensure_ascii=False, indent=2)}",
-        }],
-        temperature=0.3,
-    )
-    text = response.content[0].text.strip()
+    user_content = f"{TRANSLATE_PROMPT}\n\n{json.dumps(parsed_zh, ensure_ascii=False, indent=2)}"
+    if _openai_client is not None:
+        response = _openai_client.chat.completions.create(
+            model=MODEL,
+            max_tokens=4096,
+            temperature=0.3,
+            messages=[{"role": "user", "content": user_content}],
+        )
+        text = (response.choices[0].message.content or "").strip()
+    else:
+        response = client.messages.create(
+            model=MODEL,
+            max_tokens=4096,
+            messages=[{"role": "user", "content": user_content}],
+            temperature=0.3,
+        )
+        text = response.content[0].text.strip()
     if text.startswith("```"):
         text = text.split("```json")[-1].split("```")[0].strip() if "```json" in text else text.split("```")[1].split("```")[0].strip()
     return json.loads(text)
