@@ -614,21 +614,37 @@ class XHSLiveScraper:
 # ─────────────────────────────────────────────────────────────────
 # Build output records
 # ─────────────────────────────────────────────────────────────────
+def max_live_numeric_id(processed: list[dict]) -> int:
+    """Highest N in post_id 'live_N' / 'live_NNNN' (0 if none)."""
+    best = 0
+    for p in processed:
+        pid = str(p.get("post_id", "")).strip()
+        if pid.startswith("live_"):
+            try:
+                best = max(best, int(pid[5:]))
+            except ValueError:
+                continue
+    return best
+
+
 def build_records(
     raw_posts: list[dict],
     category: str,
     do_caption: bool,
+    start_index: int = 1,
 ) -> tuple[list[dict], list[dict]]:
     """
     Returns (raw_records, processed_records).
 
     raw_records      — 100 % unchanged scraped data (xhs_raw_posts.json)
     processed_records — anonymized + AI-enriched (xhs_posts.json → trend builder)
+    `start_index` — first live_XXXX number (use when appending to an existing file).
     """
     raw_records: list[dict] = []
     processed: list[dict] = []
 
-    for idx, post in enumerate(raw_posts, start=1):
+    for offset, post in enumerate(raw_posts):
+        idx = start_index + offset
         pid = f"live_{idx:04d}"
 
         # ── RAW record (nothing changed) ──
@@ -715,7 +731,17 @@ def main():
         action="store_true",
         help="Do not scrape comment threads (saves a lot of time per post).",
     )
+    parser.add_argument(
+        "--append",
+        action="store_true",
+        help="Merge into existing data/xhs_posts.json + xhs_raw_posts.json (dedupe by post_link, new IDs).",
+    )
     args = parser.parse_args()
+
+    try:
+        sys.stdout.reconfigure(line_buffering=True)  # noqa: SLF001
+    except Exception:
+        pass
 
     print("=" * 60)
     print("XHS Live Scraper — Module 1")
@@ -728,7 +754,37 @@ def main():
     print(f"Max posts : {args.max_posts or 'no cap'}")
     print(f"Fast mode : {args.fast}")
     print(f"Comments  : {not args.skip_comments}")
+    print(f"Append    : {args.append}")
     print("=" * 60)
+
+    existing_processed: list[dict] = []
+    existing_raw: list[dict] = []
+    existing_links: set[str] = set()
+    if args.append:
+        if PROCESSED_OUTPUT_PATH.exists():
+            try:
+                existing_processed = json.loads(
+                    PROCESSED_OUTPUT_PATH.read_text(encoding="utf-8")
+                )
+                if not isinstance(existing_processed, list):
+                    existing_processed = []
+            except Exception as e:
+                print(f"[WARN] Could not read existing {PROCESSED_OUTPUT_PATH}: {e}")
+                existing_processed = []
+        if RAW_OUTPUT_PATH.exists():
+            try:
+                existing_raw = json.loads(RAW_OUTPUT_PATH.read_text(encoding="utf-8"))
+                if not isinstance(existing_raw, list):
+                    existing_raw = []
+            except Exception as e:
+                print(f"[WARN] Could not read existing {RAW_OUTPUT_PATH}: {e}")
+                existing_raw = []
+        existing_links = {
+            str(p.get("post_link", "") or "").strip()
+            for p in existing_processed
+            if p.get("post_link")
+        }
+        print(f"[APPEND] Existing posts: {len(existing_processed)} (dedupe by post_link)")
 
     scraper = XHSLiveScraper(fast=args.fast, skip_comments=args.skip_comments)
     scraper.ensure_login()
@@ -772,13 +828,38 @@ def main():
         print("[WARN] No posts scraped. Check keyword / login.")
         sys.exit(0)
 
-    print(f"\n[INFO] Total posts scraped: {len(all_raw)}")
+    # Drop duplicates already on disk (append mode)
+    if existing_links:
+        before = len(all_raw)
+        all_raw = [
+            p
+            for p in all_raw
+            if str(p.get("post_link", "") or "").strip() not in existing_links
+        ]
+        print(f"[APPEND] Removed {before - len(all_raw)} duplicate(s) already in dataset")
+
+    if not all_raw:
+        print("[WARN] No new unique posts after dedupe. Nothing to save.")
+        sys.exit(0)
+
+    print(f"\n[INFO] New posts to add: {len(all_raw)}")
+
+    start_index = max_live_numeric_id(existing_processed) + 1 if existing_processed else 1
 
     raw_records, processed_records = build_records(
         all_raw,
         category=args.category,
         do_caption=not args.no_caption,
+        start_index=start_index,
     )
+
+    if args.append and (existing_processed or existing_raw):
+        raw_records = existing_raw + raw_records
+        processed_records = existing_processed + processed_records
+        print(
+            f"[APPEND] Total after merge: {len(processed_records)} processed, "
+            f"{len(raw_records)} raw rows"
+        )
 
     # Save raw (completely untouched)
     with open(RAW_OUTPUT_PATH, "w", encoding="utf-8") as f:

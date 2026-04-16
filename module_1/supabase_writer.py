@@ -9,6 +9,7 @@ Tables written:
   module1_xhs_posts        — one row per scraped/processed post
   module1_trend_objects    — one row per trend object
   module1_run_logs         — one row per pipeline run
+  module1_brand_products   — brand catalog (simulated or API); upsert by (brand, external_id)
 """
 
 from __future__ import annotations
@@ -22,7 +23,8 @@ sys.path.insert(0, str(Path(__file__).parent.parent))
 try:
     from supabase_client import get_conn, insert_row, insert_rows, is_configured
 except ImportError:
-    def is_configured(): return False
+    def is_configured():
+        return False
 
 
 def _utc_now() -> str:
@@ -118,3 +120,77 @@ def write_run_log(run_log: dict[str, Any]) -> int | None:
     if new_id:
         print(f"  [DB] module1_run_logs ← run_id={row['run_id']} (id={new_id})")
     return new_id
+
+
+def upsert_brand_products(run_id: str, products: list[dict[str, Any]]) -> int:
+    """
+    Upsert brand catalog rows into module1_brand_products.
+    Conflict key: (brand, external_id). Same call shape for simulated or API rows.
+
+    Each product dict may include:
+      brand, external_id, name, category, description, price_amount, currency,
+      product_url, image_urls, attributes, data_source, raw_payload
+    """
+    import json as _json
+
+    if not is_configured():
+        return 0
+    if not products:
+        return 0
+
+    conn = get_conn()
+    sql = """
+    INSERT INTO module1_brand_products (
+        run_id, brand, external_id, name, category, description,
+        price_amount, currency, product_url, image_urls, attributes,
+        data_source, raw_payload
+    ) VALUES (
+        %s, %s, %s, %s, %s, %s, %s, %s, %s, %s::jsonb, %s::jsonb, %s, %s::jsonb
+    )
+    ON CONFLICT (brand, external_id) DO UPDATE SET
+        run_id = EXCLUDED.run_id,
+        name = EXCLUDED.name,
+        category = EXCLUDED.category,
+        description = EXCLUDED.description,
+        price_amount = EXCLUDED.price_amount,
+        currency = EXCLUDED.currency,
+        product_url = EXCLUDED.product_url,
+        image_urls = EXCLUDED.image_urls,
+        attributes = EXCLUDED.attributes,
+        data_source = EXCLUDED.data_source,
+        raw_payload = EXCLUDED.raw_payload,
+        updated_at = NOW()
+    """
+    ok = 0
+    try:
+        with conn.cursor() as cur:
+            for p in products:
+                img = p.get("image_urls", [])
+                att = p.get("attributes", {})
+                raw = p.get("raw_payload", {})
+                vals = (
+                    run_id,
+                    p.get("brand", ""),
+                    p.get("external_id", ""),
+                    p.get("name", ""),
+                    p.get("category"),
+                    p.get("description"),
+                    p.get("price_amount"),
+                    p.get("currency") or "EUR",
+                    p.get("product_url", ""),
+                    _json.dumps(img, ensure_ascii=False),
+                    _json.dumps(att, ensure_ascii=False),
+                    p.get("data_source") or "simulated",
+                    _json.dumps(raw, ensure_ascii=False),
+                )
+                cur.execute(sql, vals)
+                ok += 1
+        conn.commit()
+    except Exception as e:
+        conn.rollback()
+        print(f"  [DB WARN] upsert_brand_products failed: {e}")
+        ok = 0
+    finally:
+        conn.close()
+    print(f"  [DB] module1_brand_products ← {ok}/{len(products)} upserts")
+    return ok

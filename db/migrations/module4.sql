@@ -29,6 +29,12 @@ CREATE INDEX IF NOT EXISTS idx_m4_memories_budget   ON module4_client_memories
 CREATE INDEX IF NOT EXISTS idx_m4_memories_event    ON module4_client_memories
     ((life_event->>'value'));
 
+-- M5 PRD: explicit client routing fields (nullable for legacy rows). Writers populate from CRM or benchmark.
+ALTER TABLE module4_client_memories ADD COLUMN IF NOT EXISTS client_id TEXT;
+ALTER TABLE module4_client_memories ADD COLUMN IF NOT EXISTS display_name TEXT;
+ALTER TABLE module4_client_memories ADD COLUMN IF NOT EXISTS persona_tag TEXT;
+ALTER TABLE module4_client_memories ADD COLUMN IF NOT EXISTS vip_tier TEXT;
+
 
 -- Reviewer feedback on memory extractions
 CREATE TABLE IF NOT EXISTS module4_memory_feedback (

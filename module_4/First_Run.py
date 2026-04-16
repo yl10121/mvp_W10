@@ -2,14 +2,27 @@
 
 import requests
 import json
+import sys
+from pathlib import Path
 
 from datetime import datetime
 
-# 从 Colab 密钥中读取 API Key
+# OpenRouter（推荐）；兼容旧变量名 DEEPSEEK_API_KEY
 import os
-DEEPSEEK_API_KEY = os.environ.get('DEEPSEEK_API_KEY')
 
-print("API Key 已从 Secrets 加载")
+_REPO = Path(__file__).resolve().parent.parent
+if str(_REPO) not in sys.path:
+    sys.path.insert(0, str(_REPO))
+try:
+    import config  # noqa: F401 — 单钥 OPENROUTER→OPENAI
+except ImportError:
+    pass
+OPENROUTER_API_KEY = (
+    os.environ.get("OPENROUTER_API_KEY", "").strip()
+    or os.environ.get("DEEPSEEK_API_KEY", "").strip()
+)
+
+print("API Key 已从环境变量加载（OPENROUTER_API_KEY 或 DEEPSEEK_API_KEY）")
 
 # 检索源 1：示例数据（告诉模型“好的输出长什么样”）
 extraction_examples = [
@@ -125,7 +138,7 @@ url = "https://openrouter.ai/api/v1/chat/completions"
 
 headers = {
     "Content-Type": "application/json",
-    "Authorization": f"Bearer {DEEPSEEK_API_KEY}"
+    "Authorization": f"Bearer {OPENROUTER_API_KEY}",
 }
 
 # 组装消息

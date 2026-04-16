@@ -24,6 +24,13 @@ from datetime import UTC, datetime, timedelta
 from pathlib import Path
 from typing import Any, Callable, Dict, List, Optional, Tuple
 
+_REPO_ROOT = Path(__file__).resolve().parent.parent
+if str(_REPO_ROOT) not in sys.path:
+    sys.path.insert(0, str(_REPO_ROOT))
+try:
+    import config  # noqa: F401 — 单钥 OPENROUTER→OPENAI
+except ImportError:
+    pass
 
 DEFAULT_POSTS_PATH = "data/xhs_posts.json"
 DEFAULT_CONFIG_PATH = "data/run_config.json"
@@ -678,11 +685,10 @@ def maybe_label_with_llm(
     if not llm_enabled:
         return fallback_label, fallback_summary, fallback_confidence, "heuristic", fallback_reasoning, [], ""
 
-    api_key = os.getenv("OPENROUTER_API_KEY", "") or os.getenv("OPENAI_API_KEY", "")
-    api_key = api_key.strip()
+    api_key = (os.getenv("OPENROUTER_API_KEY", "").strip() or os.getenv("OPENAI_API_KEY", "").strip())
     if not api_key:
         if llm_errors is not None:
-            llm_errors.append("OPENROUTER_API_KEY missing")
+            llm_errors.append("OPENROUTER_API_KEY or OPENAI_API_KEY missing")
         return fallback_label, fallback_summary, fallback_confidence, "heuristic", fallback_reasoning, [], ""
 
     try:
@@ -1250,10 +1256,10 @@ def run(
         try:
             from openai import OpenAI
 
-            api_key = (os.getenv("OPENROUTER_API_KEY", "") or os.getenv("OPENAI_API_KEY", "")).strip()
+            api_key = (os.getenv("OPENROUTER_API_KEY", "").strip() or os.getenv("OPENAI_API_KEY", "").strip())
             if not api_key:
-                llm_errors.append("LLM test failed: OPENROUTER_API_KEY missing")
-                cli.warn("Decide", "LLM test skipped: OPENROUTER_API_KEY missing")
+                llm_errors.append("LLM test failed: OPENROUTER_API_KEY or OPENAI_API_KEY missing")
+                cli.warn("Decide", "LLM test skipped: no OpenRouter/OpenAI API key")
             else:
                 def _llm_ping() -> None:
                     client = OpenAI(api_key=api_key, base_url="https://openrouter.ai/api/v1")

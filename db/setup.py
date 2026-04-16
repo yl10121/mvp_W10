@@ -31,6 +31,11 @@ MODULE_FILES = {
     5: "module5.sql",
 }
 
+# Extra migrations run immediately after the main file for that module (same module number).
+MODULE_EXTRA_FILES = {
+    1: ["module1_brand_products.sql"],
+}
+
 
 def run_migration(conn, sql_path: Path, dry_run: bool = False):
     sql = sql_path.read_text(encoding="utf-8")
@@ -82,6 +87,13 @@ def main():
             continue
         print(f"\n[MODULE {mod_num}] Running {filename}…")
         run_migration(conn, sql_path, dry_run=args.dry_run)
+        for extra in MODULE_EXTRA_FILES.get(mod_num, []):
+            ep = MIGRATIONS_DIR / extra
+            if not ep.exists():
+                print(f"\n[SKIP] {ep.name} not found")
+                continue
+            print(f"\n[MODULE {mod_num}] Running {extra}…")
+            run_migration(conn, ep, dry_run=args.dry_run)
 
     if conn:
         conn.close()

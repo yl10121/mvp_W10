@@ -1,4 +1,5 @@
 .env
+.env.*
 .env.local
 __pycache__/
 *.pyc
@@ -17,3 +18,12 @@ module_1/data/xhs_raw_posts.json
 
 # Playwright browsers cache
 **/playwright/.cache/
+
+# Run / generated artifacts (keep local only)
+module_1/outputs/
+module_2/outputs/
+module_4/run_log.json
+module_5/run_log.json
+
+# Personal / binary clutter at repo root
+*.pdf

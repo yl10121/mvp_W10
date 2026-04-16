@@ -8,7 +8,14 @@ from pathlib import Path
 from dotenv import load_dotenv
 from openai import OpenAI
 
-# Load API key from .env
+_REPO_ROOT = Path(__file__).resolve().parent.parent.parent
+if str(_REPO_ROOT) not in sys.path:
+    sys.path.insert(0, str(_REPO_ROOT))
+try:
+    import config  # noqa: F401 — 单钥 OPENROUTER→OPENAI
+except ImportError:
+    pass
+
 load_dotenv()
 
 # Supabase integration (optional — silently skipped if not configured)

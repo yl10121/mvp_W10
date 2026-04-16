@@ -21,10 +21,18 @@ from typing import Optional, Union
 
 from dotenv import load_dotenv
 
-_ENV_PATH = Path(__file__).parent.parent / ".env"
+BASE_DIR = Path(__file__).parent
+ROOT_DIR = BASE_DIR.parent
+if str(ROOT_DIR) not in sys.path:
+    sys.path.insert(0, str(ROOT_DIR))
+try:
+    import config  # noqa: F401 — 单钥 OPENROUTER→OPENAI
+except ImportError:
+    pass
+
+_ENV_PATH = ROOT_DIR / ".env"
 load_dotenv(dotenv_path=_ENV_PATH)
 
-# Confirm API key loaded
 _key_preview = os.environ.get("OPENROUTER_API_KEY", "")[:8] or "(not set)"
 print(f"[ENV] OPENROUTER_API_KEY loaded: {_key_preview}...")
 
@@ -32,8 +40,6 @@ from scorer import run_prefilter_batch
 from evaluator import evaluate_batch, select_shortlist
 
 # ── Paths ──────────────────────────────────────────────────────────────────────
-BASE_DIR = Path(__file__).parent
-ROOT_DIR = BASE_DIR.parent
 MODULE1_RUNS_DIR = ROOT_DIR / "module_1" / "outputs" / "runs"
 MODULE3_SHORTLIST = ROOT_DIR / "module_3" / "trend_brief_agent" / "trend_shortlist.json"
 SYNTHETIC_TRENDS_FILE = BASE_DIR / "data" / "synthetic_trends.json"

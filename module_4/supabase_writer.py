@@ -23,8 +23,13 @@ def write_client_memory(run_id: str, raw_voice_note: str,
         return None
     conn = get_conn()
     conf = memory_obj.get("confidence_summary", {})
+    display = memory_obj.get("display_name") or memory_obj.get("name") or ""
     new_id = insert_row(conn, "module4_client_memories", {
         "run_id":               run_id,
+        "client_id":            memory_obj.get("client_id") or None,
+        "display_name":         display or None,
+        "persona_tag":          memory_obj.get("persona_tag") or None,
+        "vip_tier":             memory_obj.get("vip_tier") or None,
         "raw_voice_note":       raw_voice_note,
         "summary":              memory_obj.get("summary", ""),
         "life_event":           memory_obj.get("life_event", {}),
