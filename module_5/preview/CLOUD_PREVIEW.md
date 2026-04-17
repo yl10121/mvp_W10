@@ -2,7 +2,10 @@
 
 **卡片网页文件**：仓库根目录的 **`docs/`**（与 `module_5/preview/` 内容一致，已随 `main` 推送）。
 
-**访问链接（启用 Pages 后）：** **`https://m-ny.github.io/mvp/`**
+**访问链接（启用 Pages 后）：**
+
+- 二十人卡片：**`https://m-ny.github.io/mvp/`**
+- 深色 Run Log 展开条：**`https://m-ny.github.io/mvp/runlog/`**
 
 ---
 
