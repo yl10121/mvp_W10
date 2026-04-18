@@ -24,6 +24,7 @@ module_1/outputs/
 module_2/outputs/
 module_4/run_log.json
 module_5/run_log.json
+module_5/deploy/run_log.json
 
 # Personal / binary clutter at repo root
 *.pdf

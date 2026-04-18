@@ -33,6 +33,7 @@ MODULE2_OUTPUT = SCRIPT_DIR.parent.parent / "module_2" / "outputs" / "output_sho
 JSON_PATH = SCRIPT_DIR / "trend_shortlist.json"
 RUN_LOG_PATH = SCRIPT_DIR / "run_log.json"
 PERSONAS_DIR = SCRIPT_DIR / "personas"
+BRAND_PROFILES_DIR = SCRIPT_DIR / "brand_profiles"
 
 MODEL = os.environ.get("DEFAULT_MODEL", "openai/gpt-4o-mini")
 
@@ -82,6 +83,12 @@ SYSTEM_PROMPT = (
     "\"[Warm, specific. Never begin with 'I've noticed a lot of our clients...' "
     "or 'Many of our VIP customers...'. Sound like a real person.]\"\n\n"
     "---\n\n"
+    "**PRODUCT SPOTLIGHT**\n"
+    "[If the trend directly promotes a specific product, name it here with a one-line description. "
+    "If the trend does not directly promote a specific product, name the most relevant product category "
+    "(e.g., 'structured top-handle bag') and list 1–3 products from the brand that fit that category. "
+    "Do not leave this section empty — every trend must connect to a concrete product or category.]\n\n"
+    "---\n\n"
     "## RULES:\n"
     "- LANGUAGE: All content is in English. Only the Conversation Starter section contains Chinese (first) and English (second).\n"
     "- ALWAYS contextualize every metric: show figure + benchmark + sample size + date. No floating numbers.\n"
@@ -91,6 +98,15 @@ SYSTEM_PROMPT = (
     "- Never write conversation starters that begin with 'I've noticed a lot of our clients...'\n"
     "- The persona summary and match rationale must be used as provided — do not rewrite them.\n"
     "- Do not pad. Every sentence must inform a decision or enable a conversation.\n"
+    "- CONVERSATION STARTER — OPENING LINE: The opening line must be open-ended (never a yes/no question). "
+    "It must sound like natural spoken language. Avoid brand-marketing phrasing such as 'This piece is a "
+    "timeless investment' or 'a wardrobe essential'. Good example: 'What kind of bags have you been "
+    "reaching for lately?'\n"
+    "- BRAND PROFILE: Before generating the card, reference the BRAND PROFILE provided in the input. "
+    "Do NOT assume who the current creative director is or reference specific campaigns unless explicitly "
+    "stated in the provided brand profile. If uncertain about any brand fact, omit it rather than guess.\n"
+    "- PRODUCT SPOTLIGHT is required on every card. If the trend does not map to a specific product, "
+    "suggest the closest product category and name matching products from the brand.\n"
 )
 
 # User message template: trend data + persona data
@@ -99,6 +115,8 @@ CARD_TEMPLATE = (
     "BRAND: {brand}\n"
     "CITY: {city}\n"
     "DATA NOTE: {data_note}\n\n"
+    "--- BRAND PROFILE ---\n"
+    "{brand_profile_block}\n\n"
     "--- TREND DATA ---\n"
     "Trend label: {trend_label}\n"
     "Category: {category}\n"
@@ -392,7 +410,7 @@ PERSONA_MATCH_PROMPT = (
 
 def load_personas(brand):
     """Load persona file for the given brand. Returns list of personas or None."""
-    slug = brand.lower().strip().replace(" ", "_").replace("-", "_")
+    slug = re.sub(r"[^a-z0-9_]", "", brand.lower().strip().replace(" ", "_").replace("-", "_"))
     filename = f"{slug}_personas.json"
     persona_path = PERSONAS_DIR / filename
     if not persona_path.exists():
@@ -401,6 +419,31 @@ def load_personas(brand):
     with open(persona_path, "r", encoding="utf-8") as f:
         data = json.load(f)
     return data.get("personas", [])
+
+
+def load_brand_profile(brand):
+    """Load brand profile JSON for the given brand. Returns a dict or None."""
+    slug = re.sub(r"[^a-z0-9_]", "", brand.lower().strip().replace(" ", "_").replace("-", "_"))
+    filename = f"{slug}_profile.json"
+    profile_path = BRAND_PROFILES_DIR / filename
+    if not profile_path.exists():
+        print(f"  [brand_profile] No profile found at {profile_path} — brand context will be omitted.")
+        return None
+    with open(profile_path, "r", encoding="utf-8") as f:
+        return json.load(f)
+
+
+def format_brand_profile_block(profile):
+    """Format a brand profile dict into a prompt-ready text block."""
+    if not profile:
+        return "No brand profile provided. Do not assume brand facts; omit any uncertain details."
+    lines = []
+    for key, value in profile.items():
+        if isinstance(value, list):
+            lines.append(f"{key}: {', '.join(str(v) for v in value)}")
+        else:
+            lines.append(f"{key}: {value}")
+    return "\n".join(lines)
 
 
 def match_persona_to_trend(client, trend, personas):
@@ -444,7 +487,7 @@ def match_persona_to_trend(client, trend, personas):
         return {"persona_name": "Unknown", "persona_summary": "", "match_rationale": raw, "match_score": None, "avoid": ""}
 
 
-def generate_trend_card(client, trend, brand, city, persona_match=None, data_note="synthetic data (prototype)"):
+def generate_trend_card(client, trend, brand, city, persona_match=None, data_note="synthetic data (prototype)", brand_profile=None):
     """B1: Build prompt and call Claude API."""
     confidence = assess_confidence(trend)
     confidence_method_str = get_confidence_method(trend, confidence, data_note)
@@ -466,6 +509,7 @@ def generate_trend_card(client, trend, brand, city, persona_match=None, data_not
         brand=brand,
         city=city,
         data_note=data_note,
+        brand_profile_block=format_brand_profile_block(brand_profile),
         trend_label=trend["trend_label"],
         category=trend["category"],
         cluster_summary=trend["cluster_summary"],
@@ -594,7 +638,7 @@ def _card_to_html(trend_id, card_text):
 
 def write_html_report(brand, city, week, source, selected, cards, used_fallback):
     """Generate a self-contained styled HTML trend brief."""
-    slug = brand.lower().strip().replace(" ", "_").replace("-", "_")
+    slug = re.sub(r"[^a-z0-9_]", "", brand.lower().strip().replace(" ", "_").replace("-", "_"))
     output_path = SCRIPT_DIR / f"trend_cards_{slug}_{city.lower()}.html"
     generated = datetime.datetime.now().strftime('%d %b %Y, %H:%M')
 
@@ -823,7 +867,7 @@ def write_html_report(brand, city, week, source, selected, cards, used_fallback)
 
 def write_report(brand, city, week, source, selected, cards, used_fallback):
     """B4: Write city- and brand-specific markdown report."""
-    slug = brand.lower().strip().replace(" ", "_").replace("-", "_")
+    slug = re.sub(r"[^a-z0-9_]", "", brand.lower().strip().replace(" ", "_").replace("-", "_"))
     output_path = SCRIPT_DIR / f"trend_cards_{slug}_{city.lower()}.md"
 
     with open(output_path, "w", encoding="utf-8") as f:
@@ -909,8 +953,9 @@ def main():
         score = compute_composite_score(t)
         print(f"  {t['trend_id']}: {t['trend_label']}  [confidence={conf}, score={score:.2f}]")
 
-    # Load personas for this brand
+    # Load personas and brand profile for this brand
     personas = load_personas(brand)
+    brand_profile = load_brand_profile(brand)
 
     # Generate cards
     print()
@@ -932,6 +977,7 @@ def main():
             client, trend, brand, city,
             persona_match=matched,
             data_note=context.get("data_note", "synthetic data (prototype)"),
+            brand_profile=brand_profile,
         )
         confidence = assess_confidence(trend)
         cards.append(card_text)

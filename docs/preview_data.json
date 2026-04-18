@@ -1,0 +1,184 @@
+[
+  {
+    "client_id": "BENCH_001",
+    "name": "林婉清",
+    "persona_tag": "艺术策展·静奢",
+    "vip_tier": "VIC",
+    "summary": "偏好低调质感，即将参加香港艺术周，需要得体且不显logo的造型。",
+    "best_angle": "春季风衣跟进 + 新中式时尚趋势分享",
+    "angle_summary": "客户对charcoal色oversized风衣表示了兴趣，且新中式与马术风的潮流在高峰期，与客户的风格和偏好相符。引入新趋势并跟进春季风衣，能够自然地激发客户的购买意向。",
+    "outreach_type": "curated_preview",
+    "confidence": "high",
+    "evidence_used": [
+      "behavior_signals_90d: store_visit — 试了charcoal色oversized风衣",
+      "trend T01: 新中式 × 马术风, peak, 相关于外套",
+      "style_profile: avant_garde, masculine_feminine_mix"
+    ],
+    "wechat_drafts": [
+      {
+        "tone": "professional_warm",
+        "message": "陈女士您好，最近春季的风衣到货了，特别适合您之前试穿的charcoal色oversized款。顺便提一下，最近新中式和马术风的潮流也在升温，您有兴趣了解一下吗？"
+      },
+      {
+        "tone": "exclusive_understated",
+        "message": "陈女士，春季风衣的几款新作刚到货，特别是您之前感兴趣的charcoal色oversized款，想必您会喜欢。同时，最近新中式与马术风结合的趋势也很引人注目，若您想看些相关款式，请告诉我。"
+      }
+    ],
+    "next_step": "发送选定的风衣图片，并提供新中式趋势相关的款式信息。",
+    "risk_flags": [
+      "避免过度强调社交平台爆款属性",
+      "注意库存状态，不要承诺未确认的现货"
+    ]
+  },
+  {
+    "client_id": "BENCH_004",
+    "name": "王景行",
+    "persona_tag": "传统藏家",
+    "vip_tier": "VIC",
+    "summary": "重工艺叙事，排斥潮流话术；偏好植鞣与传统皮具。",
+    "best_angle": "新季运动鞋新款通知",
+    "angle_summary": "客户近期询问新一季运动鞋的到货情况，结合她对社交媒体新趋势的敏感性，适合及时通知她相关新品，满足她对限量款的关注。",
+    "outreach_type": "product_suggestion",
+    "confidence": "high",
+    "evidence_used": [
+      "behavior_signals_90d: message_to_ca — 主动问CA新一季运动鞋什么时候到",
+      "style_profile: tenniscore, retro_sport, playful",
+      "category_preference: sneakers"
+    ],
+    "wechat_drafts": [],
+    "next_step": "等待客户对图片的初步反馈，再针对性准备尺码和到店时间建议。",
+    "risk_flags": [
+      "避免发送过多文字信息",
+      "图片数量控制在3张以内"
+    ]
+  },
+  {
+    "client_id": "BENCH_007",
+    "name": "孙若宁",
+    "persona_tag": "新婚·珠宝",
+    "vip_tier": "Gold",
+    "summary": "备婚阶段，偏好低调日常珠宝。",
+    "best_angle": "备婚首饰搭配思路",
+    "angle_summary": "客户明确表达备婚对戒需求，偏好低调日常款。可借T_B07珍珠银饰叠戴趋势，引导日常佩戴场景的延展对话。",
+    "outreach_type": "trend_conversation",
+    "confidence": "high",
+    "evidence_used": [
+      "life_event.value: 备婚 (High)",
+      "aesthetic_preference.value: 素圈、低调、日常 (High)",
+      "trend_signals: 珍珠银饰叠戴可作陪衬 (Medium)",
+      "trend_id T_B07: 低对比度首饰叙事，与客户低调偏好吻合",
+      "next_step_intent.value: 对戒与日常款对比图 (High)"
+    ],
+    "wechat_drafts": [
+      {
+        "tone": "friendly_casual",
+        "message": "周小姐，最近新季的运动鞋已经到货了，风格很契合您喜欢的tenniscore和retro元素。想给您留意一下，有兴趣的话我可以给您发几张实物图看一下。"
+      },
+      {
+        "tone": "excited_informative",
+        "message": "周晓彤，刚刚收到新季限量运动鞋的样品，色彩和设计都很符合如今的趋势，特别适合社交媒体出片哦！如果您有兴趣，可以约我去店里试穿！"
+      }
+    ],
+    "next_step": "在客户的首选时间（12:00-14:00）发送消息，并准备好运动鞋的实物图以便展示。",
+    "risk_flags": [
+      "避免讨论具体婚期",
+      "不要过度强调珠宝投资价值"
+    ]
+  },
+  {
+    "client_id": "BENCH_008",
+    "name": "马东宇",
+    "persona_tag": "东北·御寒外套",
+    "vip_tier": "Gold",
+    "summary": "御寒大衣需求，兼顾体面与保暖。",
+    "best_angle": "Slow Aesthetics & Heritage Craft Conversation",
+    "angle_summary": "Client's heritage chic style aligns perfectly with the rising trend of 'Slow Aesthetics & Heritage Craft.' This is a timely opportunity to engage him in a conversation about craftsmanship, especially given his interests in leather goods and the stories behind them.",
+    "outreach_type": "trend_conversation",
+    "confidence": "high",
+    "evidence_used": [
+      "behavior_signals_90d: store_visit — browsed spring leather goods collection",
+      "behavior_signals_90d: content_click — clicked on brand's article about heritage craftsmanship",
+      "style_profile: heritage_chic, old_money",
+      "trend T05: Slow Aesthetics & Heritage Craft, rising, aligns with leather goods and storytelling"
+    ],
+    "wechat_drafts": [
+      {
+        "tone": "professional_warm",
+        "message": "林先生您好，最近关于'慢美学'和匠心底蕴的讨论越来越多，您觉得这样强调工艺的趋势如何？我觉得这与您对产品故事的关注很契合。"
+      },
+      {
+        "tone": "exclusive_understated",
+        "message": "林先生，最近我看到一些关于'慢美学'和手工艺的精彩内容，想听听您的看法。这样的趋势与您对产品背后故事的重视很相符。"
+      }
+    ],
+    "next_step": "Await client response to gauge interest in further discussing heritage craftsmanship or potential new arrivals that align with this narrative.",
+    "risk_flags": [
+      "避免在正式合同确认前讨论具体社媒发布计划",
+      "需通过正规渠道传递法务文件，不在微信直接发送合同"
+    ]
+  },
+  {
+    "client_id": "BENCH_012",
+    "name": "高以翔",
+    "persona_tag": "高尔夫·户外",
+    "vip_tier": "Platinum",
+    "summary": "户外运动场景，防晒透气外套。",
+    "best_angle": "即将到来的慈善晚宴礼服推荐",
+    "angle_summary": "客户询问4月的慈善晚宴礼服需求，结合她的风格和近期对高定系列的关注，可以推荐一些高档礼服，以满足她对独特性的追求。",
+    "outreach_type": "curated_preview",
+    "confidence": "high",
+    "evidence_used": [
+      "behavior_signals_90d: message_to_ca — 询问4月慈善晚宴需要长礼服",
+      "behavior_signals_90d: content_click — 点击春夏高定系列lookbook",
+      "style_profile: maximalist, glamorous, high_shine, dramatic",
+      "category_preference: evening_gowns"
+    ],
+    "wechat_drafts": [
+      {
+        "tone": "professional_warm",
+        "message": "赵思琳，您好！针对您提到的4月慈善晚宴，我有几款高档礼服推荐给您，符合您对独特性和剪裁的要求。方便我发送一些图片给您吗？"
+      },
+      {
+        "tone": "exclusive_understated",
+        "message": "赵思琳，最近我们有些新到的高定礼服，特别适合即将到来的晚宴。想看看的话，我可以为您准备一些实物图，您可以提前挑选。"
+      }
+    ],
+    "next_step": "在14:00-17:00之间发送图片，等待客户反馈。如果客户对某款感兴趣，可以提供试衣服务安排。",
+    "risk_flags": [
+      "避免过多询问孕期细节",
+      "注意产品建议需考虑安全性",
+      "不要强调价格或促销信息"
+    ]
+  },
+  {
+    "client_id": "BENCH_016",
+    "name": "谢远",
+    "persona_tag": "企业团购",
+    "vip_tier": "Platinum",
+    "summary": "B端团购，发票与统一规格。",
+    "best_angle": "轻量旅行鞋新品推荐",
+    "angle_summary": "客户近期询问轻量旅行鞋，正好符合其即将出差的需求。可以分享符合其风格和功能需求的新品，强调舒适与实用性。",
+    "outreach_type": "curated_preview",
+    "confidence": "high",
+    "evidence_used": [
+      "behavior_signals_90d: message_to_ca — 询问轻量旅行鞋",
+      "occasion_profile: 国际商务差旅",
+      "last_interaction_date: 2026-03-05"
+    ],
+    "wechat_drafts": [
+      {
+        "tone": "professional_concise",
+        "message": "刘先生，最近到了一款轻量旅行鞋，非常适合您即将的出差。可以发几张图片给您看吗？"
+      },
+      {
+        "tone": "efficient_direct",
+        "message": "刘先生，您提到的轻量旅行鞋现在有新款，可以满足您出差的需求。我可以发图给您看看吗？"
+      }
+    ],
+    "next_step": "在08:00–09:00的联系时间内发送图片，等待客户反馈。",
+    "risk_flags": [
+      "避免推荐任何羊毛面料产品",
+      "需提前准备完整成分标信息"
+    ]
+  }
+]

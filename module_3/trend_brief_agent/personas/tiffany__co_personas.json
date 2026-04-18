@@ -1,0 +1,55 @@
+{
+  "brand": "Tiffany & Co.",
+  "personas": [
+    {
+      "id": "p01",
+      "name": "The Milestone Marker",
+      "age_range": "28-42",
+      "summary": "Successful urban professional who buys or receives Tiffany to commemorate life moments — engagement, promotion, anniversary. The blue box is as meaningful as the piece inside.",
+      "values": ["emotional significance", "ritual", "lasting quality", "prestige gifting"],
+      "shopping_behavior": "Visits in-store for milestone purchases; researches collections online beforehand. Highly responsive to occasion-based framing and personalisation options.",
+      "trend_receptivity": "Engagement and bridal jewellery, personalisation, meaningful motifs, gifting narratives, anniversary collections",
+      "avoid": "Purely fashion-forward or trend-driven pieces with no emotional anchor; anything that feels disposable or logo-excessive without substance"
+    },
+    {
+      "id": "p02",
+      "name": "The Self-Purchase Millennial",
+      "age_range": "25-35",
+      "summary": "High-earning woman who buys fine jewellery for herself as a reward and expression of identity. Tiffany T and HardWear are her entry points; she is building a personal jewellery wardrobe.",
+      "values": ["self-reward", "wearability", "design with edge", "understated flex"],
+      "shopping_behavior": "Heavily influenced by XHS styling content and peer circles. Prefers pieces that stack and layer. Likely to start with a bracelet or ring and grow her collection over time.",
+      "trend_receptivity": "Stackable jewellery, everyday fine jewellery styling, gender-neutral silhouettes, bold geometric forms, XHS-friendly styling moments",
+      "avoid": "Overly bridal or sentimental framing; pieces that feel too conservative or require a special occasion to wear"
+    },
+    {
+      "id": "p03",
+      "name": "The Gifting Partner",
+      "age_range": "35-60",
+      "summary": "High-net-worth individual — often male — purchasing for a partner, daughter, or close associate. The blue box is a reliable signal of taste and generosity; CA guidance is essential.",
+      "values": ["prestige recognition", "ease of decision", "recipient delight", "brand trustworthiness"],
+      "shopping_behavior": "Relies heavily on CA recommendation. Prefers curated, clearly justified options. Occasion-based framing (birthday, holiday, anniversary) resonates strongly.",
+      "trend_receptivity": "Classic iconic pieces, gift-ready sets, personalisation options, high-visibility styles the recipient will recognise",
+      "avoid": "Overly niche or conceptual designs that require fashion context to appreciate; anything that feels like a risk rather than a safe win"
+    },
+    {
+      "id": "p04",
+      "name": "The High Jewellery Collector",
+      "age_range": "45-65",
+      "summary": "Ultra-high-net-worth collector with an existing jewellery wardrobe. Tiffany Blue Book and one-of-a-kind pieces appeal to her; she values rarity, craftsmanship, and provenance.",
+      "values": ["rarity", "exceptional craftsmanship", "heritage", "investment value"],
+      "shopping_behavior": "Buys selectively and infrequently at the high end. Responds to private previews and personalised outreach. Archival and collector-tier narratives resonate strongly.",
+      "trend_receptivity": "Blue Book and high jewellery launches, rare gemstones, heritage archive references, Schlumberger and Elsa Peretti classics",
+      "avoid": "Entry-level or heavily commercial pieces; trend-driven jewellery without design pedigree"
+    },
+    {
+      "id": "p05",
+      "name": "The Brand Explorer",
+      "age_range": "22-30",
+      "summary": "First-generation luxury buyer drawn to Tiffany by the blue box's cultural resonance on social media. Aspires to own a piece; entry-level silver and Tiffany T are within reach.",
+      "values": ["cultural status", "recognisability", "aspiration", "social visibility"],
+      "shopping_behavior": "Discovers products on XHS and Douyin before visiting a store. Extremely sensitive to social proof and peer validation. May take multiple visits before purchasing.",
+      "trend_receptivity": "Entry-price silver pieces, viral XHS styling moments, celebrity-worn Tiffany, blue-box unboxing content, friendship and self-gifting narratives",
+      "avoid": "High-ticket or high-jewellery positioning that feels out of reach; overly formal or occasion-only framing"
+    }
+  ]
+}
