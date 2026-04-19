@@ -123,8 +123,6 @@ def _categorise_rejection(reason: str) -> str:
     r = (reason or "").lower()
     if "staleness" in r or "before staleness" in r:
         return "staleness"
-    if "menswear" in r:
-        return "menswear"
     if "brand signal" in r:
         return "low_brand_signal"
     if "post_count" in r:
@@ -343,16 +341,6 @@ def compute_aggregate_metrics(batch_results: list) -> dict:
         if v > 0
     }
 
-    # Archetype distribution
-    archetype_counts: dict = {}
-    for item in all_items:
-        arch = item.get("matched_archetype") or "(none)"
-        archetype_counts[arch] = archetype_counts.get(arch, 0) + 1
-    archetype_pct = {
-        k: round(v / max(total_shortlisted, 1) * 100, 1)
-        for k, v in sorted(archetype_counts.items(), key=lambda x: -x[1])
-    }
-
     # Subcategory distribution — infer from item if not stored
     try:
         from supabase_writer import _infer_subcategory
@@ -388,7 +376,6 @@ def compute_aggregate_metrics(batch_results: list) -> dict:
         "rejection_reason_breakdown_pct": rejection_pct,
         "rejection_reason_counts": rejection_cats,
         "total_prefilter_rejected": total_rejected,
-        "archetype_distribution_pct": archetype_pct,
         "subcategory_distribution_pct": subcat_pct,
     }
 
@@ -451,18 +438,6 @@ def write_batch_summary_md(batch_results: list, agg: dict) -> None:
         "",
         "---",
         "",
-        "## Client Archetype Coverage (shortlisted trends)",
-        "",
-        "| Archetype | % of shortlisted |",
-        "|-----------|:----------------:|",
-    ]
-    for arch, pct in agg.get("archetype_distribution_pct", {}).items():
-        lines.append(f"| {arch} | {pct}% |")
-
-    lines += [
-        "",
-        "---",
-        "",
         "## Subcategory Distribution (shortlisted trends)",
         "",
         "| Subcategory | % of shortlisted |",
@@ -477,8 +452,8 @@ def write_batch_summary_md(batch_results: list, agg: dict) -> None:
         "",
         "## Shortlisted Trends — All Batches",
         "",
-        "| Batch | Trend ID | Label | Score | Archetype | Hero Product | Source |",
-        "|-------|----------|-------|------:|-----------|-------------|--------|",
+        "| Batch | Trend ID | Label | Score | Extracted Product | Source |",
+        "|-------|----------|-------|------:|------------------|--------|",
     ]
     for b in batch_results:
         for item in b.get("shortlisted_items", []):
@@ -487,7 +462,6 @@ def write_batch_summary_md(batch_results: list, agg: dict) -> None:
                 f"| {item.get('trend_id', '')} "
                 f"| {(item.get('label', '') or '')[:50]} "
                 f"| {item.get('composite_score', 0):.2f} "
-                f"| {item.get('matched_archetype') or '—'} "
                 f"| {item.get('hero_product') or '—'} "
                 f"| {item.get('hero_product_source') or '—'} |"
             )

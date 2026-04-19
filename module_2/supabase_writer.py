@@ -106,9 +106,9 @@ def write_shortlist(run_id: str, shortlist_output: dict) -> None:
             why_selected = item.get("why_selected") or ""
             label = item.get("label") or ""
 
-            # hero_product: prefer organically extracted name, fall back to LLM suggestion
-            hero_product = item.get("hero_product") or item.get("hero_product_link") or ""
-            hero_product_source = item.get("hero_product_source")  # "extracted_from_posts" or "llm_suggested"
+            # hero_product comes only from organically extracted XHS product mentions (Step 1.5)
+            hero_product = item.get("hero_product") or ""
+            hero_product_source = item.get("hero_product_source")  # "extracted_from_posts" or None
 
             row = {
                 # ── Core identity ─────────────────────────────────────────
@@ -132,18 +132,17 @@ def write_shortlist(run_id: str, shortlist_output: dict) -> None:
                 "score_materiality":  scores.get("materiality"),
                 "score_actionability": scores.get("actionability"),
 
-                # ── Week 11 new fields ────────────────────────────────────
+                # ── Product signal (extracted from XHS posts only) ────────
                 "location":         item.get("location", "China"),
                 "data_type":        item.get("data_type", "real"),
                 "subcategory":      _infer_subcategory(label, hero_product, why_selected),
-                "client_persona_match_name": item.get("matched_archetype"),
                 "hero_product":        hero_product,
                 "hero_product_source": hero_product_source,
 
-                # ── Week 11 new scores ────────────────────────────────────
+                # ── 6-dimension scores ────────────────────────────────────
+                "score_brand_fit":                 scores.get("brand_fit"),
                 "score_ca_conversational_utility": scores.get("ca_conversational_utility"),
                 "score_language_specificity":      scores.get("language_specificity"),
-                "score_client_persona_match":      scores.get("client_persona_match"),
                 "score_novelty":                   scores.get("novelty"),
                 "score_trend_velocity":            scores.get("trend_velocity"),
                 "score_cross_run_persistence":     scores.get("cross_run_persistence"),
@@ -153,11 +152,6 @@ def write_shortlist(run_id: str, shortlist_output: dict) -> None:
                 "low_signal_warning":    bool(item.get("low_signal_warning")),
                 "no_date_signal":        bool(item.get("no_date_signal")),
                 "disqualifying_reason":  item.get("disqualifying_reason"),
-
-                # ── Budget-matched product recommendations ────────────────
-                "recommended_product_entry":   item.get("recommended_product_entry"),
-                "recommended_product_core":    item.get("recommended_product_core"),
-                "recommended_product_stretch": item.get("recommended_product_stretch"),
             }
 
             # Remove None values to avoid overwriting existing data with nulls

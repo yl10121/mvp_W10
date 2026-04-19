@@ -4,14 +4,14 @@ evaluator.py — LLM evaluation engine for Module 2 Trend Relevance & Materialit
 Uses OpenRouter (OpenAI-compatible) so it shares the same API key and model config
 as the rest of the pipeline (OPENROUTER_API_KEY / DEFAULT_MODEL from .env).
 
-Composite score formula (Week 11):
-  brand_fit × 0.20 + ca_conversational_utility × 0.20 + trend_velocity × 0.15
-  + language_specificity × 0.15 + client_persona_match × 0.10 + novelty × 0.10
-  + category_fit × 0.05 + cross_run_persistence × 0.05
+Composite score formula:
+  brand_fit × 0.25 + ca_conversational_utility × 0.25 + trend_velocity × 0.20
+  + language_specificity × 0.15 + novelty × 0.10 + cross_run_persistence × 0.05
 
+LLM scores 4 dimensions: brand_fit, ca_conversational_utility, language_specificity, novelty.
 trend_velocity and cross_run_persistence are computed algorithmically from
 engagement_recency_pct and run_count stored on each trend object by scorer.py.
-All other dimensions are LLM-scored.
+Persona matching and product recommendations are Module 3's responsibility.
 """
 
 import json
@@ -30,15 +30,12 @@ from prompts import build_system_prompt, build_batch_evaluation_prompt
 BATCH_SIZE = 5
 TODAY = "2026-03-25"
 
-# New composite score weights (Week 11)
 SCORE_WEIGHTS = {
-    "brand_fit": 0.20,
-    "ca_conversational_utility": 0.20,
-    "trend_velocity": 0.15,
+    "brand_fit": 0.25,
+    "ca_conversational_utility": 0.25,
+    "trend_velocity": 0.20,
     "language_specificity": 0.15,
-    "client_persona_match": 0.10,
     "novelty": 0.10,
-    "category_fit": 0.05,
     "cross_run_persistence": 0.05,
 }
 
@@ -373,11 +370,12 @@ def select_shortlist(evaluations: list, max_shortlist: int = 5) -> list:
         #   purely abstract trends score 1-3 and should be disqualified)
         # trend_velocity is skipped when no_date_signal is True — it was set to neutral 5.0
         #   and using it as a disqualifier would punish trends for missing metadata, not quality
-        # all other dimensions minimum is 4
+        # all other LLM-scored dimensions minimum is 4
         DIM_MINIMUMS = {
             "cross_run_persistence": 3,
             "ca_conversational_utility": 4,
         }
+        # client_persona_match and category_fit removed — not scored in this module
         SKIP_DIM_MINIMUMS = {"trend_velocity"} if no_date else set()
 
         failed_dim = None

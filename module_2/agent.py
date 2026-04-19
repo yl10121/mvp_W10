@@ -83,7 +83,7 @@ CELINE_KNOWN_PRODUCTS = KNOWN_PRODUCTS
 
 def extract_product_from_trend(trend: dict) -> Optional[str]:
     """
-    Scan all evidence snippets and post titles/bodies for known Celine product names.
+    Scan all evidence snippets and post titles/bodies for known Tiffany product names.
     Counts occurrences of each product name (case-insensitive) and returns the most
     frequently mentioned one, or None if none are found.
     Stores result as trend["extracted_product"] — call in-place before LLM evaluation.
@@ -235,18 +235,11 @@ def build_shortlist_output(
         tid = ev.get("trend_id")
         original = all_trends_lookup.get(tid, {})
         scores = ev.get("scores", {})
-        # ── Resolve hero_product with source tracking ──────────────────────
+        # extracted_product is from Step 1.5 — real product names from XHS posts
+        # hero_product_link is no longer output by the LLM (Module 3 handles product matching)
         extracted_product = original.get("extracted_product")
-        llm_product = ev.get("hero_product_link")
-        if extracted_product:
-            hero_product = extracted_product
-            hero_product_source = "extracted_from_posts"
-        elif llm_product:
-            hero_product = llm_product
-            hero_product_source = "llm_suggested"
-        else:
-            hero_product = None
-            hero_product_source = None
+        hero_product = extracted_product
+        hero_product_source = "extracted_from_posts" if extracted_product else None
 
         item = {
             "rank": rank,
@@ -261,20 +254,13 @@ def build_shortlist_output(
                 "ca_conversational_utility": scores.get("ca_conversational_utility"),
                 "trend_velocity": scores.get("trend_velocity"),
                 "language_specificity": scores.get("language_specificity"),
-                "client_persona_match": scores.get("client_persona_match"),
                 "novelty": scores.get("novelty"),
-                "category_fit": scores.get("category_fit"),
                 "cross_run_persistence": scores.get("cross_run_persistence"),
             },
-            "matched_archetype": ev.get("matched_archetype"),
             "matched_pillar": ev.get("matched_pillar"),
             "extracted_product": extracted_product,
             "hero_product": hero_product,
             "hero_product_source": hero_product_source,
-            "hero_product_link": llm_product,   # LLM suggestion kept for reference
-            "recommended_product_entry":   ev.get("recommended_product_entry"),
-            "recommended_product_core":    ev.get("recommended_product_core"),
-            "recommended_product_stretch": ev.get("recommended_product_stretch"),
             "confidence": ev.get("confidence"),
             "why_selected": ev.get("reasoning", ev.get("why_selected", "")),
             "evidence_references": ev.get("evidence_references", []),
@@ -387,8 +373,8 @@ def write_eval_report(
         "",
         "| Source | Count |",
         "|--------|-------|",
-        f"| Real XHS (luxury_fashion) | {real_count} |",
-        f"| Synthetic (luxury_fashion) | {synthetic_count} |",
+        f"| Real XHS (luxury_jewelry) | {real_count} |",
+        f"| Synthetic (luxury_jewelry) | {synthetic_count} |",
         f"| Beauty runs skipped | {beauty_skipped_count} |",
         f"| **Total input to filter** | **{total_input}** |",
         "",
@@ -418,13 +404,9 @@ def write_eval_report(
         "### 3. Noise Reduction",
         f"- {quality['noise_reduction_rate']}% of input trends were filtered before reaching the shortlist.",
         "",
-        "### 4. New Dimensions (Week 11)",
-        "- **CA Conversational Utility**: % of shortlisted trends with a named hero product link — "
-        f"{sum(1 for ev in all_evaluations if ev.get('hero_product_link'))} of {len(all_evaluations)} evaluated trends had a specific product anchor.",
-        "- **Client Archetype Coverage**: archetypes matched across shortlist — "
-        + ", ".join(
-            sorted({ev.get('matched_archetype') for ev in all_evaluations if ev.get('matched_archetype')})
-        ) or "none recorded",
+        "### 4. New Dimensions",
+        "- **CA Conversational Utility**: % of shortlisted trends with an organically extracted product — "
+        f"{sum(1 for ev in all_evaluations if ev.get('extracted_product'))} of {len(all_evaluations)} evaluated trends had a real XHS product mention.",
         "- **Trend Velocity**: scores computed from engagement_recency_pct (7-day recency window).",
         "- **Cross-Run Persistence**: scores computed from run_count (deduplication merged trends retain count).",
         "",
@@ -435,16 +417,15 @@ def write_eval_report(
         f"Shortlisted **{len(shortlisted)}** trends "
         f"(real: {quality['real_shortlisted']}, synthetic: {quality['synthetic_shortlisted']}):",
         "",
-        "| # | Trend | Score | Archetype | Hero Product | Pillar | CA Utility | Velocity |",
-        "|---|-------|-------|-----------|-------------|--------|-----------|---------|",
+        "| # | Trend | Score | Extracted Product | Pillar | CA Utility | Velocity |",
+        "|---|-------|-------|------------------|--------|-----------|---------|",
     ]
     for i, ev in enumerate(shortlisted, 1):
         scores = ev.get("scores", {})
         lines.append(
             f"| {i} | **[{ev.get('trend_id')}]** {ev.get('label', '')} "
             f"| {ev.get('composite_score', 0):.2f} "
-            f"| {ev.get('matched_archetype') or '—'} "
-            f"| {ev.get('hero_product_link') or '—'} "
+            f"| {ev.get('extracted_product') or '—'} "
             f"| {ev.get('matched_pillar') or '—'} "
             f"| {scores.get('ca_conversational_utility', '—')} "
             f"| {scores.get('trend_velocity', '—')} |"
@@ -460,7 +441,6 @@ def write_eval_report(
     if failure_cases:
         for ev in failure_cases:
             reason = ev.get("disqualifying_reason") or "Below threshold or LLM rejected"
-            archetype = ev.get("matched_archetype") or "no archetype matched"
             scores = ev.get("scores", {})
             lines.append(
                 f"- **[{ev.get('trend_id')}]** {ev.get('label', '')} "
@@ -468,8 +448,7 @@ def write_eval_report(
             )
             lines.append(f"  - Reason: {reason}")
             lines.append(
-                f"  - Target archetype: {archetype} "
-                f"| client_persona_match: {scores.get('client_persona_match', '—')} "
+                f"  - brand_fit: {scores.get('brand_fit', '—')} "
                 f"| ca_conversational_utility: {scores.get('ca_conversational_utility', '—')} "
                 f"| novelty: {scores.get('novelty', '—')}"
             )
@@ -482,7 +461,7 @@ def write_eval_report(
         "",
         "## Known Limitations",
         "",
-        "1. Runs 0001–0008 are beauty category and excluded — not relevant for luxury fashion brand filtering.",
+        "1. Runs 0001–0008 are beauty category and excluded — not relevant for luxury jewelry brand filtering.",
         "2. Runs 0009–0013 contain identical underlying XHS data (same 3 posts scraped across 5 runs).",
         "3. Synthetic trends are clearly marked `data_type: synthetic` and should not be presented as real XHS signal.",
         "4. No image URLs captured — scraping ran with `--no-detail` flag.",
@@ -532,7 +511,7 @@ def convert_to_module3_format(
             "trend_id": tid,
             "trend_label": ev.get("label", original.get("label", "")),
             "city": original.get("location", DEFAULT_CITY),
-            "category": ev.get("category", original.get("category", "luxury_fashion")),
+            "category": ev.get("category", original.get("category", "luxury_jewelry")),
             "data_type": original.get("data_type", "unknown"),
             "target_age_range": original.get("target_age_range", "28–45"),
             "cluster_summary": original.get("summary", ev.get("why_selected", "")),
@@ -548,17 +527,14 @@ def convert_to_module3_format(
             "extracted_product": original.get("extracted_product"),
             "hero_product": ev.get("hero_product"),
             "hero_product_source": ev.get("hero_product_source"),
-            "recommended_product_entry":   ev.get("recommended_product_entry"),
-            "recommended_product_core":    ev.get("recommended_product_core"),
-            "recommended_product_stretch": ev.get("recommended_product_stretch"),
         })
 
     week = datetime.now(timezone.utc).strftime("%Y-W%W")
     return {
         "query_context": {
             "brand": BRAND,
-            "market": "China luxury fashion",
-            "categories": ["luxury_fashion", "ready-to-wear", "leather goods"],
+            "market": "China luxury jewelry",
+            "categories": ["luxury_jewelry", "rings", "bracelets", "necklaces", "earrings"],
             "source": "Xiaohongshu",
             "cities": [DEFAULT_CITY, "Beijing"],
             "week": week,
@@ -583,7 +559,7 @@ def main():
     print("\nLoading real trend objects from Module 1 runs (beauty category skipped)...")
     real_trends, beauty_skipped, module1_run_id = load_all_real_trends()
     print(f"  Beauty skipped: {len(beauty_skipped)} objects")
-    print(f"  Real luxury_fashion loaded: {len(real_trends)}")
+    print(f"  Real luxury_jewelry loaded: {len(real_trends)}")
 
     print("\nSynthetic trends skipped — running on real XHS data only (Week 11 requirement)")
     synthetic_trends = []
@@ -607,7 +583,7 @@ def main():
 
     archetype_count = len(brand_profile.get("client_archetypes", []))
     print(f"  Brand:      {brand_profile['brand_name']}")
-    print(f"  Category:   luxury_jewelry / luxury_fashion")
+    print(f"  Category:   luxury_jewelry")
     print(f"  Profile:    {source_label}")
     print(f"  Archetypes: {archetype_count} segments loaded")
 

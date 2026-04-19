@@ -310,7 +310,7 @@ def pre_filter(trend: dict, brand_profile: dict) -> "tuple[bool, Optional[str]]"
         return False, f"Brand taboo keyword '{matched_taboo}' detected in label/summary"
 
     # Rule 7: Brand signal strength check — real XHS trends only (synthetic pass automatically)
-    # Requires at least MIN_BRAND_SIGNAL_SNIPPETS snippets containing Celine-specific language:
+    # Requires at least MIN_BRAND_SIGNAL_SNIPPETS snippets containing Tiffany-specific language:
     # brand name, hero product name, or aesthetic pillar keyword.
     if data_type == "real":
         brand_name = brand_profile.get("brand_name", "")
