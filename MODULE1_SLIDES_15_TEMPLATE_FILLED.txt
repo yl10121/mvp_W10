@@ -1,0 +1,252 @@
+================================================================================
+MODULE 1 — 15 SLIDES (reusable template structure + Module 1 filled in)
+Narrative: what it is → why it matters → what you tested → what’s next
+Style: headline = claim · body per your font/word rules · speaker notes = exec summary
+================================================================================
+
+--------------------------------------------------------------------------------
+SLIDE 1 — Title
+--------------------------------------------------------------------------------
+Module 1 — XHS Trend Object Builder
+
+[Your Name] · [Teammate] · [Course / Date]
+
+One-line (structures → enables):
+  Structures live Xiaohongshu posts into evidenced trend JSON so downstream teams can brief and decide without manual feed-watching.
+
+Speaker notes: Upstream in the pipeline; unlocks defensible “what’s trending” on XHS.
+
+--------------------------------------------------------------------------------
+SLIDE 2 — Pain → Bet → Payoff
+--------------------------------------------------------------------------------
+Problem
+  Teams lack one auditable object for “what’s trending” on XHS—only screenshots, chats, and opinions.
+
+Hypothesis
+  IF we cluster and label real posts with config + LLM, THEN each run emits trend objects with post IDs and snippets anyone can verify.
+
+Outcome
+  Faster alignment on trends; measurable: posts in window, distinct trend objects per run, stable run logs (tune targets in Week 12).
+
+Speaker notes: Memory line for the whole pitch; stay concrete.
+
+--------------------------------------------------------------------------------
+SLIDE 3 — Core User Pain / Quote
+--------------------------------------------------------------------------------
+Client-facing CAs and analysts struggle to name “the” trend on XHS with proof at the whiteboard.
+
+Quote (from Week 11 review — use on slide or in notes):
+  “这个只能说你的一个工具吧……病例里面其实真真假假的东西也不是就是都能分得清楚的”
+  — Reviewer B (Cartier boutique), clienteling / retail sales, 2026-03-30
+
+Speaker notes: Tiffany + Fendi rows in module_1/week11/feedback_log_module1.csv for extra quotes.
+
+--------------------------------------------------------------------------------
+SLIDE 4 — Why Care?
+--------------------------------------------------------------------------------
+Time cost
+  Hours per week reconciling screenshots, forwards, and ad-hoc search—not one shared artifact.
+
+Revenue / performance impact
+  Weaker follow-ups and missed moments when trend claims aren’t grounded in evidence.
+
+Brand / operational risk
+  In luxury, confident but ungrounded messaging erodes trust; star CA judgment doesn’t transfer without structured evidence.
+
+Speaker notes: Directional impact only—no fake ROI.
+
+--------------------------------------------------------------------------------
+SLIDE 5 — Constraints / Realism
+--------------------------------------------------------------------------------
+We cannot assume perfect APIs, unified shopper IDs, or stable XHS UI forever.
+
+• No cross-silo shopper identity — public XHS + our scrape session
+• Privacy: anonymized creators; post text as appropriate for trends
+• Real batches in testing — proof corpus 197 posts (run_0022)
+
+Today: batch scrape + JSON + Supabase trend/run logs
+Future: official feeds or listening partners if LVMH negotiates access
+
+Speaker notes: Execs will ask—show you assumed real limits.
+
+--------------------------------------------------------------------------------
+SLIDE 6 — Main Bet + Falsifier
+--------------------------------------------------------------------------------
+Main bet
+  IF we cluster and label with rules + LLM on real posts, THEN each run produces trend objects with evidence—not invented narratives.
+
+Falsifier
+  If trends routinely lack verifiable post IDs or contradict source text, the approach fails (reviewers reject; evidence fields empty).
+
+Interview insight (supports need — optional on slide):
+  “应该是最后一个吧最后一个风格” — Reviewer C (Fendi), on style repetition vs noise
+
+Speaker notes: Module-sized bet, not “solve clienteling.”
+
+--------------------------------------------------------------------------------
+SLIDE 7 — Workflow (Input → Transform → Output)
+--------------------------------------------------------------------------------
+Input
+  Live scrape → xhs_posts.json + run_config.json (keywords, date window, clustering, LLM flags)
+
+Transform
+  xhs_trend_builder: filter → tokenize → cluster → label (LLM optional per config)
+
+Output
+  Per-run trend_objects.json + run_log.json + optional module1_* tables in Supabase
+
+[Diagram: three boxes + arrows — short labels only on slide]
+
+Speaker notes: 4–6 lines; readable to non-coders.
+
+--------------------------------------------------------------------------------
+SLIDE 8 — Core Decision
+--------------------------------------------------------------------------------
+Given dated or partially dated posts plus run config, decide which posts belong in the same XHS content trend and what to call it—so downstream debates trends, not raw noise.
+
+Why it matters
+  This is the bottleneck Module 1 owns: without grouping + naming + evidence, nothing downstream is trustworthy.
+
+Speaker notes: One decision only—no scope creep.
+
+--------------------------------------------------------------------------------
+SLIDE 9 — Key Inputs / Feasibility
+--------------------------------------------------------------------------------
+KEY: DrissionPage scrape + run_config + OpenRouter (when labeling)
+
+Input objects
+  Post: post_id, title, caption, engagement, date, keyword, post_link, images
+  Config: time_window, cluster thresholds, LLM toggles, brand hints
+
+Source
+  module_1/data/xhs_posts.json (batch scrape)
+
+Volume / testing
+  Locked proof: 197 posts loaded — run_0022 (Celine-focused corpus)
+
+Feasibility
+  Batch-first, no proprietary XHS API—works with login session + config you control
+
+Speaker notes: What would help later: official time signals, product catalog sync.
+
+--------------------------------------------------------------------------------
+SLIDE 10 — System Placement / Handoff
+--------------------------------------------------------------------------------
+[Upstream: raw social] → Module 1 (trend objects) → Module 2+ (shortlist, briefs, memory, outreach)
+
+Receives
+  Scraped posts + policy from run_config
+
+Produces
+  trend_objects JSON, evidence blocks, run logs, optional Supabase rows
+
+Enables
+  Downstream filters and briefs to argue from the same evidence object—not re-scraping
+
+Speaker notes: Module 1 does not own shortlist scoring—that’s later modules.
+
+--------------------------------------------------------------------------------
+SLIDE 11 — Example Output
+--------------------------------------------------------------------------------
+Title: Example output — one trend object (run_0022)
+
+Annotate screenshot of JSON or Supabase row:
+  • label — e.g. “Old Celine vs New Celine Nostalgia Debate”
+  • evidence.posts — post IDs + snippets (audit trail)
+  • metrics / confidence — why we trust the cluster
+  • User benefit: one object CA + HQ can inspect and reuse
+
+File: module_1/outputs/runs/run_0022_trend_objects.json — highlight one block.
+
+Speaker notes: Walk one trend in 5–6 sentences; single example only.
+
+--------------------------------------------------------------------------------
+SLIDE 12 — Feedback / Testing Results
+--------------------------------------------------------------------------------
+We tested with three boutique clienteling reviewers (Tiffany, Cartier, Fendi), 2026-03-30 — module_1/week11/feedback_log_module1.csv
+
+Successes (themes)
+  Want on-body / celeb wear weighted over flat packshots; style/silhouette over keywords alone; honesty about XHS as imperfect source
+
+Needs improvement (concrete asks from CSV)
+  Tag UGC vs official where possible; separate complaint threads from merch trends; define style-signal field on objects
+
+Speaker notes: Usefulness/trust scores per row in CSV for backup.
+
+--------------------------------------------------------------------------------
+SLIDE 13 — Validation / Adoption Signal
+--------------------------------------------------------------------------------
+Validated demand
+  Three real floor roles; all sessions logged with quotes + change requests
+
+Adoption signal (directional)
+  Reviewers asked for clearer evidence tagging and noise separation—not “more features,” sharper objects
+
+Quote (pick one for slide)
+  “明星上升的一个配戴的一个流量……要比实物你平面近拍的一个流量要好” — Tiffany (trend signal preference)
+
+Failure / weakness
+  Later scrapes: detail tabs drop dates → March–April filter can empty the corpus
+
+Headline metrics (from CSV)
+  Usefulness: 4/4/4 across three sessions · Trust: 4/3/4 (1–5 scale)
+
+Speaker notes: Link failure to mitigation on next slide / Slide 14 overlap.
+
+--------------------------------------------------------------------------------
+SLIDE 14 — Next Steps / Pilot
+--------------------------------------------------------------------------------
+Pilot trend objects with one brand + one city CA circle when downstream brief is ready
+
+Upgrade data
+  Reliable publish dates; optional official social or listening feed; brand product catalog in Supabase (same schema as seeded table)
+
+Integration
+  trend_object JSON into planning tools and CA brief workflows (Modules 2–3+)
+
+Pilot scope
+  Short window; success = % of trends cited in briefs + reviewer acceptance + fewer ungrounded claims
+
+Speaker notes: LVMH-specific path—not generic “iterate.”
+
+--------------------------------------------------------------------------------
+SLIDE 15 — Summary
+--------------------------------------------------------------------------------
+Our Module Summarized
+
+• Takes in: live XHS posts + run configuration
+• Transforms: filters, clusters, labels with optional LLM—evidence-first
+• Outputs: trend objects + run logs + optional DB rows—traceable to real posts
+• Why it matters: luxury teams get one defensible trend object instead of screenshots and debate
+
+Optional closing line: Questions — contact in speaker notes
+
+================================================================================
+FILL-IN-BLANK (empty) — copy for other modules; replace bracketed fields
+================================================================================
+Slide 1: [Module Name] · [Name] · [One line: structures X into Y for Z]
+Slide 2: Problem / Hypothesis / Outcome — [ ]
+Slide 3: [User group] · Quote — “[ ]” — [Source]
+Slide 4: Time / Revenue / Brand risk — [ ]
+Slide 5: Cannot assume [ ]. Today [ ]. Future [ ].
+Slide 6: IF [ ] THEN [ ]. Falsifier: [ ]. Quote: [ ]
+Slide 7: Input / Transform / Output — [ ]
+Slide 8: Given [ ], decide [ ], so that [ ].
+Slide 9: Objects · Source · Volume · Feasibility — [ ]
+Slide 10: [Prev] → [This] → [Next] · Receives / Produces / Enables — [ ]
+Slide 11: Example output labels — [field1] [field2] [field3]
+Slide 12: Tested with [ ] · Successes [ ] · Needs work [ ]
+Slide 13: Validation [ ] · Quote [ ] · Failure [ ] · Metric [ ]
+Slide 14: Pilot [ ] · Data upgrade [ ] · Integration [ ]
+Slide 15: Takes in [ ] · Transforms [ ] · Outputs [ ] · Matters because [ ]
+
+================================================================================
+CROSS-REFERENCE — course Week 13 template vs this file
+  This template adds: Slide 10 pipeline placement, Slide 15 summary.
+  Course “locked demo” = Slide 11 here (example output); align screenshots.
+  Course “test design” = Slide 12; “results + failure” = fold into 13–14 as needed.
+  For strict 15-slide course checklist, map content back to instructor slide order
+  or duplicate demo slide if graders require demo exactly on Slide 12.
+================================================================================
+END
+================================================================================

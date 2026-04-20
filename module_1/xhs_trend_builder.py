@@ -357,6 +357,21 @@ def reference_date_from_config(config: Dict[str, Any]) -> datetime:
     return REFERENCE_DATE
 
 
+def post_matches_brand(post: Post, brand: str, config: Dict[str, Any]) -> bool:
+    """Match config brand to post.brand (search keyword) or optional brand_hints in text."""
+    b = brand.strip().lower()
+    if b in {"", "all", "*"}:
+        return True
+    if post.brand.strip().lower() == b:
+        return True
+    hints = [str(h).strip().lower() for h in (config.get("brand_hints") or []) if str(h).strip()]
+    if hints:
+        blob = f"{post.keyword} {post.title} {post.caption}".lower()
+        if any(h in blob for h in hints):
+            return True
+    return False
+
+
 def post_matches_filters(post: Post, config: Dict[str, Any]) -> bool:
     brand = str(config.get("brand", "ALL")).strip().lower()
     category = str(config.get("category", "")).strip().lower()
@@ -366,7 +381,7 @@ def post_matches_filters(post: Post, config: Dict[str, Any]) -> bool:
     ref = reference_date_from_config(config)
     post_date = normalize_xhs_date(post.date, ref)
 
-    brand_ok = True if brand in {"", "all", "*"} else post.brand.lower() == brand
+    brand_ok = post_matches_brand(post, brand, config)
     category_ok = True if not category else post.category.lower() == category
 
     date_ok = True
@@ -1139,7 +1154,8 @@ def run(
 
                 base_prompt_c = str(config.get("prompt", "")).strip()
                 _tk = int(config.get("top_k_trends", 8))
-                _llm_trend_target = min(max(_tk, 8), 120)
+                _cap = int(config.get("llm_cluster_max_trends", 200) or 200)
+                _llm_trend_target = min(max(_tk, 8), max(_cap, 8))
                 llm_cluster_prompt = (
                     f"{base_prompt_c}\n\n"
                     f"TASK: Read ALL the XHS post titles below and identify {_llm_trend_target} distinct XHS CONTENT TRENDS "
@@ -1172,6 +1188,7 @@ def run(
                 parsed_trends = json.loads(cleaned)
                 if isinstance(parsed_trends, list) and len(parsed_trends) >= 1:
                     # Build clusters from LLM output
+                    _min_in_cluster = max(1, int(config.get("min_posts_per_trend", 1) or 1))
                     post_map = {p.post_id: p for p in filtered_posts}
                     llm_clusters = []
                     for trend_info in parsed_trends:
@@ -1179,7 +1196,7 @@ def run(
                         for pid in trend_info.get("post_ids", []):
                             if pid in post_map:
                                 cluster_posts.append(post_map[pid])
-                        if len(cluster_posts) >= 2:
+                        if len(cluster_posts) >= _min_in_cluster:
                             # Store LLM label/summary on the first post as metadata
                             cluster_posts[0]._llm_trend_label = trend_info.get("trend_label", "")
                             cluster_posts[0]._llm_trend_summary = trend_info.get("summary", "")

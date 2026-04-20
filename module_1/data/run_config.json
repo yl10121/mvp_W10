@@ -1,22 +1,36 @@
 {
-  "brand": "ALL",
+  "brand": "Tiffany",
+  "brand_hints": [
+    "tiffany",
+    "蒂芙尼",
+    "tiffany t",
+    "knot",
+    "lock",
+    "hardwear",
+    "atlas",
+    "六爪",
+    "钻戒",
+    "蓝盒子",
+    "return to tiffany"
+  ],
   "category": "luxury_fashion",
   "time_window": {
     "start_date": "2026-03-01",
     "end_date": "2026-04-30"
   },
-  "xhs_reference_date_iso": "2026-03-30",
+  "xhs_reference_date_iso": "2026-04-15",
   "max_posts": 500,
-  "top_k_trends": 120,
+  "top_k_trends": 200,
   "min_posts_per_trend": 1,
   "force_equal_engagement_bins": 0,
-  "minimum_trend_objects": 0,
-  "cluster_min_jaccard": 0.14,
-  "cluster_min_token_overlap": 2,
+  "minimum_trend_objects": 140,
+  "llm_cluster_max_trends": 200,
+  "cluster_min_jaccard": 0.28,
+  "cluster_min_token_overlap": 3,
   "cluster_stratify_by_keyword": true,
   "llm": {
     "enabled": true,
     "model": "gpt-4.1-mini"
   },
-  "prompt": "You are a Xiaohongshu (XHS) trend analyst. Your job is to identify TRENDS happening on XHS — what are users posting about, what content patterns are going viral, what discussions and debates are emerging among XHS users around this brand. A trend is a recurring CONTENT PATTERN or USER DISCOURSE on XHS. Look at the post titles and identify: (1) What topics are XHS users creating content about repeatedly? (2) What debates or opinions are forming? (3) What aesthetic or styling content is gaining traction? (4) What purchase behaviors or unboxing patterns are emerging? Examples of GOOD XHS trend labels from these posts: 'Heritage Monogram vs Quiet Leather Debate' (users comparing canvas vs leather), 'Carryall and Neverfull Size Comparison Content' (capacity and commute fit discussions), 'Celebrity Show Attendance Outfit Breakdowns' (star styling at runway or events), 'Cross-Border Price and Duty-Free Hunting' (Japan/Europe vs China pricing), 'Travel Trunk and Luggage Aesthetic Content' (heritage travel storytelling), 'Classic Bag Relevance vs Resale Value Discourse' (whether icons still worth buying). BAD labels: 'LV 2026 Fashion Show' (that's an event), 'Brand Loyalty' (too generic), 'Handbag Collection' (too vague). Work only with the provided posts. Cluster by recurring XHS content patterns. For each trend: (1) label describing the XHS content trend, (2) one-sentence summary of what users are posting/discussing, (3) evidence with real post IDs and snippets, (4) metrics, (5) confidence. Include ai_reasoning. Never invent evidence."
+  "prompt": "You are a Xiaohongshu (XHS) trend analyst for Tiffany & Co. (fine jewelry and luxury gifts). Your job is to identify TRENDS on XHS — what users post about, what goes viral, what debates emerge around Tiffany: bridal and milestones, iconic collections (Tiffany T, Knot, Lock, HardWear, Atlas), gifting, in-store experience, and authenticity. A trend is a recurring CONTENT PATTERN or USER DISCOURSE. Good trend label examples: 'Six-Prong vs Bezel Engagement Discourse', 'Knot Collection Styling and Layering Content', 'Blue Box Unboxing and Milestone Gifting', 'HardWear Chunky Link Stack Trends', 'Duty-Free vs Domestic Price Comparison for Tiffany', 'Tiffany T Wire Bracelet Fit and Sizing Threads'. BAD labels: 'Tiffany 2026 Event' (event, not trend), 'Brand Loyalty' (too generic), 'Jewelry Collection' (too vague). Work only with provided posts. Cluster by recurring XHS patterns. For each trend: (1) label with NO brand name in the label, (2) one-sentence summary, (3) evidence with real post IDs and snippets, (4) metrics, (5) confidence. Include ai_reasoning. Never invent evidence."
 }

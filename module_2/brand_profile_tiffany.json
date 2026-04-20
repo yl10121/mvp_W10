@@ -1,0 +1,23 @@
+{
+  "brand_name": "Tiffany & Co.",
+  "brand_name_cn": "蒂芙尼",
+  "aesthetic": "American heritage luxury jewelry, iconic robin’s-egg blue, timeless diamonds and precious metals, modern classics (T, Knot, Lock, HardWear)",
+  "clientele": "gift buyers, bridal and milestone jewelry shoppers, collectors of signature Tiffany lines, design-conscious luxury consumers",
+  "preferred_sources": ["jewelry KOL", "bridal and milestone content", "Tiffany brand and campaign imagery", "fine jewelry education creators", "luxury lifestyle editorial"],
+  "avoided_sources": ["counterfeit legit-check spam only", "unrelated fashion hauls with no jewelry signal", "fast fashion accounts"],
+  "active_categories": ["luxury_fashion", "jewelry", "fine_jewelry"],
+  "category_cadence": {
+    "jewelry": "medium",
+    "luxury_fashion": "medium"
+  },
+  "brand_taboos": ["counterfeit promotion", "misleading investment claims", "non-jewelry off-topic spam"],
+  "clienteling_tone": "warm, celebratory, precise about materials and occasions; confident in heritage without being stiff",
+  "hero_products": {
+    "jewelry": ["Tiffany T", "Knot", "Lock", "HardWear", "Atlas", "Six-prong engagement setting", "Victoria", "Keys"],
+    "accessories": ["Return to Tiffany", "heart tag"]
+  },
+  "aesthetic_pillars": [
+    {"name": "Heritage & craft", "description": "Diamond setting, precious metals, house codes"},
+    {"name": "Modern icons", "description": "T collection, Knot, sculptural metal"}
+  ]
+}
