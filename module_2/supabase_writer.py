@@ -125,13 +125,6 @@ def write_shortlist(run_id: str, shortlist_output: dict) -> None:
                 "evidence_references": item.get("evidence_references", []),
                 "metric_signal":   metric,
 
-                # ── Original 5 dimensions (kept for backward compat) ──────
-                "score_freshness":    scores.get("freshness"),
-                "score_brand_fit":    scores.get("brand_fit"),
-                "score_category_fit": scores.get("category_fit"),
-                "score_materiality":  scores.get("materiality"),
-                "score_actionability": scores.get("actionability"),
-
                 # ── Product signal (extracted from XHS posts only) ────────
                 "location":         item.get("location", "China"),
                 "data_type":        item.get("data_type", "real"),
@@ -139,13 +132,28 @@ def write_shortlist(run_id: str, shortlist_output: dict) -> None:
                 "hero_product":        hero_product,
                 "hero_product_source": hero_product_source,
 
-                # ── 6-dimension scores ────────────────────────────────────
-                "score_brand_fit":                 scores.get("brand_fit"),
-                "score_ca_conversational_utility": scores.get("ca_conversational_utility"),
-                "score_language_specificity":      scores.get("language_specificity"),
-                "score_novelty":                   scores.get("novelty"),
-                "score_trend_velocity":            scores.get("trend_velocity"),
-                "score_cross_run_persistence":     scores.get("cross_run_persistence"),
+                # ── 8-dimension scores ────────────────────────────────────
+                "score_brand_engagement_depth":        scores.get("brand_engagement_depth"),
+                "score_client_touchpoint_specificity": scores.get("client_touchpoint_specificity"),
+                "score_vocabulary_transfer_potential": scores.get("vocabulary_transfer_potential"),
+                "score_intelligence_value":            scores.get("intelligence_value"),
+                "score_client_segment_clarity":        scores.get("client_segment_clarity"),
+                "score_occasion_purchase_trigger":     scores.get("occasion_purchase_trigger"),
+                "score_trend_velocity":                scores.get("trend_velocity"),
+                "score_evidence_credibility":          scores.get("evidence_credibility"),
+
+                # ── Composite scores ──────────────────────────────────────
+                "raw_composite_score":          item.get("raw_composite_score"),
+                "confidence_weighted_composite": item.get("confidence_weighted_composite"),
+                "confidence_weight":            item.get("confidence_weight"),
+                "velocity_method":              item.get("velocity_method"),
+
+                # ── Signal flags ──────────────────────────────────────────
+                "celebrity_signal":   bool(item.get("celebrity_signal", False)),
+                "occasion_signal":    bool(item.get("occasion_signal", False)),
+                "competitor_signal":  bool(item.get("competitor_signal", False)),
+                "competitor_mentions": item.get("competitor_mentions", []),
+                "best_evidence_quote": item.get("best_evidence_quote", ""),
 
                 # ── Signal metadata ───────────────────────────────────────
                 "engagement_recency_pct": metric.get("engagement_recency_pct"),

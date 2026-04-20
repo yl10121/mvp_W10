@@ -50,6 +50,8 @@ from agent import (
     MAX_SHORTLIST,
     KNOWN_PRODUCTS,
     extract_product_from_trend,
+    detect_signals,
+    find_best_evidence_quote,
     build_shortlist_output,
     calculate_quality_metrics,
     find_failure_cases,
@@ -175,15 +177,25 @@ def run_batch(batch_def: dict, brand_profile: dict) -> dict:
 
     all_trends_lookup = {t["trend_id"]: t for t in all_trends}
 
-    # Step 1.5 — Organic product extraction
-    print("\n  [Step 1.5] Organic product extraction...")
+    # Step 1.5 — Organic product extraction + signal detection
+    print("\n  [Step 1.5] Organic product extraction & signal detection...")
     extracted_count = 0
+    celebrity_count = 0
+    occasion_count = 0
+    competitor_count = 0
     for trend in all_trends:
         product = extract_product_from_trend(trend)
         if product:
             trend["extracted_product"] = product
             extracted_count += 1
-    print(f"  → Product mention found in {extracted_count}/{total_input} trends")
+        detect_signals(trend)
+        if trend.get("celebrity_signal"):
+            celebrity_count += 1
+        if trend.get("occasion_signal"):
+            occasion_count += 1
+        if trend.get("competitor_signal"):
+            competitor_count += 1
+    print(f"  → Product mention: {extracted_count}/{total_input} | Celebrity: {celebrity_count} | Occasion: {occasion_count} | Competitor: {competitor_count}")
 
     # Step 1 — Pre-filter
     print("\n  [Step 1] Pre-filter...")
@@ -233,6 +245,12 @@ def run_batch(batch_def: dict, brand_profile: dict) -> dict:
             f"     #{i} [{ev.get('trend_id')}] {ev.get('label', '')} "
             f"— {ev.get('composite_score', 0):.2f}"
         )
+
+    # Best evidence quote per shortlisted trend
+    for ev in shortlisted:
+        tid = ev.get("trend_id")
+        original = all_trends_lookup.get(tid, {})
+        ev["best_evidence_quote"] = find_best_evidence_quote(original)
 
     # Quality metrics & shortlist output
     quality = calculate_quality_metrics(
@@ -285,6 +303,11 @@ def run_batch(batch_def: dict, brand_profile: dict) -> dict:
         "shortlisted_items": shortlist_output.get("shortlist", []),
         "prefilter_rejected_log": prefilter_rejected,
         "quality": quality,
+        "signal_counts": {
+            "celebrity": celebrity_count,
+            "occasion": occasion_count,
+            "competitor": competitor_count,
+        },
     }
 
 
@@ -363,6 +386,18 @@ def compute_aggregate_metrics(batch_results: list) -> dict:
         for k, v in sorted(subcat_counts.items(), key=lambda x: -x[1])
     }
 
+    # Signal rates across all batches
+    total_celebrity = sum(b.get("signal_counts", {}).get("celebrity", 0) for b in batch_results)
+    total_occasion = sum(b.get("signal_counts", {}).get("occasion", 0) for b in batch_results)
+    total_competitor = sum(b.get("signal_counts", {}).get("competitor", 0) for b in batch_results)
+    signal_base = max(total_input, 1)
+
+    # CWC vs raw composite comparison across all shortlisted items
+    cwc_scores = [item.get("confidence_weighted_composite") for item in all_items if item.get("confidence_weighted_composite") is not None]
+    raw_scores = [item.get("raw_composite_score") for item in all_items if item.get("raw_composite_score") is not None]
+    avg_cwc = round(sum(cwc_scores) / len(cwc_scores), 2) if cwc_scores else 0.0
+    avg_raw = round(sum(raw_scores) / len(raw_scores), 2) if raw_scores else 0.0
+
     return {
         "total_run_files_processed": total_files,
         "total_trend_objects_processed": total_input,
@@ -377,6 +412,19 @@ def compute_aggregate_metrics(batch_results: list) -> dict:
         "rejection_reason_counts": rejection_cats,
         "total_prefilter_rejected": total_rejected,
         "subcategory_distribution_pct": subcat_pct,
+        "signal_rates": {
+            "celebrity_count": total_celebrity,
+            "celebrity_rate_pct": round(total_celebrity / signal_base * 100, 1),
+            "occasion_count": total_occasion,
+            "occasion_rate_pct": round(total_occasion / signal_base * 100, 1),
+            "competitor_count": total_competitor,
+            "competitor_rate_pct": round(total_competitor / signal_base * 100, 1),
+        },
+        "scoring": {
+            "avg_confidence_weighted_composite": avg_cwc,
+            "avg_raw_composite": avg_raw,
+            "avg_confidence_discount": round(avg_raw - avg_cwc, 2),
+        },
     }
 
 
@@ -405,6 +453,12 @@ def write_batch_summary_md(batch_results: list, agg: dict) -> None:
         f"| Noise reduction range | {agg['noise_reduction_range_pct']['min']}% – {agg['noise_reduction_range_pct']['max']}% |",
         f"| Overall off-brand rate | {agg['overall_off_brand_rate_pct']}% |",
         f"| % shortlisted with extracted product anchor | {agg['pct_shortlisted_with_extracted_product']}% |",
+        f"| Celebrity signal rate | {agg.get('signal_rates', {}).get('celebrity_rate_pct', 0)}% ({agg.get('signal_rates', {}).get('celebrity_count', 0)} trends) |",
+        f"| Occasion signal rate | {agg.get('signal_rates', {}).get('occasion_rate_pct', 0)}% ({agg.get('signal_rates', {}).get('occasion_count', 0)} trends) |",
+        f"| Competitor signal rate | {agg.get('signal_rates', {}).get('competitor_rate_pct', 0)}% ({agg.get('signal_rates', {}).get('competitor_count', 0)} trends) |",
+        f"| Avg raw composite (shortlisted) | {agg.get('scoring', {}).get('avg_raw_composite', 0)} |",
+        f"| Avg CWC (after confidence weighting) | {agg.get('scoring', {}).get('avg_confidence_weighted_composite', 0)} |",
+        f"| Avg confidence discount | -{agg.get('scoring', {}).get('avg_confidence_discount', 0)} |",
         "",
         "---",
         "",
@@ -540,6 +594,13 @@ def main():
     print(f"  Noise reduction range:    {agg['noise_reduction_range_pct']['min']}% – {agg['noise_reduction_range_pct']['max']}%")
     print(f"  Off-brand rate:           {agg['overall_off_brand_rate_pct']}%")
     print(f"  Extracted product anchor: {agg['pct_shortlisted_with_extracted_product']}% of shortlisted")
+    sr = agg.get("signal_rates", {})
+    sc = agg.get("scoring", {})
+    print(f"  Celebrity signal rate:    {sr.get('celebrity_rate_pct', 0)}%")
+    print(f"  Occasion signal rate:     {sr.get('occasion_rate_pct', 0)}%")
+    print(f"  Competitor signal rate:   {sr.get('competitor_rate_pct', 0)}%")
+    print(f"  Avg raw composite:        {sc.get('avg_raw_composite', 0)}")
+    print(f"  Avg CWC:                  {sc.get('avg_confidence_weighted_composite', 0)}")
     print()
     print(f"  → {BATCH_SUMMARY_JSON.name}")
     print(f"  → {BATCH_SUMMARY_MD.name}")

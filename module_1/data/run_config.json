@@ -13,17 +13,17 @@
     "蓝盒子",
     "return to tiffany"
   ],
-  "category": "luxury_fashion",
+  "category": "luxury_jewelry",
   "time_window": {
-    "start_date": "2026-03-01",
-    "end_date": "2026-04-30"
+    "start_date": "2020-01-01",
+    "end_date": "2027-12-31"
   },
-  "xhs_reference_date_iso": "2026-04-15",
+  "xhs_reference_date_iso": "2026-04-21",
   "max_posts": 500,
   "top_k_trends": 200,
   "min_posts_per_trend": 1,
   "force_equal_engagement_bins": 0,
-  "minimum_trend_objects": 140,
+  "minimum_trend_objects": 5,
   "llm_cluster_max_trends": 200,
   "cluster_min_jaccard": 0.28,
   "cluster_min_token_overlap": 3,

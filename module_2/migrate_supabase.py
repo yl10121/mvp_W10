@@ -1,9 +1,10 @@
 """
 migrate_supabase.py — Safe schema migration for module2_trend_shortlist.
 
-Adds all Week 11 columns to the existing table. Safe to re-run:
-each ALTER TABLE is wrapped in try/except — if the column already exists
-(duplicate_column error code 42701) it prints "already exists, skipping".
+Adds all 8-dimension scoring columns and signal detection columns to the
+existing table. Safe to re-run: each ALTER TABLE is wrapped in try/except —
+if the column already exists (duplicate_column error code 42701) it prints
+"already exists, skipping".
 
 Usage:
     cd /Users/kellyliu/Desktop/mvp_W10
@@ -18,25 +19,41 @@ from supabase_client import get_conn, is_configured
 
 NEW_COLUMNS = [
     # (column_name, sql_type, description)
-    ("location",                      "TEXT DEFAULT 'China'",  "source city or region"),
-    ("data_type",                     "TEXT",                  "'real', 'synthetic', or 'merged'"),
-    ("subcategory",                   "TEXT",                  "inferred product subcategory"),
-    ("client_persona_match_name",     "TEXT",                  "matched archetype name"),
-    ("hero_product",                  "TEXT",                  "specific brand product linked to trend"),
-    ("hero_product_source",          "TEXT",                  "'extracted_from_posts' or 'llm_suggested'"),
-    ("recommended_product_entry",    "TEXT",                  "LLM entry-tier product recommendation for matched archetype"),
-    ("recommended_product_core",     "TEXT",                  "LLM core-tier product recommendation for matched archetype"),
-    ("recommended_product_stretch",  "TEXT",                  "LLM stretch-tier product recommendation for matched archetype"),
-    ("score_ca_conversational_utility", "NUMERIC(4,1)",        "Week 11 CA utility score 0-10"),
-    ("score_language_specificity",    "NUMERIC(4,1)",          "Week 11 language specificity score 0-10"),
-    ("score_client_persona_match",    "NUMERIC(4,1)",          "Week 11 client persona match score 0-10"),
-    ("score_novelty",                 "NUMERIC(4,1)",          "Week 11 novelty score 0-10"),
-    ("score_trend_velocity",          "NUMERIC(4,1)",          "Week 11 trend velocity score 0-10"),
-    ("score_cross_run_persistence",   "NUMERIC(4,1)",          "Week 11 cross-run persistence score 0-10"),
-    ("engagement_recency_pct",        "NUMERIC(5,1)",          "% of engagement from last 7 days"),
-    ("low_signal_warning",            "BOOLEAN DEFAULT FALSE", "true if post_count was below 5"),
-    ("no_date_signal",                "BOOLEAN DEFAULT FALSE", "true if no valid post dates found"),
-    ("disqualifying_reason",          "TEXT",                  "reason trend was rejected if applicable"),
+    # ── Core metadata ─────────────────────────────────────────────────────────
+    ("location",              "TEXT DEFAULT 'China'",  "source city or region"),
+    ("data_type",             "TEXT",                  "'real', 'synthetic', or 'merged'"),
+    ("subcategory",           "TEXT",                  "inferred product subcategory"),
+    ("hero_product",          "TEXT",                  "specific brand product extracted from XHS posts"),
+    ("hero_product_source",   "TEXT",                  "'extracted_from_posts' or None"),
+
+    # ── 8-dimension scores ────────────────────────────────────────────────────
+    ("score_brand_engagement_depth",        "NUMERIC(4,1)", "LLM: deep engagement with brand specifically (0-10)"),
+    ("score_client_touchpoint_specificity", "NUMERIC(4,1)", "LLM: CA contact reason quality (0-10)"),
+    ("score_vocabulary_transfer_potential", "NUMERIC(4,1)", "LLM: language CA can reuse in conversation (0-10)"),
+    ("score_intelligence_value",            "NUMERIC(4,1)", "LLM: genuinely new insight vs pillar confirmation (0-10)"),
+    ("score_client_segment_clarity",        "NUMERIC(4,1)", "LLM: maps to recognisable client type (0-10)"),
+    ("score_occasion_purchase_trigger",     "NUMERIC(4,1)", "LLM: connected to purchase occasion (0-10)"),
+    ("score_trend_velocity",                "NUMERIC(4,1)", "Algorithmic: engagement recency or save-ratio proxy (0-10)"),
+    ("score_evidence_credibility",          "NUMERIC(4,1)", "Algorithmic: cross-run persistence × confidence (0-10)"),
+
+    # ── Composite scores ──────────────────────────────────────────────────────
+    ("raw_composite_score",           "NUMERIC(5,2)", "weighted composite before confidence adjustment"),
+    ("confidence_weighted_composite", "NUMERIC(5,2)", "raw_composite × confidence_weight (used for ranking)"),
+    ("confidence_weight",             "NUMERIC(4,2)", "multiplier: high=1.0, medium=0.9, low=0.75"),
+    ("velocity_method",               "TEXT",         "recency_pct | save_ratio_proxy | default_neutral"),
+
+    # ── Signal flags ──────────────────────────────────────────────────────────
+    ("celebrity_signal",    "BOOLEAN DEFAULT FALSE", "明星/代言人/同款 language found in posts"),
+    ("occasion_signal",     "BOOLEAN DEFAULT FALSE", "求婚/纪念日/生日/礼物 language found in posts"),
+    ("competitor_signal",   "BOOLEAN DEFAULT FALSE", "competitor brand name found in posts"),
+    ("competitor_mentions", "JSONB DEFAULT '[]'",    "list of competitor brand names mentioned"),
+    ("best_evidence_quote", "TEXT",                  "most transferable single snippet from evidence"),
+
+    # ── Signal metadata ───────────────────────────────────────────────────────
+    ("engagement_recency_pct", "NUMERIC(5,1)", "% of engagement from last 7 days"),
+    ("low_signal_warning",     "BOOLEAN DEFAULT FALSE", "true if post_count was below 5"),
+    ("no_date_signal",         "BOOLEAN DEFAULT FALSE", "true if no valid post dates found"),
+    ("disqualifying_reason",   "TEXT",                  "reason trend was rejected if applicable"),
 ]
 
 UNIQUE_CONSTRAINT = """

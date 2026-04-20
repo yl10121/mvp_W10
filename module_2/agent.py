@@ -80,6 +80,67 @@ KNOWN_PRODUCTS = [
 # Keep backward-compat alias so batch_runner.py imports don't break
 CELINE_KNOWN_PRODUCTS = KNOWN_PRODUCTS
 
+# ── Signal detection constants ──────────────────────────────────────────────
+CELEBRITY_SIGNALS = ["明星", "代言人", "同款", "明星同款", "celebrity"]
+OCCASION_SIGNALS = ["求婚", "婚礼", "纪念日", "生日", "情人节", "礼物", "周年", "表白", "订婚"]
+COMPETITOR_NAMES = {
+    "Cartier": ["Cartier", "卡地亚"],
+    "Van Cleef": ["Van Cleef", "梵克雅宝"],
+    "Bvlgari": ["Bvlgari", "宝格丽"],
+    "Harry Winston": ["Harry Winston", "海瑞温斯顿"],
+}
+
+
+def detect_signals(trend: dict) -> None:
+    """
+    Scan trend evidence (snippets + post titles/bodies) for celebrity, occasion,
+    and competitor signals. Sets flags in-place on the trend dict.
+    """
+    evidence = trend.get("evidence", {})
+    texts = list(evidence.get("snippets", []))
+    for post in evidence.get("posts", []):
+        if isinstance(post, dict):
+            texts.append(post.get("title", ""))
+            texts.append(post.get("body", ""))
+    texts.append(trend.get("label", ""))
+    texts.append(trend.get("summary", ""))
+    combined = " ".join(str(t) for t in texts if t)
+
+    trend["celebrity_signal"] = any(sig in combined for sig in CELEBRITY_SIGNALS)
+    trend["occasion_signal"] = any(sig in combined for sig in OCCASION_SIGNALS)
+
+    found_competitors = []
+    for brand_name, variants in COMPETITOR_NAMES.items():
+        if any(v in combined for v in variants):
+            found_competitors.append(brand_name)
+    trend["competitor_signal"] = bool(found_competitors)
+    trend["competitor_mentions"] = found_competitors
+
+
+def find_best_evidence_quote(trend: dict) -> str:
+    """
+    Select the single most transferable snippet from a trend's evidence.
+    Priority: snippets containing personal pronouns (我/你/她/他), digits, comparison
+    words (比/还是/vs), or occasion words. Picks the longest qualifying snippet,
+    falling back to the longest snippet overall.
+    """
+    evidence = trend.get("evidence", {})
+    snippets = [s for s in evidence.get("snippets", []) if s and isinstance(s, str)]
+    if not snippets:
+        return ""
+
+    priority_words = set("我你她他") | {"比", "还是", "vs"} | set(OCCASION_SIGNALS)
+
+    def has_priority(s: str) -> bool:
+        if any(ch.isdigit() for ch in s):
+            return True
+        return any(w in s for w in priority_words)
+
+    priority = [s for s in snippets if has_priority(s)]
+    if priority:
+        return max(priority, key=len)
+    return max(snippets, key=len)
+
 
 def extract_product_from_trend(trend: dict) -> Optional[str]:
     """
@@ -219,6 +280,36 @@ def load_synthetic_trends() -> list:
     return synthetic
 
 
+_SUBCATEGORY_SIGNALS = {
+    "engagement_rings": [
+        "engagement", "solitaire", "propose", "proposal", "diamond ring", "求婚戒",
+        "求婚", "订婚", "tiffany setting", "soleste", "tiffany true",
+    ],
+    "rings": [
+        "ring", "band", "戒指", "指环", "t1", "atlas", "硬汉", "lock ring",
+    ],
+    "bracelets": [
+        "bracelet", "bangle", "cuff", "手链", "手镯", "hardwear", "lock bracelet",
+        "t wire", "硬件系列",
+    ],
+    "necklaces": [
+        "necklace", "pendant", "chain", "项链", "吊坠", "return to tiffany",
+        "heart tag", "keys", "smile", "victoria", "蒂芙尼项链",
+    ],
+    "earrings": [
+        "earring", "stud", "hoop", "drop earring", "耳环", "耳坠", "耳钉",
+    ],
+}
+
+
+def _infer_subcategory(label: str, hero_product: str, why_selected: str) -> str:
+    combined = f"{label} {hero_product or ''} {why_selected or ''}".lower()
+    for subcategory, signals in _SUBCATEGORY_SIGNALS.items():
+        if any(sig in combined for sig in signals):
+            return subcategory
+    return "general_jewelry"
+
+
 def build_shortlist_output(
     shortlisted: list,
     all_evaluations: list,
@@ -231,38 +322,52 @@ def build_shortlist_output(
     all_trends_lookup: dict,
 ) -> dict:
     shortlist_items = []
+    per_subcategory: dict = {}
+
     for rank, ev in enumerate(shortlisted, start=1):
         tid = ev.get("trend_id")
         original = all_trends_lookup.get(tid, {})
         scores = ev.get("scores", {})
-        # extracted_product is from Step 1.5 — real product names from XHS posts
-        # hero_product_link is no longer output by the LLM (Module 3 handles product matching)
         extracted_product = original.get("extracted_product")
         hero_product = extracted_product
         hero_product_source = "extracted_from_posts" if extracted_product else None
+        why_selected = ev.get("reasoning", ev.get("why_selected", ""))
+        label = ev.get("label", "")
+        subcategory = _infer_subcategory(label, hero_product or "", why_selected)
 
         item = {
             "rank": rank,
             "trend_id": tid,
-            "label": ev.get("label", ""),
+            "label": label,
             "category": ev.get("category", ""),
+            "subcategory": subcategory,
             "location": original.get("location", "China"),
             "data_type": original.get("data_type", "unknown"),
             "composite_score": ev.get("composite_score"),
+            "raw_composite_score": ev.get("raw_composite_score"),
+            "confidence_weighted_composite": ev.get("confidence_weighted_composite"),
+            "confidence_weight": ev.get("confidence_weight"),
+            "velocity_method": ev.get("velocity_method"),
             "scores": {
-                "brand_fit": scores.get("brand_fit"),
-                "ca_conversational_utility": scores.get("ca_conversational_utility"),
+                "brand_engagement_depth": scores.get("brand_engagement_depth"),
+                "client_touchpoint_specificity": scores.get("client_touchpoint_specificity"),
+                "vocabulary_transfer_potential": scores.get("vocabulary_transfer_potential"),
+                "intelligence_value": scores.get("intelligence_value"),
+                "client_segment_clarity": scores.get("client_segment_clarity"),
+                "occasion_purchase_trigger": scores.get("occasion_purchase_trigger"),
                 "trend_velocity": scores.get("trend_velocity"),
-                "language_specificity": scores.get("language_specificity"),
-                "novelty": scores.get("novelty"),
-                "cross_run_persistence": scores.get("cross_run_persistence"),
+                "evidence_credibility": scores.get("evidence_credibility"),
             },
-            "matched_pillar": ev.get("matched_pillar"),
             "extracted_product": extracted_product,
             "hero_product": hero_product,
             "hero_product_source": hero_product_source,
+            "celebrity_signal": bool(original.get("celebrity_signal", False)),
+            "occasion_signal": bool(original.get("occasion_signal", False)),
+            "competitor_signal": bool(original.get("competitor_signal", False)),
+            "competitor_mentions": original.get("competitor_mentions", []),
+            "best_evidence_quote": ev.get("best_evidence_quote", ""),
             "confidence": ev.get("confidence"),
-            "why_selected": ev.get("reasoning", ev.get("why_selected", "")),
+            "why_selected": why_selected,
             "evidence_references": ev.get("evidence_references", []),
             "metric_signal": {
                 "total_engagement": ev.get("metric_signal", {}).get("total_engagement"),
@@ -274,6 +379,9 @@ def build_shortlist_output(
         }
         shortlist_items.append(item)
 
+        # Group into per_subcategory
+        per_subcategory.setdefault(subcategory, []).append(item)
+
     return {
         "run_id": run_id,
         "generated_at": generated_at,
@@ -283,7 +391,9 @@ def build_shortlist_output(
         "total_beauty_skipped": len(beauty_skipped),
         "total_prefilter_rejected": len(prefilter_rejected),
         "total_shortlisted": len(shortlisted),
-        "shortlist": shortlist_items,
+        "combined_shortlist": shortlist_items,
+        "shortlist": shortlist_items,  # backward-compat alias
+        "per_subcategory": per_subcategory,
     }
 
 
@@ -300,7 +410,7 @@ def calculate_quality_metrics(
     )
     llm_low_brand_fit = sum(
         1 for ev in all_evaluations
-        if (ev.get("scores") or {}).get("brand_fit", 10) < 5
+        if (ev.get("scores") or {}).get("brand_engagement_depth", 10) < 5
     )
     off_brand_count = brand_taboo_rejections + llm_low_brand_fit
     off_brand_rate = round(off_brand_count / max(total_input, 1) * 100, 1)
@@ -317,6 +427,12 @@ def calculate_quality_metrics(
         if all_trends_lookup.get(ev.get("trend_id"), {}).get("data_type") == "real"
     )
     synthetic_shortlisted = len(shortlisted) - real_shortlisted
+
+    # Signal counts from all evaluated trends
+    celebrity_count = sum(1 for t in all_trends_lookup.values() if t.get("celebrity_signal"))
+    occasion_count = sum(1 for t in all_trends_lookup.values() if t.get("occasion_signal"))
+    competitor_count = sum(1 for t in all_trends_lookup.values() if t.get("competitor_signal"))
+    evaluated_total = max(len(all_evaluations), 1)
 
     return {
         "off_brand_rate": off_brand_rate,
@@ -335,6 +451,14 @@ def calculate_quality_metrics(
         "real_shortlisted": real_shortlisted,
         "synthetic_shortlisted": synthetic_shortlisted,
         "beauty_skipped": len(beauty_skipped),
+        "signal_rates": {
+            "celebrity_signal_count": celebrity_count,
+            "celebrity_signal_rate": round(celebrity_count / evaluated_total * 100, 1),
+            "occasion_signal_count": occasion_count,
+            "occasion_signal_rate": round(occasion_count / evaluated_total * 100, 1),
+            "competitor_signal_count": competitor_count,
+            "competitor_signal_rate": round(competitor_count / evaluated_total * 100, 1),
+        },
     }
 
 
@@ -404,11 +528,13 @@ def write_eval_report(
         "### 3. Noise Reduction",
         f"- {quality['noise_reduction_rate']}% of input trends were filtered before reaching the shortlist.",
         "",
-        "### 4. New Dimensions",
-        "- **CA Conversational Utility**: % of shortlisted trends with an organically extracted product — "
-        f"{sum(1 for ev in all_evaluations if ev.get('extracted_product'))} of {len(all_evaluations)} evaluated trends had a real XHS product mention.",
-        "- **Trend Velocity**: scores computed from engagement_recency_pct (7-day recency window).",
-        "- **Cross-Run Persistence**: scores computed from run_count (deduplication merged trends retain count).",
+        "### 4. Signal Detection & New Dimensions",
+        f"- **Extracted product**: {sum(1 for ev in all_evaluations if ev.get('extracted_product'))} of {len(all_evaluations)} evaluated trends had a real XHS product mention.",
+        f"- **Celebrity signal**: {quality.get('signal_rates', {}).get('celebrity_signal_count', 0)} trends ({quality.get('signal_rates', {}).get('celebrity_signal_rate', 0)}%)",
+        f"- **Occasion signal**: {quality.get('signal_rates', {}).get('occasion_signal_count', 0)} trends ({quality.get('signal_rates', {}).get('occasion_signal_rate', 0)}%)",
+        f"- **Competitor signal**: {quality.get('signal_rates', {}).get('competitor_signal_count', 0)} trends ({quality.get('signal_rates', {}).get('competitor_signal_rate', 0)}%)",
+        "- **Trend Velocity**: computed from engagement_recency_pct (7-day recency) or save-ratio proxy when no dates available.",
+        "- **Evidence Credibility**: computed from run_count × confidence weight.",
         "",
         "---",
         "",
@@ -417,17 +543,18 @@ def write_eval_report(
         f"Shortlisted **{len(shortlisted)}** trends "
         f"(real: {quality['real_shortlisted']}, synthetic: {quality['synthetic_shortlisted']}):",
         "",
-        "| # | Trend | Score | Extracted Product | Pillar | CA Utility | Velocity |",
-        "|---|-------|-------|------------------|--------|-----------|---------|",
+        "| # | Trend | CWC Score | Raw Score | Extracted Product | Brand Depth | CA Touch | Velocity |",
+        "|---|-------|-----------|-----------|------------------|------------|---------|---------|",
     ]
     for i, ev in enumerate(shortlisted, 1):
         scores = ev.get("scores", {})
         lines.append(
             f"| {i} | **[{ev.get('trend_id')}]** {ev.get('label', '')} "
-            f"| {ev.get('composite_score', 0):.2f} "
+            f"| {ev.get('confidence_weighted_composite', ev.get('composite_score', 0)):.2f} "
+            f"| {ev.get('raw_composite_score', 0):.2f} "
             f"| {ev.get('extracted_product') or '—'} "
-            f"| {ev.get('matched_pillar') or '—'} "
-            f"| {scores.get('ca_conversational_utility', '—')} "
+            f"| {scores.get('brand_engagement_depth', '—')} "
+            f"| {scores.get('client_touchpoint_specificity', '—')} "
             f"| {scores.get('trend_velocity', '—')} |"
         )
 
@@ -448,9 +575,9 @@ def write_eval_report(
             )
             lines.append(f"  - Reason: {reason}")
             lines.append(
-                f"  - brand_fit: {scores.get('brand_fit', '—')} "
-                f"| ca_conversational_utility: {scores.get('ca_conversational_utility', '—')} "
-                f"| novelty: {scores.get('novelty', '—')}"
+                f"  - brand_engagement_depth: {scores.get('brand_engagement_depth', '—')} "
+                f"| client_touchpoint_specificity: {scores.get('client_touchpoint_specificity', '—')} "
+                f"| intelligence_value: {scores.get('intelligence_value', '—')}"
             )
     else:
         lines.append("- No failure cases (all evaluated trends were shortlisted).")
@@ -522,11 +649,16 @@ def convert_to_module3_format(
             "brand_relevance": brand_relevance,
             "week_on_week_growth": wow_growth,
             "m2_composite_score": composite,
+            "m2_raw_composite_score": ev.get("raw_composite_score", composite),
+            "m2_confidence_weighted_composite": ev.get("confidence_weighted_composite", composite),
             "m2_confidence": ev.get("confidence", "medium"),
             "m2_why_selected": ev.get("why_selected", ev.get("reasoning", "")),
             "extracted_product": original.get("extracted_product"),
             "hero_product": ev.get("hero_product"),
             "hero_product_source": ev.get("hero_product_source"),
+            "celebrity_signal": bool(original.get("celebrity_signal", False)),
+            "occasion_signal": bool(original.get("occasion_signal", False)),
+            "best_evidence_quote": ev.get("best_evidence_quote", ""),
         })
 
     week = datetime.now(timezone.utc).strftime("%Y-W%W")
@@ -606,17 +738,30 @@ def main():
         print("\n[WARNING] No trends passed pre-filter. Nothing to evaluate.")
         sys.exit(0)
 
-    # ── Step 1.5: Organic product extraction ──────────────────────────────────
+    # ── Step 1.5: Organic product extraction + signal detection ───────────────
     print(f"\n{'─'*60}")
-    print("STEP 1.5 — Organic Product Extraction from XHS Snippets")
+    print("STEP 1.5 — Organic Product Extraction & Signal Detection")
     print(f"{'─'*60}")
     extracted_count = 0
+    celebrity_count = 0
+    occasion_count = 0
+    competitor_count = 0
     for trend in passed_trends:
         product = extract_product_from_trend(trend)
         if product:
             trend["extracted_product"] = product
             extracted_count += 1
-    print(f"  Organic product mention found in {extracted_count}/{len(passed_trends)} trends")
+        detect_signals(trend)
+        if trend.get("celebrity_signal"):
+            celebrity_count += 1
+        if trend.get("occasion_signal"):
+            occasion_count += 1
+        if trend.get("competitor_signal"):
+            competitor_count += 1
+    print(f"  Organic product mention: {extracted_count}/{len(passed_trends)} trends")
+    print(f"  Celebrity signal:        {celebrity_count}/{len(passed_trends)} trends")
+    print(f"  Occasion signal:         {occasion_count}/{len(passed_trends)} trends")
+    print(f"  Competitor signal:       {competitor_count}/{len(passed_trends)} trends")
     if extracted_count:
         for t in passed_trends:
             if t.get("extracted_product"):
@@ -667,6 +812,12 @@ def main():
         for ev in llm_rejected:
             reason = ev.get("disqualifying_reason") or "Below threshold"
             print(f"  ✗ [{ev.get('trend_id')}] {ev.get('label', '')} — {reason}")
+
+    # ── Best evidence quote per shortlisted trend ──────────────────────────────
+    for ev in shortlisted:
+        tid = ev.get("trend_id")
+        original = all_trends_lookup.get(tid, {})
+        ev["best_evidence_quote"] = find_best_evidence_quote(original)
 
     # ── Quality metrics ────────────────────────────────────────────────────────
     quality = calculate_quality_metrics(
@@ -767,7 +918,7 @@ def main():
     print(f"\n{'='*60}")
     print("RUN SUMMARY")
     print(f"{'='*60}")
-    print(f"  Real luxury_fashion:   {len(real_trends)}")
+    print(f"  Real luxury_jewelry:   {len(real_trends)}")
     print(f"  Synthetic:             {len(synthetic_trends)}")
     print(f"  Beauty skipped:        {len(beauty_skipped)}")
     print(f"  Total input:           {total_input}")
