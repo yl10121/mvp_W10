@@ -16,4 +16,4 @@ ANTHROPIC_API_KEY = (os.getenv("ANTHROPIC_API_KEY") or "").strip()
 
 # 默认与 OpenRouter 常见用法对齐；可在 .env 覆盖
 DEFAULT_MODEL = os.getenv("DEFAULT_MODEL", "openai/gpt-4o-mini")
-BRAND = os.getenv("BRAND", "Louis Vuitton")
+BRAND = os.getenv("BRAND", "Tiffany")

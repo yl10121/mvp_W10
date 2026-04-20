@@ -1,0 +1,203 @@
+================================================================================
+PRESENTATION SLIDES — MODULE 1 ONLY (XHS Trend Object Builder)
+Plain text · paste into Keynote/PPT
+Font: Title 36–44 pt | Body min 24 pt (26–30 recommended) | Labels min 18 pt
+Rule: 3 bullets max · ~6 words per bullet · ~20–30 words/slide (40 only for defs/lists)
+================================================================================
+
+--------------------------------------------------------------------------------
+SLIDE 1 — Title + Module Role
+--------------------------------------------------------------------------------
+TITLE (claim-style):
+  Module 1 — From Raw XHS Posts to Trend Objects
+
+SUBTITLE / ROLE (one line):
+  We own ingestion, clustering, and structured trend outputs—nothing downstream.
+
+BULLETS (optional, max 3):
+  • Scrape and normalize Xiaohongshu posts
+  • Cluster into distinct, evidenced trends
+  • Write JSON + Supabase for auditability
+
+PRESENTERS:
+  [Student Name 1] · [Student Name 2] · [Course / Date]
+
+Speaker note (not on slide): Orients execs on M1 scope only: inputs, transform, outputs.
+
+--------------------------------------------------------------------------------
+SLIDE 2 — One-Line Executive Summary
+--------------------------------------------------------------------------------
+TITLE:
+  Module 1 turns XHS noise into labeled, evidenced trend objects.
+
+BODY (one tight block, ≤30 words):
+  Search and detail data become dated posts, then clusters, then trend JSON with
+  post IDs and snippets—ready for any team that needs grounded social intelligence.
+
+--------------------------------------------------------------------------------
+SLIDE 3 — Business Pain Moment
+--------------------------------------------------------------------------------
+TITLE:
+  The break: opinions without a shared evidence object
+
+BULLETS:
+  • “What’s trending?” has no single definition
+  • Screenshots and links don’t scale or audit
+  • Strategy meetings start before data exists
+
+--------------------------------------------------------------------------------
+SLIDE 4 — Why It Matters (Business Impact)
+--------------------------------------------------------------------------------
+TITLE:
+  Without Module 1, everything upstream is guesswork
+
+BULLETS:
+  • Wasted hours scanning XHS manually
+  • Inconsistent what “the trend” even is
+  • Hard to defend claims to leadership or clients
+
+--------------------------------------------------------------------------------
+SLIDE 5 — Constraints (Credibility)
+--------------------------------------------------------------------------------
+TITLE:
+  What Module 1 does not pretend to solve
+
+BULLETS:
+  • XHS UI, sessions, and selectors change often
+  • Not every post yields a clean publish date
+  • We document real posts—not synthetic buzz
+
+--------------------------------------------------------------------------------
+SLIDE 6 — Hypothesis (IF/THEN)
+--------------------------------------------------------------------------------
+TITLE:
+  Testable bet for Module 1
+
+ONE LINE:
+  IF we cluster and label posts with config-driven rules and LLM assist,
+  THEN we emit repeatable trend objects with traceable evidence per run.
+
+--------------------------------------------------------------------------------
+SLIDE 7 — Success Metric + Guardrail
+--------------------------------------------------------------------------------
+TITLE:
+  What “good” means for Module 1
+
+METRIC (primary):
+  ↑ Posts in date window · ↑ distinct trend objects · stable run logs
+
+GUARDRAIL:
+  Every trend cites real post IDs and snippets—no fabricated evidence.
+
+--------------------------------------------------------------------------------
+SLIDE 8 — Module Overview (Input → Transform → Output)
+--------------------------------------------------------------------------------
+TITLE:
+  Module 1 only—in one glance
+
+DIAGRAM LABELS (keep short; one visual):
+  [INPUT] Live scrape → xhs_posts.json + run_config.json
+      ↓
+  [TRANSFORM] xhs_trend_builder: filter · tokenize · cluster · label
+      ↓
+  [OUTPUT] trend_objects.json · run log · module1_* in Supabase
+
+--------------------------------------------------------------------------------
+SLIDE 9 — The "One Decision" the Agent Makes
+--------------------------------------------------------------------------------
+TITLE:
+  The single decision Module 1 owns
+
+BODY:
+  Which posts belong in the same trend cluster—and what to call that trend,
+  with what confidence and evidence.
+
+--------------------------------------------------------------------------------
+SLIDE 10 — Inputs (Objects & Data Sources)
+--------------------------------------------------------------------------------
+TITLE:
+  What Module 1 needs to run
+
+BULLETS:
+  • DrissionPage scraper + XHS login session
+  • Keywords (e.g., Celine, 思琳) and category
+  • run_config: time window, clustering thresholds, LLM flags
+
+--------------------------------------------------------------------------------
+SLIDE 11 — Outputs (Objects + Traceability)
+--------------------------------------------------------------------------------
+TITLE:
+  What Module 1 produces
+
+BULLETS:
+  • Per-run trend_objects JSON (label, evidence, metrics)
+  • Raw + processed post archives for replay
+  • Optional: module1_xhs_posts / trends / run_logs in Supabase
+
+--------------------------------------------------------------------------------
+SLIDE 12 — Demo (One Example)
+--------------------------------------------------------------------------------
+SOURCE (use for screenshot):
+  module_1/outputs/runs/run_0022_trend_objects.json  (Celine-focused historical run)
+
+TITLE:
+  One artifact—one screenshot
+
+LAYOUT:
+  [Screenshot: first trend object in run_0022 — highlight "label" + evidence.posts]
+
+CAPTION (≤20 words):
+  Real example: “Old Celine vs New Celine Nostalgia Debate” — evidence + post IDs from 197-post corpus.
+
+--------------------------------------------------------------------------------
+SLIDE 13 — Test Design (Validation Method)
+--------------------------------------------------------------------------------
+TITLE:
+  How we validated Module 1
+
+BULLETS:
+  • Date filter vs. run_config March–April window
+  • Reviewer feedback on labels and noise
+  • Failure cases logged (e.g., missing dates)
+
+--------------------------------------------------------------------------------
+SLIDE 14 — Results (Metrics + Failure)
+--------------------------------------------------------------------------------
+TITLE:
+  What worked—and what broke
+
+SOURCE (real numbers — Celine corpus, run_0022):
+  File: module_1/outputs/runs/run_0022_trend_objects.json
+  Run time: 2026-03-29 UTC · retrieval.records_loaded = 197 · trend_objects count = 8
+
+METRICS (paste-ready):
+  • Posts fed to builder: 197 · Distinct trend objects: 8
+  • LLM: On · gpt-4.1-mini · 8/8 label calls succeeded (0 errors in run log)
+  • Prompt: Celine-native examples (Old vs New Celine, Box, Soft 16, etc.)
+
+FAILURE (honest one-liner):
+  run_0022 itself completed cleanly. Separately, some later scrapes lose publish dates when detail tabs disconnect—we added extra date selectors and filters.
+
+--------------------------------------------------------------------------------
+SLIDE 15 — Next Steps (Production Path)
+--------------------------------------------------------------------------------
+TITLE:
+  Next steps for Module 1 only
+
+BULLETS:
+  • Harden scraper against disconnects; slower scroll if needed
+  • Tune clustering to hit target trend count
+  • Seed optional brand catalog table for same schema
+
+--------------------------------------------------------------------------------
+SLIDE 16 — [Optional] Thank You / Q&A
+--------------------------------------------------------------------------------
+TITLE:
+  Questions?
+
+LINE:
+  Contact: [email] · Module 1 repo path: [optional]
+
+================================================================================
+END — Module 1 scope only. Edit bracketed fields; trim to fit on-slide word limits.
+================================================================================

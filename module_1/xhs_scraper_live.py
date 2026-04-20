@@ -196,6 +196,29 @@ def _parse_hashtags(raw: str) -> list[str]:
     return tags
 
 
+def _extract_detail_date(detail_tab) -> str:
+    """Best-effort note publish/edit date from detail DOM (XHS changes class names)."""
+    selectors = (
+        ".date",
+        ".date-note",
+        ".bottom-container .date",
+        "span.time",
+        ".publish-date",
+        ".note-top .date",
+        "tag:time",
+    )
+    for sel in selectors:
+        try:
+            el = detail_tab.ele(sel, timeout=2)
+            if el and getattr(el, "text", None):
+                t = str(el.text).strip()
+                if t and t not in ("", "-"):
+                    return t
+        except Exception:
+            continue
+    return ""
+
+
 # ─────────────────────────────────────────────────────────────────
 # Core scraper using DrissionPage directly
 # ─────────────────────────────────────────────────────────────────
@@ -216,7 +239,10 @@ class XHSLiveScraper:
             )
             sys.exit(1)
 
+        # Avoid fixed-port CDP attach failures (default 127.0.0.1:9222) by letting
+        # DrissionPage pick an available debugging port + isolated user-data-dir.
         opts = ChromiumOptions()
+        opts.auto_port()
         self.browser  = ChromiumPage(addr_or_opts=opts)  # the browser / main tab
         self.main_tab = self.browser                     # alias — used for search page
         self.fast = fast
@@ -228,8 +254,8 @@ class XHSLiveScraper:
         time.sleep(3)
         if self.main_tab.ele(".login-container", timeout=3):
             print("\n[LOGIN] QR code shown — scan with XHS app on your phone.")
-            print("[LOGIN] Waiting up to 90 seconds…")
-            for _ in range(90):
+            print("[LOGIN] Waiting up to 5 minutes…")
+            for _ in range(300):
                 time.sleep(1)
                 if not self.main_tab.ele(".login-container", timeout=1):
                     print("[LOGIN] Logged in successfully.")
@@ -399,11 +425,10 @@ class XHSLiveScraper:
         detail_tab = None
         try:
             detail_tab = self.browser.new_tab(link)
-            time.sleep(3.0 if not self.fast else 1.2)
+            time.sleep(3.0 if not self.fast else 1.8)
 
             # ── stats ──
-            date_el = detail_tab.ele(".date", timeout=4)
-            post["date"] = date_el.text if date_el else ""
+            post["date"] = _extract_detail_date(detail_tab)
 
             saves_el = detail_tab.ele(".collect-wrapper .count", timeout=3)
             post["saves"] = _parse_count(saves_el.text if saves_el else "0")

@@ -1,0 +1,202 @@
+================================================================================
+MODULE 1 ONLY — 10-SLIDE DECK (condensed from 15-slide story)
+Preserves: pipeline flow (Input → Transform → Output) + locked demo (run_0022)
+Font: Title 36–44 pt · Body min 24 pt · 3 bullets max OR one visual · ~20–30 words/slide body
+================================================================================
+
+--------------------------------------------------------------------------------
+SLIDE 1 — Title + module role
+--------------------------------------------------------------------------------
+HEADLINE (claim):
+  Module 1 turns noisy XHS posts into evidenced trend objects teams can reuse.
+
+ON SLIDE:
+  • Role: UPSTREAM — first structured signal from social
+  • Team: [Name 1] · [Name 2] · [Date / Section]
+  • Unlocks: defensible “what’s trending on XHS” without manual desk research
+
+SPEAKER NOTES: Why this module exists in the pipeline; not a feature list.
+
+--------------------------------------------------------------------------------
+SLIDE 2 — Executive summary (Problem → Hypothesis → Outcome)
+--------------------------------------------------------------------------------
+HEADLINE:
+  One memory line: pain, bet, payoff
+
+THREE LINES (must include):
+  Problem: Client-facing and HQ teams lack a shared, auditable object for “what’s trending” on XHS—only ad-hoc screenshots and opinions.
+  Hypothesis: IF we cluster and label real posts with config + LLM, THEN each run emits trend JSON with post IDs and snippets anyone can verify.
+  Outcome: Faster alignment on trends; measurable: ↑ dated posts in window, ↑ distinct trend objects per run, stable run logs (targets in Week 12).
+
+SPEAKER NOTES: 3–5 sentences expanding; concrete, not “efficiency.”
+
+--------------------------------------------------------------------------------
+SLIDE 3 — Stakes (pain + why it matters)  [merges old Slides 3 + 4]
+--------------------------------------------------------------------------------
+HEADLINE:
+  No evidence object at the whiteboard — and luxury can’t afford vague trends
+
+PAIN (tight):
+  When CAs / analysts prep, they must name “the” trend on XHS—but nothing ties claims to posts, dates, and scale in one artifact.
+
+WHY IT MATTERS (pick 2–3 short bullets):
+  • Hours/week lost reconciling screenshots and chats
+  • Ungrounded claims = brand risk in high-trust retail
+  • Star CA judgment doesn’t transfer without structured evidence
+
+SPEAKER NOTES: “When ___, they must ___, but ___” + directional impact, no fake ROI.
+
+--------------------------------------------------------------------------------
+SLIDE 4 — Constraints + testable bet  [merges old Slides 5 + 6]
+--------------------------------------------------------------------------------
+HEADLINE:
+  Real limits — and a bet you can falsify
+
+CONSTRAINTS (bullets):
+  • No cross-silo shopper ID; public XHS + our scrape session
+  • Privacy: anonymized creators; post text as allowed
+  • Data: real batches — proof run used 197 posts (run_0022)
+
+IF / THEN:
+  IF we cluster + label with rules + LLM on real posts, THEN trend objects with evidence—not invented posts.
+
+FALSIFIER:
+  If trends lack verifiable post IDs or contradict source text → approach fails (reviewer reject / empty evidence).
+
+ONE LINE now vs future:
+  Now: batch scrape + JSON + Supabase. Future: stable APIs if LVMH negotiates access.
+
+SPEAKER NOTES: Interview tie-in if any.
+
+--------------------------------------------------------------------------------
+SLIDE 5 — Success metric + guardrail  [old Slide 7]
+--------------------------------------------------------------------------------
+HEADLINE:
+  What “working” means — before the demo
+
+SUCCESS:
+  • Evidence sufficiency: each trend links to ≥2 real posts with snippets (pass on run_0022-style outputs)
+
+GUARDRAIL:
+  • No fabricated evidence — downgrade or reject if LLM can’t ground the label
+
+HOW (short):
+  Count trends meeting schema; spot-audit vs raw JSON.
+
+SPEAKER NOTES: Thresholds; Week 12 tuning.
+
+--------------------------------------------------------------------------------
+SLIDE 6 — Module flow (Input → Transform → Output)  [old Slide 8 — PRESERVED]
+--------------------------------------------------------------------------------
+HEADLINE:
+  Module 1 in one flow — upstream signal factory
+
+EXACTLY THREE PARTS (template + diagram):
+  • Input: Live scrape → xhs_posts.json + run_config.json (keywords, window, clustering)
+  • Transform: xhs_trend_builder — filter, tokenize, cluster, label (LLM optional per config)
+  • Output: run-specific trend_objects.json + run_log.json + optional module1_* in Supabase
+
+[Excalidraw / diagram: three boxes + arrows — short labels on slide only]
+
+SPEAKER NOTES: 4–6 lines; fit in overall pipeline; no jargon wall.
+
+--------------------------------------------------------------------------------
+SLIDE 7 — One decision + in/out snapshot  [merges old Slides 9 + 10 + 11]
+--------------------------------------------------------------------------------
+HEADLINE:
+  One decision — then structured objects in and out
+
+ONE DECISION:
+  Given dated or partially dated posts + config → which posts share one XHS trend and what we call it — so downstream debates trends, not raw noise.
+
+INPUTS (feasibility):
+  • Post: post_id, title, caption, engagement, date, keyword, link, images
+  • run_config: time_window, cluster thresholds, LLM flags, brand hints
+  • Volume: DrissionPage → xhs_posts.json · proof = 197 posts (run_0022)
+
+OUTPUTS (trust):
+  • trend_object: label, summary, evidence (posts + snippets), metrics, confidence, ai_reasoning
+  • Trace: post_ids + snippets + run_id · files + Supabase module1_*
+
+SPEAKER NOTES: Downstream reuse without re-scraping; optional product feed later.
+
+--------------------------------------------------------------------------------
+SLIDE 8 — Demo (locked)  [old Slide 12 — PRESERVED]
+--------------------------------------------------------------------------------
+HEADLINE:
+  One run, one story: input → output → evidence
+
+SOURCE FILE:
+  module_1/outputs/runs/run_0022_trend_objects.json (Celine-focused historical run)
+
+ON SLIDE:
+  • Input: 197 Celine-related posts in corpus (run_0022 retrieval)
+  • Output: 8 trend objects — example label: “Old Celine vs New Celine Nostalgia Debate”
+  • Evidence: post IDs + title snippets in evidence block (same JSON file)
+
+[Screenshot: JSON or Supabase row — highlight label + evidence — one arrow/box]
+
+CAPTION (≤20 words):
+  Real example from 197-post corpus; every trend ties to real posts.
+
+SPEAKER NOTES: Walk through in 5–6 sentences; single example only.
+
+--------------------------------------------------------------------------------
+SLIDE 9 — Proof + failure + mitigation  [old Slide 14, lean]
+--------------------------------------------------------------------------------
+HEADLINE:
+  Numbers, one honest break, fix
+
+METRICS (run_0022):
+  • 8 trend objects from 197 posts · LLM 8/8 succeeded (gpt-4.1-mini) · run 2026-03-29 UTC
+  • Throughput: [your #2 metric — e.g. one run covers full corpus vs manual clustering]
+
+FAILURE + MITIGATION:
+  • Later scrapes: detail tabs disconnect → missing dates → window filter drops rows
+  • Mitigation: multi-selector date extraction; longer settle; filter script; re-scrape
+
+SPEAKER NOTES: Week 12 placeholders OK for second metric.
+
+--------------------------------------------------------------------------------
+SLIDE 10 — Validation + next steps  [merges old Slides 13 + 15]
+--------------------------------------------------------------------------------
+HEADLINE:
+  How we tested — what LVMH does next
+
+TEST (short) — source: module_1/week11/feedback_log_module1.csv + DELIVERABLE_2_3_EXTRACT.md
+  • Reviewers (3): Tiffany · Cartier · Fendi boutiques — clienteling / retail sales (2026-03-30)
+  • Method: 1–5 usefulness + 1–5 trust; verbatim quote + concrete change request per session
+  • Learnings: weight on-body / celeb wear over packshots · tag UGC vs official where possible · cluster on style/silhouette not keywords alone
+  (Quote for deck: pick one line from CSV “verbatim_quote” — e.g. Cartier on XHS as tool not gospel)
+
+NEXT STEPS:
+  • Data: reliable time signals; optional official social / listening feeds
+  • Integration: trend_object JSON into planning / CA workflows (downstream)
+  • Pilot: one brand · one city · success = trends used in briefs + reviewer acceptance
+
+Optional closing: Questions — contact in speaker notes
+
+SPEAKER NOTES: Printable exec summary; quotes from reviewers; contact email.
+
+================================================================================
+MAP: 15-slide → 10-slide
+  Old 1 → 1
+  Old 2 → 2
+  Old 3+4 → 3
+  Old 5+6 → 4
+  Old 7 → 5
+  Old 8 → 6 (module flow preserved)
+  Old 9+10+11 → 7 (one decision + inputs + outputs)
+  Old 12 → 8 (demo preserved)
+  Old 14 → 9 (results; old 13 test design → speaker notes + slide 10)
+  Old 13+15 → 10
+  (Old 16 Q&A optional — use speaker notes or extra slide if required)
+================================================================================
+CHECKLIST (carry over from Week 11)
+  [ ] Locked demo = run_0022 (consistent everywhere)
+  [ ] ≥3 reviews logged — reference on Slide 10
+  [ ] 1 metric + guardrail — Slides 5 & 9
+  [ ] 1 failure + mitigation — Slide 9
+================================================================================
+END
+================================================================================
